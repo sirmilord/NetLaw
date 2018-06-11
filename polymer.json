@@ -3,7 +3,7 @@
   "shell": "src/my-netlaw.html",
   "fragments": [
     "src/my-netlaw-smartguide.html",
-    "src/my-view2.html",
+    "src/my-netlaw-lifevault.html",
     "src/my-netlaw-contacts.html",
     "src/my-netlaw-contacts2.html",
     "src/my-netlaw-contacts3.html",
