@@ -1,0 +1,34 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/my-app.html",
+  "fragments": [
+    "src/my-view1.html",
+    "src/my-view2.html",
+    "src/my-netlaw-contacts.html",
+    "src/my-netlaw-contacts2.html",
+    "src/my-netlaw-contacts3.html",
+    "src/my-new-view.html",
+    "src/my-netlaw-login.html",
+    "src/my-netlaw-password-new.html",
+    "src/my-netlaw-password-retrieval.html",
+    "src/my-netlaw-password-retrieval-confirmation.html",
+    "src/my-view404.html"
+  ],
+  "sources": [
+    "images/**/*",
+    "src/**/*"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "!bower_components/webcomponentsjs/gulpfile.js",
+    "manifest.json"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [
+    {
+      "preset": "es6-bundled"
+    }
+  ]
+}

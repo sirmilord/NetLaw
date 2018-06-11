@@ -1,0 +1,72 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-netlaw-login">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style include="shared-styles">
+      :host {
+      }
+
+
+
+    </style>
+    <!--<app-header-layout has-scrolling-region="" fullbleed="" narrow="{{narrow}}">-->
+
+    <app-header slot="header" condenses="" reveals="" effects="waterfall">
+      <app-toolbar class="navbar">
+        <!--<paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>-->
+        <netlaw-logo></netlaw-logo>
+      </app-toolbar>
+    </app-header>
+
+    <div class="uk-main uk-section uk-section-default">
+      <div class="uk-container uk-position-relative">
+        <div class="uk-align-center login">
+          <h1>Login to your Account.</h1>
+
+          <div class="uk-margin-bottom login-buttons">
+            <button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
+            <button class="uk-button uk-button-secondary">Login with Facebook</button>
+          </div>
+          <div class="uk-divider-icon">OR</div>
+
+          <div class="uk-margin uk-align-center">
+            <form action="#" method="post" class="login-form uk-align-center">
+              <div class="uk-margin ">
+                <label for="login-name"></label>
+                <input type="text" class="uk-input" id="login-name" name="login" placeholder="Username*" required>
+              </div>
+              <div class="uk-margin">
+                <label for="login-pass"></label>
+                <input type="password" class="uk-input" id="login-pass" name="pass" placeholder="Password*" required>
+              </div>
+              <div class="uk-margin-top">
+                <a href="#">Forgot Your Password?</a>
+              </div>
+              <hr class="uk-divider-small">
+              <div class="uk-margin-bottom">
+                <button class="uk-button uk-button-primary">Login</button>
+              </div>
+            </form>
+          </div>
+          <p class="uk-margin">Don’t have an account? <a href="#">Request One</a></p>
+        </div>
+      </div>
+    </div>
+    <!--</app-header-layout>-->
+
+  </template>
+  <script>
+      // Your new element extends the Polymer.Element base class
+      class MyNetlawLogin extends Polymer.Element {
+          static get is() {
+              return 'my-netlaw-login';
+          }
+      }
+
+      //Now, register your new custom element so the browser can use it
+      customElements.define(MyNetlawLogin.is, MyNetlawLogin);
+  </script>
+</dom-module>

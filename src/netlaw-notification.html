@@ -1,0 +1,122 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
+
+<dom-module id="netlaw-notification">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        position: relative;
+        margin-left: auto;
+        margin-right: 20px;
+      }
+
+
+      #dropdown {
+        /*width: 300px;*/
+        background-color: var(--app-header-bg);
+        padding: 15px;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: none !important;
+      }
+
+      li {
+        padding: .5em 4em .5em 1em;
+        font-size: 14px;
+        color: #333;
+      }
+
+      li::before {
+        position: absolute;
+        left: 15px;
+        content: "• ";
+        color: #f5a623;
+        font-size: 28px;
+        line-height: 16px;
+      }
+
+      li span {
+        position: absolute;
+        right: 15px;
+        font-size: 12px;
+        color: #9B9B9B;
+      }
+
+      .icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: middle;
+      }
+
+      a {
+        color: #4A90E2;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+    </style>
+
+    <a href="#" on-click="toggle">
+      <span class="icon" style="background-image: url(../images/notifications_icon.png);"></span>
+    </a>
+
+    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
+        <ul class="notifications" slot="dropdown-content">
+          <li><a href="#">SmartGuide</a> is at 0% completed <span>1 min ago</span></li>
+          <li>Alexander Dumas has shared a <a href="#">new document</a> with you.<span>20 mins ago</span></li>
+          <li>Document <a href="#">“Estimate for Home Mortgage.PDF v1.0”</a> requires finalization.<span>1 hour ago</span></li>
+        </ul>
+    </iron-dropdown>
+
+  </template>
+
+  <script>
+
+      class NetlawNotification extends Polymer.Element {
+          static get is() {
+              return 'netlaw-notification';
+          }
+
+          static get properties() {
+              return {
+                  visible: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+              };
+          }
+
+          constructor() {
+              super();
+          }
+
+          toggle(e) {
+              e.preventDefault();
+              this.visible = !this.visible;
+              this.visible ? this.$.dropdown.open() : this.$.dropdown.close();
+          }
+
+      }
+
+      customElements.define(NetlawNotification.is, NetlawNotification);
+  </script>
+
+</dom-module>
+

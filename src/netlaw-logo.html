@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="netlaw-logo">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        display: flex;
+        align-items: center;
+        height: 80px;
+        width: 160px;
+      }
+
+      .logo-img {
+        max-width: 160px;
+      }
+    </style>
+
+    <!-- shadow DOM goes here -->
+    <a href="/" class="logo-link"><img class="logo-img" src="./images/NetLaw.png"></a>
+  </template>
+
+  <script>
+      class NetlawLogo extends Polymer.Element {
+          static get is() {
+              return 'netlaw-logo';
+          }
+
+          constructor() {
+              super();
+          }
+
+      }
+      customElements.define(NetlawLogo.is, NetlawLogo);
+  </script>
+
+</dom-module>
+
