@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="my-netlaw-contacts3.html">
 <link rel="lazy-import" href="my-view404.html">
 
-<dom-module id="my-app">
+<dom-module id="my-netlaw">
   <template>
     <style>
       :host {
@@ -258,9 +258,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       // preventable, allowing for better scrolling performance.
       Polymer.setPassiveTouchGestures(true);
 
-      class MyApp extends Polymer.Element {
+      class MyNetlaw extends Polymer.Element {
           static get is() {
-              return 'my-app';
+              return 'my-netlaw';
           }
 
           static get properties() {
@@ -310,6 +310,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
       }
 
-      window.customElements.define(MyApp.is, MyApp);
+      window.customElements.define(MyNetlaw.is, MyNetlaw);
   </script>
 </dom-module>
