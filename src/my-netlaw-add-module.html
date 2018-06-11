@@ -1,0 +1,1059 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-netlaw-add-module">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        box-sizing: border-box;
+      }
+
+      .add-module {
+        display: flex;
+        min-height: calc(100vh - 80px);
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .add-module__content {
+        flex: 1 1 70%;
+        max-width: 70%;
+        background-color: #fff;
+        border-right: 1px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .add-module__list-link iron-icon {
+        margin-right: 10px;
+      }
+
+      .add-module__list-link[aria-expanded=true] iron-icon {
+        fill: #01AA50;
+      }
+
+      h1 {
+        font-weight: bold;
+        color: #4A4A4A;
+        font-size: 56px;
+        line-height: 67px;
+        margin-top: 80px;
+        margin-bottom: 30px;
+      }
+
+      figure {
+        margin-bottom: 30px;
+      }
+
+      b {
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #4A4A4A;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 40px;
+        color: #969696;
+      }
+
+      hr {
+        width: 75%;
+        border-color: #e9e9e9;
+      }
+
+      .btn {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 30px;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      /*--------------------------*/
+      .add-module__content-header {
+        display: flex;
+        min-height: 65px;
+        width: 100%;
+        background-color: #4a4a4a;
+      }
+
+      .add-module__title {
+        align-self: center;
+        margin-left: 60px;
+        color: #d1d1d1;
+        font-size: 36px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 300;
+        position: relative;
+        margin-right: 30px;
+      }
+
+      .add-module__title:after {
+        content: '';
+        position: absolute;
+        height: 75%;
+        width: 2px;
+        right: -30px;
+        top: 50%;
+        background-color: #5d5d5e;
+        transform: translateY(-50%);
+      }
+
+      .add-module__header-desc {
+        margin-left: 30px;
+        align-self: center;
+        font-size: 20px;
+        font-weight: 300;
+        color: #b2b2b2;
+      }
+
+      .add-module__content-dashboard {
+        width: 100%;
+        background-color: #fff;
+        min-height: 90px;
+        position: relative;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-sizing: border-box;
+      }
+
+      .add-module__content-dashboard:after {
+        content: '';
+        position: absolute;
+        width: 91%;
+        height: 1px;
+        bottom: 0;
+        /*left: 50%;*/
+        /*transform: translateX(-50%);*/
+        right: 30px;
+        border-bottom: 4px dotted #e0e0e0;
+      }
+
+      .add-module__content-dashboard form {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        min-height: 90px;
+        flex-wrap: wrap;
+      }
+
+      .add-module__checkbox-container {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        font-size: 12px;
+        user-select: none;
+        color: #d6d6d6;
+        height: 45px;
+        border-radius: 2px;
+      }
+
+      .add-module__checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .add-module__content-checkmark {
+        position: absolute;
+        top: 17px;
+        left: 12px;
+        height: 25px;
+        width: 25px;
+        background-color: #fff;
+        border: 1px solid #c2c2c2;
+      }
+
+      .add-module__checkbox-container:hover input ~ .add-module__content-checkmark {
+        background-color: #fff;
+      }
+
+      .add-module__checkbox-container input:checked ~ .add-module__content-checkmark {
+        background-color: #fff;
+      }
+
+      .add-module__content-checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .add-module__checkbox-container input:checked ~ .add-module__content-checkmark:after {
+        display: block;
+      }
+
+      .add-module__checkbox-container .add-module__content-checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid #01AA50;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .add-module__search {
+        display: flex;
+        margin-right: 25px;
+      }
+
+      .add-module__search input {
+        height: 45px;
+        border: 1px solid #c2c2c2;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        padding-left: 15px;
+        font-size: 18px;
+      }
+
+      .add-module__search input::placeholder {
+        color: #a3a3a3;
+        font-size: 16px;
+      }
+
+      .btn--search {
+        color: #a3a3a3;
+        padding: 0 8px;
+        height: 45px;
+        background-color: #fff;
+        border: 1px solid #c2c2c2;
+        border-left: 0;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      .add-module__sort {
+        border: 1px solid #c2c2c2;
+        height: 45px;
+        width: 150px;
+        padding-left: 15px;
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #a3a3a3;
+        background-color: #fff;
+        position: relative;
+      }
+
+      .add-module__sort-arrows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        position: absolute;
+        top: 50%;
+        left: -25px;
+        transform: translateY(-50%);
+      }
+
+      .add-module__sort-arrows iron-icon:last-child {
+        margin-top: -5px;
+      }
+
+      .btn--module {
+        background-color: transparent;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        --iron-icon-fill-color: #e6e6e6;
+        --iron-icon-width: 40px;
+        --iron-icon-height: 40px;
+      }
+
+      .btn--list {
+        background-color: transparent;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        --iron-icon-fill-color: #e6e6e6;
+        --iron-icon-width: 40px;
+        --iron-icon-height: 40px;
+      }
+
+      #sortby {
+        position: relative;
+      }
+
+      #sortbydropdown {
+        background-color: #fff;
+      }
+
+      .add-module__module {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 80px;
+        padding-right: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow-y: scroll;
+      }
+
+      .add-module__row {
+        margin-left: -20px;
+        margin-right: -20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        height: 60vh;
+      }
+
+      .add-module__col-module {
+        flex: 1 1 25%;
+        max-width: 25%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+      }
+
+      .add-module__module-item {
+        margin-bottom: 25px;
+      }
+
+      .add-module__module-body {
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        display: flex;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .add-module__checkbox-container--module {
+        margin-right: auto;
+        height: 27px;
+      }
+
+      .add-module__content-checkmark--module {
+        top: 0;
+        left: 0;
+      }
+
+      .add-module__menu {
+        margin-left: auto;
+        --iron-icon-width: 40px;
+        --iron-icon-height: 40px;
+        --iron-icon-fill-color: #d8d8d8;
+        margin-right: -15px;
+        margin-top: -7px;
+      }
+
+      .add-module__photo {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .add-module__photo img {
+        border-radius: 50%;
+      }
+
+      .btn--charm {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        margin-bottom: 0;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        --iron-icon-fill-color: #b2b2b2;
+      }
+
+      .add-module__module-footer {
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 10px;
+      }
+
+      .add-module__name {
+        width: 100%;
+        color: #a2a2a2;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+
+      .add-module__desc {
+        width: 100%;
+        color: #a2a2a2;
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 15px;
+        line-height: 1.2;
+      }
+
+      .add-module__module-update {
+        /*flex: 0 0 50%;*/
+        font-size: 12px;
+        color: #a2a2a2;
+        margin-right: auto;
+        align-self: center;
+      }
+
+      .add-module__details {
+        /*flex: 0 0 50%;*/
+        font-size: 12px;
+        color: #68a2e6;
+        margin-left: auto;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        /*align-items: center;*/
+      }
+
+      .add-module__details iron-icon {
+        margin-top: -3px;
+
+      }
+
+      .add-module__version {
+        font-size: 20px;
+        color: #858585;
+        margin-left: auto;
+        align-self: center;
+        font-weight: 300;
+      }
+
+      .add-module__price {
+        font-size: 20px;
+        color: #4a4a4a;
+        font-weight: 600;
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .add-module__module-list-item {
+        display: flex;
+        padding: 20px 30px;
+        width: 100%;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .add-module__list-left {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+      }
+
+      .add-module__list-center {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .add-module__list-right {
+        margin-left: auto;
+      }
+
+      .add-module__checkbox-container--list {
+        margin-right: 30px;
+        margin-left: 16px;
+        height: 27px;
+        width: 27px;
+      }
+
+      .add-module__content-checkmark--list {
+        top: 0;
+        left: 0;
+      }
+
+      .add-module__photo--list {
+        margin: 0;
+      }
+
+      .add-module__photo--list img {
+        border-radius: 0;
+      }
+
+      .add-module__name-desc {
+        flex: 1 1 100%;
+        max-width: 100%;
+        color: #a2a2a2;
+        font-size: 18px;
+        font-weight: 300;
+      }
+
+      .add-module__list-update {
+        font-size: 12px;
+        font-weight: 300;
+        color: #a2a2a2;
+
+      }
+
+      .add-module__details--list {
+        margin-left: 20px;
+        line-height: 1.8;
+      }
+
+      .add-module__add-contact {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #01AA50;
+      }
+
+      .btn--close {
+        position: absolute;
+        width: 60px;
+        height: 100px;
+
+        border: 1px solid #e1e1e1;
+        box-shadow: 0 2px 0 0 #a2a2a2;
+        border-left: 0;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        --iron-icon-fill-color: #4a4a4a;
+        --iron-icon-height: 35px;
+        --iron-icon-width: 35px;
+        background-color: #ffffff;
+        padding: 0;
+        right: -60px;
+        top: 30%;
+      }
+
+      .add-module__footer {
+        display: flex;
+        align-items: center;
+        padding-top: 20px;
+        padding-left: 80px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .add-module__footer:after {
+        content: '';
+        position: absolute;
+        width: 91%;
+        height: 1px;
+        top: 0;
+        /*left: 50%;*/
+        /*transform: translateX(-50%);*/
+        right: 30px;
+        border-bottom: 4px dotted #e0e0e0;
+      }
+
+      .btn--add-modules {
+        border: 1px solid #01aa50;
+        color: #01aa50;
+        font-size: 18px;
+        font-weight: 600;
+        margin-left: auto;
+        background-color: transparent;
+      }
+
+      .btn--add-modules:hover,
+      .btn--add-modules:focus {
+        color: #7d7d7d;
+        border-color: #7d7d7d;
+      }
+
+      .btn--cancel {
+        border: 0;
+        background-color: transparent;
+        font-weight: 300;
+        font-size: 18px;
+        margin-right: auto;
+        color: #7d7d7d;
+      }
+
+      .btn--cancel:hover,
+      .btn--cancel:focus {
+        font-weight: 600;
+      }
+
+      .add-module__total {
+        margin-right: auto;
+        margin-left: auto;
+        color: #dcdcdc;
+      }
+
+      .add-module__list-row {
+        height: 60vh;
+      }
+
+    </style>
+    <main class="add-module">
+
+      <section class="add-module__content">
+        <button class="btn btn--close">
+          <iron-icon icon="icons:close"></iron-icon>
+        </button>
+        <div class="add-module__content-header">
+          <h2 class="add-module__title">Module Market</h2>
+          <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
+        </div>
+        <div class="add-module__content-dashboard">
+          <form action="#" method="post">
+            <label class="add-module__search">
+              <input type="search" id="search" name="search" placeholder="Search...">
+              <button class="btn btn--search">Search</button>
+            </label>
+            <div class="add-module__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
+              <div class="add-module__sort-arrows">
+                <iron-icon icon="icons:arrow-upward"></iron-icon>
+                <iron-icon icon="icons:arrow-downward"></iron-icon>
+              </div>
+              <span>Sort By</span>
+              <iron-icon icon="icons:expand-more"></iron-icon>
+              <iron-dropdown id="sortbydropdown" vertical-offset="0">
+                <!--no-auto-focus no-cancel-on-outside-click>-->
+                <ul slot="dropdown-content">
+                  <li>Listed result contact item 1 ...</li>
+                  <li>Listed result contact item 2 ...</li>
+                  <li>Listed result contact item 3 ...</li>
+                </ul>
+              </iron-dropdown>
+            </div>
+            <button class="btn btn--module" on-tap="chooseModule">
+              <iron-icon icon="icons:view-module"></iron-icon>
+            </button>
+            <button class="btn btn--list" on-tap="chooseList">
+              <iron-icon icon="icons:view-list"></iron-icon>
+            </button>
+          </form>
+        </div>
+
+        <!--module layout-->
+
+        <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
+
+          <div class="add-module__module">
+            <div class="add-module__row">
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+              <div class="add-module__col-module">
+                <div class="add-module__module-item">
+                  <div class="add-module__module-body">
+                    <label class="add-module__checkbox-container add-module__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="add-module__content-checkmark add-module__content-checkmark--module"></span>
+                    </label>
+                    <figure class="add-module__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                  </div>
+                  <div class="add-module__module-footer">
+                    <span class="add-module__name">Financial Calculator</span>
+                    <span class="add-module__desc">Module</span>
+                    <span class="add-module__module-update">Updated 1day ago</span>
+                    <span class="add-module__version">v1.0</span>
+                    <span class="add-module__price">0.99</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+
+        <!--list layout-->
+
+        <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
+          <div class="add-module__module">
+            <div class="add-module__list-row">
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+              <div class="add-module__module-list-item">
+                <div class="add-module__list-left">
+                  <label class="add-module__checkbox-container add-module__checkbox-container--list">
+                    <input type="checkbox">
+                    <span class="add-module__content-checkmark add-module__content-checkmark--list"></span>
+                  </label>
+                  <figure class="add-module__photo add-module__photo--list">
+                    <img src="https://dummyimage.com/40x40/000/fff" alt="contact">
+                  </figure>
+                </div>
+                <div class="add-module__list-center">
+                  <span class="add-module__name-desc">Financial Calculator Module v1.0</span>
+                  <span class="add-module__list-update">Updated 1day ago</span>
+                </div>
+                <div class="add-module__list-right">
+                  <span class="add-module__price">0.99</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <div class="add-module__footer">
+          <button class="btn btn--add-modules">Add Modules</button>
+          <button class="btn btn--cancel">CANCEL</button>
+          <div class="add-module__total">TOTAL <span></span></div>
+        </div>
+      </section>
+    </main>
+
+  </template>
+  <script>
+
+      class MyNetlawAddModule extends Polymer.Element {
+          static get is() {
+              return 'my-netlaw-add-module';
+          }
+
+          static get properties() {
+              return {
+                  view: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  checkboxes: {
+                      type: Array,
+                      notify: true,
+                      reflectToAttribute: true,
+                  },
+              };
+          }
+
+          constructor() {
+              super();
+              this.view = 'Module';
+          }
+
+          openSortBy() {
+              this.$.sortbydropdown.open();
+          }
+
+          _isEqualTo(view, string) {
+              return view === string;
+          }
+
+          chooseModule(e) {
+              e.preventDefault();
+              this.view = "Module";
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--module input');
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
+              }
+          }
+
+          chooseList(e) {
+              e.preventDefault();
+              this.view = "List";
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--list input');
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
+              }
+          }
+
+      }
+
+      //Now, register your new custom element so the browser can use it
+      customElements.define(MyNetlawAddModule.is, MyNetlawAddModule);
+  </script>
+</dom-module>
