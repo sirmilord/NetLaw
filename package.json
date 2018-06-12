@@ -13,6 +13,7 @@
     "test:integration": "polymer build # test that psk builds without error with the CLI"
   },
   "dependencies": {
-    "bower-existed-scanner": "0.0.1"
+    "bower-existed-scanner": "0.0.1",
+    "perfect-scrollbar": "^1.4.0"
   }
 }
