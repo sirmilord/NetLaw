@@ -1,0 +1,36 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-netlaw-profile">
+  <template>
+
+    <style>
+
+    </style>
+
+<div class="profile">
+  <div class="profile__content-header">
+    <button><iron-icon icon="icons:chevron-left"></iron-icon> Back to Dash</button>
+    <h2 class="profile__title">Module Market</h2>
+  </div>
+</div>
+  </template>
+
+  <script>
+      class MyNetlawProfile extends Polymer.Element {
+          static get is() { return 'my-netlaw-profile'; }
+      }
+
+      window.customElements.define(MyNetlawProfile.is, MyNetlawProfile);
+  </script>
+</dom-module>
