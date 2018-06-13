@@ -667,10 +667,10 @@
         </div>
 
         <!--module layout-->
-
+        <div id="scrollbar" class="add-module__module">
         <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
 
-          <div  id="scrollbar" class="add-module__module">
+          <!--<div  id="scrollbar" class="add-module__module">-->
             <div class="add-module__row">
               <div class="add-module__col-module">
                 <div class="add-module__module-item">
@@ -833,14 +833,14 @@
                 </div>
               </div>
             </div>
-          </div>
+          <!--</div>-->
         </template>
 
 
         <!--list layout-->
 
         <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
-          <div id="scrollbar2" class="add-module__module">
+          <!--<div id="scrollbar2" class="add-module__module">-->
             <div class="add-module__list-row">
               <div class="add-module__module-list-item">
                 <div class="add-module__list-left">
@@ -987,8 +987,9 @@
                 </div>
               </div>
             </div>
-          </div>
         </template>
+          </div>
+
 
         <div class="add-module__footer">
           <button class="btn btn--add-modules">Add Modules</button>
@@ -1033,9 +1034,9 @@
               super.ready();
              console.log('I\'m ready!');
               const container = Polymer.dom(this.root).querySelector('#scrollbar'); console.log(container);
-              const container2 = this.$.scrollbar; console.log(container2);
-              const container3 = this.shadowRoot.querySelector('#scrollbar'); console.log(container3);
-              // const ps = new PerfectScrollbar(container);
+              // const container2 = this.$.scrollbar; console.log(container2);
+              // const container3 = this.shadowRoot.querySelector('#scrollbar'); console.log(container3);
+              const ps = new PerfectScrollbar(container);
           }
 
           openSortBy() {
