@@ -154,6 +154,13 @@
         padding-left: 10px;
       }
 
+      .form__group--fourth {
+        flex: 0 0 25%;
+        max-width: 25%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
       .label {
         color: #9f9f9f;
         font-size: 12px;
@@ -189,7 +196,12 @@
 
       .input-text::placeholder {
         color: #C2C2C2;
+        text-align: center;
         font-size: 16px;
+      }
+
+      .input-text--plan::placeholder {
+        color: #4e92e3;
       }
 
       .form__line {
@@ -283,12 +295,12 @@
         padding-bottom: 15px;
         width: 185px;
       }
-      
-      .account__list-link:hover, 
+
+      .account__list-link:hover,
       .account__list-link:focus {
         color: #01aa50;
       }
-      
+
       .account__list-link:after {
         content: '';
         width: calc(100% - 10px);
@@ -298,11 +310,11 @@
         left: 10px;
         background-color: #dadada;
       }
-      
+
       .account__list-link--active {
         color: #01aa50;
       }
-      
+
       .account__list-link--active:before {
         content: '';
         width: 4px;
@@ -313,6 +325,184 @@
         right: -58px;
         background-color: #01aa50;
       }
+
+      .field-toggler {
+
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .field-toggler__title {
+        color: #9f9f9f;
+        font-size: 12px;
+        font-weight: 400;
+        display: block;
+      }
+
+      .field-toggler__wrap {
+        margin-top: 10px;
+        position: relative;
+        width: 70px;
+      }
+
+      .field-toggler__checkbox {
+        display: none;
+      }
+
+      .field-toggler__label {
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid #626262;
+        border-radius: 20px;
+      }
+
+      .field-toggler__inner {
+        display: block;
+        width: 200%;
+        margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+      }
+
+      .field-toggler__inner:before, .field-toggler__inner:after {
+        display: block;
+        float: left;
+        width: 50%;
+        height: 30px;
+        padding: 0;
+        line-height: 30px;
+        font-size: 14px;
+        color: white;
+        /*font-family: Trebuchet, Arial, sans-serif;*/
+        /*font-weight: bold;*/
+        box-sizing: border-box;
+      }
+
+      .field-toggler__inner:before {
+        content: "Yes";
+        padding-left: 10px;
+        background-color: #FFFFFF;
+        color: #626262;
+      }
+
+      .field-toggler__inner:after {
+        content: "No";
+        padding-right: 10px;
+        background-color: #FFFFFF;
+        color: #626262;
+        text-align: right;
+      }
+
+      .field-toggler__switch {
+        display: block;
+        width: 22px;
+        margin: 5px;
+        background: #626262;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 38px;
+        border: 0;
+        border-radius: 20px;
+        transition: all 0.3s ease-in 0s;
+      }
+
+      .field-toggler__checkbox:checked + .field-toggler__label .field-toggler__inner {
+        margin-left: 0;
+      }
+
+      .field-toggler__checkbox:checked + .field-toggler__label .field-toggler__switch {
+        right: 0;
+        background-color: #01AA50;
+      }
+
+      .account__plan {
+        margin-left: 70px;
+        max-width: 100%;
+        width: 70%;
+        margin-top: 35px;
+      }
+
+      .account__plan-title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #626262;
+      }
+
+      .account__plan-desc {
+        color: #6e6e6e;
+        font-size: 16px;
+      }
+
+      .account__bill-info {
+        margin-left: 70px;
+        max-width: 100%;
+        width: 70%;
+        margin-top: 35px;
+      }
+
+      .account__bill-title {
+        /*margin-left: 15px;*/
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #626262;
+      }
+
+      .account__bill-row {
+        display: flex;
+        margin-right: -10px;
+        margin-left: -10px;
+        box-sizing: border-box;
+      }
+
+      .account__bill-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+        box-sizing: border-box;
+      }
+
+      .account__bill-item-border {
+        border: 1px solid #e9e9e9;
+        padding: 20px;
+      }
+
+      .account__bill-item-title {
+        color: #626262;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .account__label {
+        color: #9f9f9f;
+        font-size: 12px;
+        font-weight: 400;
+        display: block;
+      }
+
+      .account__desc {
+        display: block;
+        background-color: #ececec;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        color: #C2C2C2;
+        font-size: 16px;
+      }
+
+      .account__line {
+        background-color: #e9e9e9;
+        width: 100%;
+        height: 2px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+
 
     </style>
 
@@ -331,9 +521,9 @@
       <div class="account__wrapper">
         <div class="account__left">
           <nav class="account__list">
-              <a href="#" class="account__list-link">Account Information</a>
-              <a href="#" class="account__list-link account__list-link--active">Current Billing Plan</a>
-              <a href="#" class="account__list-link">View Billing Plans</a>
+            <a href="#" class="account__list-link">Account Information</a>
+            <a href="#" class="account__list-link account__list-link--active">Current Billing Plan</a>
+            <a href="#" class="account__list-link">View Billing Plans</a>
           </nav>
           <button class="btn btn--facebook">Connect with Facebook</button>
           <button class="btn btn--linkedin">Connect with LinkedIn</button>
@@ -343,72 +533,85 @@
             <fieldset>
               <legend>Plan Information</legend>
               <div class="badge">Active</div>
-              <div class="form__group">
-                <label class="label" for="startdate">START DATE</label>
-                <input type="text" id="startdate" class="input-text input-text--disabled" placeholder="01/26/2018" disabled>
+              <div class="form__row">
+                <div class="form__group form__group--fourth">
+                  <label class="label" for="startdate">START DATE</label>
+                  <input type="text" id="startdate" class="input-text input-text--disabled" placeholder="01/26/2018"
+                         disabled>
+                </div>
+                <div class="form__group form__group--fourth">
+                  <label for="enddate" class="label">END DATE</label>
+                  <input type="text" id="enddate" class="input-text input-text--disabled" placeholder="01/26/2019">
+                </div>
+                <div class="form__group form__group--half">
+                  <label for="plan" class="label">PLAN NAME</label>
+                  <input type="password" id="plan" class="input-text input-text--plan"
+                         placeholder="Essential Estate Planning Kit with Living Trust">
+                </div>
               </div>
               <div class="form__group">
-                <label for="enddate" class="label">END DATE</label>
-                <input type="text" id="enddate" class="input-text" placeholder="01/26/2019">
-              </div>
-              <div class="form__group">
-                <label for="plan" class="label"></label>
-                <input type="password" id="plan" class="input-text" placeholder="Essential Estate Planning Kit with Living Trust">
-              </div>
-              <div class="form__group">
-                <label for="renew" class="label"></label>
                 <div class="field-toggler">
-                  <div class="field-toggler__title">Переключатели-флажки</div>
-                  <div class="field-toggler__input-wrap">
-                    <label class="field-toggler__name">
-                      <input class="field-toggler__input" type="checkbox">
-                      <span class="field-toggler__name-text">Использовать</span>
+                  <div class="field-toggler__title">AUTO RENEW</div>
+                  <div class="field-toggler__wrap">
+                    <input type="checkbox" name="onoffswitch" class="field-toggler__checkbox" id="myonoffswitch"
+                           checked>
+                    <label class="field-toggler__label" for="myonoffswitch">
+                      <span class="field-toggler__inner"></span>
+                      <span class="field-toggler__switch"></span>
                     </label>
-                    <div class="field-toggler__help-text">Графика не используется, всё нарисовано CSS-ом.</div>
                   </div>
                 </div>
               </div>
-              <div class="form__group form__group--left">
+              <div class="form__group">
                 <div class="form__line form__line--short"></div>
                 <button class="btn btn--primary">Save Password</button>
               </div>
             </fieldset>
             <div class="form__line form__line--long"></div>
           </form>
-          <div class="account__bill-info">
-            <b class="account__bill-title">Billing Information</b>
+          <section class="account__bill-info">
+            <h3 class="account__bill-title">Billing Information</h3>
             <div class="account__bill-row">
               <div class="account__bill-item">
-                <b class="aacount__bill-item-title">Next Invoice</b>
-                <div class="account__bill-row">
-                  <div class="account__bill-item">
-                    <span class="account__label">AMOUNT</span>
-                    <span class="aacount__desc">$500.00</span>
-                  </div>
-                  <div class="account__bill-item">
-                    <span class="account__label">DATE</span>
-                    <span class="aacount__desc">01/26/2019</span>
+                <div class="account__bill-item-border">
+                  <b class="account__bill-item-title">Next Invoice</b>
+                  <div class="account__bill-row">
+                    <div class="account__bill-item">
+                      <span class="account__label">AMOUNT</span>
+                      <span class="account__desc">$500.00</span>
+                    </div>
+                    <div class="account__bill-item">
+                      <span class="account__label">DATE</span>
+                      <span class="account__desc">01/26/2019</span>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="account__bill-item">
-                <b class="aacount__bill-item-title">Last Invoice</b>
-                <div class="account__bill-row">
-                  <div class="account__bill-item">
-                    <span class="account__label">AMOUNT</span>
-                    <span class="aacount__desc">$500.00</span>
-                  </div>
-                  <div class="account__bill-item">
-                    <span class="account__label">DATE</span>
-                    <span class="aacount__desc">01/26/2018</span>
+                <div class="account__bill-item-border">
+                  <b class="account__bill-item-title">Last Invoice</b>
+                  <div class="account__bill-row">
+                    <div class="account__bill-item">
+                      <span class="account__label">AMOUNT</span>
+                      <span class="account__desc">$500.00</span>
+                    </div>
+                    <div class="account__bill-item">
+                      <span class="account__label">DATE</span>
+                      <span class="account__desc">01/26/2018</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
             </div>
-          </div>
+            <div class="account__line"></div>
+          </section>
+          <section class="account__plan">
+            <h3 class="account__plan-title">Cancel Your Plan</h3>
+            <p class="account__plan-desc">To cancel your plan, please call us at 1.888.604.4789</p>
+          </section>
         </div>
       </div>
+      <!--</div>-->
     </section>
   </template>
 
