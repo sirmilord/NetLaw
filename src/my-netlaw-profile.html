@@ -1,15 +1,4 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="shared-styles.html">
 
 <dom-module id="my-netlaw-profile">
   <template>
@@ -47,6 +36,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         align-items: center;
       }
 
+      .profile__header-left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        /*display: flex;*/
+      }
+
+      .profile__header-right {
+        flex: 1 1 70%;
+        max-width: 70%;
+      }
+
       .profile__title {
         align-self: center;
         color: #d1d1d1;
@@ -55,8 +55,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-bottom: 0;
         font-weight: 300;
         position: relative;
-        margin-left: 25.5%;
-        margin-right: auto;
+        margin-left: 70px;
+        /*margin-right: auto;*/
       }
 
       .btn--back-dash {
@@ -185,6 +185,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 400;
       }
 
+      .label--hide {
+        display: none;
+      }
+
       .input-text {
         max-width: 100%;
         width: 100%;
@@ -215,8 +219,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 2px;
       }
 
-
-
       .btn--primary {
         background-color: #01AA50;
         color: #fff;
@@ -246,11 +248,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <section class="profile">
       <div class="profile__header">
-        <button class="btn btn--back-dash">
-          <iron-icon icon="icons:chevron-left"></iron-icon>
-          Back to Dash
-        </button>
-        <h2 class="profile__title">My Profile</h2>
+        <div class="profile__header-left">
+          <button class="btn btn--back-dash">
+            <iron-icon icon="icons:chevron-left"></iron-icon>
+            Back to Dash
+          </button>
+        </div>
+        <div class="profile__header-right">
+          <h2 class="profile__title">My Profile</h2>
+        </div>
       </div>
       <div class="profile__wrapper">
         <div class="profile__left">

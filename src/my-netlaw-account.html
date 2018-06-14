@@ -1,0 +1,395 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-netlaw-account">
+  <template>
+
+    <style>
+
+      .account {
+        background-color: #f9f9f9;
+      }
+
+      .btn {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 30px;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 900;
+      }
+
+      .account__header {
+        display: flex;
+        min-height: 65px;
+        width: 100%;
+        background-color: #4a4a4a;
+        align-items: center;
+      }
+
+      .account__header-left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        /*display: flex;*/
+      }
+
+      .account__header-right {
+        flex: 1 1 70%;
+        max-width: 70%;
+      }
+
+      .account__title {
+        align-self: center;
+        color: #d1d1d1;
+        font-size: 36px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 300;
+        position: relative;
+        margin-left: 70px;
+        /*margin-right: auto;*/
+      }
+
+      .btn--back-dash {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        color: #cdcdcd;
+        --iron-icon-width: 60px;
+        --iron-icon-height: 60px;
+        --iron-icon-fill-color: #979797;
+      }
+
+      .account__wrapper {
+        display: flex;
+      }
+
+      .account__left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: relative;
+        min-height: calc(100vh - 80px - 65px);
+      }
+
+      .account__left:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 2px;
+        height: 60%;
+        background-color: #e9e9e9;
+      }
+
+      .account__right {
+        flex: 1 1 70%;
+        max-width: 70%;
+
+      }
+
+      .form {
+        margin-left: 70px;
+        max-width: 100%;
+        width: 70%;
+        margin-top: 35px;
+      }
+
+      .form fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .form legend {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .form__row {
+        display: flex;
+        margin-right: -10px;
+        margin-left: -10px;
+      }
+
+      .form__group {
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .form__group--right {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+      }
+
+      .form__group--center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .form__group--half {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .form__group--third {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .label {
+        color: #9f9f9f;
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .input-text {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 10px;
+        background-color: #fff;
+        color: #666;
+        height: 45px;
+        border: 1px solid #9B9B9B;
+        border-radius: 2px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      .input-text--disabled {
+        background-color: #ececec;
+        border-color: transparent;
+      }
+
+      .input-text--disabled::placeholder {
+        color: #a2a2a2;
+      }
+
+      .input-text:focus {
+        border-color: #01AA50;
+        outline: 0;
+      }
+
+      .input-text::placeholder {
+        color: #C2C2C2;
+        font-size: 16px;
+      }
+
+      .form__line {
+        margin: 20px auto;
+        width: 60%;
+        background-color: #e9e9e9;
+        height: 2px;
+      }
+
+      .form__line--short {
+        width: 160px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .form__line--long {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+        width: 170px;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      .btn--cancel-bordered {
+        border: 1px solid #9B9B9B;
+        background-color: transparent;
+        font-size: 18px;
+        color: #767677;
+        margin-left: 20px;
+        width: 170px;
+      }
+
+      .btn--cancel-bordered:hover,
+      .btn--cancel-bordered:focus {
+        border-color: #fff;
+      }
+
+      .btn--facebook {
+        background-color: #4a90e2;
+        color: #fff;
+        width: 200px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 20px;
+        margin-right: 60px;
+      }
+
+      .btn--facebook:hover,
+      .btn--facebook:focus {
+        background-color: #3483de;
+        color: #fff;
+      }
+
+      .btn--linkedin {
+        background-color: #546b87;
+        color: #fff;
+        width: 200px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-right: 60px;
+      }
+
+      .btn--linkedin:hover,
+      .btn--linkedin:focus {
+        background-color: #444f5c;
+        color: #fff;
+      }
+
+      .account__list {
+        margin-top: 75px;
+        margin-bottom: 40px;
+        margin-right: 60px;
+      }
+
+      .account__list-link {
+        display: block;
+        text-decoration: none;
+        color: #4a4a4a;
+        font-size: 18px;
+        position: relative;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 185px;
+      }
+      
+      .account__list-link:hover, 
+      .account__list-link:focus {
+        color: #01aa50;
+      }
+      
+      .account__list-link:after {
+        content: '';
+        width: calc(100% - 10px);
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        background-color: #dadada;
+      }
+      
+      .account__list-link--active {
+        color: #01aa50;
+      }
+      
+      .account__list-link--active:before {
+        content: '';
+        width: 4px;
+        height: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -58px;
+        background-color: #01aa50;
+      }
+
+    </style>
+
+    <section class="account">
+      <div class="account__header">
+        <div class="account__header-left">
+          <button class="btn btn--back-dash">
+            <iron-icon icon="icons:chevron-left"></iron-icon>
+            Back to Dash
+          </button>
+        </div>
+        <div class="account__header-right">
+          <h2 class="account__title">Account Settings</h2>
+        </div>
+      </div>
+      <div class="account__wrapper">
+        <div class="account__left">
+          <nav class="account__list">
+              <a href="#" class="account__list-link account__list-link--active">Account Information</a>
+              <a href="#" class="account__list-link">Current Billing Plan</a>
+              <a href="#" class="account__list-link">View Billing Plans</a>
+          </nav>
+          <button class="btn btn--facebook">Connect with Facebook</button>
+          <button class="btn btn--linkedin">Connect with LinkedIn</button>
+        </div>
+        <div class="account__right">
+          <form class="form" action="/" method="post">
+            <fieldset>
+              <legend>Credentials</legend>
+              <div class="form__group">
+                <label class="label" for="username">USERNAME</label>
+                <input type="text" id="username" class="input-text input-text--disabled" placeholder="Brucewayne2018@gmail.com" disabled>
+              </div>
+              <div class="form__group">
+                <label for="curpass" class="label">CHANGE PASSWORD</label>
+                <input type="password" id="curpass" class="input-text" placeholder="Current Password*">
+              </div>
+              <div class="">
+                <label for="newpass" class="label label--hide"></label>
+                <input type="password" id="newpass" class="input-text" placeholder="New Password*">
+              </div>
+              <div class="form__group form__group--right">
+                <div class="form__line form__line--short"></div>
+                <button class="btn btn--primary">Save Password</button>
+              </div>
+            </fieldset>
+            <div class="form__line form__line--long"></div>
+          </form>
+          <form class="form" action="/" method="post">
+            <fieldset>
+              <legend>Change Email</legend>
+              <div class="form__group">
+                <label class="label" for="curemail">CURRENT EMAIL ADDRESS</label>
+                <input type="email" id="curemail" class="input-text input-text--disabled" placeholder="Brucewayne2018@gmail.com" disabled>
+              </div>
+              <div class="">
+                <label for="newemail" class="label label--hide"></label>
+                <input type="email" id="newemail" class="input-text" placeholder="New Email*">
+              </div>
+              <div class="form__group form__group--right">
+                <div class="form__line form__line--short"></div>
+                <button class="btn btn--primary">Save Email</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script>
+      class MyNetlawAccount extends Polymer.Element {
+          static get is() {
+              return 'my-netlaw-account';
+          }
+      }
+
+      window.customElements.define(MyNetlawAccount.is, MyNetlawAccount);
+  </script>
+</dom-module>
