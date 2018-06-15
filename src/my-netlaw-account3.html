@@ -1,0 +1,83 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-netlaw-account3">
+  <template>
+
+    <style>
+      .account {
+        background-color: #f9f9f9;
+      }
+
+      .account--info {
+        padding-top: 124px;
+        min-height: calc(100vh - 80px);
+      }
+
+      .account__title-info {
+        color: #4A4A4A;
+        font-size: 20px;
+        font-weight: 900;
+        /*margin-top: 124px;*/
+        margin-bottom: 61px;
+        text-align: center;
+      }
+
+      .account__container {
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .account__row {
+        display: flex;
+        align-items: center;
+        margin-right: -20px;
+        margin-left: -20px;
+        box-sizing: border-box;
+      }
+
+      .account__item {
+        padding-right: 20px;
+        padding-left: 20px;
+        box-sizing: border-box;
+        background-color: rgba(216,216,216,0.5);
+        background-clip: content-box;
+        min-height: 50vh;
+      }
+
+      .account__item--third {
+        flex: 1 1 33.33333%;
+        max-width: 33.33333%;
+      }
+
+    </style>
+
+    <main class="account account--info">
+      <div class="account__container">
+        <h1 class="account__title-info">Links to Information Site Showing All Plan
+          Information</h1>
+        <div class="account__row">
+          <div class="account__item account__item--third">
+
+          </div>
+          <div class="account__item account__item--third">
+
+          </div>
+          <div class="account__item account__item--third">
+
+          </div>
+        </div>
+      </div>
+    </main>
+  </template>
+
+  <script>
+      class MyNetlawAccount3 extends Polymer.Element {
+          static get is() {
+              return 'my-netlaw-account3';
+          }
+      }
+
+      window.customElements.define(MyNetlawAccount3.is, MyNetlawAccount3);
+  </script>
+</dom-module>
