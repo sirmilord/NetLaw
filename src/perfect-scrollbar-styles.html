@@ -36,12 +36,20 @@
         width: 8px;
         background-color: #d8d8d8;
         /* there must be 'right' or 'left' for ps__rail-y */
+        left: 97% !important;
         right: 25px;
         /* please don't change 'position' */
         position: absolute;
         height: 90% !important;
         top: 50px !important;
         /*transform: translateY(-50px) !important;*/
+      }
+
+      @media (min-width: 1800px) {
+        .ps__rail-y {
+          left: 98% !important;
+        }
+
       }
 
       .ps--active-x > .ps__rail-x,
@@ -91,6 +99,7 @@
         transition: background-color .2s linear, width .2s ease-in-out;
         -webkit-transition: background-color .2s linear, width .2s ease-in-out;
         width: 19px;
+        height: 94px !important;
         /* there must be 'right' for ps__thumb-y */
         right: -6px;
         /* please don't change 'position' */
