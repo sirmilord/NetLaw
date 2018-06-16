@@ -160,7 +160,7 @@
         bottom: 0;
         /*left: 50%;*/
         /*transform: translateX(-50%);*/
-        right: 30px;
+        right: 50px;
         border-bottom: 4px dotted #e0e0e0;
       }
 
@@ -323,7 +323,7 @@
         padding-top: 30px;
         padding-bottom: 30px;
         padding-left: 80px;
-        padding-right: 30px;
+        padding-right: 60px;
         width: 100%;
         box-sizing: border-box;
         position: relative;
@@ -337,6 +337,7 @@
         display: flex;
         flex-wrap: wrap;
         height: 60vh;
+        /*padding-right: 30px;*/
       }
 
       .add-module__col-module {
@@ -1036,7 +1037,14 @@
               const container = Polymer.dom(this.root).querySelector('#scrollbar'); console.log(container);
               // const container2 = this.$.scrollbar; console.log(container2);
               // const container3 = this.shadowRoot.querySelector('#scrollbar'); console.log(container3);
-              const ps = new PerfectScrollbar(container);
+              // const ps = new PerfectScrollbar(container);
+              const ps = new PerfectScrollbar(container, {
+                  // wheelSpeed: 2,
+                  // wheelPropagation: true,
+                  minScrollbarLength: 94,
+                  maxScrollbarLength: 94,
+                  scrollingThreshold: 0
+              });
           }
 
           openSortBy() {
