@@ -702,6 +702,54 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --iron-icon-fill-color: #01AA50;
       }
 
+      .smartguid__step-list {
+        display: flex;
+        /*align-items: center;*/
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .smartguid__step-item {
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .smartguid__step-item--mt {
+        margin-top: 10px;
+      }
+
+      .smartguid__step-circle {
+        display: block;
+        border-radius: 50%;
+        background-color: #D8D8D8;
+        width: 10px;
+        height: 10px;
+      }
+
+      .smartguid__step-circle--large {
+        margin-bottom: 10px;
+        width: 30px;
+        height: 30px;
+
+      }
+
+      .smartguid__step-name {
+        color: #d8d8d8;
+      }
+
+      .smartguid__step-item--active  .smartguid__step-name {
+        color: #4A4A4A;
+      }
+
+      .smartguid__step-item--active  .smartguid__step-circle {
+        background-color: #4A4A4A;
+      }
+
+
     </style>
 
     <main class="smartguide">
@@ -724,30 +772,89 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </ul>
       </section>
       <section class="smartguide__content">
-        <!--first screen-->
         <div class="smartguide__content-header">
           <h2 class="smartguide__content-title">SmartGuide Setup</h2>
         </div>
-        <h1>SmartGuide Setup</h1>
-        <figure>
-          <img src="/images/Lgpencil_icon.png" width="230" height="109" alt="smartguide">
-        </figure>
-        <b>The information requested throughout this process will help
-          us get to know you and  is necessary for your SmartGuide documents.</b>
-        <div class="smartguide__content-wrapper">
-          <hr>
+        <div class="smartguide__content-dashboard">
+          <ul class="smartguid__step-list">
+            <li class="smartguid__step-item smartguid__step-item--active">
+              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Your Info</span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item">
+              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Address</span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item">
+              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Your Family</span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item">
+              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Spouse</span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item">
+              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Children</span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item smartguid__step-item--mt">
+              <span class="smartguid__step-circle"></span>
+            </li>
+            <li class="smartguid__step-item">
+              <span class="smartguid__step-circle  smartguid__step-circle--large"></span>
+              <span class="smartguid__step-name">Finished</span>
+            </li>
+          </ul>
+
         </div>
-        <button class="btn btn--primary">Let's begin</button>
       </section>
     </main>
 
   </template>
 
   <script>
-    class MyNetlawSmartguide2 extends Polymer.Element {
-      static get is() { return 'my-netlaw-smartguide2'; }
-    }
+      class MyNetlawSmartguide2 extends Polymer.Element {
+          static get is() {
+              return 'my-netlaw-smartguide2';
+          }
+      }
 
-    window.customElements.define(MyNetlawSmartguide2.is, MyNetlawSmartguide2);
+      window.customElements.define(MyNetlawSmartguide2.is, MyNetlawSmartguide2);
   </script>
 </dom-module>
