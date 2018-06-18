@@ -201,6 +201,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transform: translateY(-50%);
       }
 
+      .smartguide__list-link:hover,
+      .smartguide__list-link:focus {
+        color: #01AA50;
+      }
+
+      .smartguide__list-link--active {
+        color: #01AA50;
+      }
+
+      .smartguide__list-link:hover:before,
+      .smartguide__list-link--active:before,
+      .smartguide__list-link:focus:before {
+        content: '';
+        position: absolute;
+        height: 70%;
+        right: -30px;
+        top: 50%;
+        width: 4px;
+        background-color: #01AA50;
+        transform: translateY(-50%);
+      }
+
       h1 {
         font-weight: bold;
         color: #4A4A4A;
@@ -686,7 +708,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <section class="smartguide__drawer">
         <ul class="smartguide__list">
           <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="#" class="smartguide__list-link">
+            <a href="#" class="smartguide__list-link smartguide__list-link--active">
               <!-- todo: replace icons -->
               <iron-icon icon="icons:touch-app"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Setup</span>
@@ -703,7 +725,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </section>
       <section class="smartguide__content">
         <!--first screen-->
-
+        <div class="smartguide__content-header">
+          <h2 class="smartguide__content-title">SmartGuide Setup</h2>
+        </div>
         <h1>SmartGuide Setup</h1>
         <figure>
           <img src="/images/Lgpencil_icon.png" width="230" height="109" alt="smartguide">
