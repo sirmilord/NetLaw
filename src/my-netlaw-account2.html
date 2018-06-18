@@ -201,8 +201,14 @@
         font-size: 16px;
       }
 
-      .input-text--plan::placeholder {
+      .btn--plan {
         color: #4e92e3;
+        padding: 10px;
+        padding-top: 11px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.7;
+        background-color: #ececec;
       }
 
       .form__line {
@@ -536,18 +542,19 @@
               <div class="badge">Active</div>
               <div class="form__row">
                 <div class="form__group form__group--fourth">
-                  <label class="label" for="startdate">START DATE</label>
-                  <input type="text" id="startdate" class="input-text input-text--disabled" placeholder="01/26/2018"
-                         disabled>
+                  <span class="account__label">START DATE</span>
+                  <span class="account__desc">01/26/2018</span>
                 </div>
                 <div class="form__group form__group--fourth">
-                  <label for="enddate" class="label">END DATE</label>
-                  <input type="text" id="enddate" class="input-text input-text--disabled" placeholder="01/26/2019">
+                  <span class="account__label">END DATE</span>
+                  <span class="account__desc">01/26/2019</span>
                 </div>
                 <div class="form__group form__group--half">
-                  <label for="plan" class="label">PLAN NAME</label>
-                  <input type="text" id="plan" class="input-text input-text--plan"
-                         placeholder="Essential Estate Planning Kit with Living Trust">
+                  <!--<label for="plan" class="label">PLAN NAME</label>-->
+                  <!--<input type="text" id="plan" class="input-text input-text&#45;&#45;plan"-->
+                         <!--placeholder="Essential Estate Planning Kit with Living Trust">-->
+                  <span class="account__label">PLAN NAME</span>
+                  <button class="btn btn--plan">Essential Estate Planning Kit with Living Trust</button>
                 </div>
               </div>
               <div class="form__group">
