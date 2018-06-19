@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="my-netlaw-lifevault">
+
+<dom-module id="my-netlaw-lifevault2">
   <template>
 
     <style>
@@ -980,18 +981,286 @@
         </ul>
       </section>
       <section class="lifevault__content">
-        <!--first screen-->
 
-        <h1>Your Vault</h1>
-        <figure>
-          <img src="/images/Lgdocuments.png" width="120" height="145" alt="LifeVault">
-        </figure>
-        <b>This is where you would keep all your important legal documents.</b>
-        <div class="lifevault__content-wrapper">
-          <p>(you can also download, replace or share these documents with others)</p>
-          <hr>
+        <div class="lifevault__content-header">
+          <h2 class="lifevault__content-title">Immediate Family</h2>
+          <div class="lifevault__content-update">Updated 1d ago</div>
         </div>
-        <button class="btn btn--primary">Use SmartGuide</button>
+        <div class="lifevault__content-dashboard">
+          <form action="#" method="post">
+            <label class="lifevault__checkbox-container">Select All
+              <input id="selectall" type="checkbox">
+              <span class="lifevault__content-checkmark" on-tap="selectAll"></span>
+              <!--<paper-checkbox></paper-checkbox>-->
+            </label>
+            <label class="lifevault__search">
+              <input type="search" id="search" name="search" placeholder="Search...">
+              <button class="btn btn--search">
+                <iron-icon icon="icons:cached"></iron-icon>
+              </button>
+            </label>
+            <div class="lifevault__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
+              <div class="lifevault__sort-arrows">
+                <iron-icon icon="icons:arrow-upward"></iron-icon>
+                <iron-icon icon="icons:arrow-downward"></iron-icon>
+              </div>
+              <span>Sort By</span>
+              <iron-icon icon="icons:expand-more"></iron-icon>
+              <iron-dropdown id="sortbydropdown" vertical-offset="0">
+                <!--no-auto-focus no-cancel-on-outside-click>-->
+                <ul slot="dropdown-content">
+                  <li>Listed result contact item 1 ...</li>
+                  <li>Listed result contact item 2 ...</li>
+                  <li>Listed result contact item 3 ...</li>
+                </ul>
+              </iron-dropdown>
+            </div>
+            <div id="bulkaction" class="lifevault__sort" on-tap="openBulkAction">
+              <span>Bulk Action</span>
+              <iron-icon icon="icons:expand-more"></iron-icon>
+              <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
+                <!--no-auto-focus no-cancel-on-outside-click>-->
+                <ul slot="dropdown-content">
+                  <li>Listed result contact item 1 ...</li>
+                  <li>Listed result contact item 2 ...</li>
+                  <li>Listed result contact item 3 ...</li>
+                </ul>
+              </iron-dropdown>
+            </div>
+            <button class="btn btn--module" on-tap="chooseModule">
+              <iron-icon icon="icons:view-module"></iron-icon>
+            </button>
+            <button class="btn btn--list" on-tap="chooseList">
+              <iron-icon icon="icons:view-list"></iron-icon>
+            </button>
+          </form>
+        </div>
+
+        <!--module layout-->
+
+        <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
+
+          <div class="lifevault__module">
+            <div class="lifevault__row">
+              <div class="lifevault__col-module">
+                <div class="lifevault__module-item">
+                  <div class="lifevault__module-body">
+                    <label class="lifevault__checkbox-container lifevault__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="lifevault__content-checkmark lifevault__content-checkmark--module"></span>
+                    </label>
+                    <a class="lifevault__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="lifevault__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="lifevault__module-footer">
+                    <span class="lifevault__name">Mabelle Doe</span>
+                    <span class="lifevault__desc">Spouse</span>
+                    <span class="lifevault__module-update">Updated 1d ago</span>
+                    <a class="lifevault__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="lifevault__col-module">
+                <div class="lifevault__module-item">
+                  <div class="lifevault__module-body">
+                    <label class="lifevault__checkbox-container lifevault__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="lifevault__content-checkmark lifevault__content-checkmark--module"></span>
+                    </label>
+                    <a class="lifevault__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="lifevault__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="lifevault__module-footer">
+                    <span class="lifevault__name">Joshua Doe</span>
+                    <span class="lifevault__desc">Eldest Son</span>
+                    <span class="lifevault__module-update">Updated 1d ago</span>
+                    <a class="lifevault__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="lifevault__col-module">
+                <div class="lifevault__module-item">
+                  <div class="lifevault__module-body">
+                    <label class="lifevault__checkbox-container lifevault__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="lifevault__content-checkmark lifevault__content-checkmark--module"></span>
+                    </label>
+                    <a class="lifevault__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="lifevault__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="lifevault__module-footer">
+                    <span class="lifevault__name">Hannah Doe</span>
+                    <span class="lifevault__desc">Eldest Daughter</span>
+                    <span class="lifevault__module-update">Updated 1d ago</span>
+                    <a class="lifevault__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="lifevault__col-module">
+                <div class="lifevault__module-item">
+                  <div class="lifevault__module-body">
+                    <label class="lifevault__checkbox-container lifevault__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="lifevault__content-checkmark lifevault__content-checkmark--module"></span>
+                    </label>
+                    <a class="lifevault__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="lifevault__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="lifevault__module-footer">
+                    <span class="lifevault__name">Jennifer Doe</span>
+                    <span class="lifevault__desc">Youngest Daughter</span>
+                    <span class="lifevault__module-update">Updated 1d ago</span>
+                    <a class="lifevault__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="lifevault__add-contact" href="#">
+              <iron-icon icon="icons:account-circle"></iron-icon>
+            </a>
+          </div>
+        </template>
+
+
+        <!--list layout-->
+
+        <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
+          <div class="lifevault__module">
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <figure class="lifevault__photo lifevault__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Mabelle Doe | Spouse</span>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+                <a class="lifevault__details lifevault__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <figure class="lifevault__photo lifevault__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Joshua Doe | Eldest Son</span>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+                <a class="lifevault__details lifevault__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <figure class="lifevault__photo lifevault__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Hannah Doe | Eldest Daughter</span>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+                <a class="lifevault__details lifevault__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <figure class="lifevault__photo lifevault__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Jennifer Doe | Youngest Daughter</span>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+                <a class="lifevault__details lifevault__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <a class="lifevault__add-contact" href="#">
+              <iron-icon icon="icons:account-circle"></iron-icon>
+            </a>
+          </div>
+        </template>
+
+
         <a id="addfolder" class="lifevault__add-folder" href="#">
           <iron-icon icon="icons:create-new-folder"></iron-icon>
         </a>
@@ -1000,10 +1269,10 @@
   </template>
 
   <script>
-      class MyNetlawLifevault extends Polymer.Element {
+      class MyNetlawLifevault2 extends Polymer.Element {
 
           static get is() {
-              return 'my-netlaw-lifevault';
+              return 'my-netlaw-lifevault2';
           }
 
           static get properties() {
@@ -1060,9 +1329,60 @@
               }));
           }
 
+          openSortBy() {
+              this.$.sortbydropdown.open();
+          }
+
+          openBulkAction() {
+              this.$.bulkactiondropdown.open();
+          }
+
+          selectAll() {
+              // let checkboxes;
+              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
+              if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
+
+                  for (let i = 0; i < this.checkboxes.length; i++) {
+                      this.checkboxes[i].checked = true;
+                  }
+
+              } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
+
+                  for (let i = 0; i < this.checkboxes.length; i++) {
+                      this.checkboxes[i].checked = false;
+                  }
+              }
+
+          }
+
+          _isEqualTo(view, string) {
+              return view === string;
+          }
+
+          chooseModule(e) {
+              e.preventDefault();
+              this.view = "Module";
+              this.$.selectall.checked = false;
+
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
+              }
+          }
+
+          chooseList(e) {
+              e.preventDefault();
+              this.view = "List";
+              this.$.selectall.checked = false;
+
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
+              }
+          }
+
 
       }
 
-      window.customElements.define(MyNetlawLifevault.is, MyNetlawLifevault);
+      window.customElements.define(MyNetlawLifevault2.is, MyNetlawLifevault2);
   </script>
 </dom-module>
