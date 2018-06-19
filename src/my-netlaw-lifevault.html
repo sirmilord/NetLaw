@@ -45,6 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: flex;
         align-items: center;
         flex-direction: column;
+        position: relative;
       }
 
       ul {
@@ -226,14 +227,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .lifevault__content-wrapper {
-        margin-top: 40px;
+        margin-top: 10px;
         margin-bottom: 40px;
       }
 
       p {
         margin-top: 0;
-        margin-bottom: 40px;
-        color: #969696;
+        margin-bottom: 35px;
+        color: #414142;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 300;
       }
 
       hr {
@@ -678,6 +682,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --iron-icon-fill-color: #01AA50;
       }
 
+      .lifevault__add-folder {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #01AA50;
+        /*--iron-icon-stroke-color: #fff;*/
+        display: none;
+      }
+
+      .lifevault__add-folder--show {
+        display: block;
+      }
+
 
     </style>
 
@@ -792,49 +811,55 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <hr>
         </div>
         <button class="btn btn--primary">Use SmartGuide</button>
+        <a id="addfolder" class="lifevault__add-folder" href="#">
+          <iron-icon icon="icons:create-new-folder"></iron-icon>
+        </a>
       </section>
     </main>
   </template>
 
   <script>
-    class MyNetlawLifevault extends Polymer.Element {
+      class MyNetlawLifevault extends Polymer.Element {
 
-      static get is() { return 'my-netlaw-lifevault'; }
+          static get is() {
+              return 'my-netlaw-lifevault';
+          }
 
-      static get properties() {
-          return {
-              view: {
-                  type: Boolean,
-                  notify: true,
-                  reflectToAttribute: true,
-                  value: false
-              },
-              checkboxes: {
-                  type: Array,
-                  notify: true,
-                  reflectToAttribute: true,
-              },
-              toggleIcon: {
-                  type: String
-              },
-          };
+          static get properties() {
+              return {
+                  view: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  checkboxes: {
+                      type: Array,
+                      notify: true,
+                      reflectToAttribute: true,
+                  },
+                  toggleIcon: {
+                      type: String
+                  },
+              };
+          }
+
+          constructor() {
+              super();
+              this.toggleIcon = 'icons:add-circle-outline';
+              this.view = 'Module';
+          }
+
+          toggle(e) {
+              e.preventDefault();
+              this.$.collapse.toggle();
+              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
+              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+              this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+          }
+
       }
 
-      constructor() {
-          super();
-          this.toggleIcon = 'icons:add-circle-outline';
-          this.view = 'Module';
-      }
-
-      toggle(e) {
-          e.preventDefault();
-          this.$.collapse.toggle();
-          this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-          this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-      }
-
-    }
-
-    window.customElements.define(MyNetlawLifevault.is, MyNetlawLifevault);
+      window.customElements.define(MyNetlawLifevault.is, MyNetlawLifevault);
   </script>
 </dom-module>
