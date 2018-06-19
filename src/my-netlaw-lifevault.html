@@ -759,7 +759,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
                 <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="#">
+                  <a class="lifevault__list-link-lvl2" href="#"  on-click="toggleLvl2">
                     <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
                     Estate Planning
                   </a>
@@ -1048,6 +1048,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
               this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
               this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+          }
+
+          toggleLvl2(e) {
+              e.preventDefault();
+              this.$.collapselvl2.toggle();
+              this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
           }
 
           ready(e) {
