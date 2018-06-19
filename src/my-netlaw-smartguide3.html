@@ -889,7 +889,6 @@
         width: 170px;
       }
 
-
       .btn--prev:hover,
       .btn--prev:focus {
         color: #000;
@@ -1011,11 +1010,38 @@
         transform: translateX(-50%) rotate(45deg);
         width: 15px;
         height: 15px;
-        /*border-bottom: 1px solid #F1F1F2;*/
-        /*border-right: 1px solid #F1F1F2;*/
         background-color: #F1F1F2;
-        /*z-index: -1;*/
       }
+
+      .input-radio {
+        display: none;
+      }
+
+      .input-radio + .label--radio {
+        color: #4A90E2;
+        font-size: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        justify-content: center;
+        --iron-icon-fill-color: #fff;
+        --iron-icon-height: 38px;
+        --iron-icon-width: 25px;
+        --iron-icon-stroke-color: #4A90E2;
+        border: 1px solid #4A90E2;
+        background-color: #fff;
+      }
+
+      .input-radio:checked + .label--radio {
+        background-color: #4A90E2;
+        color: #fff;
+        --iron-icon-fill-color: #4A90E2;
+        --iron-icon-stroke-color: #fff;
+        /*transition: background-color 0.4s linear;*/
+      }
+
 
 
     </style>
@@ -1110,13 +1136,23 @@
               <span class="smartguid__step-name">Finished</span>
             </a>
           </nav>
-
         </div>
         <form class="form form--smartguide" action="/" method="post">
           <fieldset>
             <legend class="form__legend">Please provide gender & birth details.</legend>
-            <div class="form__group form__group--center form__group--mb">
-
+            <div class="form__row">
+              <div class="form__group form__group--right form__group--half form__group--mb">
+                <input type="radio" id="male" name="radio" class="input-radio" checked>
+                  <label class="label label--radio" for="male">
+                    <iron-icon icon="icons:android"></iron-icon>
+                    Male</label>
+              </div>
+              <div class="form__group form__group--left form__group--half form__group--mb">
+                <input type="radio" id="female" name="radio" class="input-radio">
+                  <label class="label label--radio" for="female">
+                    <iron-icon icon="icons:polymer"></iron-icon>
+                    Female</label>
+              </div>
             </div>
 
             <div class="form__group">
