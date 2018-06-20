@@ -1116,6 +1116,8 @@
           }
 
           selectAll() {
+              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1140,12 +1142,9 @@
               this.view = "Module";
               this.$.selectall.checked = false;
 
-              if (this.checkboxes) {
-
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
-              }
           }
 
           chooseList(e) {
@@ -1153,13 +1152,10 @@
               this.view = "List";
               this.$.selectall.checked = false;
 
-              if (this.checkboxes) {
-
-                  for (let i = 0; i < this.checkboxes.length; i++) {
+              for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
               }
-          }
       }
 
       //Now, register your new custom element so the browser can use it

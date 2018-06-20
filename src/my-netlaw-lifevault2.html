@@ -464,6 +464,10 @@
         --iron-icon-height: 40px;
       }
 
+      .btn--active {
+        --iron-icon-fill-color: #414142;
+      }
+
       #sortby {
         position: relative;
       }
@@ -515,6 +519,25 @@
         flex-wrap: wrap;
       }
 
+      .lifevault__list-body {
+        background-color: #fff;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #e1e1e1;
+        display: flex;
+        padding: 10px;
+        flex-wrap: wrap;
+        --iron-icon-width: 12.85px;
+        --iron-icon-height: 12.85px;
+        position: relative;
+      }
+
+      .lifevault__list-body .btn--charm {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+      }
+
       .lifevault__checkbox-container--module {
         margin-right: auto;
         height: 27px;
@@ -542,7 +565,7 @@
       }
 
       .lifevault__photo img {
-        border-radius: 50%;
+        /*border-radius: 50%;*/
       }
 
       .btn--charm {
@@ -645,8 +668,7 @@
       }
 
       .lifevault__name-desc {
-        flex: 1 1 100%;
-        max-width: 100%;
+
         color: #a2a2a2;
         font-size: 18px;
         font-weight: 300;
@@ -656,12 +678,12 @@
         font-size: 12px;
         font-weight: 300;
         color: #a2a2a2;
-
+        flex: 1 1 100%;
+        max-width: 100%;
       }
 
       .lifevault__details--list {
         margin-left: 20px;
-        line-height: 1.8;
       }
 
       .lifevault__add-contact {
@@ -709,11 +731,17 @@
 
       .lifevault__addfolder-dropdown iron-icon {
         margin-left: auto;
+        --iron-icon-fill-color: #C8C8C8;
       }
 
       .lifevault__addfolder-dropdown--sub {
-        width: 162px;
+        width: 164px;
       }
+
+      .lifevault__addfolder-dropdown--sort {
+        width: 182px;
+      }
+
 
 
     </style>
@@ -788,6 +816,26 @@
                           Home Management</a>
                         <a class="lifevault__btn lifevault__btn--lvl3" href="#">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                       <li class="lifevault__list-item-lvl3">
@@ -796,6 +844,26 @@
                           Documents of Estate</a>
                         <a class="lifevault__btn lifevault__btn--lvl3" href="#">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                     </ul>
@@ -990,7 +1058,7 @@
       <section class="lifevault__content">
 
         <div class="lifevault__content-header">
-          <h2 class="lifevault__content-title">Immediate Family</h2>
+          <h2 class="lifevault__content-title">Home Management</h2>
           <div class="lifevault__content-update">Updated 1d ago</div>
         </div>
         <div class="lifevault__content-dashboard">
@@ -1015,10 +1083,20 @@
               <iron-icon icon="icons:expand-more"></iron-icon>
               <iron-dropdown id="sortbydropdown" vertical-offset="0">
                 <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul slot="dropdown-content">
-                  <li>Listed result contact item 1 ...</li>
-                  <li>Listed result contact item 2 ...</li>
-                  <li>Listed result contact item 3 ...</li>
+                <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sort" slot="dropdown-content">
+                  <li>Sort By - - -</li>
+                  <li>Title
+                    <iron-icon icon="icons:filter-list"></iron-icon>
+                  </li>
+                  <li>Newest
+                    <iron-icon icon="icons:arrow-upward"></iron-icon>
+                  </li>
+                  <li>Oldest
+                    <iron-icon icon="icons:arrow-downward"></iron-icon>
+                  </li>
+                  <li>SmartGuide Only
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </li>
                 </ul>
               </iron-dropdown>
             </div>
@@ -1027,14 +1105,24 @@
               <iron-icon icon="icons:expand-more"></iron-icon>
               <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
                 <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul slot="dropdown-content">
-                  <li>Listed result contact item 1 ...</li>
-                  <li>Listed result contact item 2 ...</li>
-                  <li>Listed result contact item 3 ...</li>
+                <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sort" slot="dropdown-content">
+                  <li>Bulk Action -</li>
+                  <li>Download
+                    <iron-icon icon="icons:file-download"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="icons:print"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="icons:create"></iron-icon>
+                  </li>
+                  <li>Delete
+                    <iron-icon icon="icons:delete"></iron-icon>
+                  </li>
                 </ul>
               </iron-dropdown>
             </div>
-            <button class="btn btn--module" on-tap="chooseModule">
+            <button class="btn btn--module btn--active" on-tap="chooseModule">
               <iron-icon icon="icons:view-module"></iron-icon>
             </button>
             <button class="btn btn--list" on-tap="chooseList">
@@ -1058,6 +1146,26 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                     <figure class="lifevault__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
@@ -1084,6 +1192,26 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                     <figure class="lifevault__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
@@ -1110,6 +1238,26 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                     <figure class="lifevault__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
@@ -1136,6 +1284,26 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                     <figure class="lifevault__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
@@ -1149,6 +1317,26 @@
                     <span class="lifevault__module-update">Updated 1d ago</span>
                     <a class="lifevault__details" href="#">v1.0
                       <iron-icon icon="icons:expand-more"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                   </div>
                 </div>
@@ -1171,12 +1359,136 @@
                   <input type="checkbox">
                   <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
                 </label>
-                <figure class="lifevault__photo lifevault__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                </figure>
+                <div class="lifevault__list-body">
+                  <figure class="lifevault__photo lifevault__photo--list">
+                    <img src="https://dummyimage.com/30x30/000/fff" alt="contact">
+                  </figure>
+                  <button class="btn btn--charm">
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </button>
+                </div>
               </div>
               <div class="lifevault__list-center">
                 <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+                <a class="lifevault__details lifevault__details--list" href="#">v1.1
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Download
+                        <iron-icon icon="icons:file-download"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="icons:print"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="icons:exit-to-app"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="icons:create"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="icons:delete"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </div>
+            </div>
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <div class="lifevault__list-body">
+                  <figure class="lifevault__photo lifevault__photo--list">
+                    <img src="https://dummyimage.com/30x30/000/fff" alt="contact">
+                  </figure>
+                  <button class="btn btn--charm">
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+                <a class="lifevault__details lifevault__details--list" href="#">v2.2
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Download
+                        <iron-icon icon="icons:file-download"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="icons:print"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="icons:exit-to-app"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="icons:create"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="icons:delete"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </div>
+            </div>
+            <div class="lifevault__module-list-item">
+              <div class="lifevault__list-left">
+                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
+                </label>
+                <div class="lifevault__list-body">
+                  <figure class="lifevault__photo lifevault__photo--list">
+                    <img src="https://dummyimage.com/30x30/000/fff" alt="contact">
+                  </figure>
+                  <button class="btn btn--charm">
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="lifevault__list-center">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+                <a class="lifevault__details lifevault__details--list" href="#">v1.4
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Download
+                        <iron-icon icon="icons:file-download"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="icons:print"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="icons:exit-to-app"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="icons:create"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="icons:delete"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
                 <span class="lifevault__list-update">Updated 1d ago</span>
               </div>
               <div class="lifevault__list-right">
@@ -1191,57 +1503,45 @@
                   <input type="checkbox">
                   <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
                 </label>
-                <figure class="lifevault__photo lifevault__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                </figure>
+                <div class="lifevault__list-body">
+                  <figure class="lifevault__photo lifevault__photo--list">
+                    <img src="https://dummyimage.com/30x30/000/fff" alt="contact">
+                  </figure>
+                  <button class="btn btn--charm">
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </button>
+                </div>
               </div>
               <div class="lifevault__list-center">
-                <span class="lifevault__name-desc">Joshua Doe | Eldest Son</span>
-                <span class="lifevault__list-update">Updated 1d ago</span>
-              </div>
-              <div class="lifevault__list-right">
-                <a class="lifevault__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+                <a class="lifevault__details lifevault__details--list" href="#">v1.0
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
-              </div>
-            </div>
-            <div class="lifevault__module-list-item">
-              <div class="lifevault__list-left">
-                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
-                  <input type="checkbox">
-                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
-                </label>
-                <figure class="lifevault__photo lifevault__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                </figure>
-              </div>
-              <div class="lifevault__list-center">
-                <span class="lifevault__name-desc">Estimate for Home Management .PDF</span>
                 <span class="lifevault__list-update">Updated 1d ago</span>
               </div>
               <div class="lifevault__list-right">
                 <a class="lifevault__menu" href="#">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                </a>
-              </div>
-            </div>
-            <div class="lifevault__module-list-item">
-              <div class="lifevault__list-left">
-                <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
-                  <input type="checkbox">
-                  <span class="lifevault__content-checkmark lifevault__content-checkmark--list"></span>
-                </label>
-                <figure class="lifevault__photo lifevault__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                </figure>
-              </div>
-              <div class="lifevault__list-center">
-                <span class="lifevault__name-desc">Estimate for Home Management .PDF</span>
-                <span class="lifevault__list-update">Updated 1d ago</span>
-              </div>
-              <div class="lifevault__list-right">
-                <a class="lifevault__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Download
+                        <iron-icon icon="icons:file-download"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="icons:print"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="icons:exit-to-app"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="icons:create"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="icons:delete"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
                 </a>
               </div>
             </div>
@@ -1289,7 +1589,7 @@
               super();
               this.toggleIcon = 'icons:add-circle-outline';
               this.view = 'Module';
-              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              this.checkboxes = 0;
           }
 
           toggle(e) {
@@ -1319,6 +1619,18 @@
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
+
+              let btns3 = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl3');
+              btns3.forEach(btn => btn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  this.querySelector('iron-dropdown').open();
+              }));
+             //I have empty NodeList here
+              let btnDocs =  this.shadowRoot.querySelectorAll('.lifevault__menu'); console.log(btnDocs);
+              btnDocs.forEach(btn => btn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  this.querySelector('iron-dropdown').open();
+              }));
           }
 
           openSortBy() {
@@ -1330,6 +1642,8 @@
           }
 
           selectAll() {
+              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1353,29 +1667,27 @@
               e.preventDefault();
               this.view = "Module";
               this.$.selectall.checked = false;
-
-              if (this.checkboxes) {
+              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input');
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
-              }
           }
 
           chooseList(e) {
               e.preventDefault();
               this.view = "List";
               this.$.selectall.checked = false;
-
-              if (this.checkboxes) {
+              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
               }
-          }
-
-
       }
 
       window.customElements.define(MyNetlawLifevault2.is, MyNetlawLifevault2);
