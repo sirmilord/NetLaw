@@ -742,6 +742,43 @@
         width: 182px;
       }
 
+      .lifevault__version-dropdown {
+        width: 111px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .lifevault__version-dropdown li {
+        color: #4A90E2;
+        font-size: 18px;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .lifevault__version-dropdown iron-icon {
+        margin-top: 0;
+      }
+
+      .lifevault__version--mr {
+        margin-right: auto;
+      }
+
+      .lifevault__wrap {
+        display: none;
+        width: 100%;
+      }
+
+      .lifevault__wrap--show {
+        display: block;
+      }
 
 
     </style>
@@ -1133,8 +1170,9 @@
 
         <!--module layout-->
 
-        <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
+        <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
 
+        <div id="module" class="lifevault__wrap lifevault__wrap--show">
           <div class="lifevault__module">
             <div class="lifevault__row">
               <div class="lifevault__col-module">
@@ -1146,7 +1184,7 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
-                      <iron-dropdown>
+                      <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
                           <li>Download
@@ -1179,6 +1217,23 @@
                     <span class="lifevault__module-update">Updated 1d ago</span>
                     <a class="lifevault__details" href="#">v1.1
                       <iron-icon icon="icons:expand-more"></iron-icon>
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="lifevault__version-dropdown"
+                            slot="dropdown-content">
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version">v1.1</span>
+                            <iron-icon icon="icons:expand-less"></iron-icon>
+                          </li>
+                          <li><span class="lifevault__version">v1.2</span></li>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </li>
+                          <li><span class="lifevault__version">v1.4</span></li>
+                          <li><span class="lifevault__version">v1.5</span></li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                   </div>
                 </div>
@@ -1192,7 +1247,7 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
-                      <iron-dropdown>
+                      <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
                           <li>Download
@@ -1225,6 +1280,23 @@
                     <span class="lifevault__module-update">Updated 1d ago</span>
                     <a class="lifevault__details" href="#">v2.2
                       <iron-icon icon="icons:expand-more"></iron-icon>
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="lifevault__version-dropdown"
+                            slot="dropdown-content">
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version">v1.1</span>
+                            <iron-icon icon="icons:expand-less"></iron-icon>
+                          </li>
+                          <li><span class="lifevault__version">v1.2</span></li>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </li>
+                          <li><span class="lifevault__version">v1.4</span></li>
+                          <li><span class="lifevault__version">v1.5</span></li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                   </div>
                 </div>
@@ -1238,7 +1310,7 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
-                      <iron-dropdown>
+                      <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
                           <li>Download
@@ -1271,6 +1343,23 @@
                     <span class="lifevault__module-update">Updated 1d ago</span>
                     <a class="lifevault__details" href="#">v1.4
                       <iron-icon icon="icons:expand-more"></iron-icon>
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="lifevault__version-dropdown"
+                            slot="dropdown-content">
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version">v1.1</span>
+                            <iron-icon icon="icons:expand-less"></iron-icon>
+                          </li>
+                          <li><span class="lifevault__version">v1.2</span></li>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </li>
+                          <li><span class="lifevault__version">v1.4</span></li>
+                          <li><span class="lifevault__version">v1.5</span></li>
+                        </ul>
+                      </iron-dropdown>
                     </a>
                   </div>
                 </div>
@@ -1284,7 +1373,7 @@
                     </label>
                     <a class="lifevault__menu" href="#">
                       <iron-icon icon="icons:more-vert"></iron-icon>
-                      <iron-dropdown>
+                      <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
                           <li>Download
@@ -1317,24 +1406,21 @@
                     <span class="lifevault__module-update">Updated 1d ago</span>
                     <a class="lifevault__details" href="#">v1.0
                       <iron-icon icon="icons:expand-more"></iron-icon>
-                      <iron-dropdown>
-                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="lifevault__version-dropdown"
                             slot="dropdown-content">
-                          <li>Download
-                            <iron-icon icon="icons:file-download"></iron-icon>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version">v1.1</span>
+                            <iron-icon icon="icons:expand-less"></iron-icon>
                           </li>
-                          <li>Print
-                            <iron-icon icon="icons:print"></iron-icon>
+                          <li><span class="lifevault__version">v1.2</span></li>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
                           </li>
-                          <li>Rename
-                            <iron-icon icon="icons:exit-to-app"></iron-icon>
-                          </li>
-                          <li>Share
-                            <iron-icon icon="icons:create"></iron-icon>
-                          </li>
-                          <li>Delete
-                            <iron-icon icon="icons:delete"></iron-icon>
-                          </li>
+                          <li><span class="lifevault__version">v1.4</span></li>
+                          <li><span class="lifevault__version">v1.5</span></li>
                         </ul>
                       </iron-dropdown>
                     </a>
@@ -1342,16 +1428,20 @@
                 </div>
               </div>
             </div>
-            <a class="lifevault__add-contact" href="#">
-              <iron-icon icon="icons:account-circle"></iron-icon>
-            </a>
+            <!--<a class="lifevault__add-contact" href="#">-->
+            <!--<iron-icon icon="icons:account-circle"></iron-icon>-->
+            <!--</a>-->
           </div>
-        </template>
+        </div>
+
+        <!--</template>-->
 
 
         <!--list layout-->
 
-        <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
+        <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
+
+        <div id="list" class="lifevault__wrap">
           <div class="lifevault__module">
             <div class="lifevault__module-list-item">
               <div class="lifevault__list-left">
@@ -1372,13 +1462,30 @@
                 <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
                 <a class="lifevault__details lifevault__details--list" href="#">v1.1
                   <iron-icon icon="icons:expand-more"></iron-icon>
+                  <iron-dropdown horizontal-align="right">
+                    <ul class="lifevault__version-dropdown"
+                        slot="dropdown-content">
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version">v1.1</span>
+                        <iron-icon icon="icons:expand-less"></iron-icon>
+                      </li>
+                      <li><span class="lifevault__version">v1.2</span></li>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </li>
+                      <li><span class="lifevault__version">v1.4</span></li>
+                      <li><span class="lifevault__version">v1.5</span></li>
+                    </ul>
+                  </iron-dropdown>
                 </a>
                 <span class="lifevault__list-update">Updated 1d ago</span>
               </div>
               <div class="lifevault__list-right">
                 <a class="lifevault__menu" href="#">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Download
@@ -1420,13 +1527,30 @@
                 <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
                 <a class="lifevault__details lifevault__details--list" href="#">v2.2
                   <iron-icon icon="icons:expand-more"></iron-icon>
+                  <iron-dropdown horizontal-align="right">
+                    <ul class="lifevault__version-dropdown"
+                        slot="dropdown-content">
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version">v1.1</span>
+                        <iron-icon icon="icons:expand-less"></iron-icon>
+                      </li>
+                      <li><span class="lifevault__version">v1.2</span></li>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </li>
+                      <li><span class="lifevault__version">v1.4</span></li>
+                      <li><span class="lifevault__version">v1.5</span></li>
+                    </ul>
+                  </iron-dropdown>
                 </a>
                 <span class="lifevault__list-update">Updated 1d ago</span>
               </div>
               <div class="lifevault__list-right">
                 <a class="lifevault__menu" href="#">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Download
@@ -1468,7 +1592,30 @@
                 <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
                 <a class="lifevault__details lifevault__details--list" href="#">v1.4
                   <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
+                    <ul class="lifevault__version-dropdown"
+                        slot="dropdown-content">
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version">v1.1</span>
+                        <iron-icon icon="icons:expand-less"></iron-icon>
+                      </li>
+                      <li><span class="lifevault__version">v1.2</span></li>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </li>
+                      <li><span class="lifevault__version">v1.4</span></li>
+                      <li><span class="lifevault__version">v1.5</span></li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+                <span class="lifevault__list-update">Updated 1d ago</span>
+              </div>
+              <div class="lifevault__list-right">
+                <a class="lifevault__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Download
@@ -1488,12 +1635,6 @@
                       </li>
                     </ul>
                   </iron-dropdown>
-                </a>
-                <span class="lifevault__list-update">Updated 1d ago</span>
-              </div>
-              <div class="lifevault__list-right">
-                <a class="lifevault__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
                 </a>
               </div>
             </div>
@@ -1516,13 +1657,30 @@
                 <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
                 <a class="lifevault__details lifevault__details--list" href="#">v1.0
                   <iron-icon icon="icons:expand-more"></iron-icon>
+                  <iron-dropdown horizontal-align="right">
+                    <ul class="lifevault__version-dropdown"
+                        slot="dropdown-content">
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version">v1.1</span>
+                        <iron-icon icon="icons:expand-less"></iron-icon>
+                      </li>
+                      <li><span class="lifevault__version">v1.2</span></li>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </li>
+                      <li><span class="lifevault__version">v1.4</span></li>
+                      <li><span class="lifevault__version">v1.5</span></li>
+                    </ul>
+                  </iron-dropdown>
                 </a>
                 <span class="lifevault__list-update">Updated 1d ago</span>
               </div>
               <div class="lifevault__list-right">
                 <a class="lifevault__menu" href="#">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Download
@@ -1545,11 +1703,13 @@
                 </a>
               </div>
             </div>
-            <a class="lifevault__add-contact" href="#">
-              <iron-icon icon="icons:account-circle"></iron-icon>
-            </a>
+            <!--<a class="lifevault__add-contact" href="#">-->
+            <!--<iron-icon icon="icons:account-circle"></iron-icon>-->
+            <!--</a>-->
           </div>
-        </template>
+        </div>
+
+        <!--</template>-->
 
 
         <a id="addfolder" class="lifevault__add-folder" href="#">
@@ -1588,7 +1748,8 @@
           constructor() {
               super();
               this.toggleIcon = 'icons:add-circle-outline';
-              this.view = 'Module';
+              // this.view = 'Module';
+              this.view = true;
               this.checkboxes = 0;
           }
 
@@ -1625,9 +1786,15 @@
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
-             //I have empty NodeList here
-              let btnDocs =  this.shadowRoot.querySelectorAll('.lifevault__menu'); console.log(btnDocs);
+
+              let btnDocs = this.shadowRoot.querySelectorAll('.lifevault__menu');
               btnDocs.forEach(btn => btn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  this.querySelector('iron-dropdown').open();
+              }));
+
+              let btnVersions = this.shadowRoot.querySelectorAll('.lifevault__details');
+              btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
@@ -1642,7 +1809,8 @@
           }
 
           selectAll() {
-              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              // this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              this.view === true ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
@@ -1659,35 +1827,40 @@
 
           }
 
-          _isEqualTo(view, string) {
-              return view === string;
-          }
+          // _isEqualTo(view, string) {
+          //     return view === string;
+          // }
 
           chooseModule(e) {
               e.preventDefault();
-              this.view = "Module";
+              // this.view = "Module";
+              this.$.list.classList.remove('lifevault__wrap--show');
+              this.$.module.classList.add('lifevault__wrap--show');
               this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input');
 
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = false;
-                  }
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
+              }
           }
 
           chooseList(e) {
               e.preventDefault();
-              this.view = "List";
+              // this.view = "List";
+              this.$.module.classList.remove('lifevault__wrap--show');
+              // this.$.module.classList.add('lifevault__warp--hide');
+              this.$.list.classList.add('lifevault__wrap--show');
               this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = false;
-                  }
+              for (let i = 0; i < this.checkboxes.length; i++) {
+                  this.checkboxes[i].checked = false;
               }
+          }
       }
 
       window.customElements.define(MyNetlawLifevault2.is, MyNetlawLifevault2);
