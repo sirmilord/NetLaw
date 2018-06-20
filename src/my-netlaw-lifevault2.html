@@ -1729,10 +1729,10 @@
           static get properties() {
               return {
                   view: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
+                      type: String,
+                      // notify: true,
+                      // reflectToAttribute: true,
+                      // value: false
                   },
                   checkboxes: {
                       type: Array,
@@ -1748,8 +1748,8 @@
           constructor() {
               super();
               this.toggleIcon = 'icons:add-circle-outline';
-              // this.view = 'Module';
-              this.view = true;
+               this.view = 'Module';
+              // this.view = true;
               this.checkboxes = 0;
           }
 
@@ -1769,32 +1769,15 @@
 
           ready(e) {
               super.ready();
-              let btns = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl1');
-              btns.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
-
-              let btns2 = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl2');
-              btns2.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
-
-              let btns3 = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl3');
-              btns3.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
-
-              let btnDocs = this.shadowRoot.querySelectorAll('.lifevault__menu');
-              btnDocs.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
 
               let btnVersions = this.shadowRoot.querySelectorAll('.lifevault__details');
               btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  this.querySelector('iron-dropdown').open();
+              }));
+
+              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]'); console.log(btnVerts);
+              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
@@ -1809,8 +1792,8 @@
           }
 
           selectAll() {
-              // this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
-              this.view === true ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              // this.view === true ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
@@ -1833,7 +1816,7 @@
 
           chooseModule(e) {
               e.preventDefault();
-              // this.view = "Module";
+              this.view = "Module";
               this.$.list.classList.remove('lifevault__wrap--show');
               this.$.module.classList.add('lifevault__wrap--show');
               this.$.selectall.checked = false;
@@ -1848,7 +1831,7 @@
 
           chooseList(e) {
               e.preventDefault();
-              // this.view = "List";
+              this.view = "List";
               this.$.module.classList.remove('lifevault__wrap--show');
               // this.$.module.classList.add('lifevault__warp--hide');
               this.$.list.classList.add('lifevault__wrap--show');
