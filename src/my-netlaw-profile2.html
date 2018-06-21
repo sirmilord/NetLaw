@@ -98,6 +98,7 @@
       .profile__right {
         flex: 1 1 70%;
         max-width: 70%;
+        position: relative;
       }
 
       .profile__cross {
@@ -284,6 +285,11 @@
         margin-bottom: 40px;
       }
 
+      .profile__line--right {
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+
       .profile__contacts {
         padding: 0;
         margin: 0;
@@ -334,6 +340,9 @@
         font-size: 16px;
         font-weight: 900;
         width: 170px;
+        position: absolute;
+        right: 60px;
+        top: 60px;
       }
 
       .btn--unbordered:hover,
@@ -341,6 +350,100 @@
         background-color: #019948;
         border-color: #019948;
         color: #fff;
+      }
+
+      .profile__container {
+        width: 600px;
+        box-sizing: border-box;
+        margin-left: 70px;
+        margin-right: 70px;
+        padding-bottom: 100px;
+        padding-top: 40px;
+
+      }
+
+      .profile__name {
+        margin-top: 0;
+        margin-bottom: 25px;
+        color: #4A4A4A;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      .profile__section-title {
+        color: #9B9B9B;
+        font-size: 10px;
+        display: block;
+        font-weight: 300;
+        margin-bottom: 15px;
+      }
+
+      .profile__work {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .profile__row {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-right: -10px;
+        margin-left: -10px;
+      }
+
+      .profile__col {
+        flex: 1 1 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .profile__address {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .profile__since {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .profile__license {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .profile__desc {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      table {
+        width: 600px;
+      }
+
+      table tr td {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      table tr td:first-child {
+        color: #4A4A4A;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      table tr th {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+        text-align: left;
       }
 
     </style>
@@ -403,104 +506,107 @@
           </nav>
         </div>
         <div class="profile__right">
-          <h1 class="profile__name">Joshua Simmons</h1>
           <button class="btn btn--unbordered">Revise Search</button>
-          <div class="profile__section">
-            <b class="profile__section-title">PRACTICE INFORMATION</b>
-            <b class="profile__work"></b>Inter Vivos, PLLC
-          </div>
-          <div class="profile__row">
-            <div class="profile__col">
-              <address class="profile__address">#12345 Center St. Orem, Utah 50679</address>
+          <div class="profile__container">
+            <h1 class="profile__name">Joshua Simmons</h1>
+            <div class="profile__section">
+              <b class="profile__section-title">PRACTICE INFORMATION</b>
+              <b class="profile__work">Inter Vivos, PLLC</b>
             </div>
-            <div class="profile__col">
-              <div class="profile__since">
-                Practicing since: 2013
+            <div class="profile__row">
+              <div class="profile__col">
+                <address class="profile__address">#12345 Center St.<br> Orem, Utah 50679</address>
               </div>
-              <div class="profile__license">
-                Licensed in: UT, AZ, CA, NV, WA
+              <div class="profile__col">
+                <div class="profile__since">
+                  Practicing since: 2013
+                </div>
+                <div class="profile__license">
+                  Licensed in: UT, AZ, CA, NV, WA
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="profile__line"></div>
-          <div class="profile__section">
-            <b class="profile__section-title">ABOUT ATTORNEY</b>
-            <p class="profile__desc">Inter Vivos is a specialty law firm focusing on estate planning for your specific
-              needs. From NFA Gun Trusts to Comprehensive Trust Plans for Professionals, we can help you and your family
-              with your individual probate/ estate planning needs. Let Us Earn Your Family's Trust!</p>
-          </div>
-          <div class="profile__line"></div>
-          <div class="profile__section">
-            <b class="profile__section-title">EDUCATION</b>
-            <p class="profile__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern California,
-              B.A.</p>
-          </div>
-          <div class="profile__line"></div>
-          <div class="profile__section">
-            <b class="profile__section-title">PROFESSIONAL ACTIVITIES</b>
-            <p class="profile__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
-              Justice * 2011 - American Bar Association, Real Property, Trust and Estate Law Section * 2011 </p>
-          </div>
-          <div class="profile__line"></div>
-          <div class="profile__section">
-            <b class="profile__section-title">GENERAL SERVICES</b>
-            <table>
-              <thead>
-              <tr>
-                <th></th>
-                <th>Standard Fees</th>
-                <th>Members Pay</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Document Review</td>
-                <td>$150</td>
-                <td>$100</td>
-              </tr>
-              <tr>
-                <td>New Consultation</td>
-                <td>$150</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>Hourly Rate</td>
-                <td>$300</td>
-                <td>$200</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="profile__line"></div>
-          <div class="profile__section">
-            <b class="profile__section-title">FIXED PRICE DOCUMENTS</b>
-            <table>
-              <thead>
-              <tr>
-                <th></th>
-                <th>Members Pay</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Revocable Living Trust</td>
-                <td>$750</td>
-              </tr>
-              <tr>
-                <td>Irrevocable Life Insurance Trust</td>
-                <td>$1000</td>
-              </tr>
-              <tr>
-                <td>Grantor Retained Annuity Trust</td>
-                <td>$1000</td>
-              </tr>
-              <tr>
-                <td>IRA TRUST</td>
-                <td>$1000</td>
-              </tr>
-              </tbody>
-            </table>
+            <div class="profile__line profile__line--right"></div>
+            <div class="profile__section">
+              <b class="profile__section-title">ABOUT ATTORNEY</b>
+              <p class="profile__desc">Inter Vivos is a specialty law firm focusing on estate planning for your specific
+                needs. From NFA Gun Trusts to Comprehensive Trust Plans for Professionals, we can help you and your
+                family
+                with your individual probate/ estate planning needs. Let Us Earn Your Family's Trust!</p>
+            </div>
+            <div class="profile__line profile__line--right"></div>
+            <div class="profile__section">
+              <b class="profile__section-title">EDUCATION</b>
+              <p class="profile__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern
+                California,
+                B.A.</p>
+            </div>
+            <div class="profile__line profile__line--right"></div>
+            <div class="profile__section">
+              <b class="profile__section-title">PROFESSIONAL ACTIVITIES</b>
+              <p class="profile__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
+                Justice * 2011 - American Bar Association, Real Property, Trust and Estate Law Section * 2011 </p>
+            </div>
+            <div class="profile__line profile__line--right"></div>
+            <div class="profile__section">
+              <b class="profile__section-title">GENERAL SERVICES</b>
+              <table>
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Standard Fees</th>
+                  <th>Members Pay</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Document Review</td>
+                  <td>$150</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>New Consultation</td>
+                  <td>$150</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Hourly Rate</td>
+                  <td>$300</td>
+                  <td>$200</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="profile__line profile__line--right"></div>
+            <div class="profile__section">
+              <b class="profile__section-title">FIXED PRICE DOCUMENTS</b>
+              <table>
+                <thead>
+                <tr>
+                  <th></th>
+                  <th>Members Pay</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Revocable Living Trust</td>
+                  <td>$750</td>
+                </tr>
+                <tr>
+                  <td>Irrevocable Life Insurance Trust</td>
+                  <td>$1000</td>
+                </tr>
+                <tr>
+                  <td>Grantor Retained Annuity Trust</td>
+                  <td>$1000</td>
+                </tr>
+                <tr>
+                  <td>IRA TRUST</td>
+                  <td>$1000</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
