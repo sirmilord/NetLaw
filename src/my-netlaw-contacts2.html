@@ -658,6 +658,10 @@
         --iron-icon-fill-color: #01AA50;
       }
 
+      .btn--active {
+        --iron-icon-fill-color: #414142;
+      }
+
 
     </style>
     <main class="contacts">
@@ -1116,7 +1120,7 @@
           }
 
           selectAll() {
-              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
 
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
@@ -1141,6 +1145,9 @@
               e.preventDefault();
               this.view = "Module";
               this.$.selectall.checked = false;
+              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input');
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
@@ -1151,6 +1158,9 @@
               e.preventDefault();
               this.view = "List";
               this.$.selectall.checked = false;
+              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
