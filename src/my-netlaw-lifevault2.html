@@ -1778,7 +1778,7 @@
                   this.querySelector('iron-dropdown').open();
               }));
 
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]'); console.log(btnVerts);
+              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
@@ -1795,7 +1795,7 @@
 
           selectAll() {
               this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
-              // this.view === true ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
 
               if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
 
@@ -1835,7 +1835,6 @@
               e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('lifevault__wrap--show');
-              // this.$.module.classList.add('lifevault__warp--hide');
               this.$.list.classList.add('lifevault__wrap--show');
               this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
