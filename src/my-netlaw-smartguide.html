@@ -10,6 +10,10 @@
         box-sizing: border-box;
       }
 
+      iron-pages {
+        width: 100%;
+      }
+
       .smartguide {
         display: flex;
         min-height: calc(100vh - 80px);
@@ -692,13 +696,12 @@
 
     </style>
     <app-location
-            route="{{route}}"
-            url-space-regex="^[[rootPath]]">
+            route="{{route}}">
     </app-location>
 
     <app-route
             route="{{route}}"
-            pattern="/:page"
+            pattern="/:page/:page"
             data="{{routeData}}"
             tail="{{subroute}}">
     </app-route>
@@ -716,14 +719,14 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
           <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="[[rootPath]]smartguide1" class="smartguide__list-link smartguide__list-link--active">
+            <a href="netlaw-smartguide/netlaw-smartguide1" class="smartguide__list-link smartguide__list-link--active">
               <!-- todo: replace icons -->
               <iron-icon icon="icons:touch-app"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Setup</span>
             </a>
           </li>
           <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="[[rootPath]]smartguide2" class="smartguide__list-link">
+            <a href="netlaw-smartguide/netlaw-smartguide4" class="smartguide__list-link">
               <!-- todo: replace icons  -->
               <iron-icon icon="icons:line-style"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Templates</span>
@@ -732,14 +735,14 @@
           </iron-selector>
         </ul>
       </section>
-      <section class="smartguide__content">
+      <!--<section class="smartguide__content">-->
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
           <my-netlaw-smartguide1 name="netlaw-smartguide1"></my-netlaw-smartguide1>
-          <my-netlaw-smartguide2 name="netlaw-smartguide2"></my-netlaw-smartguide2>
+          <my-netlaw-smartguide4 name="netlaw-smartguide4"></my-netlaw-smartguide4>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
-      </section>
+      <!--</section>-->
     </main>
 
   </template>
@@ -775,9 +778,9 @@
             this.page = page || 'netlaw-smartguide1';
 
             // Close a non-persistent drawer when the page & route are changed.
-            if (!this.$.drawer.persistent) {
-                this.$.drawer.close();
-            }
+            // if (!this.$.drawer.persistent) {
+            //     this.$.drawer.close();
+            // }
         }
 
         _pageChanged(page) {

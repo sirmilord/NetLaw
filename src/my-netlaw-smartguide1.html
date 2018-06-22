@@ -26,8 +26,12 @@
       }
 
       .smartguide__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        /*flex: 1 1 70%;*/
+        /*max-width: 70%; */
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-height: calc(100vh - 85px);
+
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -692,25 +696,25 @@
 
     </style>
 
-    <main class="smartguide">
-      <section class="smartguide__drawer">
-        <ul class="smartguide__list">
-          <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="#" class="smartguide__list-link smartguide__list-link--active">
-              <!-- todo: replace icons -->
-              <iron-icon icon="icons:touch-app"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Setup</span>
-            </a>
-          </li>
-          <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="#" class="smartguide__list-link">
-              <!-- todo: replace icons  -->
-              <iron-icon icon="icons:line-style"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Templates</span>
-            </a>
-          </li>
-        </ul>
-      </section>
+    <!--<main class="smartguide">-->
+      <!--<section class="smartguide__drawer">-->
+        <!--<ul class="smartguide__list">-->
+          <!--<li class="smartguide__list-item smartguide__list-item&#45;&#45;top-border smartguide__list-item&#45;&#45;bottom-border">-->
+            <!--<a href="#" class="smartguide__list-link smartguide__list-link&#45;&#45;active">-->
+              <!--&lt;!&ndash; todo: replace icons &ndash;&gt;-->
+              <!--<iron-icon icon="icons:touch-app"></iron-icon>-->
+              <!--<span class="smartguide__list-text">SmartGuide Setup</span>-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="smartguide__list-item smartguide__list-item&#45;&#45;bottom-border">-->
+            <!--<a href="#" class="smartguide__list-link">-->
+              <!--&lt;!&ndash; todo: replace icons  &ndash;&gt;-->
+              <!--<iron-icon icon="icons:line-style"></iron-icon>-->
+              <!--<span class="smartguide__list-text">SmartGuide Templates</span>-->
+            <!--</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</section>-->
       <section class="smartguide__content">
         <!--first screen-->
         <div class="smartguide__content-header">
@@ -727,7 +731,7 @@
         </div>
         <button class="btn btn--primary">Let's begin</button>
       </section>
-    </main>
+    <!--</main>-->
 
   </template>
 
