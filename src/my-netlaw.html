@@ -10,10 +10,10 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="my-icons.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
 
+<link rel="import" href="netlaw-icons.html">
 <link rel="import" href="netlaw-logo.html">
 <link rel="import" href="netlaw-search.html">
 <link rel="import" href="netlaw-notification.html">
@@ -198,7 +198,7 @@
 
       <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
         <app-toolbar class="navbar">
-          <!--<paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>-->
+          <!--<paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>-->
           <netlaw-logo></netlaw-logo>
           <netlaw-search></netlaw-search>
           <netlaw-notification></netlaw-notification>
@@ -235,7 +235,7 @@
           </iron-selector>
         </app-drawer>
         <!--<app-toolbar>-->
-        <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
+        <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
         <!--</app-toolbar>-->
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
           <my-netlaw-smartguide name="netlaw-smartguide"></my-netlaw-smartguide>
