@@ -706,11 +706,11 @@
             tail="{{subroute}}">
     </app-route>
 
-    <app-route
-            route = "{{subroute}}"
-            pattern = "/:page"
-            data = "{{subrouteData}}">
-    </app-route>
+    <!--<app-route-->
+            <!--route = "{{subroute}}"-->
+            <!--pattern = "/:page"-->
+            <!--data = "{{subrouteData}}">-->
+    <!--</app-route>-->
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -739,6 +739,8 @@
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
           <my-netlaw-smartguide1 name="netlaw-smartguide1"></my-netlaw-smartguide1>
+          <!--<my-netlaw-smartguide2 name="netlaw-smartguide2"></my-netlaw-smartguide2>-->
+          <!--<my-netlaw-smartguide3 name="netlaw-smartguide3"></my-netlaw-smartguide3>-->
           <my-netlaw-smartguide4 name="netlaw-smartguide4"></my-netlaw-smartguide4>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
