@@ -10,28 +10,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
 
-<iron-iconset-svg name="netlaw-icons" size="24">
+<style>
+  /* shadow DOM styles go here */
+  :host {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  iron-icon {
+    --iron-icon-width: 32px;
+    --iron-icon-height: 32px;
+    margin: 10px auto;
+    clear: both;
+    display: block;
+  }
+
+
+</style>
+
+<iron-iconset-svg name="netlaw-icons" size="32">
   <svg>
     <defs>
-      <image id="plus" x="0" y="0"
-             xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAQAAACSGls5AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
-AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElN
-RQfiBhUNGSDXaVinAAAC70lEQVRo3s3aTUsbQRzH8e+Mi0kvUrK5KIEgioLSXjyJRqSlFU+efA19
-TX0NPdkeRHozph7aeFNQFBFEL0kOQksSlH8PcWMezG72cfZ3SWB3J5+dbHYn8x9FgIhNAZs8ObJk
-mATatGjSoEadW1X336byBbBYZIFZpjx2fOCaC87VYwwQmWGFZbI+3E1Oqaq7CCFSpMS8D0JvLimr
-mwggYrMdGPGC2fe6blwhYlFinYmQDIAnjii7XTMuEMmxy3QECCf3fFMN3xBZYodMhAyAFnvqzBdE
-VtmKGOHkQB2PDZFPrMXEAKion2NBYmaMoOghxmrsDFiTVQ+ILMV2bfRnS5ZcIJJjJxEGwI7kRkDE
-YjfyH+zoZNgV6/UeKQW8fZ1wQjvAcdOUXoGIzXrAc/uhvvMv0JHrYg/3yHYkzxR/mWB7ACLF0E/Y
-YJmXYn+PbBhh9HyyBpAZ5oxB5mTmpUdWjDG6n65BLJaNQpbF6vTIoq8hcfTJstiBLBhl0BFoYNa0
-g1nQYnv+XYo/U2JrCqYVABQ0edMGAPIaO3wrEcTW5MK3EkFy2vA9xElWJzgmc0vGYtJ1h1/eQx4l
-QMXzhBQfXbZOWh6HV8eb/VG/vfYQ7QrBos0bl+3v5O84CHkf8ituW7RcIZvebcgfJXzgbShIS9MM
-1UBUaWoa4VuJIA1NgKnIGFLT1EwbAKhrbk0bALjVqs6DaQUPqq6Ba9MOrjtDxQvTDi46kHPD95Im
-56BBPXJqFHKqHp1/elWjkCo8Q9QdV8YYl536hTMbcGgMUu68PEPUDZeG+uOmDwLs85Q444l9520X
-ouocJQ45ehn/9Q4VyywEmlf8LLgOrkbl3rk+YGAuXnJ8SWxU3+Jrb/Wmb+ZZNdhLiAF7/UWkgbl4
-dcZBIoyDwQLSUHVCHVOJnVEZLh6luXAEqSmlQWqKi5CaciukpgD9jElDSb6LKbIReLb+isNIFil0
-MWlYttHFpGEhSx/IpkAe+5WlPXVqwZb2/AcUys76QSZfogAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAx
-OC0wNi0yMVQxMzoyNTozMi0wNzowMOisQdkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDYtMjFU
-MTM6MjU6MzItMDc6MDCZ8fllAAAAAElFTkSuQmCC" />
+      <g id="add_module_icon">
+        <path d="M17,34 C7.61022,34 0,26.38978 0,17 C0,7.61022 7.61022,0 17,0 C26.38978,0 34,7.61022 34,17 C34,26.38978 26.38978,34 17,34 Z M16.5019,26.7257 L17.5644,26.7257 L17.5644,17.79662 L26.49484,17.79662 L26.49484,16.73412 L17.5644,16.73412 L17.5644,7.80368 L16.5019,7.80368 L16.5019,16.73412 L7.57282,16.73412 L7.57282,17.79662 L16.5019,17.79662 L16.5019,26.7257 Z" width="32" height="34" opacity="0.5" />
+      </g>
+    </defs>
+  </svg>
+</iron-iconset-svg>
+
+<iron-iconset-svg name="default-icons" size="24">
+  <svg>
+    <defs>
       <g id="arrow-back">
         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
       </g>

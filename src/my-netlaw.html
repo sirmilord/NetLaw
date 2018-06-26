@@ -65,26 +65,9 @@
         background-color: var(--app-header-bg);
       }
 
-      /*.drawer-list a {*/
-      /*display: block;*/
-      /*padding: 0 16px;*/
-      /*text-decoration: none;*/
-      /*color: var(--app-secondary-color);*/
-      /*line-height: 40px;*/
-      /*}*/
-
-      /*.drawer-list a.iron-selected {*/
-      /*color: black;*/
-      /*font-weight: bold;*/
-      /*}*/
-
       .navbar {
         height: auto;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-      }
-
-      #contentContainer {
-
       }
 
       .drawer-list {
@@ -103,10 +86,6 @@
         height: 100%;
         background-color: #01AA50;
       }
-
-      /*.drawer-nav li:nth-child(odd) {*/
-      /*position: relative;*/
-      /*}*/
 
       .drawer-nav a:after {
         content: '';
@@ -164,21 +143,8 @@
         vertical-align: middle;
       }
 
-      .drawer-nav a.iron-selected:nth-child(1) span {
-        background-image: url(../images/Lgwand_icon-white.png) !important;
-      }
-
-      .drawer-nav a.iron-selected:nth-child(2) span {
-        background-image: url(../images/Lgvault_icon-white.png) !important;
-      }
-
-      .drawer-nav a.iron-selected:nth-child(3) span {
-        background-image: url(../images/Lgcontacts_icon-white.png) !important;
-      }
-
-      .drawer-nav a.iron-selected:nth-child(4) span {
-        background-image: url(../images/Lgadd_module_icon-white.png) !important;
-      }
+      .drawer-nav a iron-icon { opacity: 0.5; }
+      .drawer-nav a.iron-selected iron-icon { opacity: 1; }
 
     </style>
 
@@ -217,20 +183,22 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
             <a name="netlaw-smartguide" href="[[rootPath]]netlaw-smartguide/netlaw-smartguide1">
-              <span class="uk-icon uk-icon-image" style="background-image: url(./images/Lgwand_icon.png);"></span>
-              SmartGuide</a>
+              <iron-icon src="./images/icons/wand_icon.svg" slot="item-icon"></iron-icon> SmartGuide
+            </a>
             <a name="netlaw-lifevault" href="[[rootPath]]netlaw-lifevault">
-              <span class="uk-icon uk-icon-image" style="background-image: url(./images/Lgvault_icon.png);"></span>
-              LifeVault</a>
+              <iron-icon src="./images/icons/vault_icon.svg" slot="item-icon"></iron-icon> LifeVault
+            </a>
             <!--<a name="netlaw-contacts" href="[[rootPath]]netlaw-contacts">Contacts</a>-->
             <a name="netlaw-contacts2" href="[[rootPath]]netlaw-contacts2">
-              <span class="uk-icon uk-icon-image" style="background-image: url(./images/Lgcontacts_icon.png);"></span>
-              Contacts</a>
+              <iron-icon src="./images/icons/contacts_icon.svg" slot="item-icon"></iron-icon> Contacts
+            </a>
+            <a name="netlaw-contacts" href="[[rootPath]]netlaw-contacts">
+              <iron-icon src="./images/icons/search_attorney_icon.svg" slot="item-icon"></iron-icon> Find Attorney
+            </a>
             <!--<a name="netlaw-contacts3" href="[[rootPath]]netlaw-contacts3">Contacts3</a>-->
             <a name="netlaw-add-module" href="[[rootPath]]netlaw-add-module">
-              <paper-icon-button icon="netlaw-icons:plus" drawer-toggle=""></paper-icon-button>
-              <span class="uk-icon uk-icon-image" style="background-image: url(./images/Lgadd_module_icon.png);"></span>
-              Add Module</a>
+              <iron-icon src="./images/icons/add_module_icon.svg" slot="item-icon"></iron-icon> Add Module
+            </a>
             <!--<a name="netlaw-login" href="[[rootPath]]netlaw-login">Login</a>-->
             <!--<a name="netlaw-password-new" href="[[rootPath]]netlaw-password-new">Paasword New</a>-->
             <!--<a name="netlaw-password-reset" href="[[rootPath]]netlaw-password-reset">Paasword Retrieval</a>-->
