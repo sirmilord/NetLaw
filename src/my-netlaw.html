@@ -196,7 +196,6 @@
 
     <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
 
-
     <!-- Main content -->
     <app-header-layout fullbleed="" narrow="{{narrow}}">
 
@@ -285,18 +284,57 @@
 
           static get properties() {
               return {
+                  loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
+
                   page: {
                       type: String,
                       reflectToAttribute: true,
                       observer: '_pageChanged',
                   },
-                  routeData: Object,
+
                   subroute: Object,
                   // This shouldn't be neccessary, but the Analyzer isn't picking up
                   // Polymer.Element#rootPath
                   rootPath: String,
+                  route: { type: Object },
+                  routeData: { type: Object, observer: '_routeDataObserver' },
+
+                  active: String,
               };
           }
+
+          onLoggedIn(e) {
+              this.loggedIn = true;
+          }
+
+          _routeDataObserver(value) { this.active = value.id || null; }
+
+          typeToIcon(type) {
+              switch (type) {
+                  case "client": return "people";
+                  case "attorney": return "work";
+                  default: return "";
+              }
+          }
+
+          isSubpathSelected(path, subpath, levels) { return this.isSubpath(path, subpath, levels) ? "iron-selected" : null; }
+
+          isSubpath(path, subpath, levels) {
+              if (!path || !subpath) return null;
+              let paths = (path[0] === "/" ? path.substr(1) : paths).split("/");
+              let subpaths = (subpath[0] === "/" ? subpath.substr(1) : subpath).split("/");
+              for (let i = 0; i < subpaths.length; i++) {
+                  if (i >= levels) return true;
+                  if (paths[i] != subpaths[i]) return false;
+              }
+              return true;
+          }
+
+          isEqual(first, second) { return first === second; }
+          isTrue(value) { return !!value; }
+          isFalse(value) { return !value; }
+
+
 
           static get observers() {
               return [
