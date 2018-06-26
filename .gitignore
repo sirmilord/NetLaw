@@ -1,4 +1,6 @@
 bower_components/
 build/
 node_modules/
+scr/ap-app.html
+scr/ap-login.html
 .idea

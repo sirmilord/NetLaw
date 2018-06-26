@@ -10,8 +10,8 @@
     "src/my-netlaw-add-module.html",
     "src/my-netlaw-login.html",
     "src/my-netlaw-password-new.html",
-    "src/my-netlaw-password-retrieval.html",
-    "src/my-netlaw-password-retrieval-confirmation.html",
+    "src/my-netlaw-password-reset.html",
+    "src/my-netlaw-password-reset-confirmation.html",
     "src/my-view404.html"
   ],
   "sources": [
