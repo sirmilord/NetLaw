@@ -1,0 +1,256 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="../bower_components/paper-password-input/paper-password-input.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+
+<dom-module id="ap-login">
+    <template>
+        <style is="custom-style" include="iron-flex iron-flex-factors"></style>
+        <style include="shared-styles">
+            * {
+                box-sizing: border-box;
+            }
+
+            :host {
+                display: block;
+                padding: 10px;
+                min-height: 100vh;
+                /* business-card only! */
+                background: #fff url(/images/bg-business-card.jpg) no-repeat 50% 50%;
+                background-size: cover; /**/
+            }
+
+            h1 {
+                font-size: 24px;
+                font-weight: 400;
+                margin-bottom: 0;
+            }
+
+                h1 + p {
+                    margin-top: 0;
+                }
+
+            paper-button.flat {
+                background: none;
+                color: var(--app-primary-color);
+                text-transform: none;
+                margin: 0 -0.57em;
+            }
+
+
+            .max-width-400px {
+                max-width: 400px;
+                width: 100%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .max-width-800px {
+                max-width: 800px;
+                width: 100%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .login-wrapper .card {
+                width: 100%;
+                padding: 32px;
+                margin: 0;
+            }
+        </style>
+
+        <div class="vertical-center-inside min-height-90vh">
+            <div class$="{{if(isWide, 'max-width-800px', 'max-width-400px')}}">
+                <div class="card">
+
+                    <p class="text-center"><img class="logo-login" src="/images/logo-netlaw.png" alt="NetLaw" style="max-width:200px;"></p>
+
+                    <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
+
+                        <div name="signin">
+                            <h1>Sign in</h1>
+                            <p>to continue to NetDraft</p>
+
+                            <paper-input class="flex-6" label="Email or phone" name="identifier" autocomplete="username" autofocus value="{{identifier}}" on-keydown=""></paper-input>
+                            <!--<div class="error">Tough luck bro, try again</div>-->
+                            <p>or sign in with</p>
+                            <paper-icon-button icon="facebook" name="facebook" on-click="onSocial"></paper-icon-button>
+                            <paper-icon-button icon="google" name="google" on-click="onSocial"></paper-icon-button>
+                            <paper-icon-button icon="linkedin" name="linkedin" on-click="onSocial"></paper-icon-button>
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" name="create-account" on-click="onNavigate">Create account</paper-button></div>
+                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignIn">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="signin-password">
+                            <h1>Welcome</h1>
+                            <p>[[identifier]] <paper-icon-button icon="ap-icons:keyboard-arrow-down" name="choose-account" on-click="onNavigate"></paper-icon-button></p>
+
+                            <p>To continue, first verify it's you</p>
+
+                            <paper-password-input class="flex-6" label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}"></paper-password-input>
+                            <!--<div class="error">Tough luck bro, try again</div>-->
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignInNext">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="choose-account">
+                            <h1>Choose an account</h1>
+
+                            <p>acc1</p>
+                            <p>acc2</p>
+                            <p>Use another account</p>
+                        </div>
+
+
+                        <div name="create-account" wide>
+                            <h1>Create your NetLaw Account</h1>
+                            <p>to continue to NetDraft</p>
+
+                            <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus value="{{name}}"></paper-input>
+                            <paper-input class="flex-6" label="Your email address" name="email" autocomplete="email" value="{{email}}"></paper-input>
+                            <paper-password-input class="flex-6" label="Enter your password" name="password" autocomplete="current-password" value="{{password}}"></paper-password-input>
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" name="signin" on-click="onNavigate">Sign in instead</paper-button></div>
+                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onCreateAccount">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="create-profile" wide>
+                            <h1>Create your NetDraft Profile</h1>
+
+                            <div class="layout horizontal padded margin-top-16px">
+                                <paper-input class="flex-6" label="Full Name" name="name" autocomplete="fullname" autofocus value="{{name}}"></paper-input>
+                                <paper-input class="flex-6" label="Firm Name" name="firm" autocomplete="firm" value="{{firm}}"></paper-input>
+                            </div>
+
+                            <div class="layout horizontal padded margin-top-16px">
+                                <paper-input class="flex-4" label="Bar Licence" name="barlicense" value="{{barLicense}}"></paper-input>
+                                <paper-input class="flex-4" label="Malpractice Insurance Policy Provider" name="malpracticeprovider" value="{{malpracticeProvider}}"></paper-input>
+                                <paper-input class="flex-4" label="Malpractice Insurance Policy Number" name="malpracticenumber" value="{{malpracticeNumber}}"></paper-input>
+                            </div>
+                            <div class="margin-top-32px">
+                                <paper-checkbox checked="{{inGoodStanding}}">I am active and in good standing with the bar of every state in which I am licensed.</paper-checkbox>
+                            </div>
+                            <div class="margin-top-32px">
+                                <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to be bound by the <a href="#">Network Attorney Agreement</a> and <a href="#">Non-Disclosure Agreement</a> and general Terms of Use for this site.</paper-checkbox>
+                            </div>
+                            <!--<p class="margin-top-32px font-size-80-percent">If you have been practicing in the area of estate planning for at least seven years, you may be eligible to receive our "Advanced Attorney" designation. To be considered for our Advanced Attorney designation, <a href="#">click here</a> for more information.</p>-->
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" name="choose-account" on-click="onNavigate">Choose existing profile</paper-button></div>
+                                <div class="flex-4 text-right">
+                                    <paper-button class="primary" on-click="onCreateAccount" disabled="[[!canCreateAccount]]">Create Profile</paper-button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </iron-pages>
+
+
+                </div>
+
+                <div class=" layout horizontal margin-top-32px">
+                    <div class="flex-6">
+                        <span>English (United States) <iron-icon icon="arrow-drop-down"></iron-icon></span>
+                    </div>
+                    <div class="flex-6 text-right">
+                        <span>Help</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        class ApLogin extends Polymer.Element {
+            static get is() { return 'ap-login'; }
+            static get properties() {
+                return {
+                    selected: { type: String, value: "signin" },
+                    isWide: { type: Boolean, computed: '_isWide(selected)' },
+
+                    identifier: { type: String, value: "kyle@draft.netlawplatform.com" },
+
+                    email: String,
+
+                    password: String,
+
+                    name: String,
+                    firm: String,
+                    barLicense: String,
+                    malpracticeProvider: String,
+                    malpracticeNumber: String,
+                    inGoodStanding: Boolean,
+                    agreesWithTerms: Boolean,
+                    canCreateAccount: { type: Boolean, computed: '_canCreateAccount(name, firm, barLicense, malpracticeProvider, malpracticeNumber, inGoodStanding, agreesWithTerms)' },
+                };
+            }
+
+            if(condition, ifTrue, ifFalse) { return condition ? ifTrue || "" : ifFalse || ""; }
+
+            _isWide(selected) { return this.$.panel.children[selected] && this.$.panel.children[selected].attributes.wide && this.$.panel.children[selected].attributes.wide.value !== "false" || false; }
+
+            _canCreateAccount(name, firm, barLicense, malpracticeProvider, malpracticeNumber, inGoodStanding, agreesWithTerms) {
+                return !!(name && firm && barLicense && malpracticeProvider && malpracticeNumber && inGoodStanding && agreesWithTerms);
+            }
+
+
+            onNavigate(e) {
+                let name = e.srcElement.attributes.name.value;
+
+                this.selected = name;
+            }
+
+            onSignIn(e) {
+                this.selected = "signin-password";
+
+                api.login.findUser(this.identifier)
+                    .error(400, ex => { this.error = "Please specify your email or phone"; })
+                    .error(404, ex => { this.error = "Couldn't find your NetLaw Account"; });
+            }
+
+            onSignInNext(e) {
+                this.dispatchEvent(new CustomEvent('logged-in'));
+
+                api.login.login(this.identifier, this.password)
+                    .error(404, ex => {
+                        this.password = "";
+                        this.error = "Wrong password. Try again or click Forgot password to reset it.";
+                    });
+            }
+
+
+            onSocial(e) {
+                let name = e.srcElement.attributes.name.value;
+
+            }
+
+
+
+            onLogin(e) {
+                this.dispatchEvent(new CustomEvent('logged-in'));
+            }
+
+            onCreateAccount(e) {
+                this.selected = "create-profile";
+
+                api.draft.createAccount(this.name, this.firm, {
+                    BarLicense: this.barLicense,
+                    MalpracticeProvider: this.malpracticeProvider,
+                    MalpracticeNumber: this.malpracticeNumber,
+                }).then();
+            }
+        }
+
+        window.customElements.define(ApLogin.is, ApLogin);
+    </script>
+</dom-module>
