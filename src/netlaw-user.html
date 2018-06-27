@@ -9,10 +9,20 @@
 
     <style>
       /* shadow DOM styles go here */
-      host {
+      :host {
       }
 
-      iron-icon.style-scope.netlaw-user {
+      #contentContainer.style-scope.app-header app-toolbar.navbar.style-scope.my-netlaw netlaw-user.style-scope.my-netlaw a.style-scope.netlaw-user iron-icon.style-scope.netlaw-user,
+
+      .netlaw-user iron-icon {
+        --iron-icon-width: 45px;
+        --iron-icon-height: 45px;
+        display: inline-block;
+        margin: 0 10px;
+        vertical-align: middle;
+      }
+
+      span.message .netlaw-user iron-icon {
         --iron-icon-width: 20px;
         --iron-icon-height: 20px;
         position: relative;
@@ -22,10 +32,15 @@
         display: inline-block;
       }
 
-      #dropdown {
+      #user_dropdown {
         /*width: 300px;*/
         background-color: var(--app-header-bg);
         padding: 15px;
+      }
+
+      a {
+        color: #4A90E2;
+        text-decoration: none;
       }
 
       ul {
@@ -36,57 +51,39 @@
       }
 
       li {
-        padding: .5em 4em .5em 1em;
-        font-size: 14px;
-        color: #333;
-      }
-
-      li::before {
-        position: absolute;
-        left: 15px;
-        content: "• ";
-        color: #f5a623;
-        font-size: 28px;
-        line-height: 16px;
+        padding: .2em 3em .2em .5em;
       }
 
       li span {
         position: absolute;
         right: 15px;
         font-size: 12px;
+      }
+
+      #user_dropdown li a.netlaw-user {
+        color: #4A4A4A;
+        font-size: 15px;
+      }
+
+      #user_dropdown li a.netlaw-user:hover, #user_dropdown li a.netlaw-user:active {
+        /*color: #CAC9CA;*/
         color: #9B9B9B;
       }
 
-      .icon {
-        display: inline-block;
-        width: 45px;
-        height: 45px;
-        margin: 0 10px;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        vertical-align: middle;
-      }
-
       .message {
-        font-size: 14px;
-      }
-
-      a {
-        color: #4A90E2;
-        text-decoration: none;
+        font-size: 15px;
       }
 
     </style>
 
     <a href="#">
-      <span class="icon" style="background-image: url(../images/profile_placeholder_icon.png);"></span>
+      <iron-icon src="./images/icons/profile_placeholder_icon.svg"></iron-icon>
     </a>
     <span class="message">
       Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
-    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
+    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" no-auto-focus no-cancel-on-outside-click>
         <ul class="profile" slot="dropdown-content">
           <li><a href="#">My Profile</a></li>
           <li><a href="#">Account Settings</a></li>
@@ -124,7 +121,7 @@
           toggle(e) {
               e.preventDefault();
               this.visible = !this.visible;
-              this.visible ? this.$.dropdown.open() : this.$.dropdown.close();
+              this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
           }
 
       }

@@ -49,6 +49,10 @@
         background-color: var(--app-header-bg);
       }
 
+      a.netlaw-search {
+        cursor: pointer;
+      }
+
       ul {
         list-style: none;
         margin: 0;
@@ -71,8 +75,9 @@
 
     </style>
 
+    <!--todo: refactor search icons and input -->
     <a on-click="toggle">
-      <iron-icon icon="[[toggleIcon]]"></iron-icon>
+      <iron-icon icon="[[toggleIcon]]" src="./images/icons/search_icon.svg"></iron-icon>
     </a>
     <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
            hidden$="[[!visible]]" on-mouseover="openChoices">

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="26px" viewBox="0 0 24 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>98A1A9F5-21AC-46AF-9770-551F8785AA88</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-0.3%" y="-2.8%" width="100.5%" height="107.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Wireframes---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dash---SmartGuide---SmartGuide-Templates" transform="translate(-902.000000, -88.000000)">
+            <g id="Header" transform="translate(0.000000, 55.000000)">
+                <g filter="url(#filter-1)" id="Notifications-Icon">
+                    <g transform="translate(904.000000, 34.000000)">
+                        <path d="M7.125,19 C7.049805,19.2073323 7,19.4615385 7,19.6923077 C7,20.9615385 8.125,22 9.5,22 C10.875,22 12,20.9615385 12,19.6923077 C12,19.4615385 11.950195,19.2073231 11.875,19 L7.125,19 Z" id="Fill-1" fill="#000000" opacity="0.3"></path>
+                        <path d="M16.25002,14.4001697 L16.25002,11.7777345 C16.049825,11.8038483 15.82522,11.8289593 15.62502,11.8289593 C12.92477,11.8289593 10.75002,9.59216278 10.75002,6.81498877 C10.75002,5.24610453 11.45022,3.85803178 12.54982,2.93186143 C12.02442,2.62351509 11.45022,2.41760804 10.84962,2.26292062 C10.87501,2.16047106 10.87501,2.0570187 10.87501,1.92845021 C10.87501,0.87381936 10.02541,0 9.00001,0 C7.97461,0 7.12501,0.87381936 7.12501,1.92845021 C7.12501,2.03089977 7.1504,2.15946312 7.1504,2.26292062 C5.8252,2.59739102 4.60065,3.2914274 3.6504,4.34605825 C2.424825,5.68391415 1.75,7.45780551 1.75,9.30886059 L1.75,14.4002263 C0.7998,14.4002263 0,15.1977304 0,16.2001131 C0,17.1774003 0.7998,18 1.75,18 L16.25,18 C17.2002,18 18,17.1774003 18,16.2001131 C18,15.1977304 17.2002,14.4002263 16.25,14.4002263 L16.25002,14.4001697 Z" id="Fill-2" fill="#000000" opacity="0.3"></path>
+                        <path d="M20,7 C20,9.20867097 18.208671,11 16,11 C13.791329,11 12,9.20867097 12,7 C12,4.79132903 13.791329,3 16,3 C18.208671,3 20,4.79132903 20,7" id="Fill-3" fill="#F5A623"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

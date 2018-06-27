@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>B85D23ED-D211-4ABF-BF3D-D0C2126F2421</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-0.3%" y="-2.8%" width="100.5%" height="107.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Wireframes---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.3">
+        <g id="Dash---SmartGuide---SmartGuide-Templates" transform="translate(-380.000000, -86.000000)" fill="#414142">
+            <g id="Header" transform="translate(0.000000, 55.000000)">
+                <g filter="url(#filter-1)" id="Search-Icon-copy">
+                    <path d="M397.340182,41.3889853 C397.340182,44.6831322 394.66364,47.3637942 391.374556,47.3637942 C388.085472,47.3637942 385.408929,44.6831322 385.408929,41.3889853 C385.408929,38.0948385 388.085472,35.4141765 391.374556,35.4141765 C394.66364,35.4141765 397.340182,38.0948385 397.340182,41.3889853 L397.340182,41.3889853 Z M404.896346,52.5176595 L399.097911,46.7102995 C400.176518,45.1499141 400.749111,43.2827863 400.749111,41.3889853 C400.749111,36.2010375 396.55453,32 391.374556,32 C386.194581,32 382,36.2010375 382,41.3889853 C382,46.5769332 386.194581,50.7779707 391.374556,50.7779707 C393.265446,50.7779707 395.129704,50.2044957 396.687692,49.1242289 L402.486127,54.9182524 L404.896346,52.5176595 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

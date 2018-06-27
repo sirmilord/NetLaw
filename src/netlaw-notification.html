@@ -33,7 +33,7 @@
       li {
         padding: .5em 4em .5em 1em;
         font-size: 14px;
-        color: #333;
+        color: #4A4A4A;
       }
 
       li::before {
@@ -49,17 +49,7 @@
         position: absolute;
         right: 15px;
         font-size: 12px;
-        color: #9B9B9B;
-      }
-
-      .icon {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        vertical-align: middle;
+        color: #4A4A4A;
       }
 
       a {
@@ -71,7 +61,8 @@
     </style>
 
     <a href="#" on-click="toggle">
-      <span class="icon" style="background-image: url(../images/notifications_icon.png);"></span>
+      <!-- todo: change opacity on click to 1 (default is 0.3) -->
+      <iron-icon src="./images/icons/notifications_icon.svg"></iron-icon>
     </a>
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
