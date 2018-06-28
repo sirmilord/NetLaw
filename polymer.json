@@ -1,18 +1,18 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/my-netlaw.html",
+  "shell": "src/netlaw-app.html",
   "fragments": [
-    "src/my-netlaw-smartguide.html",
-    "src/my-netlaw-lifevault.html",
-    "src/my-netlaw-contacts.html",
-    "src/my-netlaw-contacts2.html",
-    "src/my-netlaw-contacts3.html",
-    "src/my-netlaw-add-module.html",
-    "src/my-netlaw-login.html",
-    "src/my-netlaw-password-new.html",
-    "src/my-netlaw-password-reset.html",
-    "src/my-netlaw-password-reset-confirmation.html",
-    "src/my-view404.html"
+    "src/netlaw-smartguide.html",
+    "src/netlaw-lifevault.html",
+    "src/netlaw-contacts.html",
+    "src/netlaw-contacts2.html",
+    "src/netlaw-contacts3.html",
+    "src/netlaw-add-module.html",
+    "src/netlaw-login.html",
+    "src/netlaw-password-new.html",
+    "src/netlaw-password-reset.html",
+    "src/netlaw-password-reset-confirmation.html",
+    "src/view-404.html"
   ],
   "sources": [
     "images/**/*",

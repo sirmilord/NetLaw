@@ -1,7 +1,7 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="my-netlaw-contacts">
+<dom-module id="netlaw-contacts3">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style>
@@ -10,6 +10,7 @@
       }
 
       .contacts {
+        position: relative;
         display: flex;
         min-height: calc(100vh - 80px);
         font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -658,6 +659,87 @@
         --iron-icon-fill-color: #01AA50;
       }
 
+      .overlay {
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.8;
+        left: 0;
+        top: 0;
+      }
+
+      .drap-drop {
+        position: fixed;
+        z-index: 11;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #a2a2a2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .files {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 11;
+        display: flex;
+      }
+
+      .files__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 215px;
+        padding-left: 30px;
+        padding-right: 30px;
+        /*flex: 0 1 33%;*/
+        /*max-width: 33%;*/
+      }
+      
+      .files__title {
+
+        font-size: 16px;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      .files__desc {
+        color: #a2a2a2;
+        font-size: 14px;
+      }
+
+      .files__icon {
+        --iron-icon-width: 50px;
+        --iron-icon-height: 50px;
+        --iron-icon-fill-color: #a2a2a2;
+        margin-bottom: 15px;
+      }
+
+      .files__icon--close {
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #4a4a4a;
+      }
+
+      .files__item--extra {
+        border: 1px solid #a2a2a2;
+        border-top: 0;
+        box-shadow: 0 2px 0 0 #a2a2a2;
+      }
+
+      .files__item--border-hide {
+        border-right: 0;
+      }
+
 
     </style>
     <main class="contacts">
@@ -767,305 +849,326 @@
       <section class="contacts__content">
         <!--first screen-->
 
-        <h1>Contacts</h1>
-        <figure>
-        <img src="/images/Lgmoleskine.png" width="98" height="154" alt="contacts">
-        </figure>
-        <b>Add beneficaries, exectors of an estate and more</b>
-        <div class="contacts__content-wrapper">
-        <p>(you also search for attorneys and add them to you list)</p>
-        <hr>
-        </div>
-        <button class="btn btn--primary">Create Contact</button>
+        <!--<h1>Contacts</h1>-->
+        <!--<figure>-->
+        <!--<img src="/images/Lgmoleskine.png" width="98" height="154" alt="contacts">-->
+        <!--</figure>-->
+        <!--<b>Add beneficaries, exectors of an estate and more</b>-->
+        <!--<div class="contacts__content-wrapper">-->
+        <!--<p>(you also search for attorneys and add them to you list)</p>-->
+        <!--<hr>-->
+        <!--</div>-->
+        <!--<button class="btn btn&#45;&#45;primary">Create Contact</button>-->
 
         <!--Immediate Family screen-->
-        <!--<div class="contacts__content-header">-->
-          <!--<h2 class="contacts__content-title">Immediate Family</h2>-->
-          <!--<div class="contacts__content-update">Updated 1d ago</div>-->
-        <!--</div>-->
-        <!--<div class="contacts__content-dashboard">-->
-          <!--<form action="#" method="post">-->
-            <!--<label class="contacts__checkbox-container">Select All-->
-              <!--<input id="selectall" type="checkbox">-->
-              <!--<span class="contacts__content-checkmark" on-tap="selectAll"></span>-->
-              <!--&lt;!&ndash;<paper-checkbox></paper-checkbox>&ndash;&gt;-->
-            <!--</label>-->
-            <!--<label class="contacts__search">-->
-              <!--<input type="search" id="search" name="search" placeholder="Search...">-->
-              <!--<button class="btn btn&#45;&#45;search">-->
-                <!--<iron-icon icon="icons:cached"></iron-icon>-->
-              <!--</button>-->
-            <!--</label>-->
-            <!--<div class="contacts__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">-->
-              <!--<div class="contacts__sort-arrows">-->
-                <!--<iron-icon icon="icons:arrow-upward"></iron-icon>-->
-                <!--<iron-icon icon="icons:arrow-downward"></iron-icon>-->
-              <!--</div>-->
-              <!--<span>Sort By</span>-->
-              <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-              <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
-                <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
-                <!--<ul slot="dropdown-content">-->
-                  <!--<li>Listed result contact item 1 ...</li>-->
-                  <!--<li>Listed result contact item 2 ...</li>-->
-                  <!--<li>Listed result contact item 3 ...</li>-->
-                <!--</ul>-->
-              <!--</iron-dropdown>-->
-            <!--</div>-->
-            <!--<div id="bulkaction" class="contacts__sort" on-tap="openBulkAction">-->
-              <!--<span>Bulk Action</span>-->
-              <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-              <!--<iron-dropdown id="bulkactiondropdown" vertical-offset="0">-->
-                <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
-                <!--<ul slot="dropdown-content">-->
-                  <!--<li>Listed result contact item 1 ...</li>-->
-                  <!--<li>Listed result contact item 2 ...</li>-->
-                  <!--<li>Listed result contact item 3 ...</li>-->
-                <!--</ul>-->
-              <!--</iron-dropdown>-->
-            <!--</div>-->
-            <!--<button class="btn btn&#45;&#45;module" on-tap="chooseModule">-->
-              <!--<iron-icon icon="icons:view-module"></iron-icon>-->
-            <!--</button>-->
-            <!--<button class="btn btn&#45;&#45;list" on-tap="chooseList">-->
-              <!--<iron-icon icon="icons:view-list"></iron-icon>-->
-            <!--</button>-->
-          <!--</form>-->
-        <!--</div>-->
+        <div class="contacts__content-header">
+          <h2 class="contacts__content-title">Immediate Family</h2>
+          <div class="contacts__content-update">Updated 1d ago</div>
+        </div>
+        <div class="contacts__content-dashboard">
+          <form action="#" method="post">
+            <label class="contacts__checkbox-container">Select All
+              <input id="selectall" type="checkbox">
+              <span class="contacts__content-checkmark" on-tap="selectAll"></span>
+              <!--<paper-checkbox></paper-checkbox>-->
+            </label>
+            <label class="contacts__search">
+              <input type="search" id="search" name="search" placeholder="Search...">
+              <button class="btn btn--search">
+                <iron-icon icon="icons:cached"></iron-icon>
+              </button>
+            </label>
+            <div class="contacts__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
+              <div class="contacts__sort-arrows">
+                <iron-icon icon="icons:arrow-upward"></iron-icon>
+                <iron-icon icon="icons:arrow-downward"></iron-icon>
+              </div>
+              <span>Sort By</span>
+              <iron-icon icon="icons:expand-more"></iron-icon>
+              <iron-dropdown id="sortbydropdown" vertical-offset="0">
+                <!--no-auto-focus no-cancel-on-outside-click>-->
+                <ul slot="dropdown-content">
+                  <li>Listed result contact item 1 ...</li>
+                  <li>Listed result contact item 2 ...</li>
+                  <li>Listed result contact item 3 ...</li>
+                </ul>
+              </iron-dropdown>
+            </div>
+            <div id="bulkaction" class="contacts__sort" on-tap="openBulkAction">
+              <span>Bulk Action</span>
+              <iron-icon icon="icons:expand-more"></iron-icon>
+              <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
+                <!--no-auto-focus no-cancel-on-outside-click>-->
+                <ul slot="dropdown-content">
+                  <li>Listed result contact item 1 ...</li>
+                  <li>Listed result contact item 2 ...</li>
+                  <li>Listed result contact item 3 ...</li>
+                </ul>
+              </iron-dropdown>
+            </div>
+            <button class="btn btn--module" on-tap="chooseModule">
+              <iron-icon icon="icons:view-module"></iron-icon>
+            </button>
+            <button class="btn btn--list" on-tap="chooseList">
+              <iron-icon icon="icons:view-list"></iron-icon>
+            </button>
+          </form>
+        </div>
 
         <!--module layout-->
 
-        <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
+        <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
 
-          <!--<div class="contacts__module">-->
-            <!--<div class="contacts__row">-->
-              <!--<div class="contacts__col-module">-->
-                <!--<div class="contacts__module-item">-->
-                  <!--<div class="contacts__module-body">-->
-                    <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;module">-->
-                      <!--<input type="checkbox">-->
-                      <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;module"></span>-->
-                    <!--</label>-->
-                    <!--<a class="contacts__menu" href="#">-->
-                      <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                    <!--</a>-->
-                    <!--<figure class="contacts__photo">-->
-                      <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                    <!--</figure>-->
-                    <!--<button class="btn btn&#45;&#45;charm">-->
-                      <!--<iron-icon icon="icons:find-replace"></iron-icon>-->
-                    <!--</button>-->
-                  <!--</div>-->
-                  <!--<div class="contacts__module-footer">-->
-                    <!--<span class="contacts__name">Mabelle Doe</span>-->
-                    <!--<span class="contacts__desc">Spouse</span>-->
-                    <!--<span class="contacts__module-update">Updated 1d ago</span>-->
-                    <!--<a class="contacts__details" href="#">Details-->
-                      <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                    <!--</a>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="contacts__col-module">-->
-                <!--<div class="contacts__module-item">-->
-                  <!--<div class="contacts__module-body">-->
-                    <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;module">-->
-                      <!--<input type="checkbox">-->
-                      <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;module"></span>-->
-                    <!--</label>-->
-                    <!--<a class="contacts__menu" href="#">-->
-                      <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                    <!--</a>-->
-                    <!--<figure class="contacts__photo">-->
-                      <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                    <!--</figure>-->
-                    <!--<button class="btn btn&#45;&#45;charm">-->
-                      <!--<iron-icon icon="icons:find-replace"></iron-icon>-->
-                    <!--</button>-->
-                  <!--</div>-->
-                  <!--<div class="contacts__module-footer">-->
-                    <!--<span class="contacts__name">Joshua Doe</span>-->
-                    <!--<span class="contacts__desc">Eldest Son</span>-->
-                    <!--<span class="contacts__module-update">Updated 1d ago</span>-->
-                    <!--<a class="contacts__details" href="#">Details-->
-                      <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                    <!--</a>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="contacts__col-module">-->
-                <!--<div class="contacts__module-item">-->
-                  <!--<div class="contacts__module-body">-->
-                    <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;module">-->
-                      <!--<input type="checkbox">-->
-                      <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;module"></span>-->
-                    <!--</label>-->
-                    <!--<a class="contacts__menu" href="#">-->
-                      <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                    <!--</a>-->
-                    <!--<figure class="contacts__photo">-->
-                      <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                    <!--</figure>-->
-                    <!--<button class="btn btn&#45;&#45;charm">-->
-                      <!--<iron-icon icon="icons:find-replace"></iron-icon>-->
-                    <!--</button>-->
-                  <!--</div>-->
-                  <!--<div class="contacts__module-footer">-->
-                    <!--<span class="contacts__name">Hannah Doe</span>-->
-                    <!--<span class="contacts__desc">Eldest Daughter</span>-->
-                    <!--<span class="contacts__module-update">Updated 1d ago</span>-->
-                    <!--<a class="contacts__details" href="#">Details-->
-                      <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                    <!--</a>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="contacts__col-module">-->
-                <!--<div class="contacts__module-item">-->
-                  <!--<div class="contacts__module-body">-->
-                    <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;module">-->
-                      <!--<input type="checkbox">-->
-                      <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;module"></span>-->
-                    <!--</label>-->
-                    <!--<a class="contacts__menu" href="#">-->
-                      <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                    <!--</a>-->
-                    <!--<figure class="contacts__photo">-->
-                      <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                    <!--</figure>-->
-                    <!--<button class="btn btn&#45;&#45;charm">-->
-                      <!--<iron-icon icon="icons:find-replace"></iron-icon>-->
-                    <!--</button>-->
-                  <!--</div>-->
-                  <!--<div class="contacts__module-footer">-->
-                    <!--<span class="contacts__name">Jennifer Doe</span>-->
-                    <!--<span class="contacts__desc">Youngest Daughter</span>-->
-                    <!--<span class="contacts__module-update">Updated 1d ago</span>-->
-                    <!--<a class="contacts__details" href="#">Details-->
-                      <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                    <!--</a>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<a class="contacts__add-contact" href="#">-->
-              <!--<iron-icon icon="icons:account-circle"></iron-icon>-->
-            <!--</a>-->
-          <!--</div>-->
-        <!--</template>-->
+          <div class="contacts__module">
+            <div class="contacts__row">
+              <div class="contacts__col-module">
+                <div class="contacts__module-item">
+                  <div class="contacts__module-body">
+                    <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                    </label>
+                    <a class="contacts__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="contacts__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="contacts__module-footer">
+                    <span class="contacts__name">Mabelle Doe</span>
+                    <span class="contacts__desc">Spouse</span>
+                    <span class="contacts__module-update">Updated 1d ago</span>
+                    <a class="contacts__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="contacts__col-module">
+                <div class="contacts__module-item">
+                  <div class="contacts__module-body">
+                    <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                    </label>
+                    <a class="contacts__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="contacts__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="contacts__module-footer">
+                    <span class="contacts__name">Joshua Doe</span>
+                    <span class="contacts__desc">Eldest Son</span>
+                    <span class="contacts__module-update">Updated 1d ago</span>
+                    <a class="contacts__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="contacts__col-module">
+                <div class="contacts__module-item">
+                  <div class="contacts__module-body">
+                    <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                    </label>
+                    <a class="contacts__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="contacts__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="contacts__module-footer">
+                    <span class="contacts__name">Hannah Doe</span>
+                    <span class="contacts__desc">Eldest Daughter</span>
+                    <span class="contacts__module-update">Updated 1d ago</span>
+                    <a class="contacts__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="contacts__col-module">
+                <div class="contacts__module-item">
+                  <div class="contacts__module-body">
+                    <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                    </label>
+                    <a class="contacts__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                    </a>
+                    <figure class="contacts__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <button class="btn btn--charm">
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                    </button>
+                  </div>
+                  <div class="contacts__module-footer">
+                    <span class="contacts__name">Jennifer Doe</span>
+                    <span class="contacts__desc">Youngest Daughter</span>
+                    <span class="contacts__module-update">Updated 1d ago</span>
+                    <a class="contacts__details" href="#">Details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="contacts__add-contact" href="#">
+              <iron-icon icon="icons:account-circle"></iron-icon>
+            </a>
+          </div>
+        </template>
 
 
         <!--list layout-->
 
-        <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
-          <!--<div class="contacts__module">-->
-            <!--<div class="contacts__module-list-item">-->
-              <!--<div class="contacts__list-left">-->
-                <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;list">-->
-                  <!--<input type="checkbox">-->
-                  <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;list"></span>-->
-                <!--</label>-->
-                <!--<figure class="contacts__photo contacts__photo&#45;&#45;list">-->
-                  <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                <!--</figure>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-center">-->
-                <!--<span class="contacts__name-desc">Mabelle Doe | Spouse</span>-->
-                <!--<span class="contacts__list-update">Updated 1d ago</span>-->
-                <!--<a class="contacts__details contacts__details&#45;&#45;list" href="#">Show Details-->
-                  <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-right">-->
-                <!--<a class="contacts__menu" href="#">-->
-                  <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="contacts__module-list-item">-->
-              <!--<div class="contacts__list-left">-->
-                <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;list">-->
-                  <!--<input type="checkbox">-->
-                  <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;list"></span>-->
-                <!--</label>-->
-                <!--<figure class="contacts__photo contacts__photo&#45;&#45;list">-->
-                  <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                <!--</figure>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-center">-->
-                <!--<span class="contacts__name-desc">Joshua Doe | Eldest Son</span>-->
-                <!--<span class="contacts__list-update">Updated 1d ago</span>-->
-                <!--<a class="contacts__details contacts__details&#45;&#45;list" href="#">Show Details-->
-                  <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-right">-->
-                <!--<a class="contacts__menu" href="#">-->
-                  <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="contacts__module-list-item">-->
-              <!--<div class="contacts__list-left">-->
-                <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;list">-->
-                  <!--<input type="checkbox">-->
-                  <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;list"></span>-->
-                <!--</label>-->
-                <!--<figure class="contacts__photo contacts__photo&#45;&#45;list">-->
-                  <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                <!--</figure>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-center">-->
-                <!--<span class="contacts__name-desc">Hannah Doe | Eldest Daughter</span>-->
-                <!--<span class="contacts__list-update">Updated 1d ago</span>-->
-                <!--<a class="contacts__details contacts__details&#45;&#45;list" href="#">Show Details-->
-                  <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-right">-->
-                <!--<a class="contacts__menu" href="#">-->
-                  <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="contacts__module-list-item">-->
-              <!--<div class="contacts__list-left">-->
-                <!--<label class="contacts__checkbox-container contacts__checkbox-container&#45;&#45;list">-->
-                  <!--<input type="checkbox">-->
-                  <!--<span class="contacts__content-checkmark contacts__content-checkmark&#45;&#45;list"></span>-->
-                <!--</label>-->
-                <!--<figure class="contacts__photo contacts__photo&#45;&#45;list">-->
-                  <!--<img src="https://dummyimage.com/60x60/000/fff" alt="contact">-->
-                <!--</figure>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-center">-->
-                <!--<span class="contacts__name-desc">Jennifer Doe | Youngest Daughter</span>-->
-                <!--<span class="contacts__list-update">Updated 1d ago</span>-->
-                <!--<a class="contacts__details contacts__details&#45;&#45;list" href="#">Show Details-->
-                  <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-              <!--<div class="contacts__list-right">-->
-                <!--<a class="contacts__menu" href="#">-->
-                  <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-                <!--</a>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<a class="contacts__add-contact" href="#">-->
-              <!--<iron-icon icon="icons:account-circle"></iron-icon>-->
-            <!--</a>-->
-          <!--</div>-->
-        <!--</template>-->
-
+        <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
+          <div class="contacts__module">
+            <div class="contacts__module-list-item">
+              <div class="contacts__list-left">
+                <label class="contacts__checkbox-container contacts__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
+                </label>
+                <figure class="contacts__photo contacts__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="contacts__list-center">
+                <span class="contacts__name-desc">Mabelle Doe | Spouse</span>
+                <span class="contacts__list-update">Updated 1d ago</span>
+                <a class="contacts__details contacts__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="contacts__list-right">
+                <a class="contacts__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="contacts__module-list-item">
+              <div class="contacts__list-left">
+                <label class="contacts__checkbox-container contacts__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
+                </label>
+                <figure class="contacts__photo contacts__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="contacts__list-center">
+                <span class="contacts__name-desc">Joshua Doe | Eldest Son</span>
+                <span class="contacts__list-update">Updated 1d ago</span>
+                <a class="contacts__details contacts__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="contacts__list-right">
+                <a class="contacts__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="contacts__module-list-item">
+              <div class="contacts__list-left">
+                <label class="contacts__checkbox-container contacts__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
+                </label>
+                <figure class="contacts__photo contacts__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="contacts__list-center">
+                <span class="contacts__name-desc">Hannah Doe | Eldest Daughter</span>
+                <span class="contacts__list-update">Updated 1d ago</span>
+                <a class="contacts__details contacts__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="contacts__list-right">
+                <a class="contacts__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <div class="contacts__module-list-item">
+              <div class="contacts__list-left">
+                <label class="contacts__checkbox-container contacts__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
+                </label>
+                <figure class="contacts__photo contacts__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+              <div class="contacts__list-center">
+                <span class="contacts__name-desc">Jennifer Doe | Youngest Daughter</span>
+                <span class="contacts__list-update">Updated 1d ago</span>
+                <a class="contacts__details contacts__details--list" href="#">Show Details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
+                </a>
+              </div>
+              <div class="contacts__list-right">
+                <a class="contacts__menu" href="#">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                </a>
+              </div>
+            </div>
+            <a class="contacts__add-contact" href="#">
+              <iron-icon icon="icons:account-circle"></iron-icon>
+            </a>
+          </div>
+        </template>
+        <div class="overlay"></div>
+        <div class="drap-drop">
+          <iron-icon icon="icons:file-upload"></iron-icon>
+          <p>or drag and drop your screens anywhere</p>
+        </div>
+        <div class="files">
+            <div class="files__item files__item--extra files__item--border-hide">
+              <iron-icon class="files__icon" icon="icons:find-replace"></iron-icon>
+              <b class="files__title">USE TEMPLATE</b>
+              <p class="files__desc">form SmartGuide selection</p>
+            </div>
+            <div class="files__item files__item--extra">
+              <iron-icon class="files__icon" icon="icons:description"></iron-icon>
+              <b class="files__title">UPLOAD FILES</b>
+              <p class="files__desc">png, jpg, doc or PDF</p>
+            </div>
+          <div class="files__item">
+            <iron-icon class="files__icon files__icon--close" icon="icons:cancel"></iron-icon>
+          </div>
+        </div>
       </section>
+
+
     </main>
 
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class MyNetlawContacts extends Polymer.Element {
+      class MyNetlawContacts3 extends Polymer.Element {
           static get is() {
-              return 'my-netlaw-contacts';
+              return 'netlaw-contacts3';
           }
 
           static get properties() {
@@ -1159,6 +1262,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(MyNetlawContacts.is, MyNetlawContacts);
+      customElements.define(MyNetlawContacts3.is, MyNetlawContacts3);
   </script>
 </dom-module>

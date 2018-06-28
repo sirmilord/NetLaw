@@ -23,30 +23,20 @@
 <link rel="import" href="netlaw-user.html">
 <link rel="import" href="perfect-scrollbar-styles.html">
 
-<link rel="lazy-import" href="my-netlaw-smartguide1.html">
-<link rel="lazy-import" href="my-netlaw-smartguide2.html">
-<link rel="lazy-import" href="my-netlaw-smartguide3.html">
-<link rel="lazy-import" href="my-netlaw-smartguide4.html">
-<link rel="lazy-import" href="my-netlaw-lifevault.html">
-<link rel="lazy-import" href="my-netlaw-lifevault2.html">
-<link rel="lazy-import" href="my-netlaw-lifevault3.html">
-<link rel="lazy-import" href="my-netlaw-login.html">
-<link rel="lazy-import" href="my-netlaw-password-new.html">
-<link rel="lazy-import" href="my-netlaw-password-reset.html">
-<link rel="lazy-import" href="my-netlaw-password-reset-confirmation.html">
-<link rel="lazy-import" href="my-netlaw-contacts.html">
-<link rel="lazy-import" href="my-netlaw-contacts2.html">
-<link rel="lazy-import" href="my-netlaw-contacts3.html">
-<link rel="lazy-import" href="my-netlaw-add-module.html">
-<link rel="lazy-import" href="my-netlaw-profile.html">
-<link rel="lazy-import" href="my-netlaw-profile2.html">
-<link rel="lazy-import" href="my-netlaw-account.html">
-<link rel="lazy-import" href="my-netlaw-account2.html">
-<link rel="lazy-import" href="my-netlaw-account3.html">
-<link rel="lazy-import" href="my-netlaw-initial-screen.html">
-<link rel="lazy-import" href="my-view404.html">
+<link rel="lazy-import" href="netlaw-smartguide.html">
+<link rel="lazy-import" href="netlaw-lifevault.html">
+<link rel="lazy-import" href="netlaw-login.html">
+<link rel="lazy-import" href="netlaw-password-new.html">
+<link rel="lazy-import" href="netlaw-password-reset.html">
+<link rel="lazy-import" href="netlaw-password-reset-confirmation.html">
+<link rel="lazy-import" href="netlaw-contacts.html">
+<link rel="lazy-import" href="netlaw-add-module.html">
+<link rel="lazy-import" href="netlaw-profile.html">
+<link rel="lazy-import" href="netlaw-account.html">
+<link rel="lazy-import" href="netlaw-initial-screen.html">
+<link rel="lazy-import" href="view-404.html">
 
-<dom-module id="my-netlaw">
+<dom-module id="netlaw-app">
   <template>
     <style>
       :host {
@@ -167,7 +157,6 @@
 
       <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
         <app-toolbar class="navbar">
-          <!--<paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>-->
           <netlaw-logo></netlaw-logo>
           <netlaw-search></netlaw-search>
           <netlaw-notification></netlaw-notification>
@@ -181,59 +170,35 @@
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
 
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
-
-            <a name="netlaw-smartguide" href="[[rootPath]]netlaw-smartguide/netlaw-smartguide1">
+            <a name="smartguide" href="[[rootPath]]smartguide">
               <iron-icon src="./images/icons/wand_icon.svg" slot="item-icon"></iron-icon> SmartGuide
             </a>
-            <a name="netlaw-lifevault" href="[[rootPath]]netlaw-lifevault">
+            <a name="lifevault" href="[[rootPath]]lifevault">
               <iron-icon src="./images/icons/vault_icon.svg" slot="item-icon"></iron-icon> LifeVault
             </a>
-            <!--<a name="netlaw-contacts" href="[[rootPath]]netlaw-contacts">Contacts</a>-->
-            <a name="netlaw-contacts2" href="[[rootPath]]netlaw-contacts2">
+            <a name="contacts" href="[[rootPath]]contacts">
               <iron-icon src="./images/icons/contacts_icon.svg" slot="item-icon"></iron-icon> Contacts
             </a>
-            <a name="netlaw-contacts" href="[[rootPath]]netlaw-contacts">
+            <a name="attorney" href="[[rootPath]]attorney">
               <iron-icon src="./images/icons/search_attorney_icon.svg" slot="item-icon"></iron-icon> Find Attorney
             </a>
-            <!--<a name="netlaw-contacts3" href="[[rootPath]]netlaw-contacts3">Contacts3</a>-->
-            <a name="netlaw-add-module" href="[[rootPath]]netlaw-add-module">
+            <a name="add-module" href="[[rootPath]]add-module">
               <iron-icon src="./images/icons/add_module_icon.svg" slot="item-icon"></iron-icon> Add Module
             </a>
-            <!--<a name="netlaw-login" href="[[rootPath]]netlaw-login">Login</a>-->
-            <!--<a name="netlaw-password-new" href="[[rootPath]]netlaw-password-new">Paasword New</a>-->
-            <!--<a name="netlaw-password-reset" href="[[rootPath]]netlaw-password-reset">Paasword Retrieval</a>-->
-            <!--<a name="netlaw-password-reset-confirmation" href="[[rootPath]]netlaw-password-reset-confirmation">Paasword
-              Retrieval Confirmation</a>-->
           </iron-selector>
         </app-drawer>
         <!--<app-toolbar>-->
         <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
         <!--</app-toolbar>-->
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <my-netlaw-smartguide name="netlaw-smartguide"></my-netlaw-smartguide>
-          <my-netlaw-smartguide1 name="netlaw-smartguide1"></my-netlaw-smartguide1>
-          <my-netlaw-smartguide2 name="netlaw-smartguide2"></my-netlaw-smartguide2>
-          <my-netlaw-smartguide3 name="netlaw-smartguide3"></my-netlaw-smartguide3>
-          <my-netlaw-smartguide4 name="netlaw-smartguide4"></my-netlaw-smartguide4>
-          <my-netlaw-lifevault name="netlaw-lifevault"></my-netlaw-lifevault>
-          <my-netlaw-lifevault2 name="netlaw-lifevault2"></my-netlaw-lifevault2>
-          <my-netlaw-lifevault3 name="netlaw-lifevault3"></my-netlaw-lifevault3>
-          <my-netlaw-contacts name="netlaw-contacts"></my-netlaw-contacts>
-          <my-netlaw-contacts2 name="netlaw-contacts2"></my-netlaw-contacts2>
-          <my-netlaw-contacts3 name="netlaw-contacts3"></my-netlaw-contacts3>
-          <my-netlaw-add-module name="netlaw-add-module"></my-netlaw-add-module>
-          <my-netlaw-profile name="netlaw-profile"></my-netlaw-profile>
-          <my-netlaw-profile2 name="netlaw-profile2"></my-netlaw-profile2>
-          <my-netlaw-account name="netlaw-account"></my-netlaw-account>
-          <my-netlaw-account2 name="netlaw-account2"></my-netlaw-account2>
-          <my-netlaw-account3 name="netlaw-account3"></my-netlaw-account3>
-          <my-netlaw-initial-screen name="netlaw-initial-screen"></my-netlaw-initial-screen>
-          <my-netlaw-login name="netlaw-login"></my-netlaw-login>
-          <my-netlaw-password-new name="netlaw-password-new"></my-netlaw-password-new>
-          <my-netlaw-password-reset name="netlaw-password-reset"></my-netlaw-password-reset>
-          <my-netlaw-password-reset-confirmation
-              name="netlaw-password-reset-confirmation"></my-netlaw-password-reset-confirmation>
-          <my-view404 name="view404"></my-view404>
+        <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
+          <netlaw-smartguide name="smartguide"></netlaw-smartguide>
+          <netlaw-lifevault name="lifevault"></netlaw-lifevault>
+          <netlaw-contacts name="contacts"></netlaw-contacts>
+          <netlaw-add-module name="add-module"></netlaw-add-module>
+          <netlaw-profile name="profile"></netlaw-profile>
+          <netlaw-account name="account"></netlaw-account>
+          <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+          <view-404 name="view-404"></view-404>
         </iron-pages>
       </app-drawer-layout>
     </app-header-layout>
@@ -245,9 +210,9 @@
       // preventable, allowing for better scrolling performance.
       Polymer.setPassiveTouchGestures(true);
 
-      class MyNetlaw extends Polymer.Element {
+      class NetlawApp extends Polymer.Element {
           static get is() {
-              return 'my-netlaw';
+              return 'netlaw-app';
           }
 
           static get properties() {
@@ -313,7 +278,7 @@
           _routePageChanged(page) {
               // If no page was found in the route data, page will be an empty string.
               // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
-              this.page = page || 'netlaw-initial-screen';
+              this.page = page || 'initial-screen';
 
               // Close a non-persistent drawer when the page & route are changed.
               if (!this.$.drawer.persistent) {
@@ -323,7 +288,7 @@
 
           _pageChanged(page) {
               // Load page import on demand. Show 404 page if fails
-              const resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+              const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
               Polymer.importHref(
                   resolvedPageUrl,
                   null,
@@ -332,10 +297,10 @@
           }
 
           _showPage404() {
-              this.page = 'view404';
+              this.page = '404';
           }
       }
 
-      window.customElements.define(MyNetlaw.is, MyNetlaw);
+      window.customElements.define(NetlawApp.is, NetlawApp);
   </script>
 </dom-module>

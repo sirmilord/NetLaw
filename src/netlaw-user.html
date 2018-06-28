@@ -12,7 +12,7 @@
       :host {
       }
 
-      #contentContainer.style-scope.app-header app-toolbar.navbar.style-scope.my-netlaw netlaw-user.style-scope.my-netlaw a.style-scope.netlaw-user iron-icon.style-scope.netlaw-user,
+      #contentContainer.style-scope.app-header app-toolbar.navbar.style-scope.netlaw-app netlaw-user.style-scope.netlaw-app a.style-scope.netlaw-user iron-icon.style-scope.netlaw-user,
 
       .netlaw-user iron-icon {
         --iron-icon-width: 45px;
@@ -51,7 +51,7 @@
       }
 
       li {
-        padding: .2em 3em .2em .5em;
+        padding: .2em 2em .2em .3em;
       }
 
       li span {
@@ -83,13 +83,13 @@
       Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
-    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" no-auto-focus no-cancel-on-outside-click>
+    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" no-auto-focus>
         <ul class="profile" slot="dropdown-content">
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">Account Settings</a></li>
-          <li><a href="#">Refer a Friend</a></li>
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><a name="profile" href="[[rootPath]]profile">My Profile</a></li>
+          <li><a name="account" href="[[rootPath]]account">Account Settings</a></li>
+          <li><a name="password-new" href="[[rootPath]]password-new">Refer a Friend</a></li>
+          <li><a name="password-reset" href="[[rootPath]]password-reset">Help</a></li>
+          <li><a name="login" href="[[rootPath]]login">Log Out</a></li>
         </ul>
     </iron-dropdown>
 
