@@ -13,6 +13,7 @@
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 
 <link rel="import" href="netlaw-icons.html">
@@ -154,7 +155,7 @@
 
     <app-route
         route="{{route}}"
-        pattern="[[rootPath]]:page"
+        pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}">
     </app-route>

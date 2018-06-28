@@ -707,18 +707,18 @@
             route="{{route}}">
     </app-location>
 
+    <app-location route="{{route}}"></app-location>
     <app-route
             route="{{route}}"
-            pattern="/:page/:page"
+            pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}">
     </app-route>
-
-    <!--<app-route-->
-            <!--route = "{{subroute}}"-->
-            <!--pattern = "/:page"-->
-            <!--data = "{{subrouteData}}">-->
-    <!--</app-route>-->
+    <app-route
+            route="{{subroute}}"
+            pattern="/:id"
+            data="{{subrouteData}}">
+    </app-route>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -734,7 +734,7 @@
             </a>
           </li>
           <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="netlaw-smartguide/netlaw-smartguide4" class="smartguide__list-link">
+            <a href="netlaw-smartguide/netlaw-smartguide3" class="smartguide__list-link">
               <!-- todo: replace icons  -->
               <iron-icon icon="icons:line-style"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Templates</span>
