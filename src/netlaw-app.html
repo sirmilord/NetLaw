@@ -23,21 +23,24 @@
 <link rel="import" href="netlaw-user.html">
 <link rel="import" href="perfect-scrollbar-styles.html">
 
-<link rel="lazy-import" href="netlaw-smartguide.html">
-<link rel="lazy-import" href="netlaw-lifevault.html">
 <link rel="lazy-import" href="netlaw-login.html">
 <link rel="lazy-import" href="netlaw-password-new.html">
 <link rel="lazy-import" href="netlaw-password-reset.html">
 <link rel="lazy-import" href="netlaw-password-reset-confirmation.html">
+<link rel="lazy-import" href="netlaw-smartguide.html">
+<link rel="lazy-import" href="netlaw-lifevault.html">
 <link rel="lazy-import" href="netlaw-contacts.html">
+<link rel="lazy-import" href="netlaw-attorney.html">
 <link rel="lazy-import" href="netlaw-add-module.html">
+
 <link rel="lazy-import" href="netlaw-profile.html">
 <link rel="lazy-import" href="netlaw-account.html">
 <link rel="lazy-import" href="netlaw-initial-screen.html">
-<link rel="lazy-import" href="view-404.html">
+<link rel="lazy-import" href="netlaw-view-404.html">
 
 <dom-module id="netlaw-app">
   <template>
+    <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
     <style>
       :host {
         --app-header-color: #666;
@@ -138,70 +141,71 @@
 
     </style>
 
-    <app-location
-        route="{{route}}"
-        url-space-regex="^[[rootPath]]">
-    </app-location>
+    <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}">
-    </app-route>
+    <template is="dom-if" if="[[!loggedIn]]">
+      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
+    </template>
 
-    <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
+    <template is="dom-if" if="[[loggedIn]]">
 
-    <!-- Main content -->
-    <app-header-layout fullbleed="" narrow="{{narrow}}">
+      <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
 
-      <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
-        <app-toolbar class="navbar">
-          <netlaw-logo></netlaw-logo>
-          <netlaw-search></netlaw-search>
-          <netlaw-notification></netlaw-notification>
-          <netlaw-user></netlaw-user>
+      <!-- Main content -->
+      <app-header-layout fullbleed="" narrow="{{narrow}}">
 
-        </app-toolbar>
-      </app-header>
+        <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+          <app-toolbar class="navbar">
+            <netlaw-logo></netlaw-logo>
+            <netlaw-search></netlaw-search>
+            <netlaw-notification></netlaw-notification>
+            <netlaw-user></netlaw-user>
 
-      <app-drawer-layout responsive-width="600px">
-        <!-- Drawer content -->
-        <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+          </app-toolbar>
+        </app-header>
 
-          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
-            <a name="smartguide" href="[[rootPath]]smartguide">
-              <iron-icon src="./images/icons/wand_icon.svg" slot="item-icon"></iron-icon> SmartGuide
-            </a>
-            <a name="lifevault" href="[[rootPath]]lifevault">
-              <iron-icon src="./images/icons/vault_icon.svg" slot="item-icon"></iron-icon> LifeVault
-            </a>
-            <a name="contacts" href="[[rootPath]]contacts">
-              <iron-icon src="./images/icons/contacts_icon.svg" slot="item-icon"></iron-icon> Contacts
-            </a>
-            <a name="attorney" href="[[rootPath]]attorney">
-              <iron-icon src="./images/icons/search_attorney_icon.svg" slot="item-icon"></iron-icon> Find Attorney
-            </a>
-            <a name="add-module" href="[[rootPath]]add-module">
-              <iron-icon src="./images/icons/add_module_icon.svg" slot="item-icon"></iron-icon> Add Module
-            </a>
-          </iron-selector>
-        </app-drawer>
-        <!--<app-toolbar>-->
-        <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
-        <!--</app-toolbar>-->
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
-          <netlaw-smartguide name="smartguide"></netlaw-smartguide>
-          <netlaw-lifevault name="lifevault"></netlaw-lifevault>
-          <netlaw-contacts name="contacts"></netlaw-contacts>
-          <netlaw-add-module name="add-module"></netlaw-add-module>
-          <netlaw-profile name="profile"></netlaw-profile>
-          <netlaw-account name="account"></netlaw-account>
-          <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
-          <view-404 name="view-404"></view-404>
-        </iron-pages>
-      </app-drawer-layout>
-    </app-header-layout>
+        <app-drawer-layout responsive-width="600px">
+          <!-- Drawer content -->
+          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
+              <a name="smartguide" href="[[rootPath]]smartguide">
+                <iron-icon src="./images/icons/wand_icon.svg" slot="item-icon"></iron-icon> SmartGuide
+              </a>
+              <a name="lifevault" href="[[rootPath]]lifevault">
+                <iron-icon src="./images/icons/vault_icon.svg" slot="item-icon"></iron-icon> LifeVault
+              </a>
+              <a name="contacts" href="[[rootPath]]contacts">
+                <iron-icon src="./images/icons/contacts_icon.svg" slot="item-icon"></iron-icon> Contacts
+              </a>
+              <a name="attorney" href="[[rootPath]]attorney">
+                <iron-icon src="./images/icons/search_attorney_icon.svg" slot="item-icon"></iron-icon> Find Attorney
+              </a>
+              <a name="add-module" href="[[rootPath]]add-module">
+                <iron-icon src="./images/icons/add_module_icon.svg" slot="item-icon"></iron-icon> Add Module
+              </a>
+            </iron-selector>
+          </app-drawer>
+          <!--<app-toolbar>-->
+          <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
+          <!--</app-toolbar>-->
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
+            <netlaw-smartguide name="smartguide"></netlaw-smartguide>
+            <netlaw-lifevault name="lifevault"></netlaw-lifevault>
+            <netlaw-contacts name="contacts"></netlaw-contacts>
+            <netlaw-attorney name="attorney"></netlaw-attorney>
+            <netlaw-add-module name="add-module"></netlaw-add-module>
+            <netlaw-profile name="profile"></netlaw-profile>
+            <netlaw-account name="account"></netlaw-account>
+            <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+            <view-404 name="view-404"></view-404>
+          </iron-pages>
+        </app-drawer-layout>
+      </app-header-layout>
+
+    </template>
+
 
   </template>
 
@@ -218,21 +222,19 @@
           static get properties() {
               return {
                   loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
-
+                  rootPath: String,
+                  route: { type: Object },
+                  routeData: { type: Object, observer: '_routeDataObserver' },
+                  subroute: Object,
+                  active: String,
                   page: {
                       type: String,
                       reflectToAttribute: true,
                       observer: '_pageChanged',
                   },
 
-                  subroute: Object,
                   // This shouldn't be neccessary, but the Analyzer isn't picking up
                   // Polymer.Element#rootPath
-                  rootPath: String,
-                  route: { type: Object },
-                  routeData: { type: Object, observer: '_routeDataObserver' },
-
-                  active: String,
               };
           }
 
@@ -241,14 +243,6 @@
           }
 
           _routeDataObserver(value) { this.active = value.id || null; }
-
-          typeToIcon(type) {
-              switch (type) {
-                  case "client": return "people";
-                  case "attorney": return "work";
-                  default: return "";
-              }
-          }
 
           isSubpathSelected(path, subpath, levels) { return this.isSubpath(path, subpath, levels) ? "iron-selected" : null; }
 
@@ -267,8 +261,6 @@
           isTrue(value) { return !!value; }
           isFalse(value) { return !value; }
 
-
-
           static get observers() {
               return [
                   '_routePageChanged(routeData.page)',
@@ -281,9 +273,9 @@
               this.page = page || 'initial-screen';
 
               // Close a non-persistent drawer when the page & route are changed.
-              if (!this.$.drawer.persistent) {
+              /*if (!this.$.drawer.persistent) {
                   this.$.drawer.close();
-              }
+              }*/
           }
 
           _pageChanged(page) {
@@ -297,7 +289,7 @@
           }
 
           _showPage404() {
-              this.page = '404';
+              this.page = 'view-404';
           }
       }
 
