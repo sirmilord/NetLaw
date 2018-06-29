@@ -29,11 +29,14 @@
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="ap-icons.html">
 <link rel="import" href="ap-login.html">
+<link rel="import" href="nlp-draft-myprofile.html">
 <link rel="import" href="ap-home.html">
+<link rel="import" href="ap-resources.html">
 <link rel="import" href="ap-clients.html">
 <link rel="import" href="ap-attorneys.html">
 
-<script type="module" src="api.js"></script>
+<script type="module" src="nlp-draft-api.js">
+</script>
 
 <dom-module id="ap-app">
     <template>
@@ -41,39 +44,43 @@
         <style include="shared-styles">
 
             :host {
-                --color-green:#01aa50;
-                --color-blue:#5bc9dd;
-                --app-primary-color:var(--color-green);
+                --color-green-old: #01aa50;
+                --color-green: #48b519; /*#56c626;*/
+                --color-blue: #5bc9dd;
+                --app-primary-color: var(--color-green);
                 /*--app-primary-color: #56c626;*/
                 --app-secondary-color: black;
                 display: block;
                 /* this should only apply if app drawer subdrawer is visible */
-                --app-drawer-width:256px;
-                min-height:100vh;
+                --app-drawer-width: 256px;
+                min-height: 100vh;
             }
+
             iron-pages {
                 background: #eee;
-                min-height:calc(100vh - 64px);
+                min-height: calc(100vh - 64px);
             }
+
             .drawer-primary {
-                width:var(--app-drawer-width);
+                width: var(--app-drawer-width);
             }
 
             .drawer-list > a iron-icon {
-                vertical-align:-12%;
+                vertical-align: -12%;
             }
 
             app-header-layout {
                 position: static; /* this fixes iron-pages visibility, fix this */
                 /*min-height:calc(100vh - 64px);*/
             }
+
             app-drawer-layout {
                 /*margin-top:64px;*/
             }
 
-            app-drawer-layout:not([narrow]) [drawer-toggle] {
-                display: none;
-            }
+                app-drawer-layout:not([narrow]) [drawer-toggle] {
+                    display: none;
+                }
 
             app-header {
                 background: #fff;
@@ -117,8 +124,8 @@
             /* drawer - secondary */
             .user-logged-in {
                 font-size: 15px;
-                width:100%;
-                position:relative;
+                width: 100%;
+                position: relative;
             }
 
             .recently-viewed ul, .recently-viewed iron-selector {
@@ -145,12 +152,8 @@
             }
 
             .bell {
-                color:#414141;
-                cursor:pointer;
-            }
-
-            .welcome .user-menu {
-                outline:1px solid red;
+                color: #414141;
+                cursor: pointer;
             }
         </style>
 
@@ -184,18 +187,15 @@
                                     <div class="user-logged-in">
                                         <img class="avatar" src="/images/profile-pictures/user-profile-50x50.jpg" alt="">
                                         <div class="welcome">
-                                            <!--span class="user-menu-trigger">Welcome back, <b>Kyle L.</b></span>
-                                            <div class="user-menu">
-                                                asdf
-                                            </div-->
-                                            <paper-menu-button class="user-menu" horizontal-offset="-16" vertical-offset="30" no-animations>
-                                                <span class="user-menu-trigger" slot="dropdown-trigger">Welcome back, <b>Kyle L.</b> <iron-icon icon="ap-icons:arrow-drop-down"></iron-icon></span>
-                                                <div class="user-menu-content" slot="dropdown-content" style="width:256px;">
-                                                    <span>asd</span>
-                                                    <span>asd</span>
-                                                    <span>asd</span>
-                                                    <span>asd</span>
-                                                </div>
+                                            <paper-menu-button class="user-menu" horizontal-offset="-16" vertical-offset="30" open-animation-config="{{openAnimationConfig}}">
+                                                <span class="user-menu-trigger" slot="dropdown-trigger">Welcome back, <b>Kyle</b><iron-icon icon="ap-icons:arrow-drop-down" class="user-menu-icon"></iron-icon></span>
+                                                <iron-selector class="user-menu-content" slot="dropdown-content" style="display:block;width:256px;">
+                                                    <a href="[[rootPath]]myprofile" class$="{{isSubpathSelected(route.path, 'myprofile', 1)}}">My Profile</a>
+                                                    <a>My Account</a>
+                                                    <a>Support</a>
+                                                    <!--hr /-->
+                                                    <a class="logout" href="javascript:;" on-click="onSignOutClick">Sign out</a>
+                                                </iron-selector>
                                             </paper-menu-button>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@
                                 <iron-selector class="drawer-list" role="navigation">
                                     <a name="clients" href="[[rootPath]]clients" class$="{{isSubpathSelected(route.path, 'clients', 1)}}"><iron-icon icon="ap-icons:people" slot="item-icon"></iron-icon> Clients</a>
                                     <a name="attorneys" href="[[rootPath]]attorneys" class$="{{isSubpathSelected(route.path, 'attorneys', 1)}}"><iron-icon icon="ap-icons:work" slot="item-icon"></iron-icon> My Firm</a>
-                                    <a name="resources" href="/"><iron-icon icon="ap-icons:dashboard" slot="item-icon"></iron-icon> Resources</a>
+                                    <a name="resources" href="[[rootPath]]resources" class$="{{isSubpathSelected(route.path, 'resources', 1)}}"><iron-icon icon="ap-icons:dashboard" slot="item-icon"></iron-icon> Resources</a>
                                     <hr>
                                     <div class="recently-viewed">
                                         <a href="javascript:;"><iron-icon icon="ap-icons:star" slot="item-icon"></iron-icon> Recently Viewed</a>
@@ -219,7 +219,9 @@
                     </app-drawer>
 
                     <iron-pages class="main-content" selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="home">
+                        <nlp-draft-myprofile name="myprofile"></nlp-draft-myprofile>
                         <ap-home name="home"></ap-home>
+                        <ap-resources name="resources"></ap-resources>
                         <ap-clients name="clients" route="[[subroute]]"></ap-clients>
                         <ap-attorneys name="attorneys" route="[[subroute]]"></ap-attorneys>
                     </iron-pages>
@@ -256,11 +258,40 @@
                             { type: "attorney", href: "attorneys/f022555b-aeb2-418d-a405-cfbf21b481ba", text: "Jaco Postorius" },
                         ],
                     },
+                    openAnimationConfig: {
+                        type: Object,
+                        value: function () {
+                            return [
+                                { name: 'fade-in-animation', timing: { delay: 100, duration: 200 } },
+                                {
+                                    name: 'paper-menu-grow-height-animation',
+                                    timing: {
+                                        delay: 100,
+                                        duration: 275,
+                                        easing: 'cubic-bezier(.3,.95,.5,1)'
+                                    }
+                                }
+                            ];
+                        }
+                    },
                 };
             }
 
+            constructor() {
+                super();
+                window.navigate = path => {
+                    window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
+                    window.dispatchEvent(new CustomEvent('location-changed'));
+                };
+            }
+
+
             onLoggedIn(e) {
                 this.loggedIn = true;
+            }
+
+            onSignOutClick(e) {
+                this.loggedIn = false;
             }
 
             _routeDataObserver(value) { this.active = value.id || null; }

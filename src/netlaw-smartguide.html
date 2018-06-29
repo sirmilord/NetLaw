@@ -703,16 +703,8 @@
       }
 
     </style>
-    <app-location
-            route="{{route}}">
-    </app-location>
 
-    <app-route
-            route="{{route}}"
-            pattern="/:page"
-            data="{{routeData}}"
-            tail="{{subroute}}">
-    </app-route>
+    <app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -779,7 +771,7 @@
         _routePageChanged(page) {
             // If no page was found in the route data, page will be an empty string.
             // Default to 'view1' in that case.
-            this.page = page || 'netlaw-smartguide1';
+            /*this.page = page || 'netlaw-smartguide1';*/
 
             // Close a non-persistent drawer when the page & route are changed.
             // if (!this.$.drawer.persistent) {

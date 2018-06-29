@@ -27,6 +27,7 @@
 <link rel="lazy-import" href="netlaw-password-new.html">
 <link rel="lazy-import" href="netlaw-password-reset.html">
 <link rel="lazy-import" href="netlaw-password-reset-confirmation.html">
+
 <link rel="lazy-import" href="netlaw-smartguide.html">
 <link rel="lazy-import" href="netlaw-lifevault.html">
 <link rel="lazy-import" href="netlaw-contacts.html">
@@ -221,7 +222,8 @@
 
           static get properties() {
               return {
-                  loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
+                  /*loggedIn: { type: Boolean, value: () => location.pathname !== "/" },*/
+                  loggedIn: { type: Boolean, value: false },
                   rootPath: String,
                   route: { type: Object },
                   routeData: { type: Object, observer: '_routeDataObserver' },
