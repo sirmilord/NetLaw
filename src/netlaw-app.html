@@ -207,7 +207,6 @@
 
     </template>
 
-
   </template>
 
   <script>
@@ -222,8 +221,8 @@
 
           static get properties() {
               return {
-                  /*loggedIn: { type: Boolean, value: () => location.pathname !== "/" },*/
-                  loggedIn: { type: Boolean, value: false },
+                  loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
+                  /*loggedIn: { type: Boolean, value: false },*/
                   rootPath: String,
                   route: { type: Object },
                   routeData: { type: Object, observer: '_routeDataObserver' },
@@ -272,7 +271,7 @@
           _routePageChanged(page) {
               // If no page was found in the route data, page will be an empty string.
               // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
-              this.page = page || 'initial-screen';
+              this.page = page || 'login';
 
               // Close a non-persistent drawer when the page & route are changed.
               /*if (!this.$.drawer.persistent) {
