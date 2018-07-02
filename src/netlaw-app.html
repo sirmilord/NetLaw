@@ -136,7 +136,6 @@
         background-size: contain;
         vertical-align: middle;
       }
-
       .drawer-nav a iron-icon { opacity: 0.5; }
       .drawer-nav a.iron-selected iron-icon { opacity: 1; }
 
@@ -162,7 +161,6 @@
             <netlaw-search></netlaw-search>
             <netlaw-notification></netlaw-notification>
             <netlaw-user></netlaw-user>
-
           </app-toolbar>
         </app-header>
 
@@ -204,7 +202,6 @@
           </iron-pages>
         </app-drawer-layout>
       </app-header-layout>
-
     </template>
 
   </template>
@@ -222,7 +219,6 @@
           static get properties() {
               return {
                   loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
-                  /*loggedIn: { type: Boolean, value: false },*/
                   rootPath: String,
                   route: { type: Object },
                   routeData: { type: Object, observer: '_routeDataObserver' },
@@ -233,9 +229,6 @@
                       reflectToAttribute: true,
                       observer: '_pageChanged',
                   },
-
-                  // This shouldn't be neccessary, but the Analyzer isn't picking up
-                  // Polymer.Element#rootPath
               };
           }
 

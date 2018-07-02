@@ -1,6 +1,11 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="netlaw-icons.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="netlaw-login">
@@ -8,6 +13,7 @@
   <template>
     <style include="shared-styles">
       :host {
+        --iron-icon-fill-color: #ffffff;
       }
       .uk-container.netlaw-login {
         background-image: url("../images/LgLogin_BG.png");
@@ -17,13 +23,42 @@
         min-height: 786px;
       }
 
+      .login-buttons {
+        max-width: 285px;
+        margin: 80px auto 0;
+        display: flex;
+        justify-content: center;
+      }
+      .login-buttons paper-icon-button {
+        width: 25%;
+        height: 45px;
+      }
+      .login-buttons paper-icon-button:first-child {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+      .login-buttons paper-icon-button:last-child {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      .login-buttons paper-icon-button[name="googleplus"] {
+        background: #FF3624;
+      }
+      .login-buttons paper-icon-button[name="facebook"] {
+        background: #024DAF;
+      }
+      .login-buttons paper-icon-button[name="linkedin"] {
+        background: #0178BD;
+      }
+      .login-buttons paper-icon-button[name="twitter"] {
+        background: #01B8EC;
+      }
 
     </style>
-    <!--<app-header-layout has-scrolling-region="" fullbleed="" narrow="{{narrow}}">-->
 
     <app-header slot="header" condenses="" reveals="" effects="waterfall">
       <app-toolbar class="navbar">
-        <!--<paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>-->
         <netlaw-logo></netlaw-logo>
       </app-toolbar>
     </app-header>
@@ -33,9 +68,13 @@
         <div class="uk-align-center login">
           <h1>Login to your Account</h1>
 
-          <div class="uk-margin-bottom login-buttons">
-            <button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
-            <button class="uk-button uk-button-secondary">Login with Facebook</button>
+          <div class="login-buttons">
+            <paper-icon-button icon="netlaw-icons:googleplus" name="googleplus" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:facebook" name="facebook" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:linkedin" name="linkedin" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+            <!--<button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
+            <button class="uk-button uk-button-secondary">Login with Facebook</button>-->
           </div>
           <div class="uk-divider-icon">OR</div>
 
@@ -62,7 +101,6 @@
         </div>
       </div>
     </div>
-    <!--</app-header-layout>-->
 
   </template>
   <script>
@@ -71,6 +109,7 @@
           static get is() {
               return 'netlaw-login';
           }
+
           onLoginClick(e){
               this.dispatchEvent(new CustomEvent("logged-in"));
           }
