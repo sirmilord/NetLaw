@@ -74,7 +74,7 @@
       <div class="uk-container uk-position-relative">
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-login-login route="[[subroute]]" name="login-login"></netlaw-login-login>
+          <netlaw-login-login name="login-login" on-logged-in="onLoggedIn"></netlaw-login-login>
           <netlaw-password-new name="password-new"></netlaw-password-new>
           <netlaw-password-reset name="password-reset"></netlaw-password-reset>
           <netlaw-password-confirm name="password-confirm"></netlaw-password-confirm>
@@ -91,9 +91,31 @@
               return 'netlaw-login';
           }
 
+          static get properties() {
+              return {
+                  loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
+                  rootPath: String,
+                  route: { type: Object },
+                  routeData: { type: Object, observer: '_routeDataObserver' },
+                  subroute: Object,
+                  active: String,
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      observer: '_pageChanged',
+                  },
+              };
+          }
+
           constructor() {
               super();
-              this.page = 'login-login';
+              // this.page = 'login-login';
+          }
+
+          onLoggedIn(e) {
+              this.loggedIn = true;
+              // Show initial screen on login
+              this.page = 'initial-screen';
           }
 
           onLoginClick(e){
@@ -102,6 +124,43 @@
 
           onNewPassClick(e) {
               this.dispatchEvent(new CustomEvent("new-pass"));
+          }
+
+          _routeDataObserver(value) { this.active = value.id || null; }
+
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
+
+          _routePageChanged(page) {
+              // If no page was found in the route data, page will be an empty string.
+              // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
+
+              // Check if user is logged in
+              if ( this.loggedIn == true ) this.page = page || 'initial-screen';
+
+              else this.page = page || 'login-login';
+
+              // Close a non-persistent drawer when the page & route are changed.
+              /*if (!this.$.drawer.persistent) {
+                  this.$.drawer.close();
+              }*/
+          }
+
+          _pageChanged(page) {
+              // Load page import on demand. Show 404 page if fails
+              const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
+              Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);
+          }
+
+          _showPage404() {
+              this.page = 'view-404';
           }
 
       }

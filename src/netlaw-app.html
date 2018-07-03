@@ -148,7 +148,8 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <template is="dom-if" if="[[!loggedIn]]">
-      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
+      <!--<netlaw-login on-logged-in="onLoggedIn"></netlaw-login>-->
+      <netlaw-login></netlaw-login>
     </template>
 
     <template is="dom-if" if="[[loggedIn]]">
@@ -285,7 +286,7 @@
               // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
 
               // Check if user is logged in
-              if ( this.loggedIn == true ) this.page = page || 'initial-screen';
+              if ( this.loggedIn === true ) this.page = page || 'initial-screen';
 
               else this.page = page || 'login';
 
