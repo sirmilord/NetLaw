@@ -148,8 +148,7 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <template is="dom-if" if="[[!loggedIn]]">
-      <!--<netlaw-login on-logged-in="onLoggedIn"></netlaw-login>-->
-      <netlaw-login></netlaw-login>
+      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
     </template>
 
     <template is="dom-if" if="[[loggedIn]]">
