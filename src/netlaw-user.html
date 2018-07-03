@@ -85,9 +85,9 @@
         <ul class="profile" slot="dropdown-content">
           <li><a name="profile" href="[[rootPath]]profile">My Profile</a></li>
           <li><a name="account" href="[[rootPath]]account">Account Settings</a></li>
-          <li><a name="password-new" href="[[rootPath]]password-new">Refer a Friend</a></li>
-          <li><a name="password-reset" href="[[rootPath]]password-reset">Help</a></li>
-          <li><a name="login" href="[[rootPath]]login">Log Out</a></li>
+          <li><a name="password-new" href="[[rootPath]]">Refer a Friend</a></li>
+          <li><a name="password-reset" href="[[rootPath]]">Help</a></li>
+          <li><a name="logout" href="[[rootPath]]" on-click="onSignOutClick">Log Out</a></li>
         </ul>
     </iron-dropdown>
 
@@ -120,6 +120,13 @@
               e.preventDefault();
               this.visible = !this.visible;
               this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
+          }
+
+          onSignOutClick(e) {
+              this.loggedIn = false;
+              // Show login screen on logout
+              this.page = 'login';
+              window.location.reload(false);
           }
 
       }
