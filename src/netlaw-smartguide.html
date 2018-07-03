@@ -713,14 +713,14 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
           <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="[[route]]/netlaw-smartguide1" class="smartguide__list-link smartguide__list-link--active">
+            <a href="[[route]]/smartguide1" class="smartguide__list-link smartguide__list-link--active">
               <!-- todo: replace icons -->
               <iron-icon icon="icons:touch-app"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Setup</span>
             </a>
           </li>
           <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="[[route]]/netlaw-smartguide3" class="smartguide__list-link">
+            <a href="[[route]]/smartguide3" class="smartguide__list-link">
               <!-- todo: replace icons  -->
               <iron-icon icon="icons:line-style"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Templates</span>
@@ -732,10 +732,10 @@
       <!--<section class="smartguide__content">-->
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-smartguide1 name="netlaw-smartguide1"></netlaw-smartguide1>
-          <netlaw-smartguide2 name="netlaw-smartguide2"></netlaw-smartguide2>
-          <netlaw-smartguide3 name="netlaw-smartguide3"></netlaw-smartguide3>
-          <netlaw-smartguide4 name="netlaw-smartguide4"></netlaw-smartguide4>
+          <netlaw-smartguide1 name="smartguide1"></netlaw-smartguide1>
+          <netlaw-smartguide2 name="smartguide2"></netlaw-smartguide2>
+          <netlaw-smartguide3 name="smartguide3"></netlaw-smartguide3>
+          <netlaw-smartguide4 name="smartguide4"></netlaw-smartguide4>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       <!--</section>-->
@@ -744,7 +744,7 @@
   </template>
 
   <script>
-    class MyNetlawSmartguide extends Polymer.Element {
+    class NetlawSmartguide extends Polymer.Element {
       static get is() { return 'netlaw-smartguide'; }
 
         static get properties() {
@@ -754,34 +754,26 @@
                     reflectToAttribute: true,
                     observer: '_pageChanged',
                 },
-                routeData: Object,
-                subroute: Object,
+
                 // This shouldn't be neccessary, but the Analyzer isn't picking up
                 // Polymer.Element#rootPath
                 rootPath: String,
+                route: { type: Object, observer: '_routeObserver' },
+                routeData: { type: Object, observer: '_routeDataObserver' },
+                subroute: Object,
+
+                id: { type: String, reflectToAttribute: true },
+
+                active: String,
             };
         }
 
-        static get observers() {
-            return [
-                '_routePageChanged(routeData.page)',
-            ];
-        }
-
-        _routePageChanged(page) {
-            // If no page was found in the route data, page will be an empty string.
-            // Default to 'view1' in that case.
-            /*this.page = page || 'netlaw-smartguide1';*/
-
-            // Close a non-persistent drawer when the page & route are changed.
-            // if (!this.$.drawer.persistent) {
-            //     this.$.drawer.close();
-            // }
-        }
+        _routeObserver(value) { if (!value || !value.path) this.active = null; }
+        _routeDataObserver(value) { this.active = value.id || null; }
 
         _pageChanged(page) {
             // Load page import on demand. Show 404 page if fails
-            const resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+            const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
             Polymer.importHref(
                 resolvedPageUrl,
                 null,
@@ -796,6 +788,6 @@
 
     }
 
-    window.customElements.define(MyNetlawSmartguide.is, MyNetlawSmartguide);
+    window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
   </script>
 </dom-module>
