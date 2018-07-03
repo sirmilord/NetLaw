@@ -5,22 +5,17 @@
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 
-<link rel="lazy-import" href="netlaw-login-login.html">
-<link rel="lazy-import" href="netlaw-password-confirm.html">
-<link rel="lazy-import" href="netlaw-password-new.html">
-<link rel="lazy-import" href="netlaw-password-reset.html">
-
 <link rel="import" href="netlaw-icons.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="netlaw-login">
+<dom-module id="netlaw-login-login">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style include="shared-styles">
       :host {
         --iron-icon-fill-color: #ffffff;
       }
-      .uk-container.netlaw-login {
+      .uk-container.netlaw-login-login {
         background-image: url("../images/LgLogin_BG.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -62,38 +57,50 @@
 
     </style>
 
-    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <app-header slot="header" condenses="" reveals="" effects="waterfall">
-      <app-toolbar class="navbar">
-        <netlaw-logo></netlaw-logo>
-      </app-toolbar>
-    </app-header>
 
-    <div class="uk-main uk-section">
-      <div class="uk-container uk-position-relative">
+      <div class="uk-align-center login">
+          <h1>Login to your Account</h1>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-login-login route="[[subroute]]" name="login-login"></netlaw-login-login>
-          <netlaw-password-new name="password-new"></netlaw-password-new>
-          <netlaw-password-reset name="password-reset"></netlaw-password-reset>
-          <netlaw-password-confirm name="password-confirm"></netlaw-password-confirm>
-        </iron-pages>
+          <div class="login-buttons">
+            <paper-icon-button icon="netlaw-icons:googleplus" name="googleplus" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:facebook" name="facebook" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:linkedin" name="linkedin" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+            <!--<button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
+            <button class="uk-button uk-button-secondary">Login with Facebook</button>-->
+          </div>
+          <div class="uk-divider-icon">OR</div>
 
-      </div>
-    </div>
+          <div class="uk-margin uk-align-center">
+            <form action="#" method="post" class="login-form uk-align-center">
+              <div class="uk-margin ">
+                <label for="login-name"></label>
+                <input type="text" class="uk-input" id="login-name" name="login" placeholder="Username*" required>
+              </div>
+              <div class="uk-margin">
+                <label for="login-pass"></label>
+                <input type="password" class="uk-input" id="login-pass" name="pass" placeholder="Password*" required>
+              </div>
+              <div class="uk-margin-top">
+                <a href="#">Forgot Your Password?</a>
+              </div>
+              <hr class="uk-divider-small">
+              <div class="uk-margin-bottom">
+                <button class="uk-button uk-button-primary" on-click="onLoginClick">Login</button>
+              </div>
+            </form>
+          </div>
+          <p class="uk-margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a></p>
+        </div>
+
 
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class NetlawLogin extends Polymer.Element {
+      class NetlawLoginLogin extends Polymer.Element {
           static get is() {
-              return 'netlaw-login';
-          }
-
-          constructor() {
-              super();
-              this.page = 'login-login';
+              return 'netlaw-login-login';
           }
 
           onLoginClick(e){
@@ -107,6 +114,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(NetlawLogin.is, NetlawLogin);
+      customElements.define(NetlawLoginLogin.is, NetlawLoginLogin);
   </script>
 </dom-module>
