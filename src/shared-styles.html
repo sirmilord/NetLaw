@@ -23,44 +23,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
       }
 
-      .uk-main {
+      .login__main {
         height: 100vh;
         font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       }
 
-      .uk-section-default {
+      .login__section-default {
         background-color: #f9f9f9;
       }
 
       @media (min-width: 960px) {
-        .uk-section {
+        .login__section {
           padding-top: 70px;
           padding-bottom: 70px;
         }
       }
 
-      .uk-section {
+      .login__section {
         box-sizing: border-box;
         padding-top: 40px;
         padding-bottom: 40px;
       }
 
-      .uk-section > :last-child {
+      .login__section > :last-child {
         margin-bottom: 0;
       }
 
-      .uk-position-relative {
+      .login__position-relative {
         position: relative !important;
       }
 
       @media (min-width: 640px) {
-        .uk-container {
+        .login__container {
           padding-left: 30px;
           padding-right: 30px;
         }
       }
 
-      .uk-container {
+      .login__container {
         box-sizing: content-box;
         max-width: 1200px;
         margin-left: auto;
@@ -69,23 +69,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding-right: 15px;
       }
 
-      .uk-container > :last-child {
+      .login__container > :last-child {
         margin-bottom: 0;
       }
 
-      .uk-align-center {
+      .login__align-center {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
       }
 
-      [class*='uk-align'] {
+      [class*='login__align'] {
         display: block;
         margin-bottom: 30px;
       }
 
 
-      .uk-align-center h1 {
+      .login__align-center h1 {
         font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         font-weight: bold;
         color: #4A4A4A;
@@ -96,11 +96,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login-buttons {
         margin-top: 80px;
       }
-      .uk-margin-bottom {
+
+      .login-buttons paper-icon-button {
+        padding: 11px;
+      }
+
+      .login__margin-bottom {
         margin-bottom: 20px !important;
       }
 
-      .login-buttons button.uk-button {
+      .login-buttons button.login__button {
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -109,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-radius: 2px;
       }
 
-      .uk-button {
+      .login__button {
         margin: 0;
         border: none;
         border-radius: 0;
@@ -128,45 +133,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 900;
       }
 
-      .uk-button-secondary {
+      .login__button-secondary {
         background-color: #4a90e2;
         color: #fff;
       }
 
-      .uk-button-secondary:hover, .uk-button-secondary:focus {
+      .login__button-secondary:hover, .login__button-secondary:focus {
         background-color: #3483de;
         color: #fff;
       }
 
-      .uk-button-danger {
+      .login__button-danger {
         background-color: #d0021b;
         color: #fff;
       }
-      .uk-button-danger:hover,
-      .uk-button-danger:focus {
+      .login__button-danger:hover,
+      .login__button-danger:focus {
         background-color: #b70218;
         color: #fff;
       }
 
-      .login .uk-button {
+      .login .login__button {
         width: 283px;
         line-height: 45px;
       }
 
-      .uk-button:not(:disabled) {
+      .login__button:not(:disabled) {
         cursor: pointer;
       }
 
-      .login .uk-divider-icon {
+      .login .login__divider-icon {
         background: none;
       }
-      [class*="uk-divider"] {
+      [class*="login__divider"] {
         margin-bottom: 33px;
       }
-      * + [class*="uk-divider"] {
+      * + [class*="login__divider"] {
         margin-top: 33px;
       }
-      .uk-divider-icon {
+      .login__divider-icon {
         position: relative;
         height: 20px;
         background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2220%22%20height%3D%2220…%3D%2210%22%20cy%3D%2210%22%20r%3D%227%22%20%2F%3E%0D%0A%3C%2Fsvg%3E%0D%0A);
@@ -174,15 +179,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-position: 50% 50%;
       }
 
-      .login .uk-divider-icon::before {
+      .login .login__divider-icon::before {
         width: 15%;
       }
-      .uk-divider-icon::before {
+      .login__divider-icon::before {
         right: calc(50% + (50px / 2));
         width: 100%;
       }
 
-      .uk-divider-icon::before, .uk-divider-icon::after {
+      .login__divider-icon::before, .login__divider-icon::after {
         content: "";
         position: absolute;
         top: 50%;
@@ -190,16 +195,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-bottom: 1px solid #e5e5e5;
       }
 
-      .login .uk-divider-icon::after {
+      .login .login__divider-icon::after {
         width: 15%;
       }
 
-      .uk-divider-icon::after {
+      .login__divider-icon::after {
         left: calc(50% + (50px / 2));
         width: 100%;
       }
 
-      .uk-divider-icon::after, .uk-divider-icon::before {
+      .login__divider-icon::after, .login__divider-icon::before {
         content: "";
         position: absolute;
         top: 50%;
@@ -208,37 +213,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
 
-      * + .uk-margin {
+      * + .login__margin {
         margin-top: 20px !important;
       }
-      .uk-margin {
+      .login__margin {
         margin-bottom: 20px;
       }
-      .uk-align-center {
+      .login__align-center {
         margin-left: auto;
         margin-right: auto;
       }
-      * + [class*='uk-align'] {
+      * + [class*='login__align'] {
         margin-top: 30px;
       }
-      [class*='uk-align'] {
+      [class*='login__align'] {
         display: block;
         margin-bottom: 30px;
       }
-      *+.uk-margin {
+      *+.login__margin {
         margin-top: 20px!important;
       }
-      .uk-margin {
+      .login__margin {
         margin-bottom: 20px;
       }
-      .uk-align-center {
+      .login__align-center {
         margin-left: auto;
         margin-right: auto;
       }
-      *+[class*=uk-align] {
+      *+[class*=login__align] {
         margin-top: 30px;
       }
-      [class*=uk-align] {
+      [class*=login__align] {
         display: block;
         margin-bottom: 30px;
       }
@@ -246,51 +251,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login-form {
         width: 285px;
       }
-      .uk-align-center {
+      .login__align-center {
         text-align: center;
       }
-      .uk-align-center {
+      .login__align-center {
         margin-left: auto;
         margin-right: auto;
       }
-      [class*='uk-align'] {
+      [class*='login__align'] {
         display: block;
         margin-bottom: 30px;
       }
-      .uk-align-center {
+      .login__align-center {
         margin-left: auto;
         margin-right: auto;
       }
-      [class*=uk-align] {
+      [class*=login__align] {
         display: block;
         margin-bottom: 30px;
       }
 
 
-      .uk-input, .uk-select:not([multiple]):not([size]) {
+      .login__input, .login__select:not([multiple]):not([size]) {
         height: 40px;
         vertical-align: middle;
         display: inline-block;
       }
-      
-      .uk-input, .uk-textarea {
+
+      .login__input, .login__textarea {
         -webkit-appearance: none;
       }
-      .uk-input {
+      .login__input {
         overflow: visible;
       }
-      .uk-input, .uk-select, .uk-textarea, .uk-radio, .uk-checkbox {
+      .login__input, .login__select, .login__textarea, .login__radio, .login__checkbox {
         box-sizing: border-box;
         margin: 0;
         border-radius: 0;
         font: inherit;
       }
-      .uk-input, .uk-select:not([multiple]):not([size]) {
+      .login__input, .login__select:not([multiple]):not([size]) {
         height: 40px;
         vertical-align: middle;
         display: inline-block;
       }
-      .uk-input, .uk-select, .uk-textarea {
+      .login__input, .login__select, .login__textarea {
         max-width: 100%;
         width: 100%;
         padding: 0 10px;
@@ -300,35 +305,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition: .2s ease-in-out;
         transition-property: color,background-color,border;
       }
-      
-      .uk-input, .uk-textarea {
+
+      .login__input, .login__textarea {
         -webkit-appearance: none;
       }
-      .uk-input {
+      .login__input {
         overflow: visible;
       }
 
-      .uk-input {
+      .login__input {
         height: 45px;
         border: 1px solid #9B9B9B;
         border-radius: 2px;
       }
 
-      .uk-input::placeholder {
+      .login__input::placeholder {
         color: #C2C2C2;
         font-size: 16px;
       }
 
-      .uk-input:focus {
+      .login__input:focus {
         border-color: #01AA50;
         outline: 0;
       }
-      
+
       a, area, button, input, label, select, summary, textarea {
         touch-action: manipulation;
       }
 
-      .uk-margin-top {
+      .login__margin-top {
         margin-top: 20px !important;
       }
 
@@ -336,27 +341,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #01AA50;
       }
 
-      a, .uk-link {
+      a, .login__link {
         color: #01AA50;
         text-decoration: none;
         cursor: pointer;
       }
 
-      .login-form .uk-divider-small {
+      .login-form .login__divider-small {
         margin-top: 20px;
         margin-bottom: 20px;
       }
-      [class*="uk-divider"] {
+      [class*="login__divider"] {
         margin-bottom: 33px;
       }
-      * + [class*="uk-divider"] {
+      * + [class*="login__divider"] {
         margin-top: 33px;
       }
-      .uk-divider-small {
+      .login__divider-small {
         line-height: 0;
       }
 
-      hr, .uk-hr {
+      hr, .login__hr {
         box-sizing: content-box;
         height: 0;
         overflow: visible;
@@ -365,11 +370,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border: 0;
       }
 
-      *+.uk-hr, *+hr {
+      *+.login__hr, *+hr {
         margin-top: 20px;
       }
 
-      .uk-divider-small::after {
+      .login__divider-small::after {
         content: "";
         display: inline-block;
         max-width: 100%;
@@ -379,25 +384,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-top: 2px solid #e5e5e5;
       }
 
-      .uk-margin-bottom {
+      .login__margin-bottom {
         margin-bottom: 20px !important;
       }
 
-      .uk-button-primary {
+      .login__button-primary {
         background-color: #01AA50;
         color: #fff;
       }
 
-      .uk-button-primary:hover, .uk-button-primary:focus {
+      .login__button-primary:hover, .login__button-primary:focus {
         color: #fff;
         background-color: #019948;
       }
 
-      a:hover, .uk-link:hover {
+      a:hover, .login__link:hover {
         text-decoration: underline;
       }
 
-      .uk-align-center p i {
+      .login__align-center p i {
         color: #bbb;
       }
 
