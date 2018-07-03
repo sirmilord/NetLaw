@@ -117,7 +117,7 @@
             </p>
           </template>
 
-          <template is="dom-if" if="[[new]]">
+          <template is="dom-if" if="[[newpass]]">
             <h1>New Password Setup</h1>
             <h3>What would you like your new password to be?</h3>
             <!--<p><i>(we will send a link and get you setup again shortly)</i></p>-->
@@ -187,7 +187,7 @@
 
                   first: { type: Boolean, value: true },
                   forgot: { type: Boolean, value: false },
-                  new: { type: Boolean, value: false },
+                  newpass: { type: Boolean, value: false },
                   confirm: { type: Boolean, value: false }
               };
           }
@@ -203,7 +203,7 @@
 
           onNewPassClick(e) {
               this.first = false;
-              this.new = true;
+              this.newpass = true;
           }
           onConfirmClick(e) {
               e.preventDefault();
@@ -213,7 +213,7 @@
 
           onCancelClick(e) {
               this.forgot = false;
-              this.new = false;
+              this.newpass = false;
               this.confirm = false;
               this.first = true;
           }

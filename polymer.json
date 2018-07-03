@@ -8,9 +8,6 @@
     "src/netlaw-attorney.html",
     "src/netlaw-add-module.html",
     "src/netlaw-login.html",
-    "src/netlaw-password-new.html",
-    "src/netlaw-password-reset.html",
-    "src/netlaw-password-reset-confirmation.html",
     "src/netlaw-view-404.html"
   ],
   "sources": [
