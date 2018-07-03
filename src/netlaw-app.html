@@ -232,8 +232,24 @@
               };
           }
 
+          constructor() {
+              super();
+              window.navigate = path => {
+                  window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
+                  window.dispatchEvent(new CustomEvent('location-changed'));
+              };
+          }
+
           onLoggedIn(e) {
               this.loggedIn = true;
+              // Show initial screen on login
+              this.page = 'initial-screen';
+          }
+
+          onSignOutClick(e) {
+              this.loggedIn = false;
+              // Show login screen on logout
+              this.page = 'login';
           }
 
           _routeDataObserver(value) { this.active = value.id || null; }
@@ -264,7 +280,11 @@
           _routePageChanged(page) {
               // If no page was found in the route data, page will be an empty string.
               // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
-              this.page = page || 'login';
+
+              // Check if user is logged in
+              if ( this.loggedIn == true ) this.page = page || 'initial-screen';
+
+              else this.page = page || 'login';
 
               // Close a non-persistent drawer when the page & route are changed.
               /*if (!this.$.drawer.persistent) {

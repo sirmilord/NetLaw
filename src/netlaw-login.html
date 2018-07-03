@@ -97,7 +97,7 @@
               </div>
             </form>
           </div>
-          <p class="uk-margin">Don’t have an account? <a href="#">Request One</a></p>
+          <p class="uk-margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a></p>
         </div>
       </div>
     </div>
@@ -112,6 +112,10 @@
 
           onLoginClick(e){
               this.dispatchEvent(new CustomEvent("logged-in"));
+          }
+
+          onNewPassClick(e) {
+              this.dispatchEvent(new CustomEvent("new-pass"));
           }
 
       }
