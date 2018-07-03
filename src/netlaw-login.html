@@ -79,6 +79,7 @@
 
     <div class="uk-main uk-section">
       <div class="uk-container uk-position-relative">
+
         <div class="uk-align-center login">
 
           <template is="dom-if" if="[[first]]">
@@ -172,6 +173,7 @@
             </p>
             <p class="uk-margin"><a href="javascript:;" on-click="onCancelClick">Cancel</a></p>
           </template>
+
         </div>
       </div>
     </div>
@@ -186,6 +188,7 @@
 
           static get properties() {
               return {
+
                   first: { type: Boolean, value: true },
                   forgot: { type: Boolean, value: false },
                   new: { type: Boolean, value: false },
@@ -218,7 +221,6 @@
               this.confirm = false;
               this.first = true;
           }
-
       }
 
       //Now, register your new custom element so the browser can use it
