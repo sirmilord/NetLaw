@@ -21,7 +21,8 @@
         --iron-icon-fill-color: #ffffff;
       }
 
-      .uk-container.netlaw-login {
+      /*.login__container.netlaw-login {*/
+      .login__container {
         background-image: url("../images/LgLogin_BG.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -77,10 +78,10 @@
       </app-toolbar>
     </app-header>
 
-    <div class="uk-main uk-section">
-      <div class="uk-container uk-position-relative">
+    <div class="login__main login__section">
+      <div class="login__container login__position-relative">
 
-        <div class="uk-align-center login">
+        <div class="login__align-center login">
 
           <template is="dom-if" if="[[first]]">
             <h1>Login to your Account</h1>
@@ -93,31 +94,31 @@
               <paper-icon-button icon="netlaw-icons:linkedin" name="linkedin"
                                  on-click="onLoginClick"></paper-icon-button>
               <paper-icon-button icon="netlaw-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
-              <!--<button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
-              <button class="uk-button uk-button-secondary">Login with Facebook</button>-->
+              <!--<button class="login__button login__button-danger .login__margin-bottom">Login with Google+</button>
+              <button class="login__button login__button-secondary">Login with Facebook</button>-->
             </div>
-            <div class="uk-divider-icon">OR</div>
+            <div class="login__divider-icon">OR</div>
 
-            <div class="uk-margin uk-align-center">
-              <form action="#" method="post" class="login-form uk-align-center">
-                <div class="uk-margin ">
+            <div class="login__margin login__align-center">
+              <form action="#" method="post" class="login-form login__align-center">
+                <div class="login__margin ">
                   <label for="login-name"></label>
-                  <input type="text" class="uk-input" id="login-name" name="login" placeholder="Username*" required>
+                  <input type="text" class="login__input" id="login-name" name="login" placeholder="Username*" required>
                 </div>
-                <div class="uk-margin">
+                <div class="login__margin">
                   <label for="login-pass"></label>
-                  <input type="password" class="uk-input" id="login-pass" name="pass" placeholder="Password*" required>
+                  <input type="password" class="login__input" id="login-pass" name="pass" placeholder="Password*" required>
                 </div>
-                <div class="uk-margin-top">
+                <div class="login__margin-top">
                   <a href="javascript:;" on-click="onForgotClick">Forgot Your Password?</a>
                 </div>
-                <hr class="uk-divider-small">
-                <div class="uk-margin-bottom">
-                  <button class="uk-button uk-button-primary" on-click="onLoginClick">Login</button>
+                <hr class="login__divider-small">
+                <div class="login__margin-bottom">
+                  <button class="login__button login__button-primary" on-click="onLoginClick">Login</button>
                 </div>
               </form>
             </div>
-            <p class="uk-margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a>
+            <p class="login__margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a>
             </p>
           </template>
 
@@ -125,20 +126,20 @@
             <h1>New Password Setup</h1>
             <h3>What would you like your new password to be?</h3>
             <!--<p><i>(we will send a link and get you setup again shortly)</i></p>-->
-            <form action="#" method="post" class="login-form uk-align-center">
-              <div class="uk-margin ">
+            <form action="#" method="post" class="login-form login__align-center">
+              <div class="login__margin ">
                 <label for="new-pass"></label>
-                <input type="password" class="uk-input" id="new-pass" name="new-pass" placeholder="New Password*" required="">
+                <input type="password" class="login__input" id="new-pass" name="new-pass" placeholder="New Password*" required="">
               </div>
-              <div class="uk-margin">
+              <div class="login__margin">
                 <label for="confirm-pass"></label>
-                <input type="password" class="uk-input" id="confirm-pass" name="confirm-pass" placeholder="Confirm Password*" required="">
+                <input type="password" class="login__input" id="confirm-pass" name="confirm-pass" placeholder="Confirm Password*" required="">
               </div>
-              <hr class="uk-divider-small">
-              <div class="uk-margin">
-                <button class="uk-button uk-button-primary">Save New Password</button>
+              <hr class="login__divider-small">
+              <div class="login__margin">
+                <button class="login__button login__button-primary">Save New Password</button>
               </div>
-              <div class="uk-margin">
+              <div class="login__margin">
                 <a href="javascript:;" on-click="onCancelClick">Cancel</a>
               </div>
             </form>
@@ -148,16 +149,16 @@
             <h1>Password Reset</h1>
             <h3>Which was the email address of your account?</h3>
             <p><i>(we will send a link and get you setup again shortly)</i></p>
-            <form action="#" method="post" class="login-form uk-align-center">
-              <div class="uk-margin ">
+            <form action="#" method="post" class="login-form login__align-center">
+              <div class="login__margin ">
                 <label for="email"></label>
-                <input type="password" class="uk-input" id="email" name="email" placeholder="Email address..">
+                <input type="password" class="login__input" id="email" name="email" placeholder="Email address..">
               </div>
-              <hr class="uk-divider-small">
-              <div class="uk-margin">
-                <button class="uk-button uk-button-primary" on-click="onConfirmClick">Send My Link</button>
+              <hr class="login__divider-small">
+              <div class="login__margin">
+                <button class="login__button login__button-primary" on-click="onConfirmClick">Send My Link</button>
               </div>
-              <div class="uk-margin">
+              <div class="login__margin">
                 <a href="javascript:;" on-click="onCancelClick">Cancel</a>
               </div>
             </form>
@@ -167,11 +168,11 @@
             <h1>Password Reset</h1>
             <h3>Your recovery link has been sent.</h3>
             <p><i>(be certain to check your spam or junkmail folder)</i></p>
-            <hr class="uk-divider-small">
-            <p class="uk-margin">
-              <button class="uk-button uk-button-primary">Resend Link</button>
+            <hr class="login__divider-small">
+            <p class="login__margin">
+              <button class="login__button login__button-primary">Resend Link</button>
             </p>
-            <p class="uk-margin"><a href="javascript:;" on-click="onCancelClick">Cancel</a></p>
+            <p class="login__margin"><a href="javascript:;" on-click="onCancelClick">Cancel</a></p>
           </template>
 
         </div>
