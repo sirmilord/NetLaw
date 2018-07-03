@@ -20,7 +20,9 @@
       :host {
         --iron-icon-fill-color: #ffffff;
       }
-      .uk-container.netlaw-login {
+
+      /*.login__container.netlaw-login {*/
+      .login__container {
         background-image: url("../images/LgLogin_BG.png");
         background-repeat: no-repeat;
         background-size: contain;
@@ -34,14 +36,17 @@
         display: flex;
         justify-content: center;
       }
+
       .login-buttons paper-icon-button {
         width: 25%;
         height: 45px;
       }
+
       .login-buttons paper-icon-button:first-child {
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
       }
+
       .login-buttons paper-icon-button:last-child {
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
@@ -50,12 +55,15 @@
       .login-buttons paper-icon-button[name="googleplus"] {
         background: #FF3624;
       }
+
       .login-buttons paper-icon-button[name="facebook"] {
         background: #024DAF;
       }
+
       .login-buttons paper-icon-button[name="linkedin"] {
         background: #0178BD;
       }
+
       .login-buttons paper-icon-button[name="twitter"] {
         background: #01B8EC;
       }
@@ -70,51 +78,104 @@
       </app-toolbar>
     </app-header>
 
-    <div class="uk-main uk-section">
-      <div class="uk-container uk-position-relative">
+    <div class="login__main login__section">
+      <div class="login__container login__position-relative">
 
-        <div class="uk-align-center login">
-          <h1>Login to your Account</h1>
+        <div class="login__align-center login">
 
-          <div class="login-buttons">
-            <paper-icon-button icon="netlaw-icons:googleplus" name="googleplus" on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:facebook" name="facebook" on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:linkedin" name="linkedin" on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
-            <!--<button class="uk-button uk-button-danger .uk-margin-bottom">Login with Google+</button>
-            <button class="uk-button uk-button-secondary">Login with Facebook</button>-->
-          </div>
-          <div class="uk-divider-icon">OR</div>
+          <template is="dom-if" if="[[first]]">
+            <h1>Login to your Account</h1>
 
-          <div class="uk-margin uk-align-center">
-            <form action="#" method="post" class="login-form uk-align-center">
-              <div class="uk-margin ">
-                <label for="login-name"></label>
-                <input type="text" class="uk-input" id="login-name" name="login" placeholder="Username*" required>
+            <div class="login-buttons">
+              <paper-icon-button icon="netlaw-icons:googleplus" name="googleplus"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:facebook" name="facebook"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:linkedin" name="linkedin"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+              <!--<button class="login__button login__button-danger .login__margin-bottom">Login with Google+</button>
+              <button class="login__button login__button-secondary">Login with Facebook</button>-->
+            </div>
+            <div class="login__divider-icon">OR</div>
+
+            <div class="login__margin login__align-center">
+              <form action="#" method="post" class="login-form login__align-center">
+                <div class="login__margin ">
+                  <label for="login-name"></label>
+                  <input type="text" class="login__input" id="login-name" name="login" placeholder="Username*" required>
+                </div>
+                <div class="login__margin">
+                  <label for="login-pass"></label>
+                  <input type="password" class="login__input" id="login-pass" name="pass" placeholder="Password*" required>
+                </div>
+                <div class="login__margin-top">
+                  <a href="javascript:;" on-click="onForgotClick">Forgot Your Password?</a>
+                </div>
+                <hr class="login__divider-small">
+                <div class="login__margin-bottom">
+                  <button class="login__button login__button-primary" on-click="onLoginClick">Login</button>
+                </div>
+              </form>
+            </div>
+            <p class="login__margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a>
+            </p>
+          </template>
+
+          <template is="dom-if" if="[[new]]">
+            <h1>New Password Setup</h1>
+            <h3>What would you like your new password to be?</h3>
+            <!--<p><i>(we will send a link and get you setup again shortly)</i></p>-->
+            <form action="#" method="post" class="login-form login__align-center">
+              <div class="login__margin ">
+                <label for="new-pass"></label>
+                <input type="password" class="login__input" id="new-pass" name="new-pass" placeholder="New Password*" required="">
               </div>
-              <div class="uk-margin">
-                <label for="login-pass"></label>
-                <input type="password" class="uk-input" id="login-pass" name="pass" placeholder="Password*" required>
+              <div class="login__margin">
+                <label for="confirm-pass"></label>
+                <input type="password" class="login__input" id="confirm-pass" name="confirm-pass" placeholder="Confirm Password*" required="">
               </div>
-              <div class="uk-margin-top">
-                <a href="#">Forgot Your Password?</a>
+              <hr class="login__divider-small">
+              <div class="login__margin">
+                <button class="login__button login__button-primary">Save New Password</button>
               </div>
-              <hr class="uk-divider-small">
-              <div class="uk-margin-bottom">
-                <button class="uk-button uk-button-primary" on-click="onLoginClick">Login</button>
+              <div class="login__margin">
+                <a href="javascript:;" on-click="onCancelClick">Cancel</a>
               </div>
             </form>
-          </div>
-          <p class="uk-margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a></p>
+          </template>
+
+          <template is="dom-if" if="[[forgot]]">
+            <h1>Password Reset</h1>
+            <h3>Which was the email address of your account?</h3>
+            <p><i>(we will send a link and get you setup again shortly)</i></p>
+            <form action="#" method="post" class="login-form login__align-center">
+              <div class="login__margin ">
+                <label for="email"></label>
+                <input type="password" class="login__input" id="email" name="email" placeholder="Email address..">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin">
+                <button class="login__button login__button-primary" on-click="onConfirmClick">Send My Link</button>
+              </div>
+              <div class="login__margin">
+                <a href="javascript:;" on-click="onCancelClick">Cancel</a>
+              </div>
+            </form>
+          </template>
+
+          <template is="dom-if" if="[[confirm]]">
+            <h1>Password Reset</h1>
+            <h3>Your recovery link has been sent.</h3>
+            <p><i>(be certain to check your spam or junkmail folder)</i></p>
+            <hr class="login__divider-small">
+            <p class="login__margin">
+              <button class="login__button login__button-primary">Resend Link</button>
+            </p>
+            <p class="login__margin"><a href="javascript:;" on-click="onCancelClick">Cancel</a></p>
+          </template>
+
         </div>
-
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-login-login route="[[subroute]]" name="login-login"></netlaw-login-login>
-          <netlaw-password-new name="password-new"></netlaw-password-new>
-          <netlaw-password-reset name="password-reset"></netlaw-password-reset>
-          <netlaw-password-confirm name="password-confirm"></netlaw-password-confirm>
-        </iron-pages>
-
       </div>
     </div>
 
@@ -126,19 +187,41 @@
               return 'netlaw-login';
           }
 
-          constructor() {
-              super();
-              this.page = 'login-login';
+          static get properties() {
+              return {
+
+                  first: { type: Boolean, value: true },
+                  forgot: { type: Boolean, value: false },
+                  new: { type: Boolean, value: false },
+                  confirm: { type: Boolean, value: false }
+              };
           }
 
-          onLoginClick(e){
+          onLoginClick(e) {
               this.dispatchEvent(new CustomEvent("logged-in"));
           }
 
-          onNewPassClick(e) {
-              this.dispatchEvent(new CustomEvent("new-pass"));
+          onForgotClick(e) {
+              this.first = false;
+              this.forgot = true;
           }
 
+          onNewPassClick(e) {
+              this.first = false;
+              this.new = true;
+          }
+          onConfirmClick(e) {
+              e.preventDefault();
+              this.forgot = false;
+              this.confirm = true;
+          }
+
+          onCancelClick(e) {
+              this.forgot = false;
+              this.new = false;
+              this.confirm = false;
+              this.first = true;
+          }
       }
 
       //Now, register your new custom element so the browser can use it
