@@ -1,13 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<!--<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">-->
-<!--<link rel="import" href="../bower_components/paper-item/paper-item.html">-->
-<!--<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">-->
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
-<!--<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">-->
-<!--<link rel="import" href="../bower_components/paper-input/paper-input.html">-->
-<!--<link rel="import" href="../bower_components/iron-form/iron-form.html">-->
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
 
 <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
 <!--<link rel="import" href="../bower_components/neon-animation/web-animations.html">-->
@@ -26,12 +20,20 @@
         margin-right: auto;
       }
 
+      :host([pressed]) iron-icon {
+        border-bottom: 1px solid var(--app-header-color);
+      }
+
+      :host([pressed]) input {
+        border-bottom: 1px solid var(--app-header-color);
+      }
+
       input[type=search] {
         border: 0;
-        padding-left: 15px;
-        top: 7px ;
+        padding-left: 26px;
+        top: 9px;
         position: absolute;
-        left: 23px;
+        left: 13px;
         width: 270px;
         height: 24px;
       }
@@ -49,8 +51,8 @@
         background-color: var(--app-header-bg);
       }
 
-      a.netlaw-search {
-        cursor: pointer;
+      paper-icon-button.netlaw-search {
+        z-index: 99;
       }
 
       ul {
@@ -65,31 +67,26 @@
         color: #333;
       }
 
-      :host([pressed]) iron-icon {
-        border-bottom: 1px solid var(--app-header-color);
-      }
-
-      :host([pressed]) input {
-        border-bottom: 1px solid var(--app-header-color);
-      }
-
     </style>
 
-    <!--todo: refactor search icons and input -->
-    <a on-click="toggle">
-      <iron-icon icon="[[toggleIcon]]" src="./images/icons/search_icon.svg"></iron-icon>
-    </a>
-    <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
+    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
+
+    <iron-input>
+      <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
            hidden$="[[!visible]]" on-mouseover="openChoices">
+    </iron-input>
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
       <ul slot="dropdown-content">
-        <li>Listed result contact item 1 ...</li>
-        <li>Listed result contact item 2 ...</li>
-        <li>Listed result contact item 3 ...</li>
+        <li>Listed result contact item 1 …</li>
+        <li>Listed result contact item 2 …</li>
+        <li>Listed result contact item 3…</li>
+        <li>Listed result contact item 4…</li>
         <br/>
-        <li>Listed result contact item 4 ...</li>
-        <li>Listed result contact item 5 ...</li>
+        <li>Listed result in document item 1…</li>
+        <li>Listed result in document item 2…</li>
+        <li>Listed result in document item 3…</li>
+        <li>Listed result in document item 4…</li>
       </ul>
     </iron-dropdown>
 
@@ -120,14 +117,14 @@
           constructor() {
               super();
               this.addEventListener('blur', e => this.close());
-              this.toggleIcon = 'search';
+              this.toggleIcon = 'netlaw-icons:search';
               // this.target = this.$.search;
           }
 
           open() {
               this.visible = true;
               this.pressed = true;
-              this.toggleIcon = 'close';
+              this.toggleIcon = 'netlaw-icons:close';
               this.$.search.focus();
 
           }
@@ -136,7 +133,7 @@
               this.visible = false;
               this.pressed = false;
               this.$.dropdown.close();
-              this.toggleIcon = 'search';
+              this.toggleIcon = 'netlaw-icons:search';
           }
 
           toggle() {
