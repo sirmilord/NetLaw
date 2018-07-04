@@ -52,18 +52,6 @@
         --iron-icon-height: 32px;
       }
 
-      #drawer > iron-selector > a > iron-icon {
-        width: 32px;
-        height: 32px;
-        margin: 10px auto;
-        clear: both;
-        display: block;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        vertical-align: middle;
-      }
-
       app-drawer-layout:not([narrow]) [drawer-toggle] {
         display: none;
       }
@@ -132,6 +120,30 @@
         border-top: 12.5px solid transparent;
         border-left: 20px solid #414142;
         border-bottom: 12.5px solid transparent;
+      }
+
+      #drawer > iron-selector > a > iron-icon {
+          width: 32px;
+          height: 32px;
+          margin: 10px auto;
+          clear: both;
+          display: block;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: contain;
+          vertical-align: middle;
+      }
+
+      .drawer-nav a iron-icon {
+          width: 32px;
+          height: 32px;
+          margin: 10px auto;
+          clear: both;
+          display: block;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: contain;
+          vertical-align: middle;
       }
 
       .drawer-nav a iron-icon { opacity: 0.5; }

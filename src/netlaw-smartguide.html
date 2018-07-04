@@ -8,6 +8,8 @@
       */
       :host {
         box-sizing: border-box;
+          --iron-icon-width: 22px;
+          --iron-icon-height: 22px;
       }
 
       iron-pages {
@@ -31,6 +33,7 @@
       .smartguide__drawer {
         flex: 1 1 30%;
         max-width: 30%;
+        min-width: 20em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -715,14 +718,14 @@
           <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
             <a href="[[route]]/smartguide1" class="smartguide__list-link smartguide__list-link--active">
               <!-- todo: replace icons -->
-              <iron-icon icon="icons:touch-app"></iron-icon>
+              <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Setup</span>
             </a>
           </li>
           <li class="smartguide__list-item smartguide__list-item--bottom-border">
             <a href="[[route]]/smartguide3" class="smartguide__list-link">
               <!-- todo: replace icons  -->
-              <iron-icon icon="icons:line-style"></iron-icon>
+              <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Templates</span>
             </a>
           </li>
