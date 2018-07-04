@@ -219,10 +219,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login__margin {
         margin-bottom: 20px;
       }
-      .login__align-center {
-        margin-left: auto;
-        margin-right: auto;
-      }
       * + [class*='login__align'] {
         margin-top: 30px;
       }
@@ -236,10 +232,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login__margin {
         margin-bottom: 20px;
       }
-      .login__align-center {
-        margin-left: auto;
-        margin-right: auto;
+
+      .login__padding {
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
+
       *+[class*=login__align] {
         margin-top: 30px;
       }
@@ -251,26 +249,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login-form {
         width: 285px;
       }
-      .login__align-center {
-        text-align: center;
-      }
-      .login__align-center {
-        margin-left: auto;
-        margin-right: auto;
-      }
+
       [class*='login__align'] {
         display: block;
         margin-bottom: 30px;
-      }
-      .login__align-center {
-        margin-left: auto;
-        margin-right: auto;
       }
       [class*=login__align] {
         display: block;
         margin-bottom: 30px;
       }
-
 
       .login__input, .login__select:not([multiple]):not([size]) {
         height: 40px;
@@ -337,6 +324,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-top: 20px !important;
       }
 
+      .login__margin-top-big {
+        margin-top: 50px !important;
+      }
+
       .login-form a {
         color: #01AA50;
       }
@@ -378,9 +369,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         content: "";
         display: inline-block;
         max-width: 100%;
-        border-top: 1px solid #e5e5e5;
         vertical-align: top;
         width: 300px;
+        border-top: 2px solid #e5e5e5;
+      }
+
+      .login__divider::after {
+        content: "";
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: top;
+        width: 500px;
         border-top: 2px solid #e5e5e5;
       }
 
@@ -404,6 +403,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .login__align-center p i {
         color: #bbb;
+      }
+
+      .login--security {
+        background-color: #f9f9f9;
+        width: 100%;
+        height: 100%;
+      }
+
+      .btn--back-dash {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        color: #4A4A4A;
+        --iron-icon-width: 60px;
+        --iron-icon-height: 60px;
+        --iron-icon-fill-color: #979797;
+      }
+
+      .btn--position {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+      
+      .login__horizontal {
+        color: #01AA50;
+      }
+
+      .login__button-yellow {
+        background-color: #F5A623;
+        color: #fff;
+      }
+
+      .login__button-yellow:hover, .login__button-yellow:focus {
+        color: #fff;
+        background-color: #F59C24;
       }
 
     </style>
