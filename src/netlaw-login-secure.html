@@ -1,0 +1,172 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="social-icons.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="netlaw-login-secure">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style include="shared-styles">
+      :host {
+        --iron-icon-fill-color: #ffffff;
+      }
+
+      .login__container {
+        background-image: url("../images/LgLogin_BG.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        min-height: 786px;
+      }
+
+      .login-buttons {
+        max-width: 285px;
+        margin: 80px auto 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .login-buttons paper-icon-button {
+        width: 25%;
+        height: 45px;
+      }
+
+      .login-buttons paper-icon-button:first-child {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      .login-buttons paper-icon-button:last-child {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      .login-buttons paper-icon-button[name="googleplus"] {
+        background: #FF3624;
+      }
+
+      .login-buttons paper-icon-button[name="facebook"] {
+        background: #024DAF;
+      }
+
+      .login-buttons paper-icon-button[name="linkedin"] {
+        background: #0178BD;
+      }
+
+      .login-buttons paper-icon-button[name="twitter"] {
+        background: #01B8EC;
+      }
+
+    </style>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+    <app-header slot="header" condenses="" reveals="" effects="waterfall">
+      <app-toolbar class="navbar">
+        <netlaw-logo></netlaw-logo>
+      </app-toolbar>
+    </app-header>
+
+    <div class="login__main login__section login__position-relative">
+      <div class="login__container">
+
+        <div class="login__align-center login login--security">
+          <button class="btn btn--back-dash btn--position">
+            <iron-icon icon="icons:chevron-left"></iron-icon>
+            Back to Previous
+          </button>
+            <h1>Secure Your Account</h1>
+
+          <h3>Choose a desired method to enhance your security. </h3>
+
+          <div class="login__container">
+            <div class="login__row">
+              <div class="login__item">
+                <iron-icon></iron-icon>
+                <p class="login__margin"></p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="login__button login__button-primary">Secure with Mobile</button>
+                </p>
+              </div>
+              <div class="login__item">
+                <iron-icon></iron-icon>
+                <p class="login__margin"></p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="login__button login__button-primary">Secure with SMS</button>
+                </p>
+              </div>
+              <div class="login__item">
+                <iron-icon></iron-icon>
+                <p class="login__margin"></p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="login__button login__button-primary">Secure with Email</button>
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr class="login__divider">
+          <p class="login__margin">
+            <button class="login__button login__button-yellow">Cancel</button>
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+  </template>
+  <script>
+      // Your new element extends the Polymer.Element base class
+      class NetlawLoginSecure extends Polymer.Element {
+          static get is() {
+              return 'netlaw-login-secure';
+          }
+
+          // static get properties() {
+          //     return {
+          //
+          //         first: { type: Boolean, value: true },
+          //         forgot: { type: Boolean, value: false },
+          //         newpass: { type: Boolean, value: false },
+          //         confirm: { type: Boolean, value: false }
+          //     };
+          // }
+          //
+          // onLoginClick(e) {
+          //     this.dispatchEvent(new CustomEvent("logged-in"));
+          // }
+          //
+          // onForgotClick(e) {
+          //     this.first = false;
+          //     this.forgot = true;
+          // }
+          //
+          // onNewPassClick(e) {
+          //     this.first = false;
+          //     this.newpass = true;
+          // }
+          // onConfirmClick(e) {
+          //     e.preventDefault();
+          //     this.forgot = false;
+          //     this.confirm = true;
+          // }
+          //
+          // onCancelClick(e) {
+          //     this.forgot = false;
+          //     this.newpass = false;
+          //     this.confirm = false;
+          //     this.first = true;
+          // }
+      }
+
+      //Now, register your new custom element so the browser can use it
+      customElements.define(NetlawLoginSecure.is, NetlawLoginSecure);
+  </script>
+</dom-module>
