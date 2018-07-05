@@ -83,10 +83,10 @@
 
     <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right">
         <ul class="profile" slot="dropdown-content">
-          <li><a name="profile" href="[[rootPath]]profile">My Profile</a></li>
-          <li><a name="account" href="[[rootPath]]account">Account Settings</a></li>
-          <li><a name="password-new" href="[[rootPath]]">Refer a Friend</a></li>
-          <li><a name="password-reset" href="[[rootPath]]">Help</a></li>
+          <li><a name="profile" href="[[rootPath]]profile" on-click="onLinkClick">My Profile</a></li>
+          <li><a name="account" href="[[rootPath]]account" on-click="onLinkClick">Account Settings</a></li>
+          <li><a name="password-new" href="[[rootPath]]" on-click="onLinkClick">Refer a Friend</a></li>
+          <li><a name="password-reset" href="[[rootPath]]" on-click="onLinkClick">Help</a></li>
           <li><a name="logout" href="[[rootPath]]" on-click="onSignOutClick">Log Out</a></li>
         </ul>
     </iron-dropdown>
@@ -116,8 +116,12 @@
               this.toggleIcon = 'expand-more';
           }
 
+          onLinkClick() {
+              this.$.user_dropdown.close();
+          }
+
           toggle(e) {
-              /*e.preventDefault();*/
+              e.preventDefault();
               this.visible = !this.visible;
               this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
           }
