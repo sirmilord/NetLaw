@@ -8,7 +8,7 @@
 <link rel="import" href="social-icons.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="netlaw-login-secure">
+<dom-module id="netlaw-login-sms">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style include="shared-styles">
@@ -80,45 +80,37 @@
             <iron-icon icon="icons:chevron-left"></iron-icon>
             Back to Security Settings
           </button>
-            <h1>Secure Your Account</h1>
+            <h1>Secure with SMS</h1>
 
-          <h3>Choose a desired method to enhance your security. </h3>
+          <h3>Type in your phone number, enter the code you <br>
+            receive in the section below.</h3>
 
-            <div class="login__row login__margin-top-big">
-              <div class="login__item login__item--third">
-                <iron-icon icon="icons:settings-cell"></iron-icon>
-                <p class="login__margin">Generate codes on your smartphone (Android or iPhone).
-                  Note: You will be required to download an app. </p>
-                <hr class="login__divider-small">
-                <p class="login__margin">
-                  <button class="btn btn-primary">Secure with Mobile</button>
-                </p>
-              </div>
-              <div class="login__item login__item--third">
-                <iron-icon icon="icons:mail"></iron-icon>
-                <p class="login__margin">Receieve an SMS message security code on your phone.
-                  Note: Any celluar phone will work.</p>
-                <hr class="login__divider-small">
-                <p class="login__margin">
-                  <button class="btn btn-primary">Secure with SMS</button>
-                </p>
-              </div>
-              <div class="login__item login__item--third">
-                <iron-icon icon="icons:speaker-notes"></iron-icon>
-                <p class="login__margin">Recieve security codes directly in your preferred
-                  email inbox. </p>
-                <hr class="login__divider-small">
-                <p class="login__margin">
-                  <button class="btn btn-primary">Secure with Email</button>
-                </p>
-              </div>
-              <div class="login__item login__margin-top-big">
-                <hr class="login__divider">
-                <p class="login__margin">
-                  <button class="btn btn--cancel-bordered">Cancel</button>
-                </p>
-              </div>
+          <form action="#" method="post" class="login-form login__align-center">
+            <div class="login__margin">
+              <label for="phonenumber"></label>
+              <input type="text" class="login__input" id="phonenumber" name="phonenumber" placeholder="Phone Number*">
             </div>
+            <hr class="login__divider-small">
+            <div class="login__margin-bottom">
+              <button class="btn btn-yellow">Send me a Code</button>
+            </div>
+          </form>
+          <div class="login__padding">
+            <hr class="login__divider">
+          </div>
+          <form action="#" method="post" class="login-form login-form--mt0 login__align-center">
+            <div class="login__margin">
+              <label for="securecode"></label>
+              <input type="text" class="login__input" id="securecode" name="securecodecode" placeholder="Security Code*">
+            </div>
+            <hr class="login__divider-small">
+            <div class="login__margin-bottom">
+              <button class="btn btn-primary">Atttach</button>
+            </div>
+            <div class="login__margin-bottom">
+              <button class="btn btn--cancel-bordered">Cancel</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -126,9 +118,9 @@
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class NetlawLoginSecure extends Polymer.Element {
+      class NetlawLoginSms extends Polymer.Element {
           static get is() {
-              return 'netlaw-login-secure';
+              return 'netlaw-login-sms';
           }
 
           // static get properties() {
@@ -169,6 +161,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(NetlawLoginSecure.is, NetlawLoginSecure);
+      customElements.define(NetlawLoginSms.is, NetlawLoginSms);
   </script>
 </dom-module>
