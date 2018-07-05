@@ -81,7 +81,7 @@
       Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
-    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" no-auto-focus>
+    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right">
         <ul class="profile" slot="dropdown-content">
           <li><a name="profile" href="[[rootPath]]profile">My Profile</a></li>
           <li><a name="account" href="[[rootPath]]account">Account Settings</a></li>
@@ -117,7 +117,7 @@
           }
 
           toggle(e) {
-              e.preventDefault();
+              /*e.preventDefault();*/
               this.visible = !this.visible;
               this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
           }
@@ -126,7 +126,7 @@
               this.loggedIn = false;
               // Show login screen on logout
               this.page = 'login';
-              window.location.href="/";
+              window.location.href='/';
               window.location.reload(true);
           }
 
