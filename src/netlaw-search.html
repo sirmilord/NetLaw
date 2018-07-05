@@ -3,6 +3,8 @@
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 
+<link rel="import" href="netlaw-icons.html">
+
 <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
 <!--<link rel="import" href="../bower_components/neon-animation/web-animations.html">-->
 
@@ -18,6 +20,10 @@
         position: relative;
         margin-left: auto;
         margin-right: auto;
+        z-index: 99;
+      }
+      paper-icon-button {
+        z-index: 99;
       }
 
       :host([pressed]) iron-icon {
@@ -36,6 +42,7 @@
         left: 13px;
         width: 270px;
         height: 24px;
+        border-bottom: 1px solid #979797;
       }
 
       input[type=search]::placeholder {
@@ -71,10 +78,10 @@
 
     <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
 
-    <iron-input>
+    <!--<iron-input>-->
       <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
            hidden$="[[!visible]]" on-mouseover="openChoices">
-    </iron-input>
+    <!--</iron-input>-->
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
       <ul slot="dropdown-content">
