@@ -117,13 +117,18 @@
           }
 
           onLinkClick() {
-              this.$.user_dropdown.close();
+
+             this.$.user_dropdown.close();
+             this.visible = !this.visible;
+              /*this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();*/
           }
 
           toggle(e) {
               e.preventDefault();
               this.visible = !this.visible;
               this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
+
+
           }
 
           onSignOutClick(e) {
