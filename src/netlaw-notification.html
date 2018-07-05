@@ -3,6 +3,8 @@
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
 
+<link rel="import" href="netlaw-icons.html">
+
 <dom-module id="netlaw-notification">
 
   <template>
@@ -10,11 +12,21 @@
     <style>
       /* shadow DOM styles go here */
       :host {
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
         position: relative;
         margin-left: auto;
         margin-right: 20px;
+      }
+      .paper-icon-button svg {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        width: 20px;
+        height: 20px;
+      }
+      :host iron-icon svg {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        width: 20px;
+        height: 20px;
       }
 
       #dropdown {
@@ -60,10 +72,11 @@
 
     </style>
 
-    <a href="javascript:;" on-click="toggle">
-      <!-- todo: change opacity on click to 1 (default is 0.3) -->
+    <paper-icon-button icon="netlaw-icons:notifications" name="notifications" on-click="toggle"></paper-icon-button>
+    <!--<a href="javascript:;" on-click="toggle">
+      &lt;!&ndash; todo: change opacity on click to 1 (default is 0.3) &ndash;&gt;
       <iron-icon src="./images/icons/notifications_icon.svg"></iron-icon>
-    </a>
+    </a>-->
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus>
         <ul class="notifications" slot="dropdown-content">
