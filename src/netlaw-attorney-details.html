@@ -1,11 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-profile2">
+<dom-module id="netlaw-attorney-details">
   <template>
 
     <style>
 
-      .profile {
+      .attorney {
         background-color: #f9f9f9;
       }
 
@@ -28,7 +28,7 @@
         font-weight: 900;
       }
 
-      .profile__header {
+      .attorney__header {
         display: flex;
         min-height: 65px;
         width: 100%;
@@ -36,18 +36,19 @@
         align-items: center;
       }
 
-      .profile__header-left {
+      .attorney__header-left {
         flex: 1 1 30%;
         max-width: 30%;
         /*display: flex;*/
       }
 
-      .profile__header-right {
+      .attorney__header-right {
         flex: 1 1 70%;
         max-width: 70%;
+        display: flex;
       }
 
-      .profile__title {
+      .attorney__title {
         align-self: center;
         color: #ffffff;
         font-size: 26px;
@@ -71,11 +72,11 @@
         font-size: 14px;
       }
 
-      .profile__wrapper {
+      .attorney__wrapper {
         display: flex;
       }
 
-      .profile__left {
+      .attorney__left {
         flex: 1 1 30%;
         max-width: 30%;
         display: flex;
@@ -85,7 +86,7 @@
         align-items: center;
       }
 
-      .profile__left:after {
+      .attorney__left:after {
         content: '';
         position: absolute;
         right: 0;
@@ -95,13 +96,13 @@
         background-color: #e9e9e9;
       }
 
-      .profile__right {
+      .attorney__right {
         flex: 1 1 70%;
         max-width: 70%;
         position: relative;
       }
 
-      .profile__cross {
+      .attorney__cross {
         position: relative;
         border-radius: 50%;
         width: 160px;
@@ -113,7 +114,7 @@
         cursor: pointer;
       }
 
-      .profile__cross::before {
+      .attorney__cross::before {
         content: '';
         position: absolute;
         width: 60px;
@@ -124,7 +125,7 @@
         background-color: #9b9b9b;
       }
 
-      .profile__cross::after {
+      .attorney__cross::after {
         content: '';
         position: absolute;
         width: 1px;
@@ -252,14 +253,14 @@
         cursor: pointer;
       }
 
-      .profile__img {
+      .attorney__img {
         margin-top: 87px;
         margin-bottom: 30px;
         margin-left: 0;
         margin-right: 0;
       }
 
-      .profile__img img {
+      .attorney__img img {
         border-radius: 50%;
       }
 
@@ -270,38 +271,38 @@
         margin-bottom: 15px;
       }
 
-      .profile__link {
+      .attorney__link {
         color: #4A90E2;
         text-decoration: none;
         margin-bottom: 20px;
       }
 
-      .profile__line {
+      .attorney__line {
         height: 1px;
         width: 100%;
         background-color: #979797;
         opacity: 0.3;
       }
 
-      .profile__line--left {
+      .attorney__line--left {
         width: 180px;
         margin-top: 30px;
         margin-bottom: 40px;
       }
 
-      .profile__line--right {
+      .attorney__line--right {
         margin-top: 25px;
         margin-bottom: 25px;
       }
 
-      .profile__contacts {
+      .attorney__contacts {
         padding: 0;
         margin: 0;
         list-style: none;
         margin-bottom: 25px;
       }
 
-      .profile__contacts-link {
+      .attorney__contacts-link {
         color: #01AA50;
         font-size: 16px;
         text-decoration: none;
@@ -309,7 +310,7 @@
         display: block;
       }
 
-      .profile__contacts-link iron-icon {
+      .attorney__contacts-link iron-icon {
         margin-right: 10px;
         --iron-icon-height: 20px;
         --iron-icon-width: 20px;
@@ -344,9 +345,9 @@
         font-size: 16px;
         font-weight: 900;
         width: 170px;
-        position: absolute;
-        right: 60px;
-        top: 60px;
+        /*position: absolute;
+        left: 200px;
+        top: 60px;*/
       }
 
       .btn--unbordered:hover,
@@ -356,7 +357,7 @@
         color: #fff;
       }
 
-      .profile__container {
+      .attorney__container {
         width: 600px;
         box-sizing: border-box;
         margin-left: 70px;
@@ -366,7 +367,7 @@
 
       }
 
-      .profile__name {
+      .attorney__name {
         margin-top: 0;
         margin-bottom: 25px;
         color: #4A4A4A;
@@ -374,7 +375,7 @@
         font-weight: 900;
       }
 
-      .profile__section-title {
+      .attorney__section-title {
         color: #9B9B9B;
         font-size: 10px;
         display: block;
@@ -382,7 +383,7 @@
         margin-bottom: 15px;
       }
 
-      .profile__work {
+      .attorney__work {
         color: #4A4A4A;
         font-size: 16px;
         font-weight: 400;
@@ -390,38 +391,38 @@
         display: block;
       }
 
-      .profile__row {
+      .attorney__row {
         display: flex;
         flex-wrap: nowrap;
         margin-right: -10px;
         margin-left: -10px;
       }
 
-      .profile__col {
+      .attorney__col {
         flex: 1 1 50%;
         padding-left: 10px;
         padding-right: 10px;
       }
 
-      .profile__address {
+      .attorney__address {
         color: #4A4A4A;
         font-size: 16px;
         font-weight: 300;
       }
 
-      .profile__since {
+      .attorney__since {
         color: #4A4A4A;
         font-size: 16px;
         font-weight: 300;
       }
 
-      .profile__license {
+      .attorney__license {
         color: #4A4A4A;
         font-size: 16px;
         font-weight: 300;
       }
 
-      .profile__desc {
+      .attorney__desc {
         color: #4A4A4A;
         font-size: 16px;
         font-weight: 300;
@@ -450,23 +451,32 @@
         text-align: left;
       }
 
+      .attorney__content-update {
+        align-self: flex-end;
+        font-size: 14px;
+        margin-right: 30px;
+        margin-left: auto;
+        color: #b2b2b2;
+      }
+
     </style>
 
-    <section class="profile">
-      <div class="profile__header">
-        <div class="profile__header-left">
+    <section class="attorney">
+      <div class="attorney__header">
+        <div class="attorney__header-left">
           <button class="btn btn--back-dash">
             <iron-icon icon="icons:chevron-left"></iron-icon>
             Back to Find Attorney
           </button>
         </div>
-        <div class="profile__header-right">
-          <h2 class="profile__title">Profile Details</h2>
+        <div class="attorney__header-right">
+          <h2 class="attorney__title">Profile Details</h2>
+          <div class="attorney__content-update">Updated 1d ago</div>
         </div>
       </div>
-      <div class="profile__wrapper">
-        <div class="profile__left">
-          <figure class="profile__img">
+      <div class="attorney__wrapper">
+        <div class="attorney__left">
+          <figure class="attorney__img">
             <img src="https://dummyimage.com/160x160/000/fff" alt="user">
           </figure>
           <div class="rating">
@@ -476,23 +486,23 @@
             <iron-icon icon="icons:star"></iron-icon>
             <iron-icon icon="icons:star"></iron-icon>
           </div>
-          <a class="profile__link" href="#">View Feadback</a>
+          <a class="attorney__link" href="javascript:;">View Feadback</a>
           <button class="btn btn--primary">Leave Review</button>
-          <div class="profile__line profile__line--left"></div>
-          <ul class="profile__contacts">
-            <li><a href="mailto:toni.bruen@cleora.ca" class="profile__contacts-link">
+          <div class="attorney__line attorney__line--left"></div>
+          <ul class="attorney__contacts">
+            <li><a href="mailto:toni.bruen@cleora.ca" class="attorney__contacts-link">
               <iron-icon icon="icons:mail"></iron-icon>
               toni.bruen@cleora.ca</a>
             </li>
-            <li><a href="tel:689-892-7856" class="profile__contacts-link">
+            <li><a href="tel:689-892-7856" class="attorney__contacts-link">
               <iron-icon icon="icons:settings-phone"></iron-icon>
               689-892-7856</a>
             </li>
-            <li><a href="tel:689-892-1234" class="profile__contacts-link">
+            <li><a href="tel:689-892-1234" class="attorney__contacts-link">
               <iron-icon icon="icons:settings-cell"></iron-icon>
               689-892-1234</a>
             </li>
-            <li><a href="http://www.intervivos.com" class="profile__contacts-link">
+            <li><a href="http://www.intervivos.com" class="attorney__contacts-link">
               <iron-icon icon="icons:cloud"></iron-icon>
               www.intervivos.com</a>
             </li>
@@ -509,51 +519,58 @@
             </a>
           </nav>
         </div>
-        <div class="profile__right">
-          <button class="btn btn--unbordered">Revise Search</button>
-          <div class="profile__container">
-            <h1 class="profile__name">Joshua Simmons</h1>
-            <div class="profile__section">
-              <b class="profile__section-title">PRACTICE INFORMATION</b>
-              <b class="profile__work">Inter Vivos, PLLC</b>
-            </div>
-            <div class="profile__row">
-              <div class="profile__col">
-                <address class="profile__address">#12345 Center St.<br> Orem, Utah 50679</address>
+        <div class="attorney__right">
+
+          <div class="attorney__container">
+            <div class="attorney__row">
+              <div class="attorney__col">
+            <h1 class="attorney__name">Joshua Simmons</h1>
               </div>
-              <div class="profile__col">
-                <div class="profile__since">
+              <div class="attorney__col">
+                <button class="btn btn--unbordered">Revise Search</button>
+            </div>
+            </div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">PRACTICE INFORMATION</b>
+              <b class="attorney__work">Inter Vivos, PLLC</b>
+            </div>
+            <div class="attorney__row">
+              <div class="attorney__col">
+                <address class="attorney__address">#12345 Center St.<br> Orem, Utah 50679</address>
+              </div>
+              <div class="attorney__col">
+                <div class="attorney__since">
                   Practicing since: 2013
                 </div>
-                <div class="profile__license">
+                <div class="attorney__license">
                   Licensed in: UT, AZ, CA, NV, WA
                 </div>
               </div>
             </div>
-            <div class="profile__line profile__line--right"></div>
-            <div class="profile__section">
-              <b class="profile__section-title">ABOUT ATTORNEY</b>
-              <p class="profile__desc">Inter Vivos is a specialty law firm focusing on estate planning for your specific
+            <div class="attorney__line attorney__line--right"></div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">ABOUT ATTORNEY</b>
+              <p class="attorney__desc">Inter Vivos is a specialty law firm focusing on estate planning for your specific
                 needs. From NFA Gun Trusts to Comprehensive Trust Plans for Professionals, we can help you and your
                 family
                 with your individual probate/ estate planning needs. Let Us Earn Your Family's Trust!</p>
             </div>
-            <div class="profile__line profile__line--right"></div>
-            <div class="profile__section">
-              <b class="profile__section-title">EDUCATION</b>
-              <p class="profile__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern
+            <div class="attorney__line attorney__line--right"></div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">EDUCATION</b>
+              <p class="attorney__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern
                 California,
                 B.A.</p>
             </div>
-            <div class="profile__line profile__line--right"></div>
-            <div class="profile__section">
-              <b class="profile__section-title">PROFESSIONAL ACTIVITIES</b>
-              <p class="profile__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
+            <div class="attorney__line attorney__line--right"></div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">PROFESSIONAL ACTIVITIES</b>
+              <p class="attorney__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
                 Justice * 2011 - American Bar Association, Real Property, Trust and Estate Law Section * 2011 </p>
             </div>
-            <div class="profile__line profile__line--right"></div>
-            <div class="profile__section">
-              <b class="profile__section-title">GENERAL SERVICES</b>
+            <div class="attorney__line attorney__line--right"></div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">GENERAL SERVICES</b>
               <table>
                 <thead>
                 <tr>
@@ -581,9 +598,9 @@
                 </tbody>
               </table>
             </div>
-            <div class="profile__line profile__line--right"></div>
-            <div class="profile__section">
-              <b class="profile__section-title">FIXED PRICE DOCUMENTS</b>
+            <div class="attorney__line attorney__line--right"></div>
+            <div class="attorney__section">
+              <b class="attorney__section-title">FIXED PRICE DOCUMENTS</b>
               <table>
                 <thead>
                 <tr>
@@ -618,12 +635,12 @@
   </template>
 
   <script>
-      class MyNetlawProfile2 extends Polymer.Element {
+      class NetlawAttorneyDetails extends Polymer.Element {
           static get is() {
-              return 'netlaw-profile2';
+              return 'netlaw-attorney-details';
           }
       }
 
-      window.customElements.define(MyNetlawProfile2.is, MyNetlawProfile2);
+      window.customElements.define(NetlawAttorneyDetails.is, NetlawAttorneyDetails);
   </script>
 </dom-module>

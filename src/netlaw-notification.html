@@ -3,6 +3,8 @@
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
 
+<link rel="import" href="netlaw-icons.html">
+
 <dom-module id="netlaw-notification">
 
   <template>
@@ -10,11 +12,19 @@
     <style>
       /* shadow DOM styles go here */
       :host {
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
         position: relative;
         margin-left: auto;
         margin-right: 20px;
+        --iron-icon-height: 20px;
+        --iron-icon-width: 20px;
+      }
+
+      /*paper-icon-button.netlaw-notification {*/
+      paper-icon-button {
+
+        width: 20px;
+        height: 20px;
+        padding: 0;
       }
 
       #dropdown {
@@ -60,16 +70,17 @@
 
     </style>
 
-    <a href="#" on-click="toggle">
-      <!-- todo: change opacity on click to 1 (default is 0.3) -->
+    <paper-icon-button icon="netlaw-icons:notifications" name="notifications" on-click="toggle"></paper-icon-button>
+    <!--<a href="javascript:;" on-click="toggle">
+      &lt;!&ndash; todo: change opacity on click to 1 (default is 0.3) &ndash;&gt;
       <iron-icon src="./images/icons/notifications_icon.svg"></iron-icon>
-    </a>
+    </a>-->
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus>
         <ul class="notifications" slot="dropdown-content">
-          <li><a href="#">SmartGuide</a> is at 0% completed <span>1 min ago</span></li>
-          <li>Alexander Dumas has shared a <a href="#">new document</a> with you.<span>20 mins ago</span></li>
-          <li>Document <a href="#">“Estimate for Home Mortgage.PDF v1.0”</a> requires finalization.<span>1 hour ago</span></li>
+          <li><a href="javascript:;">SmartGuide</a> is at 0% completed <span>1 min ago</span></li>
+          <li>Alexander Dumas has shared a <a href="javascript:;">new document</a> with you.<span>20 mins ago</span></li>
+          <li>Document <a href="javascript:;">“Estimate for Home Mortgage.PDF v1.0”</a> requires finalization.<span>1 hour ago</span></li>
         </ul>
     </iron-dropdown>
 

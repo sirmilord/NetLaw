@@ -15,15 +15,9 @@
     <style>
       /* shadow DOM styles go here */
       :host {
-        --iron-icon-width: 28px;
-        --iron-icon-height: 28px;
         position: relative;
         margin-left: auto;
         margin-right: auto;
-        z-index: 99;
-      }
-      paper-icon-button {
-        z-index: 99;
       }
 
       :host([pressed]) iron-icon {
@@ -32,6 +26,16 @@
 
       :host([pressed]) input {
         border-bottom: 1px solid var(--app-header-color);
+      }
+
+      paper-icon-button {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+      }
+
+      paper-icon-button {
+        z-index: 99;
       }
 
       input[type=search] {
@@ -85,7 +89,7 @@
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
       <ul slot="dropdown-content">
-        <li>Listed result contact item 1 …</li>
+        <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
         <li>Listed result contact item 2 …</li>
         <li>Listed result contact item 3…</li>
         <li>Listed result contact item 4…</li>

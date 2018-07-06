@@ -81,12 +81,12 @@
       Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
-    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" no-auto-focus>
+    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right">
         <ul class="profile" slot="dropdown-content">
-          <li><a name="profile" href="[[rootPath]]profile">My Profile</a></li>
-          <li><a name="account" href="[[rootPath]]account">Account Settings</a></li>
-          <li><a name="password-new" href="[[rootPath]]">Refer a Friend</a></li>
-          <li><a name="password-reset" href="[[rootPath]]">Help</a></li>
+          <li><a name="profile" href="[[rootPath]]profile" on-click="onLinkClick">My Profile</a></li>
+          <li><a name="account" href="[[rootPath]]account" on-click="onLinkClick">Account Settings</a></li>
+          <li><a name="password-new" href="[[rootPath]]" on-click="onLinkClick">Refer a Friend</a></li>
+          <li><a name="password-reset" href="[[rootPath]]" on-click="onLinkClick">Help</a></li>
           <li><a name="logout" href="[[rootPath]]" on-click="onSignOutClick">Log Out</a></li>
         </ul>
     </iron-dropdown>
@@ -116,17 +116,26 @@
               this.toggleIcon = 'expand-more';
           }
 
+          onLinkClick() {
+
+             this.$.user_dropdown.close();
+             this.visible = !this.visible;
+              /*this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();*/
+          }
+
           toggle(e) {
               e.preventDefault();
               this.visible = !this.visible;
               this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
+
+
           }
 
           onSignOutClick(e) {
               this.loggedIn = false;
               // Show login screen on logout
               this.page = 'login';
-              window.location.href="/";
+              window.location.href='/';
               window.location.reload(true);
           }
 

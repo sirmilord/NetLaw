@@ -43,6 +43,9 @@
 <link rel="lazy-import" href="netlaw-add-module.html">
 
 <link rel="lazy-import" href="netlaw-profile.html">
+
+<link rel="lazy-import" href="netlaw-attorney-details.html">
+
 <link rel="lazy-import" href="netlaw-account.html">
 <link rel="lazy-import" href="netlaw-initial-screen.html">
 <link rel="lazy-import" href="netlaw-view-404.html">
@@ -190,7 +193,7 @@
 
             <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide">
-                <iron-icon src="./images/icons/wand_icon.svg" slot="item-icon"></iron-icon> SmartGuide
+                <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon> SmartGuide
               </a>
               <a name="lifevault" href="[[rootPath]]lifevault">
                 <iron-icon src="./images/icons/vault_icon.svg" slot="item-icon"></iron-icon> LifeVault
@@ -215,7 +218,11 @@
             <netlaw-lifevault2 name="lifevault2"></netlaw-lifevault2>
             <netlaw-contacts name="contacts"></netlaw-contacts>
             <netlaw-attorney name="attorney"></netlaw-attorney>
+
             <netlaw-find-attorney name="find-attorney"></netlaw-find-attorney>
+
+            <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
+
             <netlaw-add-module name="add-module"></netlaw-add-module>
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account"></netlaw-account>

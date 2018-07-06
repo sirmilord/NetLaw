@@ -626,6 +626,38 @@
         height: 60vh;
       }
 
+      .add-module__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .add-module__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .add-module__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        --iron-icon-fill-color: #C8C8C8;
+      }
+
+      .add-module__addfolder-dropdown--sub {
+        width: 164px;
+      }
+
+      .add-module__addfolder-dropdown--sort {
+        width: 182px;
+      }
+
     </style>
     <main class="add-module">
 
@@ -651,11 +683,20 @@
               <span>Sort By</span>
               <iron-icon icon="icons:expand-more"></iron-icon>
               <iron-dropdown id="sortbydropdown" vertical-offset="0">
-                <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul slot="dropdown-content">
-                  <li>Listed result contact item 1 ...</li>
-                  <li>Listed result contact item 2 ...</li>
-                  <li>Listed result contact item 3 ...</li>
+                <ul class="add-module__addfolder-dropdown add-module__addfolder-dropdown--sort" slot="dropdown-content">
+                  <li>Sort By - - -</li>
+                  <li>Title
+                    <iron-icon icon="icons:filter-list"></iron-icon>
+                  </li>
+                  <li>Newest
+                    <iron-icon icon="icons:arrow-upward"></iron-icon>
+                  </li>
+                  <li>Oldest
+                    <iron-icon icon="icons:arrow-downward"></iron-icon>
+                  </li>
+                  <li>SmartGuide Only
+                    <iron-icon icon="icons:find-replace"></iron-icon>
+                  </li>
                 </ul>
               </iron-dropdown>
             </div>
