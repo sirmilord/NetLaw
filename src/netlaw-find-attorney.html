@@ -478,7 +478,7 @@
 
       .find-attorney__module {
         padding: 20px 30px;
-        width: 100%;
+        width: 90%;
         box-sizing: border-box;
         position: relative;
       }
@@ -492,8 +492,8 @@
       }
 
       .find-attorney__col-module {
-        flex: 1 1 25%;
-        max-width: 25%;
+        flex: 1 1 20%;
+        max-width: 20%;
         padding-left: 20px;
         padding-right: 20px;
         box-sizing: border-box;
@@ -552,7 +552,7 @@
       }
 
       .find-attorney__photo img {
-        /*border-radius: 50%;*/
+        border-radius: 50%;
       }
 
       .btn--charm {
@@ -576,7 +576,7 @@
 
       .find-attorney__name {
         width: 100%;
-        color: #a2a2a2;
+        color: #4A4A4A;
         font-size: 18px;
         font-weight: 300;
         line-height: 1.2;
@@ -584,35 +584,35 @@
 
       .find-attorney__desc {
         width: 100%;
-        color: #a2a2a2;
-        font-size: 18px;
+        color: #4A4A4A;
+        font-size: 12px;
         font-weight: 300;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        margin-top: 5px;
         line-height: 1.2;
       }
 
       .find-attorney__module-update {
         /*flex: 0 0 50%;*/
         font-size: 12px;
-        color: #a2a2a2;
+        font-weight: 300;
+        color: #4A4A4A;
         margin-right: auto;
-        align-self: center;
+        /*align-self: center;*/
       }
 
-      .find-attorney__details {
-        /*flex: 0 0 50%;*/
-        font-size: 18px;
-        color: #68a2e6;
-        margin-left: auto;
-        text-decoration: none;
-        display: flex;
-        justify-content: center;
-        /*align-items: center;*/
-      }
+      /*.find-attorney__details {*/
+        /*font-size: 18px;*/
+        /*color: #68a2e6;*/
+        /*margin-left: auto;*/
+        /*text-decoration: none;*/
+        /*display: flex;*/
+        /*justify-content: center;*/
+      /*}*/
 
-      .find-attorney__details iron-icon {
-        margin-top: 3px;
-      }
+      /*.find-attorney__details iron-icon {*/
+        /*margin-top: 3px;*/
+      /*}*/
 
       .find-attorney__module-list-item {
         display: flex;
@@ -661,7 +661,7 @@
 
       .find-attorney__name {
         /*flex: 1 1 20%;*/
-        color: #a2a2a2;
+        color: #4A4A4A;
         font-size: 18px;
         font-weight: 300;
       }
@@ -669,7 +669,7 @@
       .find-attorney__list-update {
         font-size: 12px;
         font-weight: 300;
-        color: #a2a2a2;
+        color: #4A4A4A;
         /*flex: 1 1 100%;*/
         /*max-width: 100%;*/
       }
@@ -770,7 +770,7 @@
         display: block;
       }
 
-      .find-attorney__details--list {
+      .find-attorney__details {
         /*flex: 0 0 50%;*/
         font-size: 12px;
         color: #68a2e6;
@@ -781,7 +781,7 @@
         /*align-items: center;*/
       }
 
-      .find-attorney__details--list iron-icon {
+      .find-attorney__details iron-icon {
         margin-top: -3px;
         --iron-icon-height: 24px;
         --iron-icon-width: 24px;
@@ -804,6 +804,13 @@
         --iron-icon-height: 20px;
         display: flex;
         align-items: center;
+      }
+
+      .rating--module {
+        --iron-icon-width: 16px;
+        --iron-icon-height: 16px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .rating__color {
@@ -939,14 +946,19 @@
                     <figure class="find-attorney__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
                     </figure>
-                    <button class="btn btn--charm">
-                      <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    <div class="rating rating--module">
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                    </div>
                   </div>
                   <div class="find-attorney__module-footer">
-                    <span class="find-attorney__name">Estimate for Home Management.PDF</span>
-                    <span class="find-attorney__module-update">Updated 1d ago</span>
-                    <a class="find-attorney__details" href="#">v1.1
+                    <span class="find-attorney__name">J. Glen Wagstaff</span>
+                    <span class="find-attorney__desc">Civil Defense Attorney</span>
+                    <span class="find-attorney__module-update">Orem, UT</span>
+                    <a class="find-attorney__details" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__version-dropdown"
@@ -1002,14 +1014,19 @@
                     <figure class="find-attorney__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
                     </figure>
-                    <button class="btn btn--charm">
-                      <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    <div class="rating rating--module">
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                    </div>
                   </div>
                   <div class="find-attorney__module-footer">
-                    <span class="find-attorney__name">Estimate for Home Management.PDF</span>
-                    <span class="find-attorney__module-update">Updated 1d ago</span>
-                    <a class="find-attorney__details" href="#">v2.2
+                    <span class="find-attorney__name">Jeff Cobb</span>
+                    <span class="find-attorney__desc">Civil Defense Attorney</span>
+                    <span class="find-attorney__module-update">Orem, UT</span>
+                    <a class="find-attorney__details" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__version-dropdown"
@@ -1065,14 +1082,19 @@
                     <figure class="find-attorney__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
                     </figure>
-                    <button class="btn btn--charm">
-                      <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    <div class="rating rating--module">
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                    </div>
                   </div>
                   <div class="find-attorney__module-footer">
-                    <span class="find-attorney__name">Estimate for Home Management.PDF</span>
-                    <span class="find-attorney__module-update">Updated 1d ago</span>
-                    <a class="find-attorney__details" href="#">v1.4
+                    <span class="find-attorney__name">Stella Brown</span>
+                    <span class="find-attorney__desc">Civil Defense Attorney</span>
+                    <span class="find-attorney__module-update">Orem, UT</span>
+                    <a class="find-attorney__details" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__version-dropdown"
@@ -1128,14 +1150,87 @@
                     <figure class="find-attorney__photo">
                       <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
                     </figure>
-                    <button class="btn btn--charm">
-                      <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    <div class="rating rating--module">
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                    </div>
                   </div>
                   <div class="find-attorney__module-footer">
-                    <span class="find-attorney__name">Estimate for Home Management.PDF</span>
-                    <span class="find-attorney__module-update">Updated 1d ago</span>
-                    <a class="find-attorney__details" href="#">v1.0
+                    <span class="find-attorney__name">Stella Brown</span>
+                    <span class="find-attorney__desc">Civil Defense Attorney</span>
+                    <span class="find-attorney__module-update">Orem, UT</span>
+                    <a class="find-attorney__details" href="#">details
+                      <iron-icon icon="icons:expand-more"></iron-icon>
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="find-attorney__version-dropdown"
+                            slot="dropdown-content">
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="find-attorney__version">v1.1</span>
+                            <iron-icon icon="icons:expand-less"></iron-icon>
+                          </li>
+                          <li><span class="find-attorney__version">v1.2</span></li>
+                          <li>
+                            <iron-icon icon="icons:find-replace"></iron-icon>
+                            <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
+                          </li>
+                          <li><span class="find-attorney__version">v1.4</span></li>
+                          <li><span class="find-attorney__version">v1.5</span></li>
+                        </ul>
+                      </iron-dropdown>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="find-attorney__col-module">
+                <div class="find-attorney__module-item">
+                  <div class="find-attorney__module-body">
+                    <label class="find-attorney__checkbox-container find-attorney__checkbox-container--module">
+                      <input type="checkbox">
+                      <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
+                    </label>
+                    <a class="find-attorney__menu" href="#">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown horizontal-align="right">
+                        <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li>Download
+                            <iron-icon icon="icons:file-download"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="icons:print"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="icons:create"></iron-icon>
+                          </li>
+                          <li>Delete
+                            <iron-icon icon="icons:delete"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
+                    </a>
+                    <figure class="find-attorney__photo">
+                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    </figure>
+                    <div class="rating rating--module">
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                      <iron-icon icon="icons:star"></iron-icon>
+                    </div>
+                  </div>
+                  <div class="find-attorney__module-footer">
+                    <span class="find-attorney__name">Dale McBride</span>
+                    <span class="find-attorney__desc">Civil Defense Attorney</span>
+                    <span class="find-attorney__module-update">Orem, UT</span>
+                    <a class="find-attorney__details" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__version-dropdown"
@@ -1159,9 +1254,9 @@
                 </div>
               </div>
             </div>
-            <!--<a class="find-attorney__add-contact" href="#">-->
-            <!--<iron-icon icon="icons:account-circle"></iron-icon>-->
-            <!--</a>-->
+            <a class="find-attorney__add-contact" href="#">
+              <iron-icon icon="icons:account-circle"></iron-icon>
+            </a>
           </div>
         </div>
 
@@ -1540,7 +1635,7 @@
               </div>
             </div>
             <a class="find-attorney__add-contact" href="#">
-            <iron-icon icon="icons:account-circle"></iron-icon>
+              <iron-icon icon="icons:account-circle"></iron-icon>
             </a>
           </div>
         </div>
