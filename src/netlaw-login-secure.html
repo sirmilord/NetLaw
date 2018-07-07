@@ -24,42 +24,8 @@
         min-height: 786px;
       }
 
-      .login-buttons {
-        max-width: 285px;
-        margin: 80px auto 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      .login-buttons paper-icon-button {
-        width: 25%;
-        height: 45px;
-      }
-
-      .login-buttons paper-icon-button:first-child {
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-      }
-
-      .login-buttons paper-icon-button:last-child {
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
-
-      .login-buttons paper-icon-button[name="googleplus"] {
-        background: #FF3624;
-      }
-
-      .login-buttons paper-icon-button[name="facebook"] {
-        background: #024DAF;
-      }
-
-      .login-buttons paper-icon-button[name="linkedin"] {
-        background: #0178BD;
-      }
-
-      .login-buttons paper-icon-button[name="twitter"] {
-        background: #01B8EC;
+      .login__item-desc {
+        min-height: 75px;
       }
 
     </style>
@@ -87,7 +53,7 @@
             <div class="login__row login__margin-top-big">
               <div class="login__item login__item--third">
                 <iron-icon icon="netlaw-icons:secure-mobile"></iron-icon>
-                <p class="login__margin">Generate codes on your smartphone (Android or iPhone).
+                <p class="login__item-desc login__margin">Generate codes on your smartphone (Android or iPhone).
                   Note: You will be required to download an app. </p>
                 <hr class="login__divider-small">
                 <p class="login__margin">
@@ -96,7 +62,7 @@
               </div>
               <div class="login__item login__item--third">
                 <iron-icon icon="netlaw-icons:secure-sms"></iron-icon>
-                <p class="login__margin">Receieve an SMS message security code on your phone.
+                <p class="login__item-desc login__margin">Receieve an SMS message security code on your phone.
                   Note: Any celluar phone will work.</p>
                 <hr class="login__divider-small">
                 <p class="login__margin">
@@ -105,7 +71,7 @@
               </div>
               <div class="login__item login__item--third">
                 <iron-icon icon="netlaw-icons:secure-email"></iron-icon>
-                <p class="login__margin">Recieve security codes directly in your preferred
+                <p class="login__item-desc login__margin">Recieve security codes directly in your preferred
                   email inbox. </p>
                 <hr class="login__divider-small">
                 <p class="login__margin">
