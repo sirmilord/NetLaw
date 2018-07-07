@@ -89,8 +89,6 @@
               <paper-icon-button icon="social-icons:linkedin" name="linkedin"
                                  on-click="onLoginClick"></paper-icon-button>
               <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
-              <!--<button class="btn btn-danger .login__margin-bottom">Login with Google+</button>
-              <button class="btn btn-secondary">Login with Facebook</button>-->
             </div>
             <div class="login__divider-icon">OR</div>
 
@@ -135,7 +133,8 @@
                 <button class="btn btn-primary">Save New Password</button>
               </div>
               <div class="login__margin">
-                <a href="javascript:;" on-click="onCancelClick">Cancel</a>
+                <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+                <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
               </div>
             </form>
           </template>
@@ -154,7 +153,8 @@
                 <button class="btn btn-primary" on-click="onConfirmClick">Send My Link</button>
               </div>
               <div class="login__margin">
-                <a href="javascript:;" on-click="onCancelClick">Cancel</a>
+                <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+                <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
               </div>
             </form>
           </template>
@@ -164,10 +164,13 @@
             <h3>Your recovery link has been sent.</h3>
             <p><i>(be certain to check your spam or junkmail folder)</i></p>
             <hr class="login__divider-small">
-            <p class="login__margin">
+            <div class="login__margin">
               <button class="btn btn-primary">Resend Link</button>
-            </p>
-            <p class="login__margin"><a href="javascript:;" on-click="onCancelClick">Cancel</a></p>
+            </div>
+            <div class="login__margin">
+              <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+              <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
+            </div>
           </template>
 
         </div>
