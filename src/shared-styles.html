@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login__main {
         height: 100vh;
         font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #4A4A4A;
       }
 
       .login__section-default {
@@ -164,6 +165,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .login .login__divider-icon {
         background: none;
+        font-style: italic;
+        font-weight: 300;
+        color: #9b9b9b;
       }
 
       [class*="login__divider"] {
@@ -420,7 +424,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .login__align-center p i {
-        color: #bbb;
+        color: #9b9b9b;
       }
 
       .login--security {
@@ -434,10 +438,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border: 0;
         padding: 0;
         color: #4A4A4A;
-        --iron-icon-width: 60px;
-        --iron-icon-height: 60px;
-        --iron-icon-fill-color: #979797;
+        --iron-icon-width: 25px;
+        --iron-icon-height: 25px;
+        --iron-icon-fill-color: #4A4A4A;
         font-weight: 400;
+        font-size: 14px;
       }
 
       .btn--position {
@@ -485,6 +490,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 33.333333%;
       }
 
+      .btn-cancel {
+        border: none;
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: 400;
+        color: #767677;
+        /*margin-left: 20px;*/
+        width: 170px;
+      }
+
+      .btn-cancel:hover
+      .btn-cancel:focus {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        color: #767677;
+      }
+
+      .login .btn-cancel {
+        margin-top: -11px;
+      }
+
       .btn--cancel-bordered {
         border: 1px solid #9B9B9B;
         background-color: transparent;
@@ -505,7 +532,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login .btn--google-play {
         width: 116px;
         height: 34px;
-        background-image: url("/images/google-play-badge.svg");
+        background-image: url("/images/google-play.svg");
         background-repeat: no-repeat;
         background-size: contain;
         background-color: #f9f9f9;
@@ -515,7 +542,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .login .btn--apple-store {
         width: 116px;
         height: 34px;
-        background-image: url("/images/App-Store-Badge.svg");
+        background-image: url("/images/app-store.svg");
         background-repeat: no-repeat;
         background-size: contain;
         background-color: #f9f9f9;
