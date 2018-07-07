@@ -44,6 +44,12 @@
         /*display: flex;*/
       }
 
+      .contact__header-left iron-icon {
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        margin-left: 30px;
+      }
+
       .contact__header-right {
         flex: 1 1 70%;
         max-width: 70%;
@@ -266,13 +272,6 @@
         border-radius: 50%;
       }
 
-      .rating {
-        --iron-icon-fill-color: #F8E71C;
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
-        margin-bottom: 15px;
-      }
-
       .contact__link {
         color: #4A90E2;
         text-decoration: none;
@@ -319,27 +318,6 @@
         --iron-icon-fill-color: #01AA50;
       }
 
-      .social {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .social__link {
-        margin-left: 8px;
-        margin-right: 8px;
-        border-radius: 50%;
-        border: 2px solid #000000;
-        width: 44px;
-        height: 44px;
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
-        --iron-icon-fill-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
       .btn--unbordered {
         border: 1px solid #01AA50;
         background-color: transparent;
@@ -347,9 +325,6 @@
         font-size: 16px;
         font-weight: 900;
         width: 170px;
-        /*position: absolute;
-        left: 200px;
-        top: 60px;*/
       }
 
       .btn--unbordered:hover,
@@ -467,7 +442,7 @@
       <div class="contact__header">
         <div class="contact__header-left">
           <button class="btn btn--back-dash">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
+            <iron-icon icon="netlaw-icons:back"></iron-icon>
             Back to Contacts
           </button>
         </div>
