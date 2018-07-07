@@ -488,7 +488,7 @@
         margin-right: -20px;
         box-sizing: border-box;
         display: flex;
-        flex-wrap: wrap;
+        /*flex-wrap: wrap;*/
       }
 
       .find-attorney__col-module {
@@ -499,8 +499,19 @@
         box-sizing: border-box;
       }
 
-      .find-attorney__module-item {
+      .find-attorney__item {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
 
+      .find-attorney__item--half {
+        flex: 1 1 50%;
+        max-width: 50%;
+      }
+
+      .find-attorney__item--center {
+        display: flex;
+        justify-content: center;
       }
 
       .find-attorney__module-body {
@@ -602,16 +613,16 @@
       }
 
       /*.find-attorney__details {*/
-        /*font-size: 18px;*/
-        /*color: #68a2e6;*/
-        /*margin-left: auto;*/
-        /*text-decoration: none;*/
-        /*display: flex;*/
-        /*justify-content: center;*/
+      /*font-size: 18px;*/
+      /*color: #68a2e6;*/
+      /*margin-left: auto;*/
+      /*text-decoration: none;*/
+      /*display: flex;*/
+      /*justify-content: center;*/
       /*}*/
 
       /*.find-attorney__details iron-icon {*/
-        /*margin-top: 3px;*/
+      /*margin-top: 3px;*/
       /*}*/
 
       .find-attorney__module-list-item {
@@ -620,6 +631,7 @@
         width: 100%;
         align-items: center;
         box-sizing: border-box;
+        flex-wrap: wrap;
       }
 
       .find-attorney__list-left {
@@ -631,12 +643,14 @@
       .find-attorney__list-center {
         display: flex;
         align-items: center;
-        width: 75%;
+        width: 87%;
         justify-content: space-between;
       }
 
-      .find-attorney__list-right {
+      .find-attorney__module-list-item iron-collapse {
+        width: 70%;
         margin-left: auto;
+        margin-right: auto;
       }
 
       .find-attorney__checkbox-container--list {
@@ -970,7 +984,7 @@
                     <span class="find-attorney__name">J. Glen Wagstaff</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <a class="find-attorney__details" href="#">details
+                    <a class="find-attorney__details find-attorney__details--module" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1044,7 +1058,7 @@
                     <span class="find-attorney__name">Jeff Cobb</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <a class="find-attorney__details" href="#">details
+                    <a class="find-attorney__details find-attorney__details--module" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1118,7 +1132,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <a class="find-attorney__details" href="#">details
+                    <a class="find-attorney__details find-attorney__details--module" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1192,7 +1206,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <a class="find-attorney__details" href="#">details
+                    <a class="find-attorney__details find-attorney__details--module" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1266,7 +1280,7 @@
                     <span class="find-attorney__name">Dale McBride</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <a class="find-attorney__details" href="#">details
+                    <a class="find-attorney__details find-attorney__details--module" href="#">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1337,52 +1351,42 @@
                   <iron-icon icon="icons:star"></iron-icon>
                   <span class="rating__number">5/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="#">details
-                  <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__details-dropdown"
-                        slot="dropdown-content">
-                      <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version">v1.1</span>
-                        <iron-icon icon="icons:expand-less"></iron-icon>
-                      </li>
-                      <li><span class="find-attorney__version">v1.2</span></li>
-                      <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
-                      </li>
-                      <li><span class="find-attorney__version">v1.4</span></li>
-                      <li><span class="find-attorney__version">v1.5</span></li>
-                    </ul>
-                  </iron-dropdown>
+                <a class="find-attorney__details find-attorney__details--list" href="#" on-click="toggle">details
+                  <iron-icon icon="[[detailsIcon]]"></iron-icon>
                 </a>
               </div>
-              <div class="find-attorney__list-right">
-                <a class="find-attorney__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon icon="icons:file-download"></iron-icon>
+              <iron-collapse id="detail1">
+                <div class="find-attorney__row">
+                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                    <figure class="find-attorney__img">
+                      <img src="/images/map.jpg" alt="map">
+                    </figure>
+                  </div>
+                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                    <ul class="find-attorney__details-dropdown">
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <address>#12345 Center St.<br> Orem, Utah 50679</address>
                       </li>
-                      <li>Print
-                        <iron-icon icon="icons:print"></iron-icon>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span>689-892-7856</span>
                       </li>
-                      <li>Rename
-                        <iron-icon icon="icons:exit-to-app"></iron-icon>
+                      <li>
+                        <iron-icon icon="icons:find-replace"></iron-icon>
+                        <span>toni.bruen@cleora.ca</span>
                       </li>
-                      <li>Share
-                        <iron-icon icon="icons:create"></iron-icon>
+                      <li>
+                        <button class="btn btn--primary">View Profile</button>
                       </li>
-                      <li>Delete
-                        <iron-icon icon="icons:delete"></iron-icon>
+                      <li>
+                        <div class="find-attorney__line"></div>
                       </li>
                     </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
+                  </div>
+                </div>
+                <div class="find-attorney__line"></div>
+              </iron-collapse>
             </div>
             <div class="find-attorney__module-list-item">
               <div class="find-attorney__list-left">
@@ -1410,276 +1414,238 @@
                   <iron-icon class="rating__color" icon="icons:star"></iron-icon>
                   <span class="rating__number">4/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="#">details
-                  <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__details-dropdown"
-                        slot="dropdown-content">
-                      <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version">v1.1</span>
-                        <iron-icon icon="icons:expand-less"></iron-icon>
-                      </li>
-                      <li><span class="find-attorney__version">v1.2</span></li>
-                      <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
-                      </li>
-                      <li><span class="find-attorney__version">v1.4</span></li>
-                      <li><span class="find-attorney__version">v1.5</span></li>
-                    </ul>
-                  </iron-dropdown>
+                <a class="find-attorney__details find-attorney__details--list" href="#" on-click="toggle2">details
+                  <iron-icon icon="[[detailsIcon2]]"></iron-icon>
                 </a>
               </div>
-              <div class="find-attorney__list-right">
-                <a class="find-attorney__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon icon="icons:file-download"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon icon="icons:print"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon icon="icons:exit-to-app"></iron-icon>
-                      </li>
-                      <li>Share
-                        <iron-icon icon="icons:create"></iron-icon>
-                      </li>
-                      <li>Delete
-                        <iron-icon icon="icons:delete"></iron-icon>
-                      </li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-            </div>
-            <div class="find-attorney__module-list-item">
-              <div class="find-attorney__list-left">
-                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                  <input type="checkbox">
-                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-                </label>
-                <div class="find-attorney__list-body">
-                  <figure class="find-attorney__photo find-attorney__photo--list">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                  </figure>
-                </div>
-              </div>
-              <div class="find-attorney__list-center">
-                <div class="find-attorney__name-wrap">
-                  <span class="find-attorney__name">Stella Brown</span>
-                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
-                </div>
-                <span class="find-attorney__location">Orem, Utah (UT)</span>
-                <div class="rating">
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <span class="rating__number">3/5</span>
-                </div>
-                <a class="find-attorney__details find-attorney__details--list" href="#">details
-                  <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__details-dropdown"
-                        slot="dropdown-content">
+              <iron-collapse id="detail2">
+                <div class="find-attorney__row">
+                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                    <figure class="find-attorney__img">
+                      <img src="/images/map.jpg" alt="map">
+                    </figure>
+                  </div>
+                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                    <ul class="find-attorney__details-dropdown">
                       <li>
                         <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version">v1.1</span>
-                        <iron-icon icon="icons:expand-less"></iron-icon>
+                        <address>#12345 Center St.<br> Orem, Utah 50679</address>
                       </li>
-                      <li><span class="find-attorney__version">v1.2</span></li>
                       <li>
                         <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
+                        <span>689-892-7856</span>
                       </li>
-                      <li><span class="find-attorney__version">v1.4</span></li>
-                      <li><span class="find-attorney__version">v1.5</span></li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-              <div class="find-attorney__list-right">
-                <a class="find-attorney__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon icon="icons:file-download"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon icon="icons:print"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon icon="icons:exit-to-app"></iron-icon>
-                      </li>
-                      <li>Share
-                        <iron-icon icon="icons:create"></iron-icon>
-                      </li>
-                      <li>Delete
-                        <iron-icon icon="icons:delete"></iron-icon>
-                      </li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-            </div>
-            <div class="find-attorney__module-list-item">
-              <div class="find-attorney__list-left">
-                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                  <input type="checkbox">
-                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-                </label>
-                <div class="find-attorney__list-body">
-                  <figure class="find-attorney__photo find-attorney__photo--list">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                  </figure>
-                </div>
-              </div>
-              <div class="find-attorney__list-center">
-                <div class="find-attorney__name-wrap">
-                  <span class="find-attorney__name">Stella Brown</span>
-                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
-                </div>
-                <span class="find-attorney__location">Orem, Utah (UT)</span>
-                <div class="rating">
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <span class="rating__number">2/5</span>
-                </div>
-                <a class="find-attorney__details find-attorney__details--list" href="#">details
-                  <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__details-dropdown"
-                        slot="dropdown-content">
                       <li>
                         <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version">v1.1</span>
-                        <iron-icon icon="icons:expand-less"></iron-icon>
+                        <span>toni.bruen@cleora.ca</span>
                       </li>
-                      <li><span class="find-attorney__version">v1.2</span></li>
                       <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
+                        <button class="btn btn--primary">View Profile</button>
                       </li>
-                      <li><span class="find-attorney__version">v1.4</span></li>
-                      <li><span class="find-attorney__version">v1.5</span></li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-              <div class="find-attorney__list-right">
-                <a class="find-attorney__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon icon="icons:file-download"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon icon="icons:print"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon icon="icons:exit-to-app"></iron-icon>
-                      </li>
-                      <li>Share
-                        <iron-icon icon="icons:create"></iron-icon>
-                      </li>
-                      <li>Delete
-                        <iron-icon icon="icons:delete"></iron-icon>
-                      </li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-            </div>
-            <div class="find-attorney__module-list-item">
-              <div class="find-attorney__list-left">
-                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                  <input type="checkbox">
-                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-                </label>
-                <div class="find-attorney__list-body">
-                  <figure class="find-attorney__photo find-attorney__photo--list">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
-                  </figure>
-                </div>
-              </div>
-              <div class="find-attorney__list-center">
-                <div class="find-attorney__name-wrap">
-                  <span class="find-attorney__name">Dale McBride</span>
-                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
-                </div>
-                <span class="find-attorney__location">Orem, Utah (UT)</span>
-                <div class="rating">
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                  <span class="rating__number">3/5</span>
-                </div>
-                <a class="find-attorney__details find-attorney__details--list" href="#">details
-                  <iron-icon icon="icons:expand-more"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__details-dropdown"
-                        slot="dropdown-content">
                       <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version">v1.1</span>
-                        <iron-icon icon="icons:expand-less"></iron-icon>
-                      </li>
-                      <li><span class="find-attorney__version">v1.2</span></li>
-                      <li>
-                        <iron-icon icon="icons:find-replace"></iron-icon>
-                        <span class="find-attorney__version find-attorney__version--mr">v1.3</span>
-                      </li>
-                      <li><span class="find-attorney__version">v1.4</span></li>
-                      <li><span class="find-attorney__version">v1.5</span></li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-              <div class="find-attorney__list-right">
-                <a class="find-attorney__menu" href="#">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown horizontal-align="right">
-                    <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon icon="icons:file-download"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon icon="icons:print"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon icon="icons:exit-to-app"></iron-icon>
-                      </li>
-                      <li>Share
-                        <iron-icon icon="icons:create"></iron-icon>
-                      </li>
-                      <li>Delete
-                        <iron-icon icon="icons:delete"></iron-icon>
+                        <div class="find-attorney__line"></div>
                       </li>
                     </ul>
-                  </iron-dropdown>
-                </a>
-              </div>
-            </div>
-            <a class="find-attorney__add-contact" href="#">
-              <iron-icon icon="icons:account-circle"></iron-icon>
-            </a>
+                  </div>
+                </div>
+                <div class="find-attorney__line"></div>
+              </iron-collapse>
           </div>
+          <div class="find-attorney__module-list-item">
+            <div class="find-attorney__list-left">
+              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                <input type="checkbox">
+                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+              </label>
+              <div class="find-attorney__list-body">
+                <figure class="find-attorney__photo find-attorney__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+            </div>
+            <div class="find-attorney__list-center">
+              <div class="find-attorney__name-wrap">
+                <span class="find-attorney__name">Stella Brown</span>
+                <span class="find-attorney__list-update">Civil Defense Attorney</span>
+              </div>
+              <span class="find-attorney__location">Orem, Utah (UT)</span>
+              <div class="rating">
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <span class="rating__number">3/5</span>
+              </div>
+              <a class="find-attorney__details find-attorney__details--list" href="#" on-click="toggle3">details
+                <iron-icon icon="[[detailsIcon3]]"></iron-icon>
+              </a>
+            </div>
+            <iron-collapse id="detail3">
+              <div class="find-attorney__row">
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <figure class="find-attorney__img">
+                    <img src="/images/map.jpg" alt="map">
+                  </figure>
+                </div>
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <ul class="find-attorney__details-dropdown">
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>689-892-7856</span>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>toni.bruen@cleora.ca</span>
+                    </li>
+                    <li>
+                      <button class="btn btn--primary">View Profile</button>
+                    </li>
+                    <li>
+                      <div class="find-attorney__line"></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="find-attorney__line"></div>
+            </iron-collapse>
+          </div>
+          <div class="find-attorney__module-list-item">
+            <div class="find-attorney__list-left">
+              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                <input type="checkbox">
+                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+              </label>
+              <div class="find-attorney__list-body">
+                <figure class="find-attorney__photo find-attorney__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+            </div>
+            <div class="find-attorney__list-center">
+              <div class="find-attorney__name-wrap">
+                <span class="find-attorney__name">Stella Brown</span>
+                <span class="find-attorney__list-update">Civil Defense Attorney</span>
+              </div>
+              <span class="find-attorney__location">Orem, Utah (UT)</span>
+              <div class="rating">
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <span class="rating__number">2/5</span>
+              </div>
+              <a class="find-attorney__details find-attorney__details--list" href="#" on-click="toggle4">details
+                <iron-icon icon="[[detailsIcon4]]"></iron-icon>
+              </a>
+            </div>
+            <iron-collapse id="detail4">
+              <div class="find-attorney__row">
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <figure class="find-attorney__img">
+                    <img src="/images/map.jpg" alt="map">
+                  </figure>
+                </div>
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <ul class="find-attorney__details-dropdown">
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>689-892-7856</span>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>toni.bruen@cleora.ca</span>
+                    </li>
+                    <li>
+                      <button class="btn btn--primary">View Profile</button>
+                    </li>
+                    <li>
+                      <div class="find-attorney__line"></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="find-attorney__line"></div>
+            </iron-collapse>
+          </div>
+          <div class="find-attorney__module-list-item">
+            <div class="find-attorney__list-left">
+              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                <input type="checkbox">
+                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+              </label>
+              <div class="find-attorney__list-body">
+                <figure class="find-attorney__photo find-attorney__photo--list">
+                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                </figure>
+              </div>
+            </div>
+            <div class="find-attorney__list-center">
+              <div class="find-attorney__name-wrap">
+                <span class="find-attorney__name">Dale McBride</span>
+                <span class="find-attorney__list-update">Civil Defense Attorney</span>
+              </div>
+              <span class="find-attorney__location">Orem, Utah (UT)</span>
+              <div class="rating">
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                <span class="rating__number">3/5</span>
+              </div>
+              <a class="find-attorney__details find-attorney__details--list" href="#" on-click="toggle5">details
+                <iron-icon icon="[[detailsIcon5]]"></iron-icon>
+              </a>
+            </div>
+            <iron-collapse id="detail5">
+              <div class="find-attorney__row">
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <figure class="find-attorney__img">
+                    <img src="/images/map.jpg" alt="map">
+                  </figure>
+                </div>
+                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center">
+                  <ul class="find-attorney__details-dropdown">
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>689-892-7856</span>
+                    </li>
+                    <li>
+                      <iron-icon icon="icons:find-replace"></iron-icon>
+                      <span>toni.bruen@cleora.ca</span>
+                    </li>
+                    <li>
+                      <button class="btn btn--primary">View Profile</button>
+                    </li>
+                    <li>
+                      <div class="find-attorney__line"></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="find-attorney__line"></div>
+            </iron-collapse>
+            </div>
+
+          </div>
+          <a class="find-attorney__add-contact" href="#">
+            <iron-icon icon="icons:account-circle"></iron-icon>
+          </a>
+        </div>
         </div>
 
         <!--</template>-->
@@ -1712,21 +1678,46 @@
                       notify: true,
                       reflectToAttribute: true,
                   },
-                  toggleIcon: {
-                      type: String
-                  },
-                  // detailsIcon: {
-                  //     type: String,
-                  //     reflectToAttribute: true,
-                  //     notify: true
+                  // toggleIcon: {
+                  //     type: String
                   // },
+                  detailsIcon: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                  },
+
+                  detailsIcon2: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                  },
+                  detailsIcon3: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                  },
+                  detailsIcon4: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                  },
+                  detailsIcon5: {
+                      type: String,
+                      reflectToAttribute: true,
+                      notify: true
+                  },
               };
           }
 
           constructor() {
               super();
-              this.toggleIcon = 'icons:add-circle-outline';
+              // this.toggleIcon = 'icons:add-circle-outline';
               this.detailsIcon = 'icons:expand-more';
+              this.detailsIcon2 = 'icons:expand-more';
+              this.detailsIcon3 = 'icons:expand-more';
+              this.detailsIcon4 = 'icons:expand-more';
+              this.detailsIcon5 = 'icons:expand-more';
               this.view = 'Module';
               // this.view = true;
               this.checkboxes = 0;
@@ -1734,28 +1725,47 @@
 
           toggle(e) {
               e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-              this.$.collapse.opened ? this.$.addfolder.classList.add('find-attorney__add-folder--show') : this.$.addfolder.classList.remove('find-attorney__add-folder--show');
+              this.$.detail1.toggle();
+              this.$.detail1.setAttribute('aria-expanded', this.$.detail1.opened);
+              this.$.detail1.opened ? this.detailsIcon = 'icons:expand-less' : this.detailsIcon = 'icons:expand-more';
           }
 
-          toggleLvl2(e) {
+          toggle2(e) {
               e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('find-attorney__list-item-lvl2--top-border') : this.$.mod.classList.remove('find-attorney__list-item-lvl2--top-border');
+              this.$.detail2.toggle();
+              this.$.detail2.setAttribute('aria-expanded', this.$.detail2.opened);
+              this.$.detail2.opened ? this.detailsIcon2 = 'icons:expand-less' : this.detailsIcon2 = 'icons:expand-more';
+          }
+
+          toggle3(e) {
+              e.preventDefault();
+              this.$.detail3.toggle();
+              this.$.detail3.setAttribute('aria-expanded', this.$.detail3.opened);
+              this.$.detail3.opened ? this.detailsIcon3 = 'icons:expand-less' : this.detailsIcon3 = 'icons:expand-more';
+          }
+
+          toggle4(e) {
+              e.preventDefault();
+              this.$.detail4.toggle();
+              this.$.detail4.setAttribute('aria-expanded', this.$.detail4.opened);
+              this.$.detail4.opened ? this.detailsIcon4 = 'icons:expand-less' : this.detailsIcon4 = 'icons:expand-more';
+          }
+
+          toggle5(e) {
+              e.preventDefault();
+              this.$.detail5.toggle();
+              this.$.detail5.setAttribute('aria-expanded', this.$.detail5.opened);
+              this.$.detail5.opened ? this.detailsIcon5 = 'icons:expand-less' : this.detailsIcon5 = 'icons:expand-more';
           }
 
           ready(e) {
               super.ready();
-              let btnDetails = this.shadowRoot.querySelectorAll('.find-attorney__details');
-              btnDetails.forEach(btn => btn.addEventListener('click', function (e) {
+
+              let btnDetailsModule = this.shadowRoot.querySelectorAll('.find-attorney__details--module');
+              btnDetailsModule.forEach(btn => btn.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').opened ? this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-more') : this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
                   this.querySelector('iron-dropdown').open();
-
-                  // this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
-
               }));
 
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
