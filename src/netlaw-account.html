@@ -45,6 +45,12 @@
         /*display: flex;*/
       }
 
+      .account__header-left iron-icon {
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        margin-left: 30px;
+      }
+
       .account__header-right {
         flex: 1 1 70%;
         max-width: 70%;
@@ -67,9 +73,10 @@
         border: 0;
         padding: 0;
         color: #cdcdcd;
-        --iron-icon-width: 60px;
-        --iron-icon-height: 60px;
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
         --iron-icon-fill-color: #979797;
+        font-size: 14px;
         font-weight: 400;
       }
 
@@ -376,7 +383,7 @@
       <div class="account__header">
         <div class="account__header-left">
           <button class="btn btn--back-dash">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
+            <iron-icon icon="netlaw-icons:back"></iron-icon>
             Back to Dash
           </button>
         </div>
@@ -388,6 +395,7 @@
         <div class="account__left">
           <nav class="account__list">
               <a href="javascript:;" class="account__list-link account__list-link--active">Account Information</a>
+              <a href="javascript:;" class="account__list-link">Security Settings</a>
               <a href="javascript:;" class="account__list-link">Current Billing Plan</a>
               <a href="javascript:;" class="account__list-link">View Billing Plans</a>
           </nav>
@@ -399,8 +407,6 @@
             <paper-icon-button icon="social-icons:linkedin" name="linkedin"
                                on-click="onLoginClick"></paper-icon-button>
             <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
-            <!--<button class="btn btn-danger .login__margin-bottom">Login with Google+</button>
-            <button class="btn btn-secondary">Login with Facebook</button>-->
           </div>
         </div>
         <div class="account__right">

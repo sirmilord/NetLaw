@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-account3">
+<dom-module id="netlaw-account-plans">
   <template>
 
     <style>
@@ -23,7 +23,7 @@
       }
 
       .account__container {
-        width: 1200px;
+        width: 100%;
         margin-left: auto;
         margin-right: auto;
       }
@@ -34,6 +34,7 @@
         margin-right: -20px;
         margin-left: -20px;
         box-sizing: border-box;
+        justify-content: center;
       }
 
       .account__item {
@@ -47,7 +48,8 @@
 
       .account__item--third {
         flex: 1 1 33.33333%;
-        max-width: 33.33333%;
+        max-width: 226px;
+        /*max-width: 33.33333%;*/
       }
 
     </style>
@@ -72,12 +74,12 @@
   </template>
 
   <script>
-      class MyNetlawAccount3 extends Polymer.Element {
+      class NetlawAccountPlans extends Polymer.Element {
           static get is() {
-              return 'netlaw-account3';
+              return 'netlaw-account-plans';
           }
       }
 
-      window.customElements.define(MyNetlawAccount3.is, MyNetlawAccount3);
+      window.customElements.define(NetlawAccountPlans.is, NetlawAccountPlans);
   </script>
 </dom-module>

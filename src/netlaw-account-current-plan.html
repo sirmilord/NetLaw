@@ -1,13 +1,14 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-account2">
+<link rel="import" href="social-icons.html">
+
+<dom-module id="netlaw-account-current-plan">
   <template>
 
     <style>
 
       .account {
         background-color: #f9f9f9;
-
       }
 
       .btn {
@@ -41,6 +42,12 @@
         flex: 1 1 30%;
         max-width: 30%;
         /*display: flex;*/
+      }
+
+      .account__header-left iron-icon {
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        margin-left: 30px;
       }
 
       .account__header-right {
@@ -103,6 +110,7 @@
 
       .form {
         margin-left: 70px;
+        min-width: 39em;
         max-width: 600px;
         width: 70%;
         margin-top: 35px;
@@ -449,7 +457,8 @@
 
       .account__bill-info {
         margin-left: 70px;
-        max-width: 100%;
+        min-width: 39em;
+        max-width: 600px;
         width: 70%;
         margin-top: 35px;
       }
@@ -517,14 +526,18 @@
 
       .login-buttons {
         max-width: 285px;
-        margin: 80px auto 0;
+        width: 200px;
+        margin: 40px auto 0;
+        margin-right: 60px;
         display: flex;
         justify-content: center;
+        --iron-icon-fill-color: #ffffff;
       }
 
       .login-buttons paper-icon-button {
-        width: 25%;
         height: 45px;
+        flex: 1 1 25%;
+        max-width: 25%;
       }
 
       .login-buttons paper-icon-button:first-child {
@@ -560,7 +573,7 @@
       <div class="account__header">
         <div class="account__header-left">
           <button class="btn btn--back-dash">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
+            <iron-icon icon="netlaw-icons:back"></iron-icon>
             Back to Dash
           </button>
         </div>
@@ -572,6 +585,7 @@
         <div class="account__left">
           <nav class="account__list">
             <a href="javascript:;" class="account__list-link">Account Information</a>
+            <a href="javascript:;" class="account__list-link">Security Settings</a>
             <a href="javascript:;" class="account__list-link account__list-link--active">Current Billing Plan</a>
             <a href="javascript:;" class="account__list-link">View Billing Plans</a>
           </nav>
@@ -583,8 +597,7 @@
             <paper-icon-button icon="social-icons:linkedin" name="linkedin"
                                on-click="onLoginClick"></paper-icon-button>
             <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
-            <!--<button class="btn btn-danger .login__margin-bottom">Login with Google+</button>
-            <button class="btn btn-secondary">Login with Facebook</button>-->
+
           </div>
         </div>
         <div class="account__right">
@@ -676,12 +689,12 @@
   </template>
 
   <script>
-      class MyNetlawAccount2 extends Polymer.Element {
+      class NetlawAccountCurrentPlan extends Polymer.Element {
           static get is() {
-              return 'netlaw-account2';
+              return 'netlaw-account-current-plan';
           }
       }
 
-      window.customElements.define(MyNetlawAccount2.is, MyNetlawAccount2);
+      window.customElements.define(NetlawAccountCurrentPlan.is, NetlawAccountCurrentPlan);
   </script>
 </dom-module>

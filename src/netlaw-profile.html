@@ -42,6 +42,12 @@
         /*display: flex;*/
       }
 
+      .profile__header-left iron-icon {
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        margin-left: 30px;
+      }
+
       .profile__header-right {
         flex: 1 1 70%;
         max-width: 70%;
@@ -64,8 +70,8 @@
         border: 0;
         padding: 0;
         color: #cdcdcd;
-        --iron-icon-width: 60px;
-        --iron-icon-height: 60px;
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
         --iron-icon-fill-color: #979797;
         font-size: 14px;
         font-weight: 400;
@@ -256,7 +262,7 @@
       <div class="profile__header">
         <div class="profile__header-left">
           <button class="btn btn--back-dash">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
+            <iron-icon icon="netlaw-icons:back"></iron-icon>
             Back to Dash
           </button>
         </div>
