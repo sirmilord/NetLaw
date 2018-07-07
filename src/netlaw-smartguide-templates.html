@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-smartguide2">
+<dom-module id="netlaw-smartguide-templates">
   <template>
 
     <style>
@@ -8,6 +8,20 @@
       */
       :host {
         box-sizing: border-box;
+        --iron-icon-width: 22px;
+        --iron-icon-height: 22px;
+      }
+
+      iron-pages {
+        flex: 1 1 70%;
+        max-width: 70%;
+        background-color: #f9f9f9;
+        border-right: 1px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
       }
 
       .smartguide {
@@ -19,6 +33,7 @@
       .smartguide__drawer {
         flex: 1 1 30%;
         max-width: 30%;
+        min-width: 20em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -45,8 +60,15 @@
       }
 
       .smartguide__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        /*flex: 1 1 70%;*/
+        /*max-width: 70%; */
+
+        flex: 1 1 100%;
+        max-width: 100%;
+        min-height: calc(100vh - 85px);
+
+
+
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -331,6 +353,37 @@
         color: #b2b2b2;
       }
 
+      .smartguide__title {
+        align-self: center;
+        margin-left: 60px;
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 300;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        margin-right: 30px;
+      }
+
+      .smartguide__title:after {
+        content: '';
+        position: absolute;
+        height: 75%;
+        width: 2px;
+        right: -30px;
+        top: 50%;
+        background-color: #fff;
+        transform: translateY(-50%);
+      }
+
+      .smartguide__header-desc {
+        margin-left: 30px;
+        align-self: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+      }
+
       .smartguide__content-dashboard {
         width: 100%;
         background-color: #f9f9f9;
@@ -349,7 +402,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 4px dotted #e0e0e0;
+        border-bottom: 2px dashed #e0e0e0;
       }
 
       .smartguide__content-dashboard form {
@@ -724,6 +777,11 @@
         flex-direction: column;
         align-items: center;
         text-decoration: none;
+        position: relative;
+      }
+
+      .smartguid__step-item:hover .tooltip-nav {
+        display: block;
       }
 
       .smartguid__step-item--mt {
@@ -736,6 +794,14 @@
         background-color: #D8D8D8;
         width: 10px;
         height: 10px;
+      }
+
+      .smartguid__step-item:hover .smartguid__step-circle {
+        background-color: #7DD1A4;
+      }
+
+      .smartguid__step-item:hover .smartguid__step-name {
+        color: #7DD1A4;
       }
 
       .smartguid__step-circle--large {
@@ -863,13 +929,28 @@
         background-color: #019948;
         border-color: #019948;
         color: #fff;
+
+      }
+
+      .btn--prev {
+        border: 0;
+        background-color: transparent;
+        font-size: 16px;
+        font-weight: 900;
+        color: #9B9B9B;
+        width: 170px;
+      }
+
+      .btn--prev:hover,
+      .btn--prev:focus {
+        color: #000;
       }
 
       .btn--one-border {
         border: 1px solid transparent;
         border-left: 1px solid #979797;
         background-color: transparent;
-        margin-left: 20px;
+        margin-left: 37px;
         color: #9B9B9B;
         font-size: 14px;
         font-weight: 300;
@@ -955,146 +1036,259 @@
         background-color: #fff;
       }
 
+      .tooltip-nav {
+        /*height: 35px;*/
+        width: 204px;
+        border-radius: 1px;
+        background-color: #F1F1F2;
+        color: #9B9B9B;
+        font-size: 12.5px;
+        text-align: center;
+        padding: 5px;
+        position: absolute;
+        /*z-index: 2;*/
+        left: 50%;
+        transform: translateX(-50%);
+        top: -25px;
+        display: none;
+      }
+
+      .tooltip-nav:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        width: 15px;
+        height: 15px;
+        background-color: #F1F1F2;
+      }
+
+      .input-radio {
+        display: none;
+      }
+
+      .input-radio + .label--radio {
+        color: #4A90E2;
+        font-size: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        justify-content: center;
+        --iron-icon-fill-color: #fff;
+        --iron-icon-height: 38px;
+        --iron-icon-width: 25px;
+        --iron-icon-stroke-color: #4A90E2;
+        border: 1px solid #4A90E2;
+        background-color: #fff;
+      }
+
+      .input-radio:checked + .label--radio {
+        background-color: #4A90E2;
+        color: #fff;
+        --iron-icon-fill-color: #4A90E2;
+        --iron-icon-stroke-color: #fff;
+        /*transition: background-color 0.4s linear;*/
+      }
+
+      .smartguide__content-dashboard--templates {
+        padding-left: 60px;
+      }
+
+      .smartguide__dashboard-row {
+        display: flex;
+        margin-right: -10px;
+        margin-left: -10px;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .smartguide__dashboard-left {
+        flex: 0 0 25%;
+        padding-left: 10px;
+        padding-right: 10px;
+
+      }
+
+      .smartguide__dashboard-right {
+        flex: 0 0 75%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .smartguide__dashboard-title {
+        font-weight: 900;
+        font-size: 16px;
+        color: #F5AD35;
+        text-align: left;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+
+      .smartguide__dashboard-desc {
+        font-size: 14px;
+        color: #414142;
+        font-weight: 300;
+        margin-bottom: 0;
+      }
+
+      .smartguide__container {
+        width: calc(100% - 60px);
+        margin-left: 60px;
+        box-sizing: border-box;
+        margin-top: 25px;
+      }
+
+      .smartguide__row {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-right: -10px;
+        margin-left: -10px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .smartguide__item {
+        flex: 0 0 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .smartguide__template {
+        display: flex;
+        /*justify-content: center;*/
+        align-items: center;
+      }
+
+      .smartguide__template-wrap {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #979797;
+        opacity: 0.5;
+        background-color: #FFFFFF;
+        --iron-icon-width: 50px;
+        --iron-icon-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+      }
+
+      .smartguide__template-wrap iron-icon {
+        opacity: .3;
+      }
+
+      .smartguide__template-title {
+        color: #414142;
+        font-size: 18px;
+        font-weight: 300;
+      }
+
+
     </style>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
         <ul class="smartguide__list">
-          <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="javascript:;" class="smartguide__list-link smartguide__list-link--active">
-              <!-- todo: replace icons -->
-              <iron-icon icon="icons:touch-app"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Setup</span>
-            </a>
-          </li>
-          <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="javascript:;" class="smartguide__list-link">
-              <!-- todo: replace icons  -->
-              <iron-icon icon="icons:line-style"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Templates</span>
-            </a>
-          </li>
+
+          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
+
+            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
+              <a href="[[route]]/smartguide-setup" class="smartguide__list-link">
+                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Setup</span>
+              </a>
+            </li>
+            <li class="smartguide__list-item smartguide__list-item--bottom-border">
+              <a href="[[route]]/smartguide-templates" class="smartguide__list-link smartguide__list-link--active">
+                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Templates</span>
+              </a>
+            </li>
+          </iron-selector>
         </ul>
       </section>
       <section class="smartguide__content">
         <div class="smartguide__content-header">
-          <h2 class="smartguide__content-title">SmartGuide > Your Info > Q2</h2>
+          <h2 class="smartguide__title">SmartGuide Templates</h2>
+          <div class="smartguide__header-desc">It’s the easy way to create life documents.</div>
         </div>
-        <div class="smartguide__content-dashboard">
-          <nav class="smartguid__step-list">
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--active">
-              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Your Info</span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item">
-              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Address</span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item">
-              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Your Family</span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item">
-              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Spouse</span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item">
-              <span class="smartguid__step-circle smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Children</span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item smartguid__step-item--mt">
-              <span class="smartguid__step-circle"></span>
-            </a>
-            <a href="javascript:;" class="smartguid__step-item">
-              <span class="smartguid__step-circle  smartguid__step-circle--large"></span>
-              <span class="smartguid__step-name">Finished</span>
-            </a>
-          </nav>
-
+        <div class="smartguide__content-dashboard smartguide__content-dashboard--templates">
+          <div class="smartguide__dashboard-row">
+            <div class="smartguide__dashboard-left">
+              <button class="btn btn--next">Begin Setup</button>
+            </div>
+            <div class="smartguide__dashboard-right">
+              <b class="smartguide__dashboard-title">Setup must be completed to use templates. It’s quick and
+                easy!</b>
+              <p class="smartguide__dashboard-desc">Currently 0% completed. Please complete in order to use
+                SmartGuides</p>
+            </div>
+          </div>
         </div>
-        <form class="form form--smartguide" action="/" method="post">
-          <fieldset>
-            <legend class="form__legend">Excellent, what is your name?</legend>
-            <div class="form__group form__group--center form__group--mb">
-              <figure>
-                <img src="https://dummyimage.com/86x60/000/ccc" alt="">
-              </figure>
-            </div>
-            <div class="form__row">
-              <div class="form__group form__group--half">
-                <label class="label" for="firstname">FIRST NAME*</label>
-                <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce">
-              </div>
-              <div class="form__group form__group--half">
-                <label class="label" for="lastname">LAST NAME*</label>
-                <input type="text" id="lastname" class="input-text" placeholder="i.e. Wayne">
-              </div>
-            </div>
-            <div class="form__group">
-              <label class="label" for="legalname">FULL LEGAL NAME*</label>
-              <input type="text" id="legalname" class="input-text" placeholder="i.e. Bruce Wayne"
-                     slot="dropdown-trigger" on-tap="tooltip">
-              <iron-dropdown id="dropdown" horizontal-aagn="left" vertical-align="top" vertical-offset="-10"
-                             horizontal-offset="-270">
-                <div class="tooltip" slot="dropdown-content">
-                  <div>This is how your name will appear in your documents. If
-                    you have a middle initial, be sure to include a period after it.
-                  </div>
+        <div class="smartguide__container">
+          <div class="smartguide__row">
+            <div class="smartguide__item">
+              <div class="smartguide__template">
+                <div class="smartguide__template-wrap">
+                  <iron-icon icon="icons:list"></iron-icon>
                 </div>
-              </iron-dropdown>
+                <h3 class="smartguide__template-title">Last Will & Testament</h3>
+              </div>
             </div>
-            <div class="form__line form__line--long"></div>
-            <div class="form__group form__group--right">
-              <button class="btn btn--next">Next</button>
-              <button class="btn btn--one-border">I want to finish later</button>
+            <div class="smartguide__item">
+              <div class="smartguide__template">
+                <div class="smartguide__template-wrap">
+                  <iron-icon icon="icons:list"></iron-icon>
+                </div>
+                <h3 class="smartguide__template-title">Healthcare Documents</h3>
+              </div>
             </div>
-          </fieldset>
-        </form>
+          </div>
+          <div class="smartguide__row">
+            <div class="smartguide__item">
+              <div class="smartguide__template">
+                <div class="smartguide__template-wrap">
+                  <iron-icon icon="icons:list"></iron-icon>
+                </div>
+                <h3 class="smartguide__template-title">Financial Power
+                  of Attorney</h3>
+              </div>
+            </div>
+            <div class="smartguide__item">
+              <div class="smartguide__template">
+                <div class="smartguide__template-wrap">
+                  <iron-icon icon="icons:list"></iron-icon>
+                </div>
+                <h3 class="smartguide__template-title">Pet Trust</h3>
+              </div>
+            </div>
+          </div>
+          <div class="smartguide__row">
+            <div class="smartguide__item">
+              <div class="smartguide__template">
+                <div class="smartguide__template-wrap">
+                  <iron-icon icon="icons:list"></iron-icon>
+                </div>
+                <h3 class="smartguide__template-title">Irrevocable Life
+                  Insurance Trust</h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
   </template>
 
   <script>
-      class MyNetlawSmartguide2 extends Polymer.Element {
+      class NetlawSmartguideTemplates extends Polymer.Element {
           static get is() {
-              return 'netlaw-smartguide2';
+              return 'netlaw-smartguide-templates';
           }
 
           constructor() {
@@ -1106,6 +1300,6 @@
           }
       }
 
-      window.customElements.define(MyNetlawSmartguide2.is, MyNetlawSmartguide2);
+      window.customElements.define(NetlawSmartguideTemplates.is, NetlawSmartguideTemplates);
   </script>
 </dom-module>

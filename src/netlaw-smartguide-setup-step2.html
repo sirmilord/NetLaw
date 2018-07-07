@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-smartguide3">
+<dom-module id="netlaw-smartguide-setup-step2">
   <template>
 
     <style>
@@ -8,6 +8,20 @@
       */
       :host {
         box-sizing: border-box;
+        --iron-icon-width: 22px;
+        --iron-icon-height: 22px;
+      }
+
+      iron-pages {
+        flex: 1 1 70%;
+        max-width: 70%;
+        background-color: #f9f9f9;
+        border-right: 1px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
       }
 
       .smartguide {
@@ -19,6 +33,7 @@
       .smartguide__drawer {
         flex: 1 1 30%;
         max-width: 30%;
+        min-width: 20em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -1048,20 +1063,22 @@
     <main class="smartguide">
       <section class="smartguide__drawer">
         <ul class="smartguide__list">
-          <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="javascript:;" class="smartguide__list-link smartguide__list-link--active">
-              <!-- todo: replace icons -->
-              <iron-icon icon="icons:touch-app"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Setup</span>
-            </a>
-          </li>
-          <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="javascript:;" class="smartguide__list-link">
-              <!-- todo: replace icons  -->
-              <iron-icon icon="icons:line-style"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Templates</span>
-            </a>
-          </li>
+
+          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
+
+            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
+              <a href="[[route]]/smartguide-setup" class="smartguide__list-link smartguide__list-link--active">
+                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Setup</span>
+              </a>
+            </li>
+            <li class="smartguide__list-item smartguide__list-item--bottom-border">
+              <a href="[[route]]/smartguide-templates" class="smartguide__list-link">
+                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Templates</span>
+              </a>
+            </li>
+          </iron-selector>
         </ul>
       </section>
       <section class="smartguide__content">
@@ -1172,9 +1189,9 @@
   </template>
 
   <script>
-      class MyNetlawSmartguide3 extends Polymer.Element {
+      class NetlawSmartguideSetup2 extends Polymer.Element {
           static get is() {
-              return 'netlaw-smartguide3';
+              return 'netlaw-smartguide-setup-step2';
           }
 
           constructor() {
@@ -1186,6 +1203,6 @@
           }
       }
 
-      window.customElements.define(MyNetlawSmartguide3.is, MyNetlawSmartguide3);
+      window.customElements.define(NetlawSmartguideSetup2.is, NetlawSmartguideSetup2);
   </script>
 </dom-module>

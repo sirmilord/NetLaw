@@ -1,5 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
+
+
 <dom-module id="netlaw-smartguide">
   <template>
 
@@ -707,7 +709,7 @@
 
     </style>
 
-    <app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>
+    <app-route route="[[route]]" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -716,15 +718,13 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
           <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="[[route]]/smartguide1" class="smartguide__list-link smartguide__list-link--active">
-              <!-- todo: replace icons -->
+            <a href="[[route]]/smartguide-setup" class="smartguide__list-link smartguide__list-link--active">
               <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Setup</span>
             </a>
           </li>
           <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="[[route]]/smartguide3" class="smartguide__list-link">
-              <!-- todo: replace icons  -->
+            <a href="[[route]]/smartguide-templates" class="smartguide__list-link">
               <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
               <span class="smartguide__list-text">SmartGuide Templates</span>
             </a>
@@ -735,8 +735,8 @@
       <!--<section class="smartguide__content">-->
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-smartguide1 name="smartguide1"></netlaw-smartguide1>
-          <netlaw-smartguide2 name="smartguide2"></netlaw-smartguide2>
+          <netlaw-smartguide-setup name="smartguide-setup"></netlaw-smartguide-setup>
+          <netlaw-smartguide-templates name="smartguide-templates"></netlaw-smartguide-templates>
           <netlaw-smartguide3 name="smartguide3"></netlaw-smartguide3>
           <netlaw-smartguide4 name="smartguide4"></netlaw-smartguide4>
           <my-view404 name="view404"></my-view404>
@@ -750,7 +750,7 @@
     class NetlawSmartguide extends Polymer.Element {
       static get is() { return 'netlaw-smartguide'; }
 
-        static get properties() {
+        /*static get properties() {
             return {
                 page: {
                     type: String,
@@ -769,9 +769,9 @@
 
                 active: String,
             };
-        }
+        }*/
 
-        _routeObserver(value) { if (!value || !value.path) this.active = null; }
+        /*_routeObserver(value) { if (!value || !value.path) this.active = null; }
         _routeDataObserver(value) { this.active = value.id || null; }
 
         _pageChanged(page) {
@@ -786,7 +786,7 @@
 
         _showPage404() {
             this.page = 'view404';
-        }
+        }*/
 
 
     }
