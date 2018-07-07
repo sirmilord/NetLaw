@@ -971,7 +971,7 @@
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
                     <a class="find-attorney__details" href="#">details
-                      <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                      <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
                             slot="dropdown-content">
@@ -1045,7 +1045,7 @@
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
                     <a class="find-attorney__details" href="#">details
-                      <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                      <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
                             slot="dropdown-content">
@@ -1119,7 +1119,7 @@
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
                     <a class="find-attorney__details" href="#">details
-                      <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                      <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
                             slot="dropdown-content">
@@ -1193,7 +1193,7 @@
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
                     <a class="find-attorney__details" href="#">details
-                      <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                      <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
                             slot="dropdown-content">
@@ -1267,7 +1267,7 @@
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
                     <a class="find-attorney__details" href="#">details
-                      <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                      <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
                             slot="dropdown-content">
@@ -1715,11 +1715,11 @@
                   toggleIcon: {
                       type: String
                   },
-                  detailsIcon: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
+                  // detailsIcon: {
+                  //     type: String,
+                  //     reflectToAttribute: true,
+                  //     notify: true
+                  // },
               };
           }
 
@@ -1751,10 +1751,11 @@
               let btnDetails = this.shadowRoot.querySelectorAll('.find-attorney__details');
               btnDetails.forEach(btn => btn.addEventListener('click', function (e) {
                   e.preventDefault();
+                  this.querySelector('iron-dropdown').opened ? this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-more') : this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
                   this.querySelector('iron-dropdown').open();
 
-                  //How can I get property. "This" have another context
-                  this.detailsIcon = 'icons:expand-less';
+                  // this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
+
               }));
 
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
