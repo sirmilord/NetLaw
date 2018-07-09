@@ -1,3 +1,4 @@
+<style>
   /* todo clear up styles *
   */
 :host {
@@ -31,7 +32,6 @@ iron-pages {
   border-right: 2px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;
   background-color: #fff;
-
 }
 
 .btn {
@@ -131,7 +131,6 @@ ul {
   padding-top: 20px;
   padding-bottom: 20px;
   display: inline-block;
-  vertical-align: center;
 }
 
 .smartguide__list-link iron-icon {
@@ -302,6 +301,16 @@ hr {
   font-weight: 900;
   cursor: pointer;
   height: 45px;
+}
+
+.btn--primary {
+  background-color: #01AA50;
+  color: #fff;
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+  background-color: #019948;
 }
 
 .btn--next {
@@ -1177,3 +1186,4 @@ hr {
 }
 
 
+</style>

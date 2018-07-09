@@ -37,7 +37,25 @@
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
+      }
 
+      .btn {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 30px;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 900;
       }
 
       .smartguide__content {
@@ -118,7 +136,6 @@
         padding-top: 20px;
         padding-bottom: 20px;
         display: inline-block;
-        vertical-align: center;
       }
 
       .smartguide__list-link iron-icon {
@@ -301,6 +318,16 @@
         background-color: #019948;
       }
 
+      .btn--next {
+        background-color: #01AA50;
+        color: #fff;
+      }
+
+      .btn--next:hover,
+      .btn--next:focus {
+        background-color: #019948;
+      }
+
       /*Immedeaty Family*/
       .smartguide__content-header {
         display: flex;
@@ -326,6 +353,37 @@
         margin-right: 30px;
         margin-left: auto;
         color: #b2b2b2;
+      }
+
+      .smartguide__title {
+        align-self: center;
+        margin-left: 60px;
+        color: #ffffff;
+        font-size: 26px;
+        font-weight: 300;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        margin-right: 30px;
+      }
+
+      .smartguide__title:after {
+        content: '';
+        position: absolute;
+        height: 75%;
+        width: 2px;
+        right: -30px;
+        top: 50%;
+        background-color: #fff;
+        transform: translateY(-50%);
+      }
+
+      .smartguide__header-desc {
+        margin-left: 30px;
+        align-self: center;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
       }
 
       .smartguide__content-dashboard {
