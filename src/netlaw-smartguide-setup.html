@@ -13,8 +13,8 @@
       }
 
       iron-pages {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -31,8 +31,8 @@
       }
 
       .smartguide__drawer {
-        flex: 1 1 30%;
-        max-width: 30%;
+        flex: 1 1 25%;
+        max-width: 25%;
         min-width: 20em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -41,8 +41,9 @@
       }
 
       .smartguide__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 75%;
+        max-width: 75%;
+        min-height: calc(100vh - 85px);
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -345,7 +346,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 4px dotted #e0e0e0;
+        border-bottom: 2px dashed #e0e0e0;
       }
 
       .smartguide__content-dashboard form {
@@ -706,6 +707,7 @@
       }
 
     </style>
+
 
     <app-route route="[[route]]" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
