@@ -26,10 +26,13 @@
         border-bottom: 1px solid var(--app-header-color);
       }
 
-      paper-icon-button {
+      netlaw-search paper-icon-button {
         width: 28px;
         height: 28px;
         padding: 0;
+      }
+      :host([pressed]) paper-icon-button {
+        padding: 8px 12px;
       }
 
       paper-icon-button {
@@ -60,7 +63,7 @@
         background-color: var(--app-header-bg);
       }
 
-      paper-icon-button.netlaw-search {
+      paper-icon-button {
         z-index: 99;
       }
 
@@ -133,7 +136,7 @@
           open() {
               this.visible = true;
               this.pressed = true;
-              this.toggleIcon = 'netlaw-icons:close';
+              this.toggleIcon = 'netlaw-icons:close-search';
               this.$.search.focus();
 
           }
@@ -164,4 +167,3 @@
   </script>
 
 </dom-module>
-
