@@ -849,7 +849,7 @@
         _routeDataObserver(value) { this.active = value.id || null; }
         onTabClick(e) {
             let tab = e.srcElement.attributes.default ? null : e.srcElement.attributes.name.value;
-            navigate(`clients/${this.id}${tab ? "/" + tab : ""}`);
+            navigate(`smartguide/${this.id}${tab ? "/" + tab : ""}`);
         }
 
 /*        onClientClick(e) {
