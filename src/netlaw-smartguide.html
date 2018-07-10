@@ -761,25 +761,27 @@
                 },
             };
         }
+        static get observers() {     return [         '_routePageChanged(routeData.page)',     ]; }
 
-/*
-    _routePageChanged(page) {
-            this.page = page || 'setup';
-        }
 
-        _pageChanged(page) {
+        
+            _routePageChanged(page) {
+                    this.page = page || 'setup';
+                }
 
-            const resolvedPageUrl = this.resolveUrl( 'netlaw-smartguide-' + page + '.html');
-            Polymer.importHref(
-                resolvedPageUrl,
-                null,
-                this._showPage404.bind(this),
-                true);
-        }
+                _pageChanged(page) {
 
-        _showPage404() {
-            this.page = 'view-404';
-        }*/
+                    const resolvedPageUrl = this.resolveUrl( 'netlaw-smartguide-' + page + '.html');
+                    Polymer.importHref(
+                        resolvedPageUrl,
+                        null,
+                        this._showPage404.bind(this),
+                        true);
+                }
+
+                _showPage404() {
+                    this.page = 'view-404';
+                }
 
 
 
