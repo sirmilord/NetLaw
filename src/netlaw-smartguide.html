@@ -761,8 +761,12 @@
                 },
             };
         }
+        static get observers() {
+            return [
+                '_routePageChanged(routeData.page)',
+            ];
+        }
 
-/*
     _routePageChanged(page) {
             this.page = page || 'setup';
         }
@@ -779,7 +783,7 @@
 
         _showPage404() {
             this.page = 'view-404';
-        }*/
+        }
 
 
 
