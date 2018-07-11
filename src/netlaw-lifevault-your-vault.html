@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-lifevault">
+<dom-module id="netlaw-lifevault-your-vault">
   <template>
 
     <style>
@@ -717,8 +717,6 @@
 
     </style>
 
-    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
     <main class="lifevault">
 
       <section class="lifevault__drawer">
@@ -751,15 +749,14 @@
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
                 <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+                  <a class="lifevault__list-link-lvl2" href="javascript:;"  on-click="toggleLvl2">
                     <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
                     Estate Planning
                   </a>
                   <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -783,26 +780,22 @@
                   </a>
                   <iron-collapse id="collapselvl2">
                     <ul class="lifevault__list-lvl3">
-
-                      <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-
-                        <li class="lifevault__list-item-lvl3">
-                          <a name="your-vault" href="[[routePath]]lifevault/your-vault" id="homemanage" class="lifevault__list-link-lvl3">
-                            <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                            Home Management</a>
-                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
-                            <iron-icon icon="icons:more-vert"></iron-icon>
-                          </a>
-                        </li>
-                        <li class="lifevault__list-item-lvl3">
-                          <a class="lifevault__list-link-lvl3" href="javascript:;">
-                            <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                            Documents of Estate</a>
-                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
-                            <iron-icon icon="icons:more-vert"></iron-icon>
-                          </a>
-                        </li>
-                      </iron-selector>
+                      <li class="lifevault__list-item-lvl3">
+                        <a class="lifevault__list-link-lvl3" href="javascript:;">
+                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          Home Management</a>
+                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                          <iron-icon icon="icons:more-vert"></iron-icon>
+                        </a>
+                      </li>
+                      <li class="lifevault__list-item-lvl3">
+                        <a class="lifevault__list-link-lvl3" href="javascript:;">
+                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          Documents of Estate</a>
+                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                          <iron-icon icon="icons:more-vert"></iron-icon>
+                        </a>
+                      </li>
                     </ul>
                   </iron-collapse>
                 </li>
@@ -813,8 +806,7 @@
                   <a class="lifevault__btn lifevault__btn--lvl2 lifevault__btn--lvl2-first" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -844,8 +836,7 @@
                   <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -875,8 +866,7 @@
                   <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -906,8 +896,7 @@
                   <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -937,8 +926,7 @@
                   <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub" slot="dropdown-content">
                         <li>Add Sub-Folder
                           <iron-icon icon="icons:add"></iron-icon>
                         </li>
@@ -992,20 +980,31 @@
           </li>
         </ul>
       </section>
+      <section class="lifevault__content">
+        <!--first screen-->
 
-      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <netlaw-lifevault-your-vault name="your-vault"></netlaw-lifevault-your-vault>
-        <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
-      </iron-pages>
-
+        <h1>Your Vault</h1>
+        <figure>
+          <img src="/images/Lgdocuments.png" width="120" height="145" alt="LifeVault">
+        </figure>
+        <b>This is where you would keep all your important legal documents.</b>
+        <div class="lifevault__content-wrapper">
+          <p>(you can also download, replace or share these documents with others)</p>
+          <hr>
+        </div>
+        <button class="btn btn--primary">Use SmartGuide</button>
+        <a id="addfolder" class="lifevault__add-folder" href="javascript:;">
+          <iron-icon icon="icons:create-new-folder"></iron-icon>
+        </a>
+      </section>
     </main>
   </template>
 
   <script>
-      class MyNetlawLifevault extends Polymer.Element {
+      class MyNetlawLifevaultYourVault extends Polymer.Element {
 
           static get is() {
-              return 'netlaw-lifevault';
+              return 'netlaw-lifevault-your-vault';
           }
 
           static get properties() {
@@ -1065,6 +1064,6 @@
 
       }
 
-      window.customElements.define(MyNetlawLifevault.is, MyNetlawLifevault);
+      window.customElements.define(MyNetlawLifevaultYourVault.is, MyNetlawLifevaultYourVault);
   </script>
 </dom-module>
