@@ -733,13 +733,15 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
             <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-              <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink" class="smartguide__list-link">
+              <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink"
+                 class="smartguide__list-link smartguide__list-link--active">
                 <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
                 <span class="smartguide__list-text">SmartGuide Setup</span>
               </a>
             </li>
             <li class="smartguide__list-item smartguide__list-item--bottom-border">
-              <a name="templates" href="[[routePath]]smartguide/templates" class="smartguide__list-link">
+              <a name="templates" href="[[routePath]]smartguide/templates" id="templateslink"
+                 class="smartguide__list-link">
                 <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
                 <span class="smartguide__list-text">SmartGuide Templates</span>
               </a>
@@ -782,7 +784,6 @@
                   '_routePageChanged(routeData.page)',
               ];
           }
-
 
           _routePageChanged(page) {
               this.page = page || 'setup';
