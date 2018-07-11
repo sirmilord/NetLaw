@@ -800,7 +800,13 @@
           }
 
           _pageChanged(page) {
-              const resolvedPageUrl = this.resolveUrl('netlaw-smartguide-' + page + '.html');
+              let resolvedPageUrl = this.resolveUrl('netlaw-smartguide-' + page + '.html');
+
+              if (resolvedPageUrl.indexOf('404') >= 0  ) {
+                  let replaceStr = /smartguide-/gi;
+                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
+              }
+
               Polymer.importHref(
                   resolvedPageUrl,
                   null,
