@@ -10,86 +10,22 @@
     <style>
       /* shadow DOM styles go here */
       :host {
+
       }
 
-      #contentContainer.style-scope.app-header app-toolbar.navbar.style-scope.netlaw-app netlaw-user.style-scope.netlaw-app a.style-scope.netlaw-user iron-icon.style-scope.netlaw-user,
-
-      .netlaw-user iron-icon {
+      iron-icon {
         --iron-icon-width: 45px;
         --iron-icon-height: 45px;
         display: inline-block;
         margin: 0 10px;
         vertical-align: middle;
       }
-      span > a > iron-icon,
-      span.message .netlaw-user iron-icon {
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
-        position: relative;
-        margin-left: auto;
-        margin-right: 20px;
-        clear: none;
-        display: inline-block;
-      }
-
-      #user_dropdown {
-        background-color: var(--app-header-bg);
-        padding: 15px;
-      }
-
-      a {
-        color: #4A90E2;
-        text-decoration: none;
-      }
-
-      ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        max-height: none !important;
-      }
-
-      li {
-        padding: .2em 2em .2em .3em;
-      }
-
-      li span {
-        position: absolute;
-        right: 15px;
-        font-size: 12px;
-      }
-
-      #user_dropdown li a {
-        color: #4A4A4A;
-        font-size: 15px;
-      }
-
-      #user_dropdown li a:hover, #user_dropdown li a:active {
-        color: #9B9B9B;
-      }
-
-      .message {
-        font-size: 15px;
-      }
 
     </style>
 
-    <a href="#">
-      <iron-icon src="./images/icons/profile_placeholder_icon.svg"></iron-icon>
+    <a href="[[rootPath]]profile">
+      <iron-icon src="./images/icons/profile-icon.svg"></iron-icon>
     </a>
-    <span class="message">
-      Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
-    </span>
-
-    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right">
-        <ul class="profile" slot="dropdown-content">
-          <li><a name="profile" href="[[rootPath]]profile" on-click="onLinkClick">My Profile</a></li>
-          <li><a name="account" href="[[rootPath]]account" on-click="onLinkClick">Account Settings</a></li>
-          <li><a name="refer" href="[[rootPath]]" on-click="onLinkClick">Refer a Friend</a></li>
-          <li><a name="help" href="[[rootPath]]" on-click="onLinkClick">Help</a></li>
-          <li><a name="logout" href="[[rootPath]]" on-click="onSignOutClick">Log Out</a></li>
-        </ul>
-    </iron-dropdown>
 
   </template>
 

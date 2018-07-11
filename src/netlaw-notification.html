@@ -13,20 +13,29 @@
         position: relative;
         margin-left: auto;
         margin-right: 20px;
-        --iron-icon-height: 20px;
-        --iron-icon-width: 20px;
       }
 
-      /*paper-icon-button.netlaw-notification {*/
-      paper-icon-button {
+      :host paper-icon-button {
+        padding: 9px;
+      }
 
-        width: 20px;
-        height: 20px;
+      :host paper-icon-button[icon="netlaw-icons:notifications"],
+      :host paper-icon-button[icon="netlaw-icons:notifications-open"] {
+        width: 22px;
+        height: 22px;
+        --iron-icon-height: 22px;
+        --iron-icon-width: 22px;
         padding: 0;
+        display: inline-block;
+        vertical-align: middle;
+
       }
+
+      /*:host([visible]) paper-icon-button[icon="netlaw-icons:notifications"] {
+        opacity: 1;
+      }*/
 
       #dropdown {
-        /*width: 300px;*/
         background-color: var(--app-header-bg);
         padding: 15px;
       }
@@ -39,7 +48,7 @@
       }
 
       li {
-        padding: .5em 4em .5em 1em;
+        padding: .5em 4em .5em 1.5em;
         font-size: 14px;
         color: #4A4A4A;
       }
@@ -49,8 +58,8 @@
         left: 15px;
         content: "• ";
         color: #f5a623;
-        font-size: 28px;
-        line-height: 16px;
+        font-size: 20px;
+        line-height: 18px;
       }
 
       li span {
@@ -68,7 +77,7 @@
 
     </style>
 
-    <paper-icon-button icon="netlaw-icons:notifications" name="notifications" on-click="toggle"></paper-icon-button>
+    <paper-icon-button icon="[[toggleIcon]]" name="notifications" on-click="toggle"></paper-icon-button>
     <!--<a href="javascript:;" on-click="toggle">
       &lt;!&ndash; todo: change opacity on click to 1 (default is 0.3) &ndash;&gt;
       <iron-icon src="./images/icons/notifications_icon.svg"></iron-icon>
@@ -99,17 +108,29 @@
                       reflectToAttribute: true,
                       value: false
                   },
+                  toggleIcon: {
+                      type: String
+                  },
               };
           }
 
           constructor() {
               super();
+              this.toggleIcon = 'netlaw-icons:notifications';
           }
 
-          toggle(e) {
-              e.preventDefault();
+          toggle() {
               this.visible = !this.visible;
               this.visible ? this.$.dropdown.open() : this.$.dropdown.close();
+          }
+
+          open() {
+              this.toggleIcon = 'netlaw-icons:notifications-open';
+
+          }
+
+          close() {
+              this.toggleIcon = 'netlaw-icons:notifications';
           }
 
       }

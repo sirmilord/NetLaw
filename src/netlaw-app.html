@@ -21,6 +21,8 @@
 <link rel="import" href="netlaw-search.html">
 <link rel="import" href="netlaw-notification.html">
 <link rel="import" href="netlaw-user.html">
+<link rel="import" href="netlaw-user-menu.html">
+
 <link rel="import" href="perfect-scrollbar-styles.html">
 
 <link rel="lazy-import" href="netlaw-login.html">
@@ -190,6 +192,7 @@
             <netlaw-search></netlaw-search>
             <netlaw-notification></netlaw-notification>
             <netlaw-user></netlaw-user>
+            <netlaw-user-menu></netlaw-user-menu>
           </app-toolbar>
         </app-header>
 
@@ -220,11 +223,6 @@
           <!--</app-toolbar>-->
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
-
-            <!--<netlaw-smartguide-setup name="smartguide-setup"></netlaw-smartguide-setup>
-            <netlaw-smartguide-setup-step1 name="smartguide-setup-step1"></netlaw-smartguide-setup-step1>
-            <netlaw-smartguide-setup-step2 name="smartguide-setup-step2"></netlaw-smartguide-setup-step2>
-            <netlaw-smartguide-templates name="smartguide-templates"></netlaw-smartguide-templates>-->
 
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account"></netlaw-account>
