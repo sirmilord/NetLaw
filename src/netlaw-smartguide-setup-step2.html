@@ -8,8 +8,8 @@
       */
       :host {
         box-sizing: border-box;
-        --iron-icon-width: 22px;
-        --iron-icon-height: 22px;
+        --iron-icon-width: 38px;
+        --iron-icon-height: 38px;
       }
 
       iron-pages {
@@ -1041,6 +1041,12 @@
         display: none;
       }
 
+
+
+      label.label--radio > iron-icon {
+        margin-bottom: 5px;
+      }
+
       .input-radio + .label--radio {
         color: #4A90E2;
         font-size: 10px;
@@ -1052,18 +1058,26 @@
         justify-content: center;
         --iron-icon-fill-color: #fff;
         --iron-icon-height: 38px;
-        --iron-icon-width: 25px;
-        --iron-icon-stroke-color: #4A90E2;
+        --iron-icon-width: 38px;
+        /*--iron-icon-stroke-color: #4A90E2;*/
         border: 1px solid #4A90E2;
         background-color: #fff;
+      }
+
+      .input-radio + .label--radio iron-icon {
+        fill: #4a90e2;
       }
 
       .input-radio:checked + .label--radio {
         background-color: #4A90E2;
         color: #fff;
         --iron-icon-fill-color: #4A90E2;
-        --iron-icon-stroke-color: #fff;
+        /*--iron-icon-stroke-color: #fff;*/
         /*transition: background-color 0.4s linear;*/
+      }
+
+      .input-radio:checked + .label--radio iron-icon {
+        fill: #fff;
       }
 
 
@@ -1149,13 +1163,13 @@
               <div class="form__group form__group--right form__group--half form__group--mb">
                 <input type="radio" id="male" name="radio" class="input-radio" checked>
                   <label class="label label--radio" for="male">
-                    <iron-icon icon="icons:android"></iron-icon>
+                    <iron-icon icon="netlaw-icons:male-icon"></iron-icon>
                     Male</label>
               </div>
               <div class="form__group form__group--left form__group--half form__group--mb">
                 <input type="radio" id="female" name="radio" class="input-radio">
                   <label class="label label--radio" for="female">
-                    <iron-icon icon="icons:polymer"></iron-icon>
+                    <iron-icon icon="netlaw-icons:female-icon"></iron-icon>
                     Female</label>
               </div>
             </div>
