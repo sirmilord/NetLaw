@@ -121,18 +121,16 @@
 
           toggle() {
               this.visible = !this.visible;
-              this.visible ? this.$.dropdown.open() : this.$.dropdown.close();
+
+              if (this.visible) {
+                  this.$.dropdown.open();
+                  this.toggleIcon = 'netlaw-icons:notifications-open';
+              }
+              else {
+                  this.$.dropdown.close();
+                  this.toggleIcon = 'netlaw-icons:notifications';
+              }
           }
-
-          open() {
-              this.toggleIcon = 'netlaw-icons:notifications-open';
-
-          }
-
-          close() {
-              this.toggleIcon = 'netlaw-icons:notifications';
-          }
-
       }
 
       customElements.define(NetlawNotification.is, NetlawNotification);
