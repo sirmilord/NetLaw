@@ -31,7 +31,7 @@
         max-width: 70%;
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
+        /*border-bottom: 1px solid #dfdfdf;*/
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -176,12 +176,14 @@
       }
 
       .lifevault__list-link-lvl3:hover,
-      .lifevault__list-link-lvl3:focus {
+      .lifevault__list-link-lvl3:focus,
+      .lifevault__list-link-lvl3--active {
         color: #01AA50;
       }
 
       .lifevault__list-link-lvl3:hover:before,
-      .lifevault__list-link-lvl3:focus:before {
+      .lifevault__list-link-lvl3:focus:before,
+      .lifevault__list-link-lvl3--active:before {
         content: '';
         position: absolute;
         height: 40%;
@@ -714,7 +716,20 @@
         width: 162px;
       }
 
+      netlaw-lifevault-your-vault {
+        width: 100%;
+      }
 
+      netlaw-lifevault-management {
+        width: 100%;
+      }
+      netlaw-lifevault-doc {
+        width: 100%;
+      }
+
+      iron-pages {
+        width: 100%;
+      }
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -784,12 +799,15 @@
                   <iron-collapse id="collapselvl2">
                     <ul class="lifevault__list-lvl3">
 
-                      <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+
 
                         <li class="lifevault__list-item-lvl3">
-                          <a name="your-vault" href="[[routePath]]lifevault/your-vault" id="homemanage" class="lifevault__list-link-lvl3">
+                          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+                          <a name="management" href="[[routePath]]lifevault/management" id="homemanage"
+                             class="lifevault__list-link-lvl3">
                             <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
                             Home Management</a>
+                          </iron-selector>
                           <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
                             <iron-icon icon="icons:more-vert"></iron-icon>
                           </a>
@@ -802,7 +820,8 @@
                             <iron-icon icon="icons:more-vert"></iron-icon>
                           </a>
                         </li>
-                      </iron-selector>
+
+
                     </ul>
                   </iron-collapse>
                 </li>
@@ -996,6 +1015,7 @@
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
         <netlaw-lifevault-your-vault name="your-vault"></netlaw-lifevault-your-vault>
         <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
+        <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
       </iron-pages>
 
     </main>
@@ -1024,6 +1044,13 @@
                   toggleIcon: {
                       type: String
                   },
+                  rootPath: String,
+                  route: {type: Object},
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      observer: '_pageChanged',
+                  },
               };
           }
 
@@ -1038,7 +1065,8 @@
               this.$.collapse.toggle();
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
               this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-              this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+              //todo rebuild this
+              // this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
           }
 
           toggleLvl2(e) {
@@ -1061,6 +1089,44 @@
                   this.querySelector('iron-dropdown').open();
               }));
           }
+
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
+
+          _routePageChanged(page) {
+              this.page = page || 'your-vault';
+              console.log(this.page);
+              if (this.page === 'management') {
+                  this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
+              }
+              else {
+                  this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
+              }
+          }
+
+          _pageChanged(page) {
+              let resolvedPageUrl = this.resolveUrl('netlaw-lifevault-' + page + '.html');console.log(resolvedPageUrl);
+
+              if (resolvedPageUrl.indexOf('404') >= 0) {
+                  let replaceStr = /lifevault-/gi;
+                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
+              }
+
+              Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);
+          }
+
+          _showPage404() {
+              this.page = 'view-404';
+          }
+
+
 
 
       }

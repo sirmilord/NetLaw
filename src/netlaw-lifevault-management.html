@@ -27,8 +27,8 @@
       }
 
       .lifevault__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -797,315 +797,6 @@
 
     </style>
 
-    <main class="lifevault">
-
-      <section class="lifevault__drawer">
-        <ul class="lifevault__list">
-          <li class="lifevault__list-item lifevault__list-item--top-border">
-            <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="toggle">
-              <!-- todo: replace icons -->
-              <iron-icon icon="[[toggleIcon]]"></iron-icon>
-              <span class="lifevault__list-text">My Files</span>
-            </a>
-            <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-              <iron-dropdown>
-                <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
-                    <iron-icon icon="icons:add"></iron-icon>
-                  </li>
-                  <li>Download
-                    <iron-icon icon="icons:file-download"></iron-icon>
-                  </li>
-                  <li>Print
-                    <iron-icon icon="icons:print"></iron-icon>
-                  </li>
-                  <li>Share
-                    <iron-icon icon="icons:exit-to-app"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </a>
-            <iron-collapse id="collapse">
-              <ul class="lifevault__list-lvl2">
-                <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Estate Planning
-                  </a>
-                  <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                  <iron-collapse id="collapselvl2">
-                    <ul class="lifevault__list-lvl3">
-                      <li class="lifevault__list-item-lvl3">
-                        <a class="lifevault__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Home Management</a>
-                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                          <iron-dropdown>
-                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                                slot="dropdown-content">
-                              <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
-                              </li>
-                              <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
-                              </li>
-                              <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
-                              </li>
-                              <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
-                              </li>
-                              <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
-                              </li>
-                            </ul>
-                          </iron-dropdown>
-                        </a>
-                      </li>
-                      <li class="lifevault__list-item-lvl3">
-                        <a class="lifevault__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Documents of Estate</a>
-                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                          <iron-dropdown>
-                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                                slot="dropdown-content">
-                              <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
-                              </li>
-                              <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
-                              </li>
-                              <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
-                              </li>
-                              <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
-                              </li>
-                              <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
-                              </li>
-                            </ul>
-                          </iron-dropdown>
-                        </a>
-                      </li>
-                    </ul>
-                  </iron-collapse>
-                </li>
-                <li id="mod" class="lifevault__list-item-lvl2 ">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Tax Returns</a>
-                  <a class="lifevault__btn lifevault__btn--lvl2 lifevault__btn--lvl2-first" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                </li>
-                <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Misc. Docs</a>
-                  <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                </li>
-                <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Insurance Policies</a>
-                  <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                </li>
-                <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Deeds</a>
-                  <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                </li>
-                <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Asset/Financial</a>
-                  <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
-                        </li>
-                        <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
-                </li>
-              </ul>
-            </iron-collapse>
-          </li>
-          <li class="lifevault__list-item lifevault__list-item--top-border lifevault__list-item--bottom-border">
-            <a href="javascript:;" class="lifevault__list-link">
-              <!-- todo: replace icons -->
-              <iron-icon icon="icons:add-circle-outline"></iron-icon>
-              <span class="lifevault__list-text">Shared with My Attorneys</span>
-            </a>
-            <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-              <iron-dropdown>
-                <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
-                    <iron-icon icon="icons:add"></iron-icon>
-                  </li>
-                  <li>Download
-                    <iron-icon icon="icons:file-download"></iron-icon>
-                  </li>
-                  <li>Print
-                    <iron-icon icon="icons:print"></iron-icon>
-                  </li>
-                  <li>Share
-                    <iron-icon icon="icons:exit-to-app"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </a>
-          </li>
-        </ul>
-      </section>
       <section class="lifevault__content">
 
         <div class="lifevault__content-header">
@@ -1222,9 +913,9 @@
                     <figure class="lifevault__document">
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </figure>
-                    <button class="btn btn--charm">
+                    <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                       <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    </a>
                   </div>
                   <div class="lifevault__module-footer">
                     <span class="lifevault__name">Estimate for Home Management.PDF</span>
@@ -1285,9 +976,9 @@
                     <figure class="lifevault__document">
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </figure>
-                    <button class="btn btn--charm">
+                    <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                       <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    </a>
                   </div>
                   <div class="lifevault__module-footer">
                     <span class="lifevault__name">Estimate for Home Management.PDF</span>
@@ -1348,9 +1039,9 @@
                     <figure class="lifevault__document">
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </figure>
-                    <button class="btn btn--charm">
+                    <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                       <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    </a>
                   </div>
                   <div class="lifevault__module-footer">
                     <span class="lifevault__name">Estimate for Home Management.PDF</span>
@@ -1411,9 +1102,9 @@
                     <figure class="lifevault__document">
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </figure>
-                    <button class="btn btn--charm">
+                    <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                       <iron-icon icon="icons:find-replace"></iron-icon>
-                    </button>
+                    </a>
                   </div>
                   <div class="lifevault__module-footer">
                     <span class="lifevault__name">Estimate for Home Management.PDF</span>
@@ -1467,9 +1158,9 @@
                   <figure class="lifevault__document lifevault__document--list">
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </figure>
-                  <button class="btn btn--charm">
+                  <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                     <iron-icon icon="icons:find-replace"></iron-icon>
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="lifevault__list-center">
@@ -1532,9 +1223,9 @@
                   <figure class="lifevault__document lifevault__document--list">
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </figure>
-                  <button class="btn btn--charm">
+                  <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                     <iron-icon icon="icons:find-replace"></iron-icon>
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="lifevault__list-center">
@@ -1597,9 +1288,9 @@
                   <figure class="lifevault__document lifevault__document--list">
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </figure>
-                  <button class="btn btn--charm">
+                  <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                     <iron-icon icon="icons:find-replace"></iron-icon>
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="lifevault__list-center">
@@ -1662,9 +1353,9 @@
                   <figure class="lifevault__document lifevault__document--list">
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </figure>
-                  <button class="btn btn--charm">
+                  <a href="[[routePath]]lifevault/doc" class="btn btn--charm">
                     <iron-icon icon="icons:find-replace"></iron-icon>
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="lifevault__list-center">
@@ -1730,7 +1421,7 @@
           <iron-icon icon="icons:create-new-folder"></iron-icon>
         </a>
       </section>
-    </main>
+
   </template>
 
   <script>
