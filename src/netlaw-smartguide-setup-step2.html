@@ -60,8 +60,8 @@
       }
 
       .smartguide__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -1060,27 +1060,6 @@
 
     </style>
 
-    <main class="smartguide">
-      <section class="smartguide__drawer">
-        <ul class="smartguide__list">
-
-          <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
-
-            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-              <a href="[[route]]/smartguide-setup" class="smartguide__list-link smartguide__list-link--active">
-                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
-                <span class="smartguide__list-text">SmartGuide Setup</span>
-              </a>
-            </li>
-            <li class="smartguide__list-item smartguide__list-item--bottom-border">
-              <a href="[[route]]/smartguide-templates" class="smartguide__list-link">
-                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
-                <span class="smartguide__list-text">SmartGuide Templates</span>
-              </a>
-            </li>
-          </iron-selector>
-        </ul>
-      </section>
       <section class="smartguide__content">
         <div class="smartguide__content-header">
           <h2 class="smartguide__content-title">SmartGuide > Your Info > Q2</h2>
@@ -1184,7 +1163,6 @@
           </fieldset>
         </form>
       </section>
-    </main>
 
   </template>
 
