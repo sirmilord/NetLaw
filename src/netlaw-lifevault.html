@@ -1098,7 +1098,6 @@
 
           _routePageChanged(page) {
               this.page = page || 'your-vault';
-              console.log(this.page);
               if (this.page === 'management') {
                   this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
               }
@@ -1108,7 +1107,7 @@
           }
 
           _pageChanged(page) {
-              let resolvedPageUrl = this.resolveUrl('netlaw-lifevault-' + page + '.html');console.log(resolvedPageUrl);
+              let resolvedPageUrl = this.resolveUrl('netlaw-lifevault-' + page + '.html');
 
               if (resolvedPageUrl.indexOf('404') >= 0) {
                   let replaceStr = /lifevault-/gi;
