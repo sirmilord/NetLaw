@@ -31,10 +31,6 @@
 
       }
 
-      /*:host([visible]) paper-icon-button[icon="netlaw-icons:notifications"] {
-        opacity: 1;
-      }*/
-
       #dropdown {
         background-color: var(--app-header-bg);
         padding: 15px;
@@ -78,10 +74,6 @@
     </style>
 
     <paper-icon-button icon="[[toggleIcon]]" name="notifications" on-click="toggle"></paper-icon-button>
-    <!--<a href="javascript:;" on-click="toggle">
-      &lt;!&ndash; todo: change opacity on click to 1 (default is 0.3) &ndash;&gt;
-      <iron-icon src="./images/icons/notifications_icon.svg"></iron-icon>
-    </a>-->
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus>
         <ul class="notifications" slot="dropdown-content">
