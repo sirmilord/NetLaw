@@ -1,7 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 
-
 <dom-module id="netlaw-smartguide">
   <template>
 
@@ -10,8 +9,8 @@
       */
       :host {
         box-sizing: border-box;
-          --iron-icon-width: 22px;
-          --iron-icon-height: 22px;
+        --iron-icon-width: 22px;
+        --iron-icon-height: 22px;
       }
 
       iron-pages {
@@ -707,10 +706,25 @@
         --iron-icon-fill-color: #01AA50;
       }
 
+      netlaw-smartguide-setup {
+        width: 100%;
+      }
+
+      netlaw-smartguide-setup-step1 {
+        width: 100%;
+      }
+
+      netlaw-smartguide-setup-step2 {
+        width: 100%;
+      }
+
+      netlaw-smartguide-templates {
+        width: 100%;
+      }
+
     </style>
 
-    <app-route route="[[route]]" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-    <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -718,157 +732,76 @@
 
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
-          <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-            <a href="[[route]]/setup" class="smartguide__list-link smartguide__list-link--active">
-              <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Setup</span>
-            </a>
-          </li>
-          <li class="smartguide__list-item smartguide__list-item--bottom-border">
-            <a href="[[route]]/templates" class="smartguide__list-link">
-              <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
-              <span class="smartguide__list-text">SmartGuide Templates</span>
-            </a>
-          </li>
+            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
+              <a name="setup" href="[[routePath]]smartguide/setup"  class="smartguide__list-link smartguide__list-link--active">
+                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Setup</span>
+              </a>
+            </li>
+            <li  class="smartguide__list-item smartguide__list-item--bottom-border">
+              <a name="templates" href="[[routePath]]smartguide/templates"  class="smartguide__list-link">
+                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Templates</span>
+              </a>
+            </li>
           </iron-selector>
         </ul>
       </section>
-      <!--<section class="smartguide__content">-->
 
-        <iron-pages selected="[[mode]]" attr-for-selected="name" role="main">
-          <netlaw-smartguide-setup name="smartguide-setup" route="[[subroute]]"></netlaw-smartguide-setup>
-          <netlaw-smartguide-templates name="smartguide-templates" route="[[subroute]]"></netlaw-smartguide-templates>
-          <netlaw-smartguide-setup-step1 name="smartguide-setup-step1" route="[[subroute]]"></netlaw-smartguide-setup-step1>
-          <netlaw-smartguide-setup-step2 name="smartguide-setup-step2" route="[[subroute]]"></netlaw-smartguide-setup-step2>
-        </iron-pages>
-      <!--</section>-->
-      <!--<iron-pages selected="[[mode]]" attr-for-selected="name" class="width-100">
-        <nlp-draft-clients-editor name="new"></nlp-draft-clients-editor>
-        <ap-client name="client" id="{{active}}" route="[[subroute]]"></ap-client>
+      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+        <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
+        <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+        <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+        <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
       </iron-pages>
--->
     </main>
 
   </template>
 
   <script>
-    class NetlawSmartguide extends Polymer.Element {
-      static get is() { return 'netlaw-smartguide'; }
+      class NetlawSmartguide extends Polymer.Element {
+          static get is() {
+              return 'netlaw-smartguide';
+          }
 
-        /*static get properties() {
-            return {
-                page: {
-                    type: String,
-                    reflectToAttribute: true,
-                    observer: '_pageChanged',
-                },
+          static get properties() {
+              return {
 
-                // This shouldn't be neccessary, but the Analyzer isn't picking up
-                // Polymer.Element#rootPath
-                rootPath: String,
-                route: { type: Object, observer: '_routeObserver' },
-                routeData: { type: Object, observer: '_routeDataObserver' },
-                subroute: Object,
+                  rootPath: String,
+                  route: {type: Object},
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      observer: '_pageChanged',
+                  },
+              };
+          }
 
-                id: { type: String, reflectToAttribute: true },
-
-                active: String,
-            };
-        }*/
-
-        /*_routeObserver(value) { if (!value || !value.path) this.active = null; }
-        _routeDataObserver(value) { this.active = value.id || null; }
-
-        _pageChanged(page) {
-            // Load page import on demand. Show 404 page if fails
-            const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
-            Polymer.importHref(
-                resolvedPageUrl,
-                null,
-                this._showPage404.bind(this),
-                true);
-        }
-
-        _showPage404() {
-            this.page = 'view404';
-        }*/
-
-        static get properties() {
-            // return
-            // {
-            //     route: { type: Object, observer: '_routeObserver' },
-            //     routeData: { type: Object, observer: '_routeDataObserver' },
-            //     subroute: Object,
-            //
-            //     active: String,
-            //     mode: String,
-            //     path: {
-            //         value: () => [
-            //             { page: "setup" },
-            //             { page: "setup-step1" },
-            //             { page: "setup-step2" },
-            //             { page: "templates" },
-            //         ],
-            //     },
-            // };
-            return {
-                route: { type: Object, observer: '_routeObserver' },
-                routeData: { type: Object, observer: '_routeDataObserver' },
-                subroute: Object,
-
-                id: { type: String, reflectToAttribute: true },
-
-                active: String,
-
-                details: {
-                    value: () => ({
-                        name: "Herbie Hancock",
-                        state: "NY",
-                        last_activity: "today",
-                        custom_id: "CNY-00223",
-                    }),
-                },
-            };
-        }
-
-        // _routeObserver(value) {
-        //     /*if (!value || !value.path) {*/
-        //         this.active = null;
-        //         this.mode = this.active ? "setup" : null
-        //     /*}*/
-        // }
-        // _routeDataObserver(value) {
-        //     // this.active = value.id || null;
-        //     this.active = value.page || null;
-        //     this.mode = this.active ? "setup" : null;
-        // }
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
 
 
+          _routePageChanged(page) {
+              this.page = page || 'setup';
+          }
 
-        _routeObserver(value) { if (!value || !value.path) this.active = null; }
-        _routeDataObserver(value) { this.active = value.id || null; }
-        onTabClick(e) {
-            let tab = e.srcElement.attributes.default ? null : e.srcElement.attributes.name.value;
-            navigate(`smartguide/${this.id}${tab ? "/" + tab : ""}`);
-        }
+          _pageChanged(page) {
+              const resolvedPageUrl = this.resolveUrl('netlaw-smartguide-' + page + '.html');
+              Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);
+          }
 
-/*        onClientClick(e) {
-            navigate(`smartguide/${e.path.page}`);
-        }
+          _showPage404() {
+              this.page = 'view-404';
+          }
+      }
 
-        onAddNewClientClick(e) {
-            navigate(`smartguide`);
-            this.mode = "new";
-        }*/
-
-        /*isEqual(first, second) { return first === second; }
-
-        formatWithSeparator(separator, ...values) { return values.filter(x => x).join(separator); }*/
-
-
-
-    }
-
-    window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
+      window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
   </script>
 </dom-module>
