@@ -724,7 +724,7 @@
 
     </style>
 
-    <app-route route="[[subroute]]" pattern="/:page" data="{{routeData}}"></app-route>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <main class="smartguide">
       <section class="smartguide__drawer">
@@ -733,13 +733,13 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
 
             <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-              <a href="[[routePath]]/smartguide/setup" on-click="onClick1" class="smartguide__list-link smartguide__list-link--active">
+              <a name="setup" href="[[routePath]]smartguide/setup"  class="smartguide__list-link smartguide__list-link--active">
                 <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
                 <span class="smartguide__list-text">SmartGuide Setup</span>
               </a>
             </li>
-            <li class="smartguide__list-item smartguide__list-item--bottom-border">
-              <a href="[[routePath]]/smartguide/templates" on-click="onClick2" class="smartguide__list-link">
+            <li  class="smartguide__list-item smartguide__list-item--bottom-border">
+              <a name="templates" href="[[routePath]]smartguide/templates"  class="smartguide__list-link">
                 <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
                 <span class="smartguide__list-text">SmartGuide Templates</span>
               </a>
@@ -747,7 +747,6 @@
           </iron-selector>
         </ul>
       </section>
-      <!--<section class="smartguide__content">-->
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
         <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
@@ -770,7 +769,6 @@
 
                   rootPath: String,
                   route: {type: Object},
-                  routeData: {type: Object, observer: '_routeDataObserver'},
                   page: {
                       type: String,
                       reflectToAttribute: true,
@@ -785,12 +783,12 @@
               ];
           }
 
+
           _routePageChanged(page) {
               this.page = page || 'setup';
           }
 
           _pageChanged(page) {
-
               const resolvedPageUrl = this.resolveUrl('netlaw-smartguide-' + page + '.html');
               Polymer.importHref(
                   resolvedPageUrl,
@@ -799,20 +797,9 @@
                   true);
           }
 
-
           _showPage404() {
               this.page = 'view-404';
           }
-
-          onClick1(page) {
-              this.page = 'setup';
-          }
-
-          onClick2(page) {
-              this.page = 'templates';
-          }
-
-
       }
 
       window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
