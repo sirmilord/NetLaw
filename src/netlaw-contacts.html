@@ -671,6 +671,48 @@
         width: 100%;
       }
 
+      .contacts__add-folder {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #01AA50;
+        /*--iron-icon-stroke-color: #fff;*/
+        display: none;
+      }
+
+      .contacts__add-folder--show {
+        display: block;
+      }
+
+      .contacts__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .contacts__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .contacts__addfolder-dropdown iron-icon {
+        margin-left: auto;
+      }
+
+      .contacts__addfolder-dropdown--sub {
+        width: 162px;
+      }
+
 
     </style>
 
@@ -687,6 +729,22 @@
             </a>
             <a class="contacts__btn" href="javascript:;">
               <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown>
+                <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
+                  <li>Add Folder
+                    <iron-icon icon="icons:add"></iron-icon>
+                  </li>
+                  <li>Download
+                    <iron-icon icon="icons:file-download"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="icons:print"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="icons:exit-to-app"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
             </a>
             <iron-collapse id="collapse">
               <ul class="contacts__list-lvl2">
@@ -696,6 +754,29 @@
                     Family</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown>
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Add Sub-Folder
+                          <iron-icon icon="icons:add"></iron-icon>
+                        </li>
+                        <li>Download
+                          <iron-icon icon="icons:file-download"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="icons:print"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="icons:create"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon icon="icons:delete"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
                   </a>
                   <iron-collapse id="collapselvl2">
                     <ul class="contacts__list-lvl3">
@@ -705,6 +786,26 @@
                           Immediate Family</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                       <li class="contacts__list-item-lvl3">
@@ -713,6 +814,26 @@
                           Extended Family</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                       <li class="contacts__list-item-lvl3">
@@ -721,6 +842,26 @@
                           In-Law</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                       <li class="contacts__list-item-lvl3">
@@ -729,6 +870,26 @@
                           Distant Relatives</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                       <li class="contacts__list-item-lvl3">
@@ -737,6 +898,26 @@
                           Other</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon icon="icons:file-download"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon icon="icons:print"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon icon="icons:create"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon icon="icons:delete"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
                         </a>
                       </li>
                     </ul>
@@ -748,6 +929,29 @@
                     Friends</a>
                   <a class="contacts__btn contacts__btn--lvl2 contacts__btn--lvl2-first" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown>
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Add Sub-Folder
+                          <iron-icon icon="icons:add"></iron-icon>
+                        </li>
+                        <li>Download
+                          <iron-icon icon="icons:file-download"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="icons:print"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="icons:create"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon icon="icons:delete"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
                   </a>
                 </li>
                 <li class="contacts__list-item-lvl2">
@@ -756,6 +960,29 @@
                     Attorneys</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown>
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Add Sub-Folder
+                          <iron-icon icon="icons:add"></iron-icon>
+                        </li>
+                        <li>Download
+                          <iron-icon icon="icons:file-download"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="icons:print"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="icons:create"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon icon="icons:delete"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
                   </a>
                 </li>
                 <li class="contacts__list-item-lvl2">
@@ -764,6 +991,29 @@
                     Other</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown>
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Add Sub-Folder
+                          <iron-icon icon="icons:add"></iron-icon>
+                        </li>
+                        <li>Download
+                          <iron-icon icon="icons:file-download"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="icons:print"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="icons:create"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon icon="icons:delete"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
                   </a>
                 </li>
               </ul>
@@ -776,6 +1026,22 @@
             </a>
             <a class="contacts__btn" href="javascript:;">
               <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown>
+                <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
+                  <li>Add Folder
+                    <iron-icon icon="icons:add"></iron-icon>
+                  </li>
+                  <li>Download
+                    <iron-icon icon="icons:file-download"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="icons:print"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="icons:exit-to-app"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
             </a>
           </li>
         </ul>
@@ -943,11 +1209,11 @@
           ready(e) {
               super.ready();
 
-              let btnVersions = this.shadowRoot.querySelectorAll('.contacts__details');
-              btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
+              // let btnVersions = this.shadowRoot.querySelectorAll('.contacts__details');
+              // btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
+              //     e.preventDefault();
+              //     this.querySelector('iron-dropdown').open();
+              // }));
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
