@@ -1503,7 +1503,6 @@
       </section>
 
     <template is="dom-if" if="[[addFile]]">
-      <!--<netlaw-lifevault-add-file></netlaw-lifevault-add-file>-->
       <div class="overlay"></div>
       <div class="drap-drop">
         <iron-icon icon="icons:file-upload"></iron-icon>
@@ -1521,12 +1520,12 @@
           <p class="files__desc">png, jpg, doc or PDF</p>
         </div>
         <!--<a href="[[routePath]]lifevault" class="files__item">-->
-        <a on-click="onCancelFileClick" class="files__item">
+        <div class="files__item">
+          <a href="javascript:;" on-click="onCancelFileClick">
           <iron-icon class="files__icon files__icon--close" icon="icons:cancel"></iron-icon>
         </a>
+        </div>
       </div>
-
-
     </template>
   </template>
 
@@ -1661,11 +1660,13 @@
               }
           }
 
-          onAddFileClick() {
+          onAddFileClick(e) {
+              e.preventDefault();
               this.addFile = true;
           }
 
-          onCancelFileClick() {
+          onCancelFileClick(e) {
+              e.preventDefault();
               this.addFile = false;
           }
       }
@@ -1673,3 +1674,5 @@
       window.customElements.define(MyNetlawLifevaultManagement.is, MyNetlawLifevaultManagement);
   </script>
 </dom-module>
+
+
