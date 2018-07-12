@@ -175,6 +175,12 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
+    <!--<app-route-->
+        <!--route="{{subroute}}"-->
+        <!--pattern="/:page"-->
+        <!--data="{{subrouteData}}">-->
+    <!--</app-route>-->
+
     <template is="dom-if" if="[[!loggedIn]]">
       <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
     </template>

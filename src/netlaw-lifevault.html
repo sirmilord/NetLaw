@@ -798,18 +798,34 @@
                   </a>
                   <iron-collapse id="collapselvl2">
                     <ul class="lifevault__list-lvl3">
-
-
-
+                      <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
                         <li class="lifevault__list-item-lvl3">
-                          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
                           <a name="management" href="[[routePath]]lifevault/management" id="homemanage"
                              class="lifevault__list-link-lvl3">
                             <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
                             Home Management</a>
-                          </iron-selector>
                           <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
                             <iron-icon icon="icons:more-vert"></iron-icon>
+                            <iron-dropdown>
+                              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                  slot="dropdown-content">
+                                <li>Download
+                                  <iron-icon icon="icons:file-download"></iron-icon>
+                                </li>
+                                <li>Print
+                                  <iron-icon icon="icons:print"></iron-icon>
+                                </li>
+                                <li>Rename
+                                  <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                </li>
+                                <li>Share
+                                  <iron-icon icon="icons:create"></iron-icon>
+                                </li>
+                                <li>Delete
+                                  <iron-icon icon="icons:delete"></iron-icon>
+                                </li>
+                              </ul>
+                            </iron-dropdown>
                           </a>
                         </li>
                         <li class="lifevault__list-item-lvl3">
@@ -818,10 +834,29 @@
                             Documents of Estate</a>
                           <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
                             <iron-icon icon="icons:more-vert"></iron-icon>
+                            <iron-dropdown>
+                              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                  slot="dropdown-content">
+                                <li>Download
+                                  <iron-icon icon="icons:file-download"></iron-icon>
+                                </li>
+                                <li>Print
+                                  <iron-icon icon="icons:print"></iron-icon>
+                                </li>
+                                <li>Rename
+                                  <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                </li>
+                                <li>Share
+                                  <iron-icon icon="icons:create"></iron-icon>
+                                </li>
+                                <li>Delete
+                                  <iron-icon icon="icons:delete"></iron-icon>
+                                </li>
+                              </ul>
+                            </iron-dropdown>
                           </a>
                         </li>
-
-
+                      </iron-selector>
                     </ul>
                   </iron-collapse>
                 </li>
@@ -1056,6 +1091,7 @@
 
           constructor() {
               super();
+              // this.page = page || 'your-vault';
               this.toggleIcon = 'icons:add-circle-outline';
               this.view = 'Module';
           }
@@ -1067,6 +1103,7 @@
               this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
               //todo rebuild this
               // this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+              this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));
           }
 
           toggleLvl2(e) {
@@ -1077,14 +1114,14 @@
 
           ready(e) {
               super.ready();
-              let btns = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl1');
-              btns.forEach(btn => btn.addEventListener('click', function (e) {
+
+              let btnVersions = this.shadowRoot.querySelectorAll('.lifevault__details');
+              btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
-
-              let btns2 = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl2');
-              btns2.forEach(btn => btn.addEventListener('click', function (e) {
+              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
+              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));

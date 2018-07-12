@@ -925,7 +925,7 @@
               }));
 
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              console.log(btnVerts);
+
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
