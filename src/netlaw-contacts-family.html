@@ -1,7 +1,7 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-contacts2">
+<dom-module id="netlaw-contacts-family">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style>
@@ -25,11 +25,11 @@
       }
 
       .contacts__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
-        border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
+        /*border-right: 1px solid #dfdfdf;*/
+        /*border-bottom: 1px solid #dfdfdf;*/
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -664,125 +664,9 @@
 
 
     </style>
-    <main class="contacts">
 
-      <section class="contacts__drawer">
-        <ul class="contacts__list">
-          <li class="contacts__list-item contacts__list-item--top-border">
-            <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
-              <iron-icon icon="[[toggleIcon]]"></iron-icon>
-              <span class="contacts__list-text">Key People</span>
-            </a>
-            <a class="contacts__btn" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-            </a>
-            <iron-collapse id="collapse">
-              <ul class="contacts__list-lvl2">
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Family</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                  <iron-collapse id="collapselvl2">
-                    <ul class="contacts__list-lvl3">
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Immediate Family</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Extended Family</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          In-Law</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Distant Relatives</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Other</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                    </ul>
-                  </iron-collapse>
-                </li>
-                <li id="mod" class="contacts__list-item-lvl2 ">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Friends</a>
-                  <a class="contacts__btn contacts__btn--lvl2 contacts__btn--lvl2-first" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Attorneys</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Other</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-              </ul>
-            </iron-collapse>
-          </li>
-          <li class="contacts__list-item contacts__list-item--top-border contacts__list-item--bottom-border">
-            <a href="javascript:;" class="contacts__list-link">
-              <iron-icon icon="icons:search"></iron-icon>
-              <span class="contacts__list-text">Search Attorneys</span>
-            </a>
-            <a class="contacts__btn" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-            </a>
-          </li>
-        </ul>
-      </section>
       <section class="contacts__content">
-        <!--first screen-->
 
-        <!--<h1>Contacts</h1>-->
-        <!--<figure>-->
-        <!--<img src="/images/Lgmoleskine.png" width="98" height="154" alt="contacts">-->
-        <!--</figure>-->
-        <!--<b>Add beneficaries, exectors of an estate and more</b>-->
-        <!--<div class="contacts__content-wrapper">-->
-        <!--<p>(you also search for attorneys and add them to you list)</p>-->
-        <!--<hr>-->
-        <!--</div>-->
-        <!--<button class="btn btn&#45;&#45;primary">Create Contact</button>-->
-
-        <!--Immediate Family screen-->
         <div class="contacts__content-header">
           <h2 class="contacts__content-title">Immediate Family</h2>
           <div class="contacts__content-update">Updated 1d ago</div>
@@ -1062,14 +946,13 @@
         </template>
 
       </section>
-    </main>
 
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class MyNetlawContacts2 extends Polymer.Element {
+      class MyNetlawContactsFamily extends Polymer.Element {
           static get is() {
-              return 'netlaw-contacts2';
+              return 'netlaw-contacts-family';
           }
 
           static get properties() {
@@ -1169,6 +1052,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(MyNetlawContacts2.is, MyNetlawContacts2);
+      customElements.define(MyNetlawContactsFamily.is, MyNetlawContactsFamily);
   </script>
 </dom-module>

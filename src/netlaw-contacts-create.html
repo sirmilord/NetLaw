@@ -1,7 +1,7 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-contacts">
+<dom-module id="netlaw-contacts-create">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style>
@@ -26,11 +26,11 @@
       }
 
       .contacts__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
-        border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
+        /*border-right: 1px solid #dfdfdf;*/
+        /*border-bottom: 1px solid #dfdfdf;*/
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -659,142 +659,29 @@
         --iron-icon-fill-color: #01AA50;
       }
 
-      netlaw-contacts-create {
-        width: 100%;
-      }
-
-      iron-pages {
-        width: 100%;
-      }
-
-      netlaw-contacts-family {
-        width: 100%;
-      }
-
 
     </style>
 
-    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
-    <main class="contacts">
-
-      <section class="contacts__drawer">
-        <ul class="contacts__list">
-          <li class="contacts__list-item contacts__list-item--top-border">
-            <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
-              <iron-icon icon="[[toggleIcon]]"></iron-icon>
-              <span class="contacts__list-text">Key People</span>
-            </a>
-            <a class="contacts__btn" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-            </a>
-            <iron-collapse id="collapse">
-              <ul class="contacts__list-lvl2">
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Family</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                  <iron-collapse id="collapselvl2">
-                    <ul class="contacts__list-lvl3">
-                      <li class="contacts__list-item-lvl3">
-                        <a name="family" href="[[routePath]]contacts/family" id="family" class="contacts__list-link-lvl3">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Immediate Family</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Extended Family</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          In-Law</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Distant Relatives</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                      <li class="contacts__list-item-lvl3">
-                        <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                          Other</a>
-                        <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
-                          <iron-icon icon="icons:more-vert"></iron-icon>
-                        </a>
-                      </li>
-                    </ul>
-                  </iron-collapse>
-                </li>
-                <li id="mod" class="contacts__list-item-lvl2 ">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Friends</a>
-                  <a class="contacts__btn contacts__btn--lvl2 contacts__btn--lvl2-first" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Attorneys</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
-                    Other</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                  </a>
-                </li>
-              </ul>
-            </iron-collapse>
-          </li>
-          <li class="contacts__list-item contacts__list-item--top-border contacts__list-item--bottom-border">
-            <a href="javascript:;" class="contacts__list-link">
-              <iron-icon icon="icons:search"></iron-icon>
-              <span class="contacts__list-text">Search Attorneys</span>
-            </a>
-            <a class="contacts__btn" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-            </a>
-          </li>
-        </ul>
+      <section class="contacts__content">
+        <h1>Contacts</h1>
+        <figure>
+        <img src="/images/Lgmoleskine.png" width="98" height="154" alt="contacts">
+        </figure>
+        <b>Add beneficaries, exectors of an estate and more</b>
+        <div class="contacts__content-wrapper">
+        <p>(you also search for attorneys and add them to you list)</p>
+        <hr>
+        </div>
+        <button class="btn btn--primary">Create Contact</button>
       </section>
 
-      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <netlaw-contacts-create name="create"></netlaw-contacts-create>
-        <netlaw-contacts-family name="family"></netlaw-contacts-family>
-      </iron-pages>
-
-
-    </main>
 
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class MyNetlawContacts extends Polymer.Element {
+      class MyNetlawContactsCreate extends Polymer.Element {
           static get is() {
-              return 'netlaw-contacts';
+              return 'netlaw-contacts-create';
           }
 
           // static get properties() {
@@ -885,113 +772,9 @@
           //         this.checkboxes[i].checked = false;
           //     }
           // }
-
-          static get properties() {
-              return {
-                  view: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  // addFile: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
-                  checkboxes: {
-                      type: Array,
-                      notify: true,
-                      reflectToAttribute: true,
-                  },
-                  toggleIcon: {
-                      type: String
-                  },
-                  rootPath: String,
-                  route: {type: Object},
-                  page: {
-                      type: String,
-                      reflectToAttribute: true,
-                      observer: '_pageChanged',
-                  },
-              };
-          }
-
-          constructor() {
-              super();
-              this.toggleIcon = 'icons:add-circle-outline';
-              this.view = 'Module';
-          }
-
-          toggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-              //todo rebuild this
-              // this.$.collapse.opened ? this.$.addfolder.classList.add('contacts__add-folder--show') : this.$.addfolder.classList.remove('contacts__add-folder--show');
-              this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));
-          }
-
-          toggleLvl2(e) {
-              e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
-          }
-
-          ready(e) {
-              super.ready();
-
-              let btnVersions = this.shadowRoot.querySelectorAll('.contacts__details');
-              btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
-          }
-
-          static get observers() {
-              return [
-                  '_routePageChanged(routeData.page)',
-              ];
-          }
-
-          _routePageChanged(page) {
-              this.page = page || 'create';
-              if (this.page === 'family') {
-                  this.$.family.classList.add('contacts__list-link-lvl3--active');
-              }
-              else {
-                  this.$.family.classList.remove('contacts__list-link-lvl3--active');
-              }
-          }
-
-          _pageChanged(page) {
-              let resolvedPageUrl = this.resolveUrl('netlaw-contacts-' + page + '.html');
-
-              if (resolvedPageUrl.indexOf('404') >= 0) {
-                  let replaceStr = /contacts-/gi;
-                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
-              }
-
-              Polymer.importHref(
-                  resolvedPageUrl,
-                  null,
-                  this._showPage404.bind(this),
-                  true);
-          }
-
-          _showPage404() {
-              this.page = 'view-404';
-          }
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(MyNetlawContacts.is, MyNetlawContacts);
+      customElements.define(MyNetlawContactsCreate.is, MyNetlawContactsCreate);
   </script>
 </dom-module>
