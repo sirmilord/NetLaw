@@ -43,10 +43,13 @@
 <link rel="lazy-import" href="netlaw-account-plans.html">
 
 <link rel="lazy-import" href="netlaw-lifevault.html">
+<link rel="lazy-import" href="netlaw-lifevault-add-file.html">
 
-<link rel="lazy-import" href="netlaw-lifevault-management.html">
 
 <link rel="lazy-import" href="netlaw-contacts.html">
+
+<link rel="lazy-import" href="netlaw-contacts2.html">
+
 <link rel="lazy-import" href="netlaw-find-attorney.html">
 <link rel="lazy-import" href="netlaw-add-module.html">
 
@@ -229,7 +232,6 @@
           <!--</app-toolbar>-->
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
-
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account"></netlaw-account>
             <netlaw-account-security name="account-security"></netlaw-account-security>
@@ -238,6 +240,9 @@
 
             <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
             <netlaw-contacts name="contacts"></netlaw-contacts>
+            <netlaw-contacts2 name="contacts2"></netlaw-contacts2>
+            <netlaw-lifevault-add-file name="lifevault-add-file"></netlaw-lifevault-add-file>
+            <netlaw-lifevault-doc name="lifevault-doc"></netlaw-lifevault-doc>
             <netlaw-contact-details name="contact-details"></netlaw-contact-details>
 
             <netlaw-find-attorney name="find-attorney"></netlaw-find-attorney>

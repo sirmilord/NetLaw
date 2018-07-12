@@ -723,6 +723,7 @@
       netlaw-lifevault-management {
         width: 100%;
       }
+
       netlaw-lifevault-doc {
         width: 100%;
       }
@@ -730,12 +731,92 @@
       iron-pages {
         width: 100%;
       }
+      .overlay {
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.8;
+        left: 0;
+        top: 0;
+      }
+
+      .drap-drop {
+        position: fixed;
+        z-index: 11;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #a2a2a2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .files {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 11;
+        display: flex;
+      }
+
+      .files__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 215px;
+        padding-left: 30px;
+        padding-right: 30px;
+        /*flex: 0 1 33%;*/
+        /*max-width: 33%;*/
+      }
+
+      .files__title {
+
+        font-size: 16px;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      .files__desc {
+        color: #a2a2a2;
+        font-size: 14px;
+      }
+
+      .files__icon {
+        --iron-icon-width: 50px;
+        --iron-icon-height: 50px;
+        --iron-icon-fill-color: #a2a2a2;
+        margin-bottom: 15px;
+      }
+
+      .files__icon--close {
+        --iron-icon-width: 100px;
+        --iron-icon-height: 100px;
+        --iron-icon-fill-color: #4a4a4a;
+      }
+
+      .files__item--extra {
+        border: 1px solid #a2a2a2;
+        border-top: 0;
+        box-shadow: 0 2px 0 0 #a2a2a2;
+      }
+
+      .files__item--border-hide {
+        border-right: 0;
+      }
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <main class="lifevault">
-
+      <netlaw-lifevault-add-file></netlaw-lifevault-add-file>
       <section class="lifevault__drawer">
         <ul class="lifevault__list">
           <li class="lifevault__list-item lifevault__list-item--top-border">
@@ -1051,7 +1132,12 @@
         <netlaw-lifevault-your-vault name="your-vault"></netlaw-lifevault-your-vault>
         <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
         <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
+        <!--<netlaw-lifevault-add-file name="add-file"></netlaw-lifevault-add-file>-->
       </iron-pages>
+
+      <!--<template is="dom-if" if="[[addFile]]">-->
+
+      <!--</template>-->
 
     </main>
   </template>
@@ -1071,6 +1157,12 @@
                       reflectToAttribute: true,
                       value: false
                   },
+                  // addFile: {
+                  //     type: Boolean,
+                  //     notify: true,
+                  //     reflectToAttribute: true,
+                  //     value: false
+                  // },
                   checkboxes: {
                       type: Array,
                       notify: true,
@@ -1161,9 +1253,6 @@
           _showPage404() {
               this.page = 'view-404';
           }
-
-
-
 
       }
 
