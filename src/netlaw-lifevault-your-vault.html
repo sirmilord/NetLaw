@@ -730,7 +730,7 @@
           <hr>
         </div>
         <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
-        <a id="addfolder" class="lifevault__add-folder" href="javascript:;">
+        <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show" href="javascript:;">
           <iron-icon icon="icons:create-new-folder"></iron-icon>
         </a>
       </section>
@@ -746,56 +746,61 @@
 
           static get properties() {
               return {
-                  view: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  checkboxes: {
-                      type: Array,
-                      notify: true,
-                      reflectToAttribute: true,
-                  },
-                  toggleIcon: {
-                      type: String
-                  },
+                  // view: {
+                  //     type: Boolean,
+                  //     notify: true,
+                  //     reflectToAttribute: true,
+                  //     value: false
+                  // },
+                  // checkboxes: {
+                  //     type: Array,
+                  //     notify: true,
+                  //     reflectToAttribute: true,
+                  // },
+                  // toggleIcon: {
+                  //     type: String
+                  // },
               };
           }
 
           constructor() {
               super();
-              this.toggleIcon = 'icons:add-circle-outline';
-              this.view = 'Module';
+              // this.toggleIcon = 'icons:add-circle-outline';
+              // this.view = 'Module';
+
+              this.addEventListener('list-collapse-open', e => console.log('open'));
+              this.addEventListener('list-collapse-close', e => console.log('close'));
           }
 
-          toggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-              this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
-          }
-
-          toggleLvl2(e) {
-              e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-          }
+          // toggle(e) {
+          //     e.preventDefault();
+          //     this.$.collapse.toggle();
+          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
+          //     this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+          //     this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+          // }
+          //
+          // toggleLvl2(e) {
+          //     e.preventDefault();
+          //     this.$.collapselvl2.toggle();
+          //     this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+          // }
 
           ready(e) {
               super.ready();
-              let btns = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl1');
-              btns.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
 
-              let btns2 = Polymer.dom(this.root).querySelectorAll('.lifevault__btn--lvl2');
-              btns2.forEach(btn => btn.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
+              // let btnVersions = this.shadowRoot.querySelectorAll('.lifevault__details');
+              // btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
+              //     e.preventDefault();
+              //     this.querySelector('iron-dropdown').open();
+              // }));
+              // let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
+              // btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
+              //     e.preventDefault();
+              //     this.querySelector('iron-dropdown').open();
+              // }));
+
+
           }
 
 
