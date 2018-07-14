@@ -1187,9 +1187,28 @@
               this.$.collapse.toggle();
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
               this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+
+              /*console.log('routeData');
+              console.log(this.routeData);
+              console.log('rootPath');
+              console.log(this.rootPath);
+              console.log('route');
+             console.log(this.route);
+
+              this.set('route.path', 'management');
+
+              console.log('new route');
+              console.log(this.route);*/
+
+              /*Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);*/
+
               //todo rebuild this
               // this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
-              this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));
+              // this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));
           }
 
           toggleLvl2(e) {
