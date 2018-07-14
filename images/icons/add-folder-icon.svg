@@ -1,1 +1,25 @@
-<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><mask id="a" fill="#fff"><circle cx="44.299999" cy="44.099998" fill="#fff" fill-rule="evenodd" r="43.900002"/></mask><mask id="b" fill="#fff"><circle cx="44.299999" cy="44.099998" fill="#fff" fill-rule="evenodd" r="43.900002"/></mask><mask id="c" fill="#fff"><circle cx="44.299999" cy="44.099998" fill="#fff" fill-rule="evenodd" r="43.900002"/></mask><g fill="none" fill-rule="evenodd" stroke="#1485e0"><path d="m10.44472834 23.731384833c-.246502718.052822011-.493005436.070429348-.739508154.088036685-.105644022 0-.211288044.017607337-.316932066.017607337" stroke-width=".35214674"/><path d="m6.113323438 23.04469869c-3.204535334-1.743126363-4.384226913-5.757599199-2.64110055-8.962134533s5.757599199-4.384226913 8.962134533-2.64110055 4.384226913 5.757599199 2.64110055 8.962134533c-.792330165 1.443801634-2.042451092 2.482634517-3.468645389 3.028461964" stroke-width=".35214674"/><path d="m20.938701192 3.218837228-1.989629081 1.989629081c-.404968751.404968751-1.074047557.404968751-1.496623645 0l-1.003618209-1.003618209c-.404968751-.404968751-.404968751-1.074047557 0-1.496623645l1.989629081-1.989629081c.404968751-.404968751 1.074047557-.404968751 1.496623645 0l1.003618209 1.003618209c.404968751.404968751.404968751 1.074047557 0 1.496623645z" fill="#fff" stroke-width=".70429348"/><circle cx="11.73006376493" cy="10.56109640485" fill="#fff" r="9.243851925" stroke-width=".70429348"/><circle cx="44.299999" cy="44.099998" fill="#c4e1f7" mask="url(#a)" r="42.5" stroke-width="2" transform="matrix(.17607337 0 0 .17607337 3.93001365 2.79626114)"/><g fill="#fff" mask="url(#b)" stroke-width="2" transform="matrix(.17607337 0 0 .17607337 3.93001365 2.79626114)"><path d="m31.4 4.7c-5.2 9.7 13.5 14.1 6.8 26.4-6.9 12.7-32.5 10.1-37 18.5-2.6 4.8.1 11.3 8.9 15.5 16.8 8.1 37.3 1.2 46.4-15.5 9.2-17 4.1-37.4-12.4-47.2-.1.1-8.7-5.2-12.7 2.3z" transform="translate(40 15)"/></g><circle cx="45" cy="44.099998" mask="url(#c)" r="42.599998" stroke-width="2.0298" transform="matrix(.17607337 0 0 .17607337 3.93001365 2.79626114)"/></g></svg>
+
+<svg width="91px" height="91px" viewBox="0 0 91 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="42.5" cy="42.5" r="42.5"></circle>
+        <filter x="-5.9%" y="-4.7%" width="111.8%" height="111.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Wireframes---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dash---My-Vault---My-Files" transform="translate(-1108.000000, -802.000000)">
+            <g id="Add-Folder/Document-Button" transform="translate(1111.000000, 804.000000)">
+                <g id="Oval-4">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#01AA50" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <path d="M60.668872,29.7183438 L40.6725487,29.7183438 L34.9244887,25.5519983 C34.7444248,25.3779299 34.4450966,25.3214117 34.2065799,25.3214117 L24.3898111,25.3191489 C22.4137659,25.3191489 20.7978723,26.8812391 20.7978723,28.7914894 L20.7978723,56.5702128 C20.7978723,58.480463 22.4137659,60.0425532 24.3898111,60.0425532 L60.6085274,60.0425532 C62.5845727,60.0425532 64.2004662,58.480463 64.2004662,56.5702128 L64.2004662,33.1909447 C64.2612658,31.2806945 62.6453363,29.7186043 60.6693509,29.7186043 L60.668872,29.7183438 Z" id="Page-1" fill="#FFFFFF"></path>
+                <polygon id="Fill-2" fill="#01AA50" points="42.9538457 54.0072819 43.914617 54.0072819 43.914617 45.9331138 51.9900149 45.9331138 51.9900149 44.9723426 43.914617 44.9723426 43.914617 36.8969447 42.9538457 36.8969447 42.9538457 44.9723426 34.8796777 44.9723426 34.8796777 45.9331138 42.9538457 45.9331138"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
