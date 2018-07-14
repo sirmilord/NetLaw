@@ -109,6 +109,9 @@
 
       .lifevault__list-link iron-icon {
         margin-right: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        margin-bottom: 3px;
       }
 
       .lifevault__list-link-lvl2 {
@@ -152,7 +155,15 @@
         top: 21px;
       }
 
+      .lifevault__btn--lvl1 {
+        color: #e5e5e5;
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+      }
+
       .lifevault__btn--lvl2 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
         top: 15px;
         color: #e5e5e5;
       }
@@ -1101,7 +1112,7 @@
           <li class="lifevault__list-item lifevault__list-item--top-border lifevault__list-item--bottom-border">
             <a href="javascript:;" class="lifevault__list-link">
               <!-- todo: replace icons -->
-              <iron-icon icon="icons:add-circle-outline"></iron-icon>
+              <iron-icon icon="netlaw-icons:plus-icon"></iron-icon>
               <span class="lifevault__list-text">Shared with My Attorneys</span>
             </a>
             <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;">
@@ -1178,7 +1189,7 @@
           constructor() {
               super();
               // this.page = page || 'your-vault';
-              this.toggleIcon = 'icons:add-circle-outline';
+              this.toggleIcon = 'netlaw-icons:plus-icon';
               this.view = 'Module';
           }
 
@@ -1186,7 +1197,7 @@
               e.preventDefault();
               this.$.collapse.toggle();
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+              this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
               /*console.log('routeData');
               console.log(this.routeData);
