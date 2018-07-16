@@ -18,7 +18,7 @@
       .contacts__drawer {
         flex: 1 1 30%;
         max-width: 30%;
-        min-width: 20em;
+        min-width: 22em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -107,6 +107,9 @@
 
       .contacts__list-link iron-icon {
         margin-right: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        margin-bottom: 3px;
       }
 
       .contacts__list-link-lvl2 {
@@ -150,7 +153,15 @@
         top: 21px;
       }
 
+      .contacts__btn--lvl1 {
+        color: #e5e5e5;
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+      }
+
       .contacts__btn--lvl2 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
         top: 15px;
         color: #e5e5e5;
       }
@@ -160,8 +171,10 @@
       }
 
       .contacts__btn--lvl3 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
         top: 9px;
-        color: #b7b7b7;
+        color: #e5e5e5;
       }
 
       .contacts__list-link[aria-expanded=true] iron-icon {
@@ -722,12 +735,12 @@
 
       <section class="contacts__drawer">
         <ul class="contacts__list">
-          <li class="contacts__list-item contacts__list-item--top-border">
+          <li class="contacts__list-item contacts__list-item--top-border contacts__list-item--bottom-border">
             <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
               <iron-icon icon="[[toggleIcon]]"></iron-icon>
               <span class="contacts__list-text">Key People</span>
             </a>
-            <a class="contacts__btn" href="javascript:;">
+            <a class="contacts__btn contacts__btn--lvl1" href="javascript:;">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown>
                 <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
@@ -927,7 +940,7 @@
                   <a class="contacts__list-link-lvl2" href="javascript:;">
                     <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
                     Friends</a>
-                  <a class="contacts__btn contacts__btn--lvl2 contacts__btn--lvl2-first" href="javascript:;">
+                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown>
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1018,31 +1031,6 @@
                 </li>
               </ul>
             </iron-collapse>
-          </li>
-          <li class="contacts__list-item contacts__list-item--top-border contacts__list-item--bottom-border">
-            <a href="javascript:;" class="contacts__list-link">
-              <iron-icon icon="icons:search"></iron-icon>
-              <span class="contacts__list-text">Search Attorneys</span>
-            </a>
-            <a class="contacts__btn" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-              <iron-dropdown>
-                <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
-                    <iron-icon icon="icons:add"></iron-icon>
-                  </li>
-                  <li>Download
-                    <iron-icon icon="icons:file-download"></iron-icon>
-                  </li>
-                  <li>Print
-                    <iron-icon icon="icons:print"></iron-icon>
-                  </li>
-                  <li>Share
-                    <iron-icon icon="icons:exit-to-app"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </a>
           </li>
         </ul>
       </section>
@@ -1186,7 +1174,7 @@
 
           constructor() {
               super();
-              this.toggleIcon = 'icons:add-circle-outline';
+              this.toggleIcon = 'netlaw-icons:plus-icon';
               this.view = 'Module';
           }
 
@@ -1194,7 +1182,7 @@
               e.preventDefault();
               this.$.collapse.toggle();
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+              this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
               //todo rebuild this
               // this.$.collapse.opened ? this.$.addfolder.classList.add('contacts__add-folder--show') : this.$.addfolder.classList.remove('contacts__add-folder--show');
               this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));

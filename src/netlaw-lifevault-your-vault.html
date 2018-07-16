@@ -19,7 +19,7 @@
       .lifevault__drawer {
         flex: 1 1 30%;
         max-width: 30%;
-        min-width: 20em;
+        min-width: 22em;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -676,8 +676,8 @@
         position: fixed;
         bottom: 5%;
         right: 5%;
-        --iron-icon-width: 100px;
-        --iron-icon-height: 100px;
+        --iron-icon-width: 90px;
+        --iron-icon-height: 90px;
         --iron-icon-fill-color: #01AA50;
         /*--iron-icon-stroke-color: #fff;*/
         display: none;
@@ -714,6 +714,11 @@
         width: 162px;
       }
 
+        figure iron-icon {
+            --iron-icon-width: 154px;
+            --iron-icon-height: 154px;
+        }
+
 
     </style>
 
@@ -722,7 +727,8 @@
 
         <h1>Your Vault</h1>
         <figure>
-          <img src="/images/Lgdocuments.png" width="120" height="145" alt="LifeVault">
+          <!--<img src="/images/Lgdocuments.png" width="120" height="145" alt="LifeVault">-->
+            <iron-icon icon="netlaw-icons:documents"></iron-icon>
         </figure>
         <b>This is where you would keep all your important legal documents.</b>
         <div class="lifevault__content-wrapper">
@@ -731,7 +737,7 @@
         </div>
         <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
         <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show" href="javascript:;">
-          <iron-icon icon="icons:create-new-folder"></iron-icon>
+          <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
         </a>
       </section>
 
