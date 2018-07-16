@@ -69,7 +69,8 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
@@ -81,7 +82,8 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
@@ -120,6 +122,17 @@
         vertical-align: center;
         padding-top: 15px;
         padding-bottom: 15px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      a.contacts__list-link-lvl2 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.contacts__btn.contacts__btn--lvl2 > iron-icon {
+        margin-bottom: 5px;
       }
 
       .contacts__list-link-lvl3 {
@@ -130,6 +143,8 @@
         vertical-align: center;
         padding-top: 10px;
         padding-bottom: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
       }
 
       .contacts__list-item-lvl2--top-border:before {
@@ -138,7 +153,8 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
         left: 50%;
         top: -7px;
         transform: translateX(-50%);
@@ -201,6 +217,15 @@
         width: 4px;
         background-color: #01AA50;
         transform: translateY(-50%);
+      }
+
+      a.contacts__list-link-lvl3 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.contacts__btn.contacts__btn--lvl3 > iron-icon {
+        margin-bottom: 5px;
       }
 
       h1 {
@@ -745,16 +770,16 @@
               <iron-dropdown>
                 <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
                   <li>Add Folder
-                    <iron-icon icon="icons:add"></iron-icon>
+                    <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                   </li>
                   <li>Download
-                    <iron-icon icon="icons:file-download"></iron-icon>
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                   </li>
                   <li>Print
-                    <iron-icon icon="icons:print"></iron-icon>
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                   </li>
                   <li>Share
-                    <iron-icon icon="icons:exit-to-app"></iron-icon>
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                   </li>
                 </ul>
               </iron-dropdown>
@@ -763,7 +788,7 @@
               <ul class="contacts__list-lvl2">
                 <li class="contacts__list-item-lvl2">
                   <a class="contacts__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Family</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
@@ -771,22 +796,22 @@
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
                         <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
+                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                         </li>
                         <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                         </li>
                         <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                         </li>
                         <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
                         <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -795,7 +820,7 @@
                     <ul class="contacts__list-lvl3">
                       <li class="contacts__list-item-lvl3">
                         <a name="family" href="[[routePath]]contacts/family" id="family" class="contacts__list-link-lvl3">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Immediate Family</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
@@ -803,19 +828,19 @@
                             <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
+                                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
+                                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                               </li>
                               <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                               </li>
                               <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
+                                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
                               <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
+                                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
                           </iron-dropdown>
@@ -823,7 +848,7 @@
                       </li>
                       <li class="contacts__list-item-lvl3">
                         <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Extended Family</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
@@ -831,19 +856,19 @@
                             <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
+                                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
+                                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                               </li>
                               <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                               </li>
                               <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
+                                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
                               <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
+                                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
                           </iron-dropdown>
@@ -851,7 +876,7 @@
                       </li>
                       <li class="contacts__list-item-lvl3">
                         <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           In-Law</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
@@ -859,19 +884,19 @@
                             <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
+                                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
+                                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                               </li>
                               <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                               </li>
                               <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
+                                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
                               <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
+                                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
                           </iron-dropdown>
@@ -879,7 +904,7 @@
                       </li>
                       <li class="contacts__list-item-lvl3">
                         <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Distant Relatives</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
@@ -887,19 +912,19 @@
                             <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
+                                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
+                                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                               </li>
                               <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                               </li>
                               <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
+                                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
                               <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
+                                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
                           </iron-dropdown>
@@ -907,7 +932,7 @@
                       </li>
                       <li class="contacts__list-item-lvl3">
                         <a class="contacts__list-link-lvl3" href="javascript:;">
-                          <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                          <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Other</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
@@ -915,19 +940,19 @@
                             <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
-                                <iron-icon icon="icons:file-download"></iron-icon>
+                                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
-                                <iron-icon icon="icons:print"></iron-icon>
+                                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                               </li>
                               <li>Rename
-                                <iron-icon icon="icons:exit-to-app"></iron-icon>
+                                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                               </li>
                               <li>Share
-                                <iron-icon icon="icons:create"></iron-icon>
+                                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
                               <li>Delete
-                                <iron-icon icon="icons:delete"></iron-icon>
+                                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
                           </iron-dropdown>
@@ -938,7 +963,7 @@
                 </li>
                 <li id="mod" class="contacts__list-item-lvl2 ">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Friends</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
@@ -946,22 +971,22 @@
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
                         <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
+                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                         </li>
                         <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                         </li>
                         <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                         </li>
                         <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
                         <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -969,7 +994,7 @@
                 </li>
                 <li class="contacts__list-item-lvl2">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Attorneys</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
@@ -977,22 +1002,22 @@
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
                         <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
+                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                         </li>
                         <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                         </li>
                         <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                         </li>
                         <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
                         <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1000,7 +1025,7 @@
                 </li>
                 <li class="contacts__list-item-lvl2">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
-                    <iron-icon icon="icons:perm-contact-calendar"></iron-icon>
+                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Other</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
                     <iron-icon icon="icons:more-vert"></iron-icon>
@@ -1008,22 +1033,22 @@
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
                         <li>Add Sub-Folder
-                          <iron-icon icon="icons:add"></iron-icon>
+                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
-                          <iron-icon icon="icons:file-download"></iron-icon>
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                         </li>
                         <li>Print
-                          <iron-icon icon="icons:print"></iron-icon>
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                         </li>
                         <li>Rename
-                          <iron-icon icon="icons:exit-to-app"></iron-icon>
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                         </li>
                         <li>Share
-                          <iron-icon icon="icons:create"></iron-icon>
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
                         <li>Delete
-                          <iron-icon icon="icons:delete"></iron-icon>
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
                     </iron-dropdown>
