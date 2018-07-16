@@ -147,32 +147,36 @@
       }
 
       #drawer > iron-selector > a > iron-icon {
-          width: 32px;
-          height: 32px;
-          margin: 10px auto;
-          clear: both;
-          display: block;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          background-size: contain;
-          vertical-align: middle;
+        width: 32px;
+        height: 32px;
+        margin: 10px auto;
+        clear: both;
+        display: block;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: middle;
       }
 
       .drawer-nav a iron-icon {
-          width: 32px;
-          height: 32px;
-          margin: 10px auto;
-          clear: both;
-          display: block;
-          background-position: 50% 50%;
-          background-repeat: no-repeat;
-          background-size: contain;
-          vertical-align: middle;
+        width: 32px;
+        height: 32px;
+        margin: 10px auto;
+        clear: both;
+        display: block;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        vertical-align: middle;
       }
 
-      .drawer-nav a iron-icon { opacity: 0.5; }
+      .drawer-nav a iron-icon {
+        opacity: 0.5;
+      }
 
-      .drawer-nav a.iron-selected iron-icon { opacity: 1; }
+      .drawer-nav a.iron-selected iron-icon {
+        opacity: 1;
+      }
 
     </style>
 
@@ -180,9 +184,9 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <!--<app-route-->
-        <!--route="{{subroute}}"-->
-        <!--pattern="/:page"-->
-        <!--data="{{subrouteData}}">-->
+    <!--route="{{subroute}}"-->
+    <!--pattern="/:page"-->
+    <!--data="{{subrouteData}}">-->
     <!--</app-route>-->
 
     <template is="dom-if" if="[[!loggedIn]]">
@@ -210,21 +214,27 @@
           <!-- Drawer content -->
           <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
 
-            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list" role="navigation">
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
+                           role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide">
-                <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon> SmartGuide
+                <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
+                SmartGuide
               </a>
               <a name="lifevault" href="[[rootPath]]lifevault">
-                <iron-icon icon="netlaw-icons:life-vault" slot="item-icon"></iron-icon> LifeVault
+                <iron-icon icon="netlaw-icons:life-vault" slot="item-icon"></iron-icon>
+                LifeVault
               </a>
               <a name="contacts" href="[[rootPath]]contacts">
-                <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon> Contacts
+                <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon>
+                Contacts
               </a>
               <a name="find-attorney" href="[[rootPath]]find-attorney">
-                <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon> Find Attorney
+                <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon>
+                Find Attorney
               </a>
               <a name="add-module" href="[[rootPath]]add-module">
-                <iron-icon icon="netlaw-icons:add-module" slot="item-icon"></iron-icon> Add Module
+                <iron-icon icon="netlaw-icons:add-module" slot="item-icon"></iron-icon>
+                Add Module
               </a>
             </iron-selector>
           </app-drawer>
@@ -279,10 +289,10 @@
 
           static get properties() {
               return {
-                  loggedIn: { type: Boolean, value: () => location.pathname !== "/" },
+                  loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   rootPath: String,
-                  route: { type: Object },
-                  routeData: { type: Object, observer: '_routeDataObserver' },
+                  route: {type: Object},
+                  routeData: {type: Object, observer: '_routeDataObserver'},
                   subroute: Object,
                   active: String,
                   page: {
@@ -299,6 +309,7 @@
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };
+
           }
 
           onLoggedIn(e) {
@@ -313,9 +324,13 @@
               this.page = 'login';
           }
 
-          _routeDataObserver(value) { this.active = value.id || null; }
+          _routeDataObserver(value) {
+              this.active = value.id || null;
+          }
 
-          isSubpathSelected(path, subpath, levels) { return this.isSubpath(path, subpath, levels) ? "iron-selected" : null; }
+          isSubpathSelected(path, subpath, levels) {
+              return this.isSubpath(path, subpath, levels) ? "iron-selected" : null;
+          }
 
           isSubpath(path, subpath, levels) {
               if (!path || !subpath) return null;
@@ -328,9 +343,17 @@
               return true;
           }
 
-          isEqual(first, second) { return first === second; }
-          isTrue(value) { return !!value; }
-          isFalse(value) { return !value; }
+          isEqual(first, second) {
+              return first === second;
+          }
+
+          isTrue(value) {
+              return !!value;
+          }
+
+          isFalse(value) {
+              return !value;
+          }
 
           static get observers() {
               return [
@@ -343,14 +366,20 @@
               // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
 
               // Check if user is logged in
-              if ( this.loggedIn === true ) this.page = page || 'initial-screen';
+              if (this.loggedIn === true) this.page = page || 'initial-screen';
 
               else this.page = page || 'login';
 
               // Close a non-persistent drawer when the page & route are changed.
-              /*if (!this.$.drawer.persistent) {
-                  this.$.drawer.close();
-              }*/
+              // if (!this.$.drawer.persistent) {
+              //     this.$.drawer.close();
+              // }
+
+              // if (this.page === 'account') {
+              //
+              //     this.dispatchEvent(new CustomEvent('drawer', ));
+              //     console.log('ddddddd');
+              // }
           }
 
           _pageChanged(page) {
@@ -366,6 +395,14 @@
           _showPage404() {
               this.page = 'view-404';
           }
+
+          // ready() {
+          //     super.ready();
+          //     this.addEventListener('drawer', function (e) {
+          //         this.$.drawer.close();
+          //     });
+          // }
+
       }
 
       window.customElements.define(NetlawApp.is, NetlawApp);
