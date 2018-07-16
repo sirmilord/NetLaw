@@ -2,7 +2,7 @@
 
 <link rel="import" href="social-icons.html">
 
-<dom-module id="netlaw-account">
+<dom-module id="netlaw-account-info">
   <template>
 
     <style>
@@ -106,15 +106,15 @@
       }
 
       .account__right {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 1 1 70%;
+        max-width: 70%;
 
       }
 
       .form {
         margin-left: 70px;
         max-width: 500px;
-        /*width: 70%;*/
+        width: 70%;
         margin-top: 35px;
       }
 
@@ -377,136 +377,61 @@
         background: #01B8EC;
       }
 
-      iron-pages {
-        width: 100%;
-      }
-
-      netlaw-account-info {
-        width: 100%;
-      }
-
-      netlaw-account-security {
-        width: 100%;
-      }
-
-      netlaw-account-current-plan {
-        width: 100%;
-      }
-
     </style>
 
-    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
-    <main class="account">
-      <div class="account__header">
-        <div class="account__header-left">
-          <button class="btn btn--back-dash">
-            <iron-icon icon="netlaw-icons:back"></iron-icon>
-            Back to Dash
-          </button>
-        </div>
-        <div class="account__header-right">
-          <h2 class="account__title">Account Settings</h2>
-        </div>
-      </div>
-      <div class="account__wrapper">
-        <div class="account__left">
-          <nav class="account__list">
-            <a id="infolink" name="info" href="[[routePath]]account/info" class="account__list-link account__list-link--active">Account
-              Information</a>
-            <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link">Security Settings</a>
-            <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link">Current Billing
-              Plan</a>
-            <a name="plans" href="[[routePath]]account-plans" class="account__list-link">View Billing Plans</a>
-          </nav>
-          <div class="login-buttons">
-            <paper-icon-button icon="social-icons:googleplus" name="googleplus"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:facebook" name="facebook"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:linkedin" name="linkedin"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+    <div class="account__right">
+      <form class="form" action="/" method="post">
+        <fieldset>
+          <legend>Credentials</legend>
+          <div class="form__group">
+            <label class="label" for="username">USERNAME</label>
+            <input type="text" id="username" class="input-text input-text--disabled"
+                   placeholder="Brucewayne2018@gmail.com" disabled>
           </div>
-        </div>
+          <div class="form__group">
+            <label for="curpass" class="label">CHANGE PASSWORD</label>
+            <input type="password" id="curpass" class="input-text" placeholder="Current Password*">
+          </div>
+          <div class="">
+            <label for="newpass" class="label label--hide"></label>
+            <input type="password" id="newpass" class="input-text" placeholder="New Password*">
+          </div>
+          <div class="form__group form__group--right">
+            <div class="form__line form__line--short"></div>
+            <button class="btn btn--primary">Save Password</button>
+          </div>
+        </fieldset>
+        <div class="form__line form__line--long"></div>
+      </form>
+      <form class="form" action="/" method="post">
+        <fieldset>
+          <legend>Change Email</legend>
+          <div class="form__group">
+            <label class="label" for="curemail">CURRENT EMAIL ADDRESS</label>
+            <input type="email" id="curemail" class="input-text input-text--disabled"
+                   placeholder="Brucewayne2018@gmail.com" disabled>
+          </div>
+          <div class="">
+            <label for="newemail" class="label label--hide"></label>
+            <input type="email" id="newemail" class="input-text" placeholder="New Email*">
+          </div>
+          <div class="form__group form__group--right">
+            <div class="form__line form__line--short"></div>
+            <button class="btn btn--primary">Save Email</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-account-info name="info"></netlaw-account-info>
-          <netlaw-account-security name="security"></netlaw-account-security>
-          <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
-        </iron-pages>
-
-      </div>
-    </main>
   </template>
 
   <script>
-      class MyNetlawAccount extends Polymer.Element {
+      class MyNetlawAccountInfo extends Polymer.Element {
           static get is() {
-              return 'netlaw-account';
+              return 'netlaw-account-info';
           }
-
-          static get properties() {
-              return {
-                  rootPath: String,
-                  route: {type: Object},
-                  page: {
-                      type: String,
-                      reflectToAttribute: true,
-                      observer: '_pageChanged',
-                  },
-              };
-          }
-
-          static get observers() {
-              return [
-                  '_routePageChanged(routeData.page)',
-              ];
-          }
-
-          _routePageChanged(page) {
-              this.page = page || 'info';
-
-              if (this.page === 'info') {
-                  this.$.securitylink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.remove('account__list-link--active');
-                  this.$.infolink.classList.add('account__list-link--active');
-              }
-              else if (this.page === 'security') {
-                  this.$.infolink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.remove('account__list-link--active');
-                  this.$.securitylink.classList.add('account__list-link--active');
-
-              }
-              else if (this.page === 'current-plan') {
-                  this.$.securitylink.classList.remove('account__list-link--active');
-                  this.$.infolink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.add('account__list-link--active');
-
-              }
-          }
-
-          _pageChanged(page) {
-              let resolvedPageUrl = this.resolveUrl('netlaw-account-' + page + '.html');
-
-              if (resolvedPageUrl.indexOf('404') >= 0) {
-                  let replaceStr = /account-/gi;
-                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
-              }
-
-              Polymer.importHref(
-                  resolvedPageUrl,
-                  null,
-                  this._showPage404.bind(this),
-                  true);
-          }
-
-          _showPage404() {
-              this.page = 'view-404';
-          }
-
       }
 
-      window.customElements.define(MyNetlawAccount.is, MyNetlawAccount);
+      window.customElements.define(MyNetlawAccountInfo.is, MyNetlawAccountInfo);
   </script>
 </dom-module>
