@@ -17,8 +17,8 @@
       }
 
       .add-module__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         min-width: 50em;
         background-color: #fff;
         border-right: 1px solid #dfdfdf;
@@ -342,8 +342,8 @@
       }
 
       .add-module__col-module {
-        flex: 1 1 25%;
-        max-width: 25%;
+        flex: 1 1 20%;
+        max-width: 20%;
         padding-left: 20px;
         padding-right: 20px;
         box-sizing: border-box;
@@ -544,24 +544,24 @@
         --iron-icon-fill-color: #01AA50;
       }
 
-      .btn--close {
-        position: absolute;
-        width: 60px;
-        height: 100px;
+      /*.btn--close {*/
+        /*position: absolute;*/
+        /*width: 60px;*/
+        /*height: 100px;*/
 
-        border: 1px solid #e1e1e1;
-        box-shadow: 0 2px 0 0 #a2a2a2;
-        border-left: 0;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        --iron-icon-fill-color: #4a4a4a;
-        --iron-icon-height: 35px;
-        --iron-icon-width: 35px;
-        background-color: #ffffff;
-        padding: 0;
-        right: -60px;
-        top: 30%;
-      }
+        /*border: 1px solid #e1e1e1;*/
+        /*box-shadow: 0 2px 0 0 #a2a2a2;*/
+        /*border-left: 0;*/
+        /*border-top-right-radius: 20px;*/
+        /*border-bottom-right-radius: 20px;*/
+        /*--iron-icon-fill-color: #4a4a4a;*/
+        /*--iron-icon-height: 35px;*/
+        /*--iron-icon-width: 35px;*/
+        /*background-color: #ffffff;*/
+        /*padding: 0;*/
+        /*right: -60px;*/
+        /*top: 30%;*/
+      /*}*/
 
       .add-module__footer {
         display: flex;
@@ -662,9 +662,9 @@
     <main class="add-module">
 
       <section class="add-module__content">
-        <button class="btn btn--close">
-          <iron-icon icon="icons:close"></iron-icon>
-        </button>
+        <!--<button class="btn btn&#45;&#45;close">-->
+          <!--<iron-icon icon="icons:close"></iron-icon>-->
+        <!--</button>-->
         <div class="add-module__content-header">
           <h2 class="add-module__title">Module Market</h2>
           <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
@@ -677,7 +677,7 @@
             </label>
             <div class="add-module__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
               <div class="add-module__sort-arrows">
-                <iron-icon icon="icons:arrow-upnward"></iron-icon>
+                <iron-icon icon="icons:arrow-upward"></iron-icon>
                 <iron-icon icon="icons:arrow-downward"></iron-icon>
               </div>
               <span>Sort By</span>
