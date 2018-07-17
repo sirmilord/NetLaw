@@ -795,6 +795,7 @@
       .lifevault__wrap--show {
         display: block;
       }
+
       .overlay {
         position: fixed;
         z-index: 10;
@@ -1594,7 +1595,7 @@
                   this.querySelector('iron-dropdown').open();
               }));
 
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
+              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]'); console.log(btnVerts);
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
