@@ -222,6 +222,11 @@
         cursor: pointer;
       }
 
+      .btn--plan a:visited {
+        text-decoration: none;
+        color: #4e92e3;
+      }
+
       .form__line {
         margin: 20px auto;
         width: 60%;
@@ -571,7 +576,7 @@
     </style>
 
     <div class="account__right">
-      <form class="form" action="/" method="post">
+      <div class="form" action="/" method="post">
         <fieldset>
           <legend>Plan Information</legend>
           <div class="badge">Active</div>
@@ -589,7 +594,7 @@
               <!--<input type="text" id="plan" class="input-text input-text&#45;&#45;plan"-->
               <!--placeholder="Essential Estate Planning Kit with Living Trust">-->
               <span class="account__label">PLAN NAME</span>
-              <button class="btn btn--plan">Essential Estate Planning Kit with Living Trust</button>
+              <button href="[[routePath]]account-plans" class="btn btn--plan"><a name="plans" href="[[routePath]]account-plans">Essential Estate Planning Kit with Living Trust</a></button>
             </div>
           </div>
           <div class="form__group">
@@ -611,7 +616,7 @@
           </div>
         </fieldset>
         <div class="form__line form__line--long"></div>
-      </form>
+      </div>
       <section class="account__bill-info">
         <h3 class="account__bill-title">Billing Information</h3>
         <div class="account__bill-row">
