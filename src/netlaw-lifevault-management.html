@@ -249,7 +249,7 @@
         padding: 0 30px;
         vertical-align: middle;
         font-size: 16px;
-        line-height: 40px;
+        /*line-height: 40px;*/
         text-align: center;
         text-decoration: none;
         font-weight: 900;
@@ -388,6 +388,12 @@
         margin-right: 25px;
       }
 
+      label.lifevault__search > button > iron-icon {
+        --iron-icon-width: 18px;
+        --iron-icon-height: 18px;
+
+      }
+
       .lifevault__search input {
         height: 45px;
         border: 1px solid #c2c2c2;
@@ -427,6 +433,11 @@
         position: relative;
       }
 
+      .lifevault__sort > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
       .lifevault__sort-arrows {
         display: flex;
         flex-direction: column;
@@ -447,21 +458,21 @@
       .btn--module {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
       }
 
       .btn--list {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
       }
 
       .btn--active {
@@ -884,7 +895,7 @@
             <label class="lifevault__search">
               <input type="search" id="search" name="search" placeholder="Search...">
               <button class="btn btn--search">
-                <iron-icon icon="icons:cached"></iron-icon>
+                <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
               </button>
             </label>
             <div class="lifevault__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
