@@ -308,11 +308,12 @@
         content: '';
         position: absolute;
         width: 95%;
-        height: 1px;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 4px dotted #e0e0e0;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
       }
 
       .lifevault__content-dashboard form {
@@ -330,7 +331,7 @@
         display: block;
         position: relative;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 9px;
         user-select: none;
         color: #d6d6d6;
         height: 45px;
@@ -345,12 +346,13 @@
 
       .lifevault__content-checkmark {
         position: absolute;
-        top: 17px;
-        left: 12px;
-        height: 25px;
-        width: 25px;
+        top: 15px;
+        left: 8px;
+        height: 18px;
+        width: 18px;
         background-color: #fff;
         border: 1px solid #c2c2c2;
+        border-radius: 2px;
       }
 
       .lifevault__checkbox-container:hover input ~ .lifevault__content-checkmark {
@@ -372,10 +374,10 @@
       }
 
       .lifevault__checkbox-container .lifevault__content-checkmark:after {
-        left: 9px;
-        top: 5px;
+        left: 6px;
+        top: 2px;
         width: 5px;
-        height: 10px;
+        height: 9px;
         border: solid #01AA50;
         border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);
@@ -391,7 +393,6 @@
       label.lifevault__search > button > iron-icon {
         --iron-icon-width: 18px;
         --iron-icon-height: 18px;
-
       }
 
       .lifevault__search input {
@@ -436,6 +437,8 @@
       .lifevault__sort > iron-icon {
         --iron-icon-width: 20px;
         --iron-icon-height: 20px;
+        margin-right: -10px;
+        cursor: pointer;
       }
 
       .lifevault__sort-arrows {
@@ -561,11 +564,15 @@
 
       .lifevault__menu {
         margin-left: auto;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 39px;
+        --iron-icon-height: 39px;
         --iron-icon-fill-color: #d8d8d8;
         margin-right: -15px;
         margin-top: -7px;
+      }
+
+      .lifevault__menu > iron-icon {
+
       }
 
       .lifevault__document {
@@ -596,7 +603,10 @@
         align-items: center;
         margin-left: auto;
         --iron-icon-fill-color: #b2b2b2;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
       }
+
 
       .lifevault__module-footer {
         display: flex;
@@ -746,12 +756,22 @@
       .lifevault__addfolder-dropdown iron-icon {
         margin-left: auto;
         --iron-icon-fill-color: #C8C8C8;
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
+      ul.lifevault__addfolder-dropdown > li > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
       }
 
       .lifevault__addfolder-dropdown--sub {
         width: 164px;
-        --iron-icon-height: 24px;
-        --iron-icon-width: 24px;
+      }
+
+      ul.lifevault__addfolder-dropdown--sub > li > iron-icon {
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
       }
 
       .lifevault__addfolder-dropdown--sort {
