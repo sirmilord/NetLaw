@@ -31,7 +31,7 @@
         max-width: 100%;
         background-color: #f9f9f9;
         border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
+        /*border-bottom: 1px solid #dfdfdf;*/
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -518,6 +518,17 @@
         box-sizing: border-box;
       }
 
+      .lifevault__col-half {
+        flex: 1 1 50%;
+        max-width: 50%;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
       .lifevault__module-item {
 
       }
@@ -721,6 +732,19 @@
         display: block;
       }
 
+      .lifevault__add-folder--doc {
+        --iron-icon-width: 75px;
+        --iron-icon-height: 75px;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        background-color: #01AA50;
+        --iron-icon-fill-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .lifevault__addfolder-dropdown {
         /*min-height: 154px;*/
         width: 137px;
@@ -812,58 +836,68 @@
         /*border-bottom: 1px solid #979797;*/
       }
 
+      .lifevault__signature {
+        color: #4A4A4A;
+        font-family: "Petit Formal Script", sans-serif;
+        font-size: 26px;
+        width: 200px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #979797;
+        text-align: center;
+      }
+
 
     </style>
 
-      <section class="lifevault__content">
+    <section class="lifevault__content">
 
-        <div class="lifevault__content-header">
-          <a href="[[routePath]]lifevault/management" class="btn btn--back-dash">
-            <iron-icon icon="icons:chevron-left"></iron-icon>
-          </a>
-          <h2 class="lifevault__content-title">Estimate for Home Management .PDF v1.1</h2>
-          <div class="lifevault__content-update">Updated 1d ago</div>
-        </div>
-        <div class="lifevault__document">
-          <h1 class="lifevault__doc-title">VIEW OF DOCUMENT</h1>
-          <ul class="lifevault__doc-desc">
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-            <li class="lifevault__doc-item"></li>
-          </ul>
-        </div>
-
-        <a id="addfolder" class="lifevault__add-folder" href="javascript:;">
-          <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+      <div class="lifevault__content-header">
+        <a href="[[routePath]]lifevault/management" class="btn btn--back-dash">
+          <iron-icon icon="icons:chevron-left"></iron-icon>
         </a>
-      </section>
+        <h2 class="lifevault__content-title">Estimate for Home Management .PDF v1.1</h2>
+        <div class="lifevault__content-update">Updated 1d ago</div>
+      </div>
+      <div class="lifevault__document">
+        <h1 class="lifevault__doc-title">VIEW OF DOCUMENT</h1>
+        <ul class="lifevault__doc-desc">
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+          <li class="lifevault__doc-item"></li>
+        </ul>
+        <div class="lifevault__row">
+          <div class="lifevault__col-half">
+            <div class="lifevault__signature">
+              Signature
+            </div>
+          </div>
+          <div class="lifevault__col-half">
+            <div class="lifevault__signature">
+              12/12/2018
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show lifevault__add-folder--doc"
+         href="javascript:;">
+        <iron-icon icon="icons:more-vert"></iron-icon>
+      </a>
+    </section>
 
   </template>
 
