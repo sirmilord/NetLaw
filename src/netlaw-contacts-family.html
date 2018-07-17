@@ -466,6 +466,40 @@
         background-color: #fff;
       }
 
+      .contacts__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .contacts__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .contacts__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        --iron-icon-fill-color: #C8C8C8;
+      }
+
+      .contacts__addfolder-dropdown--sub {
+        width: 164px;
+        --iron-icon-height: 24px;
+        --iron-icon-width: 24px;
+      }
+
+      .contacts__addfolder-dropdown--sort {
+        width: 182px;
+      }
+
       .contacts__module {
         padding: 20px 30px;
         width: 100%;
@@ -693,10 +727,20 @@
               <iron-icon icon="icons:expand-more"></iron-icon>
               <iron-dropdown id="sortbydropdown" vertical-offset="0">
                 <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul slot="dropdown-content">
-                  <li>Listed result contact item 1 ...</li>
-                  <li>Listed result contact item 2 ...</li>
-                  <li>Listed result contact item 3 ...</li>
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sort" slot="dropdown-content">
+                  <li>Sort By - - -</li>
+                  <li>Title
+                    <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
+                  </li>
+                  <li>Newest
+                    <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
+                  </li>
+                  <li>Oldest
+                    <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
+                  </li>
+                  <li>SmartGuide Only
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </li>
                 </ul>
               </iron-dropdown>
             </div>
@@ -705,10 +749,20 @@
               <iron-icon icon="icons:expand-more"></iron-icon>
               <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
                 <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul slot="dropdown-content">
-                  <li>Listed result contact item 1 ...</li>
-                  <li>Listed result contact item 2 ...</li>
-                  <li>Listed result contact item 3 ...</li>
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sort" slot="dropdown-content">
+                  <li>Bulk Action -</li>
+                  <li>Download
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                  </li>
+                  <li>Delete
+                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                  </li>
                 </ul>
               </iron-dropdown>
             </div>
@@ -950,7 +1004,7 @@
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class MyNetlawContactsFamily extends Polymer.Element {
+      class NetlawContactsFamily extends Polymer.Element {
           static get is() {
               return 'netlaw-contacts-family';
           }
@@ -1052,6 +1106,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(MyNetlawContactsFamily.is, MyNetlawContactsFamily);
+      customElements.define(NetlawContactsFamily.is, NetlawContactsFamily);
   </script>
 </dom-module>
