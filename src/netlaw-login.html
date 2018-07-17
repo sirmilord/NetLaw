@@ -187,7 +187,7 @@
             <h3>Would you like to change or add login credentials?</h3>
 
             <p class="login__margin">Username: robkerr2004@hotmail.com</p>
-            <p class="login__horizontal"><a href="javascript:;">Change Password</a> | <a href="javascript:;">Remove Login Method</a></p>
+            <p class="login__horizontal"><a href="javascript:;" on-click="onNewPassClick">Change Password</a> | <a href="javascript:;">Remove Login Method</a></p>
             <hr class="login__divider">
             <p class="login__margin">
               <button class="btn btn-yellow" on-click="onAddLoginMethodClick">Add Login Method</button>
@@ -248,6 +248,7 @@
               </div>
             </div>
           </template>
+
           <template is="dom-if" if="[[method]]">
             <h1>Add New Login Method</h1>
 
@@ -486,6 +487,7 @@
               e.preventDefault();
               this.first = false;
               this.method = false;
+              this.security = false;
               this.newpass = true;
           }
           onConfirmClick(e) {
