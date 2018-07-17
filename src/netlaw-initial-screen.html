@@ -74,7 +74,15 @@
       .btn--primary {
         background-color: #01AA50;
         color: #fff;
-        /*width: 170px;*/
+      }
+
+      .btn--primary a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .btn--primary a:hover {
+        background: transparent;
       }
 
       .btn--primary:hover,
@@ -100,7 +108,7 @@
         <h3 class="initial-screen__sub">Would you like to begin with the SmartGuide setup process?</h3>
         <p class="initial-screen__text">(you must complete this step before generating populated documents)</p>
         <div class="initial-screen__line"></div>
-        <button class="btn btn--primary">Sure, let's do it!</button>
+        <button class="btn btn--primary"><a href="[[rootPath]]smartguide">Sure, let's do it!</a></button>
       </div>
     </main>
 
