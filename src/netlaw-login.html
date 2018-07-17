@@ -63,6 +63,10 @@
         background: #01B8EC;
       }
 
+      .login__item-desc {
+        min-height: 75px;
+      }
+
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -73,10 +77,10 @@
       </app-toolbar>
     </app-header>
 
-    <div class="login__main login__section">
-      <div class="login__container login__position-relative">
+    <div class="login__main login__section login__position-relative">
+      <div class="login__container ">
 
-        <div class="login__align-center login">
+        <div id="wrapper" class="login__align-center login">
 
           <template is="dom-if" if="[[first]]">
             <h1>Login to your Account</h1>
@@ -173,6 +177,188 @@
             </div>
           </template>
 
+          <template is="dom-if" if="[[security]]">
+            <button class="btn btn--back-dash btn--position" on-click="onBackToPrevClick">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Previous
+            </button>
+            <h1>Login Security Settings</h1>
+
+            <h3>Would you like to change or add login credentials?</h3>
+
+            <p class="login__margin">Username: robkerr2004@hotmail.com</p>
+            <p class="login__horizontal"><a href="javascript:;">Change Password</a> | <a href="javascript:;">Remove Login Method</a></p>
+            <hr class="login__divider">
+            <p class="login__margin">
+              <button class="btn btn-yellow" on-click="onAddLoginMethodClick">Add Login Method</button>
+            </p>
+            <div class="login__margin-top-big">
+              <h3>Would you like to add or change a security device?</h3>
+              <hr class="login__divider">
+              <p class="login__margin">
+                <button class="btn btn-yellow">Add a Security Device</button>
+              </p><p class="login__padding">
+              <button class="btn btn-primary" on-click="onContinueClick">Continue</button>
+            </p>
+            </div>
+          </template>
+
+          <template is="dom-if" if="[[secure]]">
+            <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Security Settings
+            </button>
+            <h1>Secure Your Account</h1>
+
+            <h3>Choose a desired method to enhance your security. </h3>
+
+            <div class="login__row login__margin-top-big">
+              <div class="login__item login__item--third">
+                <iron-icon icon="netlaw-icons:secure-mobile"></iron-icon>
+                <p class="login__item-desc login__margin">Generate codes on your smartphone (Android or iPhone).
+                  Note: You will be required to download an app. </p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="btn btn-primary" on-click="onMobileClick">Secure with Mobile</button>
+                </p>
+              </div>
+              <div class="login__item login__item--third">
+                <iron-icon icon="netlaw-icons:secure-sms"></iron-icon>
+                <p class="login__item-desc login__margin">Receieve an SMS message security code on your phone.
+                  Note: Any celluar phone will work.</p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="btn btn-primary" on-click="onSmsClick">Secure with SMS</button>
+                </p>
+              </div>
+              <div class="login__item login__item--third">
+                <iron-icon icon="netlaw-icons:secure-email"></iron-icon>
+                <p class="login__item-desc login__margin">Recieve security codes directly in your preferred
+                  email inbox. </p>
+                <hr class="login__divider-small">
+                <p class="login__margin">
+                  <button class="btn btn-primary" on-click="onEmailClick">Secure with Email</button>
+                </p>
+              </div>
+              <div class="login__item login__margin-top-big">
+                <hr class="login__divider">
+                <p class="login__margin">
+                  <button class="btn btn--cancel-bordered" on-click="onBackToSecurityClick">Cancel</button>
+                </p>
+              </div>
+            </div>
+          </template>
+
+          <template is="dom-if" if="[[mobile]]">
+            <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Security Settings
+            </button>
+            <h1>Secure with Mobile</h1>
+
+            <h3>Scan this code with your mobile authenticator <br>
+              and enter the generated code in the box below.</h3>
+
+            <figure class="login__img">
+              <img src="/images/QR-code.jpg" alt="QR code">
+            </figure>
+
+            <div class="login__padding">
+              <button class="btn btn--google-play"></button>
+              <button class="btn btn--apple-store"></button>
+            </div>
+
+            <form action="" method="post" class="login-form login__align-center">
+              <div class="login__margin">
+                <label for="securecode"></label>
+                <input type="text" class="login__input" id="securecode" name="securecodecode" placeholder="Security Code*">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin-bottom">
+                <button class="btn btn-primary">Atttach Authenticator</button>
+              </div>
+              <div class="login__margin-bottom">
+                <button class="btn btn--cancel-bordered" on-click="onBackToSecurityClick">Cancel</button>
+              </div>
+            </form>
+          </template>
+
+          <template is="dom-if" if="[[sms]]">
+            <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Security Settings
+            </button>
+            <h1>Secure with SMS</h1>
+
+            <h3>Type in your phone number, enter the code you <br>
+              receive in the section below.</h3>
+
+            <form action="" method="post" class="login-form login__align-center">
+              <div class="login__margin">
+                <label for="phonenumber"></label>
+                <input type="text" class="login__input" id="phonenumber" name="phonenumber" placeholder="Phone Number*">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin-bottom">
+                <button class="btn btn-yellow">Send me a Code</button>
+              </div>
+            </form>
+            <div class="login__padding">
+              <hr class="login__divider">
+            </div>
+            <form action="" method="post" class="login-form login-form--mt0 login__align-center">
+              <div class="login__margin">
+                <label for="securecode2"></label>
+                <input type="text" class="login__input" id="securecode2" name="securecodecode" placeholder="Security Code*">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin-bottom">
+                <button class="btn btn-primary">Atttach</button>
+              </div>
+              <div class="login__margin-bottom">
+                <button class="btn btn--cancel-bordered" on-click="onBackToSecurityClick">Cancel</button>
+              </div>
+            </form>
+          </template>
+
+          <template is="dom-if" if="[[email]]">
+            <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Security Settings
+            </button>
+            <h1>Secure with Email</h1>
+
+            <h3>Type in your email address, enter the code you<br>
+              receive in the section below.</h3>
+
+            <form action="#" method="post" class="login-form login__align-center">
+              <div class="login__margin">
+                <label for="phonenumber2"></label>
+                <input type="text" class="login__input" id="phonenumber2" name="phonenumber" placeholder="Phone Number*">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin-bottom">
+                <button class="btn btn-yellow">Send me a Code</button>
+              </div>
+            </form>
+            <div class="login__padding">
+              <hr class="login__divider">
+            </div>
+            <form action="#" method="post" class="login-form login-form--mt0 login__align-center">
+              <div class="login__margin">
+                <label for="securecode3"></label>
+                <input type="text" class="login__input" id="securecode3" name="securecodecode" placeholder="Security Code*">
+              </div>
+              <hr class="login__divider-small">
+              <div class="login__margin-bottom">
+                <button class="btn btn-primary">Atttach</button>
+              </div>
+              <div class="login__margin-bottom">
+                <button class="btn btn--cancel-bordered" on-click="onBackToSecurityClick">Cancel</button>
+              </div>
+            </form>
+          </template>
+
         </div>
       </div>
     </div>
@@ -191,11 +377,58 @@
                   first: { type: Boolean, value: true },
                   forgot: { type: Boolean, value: false },
                   newpass: { type: Boolean, value: false },
-                  confirm: { type: Boolean, value: false }
+                  confirm: { type: Boolean, value: false },
+                  security: { type: Boolean, value: false },
+                  secure: { type: Boolean, value: false },
+                  mobile: { type: Boolean, value: false },
+                  sms: { type: Boolean, value: false },
+                  email: { type: Boolean, value: false }
               };
           }
 
           onLoginClick(e) {
+              // this.dispatchEvent(new CustomEvent("logged-in"));
+              this.$.wrapper.classList.add('login--security');
+              this.first = false;
+              this.security = true;
+          }
+
+          onBackToPrevClick(e) {
+              this.$.wrapper.classList.remove('login--security');
+              this.security = false;
+              this.first = true;
+          }
+
+          onBackToSecurityClick(e) {
+              e.preventDefault();
+              this.secure = false;
+              this.mobile = false;
+              this.sms = false;
+              this.email = false;
+              this.security = true;
+          }
+
+          onMobileClick(e) {
+              this.secure = false;
+              this.mobile = true;
+          }
+
+          onSmsClick(e) {
+              this.secure = false;
+              this.sms = true;
+          }
+
+          onEmailClick(e) {
+              this.secure = false;
+              this.email = true;
+          }
+
+          onAddLoginMethodClick(e) {
+              this.security = false;
+              this.secure = true;
+          }
+
+          onContinueClick(e) {
               this.dispatchEvent(new CustomEvent("logged-in"));
           }
 
