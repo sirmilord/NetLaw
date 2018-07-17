@@ -97,7 +97,7 @@
             <div class="login__divider-icon">OR</div>
 
             <div class="login__margin login__align-center">
-              <form action="#" method="post" class="login-form login__align-center">
+              <form action="" method="post" class="login-form login__align-center">
                 <div class="login__margin ">
                   <label for="login-name"></label>
                   <input type="text" class="login__input" id="login-name" name="login" placeholder="Username*" required>
@@ -123,7 +123,7 @@
             <h1>New Password Setup</h1>
             <h3>What would you like your new password to be?</h3>
             <!--<p><i>(we will send a link and get you setup again shortly)</i></p>-->
-            <form action="#" method="post" class="login-form login__align-center">
+            <form action="" method="post" class="login-form login__align-center">
               <div class="login__margin ">
                 <label for="new-pass"></label>
                 <input type="password" class="login__input" id="new-pass" name="new-pass" placeholder="New Password*" required="">
@@ -147,7 +147,7 @@
             <h1>Password Reset</h1>
             <h3>Which was the email address of your account?</h3>
             <p><i>(we will send a link and get you setup again shortly)</i></p>
-            <form action="#" method="post" class="login-form login__align-center">
+            <form action="" method="post" class="login-form login__align-center">
               <div class="login__margin ">
                 <label for="email"></label>
                 <input type="password" class="login__input" id="email" name="email" placeholder="Email address..">
@@ -196,7 +196,7 @@
               <h3>Would you like to add or change a security device?</h3>
               <hr class="login__divider">
               <p class="login__margin">
-                <button class="btn btn-yellow">Add a Security Device</button>
+                <button class="btn btn-yellow" on-click="onAddSecurityDeviceClick">Add a Security Device</button>
               </p><p class="login__padding">
               <button class="btn btn-primary" on-click="onContinueClick">Continue</button>
             </p>
@@ -247,6 +247,42 @@
                 </p>
               </div>
             </div>
+          </template>
+          <template is="dom-if" if="[[method]]">
+            <h1>Add New Login Method</h1>
+
+            <div class="login-buttons">
+              <paper-icon-button icon="social-icons:googleplus" name="googleplus"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="social-icons:facebook" name="facebook"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="social-icons:linkedin" name="linkedin"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+            </div>
+            <div class="login__divider-icon">OR</div>
+
+            <div class="login__margin login__align-center">
+              <form action="" method="post" class="login-form login__align-center">
+                <div class="login__margin ">
+                  <label for="login-name2"></label>
+                  <input type="text" class="login__input" id="login-name2" name="login" placeholder="Username*" required>
+                </div>
+                <div class="login__margin">
+                  <label for="login-pass2"></label>
+                  <input type="password" class="login__input" id="login-pass2" name="pass" placeholder="Password*" required>
+                </div>
+                <div class="login__margin-top">
+                  <a href="javascript:;" on-click="onForgotClick">Forgot Your Password?</a>
+                </div>
+                <hr class="login__divider-small">
+                <div class="login__margin-bottom">
+                  <button class="btn btn-primary" on-click="onLoginClick">Login</button>
+                </div>
+              </form>
+            </div>
+            <p class="login__margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request One</a>
+            </p>
           </template>
 
           <template is="dom-if" if="[[mobile]]">
@@ -331,7 +367,7 @@
             <h3>Type in your email address, enter the code you<br>
               receive in the section below.</h3>
 
-            <form action="#" method="post" class="login-form login__align-center">
+            <form action="" method="post" class="login-form login__align-center">
               <div class="login__margin">
                 <label for="phonenumber2"></label>
                 <input type="text" class="login__input" id="phonenumber2" name="phonenumber" placeholder="Phone Number*">
@@ -344,7 +380,7 @@
             <div class="login__padding">
               <hr class="login__divider">
             </div>
-            <form action="#" method="post" class="login-form login-form--mt0 login__align-center">
+            <form action="" method="post" class="login-form login-form--mt0 login__align-center">
               <div class="login__margin">
                 <label for="securecode3"></label>
                 <input type="text" class="login__input" id="securecode3" name="securecodecode" placeholder="Security Code*">
@@ -382,7 +418,8 @@
                   secure: { type: Boolean, value: false },
                   mobile: { type: Boolean, value: false },
                   sms: { type: Boolean, value: false },
-                  email: { type: Boolean, value: false }
+                  email: { type: Boolean, value: false },
+                  method: { type: Boolean, value: false }
               };
           }
 
@@ -390,6 +427,7 @@
               // this.dispatchEvent(new CustomEvent("logged-in"));
               this.$.wrapper.classList.add('login--security');
               this.first = false;
+              this.method = false;
               this.security = true;
           }
 
@@ -423,9 +461,14 @@
               this.email = true;
           }
 
-          onAddLoginMethodClick(e) {
+          onAddSecurityDeviceClick(e) {
               this.security = false;
               this.secure = true;
+          }
+
+          onAddLoginMethodClick(e) {
+              this.security = false;
+              this.method = true;
           }
 
           onContinueClick(e) {
@@ -433,21 +476,27 @@
           }
 
           onForgotClick(e) {
+              e.preventDefault();
               this.first = false;
+              this.method = false;
               this.forgot = true;
           }
 
           onNewPassClick(e) {
+              e.preventDefault();
               this.first = false;
+              this.method = false;
               this.newpass = true;
           }
           onConfirmClick(e) {
+              e.preventDefault();
               e.preventDefault();
               this.forgot = false;
               this.confirm = true;
           }
 
           onCancelClick(e) {
+              e.preventDefault();
               this.forgot = false;
               this.newpass = false;
               this.confirm = false;
