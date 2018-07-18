@@ -247,12 +247,12 @@
       }
 
       .add-module__search input::placeholder {
-        color: #a3a3a3;
+        color:#c2c2c2;
         font-size: 16px;
       }
 
       .btn--search {
-        color: #a3a3a3;
+        color: #c2c2c2;
         padding: 0 8px;
         height: 45px;
         background-color: #fff;
@@ -260,6 +260,7 @@
         border-left: 0;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
+        font-weight: 400;
       }
 
       .add-module__sort {
@@ -271,7 +272,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: #a3a3a3;
+        color: #c2c2c2;
         background-color: #fff;
         position: relative;
       }
@@ -296,21 +297,27 @@
       .btn--module {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
       }
 
       .btn--list {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
+      }
+
+      .btn--active {
+        --iron-icon-fill-color: #414142;
       }
 
       #sortby {
@@ -648,7 +655,7 @@
 
       .add-module__addfolder-dropdown iron-icon {
         margin-left: auto;
-        --iron-icon-fill-color: #C8C8C8;
+        --iron-icon-fill-color: #C2C2C2;
       }
 
       .add-module__addfolder-dropdown--sub {
@@ -657,6 +664,18 @@
 
       .add-module__addfolder-dropdown--sort {
         width: 182px;
+      }
+
+      .add-module__sort > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        margin-right: -10px;
+        cursor: pointer;
+      }
+
+      ul.add-module__addfolder-dropdown > li > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
       }
 
     </style>
@@ -701,7 +720,7 @@
                 </ul>
               </iron-dropdown>
             </div>
-            <button class="btn btn--module" on-tap="chooseModule">
+            <button class="btn btn--module btn--active" on-tap="chooseModule">
               <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
             </button>
             <button class="btn btn--list" on-tap="chooseList">
@@ -1093,14 +1112,20 @@
               this.$.sortbydropdown.open();
           }
 
-          _isEqualTo(view, string) {
-              return view === string;
-          }
+          // _isEqualTo(view, string) {
+          //     return view === string;
+          // }
 
           chooseModule(e) {
               e.preventDefault();
               this.view = "Module";
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--module input');
+              this.$.list.classList.remove('find-attorney__wrap--show');
+              this.$.module.classList.add('find-attorney__wrap--show');
+              this.$.selectall.checked = false;
+              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--module input');
+
               for (let i = 0; i < this.checkboxes.length; i++) {
                   this.checkboxes[i].checked = false;
               }
@@ -1109,7 +1134,13 @@
           chooseList(e) {
               e.preventDefault();
               this.view = "List";
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--list input');
+              this.$.module.classList.remove('find-attorney__wrap--show');
+              this.$.list.classList.add('find-attorney__wrap--show');
+              this.$.selectall.checked = false;
+              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
+              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--list input');
+
               for (let i = 0; i < this.checkboxes.length; i++) {
                   this.checkboxes[i].checked = false;
               }
