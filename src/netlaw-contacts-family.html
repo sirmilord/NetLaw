@@ -360,10 +360,10 @@
       }
 
       .contacts__checkbox-container .contacts__content-checkmark:after {
-        left: 9px;
-        top: 5px;
+        left: 6px;
+        top: 2px;
         width: 5px;
-        height: 10px;
+        height: 9px;
         border: solid #01AA50;
         border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);
@@ -580,6 +580,8 @@
         align-items: center;
         margin-left: auto;
         --iron-icon-fill-color: #b2b2b2;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
       }
 
       .contacts__module-footer {
@@ -624,7 +626,9 @@
       }
 
       .contacts__details iron-icon {
-        margin-top: -3px;
+        /*margin-top: -3px;*/
+        --iron-icon-height: 18px;
+        --iron-icon-width: 18px;
       }
 
       .contacts__module-list-item {
@@ -684,7 +688,6 @@
 
       .contacts__details--list {
         margin-left: 20px;
-        line-height: 1.8;
       }
 
       .contacts__add-contact {
@@ -712,6 +715,11 @@
       label.contacts__search > button > iron-icon {
         --iron-icon-width: 18px;
         --iron-icon-height: 18px;
+      }
+
+      ul.contacts__addfolder-dropdown--sub > li > iron-icon {
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
       }
 
     </style>
@@ -829,7 +837,7 @@
                     </iron-dropdown>
                   </a>
                   <figure class="contacts__photo">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <button class="btn btn--charm">
                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -876,7 +884,7 @@
                     </iron-dropdown>
                   </a>
                   <figure class="contacts__photo">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <button class="btn btn--charm">
                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -923,7 +931,7 @@
                     </iron-dropdown>
                   </a>
                   <figure class="contacts__photo">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <button class="btn btn--charm">
                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -970,7 +978,7 @@
                     </iron-dropdown>
                   </a>
                   <figure class="contacts__photo">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <button class="btn btn--charm">
                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1007,7 +1015,7 @@
                 <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
               </label>
               <figure class="contacts__photo contacts__photo--list">
-                <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                <img src="../images/contact.jpg" height="60" width="60" alt="contact">
               </figure>
             </div>
             <div class="contacts__list-center">
@@ -1050,7 +1058,7 @@
                 <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
               </label>
               <figure class="contacts__photo contacts__photo--list">
-                <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                <img src="../images/contact.jpg" height="60" width="60" alt="contact">
               </figure>
             </div>
             <div class="contacts__list-center">
@@ -1093,7 +1101,7 @@
                 <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
               </label>
               <figure class="contacts__photo contacts__photo--list">
-                <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                <img src="../images/contact.jpg" height="60" width="60" alt="contact">
               </figure>
             </div>
             <div class="contacts__list-center">
@@ -1136,7 +1144,7 @@
                 <span class="contacts__content-checkmark contacts__content-checkmark--list"></span>
               </label>
               <figure class="contacts__photo contacts__photo--list">
-                <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                <img src="../images/contact.jpg" height="60" width="60" alt="contact">
               </figure>
             </div>
             <div class="contacts__list-center">
