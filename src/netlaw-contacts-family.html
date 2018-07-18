@@ -298,7 +298,8 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 4px dotted #e0e0e0;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
       }
 
       .contacts__content-dashboard form {
@@ -316,7 +317,7 @@
         display: block;
         position: relative;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 9px;
         user-select: none;
         color: #d6d6d6;
         height: 45px;
@@ -331,12 +332,13 @@
 
       .contacts__content-checkmark {
         position: absolute;
-        top: 17px;
-        left: 12px;
-        height: 25px;
-        width: 25px;
+        top: 15px;
+        left: 8px;
+        height: 18px;
+        width: 18px;
         background-color: #fff;
         border: 1px solid #c2c2c2;
+        border-radius: 2px;
       }
 
       .contacts__checkbox-container:hover input ~ .contacts__content-checkmark {
@@ -433,21 +435,23 @@
       .btn--module {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
       }
 
       .btn--list {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
       }
 
       #sortby {
@@ -705,6 +709,11 @@
         display: block;
       }
 
+      label.contacts__search > button > iron-icon {
+        --iron-icon-width: 18px;
+        --iron-icon-height: 18px;
+      }
+
     </style>
 
     <section class="contacts__content">
@@ -723,7 +732,7 @@
           <label class="contacts__search">
             <input type="search" id="search" name="search" placeholder="Search...">
             <button class="btn btn--search">
-              <iron-icon icon="icons:cached"></iron-icon>
+              <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
             </button>
           </label>
           <div class="contacts__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
@@ -774,7 +783,7 @@
               </ul>
             </iron-dropdown>
           </div>
-          <button class="btn btn--module" on-tap="chooseModule">
+          <button class="btn btn--module btn--active" on-tap="chooseModule">
             <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
           </button>
           <button class="btn btn--list" on-tap="chooseList">
