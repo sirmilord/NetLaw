@@ -289,8 +289,8 @@
               </div>
               <div class="form__line"></div>
               <div class="form__group form__group--center">
-                <button class="btn btn--primary">Update Details</button>
-                <button class="btn btn--cancel-bordered">Cancel</button>
+                <a href="javascript:;" class="btn btn--primary" on-click="onPreventDefault">Update Details</a>
+                <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered">Cancel</a>
               </div>
             </fieldset>
           </form>
@@ -303,6 +303,10 @@
       class MyNetlawProfile extends Polymer.Element {
           static get is() {
               return 'netlaw-profile';
+          }
+
+          onPreventDefault(e) {
+              e.preventDefault();
           }
       }
 
