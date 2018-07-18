@@ -194,12 +194,13 @@
 
       .add-module__content-checkmark {
         position: absolute;
-        top: 17px;
-        left: 12px;
-        height: 25px;
-        width: 25px;
+        top: 15px;
+        left: 8px;
+        height: 18px;
+        width: 18px;
         background-color: #fff;
         border: 1px solid #c2c2c2;
+        border-radius: 2px;
       }
 
       .add-module__checkbox-container:hover input ~ .add-module__content-checkmark {
@@ -221,10 +222,10 @@
       }
 
       .add-module__checkbox-container .add-module__content-checkmark:after {
-        left: 9px;
-        top: 5px;
+        left: 6px;
+        top: 3px;
         width: 5px;
-        height: 10px;
+        height: 9px;
         border: solid #01AA50;
         border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);
@@ -247,7 +248,7 @@
       }
 
       .add-module__search input::placeholder {
-        color:#c2c2c2;
+        color: #c2c2c2;
         font-size: 16px;
       }
 
@@ -553,22 +554,22 @@
       }
 
       /*.btn--close {*/
-        /*position: absolute;*/
-        /*width: 60px;*/
-        /*height: 100px;*/
+      /*position: absolute;*/
+      /*width: 60px;*/
+      /*height: 100px;*/
 
-        /*border: 1px solid #e1e1e1;*/
-        /*box-shadow: 0 2px 0 0 #a2a2a2;*/
-        /*border-left: 0;*/
-        /*border-top-right-radius: 20px;*/
-        /*border-bottom-right-radius: 20px;*/
-        /*--iron-icon-fill-color: #4a4a4a;*/
-        /*--iron-icon-height: 35px;*/
-        /*--iron-icon-width: 35px;*/
-        /*background-color: #ffffff;*/
-        /*padding: 0;*/
-        /*right: -60px;*/
-        /*top: 30%;*/
+      /*border: 1px solid #e1e1e1;*/
+      /*box-shadow: 0 2px 0 0 #a2a2a2;*/
+      /*border-left: 0;*/
+      /*border-top-right-radius: 20px;*/
+      /*border-bottom-right-radius: 20px;*/
+      /*--iron-icon-fill-color: #4a4a4a;*/
+      /*--iron-icon-height: 35px;*/
+      /*--iron-icon-width: 35px;*/
+      /*background-color: #ffffff;*/
+      /*padding: 0;*/
+      /*right: -60px;*/
+      /*top: 30%;*/
       /*}*/
 
       .add-module__footer {
@@ -689,12 +690,21 @@
         --iron-icon-height: 40px;
       }
 
+      .add-module__wrap {
+        display: none;
+        width: 100%;
+      }
+
+      .add-module__wrap--show {
+        display: block;
+      }
+
     </style>
     <main class="add-module">
 
       <section class="add-module__content">
         <!--<button class="btn btn&#45;&#45;close">-->
-          <!--<iron-icon icon="icons:close"></iron-icon>-->
+        <!--<iron-icon icon="icons:close"></iron-icon>-->
         <!--</button>-->
         <div class="add-module__content-header">
           <h2 class="add-module__title">Module Market</h2>
@@ -742,9 +752,10 @@
 
         <!--module layout-->
         <div id="scrollbar" class="add-module__module">
-        <template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">
+          <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
 
           <!--<div  id="scrollbar" class="add-module__module">-->
+          <div id="module" class="add-module__wrap add-module__wrap--show">
             <div class="add-module__row">
               <div class="add-module__col-module">
                 <div class="add-module__module-item">
@@ -907,14 +918,15 @@
                 </div>
               </div>
             </div>
-          <!--</div>-->
-        </template>
+          </div>
+          <!--</template>-->
 
 
-        <!--list layout-->
+          <!--list layout-->
 
-        <template is="dom-if" if="{{_isEqualTo(view, 'List')}}">
+          <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
           <!--<div id="scrollbar2" class="add-module__module">-->
+          <div id="list" class="add-module__wrap">
             <div class="add-module__list-row">
               <div class="add-module__module-list-item">
                 <div class="add-module__list-left">
@@ -1061,8 +1073,9 @@
                 </div>
               </div>
             </div>
-        </template>
           </div>
+          <!--</template>-->
+        </div>
 
 
         <div class="add-module__footer">
@@ -1105,7 +1118,6 @@
 
           ready() {
               super.ready();
-             console.log('I\'m ready!');
               const container = Polymer.dom(this.root).querySelector('#scrollbar');
               // const container2 = this.$.scrollbar; console.log(container2);
               // const container3 = this.shadowRoot.querySelector('#scrollbar'); console.log(container3);
@@ -1130,12 +1142,12 @@
           chooseModule(e) {
               e.preventDefault();
               this.view = "Module";
-              this.$.list.classList.remove('find-attorney__wrap--show');
-              this.$.module.classList.add('find-attorney__wrap--show');
-              this.$.selectall.checked = false;
+              this.$.list.classList.remove('add-module__wrap--show');
+              this.$.module.classList.add('add-module__wrap--show');
+              // this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--module input');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
                   this.checkboxes[i].checked = false;
@@ -1145,12 +1157,12 @@
           chooseList(e) {
               e.preventDefault();
               this.view = "List";
-              this.$.module.classList.remove('find-attorney__wrap--show');
-              this.$.list.classList.add('find-attorney__wrap--show');
-              this.$.selectall.checked = false;
+              this.$.module.classList.remove('add-module__wrap--show');
+              this.$.list.classList.add('add-module__wrap--show');
+              // this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--list input');
+              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
                   this.checkboxes[i].checked = false;
