@@ -323,7 +323,7 @@
         display: block;
         position: relative;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 9px;
         user-select: none;
         color: #d6d6d6;
         height: 45px;
@@ -338,12 +338,18 @@
 
       .find-attorney__content-checkmark {
         position: absolute;
-        top: 17px;
-        left: 12px;
-        height: 25px;
-        width: 25px;
+        top: 15px;
+        left: 8px;
+        height: 18px;
+        width: 18px;
         background-color: #fff;
         border: 1px solid #c2c2c2;
+        border-radius: 2px;
+      }
+
+      label.find-attorney__search > button > iron-icon {
+        --iron-icon-width: 18px;
+        --iron-icon-height: 18px;
       }
 
       .find-attorney__checkbox-container:hover input ~ .find-attorney__content-checkmark {
@@ -365,10 +371,10 @@
       }
 
       .find-attorney__checkbox-container .find-attorney__content-checkmark:after {
-        left: 9px;
-        top: 5px;
+        left: 6px;
+        top: 3px;
         width: 5px;
-        height: 10px;
+        height: 9px;
         border: solid #01AA50;
         border-width: 0 2px 2px 0;
         -webkit-transform: rotate(45deg);
@@ -440,21 +446,28 @@
       .btn--module {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
+      }
+
+      ul.find-attorney__addfolder-dropdown--sub > li > iron-icon {
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
       }
 
       .btn--list {
         background-color: transparent;
         padding: 0;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
         --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        display: flex;
       }
 
       .btn--active {
@@ -831,9 +844,8 @@
       }
 
       .find-attorney__details iron-icon {
-        margin-top: -3px;
-        --iron-icon-height: 24px;
-        --iron-icon-width: 24px;
+        --iron-icon-height: 18px;
+        --iron-icon-width: 18px;
       }
 
       .find-attorney__name-wrap {
@@ -872,6 +884,18 @@
         font-size: 16px;
         font-weight: 300;
       }
+
+      ul.find-attorney__addfolder-dropdown > li > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
+      .find-attorney__sort > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        margin-right: -10px;
+        cursor: pointer;
+      }
     </style>
     <main class="find-attorney">
 
@@ -892,7 +916,7 @@
             <label class="find-attorney__search">
               <input type="search" id="search" name="search" placeholder="Search...">
               <button class="btn btn--search">
-                <iron-icon icon="icons:cached"></iron-icon>
+                <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
               </button>
             </label>
             <div class="find-attorney__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
@@ -992,7 +1016,7 @@
                       </iron-dropdown>
                     </button>
                     <figure class="find-attorney__photo">
-                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                      <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                     </figure>
                     <div class="rating rating--module">
                       <iron-icon icon="icons:star"></iron-icon>
@@ -1066,7 +1090,7 @@
                       </iron-dropdown>
                     </button>
                     <figure class="find-attorney__photo">
-                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                      <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                     </figure>
                     <div class="rating rating--module">
                       <iron-icon icon="icons:star"></iron-icon>
@@ -1140,7 +1164,7 @@
                       </iron-dropdown>
                     </button>
                     <figure class="find-attorney__photo">
-                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                      <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                     </figure>
                     <div class="rating rating--module">
                       <iron-icon icon="icons:star"></iron-icon>
@@ -1214,7 +1238,7 @@
                       </iron-dropdown>
                     </button>
                     <figure class="find-attorney__photo">
-                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                      <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                     </figure>
                     <div class="rating rating--module">
                       <iron-icon icon="icons:star"></iron-icon>
@@ -1288,7 +1312,7 @@
                       </iron-dropdown>
                     </button>
                     <figure class="find-attorney__photo">
-                      <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                      <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                     </figure>
                     <div class="rating rating--module">
                       <iron-icon icon="icons:star"></iron-icon>
@@ -1355,7 +1379,7 @@
                 </label>
                 <div class="find-attorney__list-body">
                   <figure class="find-attorney__photo find-attorney__photo--list">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                   </figure>
                 </div>
               </div>
@@ -1418,7 +1442,7 @@
                 </label>
                 <div class="find-attorney__list-body">
                   <figure class="find-attorney__photo find-attorney__photo--list">
-                    <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                    <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                   </figure>
                 </div>
               </div>
@@ -1481,7 +1505,7 @@
               </label>
               <div class="find-attorney__list-body">
                 <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                 </figure>
               </div>
             </div>
@@ -1544,7 +1568,7 @@
               </label>
               <div class="find-attorney__list-body">
                 <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                 </figure>
               </div>
             </div>
@@ -1607,7 +1631,7 @@
               </label>
               <div class="find-attorney__list-body">
                 <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="https://dummyimage.com/60x60/000/fff" alt="contact">
+                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
                 </figure>
               </div>
             </div>
