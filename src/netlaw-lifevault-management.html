@@ -972,74 +972,74 @@
         <div class="lifevault__content-update">Updated 1d ago</div>
       </div>
       <netlaw-dashboard>
-        <!--<netlaw-dashboard-form></netlaw-dashboard-form>-->
-        <form action="javascript:;" method="post">
-          <label class="lifevault__checkbox-container lifevault__checkbox-container--ml">Select All
-            <input id="selectall" type="checkbox">
-            <span class="lifevault__content-checkmark" on-tap="selectAll"></span>
-            <!--<paper-checkbox></paper-checkbox>-->
-          </label>
-          <label class="lifevault__search">
-            <input type="search" id="search" name="search" placeholder="Search...">
-            <button class="btn btn--search">
-              <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
-            </button>
-          </label>
-          <div class="lifevault__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
-            <div class="lifevault__sort-arrows">
-              <iron-icon icon="icons:arrow-upward"></iron-icon>
-              <iron-icon icon="icons:arrow-downward"></iron-icon>
-            </div>
-            <span>Sort By</span>
-            <iron-icon icon="icons:expand-more"></iron-icon>
-            <iron-dropdown id="sortbydropdown" vertical-offset="0">
-              <!--no-auto-focus no-cancel-on-outside-click>-->
-              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sort" slot="dropdown-content">
-                <li>Sort By - - -</li>
-                <li>Title
-                  <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
-                </li>
-                <li>Newest
-                  <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
-                </li>
-                <li>Oldest
-                  <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
-                </li>
-                <li>SmartGuide Only
-                  <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                </li>
-              </ul>
-            </iron-dropdown>
-          </div>
-          <div id="bulkaction" class="lifevault__sort" on-tap="openBulkAction">
-            <span>Bulk Action</span>
-            <iron-icon icon="icons:expand-more"></iron-icon>
-            <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
-              <!--no-auto-focus no-cancel-on-outside-click>-->
-              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sort" slot="dropdown-content">
-                <li>Bulk Action -</li>
-                <li>Download
-                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                </li>
-                <li>Print
-                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                </li>
-                <li>Share
-                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                </li>
-                <li>Delete
-                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                </li>
-              </ul>
-            </iron-dropdown>
-          </div>
-          <button class="btn btn--module btn--active" on-tap="chooseModule">
-            <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
-          </button>
-          <button class="btn btn--list" on-tap="chooseList">
-            <iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>
-          </button>
-        </form>
+        <netlaw-dashboard-form></netlaw-dashboard-form>
+        <!--<form action="javascript:;" method="post">-->
+          <!--<label class="lifevault__checkbox-container lifevault__checkbox-container&#45;&#45;ml">Select All-->
+            <!--<input id="selectall" type="checkbox">-->
+            <!--<span class="lifevault__content-checkmark" on-tap="selectAll"></span>-->
+            <!--&lt;!&ndash;<paper-checkbox></paper-checkbox>&ndash;&gt;-->
+          <!--</label>-->
+          <!--<label class="lifevault__search">-->
+            <!--<input type="search" id="search" name="search" placeholder="Search...">-->
+            <!--<button class="btn btn&#45;&#45;search">-->
+              <!--<iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>-->
+            <!--</button>-->
+          <!--</label>-->
+          <!--<div class="lifevault__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">-->
+            <!--<div class="lifevault__sort-arrows">-->
+              <!--<iron-icon icon="icons:arrow-upward"></iron-icon>-->
+              <!--<iron-icon icon="icons:arrow-downward"></iron-icon>-->
+            <!--</div>-->
+            <!--<span>Sort By</span>-->
+            <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
+            <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
+              <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
+              <!--<ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
+                <!--<li>Sort By - - -</li>-->
+                <!--<li>Title-->
+                  <!--<iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>Newest-->
+                  <!--<iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>Oldest-->
+                  <!--<iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>SmartGuide Only-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</iron-dropdown>-->
+          <!--</div>-->
+          <!--<div id="bulkaction" class="lifevault__sort" on-tap="openBulkAction">-->
+            <!--<span>Bulk Action</span>-->
+            <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
+            <!--<iron-dropdown id="bulkactiondropdown" vertical-offset="0">-->
+              <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
+              <!--<ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
+                <!--<li>Bulk Action -</li>-->
+                <!--<li>Download-->
+                  <!--<iron-icon icon="netlaw-icons:download-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>Print-->
+                  <!--<iron-icon icon="netlaw-icons:print-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>Share-->
+                  <!--<iron-icon icon="netlaw-icons:share-icon"></iron-icon>-->
+                <!--</li>-->
+                <!--<li>Delete-->
+                  <!--<iron-icon icon="netlaw-icons:delete-icon"></iron-icon>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</iron-dropdown>-->
+          <!--</div>-->
+          <!--<button class="btn btn&#45;&#45;module btn&#45;&#45;active" on-tap="chooseModule">-->
+            <!--<iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>-->
+          <!--</button>-->
+          <!--<button class="btn btn&#45;&#45;list" on-tap="chooseList">-->
+            <!--<iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>-->
+          <!--</button>-->
+        <!--</form>-->
       </netlaw-dashboard>
 
 
