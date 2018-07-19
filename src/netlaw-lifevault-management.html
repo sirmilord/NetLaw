@@ -617,7 +617,7 @@
         padding-top: 10px;
       }
 
-      .lifevault__module-footer a {
+      .lifevault__footer-link {
         text-decoration: none;
         width: 100%;
         height: 100%;
@@ -717,10 +717,13 @@
       }
 
       .lifevault__name-desc {
-
         color: #a2a2a2;
         font-size: 18px;
         font-weight: 300;
+      }
+
+      .lifevault__list-center a {
+        text-decoration: none;
       }
 
       .lifevault__list-update {
@@ -825,6 +828,11 @@
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
         margin-right: 0;
+      }
+
+      .lifevault__version-dropdown a {
+        text-decoration: none;
+        color: #4A90E2;
       }
 
       .lifevault__version--mr {
@@ -1072,7 +1080,7 @@
                   </figure>
                 </div>
                 <div class="lifevault__module-footer">
-                  <a href="[[routePath]]lifevault/doc">
+                  <a  class="lifevault__footer-link" href="[[routePath]]lifevault/doc">
                     <span class="lifevault__name">Estimate for Home Management.PDF</span>
                   </a>
                   <span class="lifevault__module-update">Updated 1d ago</span>
@@ -1082,21 +1090,37 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version">v1.1</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.1</span>
+                          </a>
                           <iron-icon icon="icons:expand-less"></iron-icon>
                         </li>
-                        <li><span class="lifevault__version">v1.2</span></li>
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.2</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </a>
                         </li>
-                        <li><span class="lifevault__version">v1.4</span></li>
-                        <li><span class="lifevault__version">v1.5</span></li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.4</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.5</span>
+                          </a>
+                        </li>
                       </ul>
                     </iron-dropdown>
                   </button>
@@ -1146,8 +1170,8 @@
                   </a>
                 </div>
                 <div class="lifevault__module-footer">
-                  <a href="[[rootPath]]lifevault/doc">
-                    <span class="lifevault__name">Monthly Payments for Mortgage.PDF</span>
+                  <a class="lifevault__footer-link" href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__name">Estimate for Home Management.PDF</span>
                   </a>
                   <span class="lifevault__module-update">Updated 1d ago</span>
                   <button class="lifevault__details">v2.2
@@ -1156,21 +1180,37 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version">v1.1</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.1</span>
+                          </a>
                           <iron-icon icon="icons:expand-less"></iron-icon>
                         </li>
-                        <li><span class="lifevault__version">v1.2</span></li>
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.2</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </a>
                         </li>
-                        <li><span class="lifevault__version">v1.4</span></li>
-                        <li><span class="lifevault__version">v1.5</span></li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.4</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.5</span>
+                          </a>
+                        </li>
                       </ul>
                     </iron-dropdown>
                   </button>
@@ -1220,8 +1260,8 @@
                   </a>
                 </div>
                 <div class="lifevault__module-footer">
-                  <a href="[[rootPath]]lifevault/doc">
-                    <span class="lifevault__name">Second Mortgage Application.PDF</span>
+                  <a class="lifevault__footer-link" href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__name">Estimate for Home Management.PDF</span>
                   </a>
                   <span class="lifevault__module-update">Updated 1d ago</span>
                   <button class="lifevault__details">v1.4
@@ -1230,21 +1270,37 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version">v1.1</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.1</span>
+                          </a>
                           <iron-icon icon="icons:expand-less"></iron-icon>
                         </li>
-                        <li><span class="lifevault__version">v1.2</span></li>
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.2</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </a>
                         </li>
-                        <li><span class="lifevault__version">v1.4</span></li>
-                        <li><span class="lifevault__version">v1.5</span></li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.4</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.5</span>
+                          </a>
+                        </li>
                       </ul>
                     </iron-dropdown>
                   </button>
@@ -1291,8 +1347,8 @@
                   </figure>
                 </div>
                 <div class="lifevault__module-footer">
-                  <a href="[[rootPath]]lifevault/doc">
-                    <span class="lifevault__name">Monthly Facility Fees for House.PDF</span>
+                  <a class="lifevault__footer-link" href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__name">Estimate for Home Management.PDF</span>
                   </a>
                   <span class="lifevault__module-update">Updated 1d ago</span>
                   <button class="lifevault__details">v1.0
@@ -1301,21 +1357,37 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version">v1.1</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.1</span>
+                          </a>
                           <iron-icon icon="icons:expand-less"></iron-icon>
                         </li>
-                        <li><span class="lifevault__version">v1.2</span></li>
                         <li>
-                          <a href="[[routePath]]lifevault/doc">
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.2</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
-                          <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </a>
                         </li>
-                        <li><span class="lifevault__version">v1.4</span></li>
-                        <li><span class="lifevault__version">v1.5</span></li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.4</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.5</span>
+                          </a>
+                        </li>
                       </ul>
                     </iron-dropdown>
                   </button>
@@ -1346,7 +1418,9 @@
               </label>
               <div class="lifevault__list-body">
                 <figure class="lifevault__document lifevault__document--list">
-                  <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  </a>
                 </figure>
                 <a href="javascript:;" class="btn btn--charm">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1354,28 +1428,46 @@
               </div>
             </div>
             <div class="lifevault__list-center">
-              <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              <a href="[[rootPath]]lifevault/doc">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              </a>
               <button class="lifevault__details lifevault__details--list">v1.1
                 <iron-icon icon="icons:expand-more"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version">v1.1</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.1</span>
+                      </a>
                       <iron-icon icon="icons:expand-less"></iron-icon>
                     </li>
-                    <li><span class="lifevault__version">v1.2</span></li>
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </a>
                     </li>
-                    <li><span class="lifevault__version">v1.4</span></li>
-                    <li><span class="lifevault__version">v1.5</span></li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.4</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.5</span>
+                      </a>
+                    </li>
                   </ul>
                 </iron-dropdown>
               </button>
@@ -1418,7 +1510,9 @@
               </label>
               <div class="lifevault__list-body">
                 <figure class="lifevault__document lifevault__document--list">
-                  <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  </a>
                 </figure>
                 <a href="javascript:;" class="btn btn--charm">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1426,28 +1520,46 @@
               </div>
             </div>
             <div class="lifevault__list-center">
-              <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              <a href="[[rootPath]]lifevault/doc">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              </a>
               <button class="lifevault__details lifevault__details--list">v2.2
                 <iron-icon icon="icons:expand-more"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version">v1.1</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.1</span>
+                      </a>
                       <iron-icon icon="icons:expand-less"></iron-icon>
                     </li>
-                    <li><span class="lifevault__version">v1.2</span></li>
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </a>
                     </li>
-                    <li><span class="lifevault__version">v1.4</span></li>
-                    <li><span class="lifevault__version">v1.5</span></li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.4</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.5</span>
+                      </a>
+                    </li>
                   </ul>
                 </iron-dropdown>
               </button>
@@ -1490,7 +1602,9 @@
               </label>
               <div class="lifevault__list-body">
                 <figure class="lifevault__document lifevault__document--list">
-                  <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  </a>
                 </figure>
                 <a href="javascript:;" class="btn btn--charm">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1498,28 +1612,46 @@
               </div>
             </div>
             <div class="lifevault__list-center">
-              <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              <a href="[[rootPath]]lifevault/doc">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              </a>
               <button class="lifevault__details lifevault__details--list">v1.4
                 <iron-icon icon="icons:expand-more"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version">v1.1</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.1</span>
+                      </a>
                       <iron-icon icon="icons:expand-less"></iron-icon>
                     </li>
-                    <li><span class="lifevault__version">v1.2</span></li>
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </a>
                     </li>
-                    <li><span class="lifevault__version">v1.4</span></li>
-                    <li><span class="lifevault__version">v1.5</span></li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.4</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.5</span>
+                      </a>
+                    </li>
                   </ul>
                 </iron-dropdown>
               </button>
@@ -1562,7 +1694,9 @@
               </label>
               <div class="lifevault__list-body">
                 <figure class="lifevault__document lifevault__document--list">
-                  <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <iron-icon icon="netlaw-icons:page"></iron-icon>
+                  </a>
                 </figure>
                 <a href="javascript:;" class="btn btn--charm">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1570,28 +1704,46 @@
               </div>
             </div>
             <div class="lifevault__list-center">
-              <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              <a href="[[rootPath]]lifevault/doc">
+                <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+              </a>
               <button class="lifevault__details lifevault__details--list">v1.0
                 <iron-icon icon="icons:expand-more"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version">v1.1</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.1</span>
+                      </a>
                       <iron-icon icon="icons:expand-less"></iron-icon>
                     </li>
-                    <li><span class="lifevault__version">v1.2</span></li>
                     <li>
-                      <a href="[[routePath]]lifevault/doc">
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.2</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      </a>
                     </li>
-                    <li><span class="lifevault__version">v1.4</span></li>
-                    <li><span class="lifevault__version">v1.5</span></li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.4</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.5</span>
+                      </a>
+                    </li>
                   </ul>
                 </iron-dropdown>
               </button>
