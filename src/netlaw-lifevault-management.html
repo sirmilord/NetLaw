@@ -517,8 +517,8 @@
       }
 
       .lifevault__col-module {
-        flex: 1 1 25%;
-        max-width: 25%;
+        flex: 1 1 20%;
+        max-width: 20%;
         padding-left: 20px;
         padding-right: 20px;
         box-sizing: border-box;
@@ -929,19 +929,27 @@
         border-right: 0;
       }
 
+      .btn--hide {
+        visibility: hidden;
+      }
+
       @media (min-width: 1800px) {
 
-        .lifevault__checkbox-container {
+        .lifevault__checkbox-container--ml {
           margin-left: 20px;
         }
 
         .lifevault__search {
-          margin-left: auto;
+          margin-left: 30px;
         }
 
         .lifevault__sort {
-          margin-left: auto;
-          margin-right: auto;
+          margin-left: 30px;
+          margin-right: 15px;
+        }
+
+        #sortby {
+          margin-right: 0;
         }
 
         .btn--module {
@@ -965,7 +973,7 @@
       </div>
       <div class="lifevault__content-dashboard">
         <form action="javascript:;" method="post">
-          <label class="lifevault__checkbox-container">Select All
+          <label class="lifevault__checkbox-container lifevault__checkbox-container--ml">Select All
             <input id="selectall" type="checkbox">
             <span class="lifevault__content-checkmark" on-tap="selectAll"></span>
             <!--<paper-checkbox></paper-checkbox>-->
@@ -1078,6 +1086,9 @@
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </a>
                   </figure>
+                  <a href="javascript:;" class="btn btn--charm btn--hide">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
                 </div>
                 <div class="lifevault__module-footer">
                   <a  class="lifevault__footer-link" href="[[routePath]]lifevault/doc">
@@ -1345,6 +1356,99 @@
                       <iron-icon icon="netlaw-icons:page"></iron-icon>
                     </a>
                   </figure>
+                  <a href="javascript:;" class="btn btn--charm btn--hide">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                </div>
+                <div class="lifevault__module-footer">
+                  <a class="lifevault__footer-link" href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__name">Estimate for Home Management.PDF</span>
+                  </a>
+                  <span class="lifevault__module-update">Updated 1d ago</span>
+                  <button class="lifevault__details">v1.0
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="lifevault__version-dropdown"
+                          slot="dropdown-content">
+                        <li>
+                          <a href="javascript:;">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.1</span>
+                          </a>
+                          <iron-icon icon="icons:expand-less"></iron-icon>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.2</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="javascript:;">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.4</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.5</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="lifevault__col-module">
+              <div class="lifevault__module-item">
+                <div class="lifevault__module-body">
+                  <label class="lifevault__checkbox-container lifevault__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="lifevault__content-checkmark lifevault__content-checkmark--module"></span>
+                  </label>
+                  <a class="lifevault__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Replace
+                          <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="lifevault__document">
+                    <a href="[[routePath]]lifevault/doc">
+                      <iron-icon icon="netlaw-icons:page"></iron-icon>
+                    </a>
+                  </figure>
+                  <a href="javascript:;" class="btn btn--charm btn--hide">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
                 </div>
                 <div class="lifevault__module-footer">
                   <a class="lifevault__footer-link" href="[[rootPath]]lifevault/doc">
@@ -1422,7 +1526,7 @@
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </a>
                 </figure>
-                <a href="javascript:;" class="btn btn--charm">
+                <a href="javascript:;" class="btn btn--charm btn--hide">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                 </a>
               </div>
@@ -1606,7 +1710,7 @@
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </a>
                 </figure>
-                <a href="javascript:;" class="btn btn--charm">
+                <a href="javascript:;" class="btn btn--charm ">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                 </a>
               </div>
@@ -1698,7 +1802,7 @@
                     <iron-icon icon="netlaw-icons:page"></iron-icon>
                   </a>
                 </figure>
-                <a href="javascript:;" class="btn btn--charm">
+                <a href="javascript:;" class="btn btn--charm btn--hide">
                   <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                 </a>
               </div>

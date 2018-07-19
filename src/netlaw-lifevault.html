@@ -853,6 +853,14 @@
       .files__item--border-hide {
         border-right: 0;
       }
+
+      @media (min-width: 1800px) {
+
+        .lifevault__drawer {
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+      }
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
