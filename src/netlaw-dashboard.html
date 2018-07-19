@@ -1,0 +1,84 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../bower_components/iron-icons/iron-icons.html">-->
+<!--<link rel="import" href="../bower_components/iron-icon/iron-icon.html">-->
+<!--<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">-->
+
+<dom-module id="netlaw-dashboard">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        width: 100%;
+        background-color: #f9f9f9;
+        min-height: 90px;
+        position: relative;
+        padding-left: 30px;
+        padding-right: 30px;
+        box-sizing: border-box;
+      }
+
+      :host:after {
+        content: '';
+        position: absolute;
+        width: 95%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+      }
+
+
+    </style>
+
+    <slot id="dashboard-content"></slot>
+  </template>
+
+  <script>
+
+      class NetlawDashboard extends Polymer.Element {
+          static get is() {
+              return 'netlaw-dashboard';
+          }
+
+          static get properties() {
+              return {
+                  visible: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  toggleIcon: {
+                      type: String
+                  },
+              };
+          }
+
+          constructor() {
+              super();
+              // this.toggleIcon = 'netlaw-icons:notifications';
+          }
+
+          toggle() {
+              this.visible = !this.visible;
+
+              if (this.visible) {
+                  this.$.dropdown.open();
+                  this.toggleIcon = 'netlaw-icons:notifications-open';
+              }
+              else {
+                  this.$.dropdown.close();
+                  this.toggleIcon = 'netlaw-icons:notifications';
+              }
+          }
+      }
+
+      customElements.define(NetlawDashboard.is, NetlawDashboard);
+  </script>
+
+</dom-module>
+

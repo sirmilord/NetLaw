@@ -1,0 +1,284 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../bower_components/iron-icons/iron-icons.html">-->
+<!--<link rel="import" href="../bower_components/iron-icon/iron-icon.html">-->
+<!--<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">-->
+
+<dom-module id="netlaw-dashboard-form">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+
+      }
+
+      :host form {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        min-height: 90px;
+        flex-wrap: wrap;
+      }
+
+      .checkbox-container {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        font-size: 9px;
+        user-select: none;
+        color: #d6d6d6;
+        height: 45px;
+        border-radius: 2px;
+      }
+
+      .checkbox-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .content-checkmark {
+        position: absolute;
+        top: 15px;
+        left: 8px;
+        height: 18px;
+        width: 18px;
+        background-color: #fff;
+        border: 1px solid #c2c2c2;
+        border-radius: 2px;
+      }
+
+      .checkbox-container:hover input ~ .content-checkmark {
+        background-color: #fff;
+      }
+
+      .checkbox-container input:checked ~ .content-checkmark {
+        background-color: #fff;
+      }
+
+      .content-checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      .checkbox-container input:checked ~ .content-checkmark:after {
+        display: block;
+      }
+
+      .checkbox-container .content-checkmark:after {
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 9px;
+        border: solid #01AA50;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .search {
+        display: flex;
+        margin-right: 25px;
+      }
+
+      label.search > button > iron-icon {
+        --iron-icon-width: 18px;
+        --iron-icon-height: 18px;
+      }
+
+      .search input {
+        height: 45px;
+        border: 1px solid #c2c2c2;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        padding-left: 15px;
+        font-size: 18px;
+      }
+
+      .search input::placeholder {
+        color: #c2c2c2;
+        font-size: 16px;
+      }
+
+      .btn--search {
+        color: #c2c2c2;
+        padding: 0 8px;
+        height: 45px;
+        background-color: #fff;
+        border: 1px solid #c2c2c2;
+        border-left: 0;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+
+      .sort {
+        border: 1px solid #c2c2c2;
+        height: 45px;
+        width: 150px;
+        padding-left: 15px;
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #c2c2c2;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .sort > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+        margin-right: -10px;
+        cursor: pointer;
+      }
+
+      .sort-arrows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        position: absolute;
+        top: 50%;
+        left: -25px;
+        transform: translateY(-50%);
+      }
+
+      .sort-arrows iron-icon:last-child {
+        margin-top: -5px;
+      }
+
+      .btn--module {
+        background-color: transparent;
+        padding: 0;
+        width: 33px;
+        height: 33px;
+        --iron-icon-fill-color: #e6e6e6;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        cursor: pointer;
+      }
+
+      .btn--list {
+        background-color: transparent;
+        padding: 0;
+        width: 33px;
+        height: 33px;
+        --iron-icon-fill-color: #e6e6e6;
+        --iron-icon-width: 33px;
+        --iron-icon-height: 33px;
+        cursor: pointer;
+      }
+
+      .btn--active {
+        --iron-icon-fill-color: #414142;
+      }
+
+      #sortby {
+        position: relative;
+      }
+
+      #sortbydropdown {
+        background-color: #fff;
+      }
+
+      #bulkaction {
+        position: relative;
+      }
+
+      #bulkactiondropdown {
+        background-color: #fff;
+      }
+
+
+    </style>
+
+    <form action="javascript:;" method="post">
+      <label class="checkbox-container checkbox-container--ml">Select All
+        <input id="selectall" type="checkbox">
+        <span class="content-checkmark" on-tap="selectAll"></span>
+        <!--<paper-checkbox></paper-checkbox>-->
+      </label>
+      <label class="search">
+        <input type="search" id="search" name="search" placeholder="Search...">
+        <button class="btn btn--search">
+          <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
+        </button>
+      </label>
+      <div class="sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
+        <div class="sort-arrows">
+          <iron-icon icon="icons:arrow-upward"></iron-icon>
+          <iron-icon icon="icons:arrow-downward"></iron-icon>
+        </div>
+        <span>Sort By</span>
+        <iron-icon icon="icons:expand-more"></iron-icon>
+        <iron-dropdown id="sortbydropdown" vertical-offset="0">
+          <!--no-auto-focus no-cancel-on-outside-click>-->
+          <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
+            <li>Sort By - - -</li>
+            <li>Title
+              <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
+            </li>
+            <li>Newest
+              <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
+            </li>
+            <li>Oldest
+              <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
+            </li>
+            <li>SmartGuide Only
+              <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+            </li>
+          </ul>
+        </iron-dropdown>
+      </div>
+      <div id="bulkaction" class="sort" on-tap="openBulkAction">
+        <span>Bulk Action</span>
+        <iron-icon icon="icons:expand-more"></iron-icon>
+        <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
+          <!--no-auto-focus no-cancel-on-outside-click>-->
+          <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
+            <li>Bulk Action -</li>
+            <li>Download
+              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+            </li>
+            <li>Print
+              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+            </li>
+            <li>Share
+              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+            </li>
+            <li>Delete
+              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+            </li>
+          </ul>
+        </iron-dropdown>
+      </div>
+      <button class="btn btn--module btn--active" on-tap="chooseModule">
+        <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
+      </button>
+      <button class="btn btn--list" on-tap="chooseList">
+        <iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>
+      </button>
+    </form>
+
+  </template>
+
+  <script>
+
+      class NetlawDashboardForm extends Polymer.Element {
+          static get is() {
+              return 'netlaw-dashboard-form';
+          }
+      }
+
+      customElements.define(NetlawDashboardForm.is, NetlawDashboardForm);
+  </script>
+
+</dom-module>
+
