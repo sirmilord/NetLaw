@@ -125,11 +125,8 @@
     </style>
 
     <section class="lifevault__content">
-      <!--first screen-->
-
       <h1>Your Vault</h1>
       <figure>
-        <!--<img src="/images/Lgdocuments.png" width="120" height="145" alt="LifeVault">-->
         <iron-icon icon="netlaw-icons:documents"></iron-icon>
       </figure>
       <b>This is where you would keep all your important legal documents.</b>
@@ -151,67 +148,6 @@
           static get is() {
               return 'netlaw-lifevault-your-vault';
           }
-
-          static get properties() {
-              return {
-                  // view: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
-                  // checkboxes: {
-                  //     type: Array,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  // },
-                  // toggleIcon: {
-                  //     type: String
-                  // },
-              };
-          }
-
-          constructor() {
-              super();
-              // this.toggleIcon = 'icons:add-circle-outline';
-              // this.view = 'Module';
-
-              this.addEventListener('list-collapse-open', e => console.log('open'));
-              this.addEventListener('list-collapse-close', e => console.log('close'));
-          }
-
-          // toggle(e) {
-          //     e.preventDefault();
-          //     this.$.collapse.toggle();
-          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-          //     this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-          //     this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
-          // }
-          //
-          // toggleLvl2(e) {
-          //     e.preventDefault();
-          //     this.$.collapselvl2.toggle();
-          //     this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-          // }
-
-          ready(e) {
-              super.ready();
-
-              // let btnVersions = this.shadowRoot.querySelectorAll('.lifevault__details');
-              // btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
-              //     e.preventDefault();
-              //     this.querySelector('iron-dropdown').open();
-              // }));
-              // let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              // btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
-              //     e.preventDefault();
-              //     this.querySelector('iron-dropdown').open();
-              // }));
-
-
-          }
-
-
       }
 
       window.customElements.define(MyNetlawLifevaultYourVault.is, MyNetlawLifevaultYourVault);
