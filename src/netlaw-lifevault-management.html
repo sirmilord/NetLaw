@@ -593,11 +593,10 @@
     </style>
 
     <section class="lifevault__content">
-
-      <div class="lifevault__content-header">
-        <h2 class="lifevault__content-title">Home Management</h2>
-        <div class="lifevault__content-update">Updated 1d ago</div>
-      </div>
+      <netlaw-topbar>
+        <h2 slot="title">Home Management</h2>
+        <div slot="update">Updated 1d ago</div>
+      </netlaw-topbar>
       <netlaw-dashboard>
         <netlaw-dashboard-form on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
       </netlaw-dashboard>
