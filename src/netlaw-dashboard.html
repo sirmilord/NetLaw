@@ -43,38 +43,6 @@
           static get is() {
               return 'netlaw-dashboard';
           }
-
-          static get properties() {
-              return {
-                  visible: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  toggleIcon: {
-                      type: String
-                  },
-              };
-          }
-
-          constructor() {
-              super();
-              // this.toggleIcon = 'netlaw-icons:notifications';
-          }
-
-          toggle() {
-              this.visible = !this.visible;
-
-              if (this.visible) {
-                  this.$.dropdown.open();
-                  this.toggleIcon = 'netlaw-icons:notifications-open';
-              }
-              else {
-                  this.$.dropdown.close();
-                  this.toggleIcon = 'netlaw-icons:notifications';
-              }
-          }
       }
 
       customElements.define(NetlawDashboard.is, NetlawDashboard);
