@@ -49,7 +49,6 @@
         padding: 0;
       }
 
-
       .checkbox-container {
         display: block;
         position: relative;
@@ -253,10 +252,6 @@
         --iron-icon-height: 20px;
       }
 
-      .addfolder-dropdown--sub {
-        width: 164px;
-      }
-
       ul.addfolder-dropdown--sub > li > iron-icon {
         --iron-icon-height: 16px;
         --iron-icon-width: 16px;
@@ -264,50 +259,6 @@
 
       .addfolder-dropdown--sort {
         width: 182px;
-      }
-
-      .version-dropdown {
-        width: 111px;
-        border: 1px solid #C2C2C2;
-        border-radius: 2px;
-        background-color: #FFFFFF;
-        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .version-dropdown li {
-        color: #4A90E2;
-        font-size: 18px;
-        font-weight: 300;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-
-      .version-dropdown iron-icon {
-        margin-top: 0;
-        --iron-icon-fill-color: #b2b2b2;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-        margin-right: 5px;
-      }
-
-      .version-dropdown [icon="icons:expand-less"] {
-        --iron-icon-width: 24px;
-        --iron-icon-height: 24px;
-        margin-right: 0;
-      }
-
-      .version-dropdown a {
-        text-decoration: none;
-        color: #4A90E2;
-      }
-
-      .version--mr {
-        margin-right: 20px;
       }
 
       @media (min-width: 1800px) {
@@ -345,8 +296,7 @@
     <form action="javascript:;" method="post">
       <label class="checkbox-container checkbox-container--ml">Select All
         <input id="selectall" type="checkbox">
-        <span class="content-checkmark" on-tap="selectAll"></span>
-        <!--<paper-checkbox></paper-checkbox>-->
+        <span class="content-checkmark" on-tap="selectAllClick"></span>
       </label>
       <label class="search">
         <input type="search" id="search" name="search" placeholder="Search...">
@@ -362,7 +312,6 @@
         <span>Sort By</span>
         <iron-icon icon="icons:expand-more"></iron-icon>
         <iron-dropdown id="sortbydropdown" vertical-offset="0">
-          <!--no-auto-focus no-cancel-on-outside-click>-->
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
             <li>Sort By - - -</li>
             <li>Title
@@ -419,24 +368,14 @@
               return 'netlaw-dashboard-form';
           }
 
-          static get properties() {
-              return {
-                  view: {
-                      type: String,
-                  },
-                  checkboxes: {
-                      type: Array,
-                      notify: true,
-                      reflectToAttribute: true,
-                  },
-              };
-          }
-
-          constructor() {
-              super();
-              this.view = 'Module';
-              this.checkboxes = 0;
-          }
+          // static get properties() {
+          //     return {
+          //     };
+          // }
+          //
+          // constructor() {
+          //     super();
+          // }
 
           openSortBy() {
               this.$.sortbydropdown.open();
@@ -446,53 +385,34 @@
               this.$.bulkactiondropdown.open();
           }
 
-          selectAll() {
-              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.checkbox-container--list input');
+          selectAllClick(e) {
 
+              if (this.$.selectall.checked !== true) {
 
-              if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
+                  this.dispatchEvent(new CustomEvent("select-all-false"));
 
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = true;
-                  }
+              } else if (this.$.selectall.checked !== false) {
 
-              } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
+                  this.dispatchEvent(new CustomEvent("select-all-true"));
 
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = false;
-                  }
               }
 
           }
 
           chooseModule(e) {
               e.preventDefault();
-              this.view = "Module";
-              this.$.list.classList.remove('wrap--show');
-              this.$.module.classList.add('wrap--show');
+              this.dispatchEvent(new CustomEvent("view-module"));
               this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.checkbox-container--module input');
-
-              for (let i = 0; i < this.checkboxes.length; i++) {
-                  this.checkboxes[i].checked = false;
-              }
           }
 
           chooseList(e) {
               e.preventDefault();
-              this.view = "List";
-              this.$.module.classList.remove('wrap--show');
-              this.$.list.classList.add('wrap--show');
+              this.dispatchEvent(new CustomEvent("view-list"));
               this.$.selectall.checked = false;
               Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
               Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
-              this.checkboxes = Polymer.dom(this.root).querySelectorAll('.checkbox-container--list input');
-
-              for (let i = 0; i < this.checkboxes.length; i++) {
-                  this.checkboxes[i].checked = false;
-              }
           }
       }
 

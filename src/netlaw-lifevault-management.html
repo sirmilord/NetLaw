@@ -932,34 +932,34 @@
         visibility: hidden;
       }
 
-      @media (min-width: 1800px) {
+      /*@media (min-width: 1800px) {*/
 
-        .lifevault__checkbox-container--ml {
-          margin-left: 20px;
-        }
+        /*.lifevault__checkbox-container--ml {*/
+          /*margin-left: 20px;*/
+        /*}*/
 
-        .lifevault__search {
-          margin-left: 30px;
-        }
+        /*.lifevault__search {*/
+          /*margin-left: 30px;*/
+        /*}*/
 
-        .lifevault__sort {
-          margin-left: 30px;
-          margin-right: 15px;
-        }
+        /*.lifevault__sort {*/
+          /*margin-left: 30px;*/
+          /*margin-right: 15px;*/
+        /*}*/
 
-        #sortby {
-          margin-right: 0;
-        }
+        /*#sortby {*/
+          /*margin-right: 0;*/
+        /*}*/
 
-        .btn--module {
-          margin-left: auto;
-          margin-right: 20px;
-        }
+        /*.btn--module {*/
+          /*margin-left: auto;*/
+          /*margin-right: 20px;*/
+        /*}*/
 
-        .btn--list {
-          margin-right: 20px;
-        }
-      }
+        /*.btn--list {*/
+          /*margin-right: 20px;*/
+        /*}*/
+      /*}*/
 
 
     </style>
@@ -971,7 +971,7 @@
         <div class="lifevault__content-update">Updated 1d ago</div>
       </div>
       <netlaw-dashboard>
-        <netlaw-dashboard-form></netlaw-dashboard-form>
+        <netlaw-dashboard-form on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
         <!--<form action="javascript:;" method="post">-->
           <!--<label class="lifevault__checkbox-container lifevault__checkbox-container&#45;&#45;ml">Select All-->
             <!--<input id="selectall" type="checkbox">-->
@@ -1951,33 +1951,33 @@
                       notify: true,
                       reflectToAttribute: true,
                   },
-                  toggleIcon: {
-                      type: String
-                  },
+                  // toggleIcon: {
+                  //     type: String
+                  // },
               };
           }
 
           constructor() {
               super();
-              this.toggleIcon = 'icons:add-circle-outline';
+              // this.toggleIcon = 'icons:add-circle-outline';
               this.view = 'Module';
               // this.view = true;
               this.checkboxes = 0;
           }
 
-          toggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-              this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
-          }
-
-          toggleLvl2(e) {
-              e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-          }
+          // toggle(e) {
+          //     e.preventDefault();
+          //     this.$.collapse.toggle();
+          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
+          //     this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+          //     this.$.collapse.opened ? this.$.addfolder.classList.add('lifevault__add-folder--show') : this.$.addfolder.classList.remove('lifevault__add-folder--show');
+          // }
+          //
+          // toggleLvl2(e) {
+          //     e.preventDefault();
+          //     this.$.collapselvl2.toggle();
+          //     this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+          // }
 
           ready(e) {
               super.ready();
@@ -1993,32 +1993,54 @@
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
+
           }
 
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
+          selectAllFalse(e) {
+              // this.selectAll = false;
+              // console.log(this.selectAll);
 
-          openBulkAction() {
-              this.$.bulkactiondropdown.open();
-          }
-
-          selectAll() {
               this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
 
-              if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = true;
                   }
+              }
+          }
 
-              } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
+          selectAllTrue(e) {
+              // this.selectAll = true;
+              // console.log(this.selectAll);
+
+              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
               }
+          }
+
+          selectAll() {
+              // this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
+
+
+              // if (this.selectall !== true && this.checkboxes.length > 0) {
+              //
+              //     for (let i = 0; i < this.checkboxes.length; i++) {
+              //         this.checkboxes[i].checked = true;
+              //     }
+              //
+              // } else if (this.selectall !== false && this.checkboxes.length > 0) {
+              //
+              //     for (let i = 0; i < this.checkboxes.length; i++) {
+              //         this.checkboxes[i].checked = false;
+              //     }
+              // }
 
           }
 
@@ -2027,13 +2049,10 @@
           // }
 
           chooseModule(e) {
-              e.preventDefault();
               this.view = "Module";
               this.$.list.classList.remove('lifevault__wrap--show');
               this.$.module.classList.add('lifevault__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
@@ -2042,13 +2061,10 @@
           }
 
           chooseList(e) {
-              e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('lifevault__wrap--show');
               this.$.list.classList.add('lifevault__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.lifevault__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
