@@ -188,15 +188,14 @@
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <!--<app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
-
-    <app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <!--<app-route-->
     <!--route="{{subroute}}"-->
     <!--pattern="/:page"-->
     <!--data="{{subrouteData}}">-->
     <!--</app-route>-->
+
     <template is="dom-if" if="[[!loggedIn]]">
       <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
     </template>
@@ -222,25 +221,25 @@
           <!-- Drawer content -->
           <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
 
-            <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                            role="navigation">
-              <a name="smartguide" href="[[rootPath]]smartguide" class$="{{isSubpathSelected(route.path, 'smartguide', 1)}}">
+              <a name="smartguide" href="[[rootPath]]smartguide">
                 <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
                 SmartGuide
               </a>
-              <a name="lifevault" href="[[rootPath]]lifevault" class$="{{isSubpathSelected(route.path, 'lifevault', 1)}}">
+              <a name="lifevault" href="[[rootPath]]lifevault">
                 <iron-icon icon="netlaw-icons:life-vault" slot="item-icon"></iron-icon>
                 LifeVault
               </a>
-              <a name="contacts" href="[[rootPath]]contacts" class$="{{isSubpathSelected(route.path, 'contacts', 1)}}">
+              <a name="contacts" href="[[rootPath]]contacts">
                 <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon>
                 Contacts
               </a>
-              <a name="find-attorney" href="[[rootPath]]find-attorney" class$="{{isSubpathSelected(route.path, 'find-attorney', 1)}}">
+              <a name="find-attorney" href="[[rootPath]]find-attorney">
                 <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon>
                 Find Attorney
               </a>
-              <a name="add-module" href="[[rootPath]]add-module" class$="{{isSubpathSelected(route.path, 'add-module', 1)}}">
+              <a name="add-module" href="[[rootPath]]add-module">
                 <iron-icon icon="netlaw-icons:add-module" slot="item-icon"></iron-icon>
                 Add Module
               </a>
@@ -249,7 +248,7 @@
           <!--<app-toolbar>-->
           <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
           <!--</app-toolbar>-->
-          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="view-404">
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="view-404">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
@@ -277,51 +276,25 @@
       Polymer.setPassiveTouchGestures(true);
 
       class NetlawApp extends Polymer.Element {
-          static get is() { return 'netlaw-app'; }
+          static get is() {
+              return 'netlaw-app';
+          }
 
           static get properties() {
               return {
-                  loggedIn: { type: Boolean, value: () => true/* location.pathname !== "/"*/ },
-
+                  loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   rootPath: String,
-                  route: { type: Object },
-                  routeData: { type: Object, observer: '_routeDataObserver' },
+                  route: {type: Object},
+                  routeData: {type: Object, observer: '_routeDataObserver'},
                   subroute: Object,
-
                   active: String,
-
-                  attorneyName: String,
-                  attorneyPicture: String,
-
-                  recents: {
-                      value: () => [
-                          { type: "client", href: "clients/4c890c89-2cf9-4611-b754-1bd196c1f0ab", text: "Tim Cain" },
-                          { type: "client", href: "clients/e28ed224-17e4-40c7-9abf-d2927aa46d0b/vault", text: "Herbie Hancock" },
-                          { type: "attorney", href: "attorneys/21c6537b-2e84-45c9-b9be-7f338f19c309", text: "Rory Gallagher" },
-                          { type: "attorney", href: "attorneys/2874b8a9-f498-4027-b524-5a0da0dc8d88", text: "Dave Mustaine" },
-                          { type: "attorney", href: "attorneys/f022555b-aeb2-418d-a405-cfbf21b481ba", text: "Jaco Postorius" },
-                      ],
-                  },
-                  openAnimationConfig: {
-                      type: Object,
-                      value: function () {
-                          return [
-                              { name: 'fade-in-animation', timing: { delay: 100, duration: 200 } },
-                              {
-                                  name: 'paper-menu-grow-height-animation',
-                                  timing: {
-                                      delay: 100,
-                                      duration: 275,
-                                      easing: 'cubic-bezier(.3,.95,.5,1)'
-                                  }
-                              }
-                          ];
-                      }
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      observer: '_pageChanged',
                   },
               };
           }
-
-          get attorneyId() { return localStorage.getItem("attorney-id"); }
 
           constructor() {
               super();
@@ -329,44 +302,28 @@
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };
-              /*Polymer.RenderStatus.afterNextRender(this, function () {
-                  api.onUnauthorized = ex => this.loggedIn = false; //change to logged out
-              }.bind(this));*/
+
           }
 
           onLoggedIn(e) {
               this.loggedIn = true;
-              this.attorneyName = localStorage.getItem("attorney-name");
-              //api.ticket = e.detail.ticket;
-          }
-
-          onSwitchProfileClick(e) {
-              this.loggedIn = false;
-              Polymer.dom(this.root).querySelector("netlaw-login").switchProfile();
+              // Show initial screen on login
+              this.page = 'initial-screen';
           }
 
           onSignOutClick(e) {
-              api.accounts.logout();
               this.loggedIn = false;
-              api.ticket = null;
+              // Show login screen on logout
+              this.page = 'login';
           }
 
-          // _routeDataObserver(value) { this.active = value.id || null; }
-          _routeDataObserver(value) { this.id = 'login'; console.log(this.id) }
-
-          onProfileChanged() {
-              this.attorneyName = localStorage.getItem("attorney-name");
+          _routeDataObserver(value) {
+              this.active = value.id || null;
           }
 
-          typeToIcon(type) {
-              switch (type) {
-                  case "client": return "people";
-                  case "attorney": return "work";
-                  default: return "";
-              }
+          isSubpathSelected(path, subpath, levels) {
+              return this.isSubpath(path, subpath, levels) ? "iron-selected" : null;
           }
-
-          isSubpathSelected(path, subpath, levels) { return this.isSubpath(path, subpath, levels) ? "iron-selected" : null; }
 
           isSubpath(path, subpath, levels) {
               if (!path || !subpath) return null;
@@ -379,9 +336,65 @@
               return true;
           }
 
-          isEqual(first, second) { return first === second; }
-          isTrue(value) { return !!value; }
-          isFalse(value) { return !value; }
+          isEqual(first, second) {
+              return first === second;
+          }
+
+          isTrue(value) {
+              return !!value;
+          }
+
+          isFalse(value) {
+              return !value;
+          }
+
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
+
+          _routePageChanged(page) {
+              // If no page was found in the route data, page will be an empty string.
+              // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
+
+              // Check if user is logged in
+              if (this.loggedIn === true) this.page = page || 'initial-screen';
+
+              else this.page = page || 'login';
+
+              // Close a non-persistent drawer when the page & route are changed.
+              // if (!this.$.drawer.persistent) {
+              //     this.$.drawer.close();
+              // }
+
+              // if (this.page === 'account') {
+              //
+              //     this.dispatchEvent(new CustomEvent('drawer', ));
+              //     console.log('ddddddd');
+              // }
+          }
+
+          _pageChanged(page) {
+              // Load page import on demand. Show 404 page if fails
+              const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
+              Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);
+          }
+
+          _showPage404() {
+              this.page = 'view-404';
+          }
+
+          // ready() {
+          //     super.ready();
+          //     this.addEventListener('drawer', function (e) {
+          //         this.$.drawer.close();
+          //     });
+          // }
 
       }
 

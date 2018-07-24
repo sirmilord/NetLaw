@@ -69,7 +69,7 @@
 
     </style>
 
-    <!--<app-route route="{{route}}" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <app-header-layout fullbleed="" narrow="{{narrow}}">
       <app-header slot="header" condenses="" reveals="" effects="waterfall">
         <app-toolbar class="navbar">
@@ -427,6 +427,7 @@
 
           static get properties() {
               return {
+
                   first: {type: Boolean, value: true},
                   forgot: {type: Boolean, value: false},
                   newpass: {type: Boolean, value: false},
@@ -438,10 +439,6 @@
                   email: {type: Boolean, value: false},
                   method: {type: Boolean, value: false}
               };
-          }
-
-          constructor() {
-              super();
           }
 
           onLoginClick(e) {
