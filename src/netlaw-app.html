@@ -224,15 +224,15 @@
 
             <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
                            role="navigation">
-              <a name="smartguide" href="[[rootPath]]smartguide" class$="{{isSubpathSelected(route.path, 'smartguide', 1)}}">
+              <a name="smartguide" href="[[rootPath]]smartguide/setup" class$="{{isSubpathSelected(route.path, 'smartguide', 2)}}">
                 <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
                 SmartGuide
               </a>
-              <a name="lifevault" href="[[rootPath]]lifevault" class$="{{isSubpathSelected(route.path, 'lifevault', 1)}}">
+              <a name="lifevault" href="[[rootPath]]lifevault/your-vault" class$="{{isSubpathSelected(route.path, 'lifevault', 2)}}">
                 <iron-icon icon="netlaw-icons:life-vault" slot="item-icon"></iron-icon>
                 LifeVault
               </a>
-              <a name="contacts" href="[[rootPath]]contacts" class$="{{isSubpathSelected(route.path, 'contacts', 1)}}">
+              <a name="contacts" href="[[rootPath]]contacts/create" class$="{{isSubpathSelected(route.path, 'contacts', 1)}}">
                 <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon>
                 Contacts
               </a>
