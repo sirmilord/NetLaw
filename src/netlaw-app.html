@@ -32,42 +32,42 @@
 
 <link rel="import" href="perfect-scrollbar-styles.html">
 
-<link rel="lazy-import" href="netlaw-login.html">
+<link rel="import" href="netlaw-login.html">
 
-<link rel="lazy-import" href="netlaw-login-security.html">
-<link rel="lazy-import" href="netlaw-login-secure.html">
-<link rel="lazy-import" href="netlaw-login-mobile.html">
-<link rel="lazy-import" href="netlaw-login-new.html">
-<link rel="lazy-import" href="netlaw-login-sms.html">
-<link rel="lazy-import" href="netlaw-login-email.html">
+<link rel="import" href="netlaw-login-security.html">
+<link rel="import" href="netlaw-login-secure.html">
+<link rel="import" href="netlaw-login-mobile.html">
+<link rel="import" href="netlaw-login-new.html">
+<link rel="import" href="netlaw-login-sms.html">
+<link rel="import" href="netlaw-login-email.html">
 
-<link rel="lazy-import" href="netlaw-smartguide.html">
+<link rel="import" href="netlaw-smartguide.html">
 
-<link rel="lazy-import" href="netlaw-account.html">
+<link rel="import" href="netlaw-account.html">
 
-<link rel="lazy-import" href="netlaw-account-security.html">
-<link rel="lazy-import" href="netlaw-account-current-plan.html">
-<link rel="lazy-import" href="netlaw-account-plans.html">
+<link rel="import" href="netlaw-account-security.html">
+<link rel="import" href="netlaw-account-current-plan.html">
+<link rel="import" href="netlaw-account-plans.html">
 
-<link rel="lazy-import" href="netlaw-lifevault.html">
-<link rel="lazy-import" href="netlaw-lifevault-add-file.html">
+<link rel="import" href="netlaw-lifevault.html">
+<link rel="import" href="netlaw-lifevault-add-file.html">
 
 
-<link rel="lazy-import" href="netlaw-contacts.html">
-<link rel="lazy-import" href="netlaw-contacts-create.html">
+<link rel="import" href="netlaw-contacts.html">
+<link rel="import" href="netlaw-contacts-create.html">
 
-<link rel="lazy-import" href="netlaw-contacts-family.html">
+<link rel="import" href="netlaw-contacts-family.html">
 
-<link rel="lazy-import" href="netlaw-find-attorney.html">
-<link rel="lazy-import" href="netlaw-add-module.html">
+<link rel="import" href="netlaw-find-attorney.html">
+<link rel="import" href="netlaw-add-module.html">
 
-<link rel="lazy-import" href="netlaw-profile.html">
+<link rel="import" href="netlaw-profile.html">
 
-<link rel="lazy-import" href="netlaw-attorney-details.html">
-<link rel="lazy-import" href="netlaw-contact-details.html">
+<link rel="import" href="netlaw-attorney-details.html">
+<link rel="import" href="netlaw-contact-details.html">
 
-<link rel="lazy-import" href="netlaw-initial-screen.html">
-<link rel="lazy-import" href="netlaw-view-404.html">
+<link rel="import" href="netlaw-initial-screen.html">
+<link rel="import" href="netlaw-view-404.html">
 
 <dom-module id="netlaw-app">
   <template>
@@ -249,7 +249,7 @@
           <!--<app-toolbar>-->
           <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
           <!--</app-toolbar>-->
-          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="view-404">
+          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
@@ -281,7 +281,7 @@
 
           static get properties() {
               return {
-                  loggedIn: { type: Boolean, value: () => true/* location.pathname !== "/"*/ },
+                  loggedIn: { type: Boolean, value: () => false/* location.pathname !== "/"*/ },
 
                   rootPath: String,
                   route: { type: Object },
@@ -351,8 +351,8 @@
               api.ticket = null;
           }
 
-          // _routeDataObserver(value) { this.active = value.id || null; }
-          _routeDataObserver(value) { this.id = 'login'; console.log(this.id) }
+          _routeDataObserver(value) { this.active = value.id || null; }
+
 
           onProfileChanged() {
               this.attorneyName = localStorage.getItem("attorney-name");

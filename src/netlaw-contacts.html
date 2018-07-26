@@ -1199,7 +1199,7 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
-                      observer: '_pageChanged',
+                      // observer: '_pageChanged',
                   },
               };
           }
@@ -1257,20 +1257,20 @@
               }
           }
 
-          _pageChanged(page) {
-              let resolvedPageUrl = this.resolveUrl('netlaw-contacts-' + page + '.html');
-
-              if (resolvedPageUrl.indexOf('404') >= 0) {
-                  let replaceStr = /contacts-/gi;
-                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
-              }
-
-              Polymer.importHref(
-                  resolvedPageUrl,
-                  null,
-                  this._showPage404.bind(this),
-                  true);
-          }
+          // _pageChanged(page) {
+          //     let resolvedPageUrl = this.resolveUrl('netlaw-contacts-' + page + '.html');
+          //
+          //     if (resolvedPageUrl.indexOf('404') >= 0) {
+          //         let replaceStr = /contacts-/gi;
+          //         resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
+          //     }
+          //
+          //     Polymer.importHref(
+          //         resolvedPageUrl,
+          //         null,
+          //         this._showPage404.bind(this),
+          //         true);
+          // }
 
           _showPage404() {
               this.page = 'view-404';
