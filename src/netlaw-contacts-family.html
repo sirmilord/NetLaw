@@ -746,84 +746,14 @@
     </style>
 
     <section class="contacts__content">
+      <netlaw-topbar>
+        <h2 slot="title">Immediate Family</h2>
+        <div slot="update">Updated 1d ago</div>
+      </netlaw-topbar>
+      <netlaw-dashboard>
+        <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
+      </netlaw-dashboard>
 
-      <div class="contacts__content-header">
-        <h2 class="contacts__content-title">Immediate Family</h2>
-        <div class="contacts__content-update">Updated 1d ago</div>
-      </div>
-      <div class="contacts__content-dashboard">
-        <form action="javascript:;" method="post">
-          <label class="contacts__checkbox-container">Select All
-            <input id="selectall" type="checkbox">
-            <span class="contacts__content-checkmark" on-tap="selectAll"></span>
-            <!--<paper-checkbox></paper-checkbox>-->
-          </label>
-          <label class="contacts__search">
-            <input type="search" id="search" name="search" placeholder="Search...">
-            <button class="btn btn--search">
-              <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
-            </button>
-          </label>
-          <div class="contacts__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
-            <div class="contacts__sort-arrows">
-              <iron-icon icon="icons:arrow-upward"></iron-icon>
-              <iron-icon icon="icons:arrow-downward"></iron-icon>
-            </div>
-            <span>Sort By</span>
-            <iron-icon icon="icons:expand-more"></iron-icon>
-            <iron-dropdown id="sortbydropdown" vertical-offset="0">
-              <!--no-auto-focus no-cancel-on-outside-click>-->
-              <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sort" slot="dropdown-content">
-                <li>Sort By - - -</li>
-                <li>Title
-                  <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
-                </li>
-                <li>Newest
-                  <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
-                </li>
-                <li>Oldest
-                  <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
-                </li>
-                <li>SmartGuide Only
-                  <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                </li>
-              </ul>
-            </iron-dropdown>
-          </div>
-          <div id="bulkaction" class="contacts__sort" on-tap="openBulkAction">
-            <span>Bulk Action</span>
-            <iron-icon icon="icons:expand-more"></iron-icon>
-            <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
-              <!--no-auto-focus no-cancel-on-outside-click>-->
-              <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sort" slot="dropdown-content">
-                <li>Bulk Action -</li>
-                <li>Download
-                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                </li>
-                <li>Print
-                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                </li>
-                <li>Share
-                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                </li>
-                <li>Delete
-                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                </li>
-              </ul>
-            </iron-dropdown>
-          </div>
-          <button class="btn btn--module btn--active" on-tap="chooseModule">
-            <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
-          </button>
-          <button class="btn btn--list" on-tap="chooseList">
-            <iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>
-          </button>
-        </form>
-      </div>
-
-      <!--module layout-->
-
-      <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
       <div id="module" class="contacts__wrap contacts__wrap--show">
         <div class="contacts__module">
           <div class="contacts__row">
@@ -1238,19 +1168,12 @@
 
           constructor() {
               super();
-              this.toggleIcon = 'icons:add-circle-outline';
               this.view = 'Module';
-              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
+              this.checkboxes = 0;
           }
 
           ready(e) {
               super.ready();
-
-              // let btnVersions = this.shadowRoot.querySelectorAll('.contacts__details');
-              // btnVersions.forEach(btn => btn.addEventListener('click', function (e) {
-              //     e.preventDefault();
-              //     this.querySelector('iron-dropdown').open();
-              // }));
 
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
@@ -1258,58 +1181,34 @@
                   this.querySelector('iron-dropdown').open();
               }));
           }
+          selectAllFalse(e) {
+              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
 
-          toggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-          }
-
-          toggleLvl2(e) {
-              e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
-          }
-
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          openBulkAction() {
-              this.$.bulkactiondropdown.open();
-          }
-
-          selectAll() {
-              this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
-
-              if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = true;
                   }
+              }
+          }
 
-              } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
+          selectAllTrue(e) {
+
+              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
+
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
               }
-
           }
 
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-
           chooseModule(e) {
-              e.preventDefault();
               this.view = "Module";
               this.$.list.classList.remove('contacts__wrap--show');
               this.$.module.classList.add('contacts__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1318,13 +1217,10 @@
           }
 
           chooseList(e) {
-              e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('contacts__wrap--show');
               this.$.list.classList.add('contacts__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
