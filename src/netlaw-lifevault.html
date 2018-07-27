@@ -698,6 +698,15 @@
 
           _routePageChanged(page) {
               this.page = page || 'your-vault';
+
+              if (this.page === 'your-vault') {
+                  this.toggleIcon = 'netlaw-icons:plus-icon';
+                  this.$.button1.setAttribute('aria-expanded', false);
+                  this.$.collapse.hide();
+                  this.$.collapselvl2.hide();
+                  this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+              }
+
               if (this.page === 'management') {
                   this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
               }
