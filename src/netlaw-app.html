@@ -83,7 +83,7 @@
         --iron-icon-height: 32px;
       }
 
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
+      app-header-layout[md] #drawertoggle {
         display: none;
       }
 
@@ -197,19 +197,24 @@
     <!--pattern="/:page"-->
     <!--data="{{subrouteData}}">-->
     <!--</app-route>-->
+
+    <iron-media-query query="min-width: 576px" query-matches="{{sm}}"></iron-media-query>
+    <iron-media-query query="min-width: 768px" query-matches="{{md}}"></iron-media-query>
+    <iron-media-query query="min-width: 992px" query-matches="{{lg}}"></iron-media-query>
+    <iron-media-query query="min-width: 1200px" query-matches="{{xl}}"></iron-media-query>
+    <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
+
     <template is="dom-if" if="[[!loggedIn]]">
       <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
     </template>
 
     <template is="dom-if" if="[[loggedIn]]">
-
-      <iron-media-query query="max-width: 767px" query-matches="{{smallScreen}}"></iron-media-query>
-
       <!-- Main content -->
-      <app-header-layout fullbleed="" narrow="{{narrow}}">
+      <app-header-layout fullbleed="" md$="{{md}}">
 
         <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
           <app-toolbar class="navbar">
+            <paper-icon-button id="drawertoggle" icon="menu" on-click="onDrawerShow"></paper-icon-button>
             <netlaw-logo></netlaw-logo>
             <netlaw-search></netlaw-search>
             <netlaw-notification></netlaw-notification>
@@ -218,9 +223,8 @@
           </app-toolbar>
         </app-header>
 
-        <app-drawer-layout responsive-width="600px">
-          <!-- Drawer content -->
-          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+        <app-drawer-layout id="drawerLayout" responsive-width="767px">
+          <app-drawer id="drawer" slot="drawer"  swipe-open="[[narrow]]">
 
             <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
                            role="navigation">
@@ -246,9 +250,6 @@
               </a>
             </iron-selector>
           </app-drawer>
-          <!--<app-toolbar>-->
-          <paper-icon-button icon="netlaw-icons:menu" drawer-toggle=""></paper-icon-button>
-          <!--</app-toolbar>-->
           <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
             <netlaw-profile name="profile"></netlaw-profile>
@@ -302,8 +303,6 @@
 
           onLoggedIn(e) {
               this.loggedIn = true;
-              this.attorneyName = localStorage.getItem("attorney-name");
-              //api.ticket = e.detail.ticket;
           }
 
           onSignOutClick(e) {
@@ -311,6 +310,19 @@
           }
 
           _routeDataObserver(value) { this.active = value.id || null; }
+
+          onDrawerShow(e) {
+              this.shadowRoot.querySelector('#drawer').toggle();
+          }
+
+          // var drawerLayout = document.getElementById('drawerLayout');
+          // toggle.addEventListener('click', function() {
+          //     if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
+          //         drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
+          //     } else {
+          //         drawerLayout.drawer.toggle();
+          //     }
+          // });
 
 
 

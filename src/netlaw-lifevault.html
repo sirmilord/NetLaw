@@ -306,19 +306,19 @@
         width: 100%;
       }
 
-      @media (min-width: 1800px) {
+      /*@media (min-width: 1800px) {*/
 
-        .lifevault__drawer {
+        .lifevault__drawer[xxl] {
           flex: 1 1 25%;
           max-width: 25%;
         }
-      }
+      /*}*/
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-
+    <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
     <main class="lifevault">
-      <section class="lifevault__drawer">
+      <section class="lifevault__drawer" xxl$="{{xxl}}">
         <ul class="lifevault__list">
           <li class="lifevault__list-item lifevault__list-item--top-border">
             <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="toggle">
