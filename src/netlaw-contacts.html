@@ -1083,95 +1083,6 @@
               return 'netlaw-contacts';
           }
 
-          // static get properties() {
-          //     return {
-          //         view: {
-          //             type: Boolean,
-          //             notify: true,
-          //             reflectToAttribute: true,
-          //             value: false
-          //         },
-          //         checkboxes: {
-          //             type: Array,
-          //             notify: true,
-          //             reflectToAttribute: true,
-          //         },
-          //         toggleIcon: {
-          //             type: String
-          //         },
-          //     };
-          // }
-          //
-          // constructor() {
-          //     super();
-          //     this.toggleIcon = 'icons:add-circle-outline';
-          //     this.view = 'Module';
-          // }
-          //
-          // toggle(e) {
-          //     e.preventDefault();
-          //     this.$.collapse.toggle();
-          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-          //     this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
-          // }
-          //
-          // toggleLvl2(e) {
-          //     e.preventDefault();
-          //     this.$.collapselvl2.toggle();
-          //     this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
-          // }
-          //
-          // openSortBy() {
-          //     this.$.sortbydropdown.open();
-          // }
-          //
-          // openBulkAction() {
-          //     this.$.bulkactiondropdown.open();
-          // }
-          //
-          // selectAll() {
-          //     // let checkboxes;
-          //     this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
-          //
-          //     if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
-          //
-          //         for (let i = 0; i < this.checkboxes.length; i++) {
-          //             this.checkboxes[i].checked = true;
-          //         }
-          //
-          //     } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
-          //
-          //         for (let i = 0; i < this.checkboxes.length; i++) {
-          //             this.checkboxes[i].checked = false;
-          //         }
-          //     }
-          //
-          // }
-          //
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-          //
-          // chooseModule(e) {
-          //     e.preventDefault();
-          //     this.view = "Module";
-          //     this.$.selectall.checked = false;
-          //
-          //     for (let i = 0; i < this.checkboxes.length; i++) {
-          //         this.checkboxes[i].checked = false;
-          //     }
-          // }
-          //
-          // chooseList(e) {
-          //     e.preventDefault();
-          //     this.view = "List";
-          //     this.$.selectall.checked = false;
-          //
-          //     for (let i = 0; i < this.checkboxes.length; i++) {
-          //         this.checkboxes[i].checked = false;
-          //     }
-          // }
-
           static get properties() {
               return {
                   view: {
@@ -1248,6 +1159,7 @@
           }
 
           _routePageChanged(page) {
+
               this.page = page || 'create';
 
               if (this.page === 'create') {
@@ -1281,9 +1193,9 @@
           //         true);
           // }
 
-          _showPage404() {
-              this.page = 'view-404';
-          }
+          // _showPage404() {
+          //     this.page = 'view-404';
+          // }
       }
 
       //Now, register your new custom element so the browser can use it
