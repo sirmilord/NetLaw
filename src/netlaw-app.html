@@ -116,10 +116,7 @@
         display: flex;
       }
 
-      .drawer-nav--mobile a {
-        flex: 1 1 20%;
-        max-width: 20%;
-      }
+
 
       .drawer-nav a:after {
         content: '';
@@ -141,6 +138,13 @@
         padding: 15px 0;
         text-decoration: none;
         display: block;
+      }
+
+      .drawer-nav--mobile a {
+        flex: 1 1 25%;
+        max-width: 25%;
+        font-size: 10px;
+        padding: 5px 0;
       }
 
       .drawer-nav a:hover {
@@ -169,8 +173,7 @@
         display: none;
       }
 
-
-      #drawer > iron-selector > a > iron-icon {
+      .drawer-nav a iron-icon {
         width: 32px;
         height: 32px;
         margin: 10px auto;
@@ -182,16 +185,10 @@
         vertical-align: middle;
       }
 
-      .drawer-nav a iron-icon {
-        width: 32px;
-        height: 32px;
-        margin: 10px auto;
-        clear: both;
-        display: block;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        vertical-align: middle;
+      .drawer-nav--mobile a iron-icon {
+        width: 20px;
+        height: 20px;
+        margin: 5px auto;
       }
 
       .drawer-nav a iron-icon {
@@ -354,10 +351,6 @@
               <a name="find-attorney" href="[[rootPath]]find-attorney">
                 <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon>
                 Find Attorney
-              </a>
-              <a name="add-module" href="[[rootPath]]add-module">
-                <iron-icon icon="netlaw-icons:add-module" slot="item-icon"></iron-icon>
-                Add Module
               </a>
             </iron-selector>
           </netlaw-mobile-drawer>
