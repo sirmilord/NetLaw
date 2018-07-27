@@ -910,85 +910,13 @@
 
       <section class="find-attorney__content">
 
-        <div class="find-attorney__content-header">
-          <h2 class="find-attorney__content-title">Search Attorney</h2>
-          <div class="find-attorney__content-update">Updated 1d ago</div>
-        </div>
-        <div class="find-attorney__content-dashboard">
-          <form action="javascript:;" method="post">
-            <label class="find-attorney__checkbox-container">Select All
-              <input id="selectall" type="checkbox">
-              <span class="find-attorney__content-checkmark" on-tap="selectAll"></span>
-              <!--<paper-checkbox></paper-checkbox>-->
-            </label>
-            <label class="find-attorney__search">
-              <input type="search" id="search" name="search" placeholder="Search...">
-              <button class="btn btn--search">
-                <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
-              </button>
-            </label>
-            <div class="find-attorney__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
-              <div class="find-attorney__sort-arrows">
-                <iron-icon icon="icons:arrow-upward"></iron-icon>
-                <iron-icon icon="icons:arrow-downward"></iron-icon>
-              </div>
-              <span>Sort By</span>
-              <iron-icon icon="icons:expand-more"></iron-icon>
-              <iron-dropdown id="sortbydropdown" vertical-offset="0">
-                <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sort"
-                    slot="dropdown-content">
-                  <li>Sort By - - -</li>
-                  <li>Title
-                    <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
-                  </li>
-                  <li>Newest
-                    <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
-                  </li>
-                  <li>Oldest
-                    <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
-                  </li>
-                  <li>SmartGuide Only
-                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </div>
-            <div id="bulkaction" class="find-attorney__sort" on-tap="openBulkAction">
-              <span>Bulk Action</span>
-              <iron-icon icon="icons:expand-more"></iron-icon>
-              <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
-                <!--no-auto-focus no-cancel-on-outside-click>-->
-                <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sort"
-                    slot="dropdown-content">
-                  <li>Bulk Action -</li>
-                  <li>Download
-                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                  </li>
-                  <li>Print
-                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                  </li>
-                  <li>Share
-                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                  </li>
-                  <li>Delete
-                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </div>
-            <button class="btn btn--module btn--active" on-tap="chooseModule">
-              <iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>
-            </button>
-            <button class="btn btn--list" on-tap="chooseList">
-              <iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>
-            </button>
-          </form>
-        </div>
-
-        <!--module layout-->
-
-        <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
+        <netlaw-topbar>
+          <h2 slot="title">Search Attorney</h2>
+          <div slot="update">Updated 1d ago</div>
+        </netlaw-topbar>
+        <netlaw-dashboard>
+          <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
+        </netlaw-dashboard>
 
         <div id="module" class="find-attorney__wrap find-attorney__wrap--show">
           <div class="find-attorney__module">
@@ -1370,13 +1298,6 @@
           </div>
         </div>
 
-        <!--</template>-->
-
-
-        <!--list layout-->
-
-        <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
-
         <div id="list" class="find-attorney__wrap">
           <div class="find-attorney__module">
             <div class="find-attorney__module-list-item">
@@ -1700,10 +1621,6 @@
             <iron-icon icon="icons:account-circle"></iron-icon>
           </a>
         </div>
-        <!--</div>-->
-
-        <!--</template>-->
-
 
         <a id="addfolder" class="find-attorney__add-folder" href="javascript:;">
           <iron-icon icon="icons:create-new-folder"></iron-icon>
@@ -1827,46 +1744,34 @@
               }));
           }
 
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          openBulkAction() {
-              this.$.bulkactiondropdown.open();
-          }
-
-          selectAll() {
+          selectAllFalse(e) {
               this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--list input');
 
-
-              if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = true;
                   }
+              }
+          }
 
-              } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
+          selectAllTrue(e) {
+
+              this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--list input');
+
+              if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {
                       this.checkboxes[i].checked = false;
                   }
               }
-
           }
 
-
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-
           chooseModule(e) {
-              e.preventDefault();
               this.view = "Module";
               this.$.list.classList.remove('find-attorney__wrap--show');
               this.$.module.classList.add('find-attorney__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1875,13 +1780,10 @@
           }
 
           chooseList(e) {
-              e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('find-attorney__wrap--show');
               this.$.list.classList.add('find-attorney__wrap--show');
-              this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.find-attorney__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
