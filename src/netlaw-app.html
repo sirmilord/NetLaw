@@ -198,34 +198,119 @@
     <!--data="{{subrouteData}}">-->
     <!--</app-route>-->
 
-    <iron-media-query query="min-width: 576px" query-matches="{{sm}}"></iron-media-query>
+    <iron-media-query query="max-width: 991px" query-matches="{{mobile}}"></iron-media-query>
+
     <iron-media-query query="min-width: 768px" query-matches="{{md}}"></iron-media-query>
     <iron-media-query query="min-width: 992px" query-matches="{{lg}}"></iron-media-query>
     <iron-media-query query="min-width: 1200px" query-matches="{{xl}}"></iron-media-query>
     <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
 
-    <template is="dom-if" if="[[!loggedIn]]">
-      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
+    <template is="dom-if" if="[[lg]]">
+
+      <template is="dom-if" if="[[!loggedIn]]">
+        <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
+      </template>
+
+      <template is="dom-if" if="[[loggedIn]]">
+        <!-- Main content -->
+        <app-header-layout fullbleed="" md$="{{md}}">
+
+          <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+            <app-toolbar class="navbar">
+              <paper-icon-button id="drawertoggle" icon="menu" on-click="onDrawerShow"></paper-icon-button>
+              <netlaw-logo></netlaw-logo>
+              <netlaw-search></netlaw-search>
+              <netlaw-notification></netlaw-notification>
+              <netlaw-user></netlaw-user>
+              <netlaw-user-menu></netlaw-user-menu>
+            </app-toolbar>
+          </app-header>
+
+          <app-drawer-layout id="drawerLayout" responsive-width="767px">
+            <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+
+              <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
+                             role="navigation">
+                <a name="smartguide" href="[[rootPath]]smartguide/setup">
+                  <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
+                  SmartGuide
+                </a>
+                <a name="lifevault" href="[[rootPath]]lifevault/your-vault">
+                  <iron-icon icon="netlaw-icons:life-vault" slot="item-icon"></iron-icon>
+                  LifeVault
+                </a>
+                <a name="contacts" href="[[rootPath]]contacts/create">
+                  <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon>
+                  Contacts
+                </a>
+                <a name="find-attorney" href="[[rootPath]]find-attorney">
+                  <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon>
+                  Find Attorney
+                </a>
+                <a name="add-module" href="[[rootPath]]add-module">
+                  <iron-icon icon="netlaw-icons:add-module" slot="item-icon"></iron-icon>
+                  Add Module
+                </a>
+              </iron-selector>
+            </app-drawer>
+            <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+              <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
+              <netlaw-profile name="profile"></netlaw-profile>
+              <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
+              <netlaw-account-security name="account-security"></netlaw-account-security>
+              <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
+              <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+              <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
+              <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
+              <netlaw-contact-details name="contact-details"></netlaw-contact-details>
+              <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
+              <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
+              <netlaw-add-module name="add-module"></netlaw-add-module>
+              <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+              <view-404 name="view-404"></view-404>
+            </iron-pages>
+          </app-drawer-layout>
+        </app-header-layout>
+      </template>
+
     </template>
 
-    <template is="dom-if" if="[[loggedIn]]">
-      <!-- Main content -->
-      <app-header-layout fullbleed="" md$="{{md}}">
+    <template is="dom-if" if="[[mobile]]">
 
-        <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
-          <app-toolbar class="navbar">
-            <paper-icon-button id="drawertoggle" icon="menu" on-click="onDrawerShow"></paper-icon-button>
-            <netlaw-logo></netlaw-logo>
-            <netlaw-search></netlaw-search>
-            <netlaw-notification></netlaw-notification>
-            <netlaw-user></netlaw-user>
-            <netlaw-user-menu></netlaw-user-menu>
-          </app-toolbar>
-        </app-header>
+      <template is="dom-if" if="[[!loggedIn]]">
+        <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
+      </template>
 
-        <app-drawer-layout id="drawerLayout" responsive-width="767px">
-          <app-drawer id="drawer" slot="drawer"  swipe-open="[[narrow]]">
+      <template is="dom-if" if="[[loggedIn]]">
+        <!-- Main content -->
+        <app-header-layout fullbleed="" md$="{{md}}">
 
+          <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+            <app-toolbar class="navbar">
+              <paper-icon-button id="" icon="menu" on-click="onNavigateMobileNav"></paper-icon-button>
+              <netlaw-logo></netlaw-logo>
+              <paper-icon-button id="" icon="netlaw-icons:notifications" on-click="onNavigateNotification"></paper-icon-button>
+            </app-toolbar>
+          </app-header>
+
+          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+            <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
+            <netlaw-profile name="profile"></netlaw-profile>
+            <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
+            <netlaw-account-security name="account-security"></netlaw-account-security>
+            <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
+            <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+            <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
+            <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
+            <netlaw-contact-details name="contact-details"></netlaw-contact-details>
+            <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
+            <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
+            <netlaw-add-module name="add-module"></netlaw-add-module>
+            <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+            <view-404 name="view-404"></view-404>
+          </iron-pages>
+
+          <netlaw-mobile-drawer>
             <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
                            role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide/setup">
@@ -249,27 +334,13 @@
                 Add Module
               </a>
             </iron-selector>
-          </app-drawer>
-          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
-            <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
-            <netlaw-profile name="profile"></netlaw-profile>
-            <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-            <netlaw-account-security name="account-security"></netlaw-account-security>
-            <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
-            <netlaw-account-plans name="account-plans"></netlaw-account-plans>
-            <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
-            <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
-            <netlaw-contact-details name="contact-details"></netlaw-contact-details>
-            <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
-            <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
-            <netlaw-add-module name="add-module"></netlaw-add-module>
-            <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
-            <view-404 name="view-404"></view-404>
-          </iron-pages>
-        </app-drawer-layout>
-      </app-header-layout>
-    </template>
+          </netlaw-mobile-drawer>
 
+
+        </app-header-layout>
+      </template>
+
+    </template>
   </template>
 
   <script>
@@ -278,15 +349,17 @@
       Polymer.setPassiveTouchGestures(true);
 
       class NetlawApp extends Polymer.Element {
-          static get is() { return 'netlaw-app'; }
+          static get is() {
+              return 'netlaw-app';
+          }
 
           static get properties() {
               return {
-                  loggedIn: { type: Boolean, value: () => false/* location.pathname !== "/"*/ },
+                  loggedIn: {type: Boolean, value: () => false/* location.pathname !== "/"*/},
 
                   rootPath: String,
-                  route: { type: Object },
-                  routeData: { type: Object, observer: '_routeDataObserver' },
+                  route: {type: Object},
+                  routeData: {type: Object, observer: '_routeDataObserver'},
                   subroute: Object,
                   active: String,
               };
@@ -309,21 +382,20 @@
               this.loggedIn = false;
           }
 
-          _routeDataObserver(value) { this.active = value.id || null; }
+          _routeDataObserver(value) {
+              this.active = value.id || null;
+          }
 
           onDrawerShow(e) {
               this.shadowRoot.querySelector('#drawer').toggle();
           }
 
-          // var drawerLayout = document.getElementById('drawerLayout');
-          // toggle.addEventListener('click', function() {
-          //     if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
-          //         drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
-          //     } else {
-          //         drawerLayout.drawer.toggle();
-          //     }
-          // });
-
+          onNavigateMobileNav(e) {
+              navigate('account');
+          }
+          onNavigateNotification(e) {
+              navigate('contacts');
+          }
 
 
       }
