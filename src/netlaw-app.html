@@ -29,6 +29,7 @@
 <link rel="import" href="netlaw-dashboard.html">
 <link rel="import" href="netlaw-dashboard-form.html">
 <link rel="import" href="netlaw-topbar.html">
+<link rel="import" href="netlaw-mobile-drawer.html">
 
 <link rel="import" href="perfect-scrollbar-styles.html">
 
@@ -109,6 +110,17 @@
         background-color: #01AA50;
       }
 
+      .drawer-nav--mobile {
+        margin-top: 0;
+        padding-top: 0;
+        display: flex;
+      }
+
+      .drawer-nav--mobile a {
+        flex: 1 1 20%;
+        max-width: 20%;
+      }
+
       .drawer-nav a:after {
         content: '';
         display: block;
@@ -153,6 +165,11 @@
         border-bottom: 12.5px solid transparent;
       }
 
+      .drawer-nav--mobile a.iron-selected:before {
+        display: none;
+      }
+
+
       #drawer > iron-selector > a > iron-icon {
         width: 32px;
         height: 32px;
@@ -184,6 +201,15 @@
       .drawer-nav a.iron-selected iron-icon {
         opacity: 1;
       }
+
+      .navbar-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 50px;
+      }
+
+
 
     </style>
 
@@ -286,9 +312,9 @@
         <app-header-layout fullbleed="" md$="{{md}}">
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
-            <app-toolbar class="navbar">
+            <app-toolbar class="navbar-mobile">
               <paper-icon-button id="" icon="menu" on-click="onNavigateMobileNav"></paper-icon-button>
-              <netlaw-logo></netlaw-logo>
+              <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="netlaw-icons:notifications" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
           </app-header>
@@ -311,7 +337,7 @@
           </iron-pages>
 
           <netlaw-mobile-drawer>
-            <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
+            <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav--mobile"
                            role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide/setup">
                 <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
