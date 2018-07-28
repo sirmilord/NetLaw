@@ -211,9 +211,9 @@
     </style>
 
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-    <!--<app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>
+    <!--<app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
 
     <!--<app-route-->
     <!--route="{{subroute}}"-->
@@ -252,7 +252,8 @@
           <app-drawer-layout id="drawerLayout" responsive-width="767px">
             <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
 
-              <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"
+              <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"-->
+              <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                              role="navigation">
                 <a name="smartguide" href="[[rootPath]]smartguide/setup">
                   <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
@@ -276,7 +277,8 @@
                 </a>
               </iron-selector>
             </app-drawer>
-            <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+            <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
+            <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
               <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
@@ -316,7 +318,8 @@
             </app-toolbar>
           </app-header>
 
-          <iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+          <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
@@ -334,7 +337,8 @@
           </iron-pages>
 
           <netlaw-mobile-drawer>
-            <iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav--mobile"
+            <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav&#45;&#45;mobile"-->
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav--mobile"
                            role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide/setup">
                 <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
@@ -374,13 +378,25 @@
 
           static get properties() {
               return {
-                  loggedIn: {type: Boolean, value: () => false/* location.pathname !== "/"*/},
+                  // loggedIn: {type: Boolean, value: () => false/* location.pathname !== "/"*/},
+                  //
+                  // rootPath: String,
+                  // route: {type: Object},
+                  // routeData: {type: Object, observer: '_routeDataObserver'},
+                  // subroute: Object,
+                  // active: String,
 
+                  loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   rootPath: String,
                   route: {type: Object},
                   routeData: {type: Object, observer: '_routeDataObserver'},
                   subroute: Object,
                   active: String,
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                      observer: '_pageChanged',
+                  },
               };
           }
 
@@ -395,14 +411,59 @@
 
           onLoggedIn(e) {
               this.loggedIn = true;
+              // Show initial screen on login
+              this.page = 'initial-screen';
           }
 
           onSignOutClick(e) {
               this.loggedIn = false;
+              // Show login screen on logout
+              this.page = 'login';
           }
 
           _routeDataObserver(value) {
               this.active = value.id || null;
+          }
+
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
+
+          _routePageChanged(page) {
+              // If no page was found in the route data, page will be an empty string.
+              // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
+
+              // Check if user is logged in
+              if (this.loggedIn === true) this.page = page || 'initial-screen';
+
+              else this.page = page || 'login';
+
+              // Close a non-persistent drawer when the page & route are changed.
+              // if (!this.$.drawer.persistent) {
+              //     this.$.drawer.close();
+              // }
+
+              // if (this.page === 'account') {
+              //
+              //     this.dispatchEvent(new CustomEvent('drawer', ));
+              //     console.log('ddddddd');
+              // }
+          }
+
+          _pageChanged(page) {
+              // Load page import on demand. Show 404 page if fails
+              const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
+              Polymer.importHref(
+                  resolvedPageUrl,
+                  null,
+                  this._showPage404.bind(this),
+                  true);
+          }
+
+          _showPage404() {
+              this.page = 'view-404';
           }
 
           onDrawerShow(e) {
