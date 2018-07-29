@@ -30,6 +30,7 @@
 <link rel="import" href="netlaw-dashboard-form.html">
 <link rel="import" href="netlaw-topbar.html">
 <link rel="import" href="netlaw-mobile-drawer.html">
+<link rel="import" href="netlaw-mobile-notification.html">
 
 <link rel="import" href="perfect-scrollbar-styles.html">
 
@@ -204,6 +205,9 @@
         align-items: center;
         justify-content: space-between;
         min-height: 50px;
+        padding-left: 0;
+        padding-right: 0;
+        --iron-icon-fill-color: #b2b2b2;
       }
 
 
@@ -315,7 +319,7 @@
             <app-toolbar class="navbar-mobile">
               <paper-icon-button id="" icon="menu" on-click="onNavigateMobileNav"></paper-icon-button>
               <netlaw-logo class="mobile"></netlaw-logo>
-              <paper-icon-button id="" icon="netlaw-icons:notifications" on-click="onNavigateNotification"></paper-icon-button>
+              <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
           </app-header>
 
@@ -334,6 +338,7 @@
             <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
             <netlaw-add-module name="add-module"></netlaw-add-module>
             <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+            <netlaw-mobile-notification name="mobile-notification"></netlaw-mobile-notification>
             <view-404 name="view-404"></view-404>
           </iron-pages>
 
@@ -398,12 +403,16 @@
                       reflectToAttribute: true,
                       observer: '_pageChanged',
                   },
+                  toggleIcon: {
+                      type: String
+                  },
               };
           }
 
 
           constructor() {
               super();
+              // this.toggleIcon = 'netlaw-icons:notifications';
               window.navigate = path => {
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
@@ -433,24 +442,13 @@
           }
 
           _routePageChanged(page) {
-              // If no page was found in the route data, page will be an empty string.
-              // Default to 'view1' in that case. todo:  The device/security setup screens would be shown as a first-time login
 
-              // Check if user is logged in
               if (this.loggedIn === true) this.page = page || 'initial-screen';
 
               else this.page = page || 'login';
 
-              // Close a non-persistent drawer when the page & route are changed.
-              // if (!this.$.drawer.persistent) {
-              //     this.$.drawer.close();
-              // }
+              this.page === 'mobile-notification' ? this.toggleIcon = 'netlaw-icons:notifications-open' : this.toggleIcon = 'netlaw-icons:notifications';
 
-              // if (this.page === 'account') {
-              //
-              //     this.dispatchEvent(new CustomEvent('drawer', ));
-              //     console.log('ddddddd');
-              // }
           }
 
           _pageChanged(page) {
@@ -475,7 +473,7 @@
               navigate('account');
           }
           onNavigateNotification(e) {
-              navigate('contacts');
+              navigate('mobile-notification');
           }
 
 
