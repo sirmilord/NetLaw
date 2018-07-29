@@ -202,7 +202,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 50px;
+        height: 50px;
         /*padding-left: 0;*/
         /*padding-right: 0;*/
         --iron-icon-fill-color: #b2b2b2;
@@ -211,8 +211,78 @@
         box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
       }
 
+      .navbar-mobile--drawer {
+        justify-content: center;
+        position: relative;
+        --iron-icon-fill-color: #000;
+      }
+
+      .navbar-mobile__toggle {
+        position: absolute;
+        top: 0;
+        right: -40px;
+        background-color: #fff;
+        height: 50px;
+        width: 40px;
+
+      }
+
       .mobile-layout {
-        --app-drawer-width: 90%;
+        --app-drawer-width: calc(100% - 40px);
+      }
+
+      .mobile-drawer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: "Lato", sans-serif;
+      }
+
+      .mobile-drawer__img {
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .mobile-drawer__message {
+        color: #4A4A4A;
+        font-weight: 900;
+        font-size: 16px;
+        text-align: center;
+        margin-top: 25px;
+      }
+      
+      .mobile-drawer__name {
+        font-size: 16px;
+        font-weight: 400;
+        color: #0178BD;
+        text-decoration: none;
+      }
+
+      .mobile-drawer__list {
+        width: 200px;
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        border-top: 1px solid #979797;
+      }
+
+      .mobile-drawer__link {
+        border-bottom: 1px dashed #CAC9CA;
+        font-size: 16px;
+        color: #4A4A4A;
+        text-decoration: none;
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+
+      .mobile-drawer__link--out {
+        border: 0;
+        color: #CAC9CA;
       }
 
 
@@ -318,32 +388,36 @@
       <template is="dom-if" if="[[loggedIn]]">
         <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}">
 
-          <app-drawer id="mobile-drawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]">
+          <app-drawer id="mobiledrawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]">
+              <app-toolbar class="navbar-mobile navbar-mobile--drawer">
+                <netlaw-logo class="mobile"></netlaw-logo>
+                <paper-icon-button class="navbar-mobile__toggle" icon="menu" drawer-toggle></paper-icon-button>
+              </app-toolbar>
 
             <figure class="mobile-drawer__img">
               <img src="../images/contact.jpg" height="103" width="98" alt="contact">
             </figure>
 
-            <div class="mobile-drawer__message">Welcome Back,
-              <a class="mobile-drawer__name" href="javascript:;">John Doe</a>
+            <div class="mobile-drawer__message">Welcome Back,<br>
+              <a class="mobile-drawer__name" href="javascript:;" drawer-toggle>John Doe</a>
             </div>
 
             <iron-selector selected="[[page]]" attr-for-selected="name" class="mobile-drawer__list"
                            role="navigation">
-              <a class="mobile-drawer__link" name="add-module" href="[[rootPath]]add-module">
+              <a class="mobile-drawer__link" name="add-module" href="[[rootPath]]add-module" drawer-toggle>
                 Module Market
               </a>
-              <a class="mobile-drawer__link" name="profile" href="[[rootPath]]profile">
+              <a class="mobile-drawer__link" name="profile" href="[[rootPath]]profile" drawer-toggle>
                 Profile
               </a>
-              <a class="mobile-drawer__link" name="account" href="[[rootPath]]account/info">
+              <a class="mobile-drawer__link" name="account" href="[[rootPath]]account/info" drawer-toggle>
                 Account Settings
               </a>
-              <a class="mobile-drawer__link" name="smartguide" href="[[rootPath]]smartguide/setup">
+              <a class="mobile-drawer__link" name="smartguide" href="[[rootPath]]smartguide/setup" drawer-toggle>
                 Edit SmartGuide Info
               </a>
-              <a class="mobile-drawer__link mobile-drawer__link--out" name="initial-screen"
-                 href="[[rootPath]]initial-screen">
+              <a class="mobile-drawer__link mobile-drawer__link--out" name="logout"
+                 href="[[rootPath]]" drawer-toggle on-click="onSignOutClick">
                 Log out
               </a>
             </iron-selector>
@@ -466,6 +540,9 @@
               this.loggedIn = false;
               // Show login screen on logout
               this.page = 'login';
+              navigate('login');
+              // window.location.href='/';
+              window.location.reload(true);
           }
 
           _routeDataObserver(value) {
@@ -506,14 +583,18 @@
               this.shadowRoot.querySelector('#drawer').toggle();
           }
 
-          onNavigateMobileNav(e) {
-              navigate('account');
-          }
 
           onNavigateNotification(e) {
-              navigate('mobile-notification');
-          }
 
+              // if (this.page !== 'mobile-notification') {
+              //     var prevPage = this.page; console.log(prevPage);
+              //
+              // }
+              navigate('mobile-notification');
+              if (this.page === 'mobile-notification') {
+                  this.page = prevPage;
+              }
+          }
 
       }
 
