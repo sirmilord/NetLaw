@@ -117,8 +117,6 @@
         display: flex;
       }
 
-
-
       .drawer-nav a:after {
         content: '';
         display: block;
@@ -205,14 +203,17 @@
         align-items: center;
         justify-content: space-between;
         min-height: 50px;
-        padding-left: 0;
-        padding-right: 0;
+        /*padding-left: 0;*/
+        /*padding-right: 0;*/
         --iron-icon-fill-color: #b2b2b2;
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
-        box-shadow: 0 0.5px 0 0 rgba(0,0,0,0.25);
+        box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
       }
 
+      .mobile-layout {
+        --app-drawer-width: 90%;
+      }
 
 
     </style>
@@ -315,39 +316,73 @@
       </template>
 
       <template is="dom-if" if="[[loggedIn]]">
-        <!-- Main content -->
-        <app-header-layout fullbleed="" md$="{{md}}">
+        <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}">
 
-          <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
-            <app-toolbar class="navbar-mobile">
-              <paper-icon-button id="" icon="menu" on-click="onNavigateMobileNav"></paper-icon-button>
-              <netlaw-logo class="mobile"></netlaw-logo>
-              <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
-            </app-toolbar>
-          </app-header>
+          <app-drawer id="mobile-drawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]">
 
-          <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
-            <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
-            <netlaw-profile name="profile"></netlaw-profile>
-            <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-            <netlaw-account-security name="account-security"></netlaw-account-security>
-            <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
-            <netlaw-account-plans name="account-plans"></netlaw-account-plans>
-            <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
-            <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
-            <netlaw-contact-details name="contact-details"></netlaw-contact-details>
-            <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
-            <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
-            <netlaw-add-module name="add-module"></netlaw-add-module>
-            <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
-            <netlaw-mobile-notification name="mobile-notification"></netlaw-mobile-notification>
-            <view-404 name="view-404"></view-404>
-          </iron-pages>
+            <figure class="mobile-drawer__img">
+              <img src="../images/contact.jpg" height="103" width="98" alt="contact">
+            </figure>
+
+            <div class="mobile-drawer__message">Welcome Back,
+              <a class="mobile-drawer__name" href="javascript:;">John Doe</a>
+            </div>
+
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="mobile-drawer__list"
+                           role="navigation">
+              <a class="mobile-drawer__link" name="add-module" href="[[rootPath]]add-module">
+                Module Market
+              </a>
+              <a class="mobile-drawer__link" name="profile" href="[[rootPath]]profile">
+                Profile
+              </a>
+              <a class="mobile-drawer__link" name="account" href="[[rootPath]]account/info">
+                Account Settings
+              </a>
+              <a class="mobile-drawer__link" name="smartguide" href="[[rootPath]]smartguide/setup">
+                Edit SmartGuide Info
+              </a>
+              <a class="mobile-drawer__link mobile-drawer__link--out" name="initial-screen"
+                 href="[[rootPath]]initial-screen">
+                Log out
+              </a>
+            </iron-selector>
+          </app-drawer>
+
+          <app-header-layout has-scrolling-region>
+
+            <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+              <app-toolbar class="navbar-mobile">
+                <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                <netlaw-logo class="mobile"></netlaw-logo>
+                <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
+              </app-toolbar>
+            </app-header>
+            <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
+            <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+              <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
+              <netlaw-profile name="profile"></netlaw-profile>
+              <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
+              <netlaw-account-security name="account-security"></netlaw-account-security>
+              <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
+              <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+              <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
+              <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
+              <netlaw-contact-details name="contact-details"></netlaw-contact-details>
+              <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
+              <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
+              <netlaw-add-module name="add-module"></netlaw-add-module>
+              <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+              <netlaw-mobile-notification name="mobile-notification"></netlaw-mobile-notification>
+              <view-404 name="view-404"></view-404>
+            </iron-pages>
+
+          </app-header-layout>
 
           <netlaw-mobile-drawer>
             <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav&#45;&#45;mobile"-->
-            <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav--mobile"
+            <iron-selector selected="[[page]]" attr-for-selected="name"
+                           class="drawer-nav drawer-list drawer-nav--mobile"
                            role="navigation">
               <a name="smartguide" href="[[rootPath]]smartguide/setup">
                 <iron-icon icon="netlaw-icons:smart-guide" slot="item-icon"></iron-icon>
@@ -368,8 +403,7 @@
             </iron-selector>
           </netlaw-mobile-drawer>
 
-
-        </app-header-layout>
+        </app-drawer-layout>
       </template>
 
     </template>
@@ -475,6 +509,7 @@
           onNavigateMobileNav(e) {
               navigate('account');
           }
+
           onNavigateNotification(e) {
               navigate('mobile-notification');
           }
