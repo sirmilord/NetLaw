@@ -387,8 +387,8 @@
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
 
-            <iron-dropdown id="dropdownmn" vertical-offset="50">
-              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"></netlaw-mobile-notification>
+            <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
+              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content" on-close-mobile-dropdown="onCloseMobileDropdown"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
           <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
@@ -614,7 +614,11 @@
 
           onNavigateNotification(e) {
               this.visible = !this.visible;
-              this.visible ? this.$.dropdownmn.open() : this.$.dropdownmn.close();
+              this.visible ? this.$.dropdownmobilenotification.open() : this.$.dropdownmobilenotification.close();
+          }
+
+          onCloseMobileDropdown(e){
+              this.$.dropdownmobilenotification.close();
           }
       }
 
