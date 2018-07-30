@@ -3,10 +3,6 @@
   "shell": "src/netlaw-app.html",
   "fragments": [
     "src/netlaw-smartguide.html",
-    "src/netlaw-smartguide-setup.html",
-    "src/netlaw-smartguide-setup-step1.html",
-    "src/netlaw-smartguide-setup-step2.html",
-    "src/netlaw-smartguide-templates.html",
     "src/netlaw-lifevault.html",
     "src/netlaw-lifevault-doc.html",
     "src/netlaw-lifevault-management.html",

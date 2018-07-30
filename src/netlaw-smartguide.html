@@ -1,5 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
+<link rel="import" href="netlaw-smartguide-setup.html">
+<link rel="import" href="netlaw-smartguide-setup-step1.html">
+<link rel="import" href="netlaw-smartguide-setup-step2.html">
+<link rel="import" href="netlaw-smartguide-templates.html">
 
 <dom-module id="netlaw-smartguide">
   <template>
@@ -774,7 +777,7 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
-                      observer: '_pageChanged',
+                      // observer: '_pageChanged',
                   },
               };
           }
