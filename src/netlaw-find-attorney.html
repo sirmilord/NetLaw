@@ -1638,11 +1638,17 @@
 
           static get properties() {
               return {
-                  view: {
+/*                  view: {
                       type: String,
                       // notify: true,
                       // reflectToAttribute: true,
                       // value: false
+                  },*/
+                  view: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
                   },
                   checkboxes: {
                       type: Array,
