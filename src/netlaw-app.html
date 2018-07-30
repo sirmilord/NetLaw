@@ -285,11 +285,24 @@
         color: #CAC9CA;
       }
 
-      .mobile-layout[hidden] {
+      .mobile-layout[hidden],
+      .desktop-layout[hidden] {
         display: none;
       }
 
-      .desktop-layout[hidden] {
+      .mobile-layout[login] {
+        display: none;
+      }
+
+      .desktop-layout[login],
+      #drawerLayout[login],
+      #drawer[login] {
+        visibility: hidden;
+        position: relative;
+        z-index: -1;
+      }
+
+      netlaw-login[nologin] {
         display: none;
       }
 
@@ -315,16 +328,15 @@
     <iron-media-query query="min-width: 1200px" query-matches="{{xl}}"></iron-media-query>
     <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
 
-    <!--<template is="dom-if" if="[[lg]]">-->
 
-    <template is="dom-if" if="[[!loggedIn]]">
-      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
-    </template>
+    <!--<template is="dom-if" if="[[!loggedIn]]">-->
+      <netlaw-login on-logged-in="onLoggedIn" nologin$="[[loggedIn]]"></netlaw-login>
+    <!--</template>-->
 
-    <template is="dom-if" if="[[loggedIn]]">
+    <!--<template is="dom-if" if="[[loggedIn]]">-->
 
       <!--Main content mobile-->
-      <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}">
+      <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}" login$="[[!loggedIn]]">
 
         <app-drawer id="mobiledrawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]" hidden$="{{!mobile}}">
           <app-toolbar class="navbar-mobile navbar-mobile--drawer">
@@ -369,6 +381,10 @@
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
+
+            <iron-dropdown>
+              <netlaw-mobile-notification id="mobilenotification"></netlaw-mobile-notification>
+            </iron-dropdown>
           </app-header>
           <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
@@ -418,7 +434,8 @@
       </app-drawer-layout>
 
       <!-- Main content destop-->
-      <app-header-layout class="desktop-layout" fullbleed="" hidden$="{{mobile}}">
+
+      <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}" hidden$="{{mobile}}" login$="[[!loggedIn]]">
 
         <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
           <app-toolbar class="navbar">
@@ -431,8 +448,8 @@
           </app-toolbar>
         </app-header>
 
-        <app-drawer-layout id="drawerLayout" responsive-width="767px">
-          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+        <app-drawer-layout id="drawerLayout" login$="[[!loggedIn]]">
+          <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]" login$="[[!loggedIn]]">
 
             <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"-->
             <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
@@ -478,7 +495,7 @@
           </iron-pages>
         </app-drawer-layout>
       </app-header-layout>
-    </template>
+    <!--</template>-->
 
   </template>
 
