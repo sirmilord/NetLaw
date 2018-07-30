@@ -302,6 +302,11 @@
         z-index: -1;
       }
 
+      .desktop-layout app-header {
+        left: 0 !important;
+        right: 0 !important;
+      }
+
       netlaw-login[nologin] {
         display: none;
       }
@@ -382,8 +387,8 @@
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
 
-            <iron-dropdown>
-              <netlaw-mobile-notification id="mobilenotification"></netlaw-mobile-notification>
+            <iron-dropdown id="dropdownmn" vertical-offset="50">
+              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
           <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
@@ -437,7 +442,7 @@
 
       <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}" hidden$="{{mobile}}" login$="[[!loggedIn]]">
 
-        <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+        <app-header slot="header"  condenses="" reveals="" effects="waterfall" fixed>
           <app-toolbar class="navbar">
             <!--<paper-icon-button id="drawertoggle" icon="menu" on-click="onDrawerShow"></paper-icon-button>-->
             <netlaw-logo></netlaw-logo>
@@ -534,6 +539,12 @@
                   toggleIcon: {
                       type: String
                   },
+                  visible: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
               };
           }
 
@@ -602,7 +613,8 @@
 
 
           onNavigateNotification(e) {
-              navigate('mobile-notification');
+              this.visible = !this.visible;
+              this.visible ? this.$.dropdownmn.open() : this.$.dropdownmn.close();
           }
       }
 
