@@ -17,13 +17,24 @@
         max-width: 160px;
       }
 
-      :host(.mobile)  {
-        width: 91px;
-        height: 30px;
-      }
+      /*:host(.mobile)  {*/
+        /*width: 91px;*/
+        /*height: 30px;*/
+      /*}*/
 
-      :host(.mobile) .logo-img {
-        max-width: 91px;
+      /*:host(.mobile) .logo-img {*/
+        /*max-width: 91px;*/
+      /*}*/
+
+      @media (max-width: 767px) {
+        .logo-img {
+          max-width: 91px;
+        }
+
+        :host  {
+          width: 91px;
+          height: 30px;
+        }
       }
     </style>
 

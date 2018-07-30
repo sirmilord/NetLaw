@@ -71,14 +71,18 @@
         .login-buttons {
           margin-top: 20px;
         }
+
+        .navbar--login {
+          height: 50px;
+        }
       }
 
     </style>
 
     <!--<app-route route="{{route}}" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
     <app-header-layout fullbleed="" narrow="{{narrow}}">
-      <app-header slot="header" condenses="" reveals="" effects="waterfall">
-        <app-toolbar class="navbar">
+      <app-header  slot="header" condenses="" reveals="" effects="waterfall">
+        <app-toolbar class="navbar navbar--login">
           <netlaw-logo></netlaw-logo>
         </app-toolbar>
       </app-header>
