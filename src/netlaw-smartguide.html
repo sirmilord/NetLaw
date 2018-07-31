@@ -432,10 +432,19 @@
                   this.$.templateslink.classList.remove('smartguide__list-link--active');
                   this.$.setuplink.classList.add('smartguide__list-link--active');
               }
+
               else if (this.page === 'templates') {
                   this.$.setuplink.classList.remove('smartguide__list-link--active');
                   this.$.templateslink.classList.add('smartguide__list-link--active');
 
+              }
+
+              if (this.page === 'setup' && this.mobile) {
+                  this.$.smartguidedrawer.open();
+              }
+
+              if (this.page === 'templates' && this.mobile) {
+                  this.$.smartguidedrawer.open();
               }
           }
 
