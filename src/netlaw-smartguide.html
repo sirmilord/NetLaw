@@ -777,7 +777,6 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
-                      // observer: '_pageChanged',
                   },
               };
           }
@@ -800,25 +799,6 @@
                   this.$.templateslink.classList.add('smartguide__list-link--active');
 
               }
-          }
-
-          _pageChanged(page) {
-              let resolvedPageUrl = this.resolveUrl('netlaw-smartguide-' + page + '.html');
-
-              if (resolvedPageUrl.indexOf('404') >= 0  ) {
-                  let replaceStr = /smartguide-/gi;
-                  resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
-              }
-
-              Polymer.importHref(
-                  resolvedPageUrl,
-                  null,
-                  this._showPage404.bind(this),
-                  true);
-          }
-
-          _showPage404() {
-              this.page = 'view-404';
           }
       }
 
