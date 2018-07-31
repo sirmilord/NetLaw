@@ -574,8 +574,6 @@
 
               else this.page = page || 'login';
 
-              this.page === 'mobile-notification' ? this.toggleIcon = 'netlaw-icons:notifications-open' : this.toggleIcon = 'netlaw-icons:notifications';
-
           }
 
           _pageChanged(page) {
@@ -599,7 +597,14 @@
 
           onNavigateNotification(e) {
               this.visible = !this.visible;
-              this.visible ? this.$.dropdownmobilenotification.open() : this.$.dropdownmobilenotification.close();
+
+              if (this.visible) {
+                  this.$.dropdownmobilenotification.open();
+                  this.toggleIcon = 'netlaw-icons:notifications-open'
+              } else {
+                  this.$.dropdownmobilenotification.close();
+                  this.toggleIcon = 'netlaw-icons:notifications'
+              }
           }
 
           onCloseMobileDropdown(e){
