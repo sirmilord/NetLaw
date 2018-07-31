@@ -67,7 +67,7 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
+        border-bottom: 3px dashed #e4e4e4;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
@@ -79,7 +79,7 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
+        border-bottom: 3px dashed #e4e4e4;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
@@ -98,7 +98,6 @@
       .smartguide__list-link iron-icon {
         margin-right: 10px;
       }
-
 
       .smartguide__list-link[aria-expanded=true] iron-icon {
         fill: #01AA50;
@@ -126,14 +125,14 @@
         transform: translateY(-50%);
       }
 
-      h1 {
-        font-weight: bold;
-        color: #4A4A4A;
-        font-size: 56px;
-        line-height: 67px;
-        margin-top: 80px;
-        margin-bottom: 30px;
-      }
+      /*h1 {*/
+      /*font-weight: bold;*/
+      /*color: #4A4A4A;*/
+      /*font-size: 56px;*/
+      /*line-height: 67px;*/
+      /*margin-top: 80px;*/
+      /*margin-bottom: 30px;*/
+      /*}*/
 
       figure {
         margin-bottom: 30px;
@@ -183,7 +182,6 @@
         height: 45px;
       }
 
-
       netlaw-smartguide-setup {
         width: 100%;
       }
@@ -200,8 +198,97 @@
         width: 100%;
       }
 
-      .smartguide[mobile] {
+      .smartguide[hidden] {
         display: none;
+      }
+
+      .smartguide-mobile[hidden] {
+        display: none;
+      }
+
+      .smartguide-mobile {
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .smartguide-mobile__nav {
+
+      }
+
+      .smartguide-mobile__header {
+        display: flex;
+        align-items: center;
+        margin-top: 35px;
+        margin-left: 30px;
+      }
+
+      .smartguide-mobile__title {
+        color: #4A4A4A;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .smartguide-mobile__img {
+        margin: 0;
+        margin-right: 15px;
+      }
+
+      .smartguide-mobile__sub {
+        color: #4A4A4A;
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .smartguide-mobile__list {
+        margin-top: 35px;
+        position: relative;
+        margin-left: 30px;
+      }
+
+      .smartguide-mobile__list-item {
+        position: relative;
+      }
+
+      .smartguide-mobile__list-item--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        top: 0;
+      }
+
+      .smartguide-mobile__list-item--bottom-border:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        bottom: 0;
+      }
+
+      .smartguide-mobile__list-link {
+        color: #4A4A4A;
+        font-size: 18px;
+        text-decoration: none;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .smartguide-mobile__list-link iron-icon {
+        margin-right: 15px;
+        --iron-icon-fill-color: #CAC9CA;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
       }
 
     </style>
@@ -209,7 +296,50 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
-    <main class="smartguide" hidden$="mobile">
+    <!--Mobile layout-->
+    <main class="smartguide-mobile" hidden$="{{!mobile}}">
+      <section class="smartguide-mobile__nav">
+        <div class="smartguide-mobile__header">
+          <figure class="smartguide-mobile__img">
+            <img src="../images/pencil-icon.svg" alt="smartguide">
+          </figure>
+          <div class="smartguide-mobile__header-wrap">
+            <h1 class="smartguide-mobile__title">SmartGuide</h1>
+            <div class="smartguide-mobile__sub">Draft legal documents with ease.</div>
+          </div>
+        </div>
+        <ul class="smartguide-mobile__list">
+          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
+              <a name="setup" href="[[routePath]]smartguide/setup"
+                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
+                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+              </a>
+            </li>
+            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
+              <a name="templates" href="[[routePath]]smartguide/templates"
+                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
+                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+              </a>
+            </li>
+          </iron-selector>
+        </ul>
+      </section>
+
+      <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
+                  hidden$="{{!mobile}}" align="right">
+        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
+          <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+          <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+          <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
+        </iron-pages>
+      </app-drawer>
+    </main>
+    <!--Desktop layout-->
+    <main class="smartguide" hidden$="{{mobile}}">
       <section class="smartguide__drawer">
         <ul class="smartguide__list">
 
@@ -280,6 +410,10 @@
                   this.$.templateslink.classList.add('smartguide__list-link--active');
 
               }
+          }
+
+          openDrawer(e) {
+              this.$.smartguidedrawer.open();
           }
       }
 

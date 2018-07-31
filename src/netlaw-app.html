@@ -328,7 +328,7 @@
       <!--Main content mobile-->
       <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}" login$="[[!loggedIn]]">
 
-        <app-drawer id="mobiledrawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]" hidden$="{{!mobile}}">
+        <app-drawer id="mobiledrawer" class="mobile-drawer"  slot="drawer" swipe-open="[[narrow]]" hidden$="{{!mobile}}">
           <app-toolbar class="navbar-mobile navbar-mobile--drawer">
             <netlaw-logo class="mobile"></netlaw-logo>
             <paper-icon-button class="navbar-mobile__toggle" icon="menu" drawer-toggle></paper-icon-button>
@@ -529,6 +529,7 @@
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };
+              this.toggleIcon = 'netlaw-icons:notifications';
           }
 
           onLoggedIn(e) {
