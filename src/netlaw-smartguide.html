@@ -415,7 +415,6 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
-                      observer: '_pageChanged'
                   },
               };
           }
@@ -451,13 +450,6 @@
               if (this.page === 'templates' && this.mobile) {
                   this.$.smartguidedrawer.open();
               }
-          }
-
-          _pageChanged(page, oldPage) {
-              // console.log('page ' + page + ' old ' + oldPage);
-              //  if (page !== 'setup' || page !== 'templates' || page !== undefined)  {
-              //     this.$.smartguidedrawer.close();
-              // }
           }
 
           openDrawer(e) {
