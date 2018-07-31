@@ -501,21 +501,10 @@
 
           static get properties() {
               return {
-                  // loggedIn: {type: Boolean, value: () => false/* location.pathname !== "/"*/},
-                  //
-                  // rootPath: String,
-                  // route: {type: Object},
-                  // routeData: {type: Object, observer: '_routeDataObserver'},
-                  // subroute: Object,
-                  // active: String,
-
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   rootPath: String,
                   route: {type: Object},
-                  // routeData: {type: Object, observer: '_routeDataObserver'},
                   routeData: Object,
-                  // subroute: Object,
-                  // active: String,
                   page: {
                       type: String,
                       reflectToAttribute: true,
@@ -536,7 +525,6 @@
 
           constructor() {
               super();
-              // this.toggleIcon = 'netlaw-icons:notifications';
               window.navigate = path => {
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
@@ -557,10 +545,6 @@
               // window.location.href='/';
               window.location.reload(true);
           }
-
-          // _routeDataObserver(value) {
-          //     this.active = value.id || null;
-          // }
 
           static get observers() {
               return [
@@ -593,7 +577,6 @@
           onDrawerShow(e) {
               this.shadowRoot.querySelector('#drawer').toggle();
           }
-
 
           onNavigateNotification(e) {
               this.visible = !this.visible;
