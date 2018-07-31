@@ -291,6 +291,25 @@
         --iron-icon-width: 28px;
       }
 
+      .smartguide-mobile__drawer-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .smartguide-mobile__arrow {
+        position: absolute;
+        top: 25.9%;
+        left: -30px;
+        --iron-icon-fill-color: #999;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
+      }
+
+      .smartguide-mobile__arrow--bottom {
+        top: 36.8%;
+      }
+
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -330,12 +349,20 @@
 
       <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                   hidden$="{{!mobile}}" align="right">
+        <div class="smartguide-mobile__drawer-wrap">
+        <div class="smartguide-mobile__arrow">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
+        <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
+          <netlaw-smartguide-setup name="setup" on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
           <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
           <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
           <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
         </iron-pages>
+        </div>
       </app-drawer>
     </main>
     <!--Desktop layout-->
@@ -414,6 +441,10 @@
 
           openDrawer(e) {
               this.$.smartguidedrawer.open();
+          }
+
+          closeDrawer(e) {
+              this.$.smartguidedrawer.close();
           }
       }
 

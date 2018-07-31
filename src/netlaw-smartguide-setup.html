@@ -144,6 +144,7 @@
         --iron-icon-width: 230px;
         --iron-icon-height: 230px;
       }
+
       figure {
         margin-top: -30px;
         margin-bottom: -20px;
@@ -203,33 +204,38 @@
       }
 
     </style>
-    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
-      <section class="smartguide__content">
-        <!--first screen-->
-        <div class="smartguide__content-header">
-          <h2 class="smartguide__content-title">SmartGuide Setup</h2>
-        </div>
-        <h1>SmartGuide Setup</h1>
-        <figure>
-          <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
-        </figure>
-        <b>The information requested throughout this process will help<br>
-          us get to know you and  is necessary for your SmartGuide documents.</b>
-        <div class="smartguide__content-wrapper">
-          <hr>
-        </div>
-        <a href="/smartguide/setup-step1" class="btn btn--primary">Let's begin</a>
-        <a href="/initial-screen" class="btn btn--cancel">Cancel</a>
-      </section>
+    <section class="smartguide__content">
+      <!--first screen-->
+      <div class="smartguide__content-header">
+        <h2 class="smartguide__content-title">SmartGuide Setup</h2>
+      </div>
+      <h1>SmartGuide Setup</h1>
+      <figure>
+        <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
+      </figure>
+      <b>The information requested throughout this process will help<br>
+        us get to know you and is necessary for your SmartGuide documents.</b>
+      <div class="smartguide__content-wrapper">
+        <hr>
+      </div>
+      <a href="/smartguide/setup-step1" class="btn btn--primary">Let's begin</a>
+      <a href="/smartguide" class="btn btn--cancel" on-click="closeDrawer">Cancel</a>
+    </section>
 
   </template>
 
   <script>
-    class NetlawSmartguideSetup extends Polymer.Element {
-      static get is() { return 'netlaw-smartguide-setup'; }
-    }
+      class NetlawSmartguideSetup extends Polymer.Element {
+          static get is() {
+              return 'netlaw-smartguide-setup';
+          }
 
-    window.customElements.define(NetlawSmartguideSetup.is, NetlawSmartguideSetup);
+          closeDrawer(e) {
+              this.dispatchEvent(new CustomEvent("close-smartguide-drawer"));
+          }
+      }
+
+      window.customElements.define(NetlawSmartguideSetup.is, NetlawSmartguideSetup);
   </script>
 </dom-module>
