@@ -178,20 +178,19 @@
         position: relative;
       }
 
+      .lifevault__module--list {
+        padding: 40px 50px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+      }
+
       .lifevault__row {
         margin-left: -20px;
         margin-right: -20px;
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
-      }
-
-      .lifevault__col-module {
-        flex: 1 1 20%;
-        max-width: 20%;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-sizing: border-box;
       }
 
       .lifevault__module-item {
@@ -588,6 +587,59 @@
 
       .btn--hide {
         visibility: hidden;
+      }
+
+      @media (min-width: 768px) {
+        .lifevault__col-module {
+          flex: 1 1 100%;
+          max-width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (min-width: 992px) {
+
+        .lifevault__module--list {
+          padding: 20px 30px;
+        }
+
+        .lifevault__module-list-item {
+          padding: 20px 30px;
+        }
+
+        .lifevault__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+
+        .lifevault__list-left {
+          margin-right: 30px;
+        }
+      }
+
+      @media (min-width: 1300px) {
+        .lifevault__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        .lifevault__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
       }
 
     </style>
