@@ -1,10 +1,13 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <dom-module id="netlaw-contacts-family">
   <!-- Defines the element's style and local DOM -->
   <template>
-    <style>
+    <style is="custom-style" include="iron-flex iron-flex-factors"></style>
+    <style >
       :host {
         box-sizing: border-box;
       }
@@ -529,14 +532,6 @@
         flex-wrap: wrap;
       }
 
-      .contacts__col-module {
-        flex: 1 1 20%;
-        max-width: 20%;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-sizing: border-box;
-      }
-
       .contacts__module-item {
         margin-bottom: 25px;
       }
@@ -743,6 +738,40 @@
         --iron-icon-width: 16px;
       }
 
+      @media (min-width: 768px) {
+        .contacts__col-module {
+          flex: 1 1 100%;
+          max-width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .contacts__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (min-width: 1200px) {
+
+      }
+
+      @media (min-width: 1400px) {
+        .contacts__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+          padding-left: 20px;
+          padding-right: 20px;
+          box-sizing: border-box;
+        }
+      }
+
     </style>
 
     <section class="contacts__content">
@@ -756,8 +785,8 @@
 
       <div id="module" class="contacts__wrap contacts__wrap--show">
         <div class="contacts__module">
-          <div class="contacts__row">
-            <div class="contacts__col-module">
+          <div class="contacts__row layout horizontal">
+            <div class="contacts__col-module flex-3">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -804,7 +833,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module">
+            <div class="contacts__col-module flex-3">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -851,7 +880,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module">
+            <div class="contacts__col-module flex-3">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -898,7 +927,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module">
+            <div class="contacts__col-module flex-3">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -945,7 +974,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module">
+            <div class="contacts__col-module flex-3">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
