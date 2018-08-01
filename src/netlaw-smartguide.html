@@ -426,21 +426,9 @@
           }
 
           _routePageChanged(page) {
-
-              if(this.mobile) {
-                  if (page !== undefined || page !== 'setup' || page !== 'templates')  {
-                      this.$.smartguidedrawer.close();
-                  }
-
-                  if (this.page === 'setup') {
-                      this.$.smartguidedrawer.open();
-                  }
-
-                  if (this.page === 'templates') {
-                      this.$.smartguidedrawer.open();
-                  }
+              if (page !== undefined || page !== 'setup' || page !== 'templates')  {
+                  this.$.smartguidedrawer.close();
               }
-
               this.page = page || 'setup';
 
 
@@ -455,7 +443,13 @@
 
               }
 
+              if (this.page === 'setup' && this.mobile) {
+                  this.$.smartguidedrawer.open();
+              }
 
+              if (this.page === 'templates' && this.mobile) {
+                  this.$.smartguidedrawer.open();
+              }
           }
 
           openDrawer(e) {
