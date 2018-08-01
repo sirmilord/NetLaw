@@ -25,13 +25,6 @@
 
       }
 
-      @media (min-width: 992px) {
-        .contacts__drawer {
-          flex: 1 1 30%;
-          max-width: 30%;
-        }
-      }
-
       .contacts__content {
         flex: 1 1 70%;
         max-width: 70%;
@@ -219,7 +212,7 @@
         content: '';
         position: absolute;
         height: 40%;
-        right: -30px;
+        right: -15px;
         top: 50%;
         width: 4px;
         background-color: #01AA50;
@@ -714,8 +707,10 @@
       }
 
       iron-pages {
-        width: 100%;
+        flex: 1 1 60%;
       }
+
+
 
       netlaw-contacts-family {
         width: 100%;
@@ -763,6 +758,31 @@
 
       .contacts__addfolder-dropdown--sub {
         width: 162px;
+      }
+
+      @media (min-width: 992px) {
+        .contacts__drawer {
+          flex: 1 1 30%;
+          max-width: 30%;
+        }
+
+        iron-pages {
+          flex: 1 1 70%;
+          max-width: 75%;
+        }
+      }
+
+      @media (min-width: 1800px) {
+
+        .contacts__drawer {
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+
+        iron-pages {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
       }
 
 

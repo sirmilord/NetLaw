@@ -5,467 +5,491 @@
 <link rel="import" href="netlaw-smartguide-templates.html">
 
 <dom-module id="netlaw-smartguide">
-    <template>
-
-        <style>
-            /* todo clear up styles *
-            */
-            :host {
-                box-sizing: border-box;
-                --iron-icon-width: 22px;
-                --iron-icon-height: 22px;
-            }
-
-            iron-pages {
-                flex: 1 1 100%;
-                max-width: 100%;
-                background-color: #f9f9f9;
-                border-right: 1px solid #dfdfdf;
-                border-bottom: 1px solid #dfdfdf;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                position: relative;
-            }
-
-            .smartguide {
-                display: flex;
-                min-height: calc(100vh - 80px);
-                font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            }
-
-            .smartguide__drawer {
-                flex: 1 1 30%;
-                max-width: 30%;
-                min-width: 22em;
-                border-right: 2px solid #dfdfdf;
-                border-bottom: 1px solid #dfdfdf;
-                background-color: #fff;
-
-            }
-
-            ul {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            .smartguide__list {
-                margin-left: 25px;
-                margin-right: 15px;
-                margin-top: 30px;
-                position: relative;
-            }
-
-            .smartguide__list-item {
-                position: relative;
-            }
-
-            .smartguide__list-item--top-border:before {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 70%;
-                height: 1px;
-                border-bottom: 1px dashed #e4e4e4;
-                left: 50%;
-                top: 0;
-                transform: translateX(-50%);
-            }
-
-            .smartguide__list-item--bottom-border:after {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 70%;
-                height: 1px;
-                border-bottom: 1px dashed #e4e4e4;
-                left: 50%;
-                bottom: 0;
-                transform: translateX(-50%);
-            }
-
-            .smartguide__list-link {
-                font-size: 18px;
-                color: #414142;
-                text-decoration: none;
-                padding-top: 20px;
-                padding-bottom: 20px;
-                display: inline-block;
-                vertical-align: center;
-            }
-
-            .smartguide__list-link iron-icon {
-                margin-right: 10px;
-            }
-
-            .smartguide__list-link[aria-expanded=true] iron-icon {
-                fill: #01AA50;
-            }
-
-            .smartguide__list-link:hover,
-            .smartguide__list-link:focus {
-                color: #01AA50;
-            }
-
-            .smartguide__list-link--active {
-                color: #01AA50;
-            }
-
-            .smartguide__list-link:hover:before,
-            .smartguide__list-link--active:before,
-            .smartguide__list-link:focus:before {
-                content: '';
-                position: absolute;
-                height: 70%;
-                right: -30px;
-                top: 50%;
-                width: 4px;
-                background-color: #01AA50;
-                transform: translateY(-50%);
-            }
-
-            /*h1 {*/
-            /*font-weight: bold;*/
-            /*color: #4A4A4A;*/
-            /*font-size: 56px;*/
-            /*line-height: 67px;*/
-            /*margin-top: 80px;*/
-            /*margin-bottom: 30px;*/
-            /*}*/
-
-            figure {
-                margin-bottom: 30px;
-            }
-
-            b {
-                display: block;
-                font-size: 20px;
-                font-weight: 900;
-                margin-bottom: 10px;
-                color: #4A4A4A;
-                margin-left: 10%;
-                margin-right: 10%;
-                text-align: center;
-            }
-
-            p {
-                margin-top: 0;
-                margin-bottom: 40px;
-                color: #969696;
-            }
-
-            hr {
-                width: 300px;
-                border: 1px solid #979797;
-                opacity: 0.3;
-            }
-
-            .btn {
-                margin: 0;
-                border: none;
-                border-radius: 0;
-                overflow: visible;
-                font: inherit;
-                color: inherit;
-                text-transform: none;
-                display: inline-block;
-                box-sizing: border-box;
-                padding: 0 30px;
-                vertical-align: middle;
-                font-size: 16px;
-                line-height: 19px;
-                text-align: center;
-                text-decoration: none;
-                font-weight: 900;
-                cursor: pointer;
-                height: 45px;
-            }
-
-            netlaw-smartguide-setup {
-                width: 100%;
-            }
-
-            netlaw-smartguide-setup-step1 {
-                width: 100%;
-            }
-
-            netlaw-smartguide-setup-step2 {
-                width: 100%;
-            }
-
-            netlaw-smartguide-templates {
-                width: 100%;
-            }
-
-            .smartguide[hidden] {
-                display: none;
-            }
-
-            .smartguide-mobile[hidden] {
-                display: none;
-            }
-
-            .smartguide-mobile {
-                font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            }
-
-            .smartguide-mobile__nav {
-
-            }
-
-            .smartguide-mobile__header {
-                display: flex;
-                align-items: center;
-                margin-top: 35px;
-                margin-left: 30px;
-            }
-
-            .smartguide-mobile__title {
-                color: #4A4A4A;
-                font-size: 26px;
-                font-weight: bold;
-                margin-top: 0;
-                margin-bottom: 0;
-            }
-
-            .smartguide-mobile__img {
-                margin: 0;
-                margin-right: 15px;
-                --iron-icon-height: 60px;
-                --iron-icon-width: 60px;
-            }
-
-            .smartguide-mobile__sub {
-                color: #4A4A4A;
-                font-size: 14px;
-                font-weight: 300;
-            }
-
-            .smartguide-mobile__list {
-                margin-top: 35px;
-                position: relative;
-                margin-left: 30px;
-            }
-
-            .smartguide-mobile__list-item {
-                position: relative;
-            }
-
-            .smartguide-mobile__list-item--top-border:before {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 90%;
-                height: 1px;
-                border-bottom: 1px dashed #e4e4e4;
-                left: 0;
-                top: 0;
-            }
-
-            .smartguide-mobile__list-item--bottom-border:after {
-                content: '';
-                position: absolute;
-                display: block;
-                width: 90%;
-                height: 1px;
-                border-bottom: 1px dashed #e4e4e4;
-                left: 0;
-                bottom: 0;
-            }
-
-            .smartguide-mobile__list-link {
-                color: #4A4A4A;
-                font-size: 18px;
-                text-decoration: none;
-                padding-top: 30px;
-                padding-bottom: 30px;
-                padding-left: 15px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .smartguide-mobile__list-link iron-icon {
-                margin-right: 15px;
-                --iron-icon-fill-color: #CAC9CA;
-                --iron-icon-height: 28px;
-                --iron-icon-width: 28px;
-            }
-
-            .smartguide-mobile__drawer-wrap {
-                position: relative;
-                width: 100%;
-                height: 100%;
-            }
-
-            .smartguide-mobile__arrow {
-                position: absolute;
-                top: 25.9%;
-                left: -30px;
-                --iron-icon-fill-color: #999;
-                --iron-icon-height: 28px;
-                --iron-icon-width: 28px;
-            }
-
-            .smartguide-mobile__arrow--bottom {
-                top: 36.8%;
-            }
-
-        </style>
-
-        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
-
-        <!--Mobile layout-->
-        <main class="smartguide-mobile" hidden$="{{!mobile}}">
-            <section class="smartguide-mobile__nav">
-                <div class="smartguide-mobile__header">
-                    <figure class="smartguide-mobile__img">
-                        <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
-                    </figure>
-                    <div class="smartguide-mobile__header-wrap">
-                        <h1 class="smartguide-mobile__title">SmartGuide</h1>
-                        <div class="smartguide-mobile__sub">Draft legal documents with ease.</div>
-                    </div>
-                </div>
-                <ul class="smartguide-mobile__list">
-                    <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-                        <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
-                            <a name="setup" href="[[routePath]]smartguide/setup"
-                               class="smartguide-mobile__list-link" on-click="openDrawer">
-                                <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
-                                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
-                            </a>
-                        </li>
-                        <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
-                            <a name="templates" href="[[routePath]]smartguide/templates"
-                               class="smartguide-mobile__list-link" on-click="openDrawer">
-                                <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
-                                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
-                            </a>
-                        </li>
-                    </iron-selector>
-                </ul>
-            </section>
-
-            <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                        hidden$="{{!mobile}}" align="right">
-                <div class="smartguide-mobile__drawer-wrap">
-                    <div class="smartguide-mobile__arrow">
-                        <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-                    </div>
-                    <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
-                        <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-                    </div>
-                    <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-                        <netlaw-smartguide-setup name="setup"
-                                                 on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
-                        <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
-                        <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
-                        <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
-                    </iron-pages>
-                </div>
-            </app-drawer>
-        </main>
-        <!--Desktop layout-->
-        <main class="smartguide" hidden$="{{mobile}}">
-            <section class="smartguide__drawer">
-                <ul class="smartguide__list">
-
-                    <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-
-                        <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-                            <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink"
-                               class="smartguide__list-link smartguide__list-link--active">
-                                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
-                                <span class="smartguide__list-text">SmartGuide Setup</span>
-                            </a>
-                        </li>
-                        <li class="smartguide__list-item smartguide__list-item--bottom-border">
-                            <a name="templates" href="[[routePath]]smartguide/templates" id="templateslink"
-                               class="smartguide__list-link">
-                                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
-                                <span class="smartguide__list-text">SmartGuide Templates</span>
-                            </a>
-                        </li>
-
-                    </iron-selector>
-
-                </ul>
-            </section>
-
-            <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-                <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
-                <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
-                <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
-                <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
-            </iron-pages>
-        </main>
-
-    </template>
-
-    <script>
-        class NetlawSmartguide extends Polymer.Element {
-            static get is() {
-                return 'netlaw-smartguide';
-            }
-
-            static get properties() {
-                return {
-                    rootPath: String,
-                    route: {type: Object},
-                    page: {
-                        type: String,
-                        reflectToAttribute: true,
-                    },
-                };
-            }
-
-            static get observers() {
-                return [
-                    '_routePageChanged(routeData.page)',
-                ];
-            }
-
-            _routePageChanged(page) {
-                // Hide empty drawer when active screen is not SmartGuide
-                if (page !== undefined || page !== 'setup' || page !== 'templates') {
-                    this.$.smartguidedrawer.close();
-                }
-                this.page = page || 'setup';
-
-                // Change active class
-                if (this.page === 'setup' && !this.mobile) {
-                    this.$.templateslink.classList.remove('smartguide__list-link--active');
-                    this.$.setuplink.classList.add('smartguide__list-link--active');
-                }
-
-                else if (this.page === 'templates' && !this.mobile) {
-                    this.$.setuplink.classList.remove('smartguide__list-link--active');
-                    this.$.templateslink.classList.add('smartguide__list-link--active');
-
-                }
-
-                // Open Drawer after page refresh
-                if (this.page === 'setup' && this.mobile) {
-                    this.$.smartguidedrawer.open();
-                }
-
-                if (this.page === 'templates' && this.mobile) {
-                    this.$.smartguidedrawer.open();
-                }
-            }
-
-            openDrawer(e) {
-                this.$.smartguidedrawer.open();
-            }
-
-            closeDrawer(e) {
-                this.$.smartguidedrawer.close();
-            }
+  <template>
+
+    <style>
+      /* todo clear up styles *
+      */
+      :host {
+        box-sizing: border-box;
+        --iron-icon-width: 22px;
+        --iron-icon-height: 22px;
+      }
+
+      iron-pages {
+        flex: 1 1 60%;
+        max-width: 60%;
+        background-color: #f9f9f9;
+        border-right: 1px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .smartguide {
+        display: flex;
+        min-height: calc(100vh - 80px);
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .smartguide__drawer {
+        flex: 1 1 40%;
+        max-width: 40%;
+        border-right: 2px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        background-color: #fff;
+
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .smartguide__list {
+        margin-left: 25px;
+        margin-right: 15px;
+        margin-top: 30px;
+        position: relative;
+      }
+
+      .smartguide__list-item {
+        position: relative;
+      }
+
+      .smartguide__list-item--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+      }
+
+      .smartguide__list-item--bottom-border:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+      }
+
+      .smartguide__list-link {
+        font-size: 18px;
+        color: #414142;
+        text-decoration: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: inline-block;
+        vertical-align: center;
+      }
+
+      .smartguide__list-link iron-icon {
+        margin-right: 10px;
+      }
+
+      .smartguide__list-link[aria-expanded=true] iron-icon {
+        fill: #01AA50;
+      }
+
+      .smartguide__list-link:hover,
+      .smartguide__list-link:focus {
+        color: #01AA50;
+      }
+
+      .smartguide__list-link--active {
+        color: #01AA50;
+      }
+
+      .smartguide__list-link:hover:before,
+      .smartguide__list-link--active:before,
+      .smartguide__list-link:focus:before {
+        content: '';
+        position: absolute;
+        height: 70%;
+        right: -30px;
+        top: 50%;
+        width: 4px;
+        background-color: #01AA50;
+        transform: translateY(-50%);
+      }
+
+      /*h1 {*/
+      /*font-weight: bold;*/
+      /*color: #4A4A4A;*/
+      /*font-size: 56px;*/
+      /*line-height: 67px;*/
+      /*margin-top: 80px;*/
+      /*margin-bottom: 30px;*/
+      /*}*/
+
+      figure {
+        margin-bottom: 30px;
+      }
+
+      b {
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        color: #4A4A4A;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 40px;
+        color: #969696;
+      }
+
+      hr {
+        width: 300px;
+        border: 1px solid #979797;
+        opacity: 0.3;
+      }
+
+      .btn {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 30px;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 900;
+        cursor: pointer;
+        height: 45px;
+      }
+
+      netlaw-smartguide-setup {
+        width: 100%;
+      }
+
+      netlaw-smartguide-setup-step1 {
+        width: 100%;
+      }
+
+      netlaw-smartguide-setup-step2 {
+        width: 100%;
+      }
+
+      netlaw-smartguide-templates {
+        width: 100%;
+      }
+
+      .smartguide[hidden] {
+        display: none;
+      }
+
+      .smartguide-mobile[hidden] {
+        display: none;
+      }
+
+      .smartguide-mobile {
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .smartguide-mobile__nav {
+
+      }
+
+      .smartguide-mobile__header {
+        display: flex;
+        align-items: center;
+        margin-top: 35px;
+        margin-left: 30px;
+      }
+
+      .smartguide-mobile__title {
+        color: #4A4A4A;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .smartguide-mobile__img {
+        margin: 0;
+        margin-right: 15px;
+        --iron-icon-height: 60px;
+        --iron-icon-width: 60px;
+      }
+
+      .smartguide-mobile__sub {
+        color: #4A4A4A;
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .smartguide-mobile__list {
+        margin-top: 35px;
+        position: relative;
+        margin-left: 30px;
+      }
+
+      .smartguide-mobile__list-item {
+        position: relative;
+      }
+
+      .smartguide-mobile__list-item--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        top: 0;
+      }
+
+      .smartguide-mobile__list-item--bottom-border:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        bottom: 0;
+      }
+
+      .smartguide-mobile__list-link {
+        color: #4A4A4A;
+        font-size: 18px;
+        text-decoration: none;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .smartguide-mobile__list-link iron-icon {
+        margin-right: 15px;
+        --iron-icon-fill-color: #CAC9CA;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
+      }
+
+      .smartguide-mobile__drawer-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .smartguide-mobile__arrow {
+        position: absolute;
+        top: 25.9%;
+        left: -30px;
+        --iron-icon-fill-color: #999;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
+      }
+
+      .smartguide-mobile__arrow--bottom {
+        top: 36.8%;
+      }
+
+      @media (min-width: 992px) {
+        .smartguide__drawer {
+          flex: 1 1 30%;
+          max-width: 30%;
         }
 
-        window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
-    </script>
+        iron-pages {
+          flex: 1 1 70%;
+          max-width: 75%;
+        }
+      }
+
+      @media (min-width: 1800px) {
+
+        .smartguide__drawer {
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+
+        iron-pages {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
+      }
+
+    </style>
+
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
+
+    <!--Mobile layout-->
+    <main class="smartguide-mobile" hidden$="{{!mobile}}">
+      <section class="smartguide-mobile__nav">
+        <div class="smartguide-mobile__header">
+          <figure class="smartguide-mobile__img">
+            <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
+          </figure>
+          <div class="smartguide-mobile__header-wrap">
+            <h1 class="smartguide-mobile__title">SmartGuide</h1>
+            <div class="smartguide-mobile__sub">Draft legal documents with ease.</div>
+          </div>
+        </div>
+        <ul class="smartguide-mobile__list">
+          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
+              <a name="setup" href="[[routePath]]smartguide/setup"
+                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
+                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+              </a>
+            </li>
+            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
+              <a name="templates" href="[[routePath]]smartguide/templates"
+                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
+                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+              </a>
+            </li>
+          </iron-selector>
+        </ul>
+      </section>
+
+      <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
+                  hidden$="{{!mobile}}" align="right">
+        <div class="smartguide-mobile__drawer-wrap">
+          <div class="smartguide-mobile__arrow">
+            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+          </div>
+          <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
+            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+          </div>
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+            <netlaw-smartguide-setup name="setup"
+                                     on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
+            <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+            <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+            <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
+          </iron-pages>
+        </div>
+      </app-drawer>
+    </main>
+    <!--Desktop layout-->
+    <main class="smartguide" hidden$="{{mobile}}">
+      <section class="smartguide__drawer">
+        <ul class="smartguide__list">
+
+          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+
+            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
+              <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink"
+                 class="smartguide__list-link smartguide__list-link--active">
+                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Setup</span>
+              </a>
+            </li>
+            <li class="smartguide__list-item smartguide__list-item--bottom-border">
+              <a name="templates" href="[[routePath]]smartguide/templates" id="templateslink"
+                 class="smartguide__list-link">
+                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
+                <span class="smartguide__list-text">SmartGuide Templates</span>
+              </a>
+            </li>
+
+          </iron-selector>
+
+        </ul>
+      </section>
+
+      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+        <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
+        <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+        <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+        <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
+      </iron-pages>
+    </main>
+
+  </template>
+
+  <script>
+      class NetlawSmartguide extends Polymer.Element {
+          static get is() {
+              return 'netlaw-smartguide';
+          }
+
+          static get properties() {
+              return {
+                  rootPath: String,
+                  route: {type: Object},
+                  page: {
+                      type: String,
+                      reflectToAttribute: true,
+                  },
+              };
+          }
+
+          static get observers() {
+              return [
+                  '_routePageChanged(routeData.page)',
+              ];
+          }
+
+          _routePageChanged(page) {
+              // Hide empty drawer when active screen is not SmartGuide
+              if (page !== undefined || page !== 'setup' || page !== 'templates') {
+                  this.$.smartguidedrawer.close();
+              }
+              this.page = page || 'setup';
+
+              // Change active class
+              if (this.page === 'setup' && !this.mobile) {
+                  this.$.templateslink.classList.remove('smartguide__list-link--active');
+                  this.$.setuplink.classList.add('smartguide__list-link--active');
+              }
+
+              else if (this.page === 'templates' && !this.mobile) {
+                  this.$.setuplink.classList.remove('smartguide__list-link--active');
+                  this.$.templateslink.classList.add('smartguide__list-link--active');
+
+              }
+
+              // Open Drawer after page refresh
+              if (this.page === 'setup' && this.mobile) {
+                  this.$.smartguidedrawer.open();
+              }
+
+              if (this.page === 'templates' && this.mobile) {
+                  this.$.smartguidedrawer.open();
+              }
+          }
+
+          openDrawer(e) {
+              this.$.smartguidedrawer.open();
+          }
+
+          closeDrawer(e) {
+              this.$.smartguidedrawer.close();
+          }
+      }
+
+      window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
+  </script>
 </dom-module>
