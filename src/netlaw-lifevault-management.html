@@ -172,30 +172,30 @@
             }
 
             .lifevault__module {
-                padding: 40px 50px;
+                /*padding: 40px 50px;*/
+                padding: 20px 30px;
+                width: 100%;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            .lifevault__module--list {
+                padding: 20px 0;
                 width: 100%;
                 box-sizing: border-box;
                 position: relative;
             }
 
             .lifevault__row {
-                margin-left: -20px;
-                margin-right: -20px;
+                margin-left: -15px;
+                margin-right: -15px;
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
             }
 
-            .lifevault__col-module {
-                flex: 1 1 20%;
-                max-width: 20%;
-                padding-left: 20px;
-                padding-right: 20px;
-                box-sizing: border-box;
-            }
-
             .lifevault__module-item {
-
+                margin-bottom: 20px;
             }
 
             .lifevault__module-body {
@@ -333,7 +333,7 @@
 
             .lifevault__module-list-item {
                 display: flex;
-                padding: 20px 30px;
+                padding: 20px 0;
                 width: 100%;
                 align-items: center;
                 box-sizing: border-box;
@@ -342,7 +342,7 @@
             .lifevault__list-left {
                 display: flex;
                 align-items: center;
-                margin-right: 30px;
+                margin-right: 20px;
             }
 
             .lifevault__list-center {
@@ -391,13 +391,8 @@
                 font-size: 12px;
                 font-weight: 300;
                 color: #a2a2a2;
-                flex: 1 1 100%;
-                max-width: 100%;
             }
 
-            .lifevault__details--list {
-                margin-left: 20px;
-            }
 
             .lifevault__add-folder {
                 position: fixed;
@@ -590,6 +585,67 @@
                 visibility: hidden;
             }
 
+            .lifevault__details--list {
+                margin-left: 0;
+            }
+
+            @media (min-width: 768px) {
+                .lifevault__col-module {
+                    flex: 1 1 100%;
+                    max-width: 100%;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    box-sizing: border-box;
+                }
+            }
+
+            @media (min-width: 992px) {
+
+                .lifevault__module--list {
+                    padding: 20px 30px;
+                }
+
+                .lifevault__module-list-item {
+                    padding: 20px 30px;
+                }
+
+                .lifevault__col-module {
+                    flex: 1 1 33%;
+                    max-width: 33%;
+                }
+
+                .lifevault__list-left {
+                    margin-right: 30px;
+                }
+
+
+            }
+
+            @media (min-width: 1200px) {
+                .lifevault__details--list {
+                    margin-left: 20px;
+                }
+
+                .lifevault__list-update {
+                    flex: 1 1 100%;
+                    max-width: 100%;
+                }
+            }
+
+            @media (min-width: 1300px) {
+                .lifevault__col-module {
+                    flex: 1 1 25%;
+                    max-width: 25%;
+                }
+            }
+
+            @media (min-width: 1600px) {
+                .lifevault__col-module {
+                    flex: 1 1 20%;
+                    max-width: 20%;
+                }
+            }
+
         </style>
 
         <section class="lifevault__content">
@@ -598,9 +654,7 @@
                 <div slot="update">Updated 1d ago</div>
             </netlaw-topbar>
             <netlaw-dashboard>
-                <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
-                                       on-select-all-true="selectAllTrue" on-view-module="chooseModule"
-                                       on-view-list="chooseList"></netlaw-dashboard-form>
+                <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
             </netlaw-dashboard>
 
             <div id="module" class="lifevault__wrap lifevault__wrap--show">
@@ -649,7 +703,7 @@
                                     </a>
                                 </div>
                                 <div class="lifevault__module-footer">
-                                    <a class="lifevault__footer-link" href="[[routePath]]lifevault/doc">
+                                    <a  class="lifevault__footer-link" href="[[routePath]]lifevault/doc">
                                         <span class="lifevault__name">Estimate for Home Management.PDF</span>
                                     </a>
                                     <span class="lifevault__module-update">Updated 1d ago</span>
@@ -1062,7 +1116,7 @@
 
 
             <div id="list" class="lifevault__wrap">
-                <div class="lifevault__module">
+                <div class="lifevault__module lifevault__module--list">
                     <div class="lifevault__module-list-item">
                         <div class="lifevault__list-left">
                             <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
@@ -1463,13 +1517,11 @@
                 <!--<a href="[[routePath]]lifevault" class="files__item">-->
                 <div class="files__item">
                     <a href="javascript:;" on-click="onCancelFileClick">
-                        <iron-icon class="files__icon files__icon--close"
-                                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+                        <iron-icon class="files__icon files__icon--close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>
                     </a>
                 </div>
             </div>
         </template>
-
     </template>
 
     <script>
