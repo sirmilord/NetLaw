@@ -497,26 +497,18 @@
         padding-top: 20px;
         padding-bottom: 20px;
         width: 100%;
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: 30px;
+        padding-right: 30px;
         box-sizing: border-box;
         position: relative;
       }
 
       .find-attorney__row {
-        margin-left: -20px;
-        margin-right: -20px;
+        margin-left: -15px;
+        margin-right: -15px;
         box-sizing: border-box;
         display: flex;
-        /*flex-wrap: wrap;*/
-      }
-
-      .find-attorney__col-module {
-        flex: 1 1 20%;
-        max-width: 20%;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-sizing: border-box;
+        flex-wrap: wrap;
       }
 
       .find-attorney__item {
@@ -653,7 +645,7 @@
 
       .find-attorney__module-list-item {
         display: flex;
-        padding: 20px 30px;
+        padding: 20px 0;
         width: 100%;
         align-items: center;
         box-sizing: border-box;
@@ -663,7 +655,7 @@
       .find-attorney__list-left {
         display: flex;
         align-items: center;
-        margin-right: 30px;
+        margin-right: 0;
         flex: 1 1 150px;
         max-width: 150px;
       }
@@ -672,8 +664,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex: 1 1 75%;
-        max-width: 75%;
+        flex: 1 1 70%;
+        max-width: 70%;
       }
 
       .find-attorney__module-list-item iron-collapse {
@@ -683,7 +675,7 @@
       }
 
       .find-attorney__checkbox-container--list {
-        margin-right: 30px;
+        margin-right: 16px;
         margin-left: 16px;
         height: 27px;
         width: 27px;
@@ -903,6 +895,59 @@
       ul.find-attorney__addfolder-dropdown--sub > li > iron-icon {
         --iron-icon-height: 16px;
         --iron-icon-width: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .find-attorney__col-module {
+          flex: 1 1 50%;
+          max-width: 50%;
+          padding-left: 15px;
+          padding-right: 15px;
+          box-sizing: border-box;
+        }
+      }
+
+      .find-attorney__module-item {
+        margin-bottom: 20px;
+      }
+
+      @media (min-width: 992px) {
+        .find-attorney__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+
+        }
+
+        .find-attorney__list-left {
+          margin-right: 30px;
+        }
+
+        .find-attorney__checkbox-container--list {
+          margin-right: 30px;
+        }
+
+
+      }
+
+      @media (min-width: 1200px) {
+
+        .find-attorney__list-center {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
+
+        .find-attorney__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
+
+        }
+      }
+
+      @media (min-width: 1600px) {
+        .find-attorney__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+        }
       }
     </style>
     <main class="find-attorney">
