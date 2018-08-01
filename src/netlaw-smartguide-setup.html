@@ -203,7 +203,15 @@
         }
       }
 
+      @media (min-width: 768px) {
+        .btn--cancel {
+          display: none;
+        }
+      }
+
+
     </style>
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <section class="smartguide__content">
       <!--first screen-->

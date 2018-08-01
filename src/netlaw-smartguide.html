@@ -67,7 +67,7 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dashed #e4e4e4;
+        border-bottom: 1px dashed #e4e4e4;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
@@ -79,7 +79,7 @@
         display: block;
         width: 70%;
         height: 1px;
-        border-bottom: 3px dashed #e4e4e4;
+        border-bottom: 1px dashed #e4e4e4;
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
@@ -426,9 +426,21 @@
           }
 
           _routePageChanged(page) {
-              if (page !== undefined || page !== 'setup' || page !== 'templates')  {
-                  this.$.smartguidedrawer.close();
+
+              if(this.mobile) {
+                  if (page !== undefined || page !== 'setup' || page !== 'templates')  {
+                      this.$.smartguidedrawer.close();
+                  }
+
+                  if (this.page === 'setup') {
+                      this.$.smartguidedrawer.open();
+                  }
+
+                  if (this.page === 'templates') {
+                      this.$.smartguidedrawer.open();
+                  }
               }
+
               this.page = page || 'setup';
 
 
@@ -443,13 +455,7 @@
 
               }
 
-              if (this.page === 'setup' && this.mobile) {
-                  this.$.smartguidedrawer.open();
-              }
 
-              if (this.page === 'templates' && this.mobile) {
-                  this.$.smartguidedrawer.open();
-              }
           }
 
           openDrawer(e) {
