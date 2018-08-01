@@ -20,9 +20,8 @@
       }
 
       .lifevault__drawer {
-        flex: 1 1 30%;
-        max-width: 30%;
-        min-width: 22em;
+        flex: 1 1 40%;
+        max-width: 40%;
         border-right: 2px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
         background-color: #fff;
@@ -216,7 +215,7 @@
         content: '';
         position: absolute;
         height: 40%;
-        right: -30px;
+        right: -15px;
         top: 50%;
         width: 4px;
         background-color: #01AA50;
@@ -307,22 +306,38 @@
       }
 
       iron-pages {
-        width: 100%;
+        flex: 1 1 60%;
       }
 
-      /*@media (min-width: 1800px) {*/
+      @media (min-width: 992px) {
+        .lifevault__drawer {
+          flex: 1 1 30%;
+          max-width: 30%;
+        }
 
-        .lifevault__drawer[xxl] {
+        iron-pages {
+          flex: 1 1 70%;
+          max-width: 75%;
+        }
+      }
+
+      @media (min-width: 1800px) {
+
+        .lifevault__drawer {
           flex: 1 1 25%;
           max-width: 25%;
         }
-      /*}*/
+
+        iron-pages {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
+      }
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-    <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
     <main class="lifevault">
-      <section class="lifevault__drawer" xxl$="{{xxl}}">
+      <section class="lifevault__drawer">
         <ul class="lifevault__list">
           <li class="lifevault__list-item lifevault__list-item--top-border">
             <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="toggle">

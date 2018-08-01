@@ -524,16 +524,23 @@
         position: relative;
       }
 
+      .contacts__module--list {
+        padding: 20px 0;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+      }
+
       .contacts__row {
-        margin-left: -20px;
-        margin-right: -20px;
+        margin-left: -15px;
+        margin-right: -15px;
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
       }
 
       .contacts__module-item {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
       }
 
       .contacts__module-body {
@@ -639,7 +646,7 @@
 
       .contacts__module-list-item {
         display: flex;
-        padding: 20px 30px;
+        padding: 20px 0;
         width: 100%;
         align-items: center;
         box-sizing: border-box;
@@ -648,7 +655,7 @@
       .contacts__list-left {
         display: flex;
         align-items: center;
-        margin-right: 30px;
+        margin-right: 20px;
       }
 
       .contacts__list-center {
@@ -742,33 +749,46 @@
         .contacts__col-module {
           flex: 1 1 100%;
           max-width: 100%;
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 15px;
+          padding-right: 15px;
           box-sizing: border-box;
         }
       }
 
       @media (min-width: 992px) {
+
+        .contacts__module--list {
+          padding: 20px 30px;
+        }
+
+        .contacts__module-list-item {
+          padding: 20px 30px;
+        }
+
         .contacts__col-module {
           flex: 1 1 33%;
           max-width: 33%;
-          padding-left: 20px;
-          padding-right: 20px;
-          box-sizing: border-box;
+
+        }
+
+        .contacts__list-left {
+          margin-right: 30px;
         }
       }
 
-      @media (min-width: 1200px) {
+      @media (min-width: 1300px) {
+        .contacts__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
 
+        }
       }
 
-      @media (min-width: 1400px) {
+      @media (min-width: 1600px) {
         .contacts__col-module {
           flex: 1 1 20%;
           max-width: 20%;
-          padding-left: 20px;
-          padding-right: 20px;
-          box-sizing: border-box;
+
         }
       }
 
@@ -786,7 +806,7 @@
       <div id="module" class="contacts__wrap contacts__wrap--show">
         <div class="contacts__module">
           <div class="contacts__row layout horizontal">
-            <div class="contacts__col-module flex-3">
+            <div class="contacts__col-module">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -833,7 +853,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module flex-3">
+            <div class="contacts__col-module">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -880,7 +900,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module flex-3">
+            <div class="contacts__col-module">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -927,7 +947,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module flex-3">
+            <div class="contacts__col-module">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -974,7 +994,7 @@
                 </div>
               </div>
             </div>
-            <div class="contacts__col-module flex-3">
+            <div class="contacts__col-module">
               <div class="contacts__module-item">
                 <div class="contacts__module-body">
                   <label class="contacts__checkbox-container contacts__checkbox-container--module">
@@ -1030,7 +1050,7 @@
 
 
       <div id="list" class="contacts__wrap">
-        <div class="contacts__module">
+        <div class="contacts__module--list">
           <div class="contacts__module-list-item">
             <div class="contacts__list-left">
               <label class="contacts__checkbox-container contacts__checkbox-container--list">
