@@ -240,12 +240,19 @@
       }
 
       .add-module__search input {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        margin: 0;
         height: 45px;
         border: 1px solid #c2c2c2;
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
         padding-left: 15px;
         font-size: 18px;
+      }
+
+      .add-module__search input:focus {
+        outline: none;
       }
 
       .add-module__search input::placeholder {

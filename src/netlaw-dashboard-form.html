@@ -118,7 +118,7 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         margin: 0;
-        height: 45px !important;
+        height: 45px;
         border: 1px solid #c2c2c2;
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
@@ -129,6 +129,10 @@
       .search input::placeholder {
         color: #c2c2c2;
         font-size: 16px;
+      }
+
+      .search input:focus {
+        outline: none;
       }
 
       .btn--search {
