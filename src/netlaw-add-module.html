@@ -136,13 +136,13 @@
         transform: translateY(-50%);
       }
 
-      .add-module__header-desc {
-        margin-left: 30px;
-        align-self: center;
-        font-size: 20px;
-        font-weight: 300;
-        color: #b2b2b2;
-      }
+      /*.add-module__header-desc {*/
+        /*margin-left: 30px;*/
+        /*align-self: center;*/
+        /*font-size: 20px;*/
+        /*font-weight: 300;*/
+        /*color: #b2b2b2;*/
+      /*}*/
 
       .add-module__content-dashboard {
         width: 100%;
@@ -714,13 +714,10 @@
     <main class="add-module">
 
       <section class="add-module__content">
-        <!--<button class="btn btn&#45;&#45;close">-->
-        <!--<iron-icon icon="icons:close"></iron-icon>-->
-        <!--</button>-->
-        <div class="add-module__content-header">
-          <h2 class="add-module__title">Module Market</h2>
-          <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
-        </div>
+        <netlaw-topbar>
+          <h2 slot="title" class="add-module__title">Module Market</h2>
+          <div slot="sub">Increase productivity by adding some of the modules below</div>
+        </netlaw-topbar>
         <div class="add-module__content-dashboard">
           <form action="javascript:;" method="post">
             <label class="add-module__search">
