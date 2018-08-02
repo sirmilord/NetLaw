@@ -154,26 +154,6 @@
         }
       }
 
-      /*.add-module__content-dashboard:after {*/
-        /*content: '';*/
-        /*position: absolute;*/
-        /*width: 91%;*/
-        /*height: 1px;*/
-        /*bottom: 0;*/
-        /*right: 50px;*/
-        /*border-bottom: 1px dashed #979797;*/
-        /*opacity: .5;*/
-      /*}*/
-
-      /*.add-module__content-dashboard form {*/
-        /*display: flex;*/
-        /*justify-content: space-around;*/
-        /*align-items: center;*/
-        /*width: 100%;*/
-        /*min-height: 90px;*/
-        /*flex-wrap: wrap;*/
-      /*}*/
-
       .add-module__checkbox-container {
         display: block;
         position: relative;
@@ -232,112 +212,6 @@
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
       }
-
-      /*.add-module__search {*/
-        /*display: flex;*/
-        /*margin-right: 25px;*/
-      /*}*/
-
-      /*.add-module__search input {*/
-        /*-webkit-appearance: none;*/
-        /*-moz-appearance: none;*/
-        /*margin: 0;*/
-        /*height: 45px;*/
-        /*border: 1px solid #c2c2c2;*/
-        /*border-top-left-radius: 2px;*/
-        /*border-bottom-left-radius: 2px;*/
-        /*padding-left: 15px;*/
-        /*font-size: 18px;*/
-      /*}*/
-
-      /*.add-module__search input:focus {*/
-        /*outline: none;*/
-      /*}*/
-
-      /*.add-module__search input::placeholder {*/
-        /*color: #c2c2c2;*/
-        /*font-size: 16px;*/
-      /*}*/
-
-      /*.btn--search {*/
-        /*color: #c2c2c2;*/
-        /*padding: 0 8px;*/
-        /*height: 45px;*/
-        /*background-color: #fff;*/
-        /*border: 1px solid #c2c2c2;*/
-        /*border-left: 0;*/
-        /*border-top-right-radius: 2px;*/
-        /*border-bottom-right-radius: 2px;*/
-        /*font-weight: 400;*/
-      /*}*/
-
-      /*.add-module__sort {*/
-        /*border: 1px solid #c2c2c2;*/
-        /*height: 45px;*/
-        /*width: 150px;*/
-        /*padding-left: 15px;*/
-        /*padding-right: 15px;*/
-        /*display: flex;*/
-        /*align-items: center;*/
-        /*justify-content: space-between;*/
-        /*color: #c2c2c2;*/
-        /*background-color: #fff;*/
-        /*position: relative;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.add-module__sort-arrows {*/
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*align-items: center;*/
-        /*justify-content: center;*/
-        /*--iron-icon-width: 15px;*/
-        /*--iron-icon-height: 15px;*/
-        /*position: absolute;*/
-        /*top: 50%;*/
-        /*left: -25px;*/
-        /*transform: translateY(-50%);*/
-      /*}*/
-
-      /*.add-module__sort-arrows iron-icon:last-child {*/
-        /*margin-top: -5px;*/
-      /*}*/
-
-      /*.btn--module {*/
-        /*background-color: transparent;*/
-        /*padding: 0;*/
-        /*width: 33px;*/
-        /*height: 33px;*/
-        /*--iron-icon-fill-color: #e6e6e6;*/
-        /*--iron-icon-width: 33px;*/
-        /*--iron-icon-height: 33px;*/
-        /*display: flex;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.btn--list {*/
-        /*background-color: transparent;*/
-        /*padding: 0;*/
-        /*width: 33px;*/
-        /*height: 33px;*/
-        /*--iron-icon-fill-color: #e6e6e6;*/
-        /*--iron-icon-width: 33px;*/
-        /*--iron-icon-height: 33px;*/
-        /*display: flex;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.btn--active {*/
-        /*--iron-icon-fill-color: #414142;*/
-      /*}*/
-
-      /*#sortby {*/
-        /*position: relative;*/
-      /*}*/
-
-      /*#sortbydropdown {*/
-        /*background-color: #fff;*/
-      /*}*/
 
       .add-module__module {
         padding-top: 30px;
@@ -563,25 +437,6 @@
         --iron-icon-fill-color: #01AA50;
       }
 
-      /*.btn--close {*/
-      /*position: absolute;*/
-      /*width: 60px;*/
-      /*height: 100px;*/
-
-      /*border: 1px solid #e1e1e1;*/
-      /*box-shadow: 0 2px 0 0 #a2a2a2;*/
-      /*border-left: 0;*/
-      /*border-top-right-radius: 20px;*/
-      /*border-bottom-right-radius: 20px;*/
-      /*--iron-icon-fill-color: #4a4a4a;*/
-      /*--iron-icon-height: 35px;*/
-      /*--iron-icon-width: 35px;*/
-      /*background-color: #ffffff;*/
-      /*padding: 0;*/
-      /*right: -60px;*/
-      /*top: 30%;*/
-      /*}*/
-
       .add-module__footer {
         display: flex;
         align-items: center;
@@ -786,9 +641,6 @@
 
         <!--module layout-->
         <div id="scrollbar" class="add-module__module">
-          <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
-
-          <!--<div  id="scrollbar" class="add-module__module">-->
           <div id="module" class="add-module__wrap add-module__wrap--show">
             <div class="add-module__row">
               <div class="add-module__col-module">
@@ -953,13 +805,7 @@
               </div>
             </div>
           </div>
-          <!--</template>-->
 
-
-          <!--list layout-->
-
-          <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
-          <!--<div id="scrollbar2" class="add-module__module">-->
           <div id="list" class="add-module__wrap">
             <div class="add-module__list-row">
               <div class="add-module__module-list-item">
@@ -1108,7 +954,6 @@
               </div>
             </div>
           </div>
-          <!--</template>-->
         </div>
 
 
@@ -1165,22 +1010,11 @@
               });
           }
 
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-
           chooseModule(e) {
-              e.preventDefault();
               this.view = "Module";
               this.$.list.classList.remove('add-module__wrap--show');
               this.$.module.classList.add('add-module__wrap--show');
-              // this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1189,13 +1023,10 @@
           }
 
           chooseList(e) {
-              e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('add-module__wrap--show');
               this.$.list.classList.add('add-module__wrap--show');
-              // this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
