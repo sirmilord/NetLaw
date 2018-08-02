@@ -211,6 +211,11 @@
         z-index: 100;
       }
 
+      .navbar-mobile__toggle iron-icon {
+        --iron-icon-fill-color: #4A4A4A;
+        opacity: 0.3;
+      }
+
       .mobile-layout {
         --app-drawer-width: calc(100% - 40px);
         /*--app-drawer-layout-content-transition: 1s;*/
@@ -331,7 +336,7 @@
         <app-drawer id="mobiledrawer" class="mobile-drawer"  slot="drawer" swipe-open="[[narrow]]" hidden$="{{!mobile}}">
           <app-toolbar class="navbar-mobile navbar-mobile--drawer">
             <netlaw-logo class="mobile"></netlaw-logo>
-            <paper-icon-button class="navbar-mobile__toggle" icon="menu" drawer-toggle></paper-icon-button>
+            <paper-icon-button class="navbar-mobile__toggle" icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
           </app-toolbar>
 
           <figure class="mobile-drawer__img">
@@ -367,7 +372,7 @@
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <app-toolbar class="navbar-mobile">
-              <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </app-toolbar>
@@ -429,7 +434,6 @@
 
         <app-header slot="header"  condenses="" reveals="" effects="waterfall" fixed>
           <app-toolbar class="navbar">
-            <!--<paper-icon-button id="drawertoggle" icon="menu" on-click="onDrawerShow"></paper-icon-button>-->
             <netlaw-logo></netlaw-logo>
             <netlaw-search></netlaw-search>
             <netlaw-notification></netlaw-notification>
