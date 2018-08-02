@@ -19,7 +19,6 @@
       .add-module__content {
         flex: 1 1 100%;
         max-width: 100%;
-        min-width: 50em;
         background-color: #fff;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -115,6 +114,13 @@
 
       .add-module__title {
         position: relative;
+        align-self: center;
+        margin-left: 60px;
+        color: #d1d1d1;
+        font-size: 26px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 300;
       }
 
       .add-module__title:after {
@@ -126,6 +132,14 @@
         top: 50%;
         background-color: #d1d1d1;
         transform: translateY(-50%);
+      }
+
+      .add-module__header-desc {
+        margin-left: 40px;
+        align-self: center;
+        font-size: 20px;
+        font-weight: 300;
+        color: #d1d1d1;
       }
 
       .add-module__content-dashboard {
@@ -328,7 +342,7 @@
       .add-module__module {
         padding-top: 30px;
         padding-bottom: 30px;
-        padding-left: 80px;
+        padding-left: 30px;
         padding-right: 60px;
         width: 100%;
         box-sizing: border-box;
@@ -342,7 +356,7 @@
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
-        height: 60vh;
+        height: 50vh;
         /*padding-right: 30px;*/
       }
 
@@ -695,53 +709,77 @@
         display: block;
       }
 
+      @media (min-width: 768px) {
+        .add-module__col-module {
+          flex: 1 1 50%;
+          max-width: 50%;
+          padding-left: 15px;
+          padding-right: 15px;
+          box-sizing: border-box;
+        }
+
+      }
+
+      .add-module__module-item {
+        margin-bottom: 20px;
+      }
+
+      @media (min-width: 992px) {
+        .add-module__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+
+        }
+
+        .add-module__list-left {
+          margin-right: 30px;
+        }
+
+        .add-module__checkbox-container--list {
+          margin-right: 30px;
+        }
+
+
+      }
+
+      @media (min-width: 1200px) {
+
+        .add-module__list-center {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
+
+        .add-module__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
+
+        }
+
+      }
+
+      @media (min-width: 1600px) {
+        .add-module__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+        }
+
+        .add-module__row {
+          height: 60vh;
+        }
+      }
+
     </style>
     <main class="add-module">
 
       <section class="add-module__content">
-        <netlaw-topbar>
-          <h2 slot="title" class="add-module__title">Module Market</h2>
-          <div slot="sub">Increase productivity by adding some of the modules below</div>
-        </netlaw-topbar>
-        <!--<div class="add-module__content-dashboard">-->
-          <!--<form action="javascript:;" method="post">-->
-            <!--<label class="add-module__search">-->
-              <!--<input type="search" id="search" name="search" placeholder="Search...">-->
-              <!--<button class="btn btn&#45;&#45;search">Search</button>-->
-            <!--</label>-->
-            <!--<div class="add-module__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">-->
-              <!--<div class="add-module__sort-arrows">-->
-                <!--<iron-icon icon="icons:arrow-upward"></iron-icon>-->
-                <!--<iron-icon icon="icons:arrow-downward"></iron-icon>-->
-              <!--</div>-->
-              <!--<span>Sort By</span>-->
-              <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-              <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
-                <!--<ul class="add-module__addfolder-dropdown add-module__addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
-                  <!--<li>Sort By - - -</li>-->
-                  <!--<li>Title-->
-                    <!--<iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Newest-->
-                    <!--<iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Oldest-->
-                    <!--<iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>SmartGuide Only-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</iron-dropdown>-->
-            <!--</div>-->
-            <!--<button class="btn btn&#45;&#45;module btn&#45;&#45;active" on-tap="chooseModule">-->
-              <!--<iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>-->
-            <!--</button>-->
-            <!--<button class="btn btn&#45;&#45;list" on-tap="chooseList">-->
-              <!--<iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>-->
-            <!--</button>-->
-          <!--</form>-->
-        <!--</div>-->
+        <!--<netlaw-topbar>-->
+          <!--<h2 slot="title" >Module Market</h2>-->
+          <!--<div slot="sub">Increase productivity by adding some of the modules below</div>-->
+        <!--</netlaw-topbar>-->
+        <div class="add-module__content-header">
+          <h2 class="add-module__title">Module Market</h2>
+          <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
+        </div>
         <netlaw-dashboard class="add-module__content-dashboard">
           <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
         </netlaw-dashboard>
