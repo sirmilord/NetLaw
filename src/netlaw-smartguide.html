@@ -20,8 +20,6 @@
         flex: 1 1 60%;
         max-width: 60%;
         background-color: #f9f9f9;
-        border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -295,12 +293,12 @@
       .smartguide-mobile__drawer-wrap {
         position: relative;
         width: 100%;
-        height: 100%;
+        /*height: 100%;*/
       }
 
       .smartguide-mobile__arrow {
         position: absolute;
-        top: 25.9%;
+        top: 28.9%;
         left: -30px;
         --iron-icon-fill-color: #999;
         --iron-icon-height: 28px;
@@ -308,7 +306,19 @@
       }
 
       .smartguide-mobile__arrow--bottom {
-        top: 36.8%;
+        top: 41%;
+      }
+
+      @media (max-width: 767px) {
+        iron-pages {
+          flex: 1 1 100%;
+          max-width: 100%;
+          /*margin-bottom: 140px;*/
+        }
+
+        /*.smartguide-mobile__drawer {*/
+          /*overflow: auto;*/
+        /*}*/
       }
 
       @media (min-width: 992px) {
