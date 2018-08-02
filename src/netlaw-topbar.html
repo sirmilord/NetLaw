@@ -21,6 +21,7 @@
         margin-top: 0;
         margin-bottom: 0;
         font-weight: 300;
+        position: relative;
       }
 
       .update {
@@ -42,7 +43,7 @@
 
     </style>
 
-    <h2><slot name="title"></slot></h2>
+    <h2 class="title"><slot name="title"></slot></h2>
     <div class="sub"><slot name="sub"></slot></div>
     <div class="update"><slot name="update"></slot></div>
 

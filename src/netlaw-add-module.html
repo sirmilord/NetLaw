@@ -19,7 +19,6 @@
       .add-module__content {
         flex: 1 1 100%;
         max-width: 100%;
-        min-width: 50em;
         background-color: #fff;
         border-right: 1px solid #dfdfdf;
         border-bottom: 1px solid #dfdfdf;
@@ -115,6 +114,13 @@
 
       .add-module__title {
         position: relative;
+        align-self: center;
+        margin-left: 60px;
+        color: #d1d1d1;
+        font-size: 26px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 300;
       }
 
       .add-module__title:after {
@@ -128,6 +134,14 @@
         transform: translateY(-50%);
       }
 
+      .add-module__header-desc {
+        margin-left: 40px;
+        align-self: center;
+        font-size: 20px;
+        font-weight: 300;
+        color: #d1d1d1;
+      }
+
       .add-module__content-dashboard {
         background-color: #fff;
 
@@ -139,26 +153,6 @@
           display: none;
         }
       }
-
-      /*.add-module__content-dashboard:after {*/
-        /*content: '';*/
-        /*position: absolute;*/
-        /*width: 91%;*/
-        /*height: 1px;*/
-        /*bottom: 0;*/
-        /*right: 50px;*/
-        /*border-bottom: 1px dashed #979797;*/
-        /*opacity: .5;*/
-      /*}*/
-
-      /*.add-module__content-dashboard form {*/
-        /*display: flex;*/
-        /*justify-content: space-around;*/
-        /*align-items: center;*/
-        /*width: 100%;*/
-        /*min-height: 90px;*/
-        /*flex-wrap: wrap;*/
-      /*}*/
 
       .add-module__checkbox-container {
         display: block;
@@ -219,116 +213,10 @@
         transform: rotate(45deg);
       }
 
-      /*.add-module__search {*/
-        /*display: flex;*/
-        /*margin-right: 25px;*/
-      /*}*/
-
-      /*.add-module__search input {*/
-        /*-webkit-appearance: none;*/
-        /*-moz-appearance: none;*/
-        /*margin: 0;*/
-        /*height: 45px;*/
-        /*border: 1px solid #c2c2c2;*/
-        /*border-top-left-radius: 2px;*/
-        /*border-bottom-left-radius: 2px;*/
-        /*padding-left: 15px;*/
-        /*font-size: 18px;*/
-      /*}*/
-
-      /*.add-module__search input:focus {*/
-        /*outline: none;*/
-      /*}*/
-
-      /*.add-module__search input::placeholder {*/
-        /*color: #c2c2c2;*/
-        /*font-size: 16px;*/
-      /*}*/
-
-      /*.btn--search {*/
-        /*color: #c2c2c2;*/
-        /*padding: 0 8px;*/
-        /*height: 45px;*/
-        /*background-color: #fff;*/
-        /*border: 1px solid #c2c2c2;*/
-        /*border-left: 0;*/
-        /*border-top-right-radius: 2px;*/
-        /*border-bottom-right-radius: 2px;*/
-        /*font-weight: 400;*/
-      /*}*/
-
-      /*.add-module__sort {*/
-        /*border: 1px solid #c2c2c2;*/
-        /*height: 45px;*/
-        /*width: 150px;*/
-        /*padding-left: 15px;*/
-        /*padding-right: 15px;*/
-        /*display: flex;*/
-        /*align-items: center;*/
-        /*justify-content: space-between;*/
-        /*color: #c2c2c2;*/
-        /*background-color: #fff;*/
-        /*position: relative;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.add-module__sort-arrows {*/
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*align-items: center;*/
-        /*justify-content: center;*/
-        /*--iron-icon-width: 15px;*/
-        /*--iron-icon-height: 15px;*/
-        /*position: absolute;*/
-        /*top: 50%;*/
-        /*left: -25px;*/
-        /*transform: translateY(-50%);*/
-      /*}*/
-
-      /*.add-module__sort-arrows iron-icon:last-child {*/
-        /*margin-top: -5px;*/
-      /*}*/
-
-      /*.btn--module {*/
-        /*background-color: transparent;*/
-        /*padding: 0;*/
-        /*width: 33px;*/
-        /*height: 33px;*/
-        /*--iron-icon-fill-color: #e6e6e6;*/
-        /*--iron-icon-width: 33px;*/
-        /*--iron-icon-height: 33px;*/
-        /*display: flex;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.btn--list {*/
-        /*background-color: transparent;*/
-        /*padding: 0;*/
-        /*width: 33px;*/
-        /*height: 33px;*/
-        /*--iron-icon-fill-color: #e6e6e6;*/
-        /*--iron-icon-width: 33px;*/
-        /*--iron-icon-height: 33px;*/
-        /*display: flex;*/
-        /*cursor: pointer;*/
-      /*}*/
-
-      /*.btn--active {*/
-        /*--iron-icon-fill-color: #414142;*/
-      /*}*/
-
-      /*#sortby {*/
-        /*position: relative;*/
-      /*}*/
-
-      /*#sortbydropdown {*/
-        /*background-color: #fff;*/
-      /*}*/
-
       .add-module__module {
         padding-top: 30px;
         padding-bottom: 30px;
-        padding-left: 80px;
+        padding-left: 30px;
         padding-right: 60px;
         width: 100%;
         box-sizing: border-box;
@@ -342,7 +230,7 @@
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
-        height: 60vh;
+        height: 50vh;
         /*padding-right: 30px;*/
       }
 
@@ -549,25 +437,6 @@
         --iron-icon-fill-color: #01AA50;
       }
 
-      /*.btn--close {*/
-      /*position: absolute;*/
-      /*width: 60px;*/
-      /*height: 100px;*/
-
-      /*border: 1px solid #e1e1e1;*/
-      /*box-shadow: 0 2px 0 0 #a2a2a2;*/
-      /*border-left: 0;*/
-      /*border-top-right-radius: 20px;*/
-      /*border-bottom-right-radius: 20px;*/
-      /*--iron-icon-fill-color: #4a4a4a;*/
-      /*--iron-icon-height: 35px;*/
-      /*--iron-icon-width: 35px;*/
-      /*background-color: #ffffff;*/
-      /*padding: 0;*/
-      /*right: -60px;*/
-      /*top: 30%;*/
-      /*}*/
-
       .add-module__footer {
         display: flex;
         align-items: center;
@@ -695,62 +564,83 @@
         display: block;
       }
 
+      @media (min-width: 768px) {
+        .add-module__col-module {
+          flex: 1 1 50%;
+          max-width: 50%;
+          padding-left: 15px;
+          padding-right: 15px;
+          box-sizing: border-box;
+        }
+
+      }
+
+      .add-module__module-item {
+        margin-bottom: 20px;
+      }
+
+      @media (min-width: 992px) {
+        .add-module__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+
+        }
+
+        .add-module__list-left {
+          margin-right: 30px;
+        }
+
+        .add-module__checkbox-container--list {
+          margin-right: 30px;
+        }
+
+
+      }
+
+      @media (min-width: 1200px) {
+
+        .add-module__list-center {
+          flex: 1 1 75%;
+          max-width: 75%;
+        }
+
+        .add-module__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
+
+        }
+
+      }
+
+      @media (min-width: 1600px) {
+        .add-module__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+        }
+
+        .add-module__row {
+          height: 60vh;
+        }
+      }
+
     </style>
     <main class="add-module">
 
       <section class="add-module__content">
-        <netlaw-topbar>
-          <h2 slot="title" class="add-module__title">Module Market</h2>
-          <div slot="sub">Increase productivity by adding some of the modules below</div>
-        </netlaw-topbar>
-        <!--<div class="add-module__content-dashboard">-->
-          <!--<form action="javascript:;" method="post">-->
-            <!--<label class="add-module__search">-->
-              <!--<input type="search" id="search" name="search" placeholder="Search...">-->
-              <!--<button class="btn btn&#45;&#45;search">Search</button>-->
-            <!--</label>-->
-            <!--<div class="add-module__sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">-->
-              <!--<div class="add-module__sort-arrows">-->
-                <!--<iron-icon icon="icons:arrow-upward"></iron-icon>-->
-                <!--<iron-icon icon="icons:arrow-downward"></iron-icon>-->
-              <!--</div>-->
-              <!--<span>Sort By</span>-->
-              <!--<iron-icon icon="icons:expand-more"></iron-icon>-->
-              <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
-                <!--<ul class="add-module__addfolder-dropdown add-module__addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
-                  <!--<li>Sort By - - -</li>-->
-                  <!--<li>Title-->
-                    <!--<iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Newest-->
-                    <!--<iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Oldest-->
-                    <!--<iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>SmartGuide Only-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</iron-dropdown>-->
-            <!--</div>-->
-            <!--<button class="btn btn&#45;&#45;module btn&#45;&#45;active" on-tap="chooseModule">-->
-              <!--<iron-icon icon="netlaw-icons:view-icons-icon"></iron-icon>-->
-            <!--</button>-->
-            <!--<button class="btn btn&#45;&#45;list" on-tap="chooseList">-->
-              <!--<iron-icon icon="netlaw-icons:view-list-icon"></iron-icon>-->
-            <!--</button>-->
-          <!--</form>-->
-        <!--</div>-->
+        <!--<netlaw-topbar>-->
+          <!--<h2 slot="title" >Module Market</h2>-->
+          <!--<div slot="sub">Increase productivity by adding some of the modules below</div>-->
+        <!--</netlaw-topbar>-->
+        <div class="add-module__content-header">
+          <h2 class="add-module__title">Module Market</h2>
+          <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
+        </div>
         <netlaw-dashboard class="add-module__content-dashboard">
           <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
         </netlaw-dashboard>
 
         <!--module layout-->
         <div id="scrollbar" class="add-module__module">
-          <!--<template is="dom-if" if="{{_isEqualTo(view, 'Module')}}">-->
-
-          <!--<div  id="scrollbar" class="add-module__module">-->
           <div id="module" class="add-module__wrap add-module__wrap--show">
             <div class="add-module__row">
               <div class="add-module__col-module">
@@ -915,13 +805,7 @@
               </div>
             </div>
           </div>
-          <!--</template>-->
 
-
-          <!--list layout-->
-
-          <!--<template is="dom-if" if="{{_isEqualTo(view, 'List')}}">-->
-          <!--<div id="scrollbar2" class="add-module__module">-->
           <div id="list" class="add-module__wrap">
             <div class="add-module__list-row">
               <div class="add-module__module-list-item">
@@ -1070,7 +954,6 @@
               </div>
             </div>
           </div>
-          <!--</template>-->
         </div>
 
 
@@ -1127,22 +1010,11 @@
               });
           }
 
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-
           chooseModule(e) {
-              e.preventDefault();
               this.view = "Module";
               this.$.list.classList.remove('add-module__wrap--show');
               this.$.module.classList.add('add-module__wrap--show');
-              // this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--list').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--module').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--module input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
@@ -1151,13 +1023,10 @@
           }
 
           chooseList(e) {
-              e.preventDefault();
               this.view = "List";
               this.$.module.classList.remove('add-module__wrap--show');
               this.$.list.classList.add('add-module__wrap--show');
-              // this.$.selectall.checked = false;
-              Polymer.dom(this.root).querySelector('.btn--module').classList.remove('btn--active');
-              Polymer.dom(this.root).querySelector('.btn--list').classList.add('btn--active');
+
               this.checkboxes = Polymer.dom(this.root).querySelectorAll('.add-module__checkbox-container--list input');
 
               for (let i = 0; i < this.checkboxes.length; i++) {
