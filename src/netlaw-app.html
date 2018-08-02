@@ -373,7 +373,7 @@
             </app-toolbar>
 
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
-              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content" on-close-mobile-dropdown="onCloseMobileDropdown"></netlaw-mobile-notification>
+              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content" on-close-mobile-dropdown="onNavigateNotification"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
           <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
@@ -591,9 +591,9 @@
               }
           }
 
-          onCloseMobileDropdown(e){
-              this.$.dropdownmobilenotification.close();
-          }
+          // onCloseMobileDropdown(e){
+          //     this.$.dropdownmobilenotification.close();
+          // }
       }
 
       window.customElements.define(NetlawApp.is, NetlawApp);
