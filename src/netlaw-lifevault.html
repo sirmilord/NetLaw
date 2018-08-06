@@ -434,6 +434,11 @@
           --app-drawer-width: 100%;
         }
 
+        .lifevault__nav-mobile {
+          margin-top: 50px;
+          text-align: left;
+        }
+
       }
 
       @media (max-width: 991px) {
@@ -539,12 +544,275 @@
           <div class="lifevault-mobile__arrow lifevault-mobile__arrow--bottom">
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
           </div>
+          <section class="lifevault__nav-mobile">
+            <ul class="lifevault__list-lvl2">
+              <li class="lifevault__list-item-lvl2">
+                <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Estate Planning
+                </a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+                <iron-collapse id="collapse-mobile-lvl2">
+                  <ul class="lifevault__list-lvl3">
+                    <iron-selector selected="[[page]]" attr-for-selected="name"
+                                   role="navigation">
+                      <li class="lifevault__list-item-lvl3">
+                        <a name="management" href="[[routePath]]lifevault/management"
+                           id="homemanage-mobile"
+                           class="lifevault__list-link-lvl3">
+                          <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                          Home Management</a>
+                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                          <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon
+                                    icon="netlaw-icons:download-icon"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon
+                                    icon="netlaw-icons:print-icon"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon
+                                    icon="netlaw-icons:rename-icon"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon
+                                    icon="netlaw-icons:share-icon"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon
+                                    icon="netlaw-icons:delete-icon"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
+                        </a>
+                      </li>
+                      <li class="lifevault__list-item-lvl3">
+                        <a class="lifevault__list-link-lvl3" href="javascript:;">
+                          <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                          Documents of Estate</a>
+                        <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                          <iron-icon icon="icons:more-vert"></iron-icon>
+                          <iron-dropdown>
+                            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                slot="dropdown-content">
+                              <li>Download
+                                <iron-icon
+                                    icon="netlaw-icons:download-icon"></iron-icon>
+                              </li>
+                              <li>Print
+                                <iron-icon
+                                    icon="netlaw-icons:print-icon"></iron-icon>
+                              </li>
+                              <li>Rename
+                                <iron-icon
+                                    icon="netlaw-icons:rename-icon"></iron-icon>
+                              </li>
+                              <li>Share
+                                <iron-icon
+                                    icon="netlaw-icons:share-icon"></iron-icon>
+                              </li>
+                              <li>Delete
+                                <iron-icon
+                                    icon="netlaw-icons:delete-icon"></iron-icon>
+                              </li>
+                            </ul>
+                          </iron-dropdown>
+                        </a>
+                      </li>
+                    </iron-selector>
+                  </ul>
+                </iron-collapse>
+              </li>
+              <li id="mod-mobile" class="lifevault__list-item-lvl2 ">
+                <a class="lifevault__list-link-lvl2" href="javascript:;">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Tax Returns</a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+              <li class="lifevault__list-item-lvl2">
+                <a class="lifevault__list-link-lvl2" href="javascript:;">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Misc. Docs</a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+              <li class="lifevault__list-item-lvl2">
+                <a class="lifevault__list-link-lvl2" href="javascript:;">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Insurance Policies</a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+              <li class="lifevault__list-item-lvl2">
+                <a class="lifevault__list-link-lvl2" href="javascript:;">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Deeds</a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+              <li class="lifevault__list-item-lvl2">
+                <a class="lifevault__list-link-lvl2" href="javascript:;">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  Asset/Financial</a>
+                <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                        slot="dropdown-content">
+                      <li>Add Sub-Folder
+                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                      </li>
+                      <li>Download
+                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li>Share
+                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li>Delete
+                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+            </ul>
+          </section>
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <netlaw-lifevault-setup name="setup"
-                                     on-close-lifevault-drawer="closeDrawer"></netlaw-lifevault-setup>
-            <netlaw-lifevault-templates name="templates"></netlaw-lifevault-templates>
-            <netlaw-lifevault-setup-step1 name="setup-step1"></netlaw-lifevault-setup-step1>
-            <netlaw-lifevault-setup-step2 name="setup-step2"></netlaw-lifevault-setup-step2>
+            <netlaw-lifevault-setup name="management"></netlaw-lifevault-setup>
+            <netlaw-lifevault-templates name="doc"></netlaw-lifevault-templates>
           </iron-pages>
         </div>
       </app-drawer>
@@ -922,6 +1190,7 @@
 
           toggleLvl2(e) {
               e.preventDefault();
+              console.log("open");
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
           }
@@ -945,7 +1214,7 @@
           _routePageChanged(page) {
 
               // Hide empty drawer when active screen is not SmartGuide
-              if (page !== undefined ||  page !== 'management' || page !== 'doc' ) {
+              if (page !== undefined || page !== 'management' || page !== 'doc') {
                   this.$.lifevaultdrawer.close();
               }
               this.page = page || 'your-vault';
