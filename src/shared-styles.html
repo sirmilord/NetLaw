@@ -544,24 +544,51 @@
         margin-top: 0;
       }
 
-      @media (max-width: 767px) {
+      @media (min-width: 320px) and (max-width: 767px) {
 
+        .login__container {
+          font-size: 0.9em;
+        }
         .login__section {
           padding-top: 20px;
           padding-bottom: 0;
         }
 
         .login__align-center h1 {
-          font-size: 36px;
-          margin-top: 10px;
-          margin-bottom: 10px;
+          font-size: 32px;
+          line-height: 36px;
+          margin-top: 15px;
+          margin-bottom: 15px;
         }
 
         .login__divider-icon {
           margin-top: 10px;
           margin-bottom: 10px;
         }
+
+        .login .btn {
+          width: auto;
+        }
+
+        .btn--back-dash.btn--position {
+          top: -5px;
+        }
+
+        .login__margin-top-big {
+          margin-top: 25px;
+        }
+
+        .login__item--third {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+
+        .login__item-desc {
+          min-height: auto;
+        }
+
       }
+
 
     </style>
   </template>

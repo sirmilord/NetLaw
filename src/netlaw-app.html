@@ -529,10 +529,10 @@
 
           constructor() {
               super();
-              window.navigate = path => {
+              /*window.navigate = path => {
                   window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   window.dispatchEvent(new CustomEvent('location-changed'));
-              };
+              };*/
               this.toggleIcon = 'netlaw-icons:notifications';
           }
 
