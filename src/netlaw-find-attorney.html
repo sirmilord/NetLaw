@@ -897,6 +897,14 @@
         --iron-icon-width: 16px;
       }
 
+      .find-attorney[hidden] {
+        display: none;
+      }
+
+      .find-attorney-mobile[hidden] {
+        display: none;
+      }
+
       @media (min-width: 768px) {
         .find-attorney__col-module {
           flex: 1 1 50%;
@@ -950,7 +958,15 @@
         }
       }
     </style>
-    <main class="find-attorney">
+
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
+
+    <!--Mobile layout-->
+    <main class="find-attorney" hidden$="{{!mobile}}">
+    </main>
+
+    <!--Desktop layout-->
+    <main class="find-attorney" hidden$="{{mobile}}">
 
 
       <section class="find-attorney__content">
