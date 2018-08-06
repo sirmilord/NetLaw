@@ -67,13 +67,19 @@
         min-height: 75px;
       }
 
-      @media (max-width: 767px) {
+      @media (min-width: 320px) and (max-width: 767px) {
         .login-buttons {
-          margin-top: 20px;
+          margin-top: 45px;
         }
 
         .navbar--login {
           height: 50px;
+        }
+        .login__item-desc {
+          min-height: fit-content;
+        }
+        .login__row.login__margin-top-big  hr {
+          display: none;
         }
       }
 
