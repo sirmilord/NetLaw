@@ -944,7 +944,7 @@
           _routePageChanged(page) {
 
               // Hide empty drawer when active screen is not SmartGuide
-              if (page !== undefined || page !== 'your-vault' || page !== 'management' || page !== 'add-file'|| page !== 'doc' ) {
+              if (page !== undefined ||  page !== 'management' || page !== 'doc' ) {
                   this.$.lifevaultdrawer.close();
               }
               this.page = page || 'your-vault';
@@ -966,20 +966,13 @@
 
               // Open Drawer after page refresh
               if (this.mobile) {
-                  if (this.page === 'your-vault') {
-                      this.$.smartguidedrawer.open();
-                  }
 
                   if (this.page === 'management') {
-                      this.$.smartguidedrawer.open();
-                  }
-
-                  if (this.page === 'add-file') {
-                      this.$.smartguidedrawer.open();
+                      this.$.lifevaultdrawer.open();
                   }
 
                   if (this.page === 'doc') {
-                      this.$.smartguidedrawer.open();
+                      this.$.lifevaultdrawer.open();
                   }
               }
           }
