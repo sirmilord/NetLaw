@@ -159,6 +159,7 @@
         left: 50%;
         top: -7px;
         transform: translateX(-50%);
+        color: #4a4a4a;
       }
 
       .lifevault__btn {
@@ -198,8 +199,8 @@
         fill: #01AA50;
       }
 
-      .lifevault__list-link-lvl2:hover,
-      .lifevault__list-link-lvl2:focus {
+      .lifevault__list-link-lvl2:hover {
+      /*.lifevault__list-link-lvl2:focus {*/
         color: #4a4a4a;
       }
 
@@ -413,7 +414,7 @@
 
       .lifevault-mobile__arrow {
         position: absolute;
-        top: 28.9%;
+        top: 54.8%;
         left: -30px;
         --iron-icon-fill-color: #999;
         --iron-icon-height: 28px;
@@ -421,7 +422,7 @@
       }
 
       .lifevault-mobile__arrow--bottom {
-        top: 41%;
+        top: 84%;
       }
 
       @media (max-width: 767px) {
@@ -437,6 +438,35 @@
         .lifevault__nav-mobile {
           margin-top: 50px;
           text-align: left;
+        }
+
+        .lifevault__list-lvl2 {
+          padding-top: 15px;
+        }
+
+        .lifevault__list-link-lvl2 {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+
+        .lifevault__list-item-lvl2--top-border:before {
+          border-bottom: 1px solid #979797;
+          left: 0;
+          transform: none;
+        }
+
+        .btn--full {
+          width: 100%;
+          height: 60px;
+          font-size: 16px;
+          background-color: #4A90E2;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          left: 0;
+          bottom: 50px;
         }
 
       }
@@ -533,6 +563,7 @@
             </li>
           </iron-selector>
         </ul>
+        <a href="[[rootPath]]/smartguide/setup" class="btn btn--full">Begin SmartGuide Setup</a>
       </section>
 
       <app-drawer id="lifevaultdrawer" class="lifevault-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
@@ -553,7 +584,7 @@
                 </a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -577,7 +608,7 @@
                     </ul>
                   </iron-dropdown>
                 </a>
-                <iron-collapse id="collapse-mobile-lvl2">
+                <iron-collapse id="collapsemobilelvl2">
                   <ul class="lifevault__list-lvl3">
                     <iron-selector selected="[[page]]" attr-for-selected="name"
                                    role="navigation">
@@ -589,7 +620,7 @@
                           Home Management</a>
                         <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
-                          <iron-dropdown>
+                          <iron-dropdown horizontal-align="right">
                             <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
@@ -622,7 +653,7 @@
                           Documents of Estate</a>
                         <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
                           <iron-icon icon="icons:more-vert"></iron-icon>
-                          <iron-dropdown>
+                          <iron-dropdown horizontal-align="right">
                             <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                                 slot="dropdown-content">
                               <li>Download
@@ -653,13 +684,13 @@
                   </ul>
                 </iron-collapse>
               </li>
-              <li id="mod-mobile" class="lifevault__list-item-lvl2 ">
+              <li id="modmobile" class="lifevault__list-item-lvl2 ">
                 <a class="lifevault__list-link-lvl2" href="javascript:;">
                   <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                   Tax Returns</a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -690,7 +721,7 @@
                   Misc. Docs</a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -721,7 +752,7 @@
                   Insurance Policies</a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -752,7 +783,7 @@
                   Deeds</a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -783,7 +814,7 @@
                   Asset/Financial</a>
                 <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
                   <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
+                  <iron-dropdown horizontal-align="right">
                     <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                         slot="dropdown-content">
                       <li>Add Sub-Folder
@@ -1190,9 +1221,12 @@
 
           toggleLvl2(e) {
               e.preventDefault();
-              console.log("open");
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+              if (this.mobile) {
+                  this.$.collapsemobilelvl2.toggle();
+                  this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
+              }
           }
 
           ready(e) {
