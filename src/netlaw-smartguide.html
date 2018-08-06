@@ -507,6 +507,9 @@
               if (this.page === 'setup-step1' || this.page === 'setup-step2' ) {
                   this.$.smartguidedrawer.classList.add('smartguide-mobile__drawer--width');
                   this.$.smartguidedrawer.persistent = true;
+              } else {
+                  this.$.smartguidedrawer.classList.remove('smartguide-mobile__drawer--width');
+                  this.$.smartguidedrawer.persistent = false;
               }
           }
 
