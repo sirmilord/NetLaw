@@ -2,16 +2,6 @@
   "entrypoint": "index.html",
   "shell": "src/netlaw-app.html",
   "fragments": [
-    "src/netlaw-smartguide.html",
-    "src/netlaw-lifevault.html",
-    "src/netlaw-lifevault-doc.html",
-    "src/netlaw-lifevault-management.html",
-    "src/netlaw-lifevault-your-vault.html",
-    "src/netlaw-contacts.html",
-    "src/netlaw-attorney.html",
-    "src/netlaw-add-module.html",
-    "src/netlaw-login.html",
-    "src/netlaw-view-404.html"
   ],
   "sources": [
     "images/**/*",
