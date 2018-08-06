@@ -334,10 +334,6 @@
         margin-top: 20px !important;
       }
 
-      .login__margin-top-big {
-        margin-top: 50px !important;
-      }
-
       .login-form a {
         color: #01AA50;
       }
@@ -544,13 +540,23 @@
         margin-top: 0;
       }
 
+      @media (min-width: 768px) {
+
+        .login__margin-top-big {
+        margin-top: 50px !important;
+        }
+
+      }
+
+
+
       @media (min-width: 320px) and (max-width: 767px) {
 
         .login__container {
           font-size: 0.9em;
         }
         .login__section {
-          padding-top: 20px;
+          padding-top: 45px;
           padding-bottom: 0;
         }
 
@@ -570,8 +576,12 @@
           width: auto;
         }
 
+        .login .btn--google-play, .login .btn--apple-store {
+          width: 116px;
+        }
+
         .btn--back-dash.btn--position {
-          top: -5px;
+          top: 5px;
         }
 
         .login__margin-top-big {
@@ -581,10 +591,12 @@
         .login__item--third {
           flex: 1 1 100%;
           max-width: 100%;
+          margin-top: 25px;
+          margin-bottom: 25px;
         }
 
         .login__item-desc {
-          min-height: auto;
+          min-height: fit-content;
         }
 
       }
