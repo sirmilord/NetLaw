@@ -667,7 +667,7 @@
         }
 
         .lifevault-mobile__dashboard-item {
-          padding: 20px 25px;
+          padding: 15px 25px;
         }
 
         .lifevault-mobile__dashboard-item:not(:last-child) {
@@ -724,6 +724,64 @@
           width: 182px;
         }
 
+        .lifevault__module-list-item {
+          padding: 20px;
+        }
+
+        .lifevault__list-body {
+          width: 36px;
+          height: 36px;
+          padding: 0;
+        }
+
+        .lifevault__document.lifevault__document--list iron-icon[icon="netlaw-icons:page"] {
+          width: 18px;
+          height: 18px;
+        }
+
+        .lifevault__list-center {
+          text-align: left;
+        }
+
+        .lifevault__name-desc {
+          font-size: 14px;
+        }
+
+        .lifevault__menu {
+          --iron-icon-width: 24px;
+          --iron-iocn-height: 24px;
+        }
+
+        .btn--charm {
+          margin-right: 10px;
+        }
+
+        .lifevault__details--list {
+          font-size: 14px;
+          color: #01AA50;
+          --iron-icon-width: 24px;
+          --iron-icon-height: 24px;
+        }
+
+        .lifevault__module-list-item {
+          position: relative;
+        }
+
+        .lifevault__module-list-item:after {
+          content: '';
+          width: 60%;
+          height: 1px;
+          background-color: #979797;
+          left: 20px;
+          bottom: 0;
+          position: absolute;
+          opacity: .3;
+        }
+
+        .lifevault__version-dropdown a {
+          font-size: 14px;
+          color: #01AA50;
+        }
       }
 
     </style>
@@ -774,9 +832,367 @@
           </iron-dropdown>
         </li>
         <li class="lifevault-mobile__dashboard-item">
-          <a class="lifevault-mobile__dashboard-close" href="javascript:;" on-click="hideDashboard"><iron-icon icon="netlaw-icons:close"></iron-icon></a>
+          <a class="lifevault-mobile__dashboard-close" href="javascript:;" on-click="hideDashboard">
+            <iron-icon icon="netlaw-icons:close"></iron-icon>
+          </a>
         </li>
       </ul>
+
+      <div class="lifevault__module lifevault__module--list">
+        <div class="lifevault__module-list-item">
+        <div class="lifevault__list-left">
+          <div class="lifevault__list-body">
+            <figure class="lifevault__document lifevault__document--list">
+              <a href="[[rootPath]]lifevault/doc">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="lifevault__list-center">
+          <a href="[[rootPath]]lifevault/doc">
+            <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+          </a>
+          <span class="lifevault__list-update">Updated 1d ago</span>
+          <a href="javascript:;" class="btn btn--charm">
+            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+          </a>
+          <button class="lifevault__details lifevault__details--list">v1.1
+            <iron-icon icon="icons:expand-more"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__version-dropdown"
+                  slot="dropdown-content">
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.1</span>
+                  </a>
+                  <iron-icon icon="icons:expand-less"></iron-icon>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.2</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.4</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.5</span>
+                  </a>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </button>
+        </div>
+        <div class="lifevault__list-right">
+          <a class="lifevault__menu" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Replace
+                  <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </div>
+      </div>
+        <div class="lifevault__module-list-item">
+        <div class="lifevault__list-left">
+          <div class="lifevault__list-body">
+            <figure class="lifevault__document lifevault__document--list">
+              <a href="[[rootPath]]lifevault/doc">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="lifevault__list-center">
+          <a href="[[rootPath]]lifevault/doc">
+            <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+          </a>
+          <span class="lifevault__list-update">Updated 1d ago</span>
+          <a href="javascript:;" class="btn btn--charm">
+            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+          </a>
+          <button class="lifevault__details lifevault__details--list">v1.1
+            <iron-icon icon="icons:expand-more"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__version-dropdown"
+                  slot="dropdown-content">
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.1</span>
+                  </a>
+                  <iron-icon icon="icons:expand-less"></iron-icon>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.2</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.4</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.5</span>
+                  </a>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </button>
+        </div>
+        <div class="lifevault__list-right">
+          <a class="lifevault__menu" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Replace
+                  <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </div>
+      </div>
+        <div class="lifevault__module-list-item">
+        <div class="lifevault__list-left">
+          <div class="lifevault__list-body">
+            <figure class="lifevault__document lifevault__document--list">
+              <a href="[[rootPath]]lifevault/doc">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="lifevault__list-center">
+          <a href="[[rootPath]]lifevault/doc">
+            <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+          </a>
+          <span class="lifevault__list-update">Updated 1d ago</span>
+          <a href="javascript:;" class="btn btn--charm">
+            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+          </a>
+          <button class="lifevault__details lifevault__details--list">v1.1
+            <iron-icon icon="icons:expand-more"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__version-dropdown"
+                  slot="dropdown-content">
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.1</span>
+                  </a>
+                  <iron-icon icon="icons:expand-less"></iron-icon>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.2</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.4</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.5</span>
+                  </a>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </button>
+        </div>
+        <div class="lifevault__list-right">
+          <a class="lifevault__menu" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Replace
+                  <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </div>
+      </div>
+        <div class="lifevault__module-list-item">
+        <div class="lifevault__list-left">
+          <div class="lifevault__list-body">
+            <figure class="lifevault__document lifevault__document--list">
+              <a href="[[rootPath]]lifevault/doc">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </a>
+            </figure>
+          </div>
+        </div>
+        <div class="lifevault__list-center">
+          <a href="[[rootPath]]lifevault/doc">
+            <span class="lifevault__name-desc">Estimate for Home Management.PDF</span>
+          </a>
+          <span class="lifevault__list-update">Updated 1d ago</span>
+          <a href="javascript:;" class="btn btn--charm">
+            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+          </a>
+          <button class="lifevault__details lifevault__details--list">v1.1
+            <iron-icon icon="icons:expand-more"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__version-dropdown"
+                  slot="dropdown-content">
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.1</span>
+                  </a>
+                  <iron-icon icon="icons:expand-less"></iron-icon>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.2</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                  </a>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.4</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="[[rootPath]]lifevault/doc">
+                    <span class="lifevault__version">v1.5</span>
+                  </a>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </button>
+        </div>
+        <div class="lifevault__list-right">
+          <a class="lifevault__menu" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Replace
+                  <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </div>
+      </div>
+      </div>
+
     </main>
 
     <!--Desktop layout-->
