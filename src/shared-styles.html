@@ -380,7 +380,7 @@
         max-width: 100%;
         vertical-align: top;
         width: 300px;
-        border-top: 2px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
       }
 
       .login__divider::after {
@@ -389,7 +389,7 @@
         max-width: 100%;
         vertical-align: top;
         width: 500px;
-        border-top: 2px solid #e5e5e5;
+        border-top: 1px solid #e5e5e5;
       }
 
       .login__margin-bottom {
@@ -553,7 +553,11 @@
       @media (min-width: 320px) and (max-width: 767px) {
 
         .login__container {
-          font-size: 0.9em;
+          /*font-size: 0.9em;*/
+        }
+        .login__padding {
+          padding-top: 0;
+          padding-bottom: 0;
         }
         .login__section {
           padding-top: 45px;
@@ -597,6 +601,15 @@
 
         .login__item-desc {
           min-height: fit-content;
+        }
+
+        .login-form .login__divider-small {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .login__divider-small::after {
+          border-top: none;
         }
 
       }
