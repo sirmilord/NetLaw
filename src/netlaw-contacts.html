@@ -848,12 +848,13 @@
       .contacts-mobile__drawer-wrap {
         position: relative;
         width: 100%;
-        /*height: 100%;*/
+        height: 100%;
+        overflow: auto;
       }
 
       .contacts-mobile__arrow {
         position: absolute;
-        top: 28.9%;
+        top: 335px;
         left: -30px;
         --iron-icon-fill-color: #999;
         --iron-icon-height: 28px;
@@ -861,7 +862,7 @@
       }
 
       .contacts-mobile__arrow--bottom {
-        top: 41%;
+        top: 425px;
       }
 
 
@@ -935,13 +936,14 @@
 
       <app-drawer id="contactsdrawer" class="contacts-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                   hidden$="{{!mobile}}" align="right">
+        <div class="contacts-mobile__arrow">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
+        <div class="contacts-mobile__arrow contacts-mobile__arrow--bottom">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
         <div class="contacts-mobile__drawer-wrap">
-          <div class="contacts-mobile__arrow">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
-          <div class="contacts-mobile__arrow contacts-mobile__arrow--bottom">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
+
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-contacts-setup name="setup"
                                      on-close-contacts-drawer="closeDrawer"></netlaw-contacts-setup>

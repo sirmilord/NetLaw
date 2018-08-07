@@ -294,12 +294,13 @@
       .smartguide-mobile__drawer-wrap {
         position: relative;
         width: 100%;
-        /*height: 100%;*/
+        height: 100%;
+        overflow: auto;
       }
 
       .smartguide-mobile__arrow {
         position: absolute;
-        top: 36.8%;
+        top: 335px;
         left: -30px;
         --iron-icon-fill-color: #999;
         --iron-icon-height: 28px;
@@ -307,7 +308,7 @@
       }
 
       .smartguide-mobile__arrow--bottom {
-        top: 52%;
+        top: 425px;
       }
 
 
@@ -387,13 +388,13 @@
 
       <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                   hidden$="{{!mobile}}" align="right">
+        <div class="smartguide-mobile__arrow">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
+        <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
         <div class="smartguide-mobile__drawer-wrap">
-          <div class="smartguide-mobile__arrow">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
-          <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-smartguide-setup name="setup"
                                      on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>

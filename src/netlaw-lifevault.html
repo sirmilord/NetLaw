@@ -409,12 +409,13 @@
       .lifevault-mobile__drawer-wrap {
         position: relative;
         width: 100%;
-        /*height: 100%;*/
+        height: 100%;
+        overflow: auto;
       }
 
       .lifevault-mobile__arrow {
         position: absolute;
-        top: 54.8%;
+        top: 335px;
         left: -30px;
         --iron-icon-fill-color: #999;
         --iron-icon-height: 28px;
@@ -422,7 +423,7 @@
       }
 
       .lifevault-mobile__arrow--bottom {
-        top: 84%;
+        top: 425px;
       }
 
       @media (max-width: 767px) {
@@ -572,13 +573,14 @@
 
       <app-drawer id="lifevaultdrawer" class="lifevault-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                   hidden$="{{!mobile}}" align="right">
+        <div class="lifevault-mobile__arrow">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
+        <div class="lifevault-mobile__arrow lifevault-mobile__arrow--bottom">
+          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+        </div>
         <div class="lifevault-mobile__drawer-wrap">
-          <div class="lifevault-mobile__arrow">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
-          <div class="lifevault-mobile__arrow lifevault-mobile__arrow--bottom">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
+
           <section id="navmobile" class="lifevault__nav-mobile" hidden$={{navMobile}}>
             <ul class="lifevault__list-lvl2">
               <li class="lifevault__list-item-lvl2">
