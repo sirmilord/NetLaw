@@ -426,7 +426,9 @@
         top: 425px;
       }
 
+
       @media (max-width: 767px) {
+
         iron-pages {
           flex: 1 1 100%;
           max-width: 100%;
@@ -448,6 +450,8 @@
         .lifevault__list-link-lvl2 {
           padding-top: 12px;
           padding-bottom: 12px;
+          --iron-icon-width: 18px;
+          --iron-icon-height: 18px;
         }
 
         .lifevault__list-item-lvl2--top-border:before {
@@ -472,6 +476,10 @@
 
         .lifevault__nav-mobile[hidden] {
           display: none;
+        }
+
+        .lifevault__btn {
+          right: 10px;
         }
 
       }
