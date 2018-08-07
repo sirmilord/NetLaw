@@ -109,11 +109,13 @@
         border: 0;
         padding: 0;
         color: #cdcdcd;
-        --iron-icon-width: 50px;
-        --iron-icon-height: 50px;
+        --iron-icon-width: 25px;
+        --iron-icon-height: 25px;
         --iron-icon-fill-color: #979797;
         align-self: center;
         font-weight: 400;
+        padding-left: 10px;
+        padding-right: 10px;
       }
 
       .lifevault__content-update {
@@ -203,6 +205,34 @@
         text-align: center;
       }
 
+      @media (max-width: 768px) {
+
+        .lifevault__content-header {
+          margin-top: 50px;
+        }
+
+        .lifevault__content-title {
+          font-size: 21px;
+          text-align: left;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+
+        .lifevault__doc-title {
+          font-size: 21px;
+        }
+
+        .lifevault__document {
+          padding: 20px 30px;
+        }
+
+        .lifevault__content-update {
+          margin-right: 10px;
+          margin-bottom: 5px;
+        }
+
+      }
+
 
     </style>
 
@@ -210,7 +240,7 @@
 
       <div class="lifevault__content-header">
         <a href="[[routePath]]lifevault/management" class="btn btn--back-dash">
-          <iron-icon icon="icons:chevron-left"></iron-icon>
+          <iron-icon icon="netlaw-icons:chevron-left"></iron-icon>
         </a>
         <h2 class="lifevault__content-title">Estimate for Home Management .PDF v1.1</h2>
         <div class="lifevault__content-update">Updated 1d ago</div>
