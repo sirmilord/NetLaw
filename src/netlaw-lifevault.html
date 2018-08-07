@@ -469,6 +469,10 @@
           bottom: 50px;
         }
 
+        .lifevault__nav-mobile[hidden] {
+          display: none;
+        }
+
       }
 
       @media (max-width: 991px) {
@@ -556,7 +560,7 @@
             </li>
             <li class="lifevault-mobile__list-item lifevault-mobile__list-item--bottom-border">
               <a name="" href="javascript:;"
-                 class="lifevault-mobile__list-link" on-click="openDrawer">
+                 class="lifevault-mobile__list-link">
                 <span class="lifevault-mobile__list-text">Shared with my Attorneys</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
@@ -575,7 +579,7 @@
           <div class="lifevault-mobile__arrow lifevault-mobile__arrow--bottom">
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
           </div>
-          <section class="lifevault__nav-mobile">
+          <section id="navmobile" class="lifevault__nav-mobile" hidden$={{navMobile}}>
             <ul class="lifevault__list-lvl2">
               <li class="lifevault__list-item-lvl2">
                 <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
@@ -842,8 +846,8 @@
             </ul>
           </section>
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <netlaw-lifevault-setup name="management"></netlaw-lifevault-setup>
-            <netlaw-lifevault-templates name="doc"></netlaw-lifevault-templates>
+            <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
+            <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
           </iron-pages>
         </div>
       </app-drawer>
@@ -1223,6 +1227,7 @@
               e.preventDefault();
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+
               if (this.mobile) {
                   this.$.collapsemobilelvl2.toggle();
                   this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
@@ -1250,7 +1255,13 @@
               // Hide empty drawer when active screen is not SmartGuide
               if (page !== undefined || page !== 'management' || page !== 'doc') {
                   this.$.lifevaultdrawer.close();
+                  //show nav mobile after change link
+                  this.navMobile = false;
+                  // get a collapse to previous state
+                  this.$.collapsemobilelvl2.hide();
+                  this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
               }
+
               this.page = page || 'your-vault';
 
               if (this.page === 'your-vault' && !this.mobile) {
@@ -1273,10 +1284,14 @@
 
                   if (this.page === 'management') {
                       this.$.lifevaultdrawer.open();
+                      //hide nav mobile when click to managementlink
+                      this.navMobile = true;
                   }
 
                   if (this.page === 'doc') {
                       this.$.lifevaultdrawer.open();
+                      //hide nav mobile when click to doc link
+                      this.navMobile = true;
                   }
               }
           }
