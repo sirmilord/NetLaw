@@ -2186,11 +2186,13 @@
           onAddFileClick(e) {
               e.preventDefault();
               this.addFile = true;
+              // this.dispatchEvent(new CustomEvent(""));
           }
 
           onCancelFileClick(e) {
               e.preventDefault();
               this.addFile = false;
+              // this.dispatchEvent(new CustomEvent(""));
           }
 
           openSortBy() {
