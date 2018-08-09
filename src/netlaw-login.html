@@ -461,11 +461,14 @@
           }
 
           onLoginClick(e) {
-              // this.dispatchEvent(new CustomEvent("logged-in"));
-              this.$.wrapper.classList.add('login--security');
-              this.first = false;
-              this.method = false;
-              this.security = true;
+              // Direct login on login button click
+              this.dispatchEvent(new CustomEvent("logged-in"));
+
+              // Login Security screens
+              // this.$.wrapper.classList.add('login--security');
+              // this.first = false;
+              // this.method = false;
+              // this.security = true;
           }
 
           onBackToPrevClick(e) {
