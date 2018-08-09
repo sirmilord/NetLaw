@@ -53,11 +53,11 @@
 
       p {
         margin-top: 0;
-        margin-bottom: 35px;
+        margin-bottom: 20px;
         color: #414142;
         font-size: 14px;
-        font-style: italic;
         font-weight: 300;
+
       }
 
       hr {
@@ -505,7 +505,7 @@
         width: 100%;
         height: 100%;
         background-color: #fff;
-        opacity: 0.8;
+        opacity: 0.95;
         left: 0;
         top: 0;
       }
@@ -516,13 +516,21 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        --iron-icon-width: 100px;
-        --iron-icon-height: 100px;
-        --iron-icon-fill-color: #a2a2a2;
+        --iron-icon-width: 70px;
+        --iron-icon-height: 70px;
+        --iron-icon-fill-color: #000;
+        font-size: 16px;
+        font-style: normal;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+      }
+
+      .drap-drop p {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        color: #4a4a4a;
       }
 
       .files {
@@ -547,9 +555,10 @@
 
       .files__title {
 
-        font-size: 16px;
-        margin-bottom: 30px;
+        font-size: 14px;
+        margin-bottom: 20px;
         display: block;
+        font-weight: 400;
       }
 
       .files__desc {
@@ -558,22 +567,22 @@
       }
 
       .files__icon {
-        --iron-icon-width: 50px;
-        --iron-icon-height: 50px;
-        --iron-icon-fill-color: #a2a2a2;
+        --iron-icon-width: 40px;
+        --iron-icon-height: 40px;
+        --iron-icon-fill-color: #e1e1e1;
         margin-bottom: 15px;
       }
 
       .files__icon--close {
-        --iron-icon-width: 100px;
-        --iron-icon-height: 100px;
+        --iron-icon-width: 85px;
+        --iron-icon-height: 85px;
         --iron-icon-fill-color: #4a4a4a;
       }
 
       .files__item--extra {
-        border: 1px solid #a2a2a2;
+        border: 1px solid #e1e1e1;
         border-top: 0;
-        box-shadow: 0 2px 0 0 #a2a2a2;
+        box-shadow: 0 2px 0 0 #e1e1e1;
       }
 
       .files__item--border-hide {
