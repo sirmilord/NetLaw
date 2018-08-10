@@ -18,7 +18,9 @@
     "paper-checkbox": "^2.0.4",
     "iron-collapse": "^2.2.1",
     "polymer-grid-layout": "^1.0.3",
-    "iron-demo-helpers": "^2.1.2"
+    "iron-demo-helpers": "^2.1.2",
+    "paper-dialog": "^2.1.1",
+    "nlp-api": "https://github.com/zpazanin/nlp-api.git"
   },
   "resolutions": {
     "polymer": "^2.0.0"

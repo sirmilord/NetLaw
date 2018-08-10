@@ -1,0 +1,519 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="../bower_components/paper-password-input/paper-password-input.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+
+<dom-module id="ap-login">
+    <template>
+        <style is="custom-style" include="iron-flex iron-flex-factors"></style>
+        <style include="shared-styles">
+            * {
+                box-sizing: border-box;
+            }
+
+            :host {
+                display: block;
+                padding: 10px;
+                min-height: 100vh;
+                background: #fff url(/images/bg-business-card.jpg) no-repeat 50% 50%; /*draft*/
+                background-size: cover;
+            }
+
+            :host([login]) {
+                background: #fff url(/images/bg-netlaw.png) no-repeat 50% 50%; /*law*/
+            }
+
+                :host([login]) .logo.logo-netdraft {
+                    display: none;
+                }
+
+            :host(:not([login])) .logo.logo-netlaw {
+                display: none;
+            }
+
+            h1 {
+                font-size: 24px;
+                font-weight: 400;
+                margin-bottom: 0;
+            }
+
+                h1 + p {
+                    margin-top: 0;
+                }
+
+            paper-button {
+                padding: 6px 8px;
+            }
+
+                paper-button.flat {
+                    background: none;
+                    color: var(--app-primary-color);
+                    text-transform: none;
+                    margin: 0 -0.57em;
+                }
+
+
+            .max-width-400px {
+                max-width: 400px;
+                width: 100%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .max-width-800px {
+                max-width: 800px;
+                width: 100%;
+                display: block;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            .login-wrapper .card {
+                width: 100%;
+                padding: 32px;
+                margin: 0;
+            }
+
+            .choose-account-menu-like-trigger {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+
+                .choose-account-menu-like-trigger .icon-people {
+                    flex: 0 0 24px;
+                }
+
+                .choose-account-menu-like-trigger .indetifier {
+                    word-break: break-all;
+                    flex-grow: 1;
+                    padding: 0 16px;
+                }
+
+                .choose-account-menu-like-trigger .arrow {
+                    flex: 0 0 40px;
+                    
+                }
+
+            .choose-account paper-icon-item,
+            .choose-account paper-item {
+                cursor: pointer;
+            }
+
+            .logo {
+                max-width: 200px;
+            }
+
+            .card {
+                margin-bottom: 12px;
+            }
+
+            paper-progress {
+                --paper-progress-active-color: var(--app-primary-color);
+                width: calc(100% + 32px);
+                position: relative;
+                top: -16px;
+                left: -16px;
+            }
+
+                paper-progress[disabled] {
+                    --paper-progress-container-color: transparent;
+                }
+        </style>
+
+        <paper-toast id="toast" class="fit-bottom"></paper-toast>
+
+        <div class="vertical-center-inside min-height-90vh">
+            <div class$="{{if(isWide, 'max-width-800px', 'max-width-400px')}}">
+                <div class="card" disabled$="[[loading]]">
+
+                    <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
+
+                    <p class="text-center">
+                        <img class="logo logo-netdraft" src="/images/logo-netdraft.png" alt="NetDraft">
+                        <img class="logo logo-netlaw" src="/images/logo-netlaw.png" alt="NetLaw">
+                    </p>
+
+                    <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
+
+                        <div name="signin" login>
+                            <h1>Sign in</h1>
+                            <p>to continue to NetDraft</p>
+
+                            <paper-input class="flex-6" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>
+                            <!--<p class="margin-top-32px">or sign in with</p>
+                            <paper-icon-button icon="ap-icons:google-color" name="google" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="ap-icons:facebook" style="color:#3b5998;" name="facebook" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="ap-icons:linkedin" style="color:#0077B5;" name="linkedin" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="ap-icons:twitter" style="color:#00aced;" name="twitter" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>-->
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" name="create-account" on-click="onNavigate" disabled="[[loading]]">Create account</paper-button></div>
+                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignIn" disabled="[[loading]]">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="signin-password" login>
+                            <h1>Welcome</h1>
+
+                            <div class="choose-account-menu-like-trigger">
+                                <iron-icon icon="ap-icons:person" class="icon-people" style="width:24px;"></iron-icon>
+                                <span class="indetifier">[[name]]</span>
+                                <paper-icon-button class="arrow" icon="ap-icons:keyboard-arrow-down" name="signin" on-click="onNavigate" disabled="[[loading]]"></paper-icon-button>
+                            </div>
+
+                            <p>To continue, first verify it's you</p>
+
+                            <paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>
+                            <!--<div class="error">Tough luck bro, try again</div>-->
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignInNext" disabled="[[loading]]">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div class="choose-account" name="choose-account" login>
+                            <h1 class="margin-bottom-16px">Choose an account</h1>
+
+                            <paper-icon-item>
+                                <div class="avatar" slot="item-icon"><img src="/images/profile-pictures/clients/40x40/5025e509-3943-41ef-aab7-27ba28f9cacd.jpg" alt=""></div>
+                                <paper-item-body>my acc1 one</paper-item-body>
+                            </paper-icon-item>
+
+                            <paper-icon-item>
+                                <div class="avatar" slot="item-icon"><img src="/images/profile-pictures/clients/40x40/bea33650-c46f-49f4-92d2-fa2d4fb78e72.jpg" alt=""></div>
+                                <paper-item-body>my other account</paper-item-body>
+                            </paper-icon-item>
+
+                            <paper-item name="signin" on-click="onNavigate" class="margin-top-16px">
+                                <paper-item-body>Use another account</paper-item-body>
+                            </paper-item>
+                        </div>
+
+
+                        <div name="create-account" xwide login>
+                            <h1>Create your NetLaw Account</h1>
+                            <p>to continue to NetDraft</p>
+
+                            <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus disabled="[[loading]]" value="{{name}}"></paper-input>
+                            <paper-input class="flex-6" label="Your email address" name="email" autocomplete="email" disabled="[[loading]]" value="{{email}}"></paper-input>
+                            <paper-password-input class="flex-6" label="Enter your password" name="password" autocomplete="current-password" disabled="[[loading]]" value="{{password}}"></paper-password-input>
+                            <paper-input label="Your phone (optional)" name="phone" autocomplete="phone" disabled="[[loading]]" value="{{phone}}"></paper-input>
+
+                            <div class="margin-top-32px">
+                                <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong>Terms of Use</strong> for this site</paper-checkbox>
+                            </div>
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in instead</paper-button></div>
+                                <div class="flex-4 text-right"><paper-button class="primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="choose-profile">
+                            <h1 class="margin-bottom-16px">Choose a profile</h1>
+
+                            <template is="dom-repeat" items="{{profiles}}">
+                                <a href="javascript:;" disabled$="[[loading]]">
+                                    <paper-icon-item disabled="[[loading]]" on-click="onProfileChoice">
+                                        <div class="avatar" slot="item-icon"><iron-icon icon="ap-icons:person"></iron-icon></div>
+                                        <paper-item-body two-line>
+                                            <div>{{item.name}}</div>
+                                            <div secondary>{{item.firm_name}}</div>
+                                        </paper-item-body>
+                                    </paper-icon-item>
+                                </a>
+                            </template>
+
+                            <paper-item name="create-profile" disabled="[[loading]]" on-click="onNavigate" class="margin-top-16px">
+                                <paper-item-body>Create a New Profile</paper-item-body>
+                            </paper-item>
+
+                            <div class="layout horizontal margin-top-16px">
+                                <div class="flex-8"><paper-button class="flat" disabled="[[loading]]" on-click="onSignOut">Sign Out</paper-button></div>
+                            </div>
+                        </div>
+
+                        <div name="create-profile" wide>
+                            <h1>Create your NetDraft Profile</h1>
+
+                            <!--div class="layout horizontal padded margin-top-16px"-->
+                            <div class="padded">
+                                <paper-input label="Attorney Full Name" name="name" autocomplete="fullname" autofocus value="{{name}}"></paper-input>
+                                <paper-input label="Firm Name" name="firm" autocomplete="firm" value="{{firm}}"></paper-input>
+
+                                <paper-input label="Bar Licence" name="barlicense" value="{{barLicense}}"></paper-input>
+                                <paper-input label="Malpractice Insurance Policy Provider" name="malpracticeprovider" value="{{malpracticeProvider}}"></paper-input>
+                                <paper-input label="Malpractice Insurance Policy Number" name="malpracticenumber" value="{{malpracticeNumber}}"></paper-input>
+
+                            </div>
+
+                            <div class="margin-top-32px">
+                                <paper-checkbox checked="{{inGoodStanding}}">I am active and in good standing with the bar of every state in which I am licensed.</paper-checkbox>
+                            </div>
+                            <div class="margin-top-32px">
+                                <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to be bound by the <a href="#">Network Attorney Agreement</a> and <a href="#">Non-Disclosure Agreement</a> and general Terms of Use for this site.</paper-checkbox>
+                            </div>
+                            <!--<p class="margin-top-32px font-size-80-percent">If you have been practicing in the area of estate planning for at least seven years, you may be eligible to receive our "Advanced Attorney" designation. To be considered for our Advanced Attorney designation, <a href="#">click here</a> for more information.</p>-->
+
+                            <div class="flex-justify margin-top-16px">
+                                <div><paper-button class="flat" disabled="[[loading]]" name="choose-profile" on-click="onNavigate">Choose existing profile</paper-button></div>
+                                <div><paper-button class="primary" on-click="onCreateProfile" disabled="[[!canCreateProfile]]">Create Profile</paper-button></div>
+                            </div>
+                        </div>
+
+
+                    </iron-pages>
+
+
+                </div>
+
+                <div class="layout horizontal align-with-card">
+                    <div class="flex-8">
+                        <!--<span>English (United States) <iron-icon icon="arrow-drop-down"></iron-icon></span>-->
+                    </div>
+                    <div class="flex-4 text-right">
+                        <span>Terms</span>
+                        <span>&nbsp;</span>
+                        <span>Help</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        class ApLogin extends Polymer.Element {
+            static get is() { return 'ap-login'; }
+            static get properties() {
+                return {
+                    skipSessionRestore: { type: Boolean, value: false },
+                    loading: { type: Boolean, value: false, observer: '_loadingChanged' },
+                    selected: { type: String, value: "signin", observer: '_selectedChanged' },
+                    isWide: { type: Boolean, computed: '_isWide(selected)' },
+                    login: { type: Boolean, computed: '_isLogin(selected)', reflectToAttribute: true },
+
+                    identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
+
+                    email: String,
+                    phone: String,
+
+                    password: String,
+
+                    canCreateAccount: { type: Boolean, computed: '_canCreateAccount(name, email, password, agreesWithTerms, loading)' },
+
+                    name: String,
+                    firm: String,
+                    barLicense: String,
+                    malpracticeProvider: String,
+                    malpracticeNumber: String,
+                    inGoodStanding: Boolean,
+                    agreesWithTerms: Boolean,
+                    canCreateProfile: { type: Boolean, computed: '_canCreateProfile(name, firm, barLicense, malpracticeProvider, malpracticeNumber, inGoodStanding, agreesWithTerms, loading)' },
+
+                    profiles: Array,
+                };
+            }
+
+            constructor() {
+                super();
+                window.login = this; //***DEBUG
+
+                Polymer.RenderStatus.afterNextRender(this, function () {
+                    if (!this.skipSessionRestore) this.tryRestoreSession();
+                }.bind(this));
+            }
+
+            if(condition, ifTrue, ifFalse) { return condition ? ifTrue || "" : ifFalse || ""; }
+
+            _isWide(selected) { return this.$.panel.children[selected] && this.$.panel.children[selected].attributes.wide && this.$.panel.children[selected].attributes.wide.value !== "false" || false; }
+            _isLogin(selected) { return this.$.panel.children[selected] && this.$.panel.children[selected].attributes.login && this.$.panel.children[selected].attributes.login.value !== "false" || false; }
+
+            _canCreateAccount(name, email, password, agreesWithTerms, loading) { return !!(name && email && password && agreesWithTerms && !loading); }
+
+            _canCreateProfile(name, firm, barLicense, malpracticeProvider, malpracticeNumber, inGoodStanding, agreesWithTerms, loading) { return !!(name && firm && barLicense && malpracticeProvider && malpracticeNumber && inGoodStanding && agreesWithTerms && !loading); }
+
+            _loadingChanged(value) {
+                if (value) return; //focus when done loading
+                let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+                if (elements.length) elements[0].focus();
+            }
+
+            _selectedChanged(value) {
+                this.error = null;
+                this.loading = false;
+                let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+                if (elements.length) elements[0].focus();
+            }
+
+            _setSession(session) {
+                if (session == null) {
+                    localStorage.removeItem("session-id");
+                    localStorage.removeItem("session-ticket");
+                    localStorage.removeItem("account-id");
+                    localStorage.removeItem("account-name");
+                    api.ticket = null;
+                } else {
+                    localStorage.setItem("session-id", session.session_id);
+                    localStorage.setItem("session-ticket", session.ticket);
+                    localStorage.setItem("account-id", session.account_id);
+                    localStorage.setItem("account-name", session.username);
+                    api.ticket = session.ticket;
+                }
+            }
+
+            _setProfile(profile) {
+                localStorage.setItem("attorney-id", profile.attorney_id);
+                localStorage.setItem("attorney-name", profile.name);
+                localStorage.setItem("firm-id", profile.firm_id);
+                localStorage.setItem("firm-name", profile.firm_name);
+            }
+
+            _fetchProfiles() {
+                return api.draft.listAccounts()
+                    .success(r => {
+                        this.profiles = r;
+
+                        if (!r.length) {
+                            this.selected = "create-profile";
+                        } else if (r.length == 1) {
+                            this._setProfile(r[0]);
+                            this.selected = "signin";
+
+                            this.dispatchEvent(new CustomEvent('logged-in'));
+                        } else {
+                            this.selected = "choose-profile";
+                        }
+                    });
+            }
+
+            onNavigate(e) { this.selected = e.currentTarget.attributes.name.value; }
+
+            onProfileChoice(e) {
+                this._setProfile(e.model.item);
+                this.dispatchEvent(new CustomEvent('logged-in'));
+                this.selected = "signin";
+            }
+
+            onSignOut(e) {
+                api.accounts.logout();
+                this._setSession(null);
+                this.selected = "signin";
+            }
+
+            tryRestoreSession() {
+                if (!(api.ticket = localStorage.getItem('session-ticket'))) return;
+
+                this.loading = true;
+                this.$.toast.show("Logging you in...");
+                api.accounts.checkSession()
+                    .success(r => {
+                        this.selected = "signin";
+
+                        this._setSession(r);
+                        return this._fetchProfiles();
+                    })
+                    .unauthorized(ex => {
+                        //ticket expired
+                        localStorage.removeItem("session-ticket");
+                        this.$.toast.show("Previous session expired, please log in again.");
+                    })
+                    .finally(() => this.loading = false);
+            }
+
+            switchProfile() {
+                this.selected = "choose-profile";
+                this.loading = true;
+                return api.draft.listAccounts()
+                    .success(r => {
+                        this.profiles = r;
+                    })
+                    .finally(() => this.loading = false);
+            }
+
+
+            onSignIn(e) {
+                this.loading = true;
+                this.error = null;
+                localStorage.setItem("name", this.identifier);
+
+                api.accounts.findAccount(this.identifier)
+                    .success(r => {
+                        this.selected = "signin-password";
+                        //this.identifier = data.identifier;
+                        this.userId = r.user_id;
+                        this.name = r.name;
+                    })
+                    .badRequest(ex => { this.error = "Please specify your email or phone"; })
+                    .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
+                    .serverError(ex => { this.error = "Server error please try again."; })
+                    //.catch(ex => { this.error = "Request error."; })
+                    .finally(() => this.loading = false);
+            }
+
+            onSignInNext(e) {
+                this.loading = true;
+                this.error = null;
+
+                api.accounts.login(this.identifier, this.password, this.name, this.phone)
+                    .success(r => {
+                        this._setSession(r);
+                        return this._fetchProfiles()
+                            .then(() => this.password = null);
+                    })
+                    .notFound(ex => this.error = "Wrong password. Try again or try resetting it.")
+                    .finally(() => this.loading = false);
+            }
+
+
+            onSocial(e) {
+                let name = e.srcElement.attributes.name.value;
+
+            }
+
+            onCreateAccount(e) {
+                this.loading = true;
+                api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
+                    .success(r => {
+                        this.selected = "create-profile";
+                        this.accountId = r.user_id;
+                        this.accountName = r.name;
+                        this.agreesWithTerms = false;
+                        return api.accounts.login(this.email, this.password)
+                            .success(r => {
+                                api.ticket = r.ticket;
+                                this.ticket = r.ticket;
+                                this.username = r.username;
+                                this.session_id = r.session_id;
+                                this.account_id = r.account_id;
+                            });
+                    })
+                    .error(ex => {
+                        this.error = ex.message;
+                    })
+                    .finally(() => this.loading = false);
+            }
+
+            onCreateProfile(e) {
+                this.loading = true;
+                api.draft.createAccount(this.name, this.firm, {
+                    BarLicense: this.barLicense,
+                    MalpracticeProvider: this.malpracticeProvider,
+                    MalpracticeNumber: this.malpracticeNumber,
+                }).success(r => {
+                    this.error = null;
+                    this.selected = "signin";
+
+                    this._setProfile(r);
+                    this.dispatchEvent(new CustomEvent('logged-in'));
+                }).error(ex => {
+                    this.error = ex.message;
+                }).finally(() => this.loading = false);
+            }
+        }
+
+        window.customElements.define(ApLogin.is, ApLogin);
+    </script>
+</dom-module>
