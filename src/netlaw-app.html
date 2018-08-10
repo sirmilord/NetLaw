@@ -381,11 +381,11 @@
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <app-toolbar class="navbar-mobile">
               <slot id="placeholder"></slot>
-              <!--<template id="menu">-->
+              <template id="menu">
               <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
-              <!--</template>-->
+              </template>
 
             </app-toolbar>
 
@@ -576,8 +576,10 @@
               else this.page = page || 'login';
 
               let page2 = this.$.pages.selectedItem;
-              let template = page2 && (page2.menu || page2.querySelector("#menu"));
-              //console.log(page);
+              let template = page2 && (page2.menu || this.querySelector("#menu"));
+              // console.log(this.querySelector("#menu"));
+              // console.log(this.page);
+              console.log(this.$.menu);
               console.log(template);
               while (this.$.placeholder.firstChild) this.$.placeholder.removeChild(this.$.placeholder.firstChild);
 
@@ -585,6 +587,7 @@
                   let instance = page2 instanceof Polymer.Element ? page2._stampTemplate(template) : this._stampTemplate(template);
                   this.$.placeholder.appendChild(instance);
               }
+
 
           }
 
