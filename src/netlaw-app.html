@@ -204,11 +204,16 @@
         height: 50px;
         width: 40px;
         z-index: 100;
+        --iron-icon-height: 24px;
+        --iron-icon-width: 24px;
+        border: 0;
+      }
+      .navbar-mobile__toggle:focus {
+        outline: 0;
       }
 
       .navbar-mobile__toggle iron-icon {
         --iron-icon-fill-color: #4A4A4A;
-        opacity: 0.3;
       }
 
       .mobile-layout {
@@ -337,7 +342,9 @@
         <app-drawer id="mobiledrawer" class="mobile-drawer"  slot="drawer" swipe-open="[[narrow]]" hidden$="{{!mobile}}">
           <app-toolbar class="navbar-mobile navbar-mobile--drawer">
             <netlaw-logo class="mobile"></netlaw-logo>
-            <paper-icon-button class="navbar-mobile__toggle" icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
+            <button class="navbar-mobile__toggle" drawer-toggle>
+              <iron-icon icon="netlaw-icons:menu" drawer-toggle></iron-icon>
+            </button>
           </app-toolbar>
 
           <figure class="mobile-drawer__img">
