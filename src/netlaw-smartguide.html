@@ -354,8 +354,16 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
+
+    <template id="menu">
+      <h3>smartguide</h3>
+      <paper-button>click</paper-button>
+    </template>
     <!--Mobile layout-->
     <main class="smartguide-mobile" hidden$="{{!mobile}}">
+
+
+
       <section class="smartguide-mobile__nav">
         <div class="smartguide-mobile__header">
           <figure class="smartguide-mobile__img">
@@ -457,6 +465,7 @@
                       type: String,
                       reflectToAttribute: true,
                   },
+                  menu: { type: Object, notify: true },
               };
           }
 
@@ -520,6 +529,11 @@
 
           closeDrawer(e) {
               this.$.smartguidedrawer.close();
+          }
+
+          ready() {
+              super.ready();
+              this.menu = this.$.menu;
           }
       }
 

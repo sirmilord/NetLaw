@@ -547,6 +547,11 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
+    <template id="menu">
+      <h3>lifevault</h3>
+      <paper-button>click</paper-button>
+    </template>
+
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
       <section class="lifevault-mobile__nav">
         <div class="lifevault-mobile__header">
@@ -1213,6 +1218,7 @@
                       reflectToAttribute: true,
                       // observer: '_pageChanged',
                   },
+                  menu: { type: Object, notify: true },
               };
           }
 
@@ -1251,6 +1257,8 @@
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
+
+              this.menu = this.$.menu;
           }
 
           static get observers() {

@@ -380,9 +380,13 @@
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <app-toolbar class="navbar-mobile">
+              <slot id="placeholder"></slot>
+              <!--<template id="menu">-->
               <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
+              <!--</template>-->
+
             </app-toolbar>
 
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
@@ -390,7 +394,7 @@
             </iron-dropdown>
           </app-header>
           <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
+          <iron-pages  id="pages" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
             <netlaw-profile name="profile"></netlaw-profile>
             <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
@@ -571,6 +575,17 @@
 
               else this.page = page || 'login';
 
+              let page2 = this.$.pages.selectedItem;
+              let template = page2 && (page2.menu || page2.querySelector("#menu"));
+              //console.log(page);
+              console.log(template);
+              while (this.$.placeholder.firstChild) this.$.placeholder.removeChild(this.$.placeholder.firstChild);
+
+              if (template) {
+                  let instance = page2 instanceof Polymer.Element ? page2._stampTemplate(template) : this._stampTemplate(template);
+                  this.$.placeholder.appendChild(instance);
+              }
+
           }
 
           _pageChanged(page) {
@@ -606,6 +621,8 @@
           // onCloseMobileDropdown(e){
           //     this.$.dropdownmobilenotification.close();
           // }
+
+
       }
 
       window.customElements.define(NetlawApp.is, NetlawApp);
