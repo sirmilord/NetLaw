@@ -549,7 +549,7 @@
     <template id="menu">
       <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
       <h3>MyFiles</h3>
-      <paper-icon-button icon="netlaw-icons:menu-circle"></paper-icon-button>
+      <paper-icon-button icon="netlaw-icons:menu-circle" on-click=""></paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
@@ -1295,7 +1295,12 @@
               }
               else {
                   this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
+
               }
+
+
+              let sc = Array.from(this.$.pages2.children).filter(c=>c.getAttribute("name")==this.$.pages2.selected)[0];
+              if (sc) sc.open();
 
               // Open Drawer after page refresh
               if (this.mobile) {
@@ -1340,6 +1345,11 @@
           // _showPage404() {
           //     this.page = 'view-404';
           // }
+
+          _onMenuChanged (e) {
+              this.menu = e.origin.menu;
+              this.dispatchEvent(new CustomEvent('menu-changed'));
+          }
 
       }
 
