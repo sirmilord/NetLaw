@@ -2397,13 +2397,13 @@
           onAddFileClick(e) {
               e.preventDefault();
               this.addFile = true;
-              // this.dispatchEvent(new CustomEvent(""));
+               this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
           }
 
           onCancelFileClick(e) {
               e.preventDefault();
               this.addFile = false;
-              // this.dispatchEvent(new CustomEvent(""));
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
           openSortBy() {

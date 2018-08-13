@@ -327,6 +327,21 @@
         font-weight: 600;
       }
 
+      .drawer-overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: calc(100% + 20px);
+        height: 100%;
+        background-color: rgba(255,255,255, .95);
+        display: none;
+        z-index: 10;
+      }
+
+      .drawer-overlay--show {
+        display: block;
+      }
+
 
     </style>
 
@@ -416,7 +431,8 @@
         <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
         <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                     fallback-selection="initial-screen">
-          <netlaw-smartguide name="smartguide" route="[[subroute]]" on-smartguide-open-left-drawer="onDrawerShow"></netlaw-smartguide>
+          <netlaw-smartguide name="smartguide" route="[[subroute]]"
+                             on-smartguide-open-left-drawer="onDrawerShow"></netlaw-smartguide>
           <netlaw-profile name="profile"></netlaw-profile>
           <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
           <netlaw-account-security name="account-security"></netlaw-account-security>
@@ -477,7 +493,7 @@
 
       <app-drawer-layout id="drawerLayout" login$="[[!loggedIn]]">
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]" login$="[[!loggedIn]]">
-
+          <div class="drawer-overlay"></div>
           <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list"-->
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                          role="navigation">
@@ -659,6 +675,22 @@
           // onCloseMobileDropdown(e){
           //     this.$.dropdownmobilenotification.close();
           // }
+
+          BubbleUps(e) {
+              console.log('catch!');
+              console.log(e.type);
+              if (e.type === "overlay-show") {
+                  Polymer.dom(this.root).querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
+              } else {
+                  Polymer.dom(this.root).querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
+              }
+          }
+
+          ready() {
+              super.ready();
+              this.addEventListener('overlay-show', this.BubbleUps);
+              this.addEventListener('overlay-hide', this.BubbleUps);
+          }
 
 
       }
