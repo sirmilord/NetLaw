@@ -307,6 +307,17 @@
         }
       }
 
+      #mainmenu[show] {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #mainmenu {
+        display: none;
+      }
+
 
     </style>
 
@@ -381,12 +392,11 @@
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <app-toolbar class="navbar-mobile">
               <slot id="placeholder"></slot>
-              <template id="menu">
+              <div id="mainmenu" show$={{show}}>
               <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
-              </template>
-
+              </div>
             </app-toolbar>
 
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
@@ -535,6 +545,12 @@
                       reflectToAttribute: true,
                       value: false
                   },
+                  show: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
               };
           }
 
@@ -546,6 +562,7 @@
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };*/
               this.toggleIcon = 'netlaw-icons:notifications';
+              this.show = false;
           }
 
           onLoggedIn(e) {
@@ -575,17 +592,23 @@
 
               else this.page = page || 'login';
 
-              let page2 = this.$.pages.selectedItem;
-              let template = page2 && (page2.menu || this.querySelector("#menu"));
+              let pageSelected = this.$.pages.selectedItem;
+              // console.log(pageSelected);
+              let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
               // console.log(this.querySelector("#menu"));
+              // console.log("page");
               // console.log(this.page);
-              console.log(this.$.menu);
-              console.log(template);
+              // console.log(this.$.menu);
+              // console.log("template");
+              // console.log(template);
               while (this.$.placeholder.firstChild) this.$.placeholder.removeChild(this.$.placeholder.firstChild);
 
               if (template) {
-                  let instance = page2 instanceof Polymer.Element ? page2._stampTemplate(template) : this._stampTemplate(template);
+                  let instance = pageSelected instanceof Polymer.Element ? pageSelected._stampTemplate(template) : this._stampTemplate(template);
                   this.$.placeholder.appendChild(instance);
+                  this.show = false;
+              } else {
+                  this.show = true;
               }
 
 

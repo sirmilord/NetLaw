@@ -199,7 +199,7 @@
       }
 
       .lifevault__list-link-lvl2:hover {
-      /*.lifevault__list-link-lvl2:focus {*/
+        /*.lifevault__list-link-lvl2:focus {*/
         color: #4a4a4a;
       }
 
@@ -424,7 +424,6 @@
       .lifevault-mobile__arrow--bottom {
         top: 425px;
       }
-
 
       @media (max-width: 767px) {
 
@@ -859,7 +858,7 @@
               </li>
             </ul>
           </section>
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
             <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
           </iron-pages>
@@ -1218,7 +1217,7 @@
                       reflectToAttribute: true,
                       // observer: '_pageChanged',
                   },
-                  menu: { type: Object, notify: true },
+                  menu: {type: Object, notify: true},
               };
           }
 
@@ -1278,8 +1277,9 @@
                   this.$.collapsemobilelvl2.hide();
                   this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
               }
-
-              this.page = page || 'your-vault';
+              if (!this.mobile) {
+                  this.page = page || 'your-vault';
+              }
 
               if (this.page === 'your-vault' && !this.mobile) {
                   this.toggleIcon = 'netlaw-icons:plus-icon';
