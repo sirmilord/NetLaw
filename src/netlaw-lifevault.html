@@ -547,8 +547,9 @@
 
     <!--Mobile layout-->
     <template id="menu">
-      <h3>lifevault</h3>
-      <paper-button>click</paper-button>
+      <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
+      <h3>MyFiles</h3>
+      <paper-icon-button icon="netlaw-icons:menu-circle"></paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
@@ -1277,9 +1278,9 @@
                   this.$.collapsemobilelvl2.hide();
                   this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
               }
-              if (!this.mobile) {
+
                   this.page = page || 'your-vault';
-              }
+
 
               if (this.page === 'your-vault' && !this.mobile) {
                   this.toggleIcon = 'netlaw-icons:plus-icon';
