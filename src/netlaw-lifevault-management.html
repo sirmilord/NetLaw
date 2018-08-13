@@ -447,13 +447,20 @@
       }
 
       .lifevault__version-dropdown {
-        width: 111px;
+        width: 151px;
         border: 1px solid #C2C2C2;
         border-radius: 2px;
         background-color: #FFFFFF;
         box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
         padding-left: 15px;
         padding-right: 15px;
+        position: relative;
+      }
+
+      .lifevault__expand-less {
+        position: absolute;
+        top: 5px;
+        right: 5px;
       }
 
       .lifevault__version-dropdown li {
@@ -462,7 +469,6 @@
         font-weight: 300;
         display: flex;
         align-items: center;
-        justify-content: center;
         padding-top: 8px;
         padding-bottom: 8px;
       }
@@ -793,6 +799,17 @@
         }
       }
 
+      .lifevault__version-dropdown .lifevault__date {
+        color: #9B9B9B;
+        font-size: 10px;
+        display: block;
+        margin-left: 5px;
+      }
+
+      .lifevault__charm--hide {
+        visibility: hidden;
+      }
+
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
@@ -877,36 +894,50 @@
                 <ul class="lifevault__version-dropdown"
                     slot="dropdown-content">
                   <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="lifevault__charm">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.1</span>
                     </a>
-                    <iron-icon icon="icons:expand-less"></iron-icon>
+                    <span class="lifevault__date">Jan 18/18</span>
+                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                   </li>
                   <li>
-                    <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version">v1.2</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <span class="lifevault__version">v1.2</span>
                     </a>
+                    <span class="lifevault__date">Feb 20/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
+                    <a href="[[rootPath]]lifevault/doc">
+                      <span class="lifevault__version">v1.3</span>
+                    </a>
+                    <span class="lifevault__date">Mar 11/18</span>
+                  </li>
+                  <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.4</span>
                     </a>
+                    <span class="lifevault__date">Jun 15/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.5</span>
                     </a>
+                    <span class="lifevault__date">Aug 18/18</span>
                   </li>
                 </ul>
               </iron-dropdown>
@@ -965,36 +996,50 @@
                 <ul class="lifevault__version-dropdown"
                     slot="dropdown-content">
                   <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="lifevault__charm">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.1</span>
                     </a>
-                    <iron-icon icon="icons:expand-less"></iron-icon>
+                    <span class="lifevault__date">Jan 18/18</span>
+                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                   </li>
                   <li>
-                    <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version">v1.2</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <span class="lifevault__version">v1.2</span>
                     </a>
+                    <span class="lifevault__date">Feb 20/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
+                    <a href="[[rootPath]]lifevault/doc">
+                      <span class="lifevault__version">v1.3</span>
+                    </a>
+                    <span class="lifevault__date">Mar 11/18</span>
+                  </li>
+                  <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.4</span>
                     </a>
+                    <span class="lifevault__date">Jun 15/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.5</span>
                     </a>
+                    <span class="lifevault__date">Aug 18/18</span>
                   </li>
                 </ul>
               </iron-dropdown>
@@ -1053,36 +1098,50 @@
                 <ul class="lifevault__version-dropdown"
                     slot="dropdown-content">
                   <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="lifevault__charm">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.1</span>
                     </a>
-                    <iron-icon icon="icons:expand-less"></iron-icon>
+                    <span class="lifevault__date">Jan 18/18</span>
+                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                   </li>
                   <li>
-                    <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version">v1.2</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <span class="lifevault__version">v1.2</span>
                     </a>
+                    <span class="lifevault__date">Feb 20/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
+                    <a href="[[rootPath]]lifevault/doc">
+                      <span class="lifevault__version">v1.3</span>
+                    </a>
+                    <span class="lifevault__date">Mar 11/18</span>
+                  </li>
+                  <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.4</span>
                     </a>
+                    <span class="lifevault__date">Jun 15/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.5</span>
                     </a>
+                    <span class="lifevault__date">Aug 18/18</span>
                   </li>
                 </ul>
               </iron-dropdown>
@@ -1141,36 +1200,50 @@
                 <ul class="lifevault__version-dropdown"
                     slot="dropdown-content">
                   <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="lifevault__charm">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.1</span>
                     </a>
-                    <iron-icon icon="icons:expand-less"></iron-icon>
+                    <span class="lifevault__date">Jan 18/18</span>
+                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                   </li>
                   <li>
-                    <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version">v1.2</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
+                    <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <a href="[[rootPath]]lifevault/doc">
-                      <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                      <span class="lifevault__version">v1.2</span>
                     </a>
+                    <span class="lifevault__date">Feb 20/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
+                    <a href="[[rootPath]]lifevault/doc">
+                      <span class="lifevault__version">v1.3</span>
+                    </a>
+                    <span class="lifevault__date">Mar 11/18</span>
+                  </li>
+                  <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.4</span>
                     </a>
+                    <span class="lifevault__date">Jun 15/18</span>
                   </li>
                   <li>
+                    <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                    </a>
                     <a href="[[rootPath]]lifevault/doc">
                       <span class="lifevault__version">v1.5</span>
                     </a>
+                    <span class="lifevault__date">Aug 18/18</span>
                   </li>
                 </ul>
               </iron-dropdown>
@@ -1277,36 +1350,50 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;" class="lifevault__charm">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.1</span>
                           </a>
-                          <iron-icon icon="icons:expand-less"></iron-icon>
+                          <span class="lifevault__date">Jan 18/18</span>
+                          <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                         </li>
                         <li>
-                          <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version">v1.2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                            <span class="lifevault__version">v1.2</span>
                           </a>
+                          <span class="lifevault__date">Feb 20/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.3</span>
+                          </a>
+                          <span class="lifevault__date">Mar 11/18</span>
+                        </li>
+                        <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.4</span>
                           </a>
+                          <span class="lifevault__date">Jun 15/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.5</span>
                           </a>
+                          <span class="lifevault__date">Aug 18/18</span>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1367,36 +1454,50 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;" class="lifevault__charm">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.1</span>
                           </a>
-                          <iron-icon icon="icons:expand-less"></iron-icon>
+                          <span class="lifevault__date">Jan 18/18</span>
+                          <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                         </li>
                         <li>
-                          <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version">v1.2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                            <span class="lifevault__version">v1.2</span>
                           </a>
+                          <span class="lifevault__date">Feb 20/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.3</span>
+                          </a>
+                          <span class="lifevault__date">Mar 11/18</span>
+                        </li>
+                        <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.4</span>
                           </a>
+                          <span class="lifevault__date">Jun 15/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.5</span>
                           </a>
+                          <span class="lifevault__date">Aug 18/18</span>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1457,36 +1558,50 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;" class="lifevault__charm">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.1</span>
                           </a>
-                          <iron-icon icon="icons:expand-less"></iron-icon>
+                          <span class="lifevault__date">Jan 18/18</span>
+                          <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                         </li>
                         <li>
-                          <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version">v1.2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                            <span class="lifevault__version">v1.2</span>
                           </a>
+                          <span class="lifevault__date">Feb 20/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.3</span>
+                          </a>
+                          <span class="lifevault__date">Mar 11/18</span>
+                        </li>
+                        <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.4</span>
                           </a>
+                          <span class="lifevault__date">Jun 15/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.5</span>
                           </a>
+                          <span class="lifevault__date">Aug 18/18</span>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1547,36 +1662,50 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;" class="lifevault__charm">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.1</span>
                           </a>
-                          <iron-icon icon="icons:expand-less"></iron-icon>
+                          <span class="lifevault__date">Jan 18/18</span>
+                          <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                         </li>
                         <li>
-                          <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version">v1.2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                            <span class="lifevault__version">v1.2</span>
                           </a>
+                          <span class="lifevault__date">Feb 20/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.3</span>
+                          </a>
+                          <span class="lifevault__date">Mar 11/18</span>
+                        </li>
+                        <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.4</span>
                           </a>
+                          <span class="lifevault__date">Jun 15/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.5</span>
                           </a>
+                          <span class="lifevault__date">Aug 18/18</span>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1637,36 +1766,50 @@
                       <ul class="lifevault__version-dropdown"
                           slot="dropdown-content">
                         <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;" class="lifevault__charm">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.1</span>
                           </a>
-                          <iron-icon icon="icons:expand-less"></iron-icon>
+                          <span class="lifevault__date">Jan 18/18</span>
+                          <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                         </li>
                         <li>
-                          <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version">v1.2</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="javascript:;">
+                          <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                           </a>
                           <a href="[[rootPath]]lifevault/doc">
-                            <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                            <span class="lifevault__version">v1.2</span>
                           </a>
+                          <span class="lifevault__date">Feb 20/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
+                          <a href="[[rootPath]]lifevault/doc">
+                            <span class="lifevault__version">v1.3</span>
+                          </a>
+                          <span class="lifevault__date">Mar 11/18</span>
+                        </li>
+                        <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.4</span>
                           </a>
+                          <span class="lifevault__date">Jun 15/18</span>
                         </li>
                         <li>
+                          <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                          </a>
                           <a href="[[rootPath]]lifevault/doc">
                             <span class="lifevault__version">v1.5</span>
                           </a>
+                          <span class="lifevault__date">Aug 18/18</span>
                         </li>
                       </ul>
                     </iron-dropdown>
@@ -1708,36 +1851,50 @@
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="lifevault__charm">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.1</span>
                       </a>
-                      <iron-icon icon="icons:expand-less"></iron-icon>
+                      <span class="lifevault__date">Jan 18/18</span>
+                      <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                     </li>
                     <li>
-                      <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version">v1.2</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                        <span class="lifevault__version">v1.2</span>
                       </a>
+                      <span class="lifevault__date">Feb 20/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.3</span>
+                      </a>
+                      <span class="lifevault__date">Mar 11/18</span>
+                    </li>
+                    <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.4</span>
                       </a>
+                      <span class="lifevault__date">Jun 15/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.5</span>
                       </a>
+                      <span class="lifevault__date">Aug 18/18</span>
                     </li>
                   </ul>
                 </iron-dropdown>
@@ -1800,36 +1957,50 @@
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="lifevault__charm">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.1</span>
                       </a>
-                      <iron-icon icon="icons:expand-less"></iron-icon>
+                      <span class="lifevault__date">Jan 18/18</span>
+                      <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                     </li>
                     <li>
-                      <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version">v1.2</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                        <span class="lifevault__version">v1.2</span>
                       </a>
+                      <span class="lifevault__date">Feb 20/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.3</span>
+                      </a>
+                      <span class="lifevault__date">Mar 11/18</span>
+                    </li>
+                    <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.4</span>
                       </a>
+                      <span class="lifevault__date">Jun 15/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.5</span>
                       </a>
+                      <span class="lifevault__date">Aug 18/18</span>
                     </li>
                   </ul>
                 </iron-dropdown>
@@ -1892,36 +2063,50 @@
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="lifevault__charm">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.1</span>
                       </a>
-                      <iron-icon icon="icons:expand-less"></iron-icon>
+                      <span class="lifevault__date">Jan 18/18</span>
+                      <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                     </li>
                     <li>
-                      <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version">v1.2</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                        <span class="lifevault__version">v1.2</span>
                       </a>
+                      <span class="lifevault__date">Feb 20/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.3</span>
+                      </a>
+                      <span class="lifevault__date">Mar 11/18</span>
+                    </li>
+                    <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.4</span>
                       </a>
+                      <span class="lifevault__date">Jun 15/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.5</span>
                       </a>
+                      <span class="lifevault__date">Aug 18/18</span>
                     </li>
                   </ul>
                 </iron-dropdown>
@@ -1984,36 +2169,50 @@
                   <ul class="lifevault__version-dropdown"
                       slot="dropdown-content">
                     <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;" class="lifevault__charm">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.1</span>
                       </a>
-                      <iron-icon icon="icons:expand-less"></iron-icon>
+                      <span class="lifevault__date">Jan 18/18</span>
+                      <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
                     </li>
                     <li>
-                      <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version">v1.2</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">
+                      <a href="javascript:;"  class="lifevault__charm lifevault__charm--hide">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                       <a href="[[rootPath]]lifevault/doc">
-                        <span class="lifevault__version lifevault__version--mr">v1.3</span>
+                        <span class="lifevault__version">v1.2</span>
                       </a>
+                      <span class="lifevault__date">Feb 20/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
+                      <a href="[[rootPath]]lifevault/doc">
+                        <span class="lifevault__version">v1.3</span>
+                      </a>
+                      <span class="lifevault__date">Mar 11/18</span>
+                    </li>
+                    <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.4</span>
                       </a>
+                      <span class="lifevault__date">Jun 15/18</span>
                     </li>
                     <li>
+                      <a href="javascript:;"  class="lifevault__charm  lifevault__charm--hide">
+                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                      </a>
                       <a href="[[rootPath]]lifevault/doc">
                         <span class="lifevault__version">v1.5</span>
                       </a>
+                      <span class="lifevault__date">Aug 18/18</span>
                     </li>
                   </ul>
                 </iron-dropdown>

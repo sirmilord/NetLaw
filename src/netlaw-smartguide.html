@@ -349,6 +349,7 @@
         }
       }
 
+
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -356,8 +357,8 @@
 
 
     <template id="menu">
-      <h3>smartguide</h3>
-      <paper-button>click</paper-button>
+      <paper-icon-button icon="netlaw-icons:menu" on-click="onDrawerShow2"></paper-icon-button>
+      <h3>SmartGuide</h3>
     </template>
     <!--Mobile layout-->
     <main class="smartguide-mobile" hidden$="{{!mobile}}">
@@ -535,6 +536,12 @@
               super.ready();
               this.menu = this.$.menu;
           }
+
+          onDrawerShow2(e) {
+              this.dispatchEvent(new CustomEvent("smartguide-open-left-drawer"));
+          }
+
+
       }
 
       window.customElements.define(NetlawSmartguide.is, NetlawSmartguide);
