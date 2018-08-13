@@ -677,8 +677,6 @@
           // }
 
           BubbleUps(e) {
-              console.log('catch!');
-              console.log(e.type);
               if (e.type === "overlay-show") {
                   Polymer.dom(this.root).querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {
