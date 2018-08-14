@@ -548,7 +548,7 @@
     <!--Mobile layout-->
     <template id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-icon-button icon="netlaw-icons:menu-circle" on-click=""></paper-icon-button>
+      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click=""></paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
@@ -1210,6 +1210,10 @@
                   toggleIcon: {
                       type: String
                   },
+
+                  toggleHeaderIcon: {
+                      type: String
+                  },
                   rootPath: String,
                   route: {type: Object},
                   page: {
@@ -1224,6 +1228,7 @@
           constructor() {
               super();
               this.toggleIcon = 'netlaw-icons:plus-icon';
+              this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
           }
 
           toggle(e) {
@@ -1258,6 +1263,12 @@
               }));
 
               this.menu = this.$.menu;
+              //   console.log(this.$.lifevaultdrawer.opened);
+              // if (this.$.lifevaultdrawer.opened === false) {
+              //     this.page = undefined;
+              //     this.navMobile = false;
+              //     this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
+              // }
           }
 
           static get observers() {
@@ -1271,6 +1282,28 @@
               // console.log(page);
               // console.log(this.$.pages2.selected);
 
+              if (!this.mobile) {
+                  this.page = page || 'your-vault';
+
+                  if (this.page === 'your-vault') {
+                      this.toggleIcon = 'netlaw-icons:plus-icon';
+                      this.$.button1.setAttribute('aria-expanded', false);
+                      this.$.collapse.hide();
+                      this.$.collapselvl2.hide();
+                      this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+                  }
+
+                  if (this.page === 'management') {
+                      this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
+                  }
+                  else {
+                      this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
+                  }
+
+              } else {
+                  this.page = page || undefined;
+              }
+              console.log(page);
               // Hide empty drawer when active screen is not SmartGuide
               if (page !== undefined) {
                   this.$.lifevaultdrawer.close();
@@ -1279,29 +1312,7 @@
                   // get a collapse to previous state
                   this.$.collapsemobilelvl2.hide();
                   this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
-              }
-
-              if (!this.mobile) {
-                  this.page = page || 'your-vault';
-              } else {
-                  this.page = page || undefined;
-                  // this.navMobile = false;
-              }
-
-              if (this.page === 'your-vault' && !this.mobile) {
-                  this.toggleIcon = 'netlaw-icons:plus-icon';
-                  this.$.button1.setAttribute('aria-expanded', false);
-                  this.$.collapse.hide();
-                  this.$.collapselvl2.hide();
-                  this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-              }
-
-              if (this.page === 'management' && !this.mobile) {
-                  this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
-              }
-              else {
-                  this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
-
+                  // this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
               }
 
               // Open Drawer after page refresh
@@ -1309,6 +1320,7 @@
 
                   if (this.page === 'management') {
                       this.$.lifevaultdrawer.open();
+                      this.toggleHeaderIcon = 'netlaw-icons:menu-filter';
                       //hide nav mobile when click to managementlink
                       this.navMobile = true;
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];

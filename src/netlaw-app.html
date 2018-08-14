@@ -622,24 +622,8 @@
               let pageSelected = this.$.pages.selectedItem;
               // console.log(pageSelected);
               let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
-              // console.log(this.querySelector("#menu"));
-              // console.log("page");
-              // console.log(this.page);
-              // console.log(this.$.menu);
-              // console.log("template");
-              // console.log(template);
+
               this._applyMenu(pageSelected, template);
-              // while (this.$.placeholder.firstChild) this.$.placeholder.removeChild(this.$.placeholder.firstChild);
-              //
-              // if (template) {
-              //     let instance = pageSelected instanceof Polymer.Element ? pageSelected._stampTemplate(template) : this._stampTemplate(template);
-              //     this.$.placeholder.appendChild(instance);
-              //     this.show = false;
-              // } else {
-              //     this.show = true;
-              //}
-
-
           }
 
           _applyMenu(component, template) {
