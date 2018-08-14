@@ -549,7 +549,24 @@
     <!--Mobile layout-->
     <template id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click=""></paper-icon-button>
+      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click="onFolders">
+        <iron-dropdown id="headerdropdown">
+          <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
+            <li>Add Folder
+              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+            </li>
+            <li>Download
+              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+            </li>
+            <li>Print
+              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+            </li>
+            <li>Share
+              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+            </li>
+          </ul>
+        </iron-dropdown>
+      </paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
@@ -566,7 +583,7 @@
         <ul class="lifevault-mobile__list">
           <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
             <li class="lifevault-mobile__list-item lifevault-mobile__list-item--top-border lifevault-mobile__list-item--bottom-border">
-              <a name="" href="javascript:;" class="lifevault-mobile__list-link" on-click="openDrawer">
+              <a name="" href="[[routePath]]lifevault/mobile-menu" class="lifevault-mobile__list-link" on-click="openDrawer">
                 <span class="lifevault-mobile__list-text">My Files</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
@@ -983,10 +1000,10 @@
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
 
-              if (this.mobile) {
-                  this.$.collapsemobilelvl2.toggle();
-                  this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
-              }
+              // if (this.mobile) {
+              //     this.$.collapsemobilelvl2.toggle();
+              //     this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
+              // }
           }
 
           ready(e) {
@@ -999,12 +1016,10 @@
               }));
 
               this.menu = this.$.menu;
-              //   console.log(this.$.lifevaultdrawer.opened);
-              // if (this.$.lifevaultdrawer.opened === false) {
-              //     this.page = undefined;
-              //     this.navMobile = false;
-              //     this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
-              // }
+
+              if (this.$.lifevaultdrawer.hasAttribute('opened')) {
+                  console.log(this.$.lifevaultdrawer);
+              }
           }
 
           static get observers() {
@@ -1036,73 +1051,60 @@
                       this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
                   }
 
-              } else {
-                  this.page = page || undefined;
               }
-              console.log(page);
-              // Hide empty drawer when active screen is not SmartGuide
-              if (page !== undefined) {
-                  this.$.lifevaultdrawer.close();
-                  //show nav mobile after change link
-                  this.navMobile = false;
-                  // get a collapse to previous state
-                  this.$.collapsemobilelvl2.hide();
-                  this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
-                  // this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
-              }
+              // else {
+              //     this.page = page || 'mobile-menu';
+              // }
 
-              // Open Drawer after page refresh
               if (this.mobile) {
+
+                  this.page = page || 'mobile-menu';
+
+                  if (page === 'mobile-menu') {
+                      // this.$.lifevaultdrawer.close();
+                      this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
+                      this.dispatchEvent(new CustomEvent('mobile-menu', {bubbles: true, composed: true}));
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      //console.log(sc);
+                      if (sc) sc.hideCollapse();
+                  }
 
                   if (this.page === 'management') {
                       this.$.lifevaultdrawer.open();
                       this.toggleHeaderIcon = 'netlaw-icons:menu-filter';
-                      //hide nav mobile when click to managementlink
-                      this.navMobile = true;
-                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
-                      if (sc) sc.open();
+                      //this is polyfill for this.$.pages2.selectedItem;
+                      // let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      // console.log(sc);
+                      // if (sc) sc.open();
                   }
 
                   if (this.page === 'doc') {
                       this.$.lifevaultdrawer.open();
-                      //hide nav mobile when click to doc link
-                      this.navMobile = true;
                   }
               }
           }
 
           openDrawer(e) {
               this.$.lifevaultdrawer.open();
-              this.page = "mobile-menu";
+              // navigate('mobile-menu');
+              // this.page = 'mobile-menu';
           }
 
           closeDrawer(e) {
               this.$.lifevaultdrawer.close();
           }
 
-          // _pageChanged(page) {
-          //     let resolvedPageUrl = this.resolveUrl('netlaw-lifevault-' + page + '.html');
-          //
-          //     if (resolvedPageUrl.indexOf('404') >= 0) {
-          //         let replaceStr = /lifevault-/gi;
-          //         resolvedPageUrl = resolvedPageUrl.replace(replaceStr, '');
-          //     }
-          //
-          //     Polymer.importHref(
-          //         resolvedPageUrl,
-          //         null,
-          //         this._showPage404.bind(this),
-          //         true);
-          // }
-          //
-          // _showPage404() {
-          //     this.page = 'view-404';
-          // }
-
-          _onMenuChanged(e) {
-              this.menu = e.origin.menu;
-              this.dispatchEvent(new CustomEvent('menu-changed'));
+          onFolders(e) {
+              if (this.toggleHeaderIcon === 'netlaw-icons:menu-circle') {
+                  this.$.headerdropdown.open();
+              }
           }
+
+
+          // _onMenuChanged(e) {
+          //     this.menu = e.origin.menu;
+          //     this.dispatchEvent(new CustomEvent('menu-changed'));
+          // }
 
       }
 

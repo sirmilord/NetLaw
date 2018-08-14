@@ -479,7 +479,6 @@
       }
 
 
-
     </style>
 
     <section id="navmobile" class="lifevault__nav-mobile" hidden$={{navMobile}}>
@@ -756,6 +755,36 @@
 
           static get is() {
               return 'netlaw-lifevault-mobile-menu';
+          }
+
+          constructor() {
+              super();
+          }
+
+          ready() {
+              //TODO find out
+              super.ready();
+              this.addEventListener('mobile-menu', this.hideCollapse);
+
+              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
+              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  this.querySelector('iron-dropdown').open();
+              }));
+
+          }
+
+          hideCollapse(e) {
+              console.log('yes');
+              // get a collapse to previous state
+              this.$.collapsemobilelvl2.hide();
+              this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
+          }
+
+          toggleLvl2(e) {
+              e.preventDefault();
+              this.$.collapsemobilelvl2.toggle();
+              this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
           }
       }
 
