@@ -547,8 +547,7 @@
 
     <!--Mobile layout-->
     <template id="menu">
-      <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
-      <h3>MyFiles</h3>
+      <h3 class="lifevault__header">MyFiles</h3>
       <paper-icon-button icon="netlaw-icons:menu-circle" on-click=""></paper-icon-button>
     </template>
 
@@ -1270,10 +1269,14 @@
           _routePageChanged(page) {
 
               // Hide empty drawer when active screen is not SmartGuide
-              if (page !== undefined || page !== 'management' || page !== 'doc') {
+              if (page !== 'management' ) {
+                 // debugger;
+                  console.log(page);
                   this.$.lifevaultdrawer.close();
                   //show nav mobile after change link
                   this.navMobile = false;
+
+                  console.log(this.navMobile);
                   // get a collapse to previous state
                   this.$.collapsemobilelvl2.hide();
                   this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
@@ -1309,6 +1312,7 @@
                       this.$.lifevaultdrawer.open();
                       //hide nav mobile when click to managementlink
                       this.navMobile = true;
+                      console.log(this.navMobile);
                   }
 
                   if (this.page === 'doc') {
