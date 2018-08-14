@@ -583,7 +583,7 @@
         <ul class="lifevault-mobile__list">
           <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
             <li class="lifevault-mobile__list-item lifevault-mobile__list-item--top-border lifevault-mobile__list-item--bottom-border">
-              <a name="" href="[[routePath]]lifevault/mobile-menu" class="lifevault-mobile__list-link" on-click="openDrawer">
+              <a name="" href="[[routePath]]lifevault/mobile-menu" class="lifevault-mobile__list-link" on-click="_onOpenDrawer">
                 <span class="lifevault-mobile__list-text">My Files</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
@@ -624,7 +624,7 @@
       <section class="lifevault__drawer">
         <ul class="lifevault__list">
           <li class="lifevault__list-item lifevault__list-item--top-border">
-            <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="toggle">
+            <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggle">
               <iron-icon icon="[[toggleIcon]]"></iron-icon>
               <span class="lifevault__list-text">My Files</span>
             </a>
@@ -650,7 +650,7 @@
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
                 <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleLvl2">
                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                     Estate Planning
                   </a>
@@ -984,7 +984,7 @@
               this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
           }
 
-          toggle(e) {
+          _onToggle(e) {
               e.preventDefault();
               this.$.collapse.toggle();
               this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
@@ -995,7 +995,7 @@
               // this.$.collapse.opened ? this.dispatchEvent(new CustomEvent("list-collapse-open")) : this.dispatchEvent(new CustomEvent("list-collapse-close"));
           }
 
-          toggleLvl2(e) {
+          _onToggleLvl2(e) {
               e.preventDefault();
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
@@ -1061,9 +1061,10 @@
                   this.page = page || 'mobile-menu';
 
                   if (page === 'mobile-menu') {
+                      //debugger;
                       // this.$.lifevaultdrawer.close();
                       this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
-                      this.dispatchEvent(new CustomEvent('mobile-menu', {bubbles: true, composed: true}));
+                      //this.dispatchEvent(new CustomEvent('mobile-menu', {bubbles: true, composed: true}));
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
                       //console.log(sc);
                       if (sc) sc.hideCollapse();
@@ -1084,10 +1085,8 @@
               }
           }
 
-          openDrawer(e) {
+          _onOpenDrawer(e) {
               this.$.lifevaultdrawer.open();
-              // navigate('mobile-menu');
-              // this.page = 'mobile-menu';
           }
 
           closeDrawer(e) {
@@ -1095,16 +1094,11 @@
           }
 
           _onFolders(e) {
+              debugger;
               if (this.toggleHeaderIcon === 'netlaw-icons:menu-circle') {
                   this.$.headerdropdown.open();
               }
           }
-
-
-          // _onMenuChanged(e) {
-          //     this.menu = e.origin.menu;
-          //     this.dispatchEvent(new CustomEvent('menu-changed'));
-          // }
 
       }
 
