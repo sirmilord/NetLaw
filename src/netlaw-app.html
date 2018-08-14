@@ -415,10 +415,9 @@
 
         <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
           <app-toolbar class="navbar-mobile">
-
-            <slot id="placeholder"></slot>
-            <div id="mainmenu" show$={{show}}>
               <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
+              <slot id="placeholder"></slot>
+            <div id="mainmenu" show$={{show}}>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </div>
@@ -707,7 +706,7 @@
 
 
           _onMenuChanged(e){
-              debugger;
+              // debugger;
               this._applyMenu(e.path[0],e.detail.value);
           }
       }
