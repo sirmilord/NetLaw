@@ -1,0 +1,764 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="netlaw-lifevault-mobile-menu">
+  <template>
+
+    <style>
+      :host {
+        box-sizing: border-box;
+      }
+
+      .lifevault {
+        display: flex;
+        min-height: calc(100vh - 80px);
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .lifevault__drawer {
+        flex: 1 1 40%;
+        max-width: 40%;
+        border-right: 2px solid #dfdfdf;
+        border-bottom: 1px solid #dfdfdf;
+        background-color: #fff;
+
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .lifevault__list {
+        margin-left: 20px;
+        margin-right: 12px;
+        margin-top: 30px;
+        position: relative;
+      }
+
+      .lifevault__list-lvl2 {
+        margin-left: 25px;
+        margin-bottom: 20px;
+      }
+
+      .lifevault__list-lvl3 {
+        margin-left: 15px;
+        margin-bottom: 20px;
+      }
+
+      .lifevault__list-item {
+        position: relative;
+      }
+
+      .lifevault__list-item--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+      }
+
+      .lifevault__list-item--bottom-border:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+      }
+
+      .lifevault__list-item-lvl2 {
+        position: relative;
+      }
+
+      .lifevault__list-item-lvl3 {
+        position: relative;
+      }
+
+      .lifevault__list-link {
+        font-size: 18px;
+        color: #414142;
+        text-decoration: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: inline-block;
+        vertical-align: center;
+      }
+
+      .lifevault__list-link iron-icon {
+        margin-right: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        margin-bottom: 3px;
+      }
+
+      .lifevault__list-link-lvl2 {
+        font-size: 16px;
+        color: #e5e5e5;
+        text-decoration: none;
+        display: inline-block;
+        vertical-align: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      a.lifevault__list-link-lvl2 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.lifevault__btn.lifevault__btn--lvl2 > iron-icon {
+        margin-bottom: 5px;
+      }
+
+      .lifevault__list-link-lvl3 {
+        font-size: 14px;
+        color: #b7b7b7;
+        text-decoration: none;
+        display: inline-block;
+        vertical-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      a.lifevault__list-link-lvl3 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.lifevault__btn.lifevault__btn--lvl3 > iron-icon {
+        margin-bottom: 5px;
+      }
+
+      .lifevault__list-item-lvl2--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        top: -7px;
+        transform: translateX(-50%);
+        color: #4a4a4a;
+      }
+
+      .lifevault__btn {
+        position: absolute;
+        color: #414142;
+        width: 24px;
+        height: 24px;
+        right: 0;
+        top: 21px;
+      }
+
+      .lifevault__btn--lvl1 {
+        color: #e5e5e5;
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+      }
+
+      .lifevault__btn--lvl2 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        top: 15px;
+        color: #e5e5e5;
+      }
+
+      .lifevault__btn--lvl2-first {
+        top: 27px;
+      }
+
+      .lifevault__btn--lvl3 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        top: 9px;
+        color: #e5e5e5;
+      }
+
+      .lifevault__list-link[aria-expanded=true] iron-icon {
+        fill: #01AA50;
+      }
+
+      .lifevault__list-link-lvl2:hover {
+        /*.lifevault__list-link-lvl2:focus {*/
+        color: #4a4a4a;
+      }
+
+      .lifevault__list-link-lvl3:hover,
+      .lifevault__list-link-lvl3:focus,
+      .lifevault__list-link-lvl3--active {
+        color: #01AA50;
+      }
+
+      .lifevault__list-link-lvl3:hover:before,
+      .lifevault__list-link-lvl3:focus:before,
+      .lifevault__list-link-lvl3--active:before {
+        content: '';
+        position: absolute;
+        height: 40%;
+        right: -15px;
+        top: 50%;
+        width: 4px;
+        background-color: #01AA50;
+        transform: translateY(-50%);
+      }
+
+      b {
+        display: block;
+        font-size: 20px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        color: #4A4A4A;
+        margin-left: 10%;
+        margin-right: 10%;
+        text-align: center;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 35px;
+        color: #414142;
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 300;
+      }
+
+      .btn {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 30px;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 900;
+        cursor: pointer;
+        height: 45px;
+      }
+
+      .lifevault__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .lifevault__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      .lifevault__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        margin-top: 3px;
+      }
+
+      .lifevault__addfolder-dropdown--sub {
+        width: 162px;
+      }
+
+      netlaw-lifevault-your-vault {
+        width: 100%;
+      }
+
+      netlaw-lifevault-management {
+        width: 100%;
+      }
+
+      netlaw-lifevault-doc {
+        width: 100%;
+      }
+
+      iron-pages {
+        flex: 1 1 60%;
+      }
+
+      .lifevault[hidden] {
+        display: none;
+      }
+
+      .lifevault-mobile[hidden] {
+        display: none;
+      }
+
+      .lifevault-mobile {
+        background-color: #fff;
+        font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .lifevault-mobile__nav {
+
+      }
+
+      .lifevault-mobile__header {
+        display: flex;
+        align-items: center;
+        margin-top: 35px;
+        margin-left: 30px;
+      }
+
+      .lifevault-mobile__title {
+        color: #4A4A4A;
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .lifevault-mobile__img {
+        margin: 0;
+        margin-right: 15px;
+        --iron-icon-height: 66px;
+        --iron-icon-width: 66px;
+      }
+
+      .lifevault-mobile__sub {
+        color: #4A4A4A;
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .lifevault-mobile__list {
+        margin-top: 35px;
+        position: relative;
+        margin-left: 30px;
+      }
+
+      .lifevault-mobile__list-item {
+        position: relative;
+      }
+
+      .lifevault-mobile__list-item--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        top: 0;
+      }
+
+      .lifevault-mobile__list-item--bottom-border:after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 90%;
+        height: 1px;
+        border-bottom: 1px dashed #e4e4e4;
+        left: 0;
+        bottom: 0;
+      }
+
+      .lifevault-mobile__list-link {
+        color: #4A4A4A;
+        font-size: 18px;
+        text-decoration: none;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .lifevault-mobile__list-link iron-icon {
+        margin-right: 15px;
+        --iron-icon-fill-color: #CAC9CA;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
+      }
+
+      .lifevault-mobile__drawer-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+      }
+
+      .lifevault-mobile__arrow {
+        position: absolute;
+        top: 335px;
+        left: -30px;
+        --iron-icon-fill-color: #999;
+        --iron-icon-height: 28px;
+        --iron-icon-width: 28px;
+      }
+
+      .lifevault-mobile__arrow--bottom {
+        top: 425px;
+      }
+
+      @media (max-width: 767px) {
+
+        iron-pages {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+
+        .lifevault-mobile__drawer--width {
+          --app-drawer-width: 100%;
+        }
+
+        .lifevault__nav-mobile {
+          margin-top: 50px;
+          text-align: left;
+        }
+
+        .lifevault__list-lvl2 {
+          padding-top: 15px;
+        }
+
+        .lifevault__list-link-lvl2 {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          --iron-icon-width: 18px;
+          --iron-icon-height: 18px;
+        }
+
+        .lifevault__list-item-lvl2--top-border:before {
+          border-bottom: 1px solid #979797;
+          left: 0;
+          transform: none;
+        }
+
+        .btn--full {
+          width: 100%;
+          height: 60px;
+          font-size: 16px;
+          background-color: #4A90E2;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: fixed;
+          left: 0;
+          bottom: 50px;
+        }
+
+        .lifevault__nav-mobile[hidden] {
+          display: none;
+        }
+
+        .lifevault__btn {
+          right: 10px;
+        }
+
+      }
+
+
+
+    </style>
+
+    <section id="navmobile" class="lifevault__nav-mobile" hidden$={{navMobile}}>
+      <ul class="lifevault__list-lvl2">
+        <li class="lifevault__list-item-lvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Estate Planning
+          </a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+          <iron-collapse id="collapsemobilelvl2">
+            <ul class="lifevault__list-lvl3">
+              <iron-selector selected="[[page]]" attr-for-selected="name"
+                             role="navigation">
+                <li class="lifevault__list-item-lvl3">
+                  <a name="management" href="[[routePath]]lifevault/management"
+                     id="homemanage-mobile"
+                     class="lifevault__list-link-lvl3">
+                    <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                    Home Management</a>
+                  <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon
+                              icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon
+                              icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon
+                              icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon
+                              icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon
+                              icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                </li>
+                <li class="lifevault__list-item-lvl3">
+                  <a class="lifevault__list-link-lvl3" href="javascript:;">
+                    <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                    Documents of Estate</a>
+                  <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon
+                              icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon
+                              icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon
+                              icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon
+                              icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li>Delete
+                          <iron-icon
+                              icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                </li>
+              </iron-selector>
+            </ul>
+          </iron-collapse>
+        </li>
+        <li id="modmobile" class="lifevault__list-item-lvl2 ">
+          <a class="lifevault__list-link-lvl2" href="javascript:;">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Tax Returns</a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </li>
+        <li class="lifevault__list-item-lvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Misc. Docs</a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </li>
+        <li class="lifevault__list-item-lvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Insurance Policies</a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </li>
+        <li class="lifevault__list-item-lvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Deeds</a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </li>
+        <li class="lifevault__list-item-lvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;">
+            <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+            Asset/Financial</a>
+          <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;">
+            <iron-icon icon="icons:more-vert"></iron-icon>
+            <iron-dropdown horizontal-align="right">
+              <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                  slot="dropdown-content">
+                <li>Add Sub-Folder
+                  <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                </li>
+                <li>Download
+                  <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                </li>
+                <li>Print
+                  <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                </li>
+                <li>Rename
+                  <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                </li>
+                <li>Share
+                  <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                </li>
+                <li>Delete
+                  <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                </li>
+              </ul>
+            </iron-dropdown>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </template>
+
+  <script>
+      class NetlawLifevaultMobileMenu extends Polymer.Element {
+
+          static get is() {
+              return 'netlaw-lifevault-mobile-menu';
+          }
+      }
+
+      window.customElements.define(NetlawLifevaultMobileMenu.is, NetlawLifevaultMobileMenu);
+  </script>
+</dom-module>
