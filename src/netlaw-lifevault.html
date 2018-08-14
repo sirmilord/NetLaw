@@ -547,9 +547,9 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
-    <template id="menu">
+    <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click="onFolders">
+      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click="_onFolders">
         <iron-dropdown id="headerdropdown">
           <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
             <li>Add Folder
@@ -1094,7 +1094,7 @@
               this.$.lifevaultdrawer.close();
           }
 
-          onFolders(e) {
+          _onFolders(e) {
               if (this.toggleHeaderIcon === 'netlaw-icons:menu-circle') {
                   this.$.headerdropdown.open();
               }
