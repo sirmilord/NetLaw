@@ -2,61 +2,60 @@
 
 <dom-module id="netlaw-dashboard">
 
-    <template>
+  <template>
 
-        <style>
-            /* shadow DOM styles go here */
-            :host {
-                width: 100%;
-                background-color: #f9f9f9;
-                min-height: 90px;
-                position: relative;
-                box-sizing: border-box;
-            }
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        width: 100%;
+        background-color: #f9f9f9;
+        min-height: 90px;
+        position: relative;
+        box-sizing: border-box;
+      }
 
-            :host:after {
-                content: '';
-                position: absolute;
-                width: 95%;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                height: 1px;
-                border-bottom: 1px dashed #979797;
-                opacity: .5;
-            }
+      :host:after {
+        content: '';
+        position: absolute;
+        width: 95%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+      }
 
-            @media (min-width: 992px) {
-                :host {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-            }
-
-            @media (min-width: 1200px) {
-                :host {
-                    padding-left: 30px;
-                    padding-right: 30px;
-                }
-            }
-
-
-        </style>
-
-        <slot name="dashboard-content"></slot>
-
-    </template>
-
-    <script>
-
-        class NetlawDashboard extends Polymer.Element {
-            static get is() {
-                return 'netlaw-dashboard';
-            }
+      @media (min-width: 992px) {
+        :host {
+          padding-left: 10px;
+          padding-right: 10px;
         }
+      }
 
-        customElements.define(NetlawDashboard.is, NetlawDashboard);
-    </script>
+      @media (min-width: 1200px) {
+        :host {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+
+    </style>
+
+    <slot name="dashboard-content"></slot>
+
+  </template>
+
+  <script>
+
+      class NetlawDashboard extends Polymer.Element {
+          static get is() {
+              return 'netlaw-dashboard';
+          }
+      }
+
+      customElements.define(NetlawDashboard.is, NetlawDashboard);
+  </script>
 
 </dom-module>
-
