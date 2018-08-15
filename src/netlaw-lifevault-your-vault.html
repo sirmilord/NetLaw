@@ -12,7 +12,7 @@
         flex: 1 1 100%;
         max-width: 100%;
         background-color: #f9f9f9;
-        border-right: 1px solid #dfdfdf;
+        /*border-right: 1px solid #dfdfdf;*/
         /*border-bottom: 1px solid #dfdfdf;*/
         display: flex;
         align-items: center;
@@ -109,11 +109,6 @@
         --iron-icon-height: 90px;
         --iron-icon-fill-color: #01AA50;
         /*--iron-icon-stroke-color: #fff;*/
-        display: none;
-      }
-
-      .lifevault__add-folder--show {
-        display: block;
       }
 
       figure iron-icon {
@@ -135,6 +130,9 @@
         <hr>
       </div>
       <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
+      <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
+        <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+      </a>
     </section>
 
   </template>
@@ -144,6 +142,12 @@
 
           static get is() {
               return 'netlaw-lifevault-your-vault';
+          }
+
+          onAddFolderClick(e) {
+              console.log("there");
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('add-folder'), {bubbles: true, composed: true});
           }
       }
 

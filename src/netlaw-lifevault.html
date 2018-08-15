@@ -437,7 +437,7 @@
         top: 0;
       }
 
-      .folder {
+      .add-folder {
         position: fixed;
         z-index: 105;
         left: 50%;
@@ -447,12 +447,12 @@
         color: #fff;
       }
 
-      .folder__icon {
+      .add-folder__icon {
         --iron-icon-width: 85px;
         --iron-icon-height: 85px;
       }
 
-      .folder__icon--folder {
+      .add-folder__icon--folder {
         --iron-icon-fill-color: #fff;
         --iron-icon-stroke-color: #000;
         margin-left: auto;
@@ -461,7 +461,7 @@
         margin-bottom: 20px;
       }
 
-      .folder__icon--close {
+      .add-folder__icon--close {
         /*--iron-icon-width: 85px;*/
         /*--iron-icon-height: 85px;*/
         --iron-icon-fill-color: #4a4a4a;
@@ -471,41 +471,32 @@
         z-index: 105;
       }
 
-      .folder__title {
+      .add-folder__title {
         color: #4A4A4A;
         font-weight: 400;
         font-size: 26px;
       }
 
-      .folder label {
+      .add-folder label {
         color: #C2C2C2;
         font-size: 10px;
       }
 
-      .folder .folder__text-align {
+      .add-folder .add-folder__text-align {
         text-align: left;
       }
 
-      .folder input {
+      .add-folder input {
         background-color: #fff;
       }
 
-      .folder .login__divider-small {
+      .add-folder .login__divider-small {
         margin-top: 35px;
         margin-bottom: 35px;
       }
 
-      .folder .btn-cancel {
+      .add-folder .btn-cancel {
         color: #4A4A4A;
-      }
-
-      .lifevault__add-folder {
-        position: fixed;
-        bottom: 5%;
-        right: 5%;
-        --iron-icon-width: 90px;
-        --iron-icon-height: 90px;
-        --iron-icon-fill-color: #01AA50;
       }
 
       @media (max-width: 767px) {
@@ -1028,22 +1019,18 @@
       </section>
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <netlaw-lifevault-your-vault name="your-vault"></netlaw-lifevault-your-vault>
+        <netlaw-lifevault-your-vault name="your-vault" on-add-folder="onAddFolderClick"></netlaw-lifevault-your-vault>
         <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
         <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
       </iron-pages>
 
-      <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
-        <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
-      </a>
-
       <template is="dom-if" if="[[addFolder]]">
         <div class="overlay"></div>
-        <div class="folder">
-          <iron-icon class="folder__icon folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
-          <b class="folder__title">Add Folder</b>
+        <div class="add-folder">
+          <iron-icon class="add-folder__icon add-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
+          <b class="add-folder__title">Add Folder</b>
           <form action="javascript:;" method="post" class="login-form login__align-center">
-            <div class="login__margin folder__text-align">
+            <div class="login__margin add-folder__text-align">
               <label for="folderinput">FOLDER TITLE</label>
               <input type="text" class="login__input" id="folderinput" name="folder"
                      placeholder="Enter in your new folder title…">
@@ -1058,11 +1045,37 @@
             </div>
           </form>
         </div>
-
         <a href="javascript:;" on-click="onCancelFolderClick">
-          <iron-icon class="folder__icon folder__icon--close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+          <iron-icon class="add-folder__icon add-folder__icon--close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>
         </a>
       </template>
+
+      <!--<template is="dom-if" if="[[deleteFolderFile]]">-->
+        <!--<div class="overlay"></div>-->
+        <!--<div class="add-folder">-->
+          <!--<iron-icon class="add-folder__icon folder__icon&#45;&#45;folder" icon="netlaw-icons:add-folder-o"></iron-icon>-->
+          <!--<b class="add-folder__title">Add Folder</b>-->
+          <!--<form action="javascript:;" method="post" class="login-form login__align-center">-->
+            <!--<div class="login__margin folder__text-align">-->
+              <!--<label for="folderinput">FOLDER TITLE</label>-->
+              <!--<input type="text" class="login__input" id="folderinput" name="folder"-->
+                     <!--placeholder="Enter in your new folder title…">-->
+            <!--</div>-->
+            <!--<hr class="login__divider-small">-->
+            <!--<div class="login__margin">-->
+              <!--<button class="btn btn-primary">Create Folder</button>-->
+            <!--</div>-->
+            <!--<div class="login__margin">-->
+              <!--<button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>-->
+              <!--&lt;!&ndash;<a href="javascript:;" on-click="onCancelClick">Cancel</a>&ndash;&gt;-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+
+        <!--<a href="javascript:;" on-click="onCancelFolderClick">-->
+          <!--<iron-icon class="add-folder__icon folder__icon&#45;&#45;close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>-->
+        <!--</a>-->
+      <!--</template>-->
     </main>
   </template>
 
@@ -1135,6 +1148,7 @@
               if (this.$.lifevaultdrawer.hasAttribute('opened')) {
                   console.log(this.$.lifevaultdrawer);
               }
+
           }
 
           static get observers() {
