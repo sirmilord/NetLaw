@@ -2411,14 +2411,7 @@
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          openBulkAction() {
-              this.$.bulkactiondropdown.open();
-          }
-
+          // hide dashboard on the mobile layout
           hideDashboard() {
               this.close = true;
           }

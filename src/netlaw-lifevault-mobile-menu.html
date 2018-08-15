@@ -484,7 +484,7 @@
     <section id="navmobile" class="lifevault__nav-mobile" hidden$={{navMobile}}>
       <ul class="lifevault__list-lvl2">
         <li class="lifevault__list-item-lvl2">
-          <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+          <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleLvl2">
             <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
             Estate Planning
           </a>
@@ -762,10 +762,8 @@
           }
 
           ready() {
-              //TODO find out
               super.ready();
-              this.addEventListener('mobile-menu', this.hideCollapse);
-
+              //open dropdown for all menu items
               let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
               btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
                   e.preventDefault();
@@ -780,7 +778,7 @@
               this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
           }
 
-          toggleLvl2(e) {
+          _onToggleLvl2(e) {
               e.preventDefault();
               this.$.collapsemobilelvl2.toggle();
               this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
