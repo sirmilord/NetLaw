@@ -7,7 +7,7 @@
 <dom-module id="netlaw-lifevault">
   <template>
 
-    <style>
+    <style include="shared-styles">
 
       :host {
         box-sizing: border-box;
@@ -426,6 +426,88 @@
         top: 425px;
       }
 
+      .overlay {
+        position: fixed;
+        z-index: 104;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.95;
+        left: 0;
+        top: 0;
+      }
+
+      .folder {
+        position: fixed;
+        z-index: 105;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        color: #fff;
+      }
+
+      .folder__icon {
+        --iron-icon-width: 85px;
+        --iron-icon-height: 85px;
+      }
+
+      .folder__icon--folder {
+        --iron-icon-fill-color: #fff;
+        --iron-icon-stroke-color: #000;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .folder__icon--close {
+        /*--iron-icon-width: 85px;*/
+        /*--iron-icon-height: 85px;*/
+        --iron-icon-fill-color: #4a4a4a;
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 105;
+      }
+
+      .folder__title {
+        color: #4A4A4A;
+        font-weight: 400;
+        font-size: 26px;
+      }
+
+      .folder label {
+        color: #C2C2C2;
+        font-size: 10px;
+      }
+
+      .folder .folder__text-align {
+        text-align: left;
+      }
+
+      .folder input {
+        background-color: #fff;
+      }
+
+      .folder .login__divider-small {
+        margin-top: 35px;
+        margin-bottom: 35px;
+      }
+
+      .folder .btn-cancel {
+        color: #4A4A4A;
+      }
+
+      .lifevault__add-folder {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        --iron-icon-width: 90px;
+        --iron-icon-height: 90px;
+        --iron-icon-fill-color: #01AA50;
+      }
+
       @media (max-width: 767px) {
 
         iron-pages {
@@ -541,6 +623,8 @@
           max-width: 75%;
         }
       }
+
+
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -583,7 +667,8 @@
         <ul class="lifevault-mobile__list">
           <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
             <li class="lifevault-mobile__list-item lifevault-mobile__list-item--top-border lifevault-mobile__list-item--bottom-border">
-              <a name="" href="[[routePath]]lifevault/mobile-menu" class="lifevault-mobile__list-link" on-click="_onOpenDrawer">
+              <a name="" href="[[routePath]]lifevault/mobile-menu" class="lifevault-mobile__list-link"
+                 on-click="_onOpenDrawer">
                 <span class="lifevault-mobile__list-text">My Files</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
@@ -632,7 +717,7 @@
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown>
                 <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
+                  <li on-click="onAddFolderClick">Add Folder
                     <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                   </li>
                   <li>Download
@@ -923,7 +1008,7 @@
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown>
                 <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
+                  <li on-click="onAddFolderClick">Add Folder
                     <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                   </li>
                   <li>Download
@@ -948,6 +1033,36 @@
         <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
       </iron-pages>
 
+      <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
+        <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+      </a>
+
+      <template is="dom-if" if="[[addFolder]]">
+        <div class="overlay"></div>
+        <div class="folder">
+          <iron-icon class="folder__icon folder__icon--folder" icon="netlaw-icons:folder-icon"></iron-icon>
+          <b class="folder__title">Add Folder</b>
+          <form action="javascript:;" method="post" class="login-form login__align-center">
+            <div class="login__margin folder__text-align">
+              <label for="folderinput">FOLDER TITLE</label>
+              <input type="text" class="login__input" id="folderinput" name="folder"
+                     placeholder="Enter in your new folder title…">
+            </div>
+            <hr class="login__divider-small">
+            <div class="login__margin">
+              <button class="btn btn-primary">Create Folder</button>
+            </div>
+            <div class="login__margin">
+              <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
+              <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
+            </div>
+          </form>
+        </div>
+
+        <a href="javascript:;" on-click="onCancelFolderClick">
+          <iron-icon class="folder__icon folder__icon--close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+        </a>
+      </template>
     </main>
   </template>
 
@@ -963,7 +1078,7 @@
                   toggleIcon: {
                       type: String
                   },
-
+                  //for mobile
                   toggleHeaderIcon: {
                       type: String
                   },
@@ -973,7 +1088,17 @@
                       type: String,
                       reflectToAttribute: true,
                   },
-                  menu: {type: Object, notify: true},
+                  //for mobile
+                  menu: {
+                      type: Object,
+                      notify: true
+                  },
+                  addFolder: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
               };
           }
 
@@ -1073,11 +1198,24 @@
               this.$.lifevaultdrawer.close();
           }
 
+          //for mobile - change icon in the header
           _onFolders(e) {
               debugger;
               if (this.toggleHeaderIcon === 'netlaw-icons:menu-circle') {
                   this.$.headerdropdown.open();
               }
+          }
+
+          onAddFolderClick(e) {
+              e.preventDefault();
+              this.addFolder = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+          onCancelFolderClick(e) {
+              e.preventDefault();
+              this.addFolder = false;
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
       }
