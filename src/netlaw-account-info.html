@@ -1,16 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="social-icons.html">
-
 <dom-module id="netlaw-account-info">
   <template>
 
     <style>
-
-      .account {
-        background-color: #f9f9f9;
-        font-family: "Lato", sans-serif;
-      }
 
       .btn {
         margin: 0;
@@ -31,78 +24,10 @@
         font-weight: 900;
       }
 
-      .account__header {
-        display: flex;
-        min-height: 65px;
-        width: 100%;
-        background-color: #4a4a4a;
-        align-items: center;
-      }
-
-      .account__header-left {
-        flex: 1 1 30%;
-        max-width: 30%;
-        /*display: flex;*/
-      }
-
       .account__header-left iron-icon {
         --iron-icon-width: 30px;
         --iron-icon-height: 30px;
         margin-left: 30px;
-      }
-
-      .account__header-right {
-        flex: 1 1 70%;
-        max-width: 70%;
-      }
-
-      .account__title {
-        align-self: center;
-        color: #ffffff;
-        font-size: 26px;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-weight: 300;
-        position: relative;
-        margin-left: 70px;
-        /*margin-right: auto;*/
-      }
-
-      .btn--back-dash {
-        background-color: transparent;
-        border: 0;
-        padding: 0;
-        color: #cdcdcd;
-        --iron-icon-width: 30px;
-        --iron-icon-height: 30px;
-        --iron-icon-fill-color: #979797;
-        font-size: 14px;
-        font-weight: 400;
-      }
-
-      .account__wrapper {
-        display: flex;
-      }
-
-      .account__left {
-        flex: 1 1 30%;
-        max-width: 30%;
-        min-width: 20em;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        position: relative;
-        min-height: calc(100vh - 80px - 65px);
-      }
-
-      .account__left:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 40px;
-        width: 2px;
-        height: 60%;
-        background-color: #e9e9e9;
       }
 
       .account__right {
@@ -333,48 +258,6 @@
         font-size: 26px;
         font-weight: 300;
         line-height: 32px;
-      }
-
-      .login-buttons {
-        max-width: 285px;
-        width: 200px;
-        margin: 40px auto 0;
-        margin-right: 60px;
-        display: flex;
-        justify-content: center;
-        --iron-icon-fill-color: #ffffff;
-      }
-
-      .login-buttons paper-icon-button {
-        height: 45px;
-        flex: 1 1 25%;
-        max-width: 25%;
-      }
-
-      .login-buttons paper-icon-button:first-child {
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-      }
-
-      .login-buttons paper-icon-button:last-child {
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
-
-      .login-buttons paper-icon-button[name="googleplus"] {
-        background: #FF3624;
-      }
-
-      .login-buttons paper-icon-button[name="facebook"] {
-        background: #024DAF;
-      }
-
-      .login-buttons paper-icon-button[name="linkedin"] {
-        background: #0178BD;
-      }
-
-      .login-buttons paper-icon-button[name="twitter"] {
-        background: #01B8EC;
       }
 
     </style>

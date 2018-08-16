@@ -348,17 +348,8 @@
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-    <!--<app-route route="[[route]]" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
-
-    <!--<app-route-->
-    <!--route="{{subroute}}"-->
-    <!--pattern="/:page"-->
-    <!--data="{{subrouteData}}">-->
-    <!--</app-route>-->
-
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
     <iron-media-query query="max-width: 991px" query-matches="{{tablet}}"></iron-media-query>
-
     <iron-media-query query="min-width: 768px" query-matches="{{md}}"></iron-media-query>
     <iron-media-query query="min-width: 992px" query-matches="{{lg}}"></iron-media-query>
     <iron-media-query query="min-width: 1200px" query-matches="{{xl}}"></iron-media-query>
@@ -366,7 +357,9 @@
 
 
     <!--<template is="dom-if" if="[[!loggedIn]]">-->
+
     <netlaw-login on-logged-in="onLoggedIn" nologin$="[[loggedIn]]"></netlaw-login>
+
     <!--</template>-->
 
     <!--<template is="dom-if" if="[[loggedIn]]">-->

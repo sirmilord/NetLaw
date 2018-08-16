@@ -4,8 +4,6 @@
 <link rel="import" href="netlaw-account-plans.html">
 <link rel="import" href="netlaw-account-info.html">
 
-<link rel="import" href="social-icons.html">
-
 <dom-module id="netlaw-account">
   <template>
 
@@ -350,9 +348,10 @@
       }
 
       .login-buttons paper-icon-button {
-        height: 45px;
         flex: 1 1 25%;
         max-width: 25%;
+        --iron-icon-width: 40px;
+        --iron-icon-height: 40px;
       }
 
       .login-buttons paper-icon-button:first-child {
@@ -424,13 +423,13 @@
             <a name="plans" href="[[routePath]]account-plans" class="account__list-link">View Billing Plans</a>
           </nav>
           <div class="login-buttons">
-            <paper-icon-button icon="social-icons:googleplus" name="googleplus"
+            <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"
                                on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:facebook" name="facebook"
+            <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"
                                on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:linkedin" name="linkedin"
+            <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"
                                on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="social-icons:twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
           </div>
         </div>
 
