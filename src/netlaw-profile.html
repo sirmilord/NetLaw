@@ -101,13 +101,13 @@
       .profile__left paper-icon-button {
         position: relative;
         border-radius: 50%;
-        width: 160px;
-        height: 160px;
+        width: 80px;
+        height: 80px;
         background-color: #e1e1e1;
         margin-left: auto;
         margin-right: 20%;
         margin-top: 20%;
-        padding: 50px;
+        padding: 25px;
         --iron-icon-fill-color: #9B9B9B;
       }
 
@@ -234,9 +234,17 @@
         cursor: pointer;
       }
 
+      @media (min-width: 1200px) {
+        .profile__left paper-icon-button {
+          width: 160px;
+          height: 160px;
+          padding: 50px;
+        }
+      }
+
     </style>
 
-    <section class="profile">
+    <main class="profile">
       <div class="profile__header">
         <div class="profile__header-left">
           <a href="[[rootPath]]initial-screen" class="btn btn--back-dash">
@@ -297,7 +305,7 @@
           </form>
         </div>
       </div>
-    </section>
+    </main>
   </template>
 
   <script>
