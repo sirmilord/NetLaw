@@ -148,6 +148,7 @@
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
       }
+
       .lifevault__list-link-lvl3:hover,
       .lifevault__list-link-lvl3:focus {
         text-decoration: none;
@@ -451,22 +452,22 @@
         top: 0;
       }
 
-      .add-folder {
+      .file-folder {
         position: fixed;
         z-index: 105;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: 300px;
+        width: 400px;
         color: #fff;
       }
 
-      .add-folder__icon {
+      .file-folder__icon {
         --iron-icon-width: 85px;
         --iron-icon-height: 85px;
       }
 
-      .add-folder__icon--folder {
+      .file-folder__icon--folder {
         --iron-icon-fill-color: #fff;
         --iron-icon-stroke-color: #000;
         margin-left: auto;
@@ -475,7 +476,16 @@
         margin-bottom: 20px;
       }
 
-      .add-folder__icon--close {
+      .file-folder__icon--recyclebin {
+        --iron-icon-fill-color: #fff;
+        --iron-icon-stroke-color: #000;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .file-folder__icon--close {
         /*--iron-icon-width: 85px;*/
         /*--iron-icon-height: 85px;*/
         --iron-icon-fill-color: #4a4a4a;
@@ -485,32 +495,89 @@
         z-index: 105;
       }
 
-      .add-folder__title {
+      .file-folder__title {
         color: #4A4A4A;
         font-weight: 400;
         font-size: 26px;
       }
 
-      .add-folder label {
+      .file-folder label {
         color: #C2C2C2;
         font-size: 10px;
       }
 
-      .add-folder .add-folder__text-align {
+      .file-folder .file-folder__text-align {
         text-align: left;
       }
 
-      .add-folder input {
+      .file-folder input {
         background-color: #fff;
       }
 
-      .add-folder .login__divider-small {
+      .file-folder .login__divider-small {
         margin-top: 35px;
         margin-bottom: 35px;
       }
 
-      .add-folder .btn-cancel {
+      .file-folder .btn-cancel {
         color: #4A4A4A;
+      }
+
+      .file-folder__desc {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-style: normal;
+        text-align: center;
+      }
+
+      .file-folder__desc span {
+        font-weight: 600;
+      }
+
+      .file-folder__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+      }
+
+      .file-folder__form {
+
+      }
+
+      .file-folder__form--w100 {
+        width: 100%;
+      }
+
+      .file-folder__img {
+        margin: 0 10px 0 0;
+        --iron-icon-fill-color: #000;
+        --iron-icon-height: 26px;
+        --iron-icon-width: 26px;
+        border: 1px solid #E1E1E1;
+        background-color: #FFFFFF;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .file-folder__img iron-icon {
+        opacity: 0.3;
+      }
+
+      .file-folder__name {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+        margin-right: 10px;
+      }
+
+      .file-folder__version {
+        color: #4A90E2;
+        font-size: 18px;
+        font-weight: 300;
       }
 
       @media (max-width: 767px) {
@@ -764,7 +831,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -801,7 +868,7 @@
                                   <iron-icon
                                       icon="netlaw-icons:share-icon"></iron-icon>
                                 </li>
-                                <li>Delete
+                                <li on-click="onDeleteFileFolderClick">Delete
                                   <iron-icon
                                       icon="netlaw-icons:delete-icon"></iron-icon>
                                 </li>
@@ -834,7 +901,7 @@
                                   <iron-icon
                                       icon="netlaw-icons:share-icon"></iron-icon>
                                 </li>
-                                <li>Delete
+                                <li on-click="onDeleteFileFolderClick">Delete
                                   <iron-icon
                                       icon="netlaw-icons:delete-icon"></iron-icon>
                                 </li>
@@ -870,7 +937,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -901,7 +968,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -932,7 +999,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -963,7 +1030,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -994,7 +1061,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1040,11 +1107,11 @@
 
       <template is="dom-if" if="[[addFolder]]">
         <div class="overlay"></div>
-        <div class="add-folder">
-          <iron-icon class="add-folder__icon add-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
-          <b class="add-folder__title">Add Folder</b>
+        <div class="file-folder">
+          <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
+          <b class="file-folder__title">Add Folder</b>
           <form action="javascript:;" method="post" class="login-form login__align-center">
-            <div class="login__margin add-folder__text-align">
+            <div class="login__margin file-folder__text-align">
               <label for="folderinput">FOLDER TITLE</label>
               <input type="text" class="login__input" id="folderinput" name="folder"
                      placeholder="Enter in your new folder title…">
@@ -1055,41 +1122,43 @@
             </div>
             <div class="login__margin">
               <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
-              <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
             </div>
           </form>
         </div>
         <a href="javascript:;" on-click="onCancelFolderClick">
-          <iron-icon class="add-folder__icon add-folder__icon--close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+          <iron-icon class="file-folder__icon file-folder__icon--close"
+                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
         </a>
       </template>
 
-      <!--<template is="dom-if" if="[[deleteFolderFile]]">-->
-        <!--<div class="overlay"></div>-->
-        <!--<div class="add-folder">-->
-          <!--<iron-icon class="add-folder__icon folder__icon&#45;&#45;folder" icon="netlaw-icons:add-folder-o"></iron-icon>-->
-          <!--<b class="add-folder__title">Add Folder</b>-->
-          <!--<form action="javascript:;" method="post" class="login-form login__align-center">-->
-            <!--<div class="login__margin folder__text-align">-->
-              <!--<label for="folderinput">FOLDER TITLE</label>-->
-              <!--<input type="text" class="login__input" id="folderinput" name="folder"-->
-                     <!--placeholder="Enter in your new folder title…">-->
-            <!--</div>-->
-            <!--<hr class="login__divider-small">-->
-            <!--<div class="login__margin">-->
-              <!--<button class="btn btn-primary">Create Folder</button>-->
-            <!--</div>-->
-            <!--<div class="login__margin">-->
-              <!--<button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>-->
-              <!--&lt;!&ndash;<a href="javascript:;" on-click="onCancelClick">Cancel</a>&ndash;&gt;-->
-            <!--</div>-->
-          <!--</form>-->
-        <!--</div>-->
-
-        <!--<a href="javascript:;" on-click="onCancelFolderClick">-->
-          <!--<iron-icon class="add-folder__icon folder__icon&#45;&#45;close" icon="netlaw-icons:cancel-btn-circle"></iron-icon>-->
-        <!--</a>-->
-      <!--</template>-->
+      <template is="dom-if" if="[[deleteFileFolder]]">
+        <div class="overlay"></div>
+        <div class="file-folder">
+          <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
+          <b class="file-folder__title">Just Confirming </b>
+          <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these files?</p>
+          <form action="javascript:;" method="post" class="login-form login__align-center  file-folder__form file-folder__form--w100">
+            <div class="login__margin file-folder__wrap">
+              <figure class="file-folder__img">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </figure>
+              <div class="file-folder__name">Estimate for Home Management .PDF</div>
+              <div class="file-folder__version">1.1</div>
+            </div>
+            <hr class="login__divider-small">
+            <div class="login__margin">
+              <button class="btn btn--warning">Confirm Deletion</button>
+            </div>
+            <div class="login__margin">
+              <button class="btn btn-cancel" on-click="onCancelFileFolderClick">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <a href="javascript:;" on-click="onCancelFileFolderClick">
+          <iron-icon class="file-folder__icon file-folder__icon--close"
+                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+        </a>
+      </template>
     </main>
   </template>
 
@@ -1121,6 +1190,12 @@
                       notify: true
                   },
                   addFolder: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  deleteFileFolder: {
                       type: Boolean,
                       notify: true,
                       reflectToAttribute: true,
@@ -1243,6 +1318,18 @@
           onCancelFolderClick(e) {
               e.preventDefault();
               this.addFolder = false;
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+          }
+
+          onDeleteFileFolderClick(e) {
+              e.preventDefault();
+              this.deleteFileFolder = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+          onCancelFileFolderClick(e) {
+              e.preventDefault();
+              this.deleteFileFolder = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
