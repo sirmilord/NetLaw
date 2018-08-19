@@ -7,7 +7,7 @@
   <!-- Defines the element's style and local DOM -->
   <template>
     <style is="custom-style" include="iron-flex iron-flex-factors"></style>
-    <style >
+    <style include="shared-styles">
       :host {
         box-sizing: border-box;
       }
@@ -758,6 +758,17 @@
         margin-top: 30px;
       }
 
+      .file-folder--delete {
+        position: fixed;
+        z-index: 105;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
       .file-folder__header {
         display: flex;
         min-height: 65px;
@@ -972,7 +983,6 @@
         background-color: #019948;
       }
 
-
       .btn--cancel {
         border: 0;
         background-color: transparent;
@@ -1027,6 +1037,105 @@
         bottom: 5%;
         right: 2%;
         z-index: 105;
+      }
+
+      .file-folder__icon--recyclebin {
+        --iron-icon-fill-color: #fff;
+        --iron-icon-stroke-color: #000;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .file-folder__title-delete {
+        color: #4A4A4A;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+      }
+
+      .file-folder__desc {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-style: normal;
+        text-align: center;
+      }
+
+      .file-folder__desc span {
+        font-weight: 600;
+      }
+
+      .file-folder label {
+        color: #C2C2C2;
+        font-size: 10px;
+      }
+
+      .file-folder .file-folder__text-align {
+        text-align: left;
+      }
+
+      .file-folder .login__divider-small {
+        margin-top: 35px;
+        margin-bottom: 35px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .file-folder__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+
+      .file-folder__form--w100 {
+        width: 100%;
+      }
+
+      .file-folder .btn-cancel {
+        color: #4A4A4A;
+      }
+
+      .file-folder__item {
+        flex: 1 1 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .file-folder__photo {
+        margin: 0 10px 0 0;
+        --iron-icon-fill-color: #000;
+        --iron-icon-height: 40px;
+        --iron-icon-width: 40px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .file-folder__surname {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .file-folder__surname-desc {
+        color: #4A4A4A;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+      .file-folder__item-wrap {
+
       }
 
       @media (min-width: 1200px) {
@@ -1108,7 +1217,9 @@
         <div slot="update">Updated 1d ago</div>
       </netlaw-topbar>
       <netlaw-dashboard>
-        <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
+        <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
+                               on-select-all-true="selectAllTrue" on-view-module="chooseModule"
+                               on-view-list="chooseList"></netlaw-dashboard-form>
       </netlaw-dashboard>
 
       <div id="module" class="contacts__wrap contacts__wrap--show">
@@ -1138,7 +1249,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1148,7 +1259,7 @@
                     <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <!--<button class="btn btn&#45;&#45;charm">-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
                   <!--</button>-->
                 </div>
                 <div class="contacts__module-footer">
@@ -1185,7 +1296,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1195,7 +1306,7 @@
                     <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <!--<button class="btn btn&#45;&#45;charm">-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
                   <!--</button>-->
                 </div>
                 <div class="contacts__module-footer">
@@ -1232,7 +1343,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1242,7 +1353,7 @@
                     <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <!--<button class="btn btn&#45;&#45;charm">-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
                   <!--</button>-->
                 </div>
                 <div class="contacts__module-footer">
@@ -1279,7 +1390,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1289,7 +1400,7 @@
                     <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <!--<button class="btn btn&#45;&#45;charm">-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
                   <!--</button>-->
                 </div>
                 <div class="contacts__module-footer">
@@ -1326,7 +1437,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1336,7 +1447,7 @@
                     <img src="../images/contact.jpg" height="60" width="60" alt="contact">
                   </figure>
                   <!--<button class="btn btn&#45;&#45;charm">-->
-                    <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
                   <!--</button>-->
                 </div>
                 <div class="contacts__module-footer">
@@ -1390,7 +1501,7 @@
                     <li>Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
-                    <li>Delete
+                    <li on-click="onDeleteContactClick">Delete
                       <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1433,7 +1544,7 @@
                     <li>Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
-                    <li>Delete
+                    <li on-click="onDeleteContactClick">Delete
                       <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1476,7 +1587,7 @@
                     <li>Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
-                    <li>Delete
+                    <li on-click="onDeleteContactClick">Delete
                       <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1518,7 +1629,7 @@
                     <li>Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
-                    <li>Delete
+                    <li on-click="onDeleteContactClick">Delete
                       <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1562,9 +1673,11 @@
                 <div class="form__group">
                   <label class="label" for="address">ADDRESS</label>
                   <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
-                </div><div class="form__group">
+                </div>
+                <div class="form__group">
                   <label class="label" for="relationship">RELATIONSHIP TO YOU</label>
-                  <input type="text" id="relationship" class="input-text" placeholder="i.e. Brother, Cousin, Financial Lawyer">
+                  <input type="text" id="relationship" class="input-text"
+                         placeholder="i.e. Brother, Cousin, Financial Lawyer">
                 </div>
                 <div class="form__row">
                   <div class="form__group form__group--third">
@@ -1602,7 +1715,8 @@
                 </div>
                 <div class="form__group">
                   <label for="comments" class="label">COMMENTS</label>
-                  <textarea  rows="3" id="comments" class="input-text input-text--area" placeholder="Is there anything you would like to say about this contact?"></textarea>
+                  <textarea rows="3" id="comments" class="input-text input-text--area"
+                            placeholder="Is there anything you would like to say about this contact?"></textarea>
                 </div>
                 <div class="form__line"></div>
                 <div class="form__group form__group--center">
@@ -1621,6 +1735,49 @@
                      icon="netlaw-icons:cancel-btn-circle"></iron-icon>
         </a>
       </section>
+    </template>
+
+    <template is="dom-if" if="[[deleteContact]]">
+      <div class="overlay"></div>
+      <div class="file-folder file-folder--delete">
+        <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
+        <b class="file-folder__title-delete">Just Confirming </b>
+        <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these contacts?</p>
+        <form action="javascript:;" method="post"
+              class="login-form login__align-center  file-folder__form file-folder__form--w100">
+          <div class="login__margin file-folder__wrapper">
+            <div class="file-folder__item">
+              <figure class="file-folder__photo">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </figure>
+              <div class="file-folder__item-wrap">
+              <div class="file-folder__surname">Hannah Doe</div>
+              <div class="file-folder__surname-desc">Eldest Daughter</div>
+              </div>
+            </div>
+            <div class="file-folder__item">
+              <figure class="file-folder__photo">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </figure>
+              <div class="file-folder__item-wrap">
+              <div class="file-folder__surname">Hannah Doe</div>
+              <div class="file-folder__surname-desc">Eldest Daughter</div>
+              </div>
+            </div>
+          </div>
+          <hr class="login__divider-small">
+          <div class="login__margin">
+            <button class="btn btn--warning">Confirm Deletion</button>
+          </div>
+          <div class="login__margin">
+            <button class="btn btn-cancel" on-click="onCancelContactClick">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <a href="javascript:;" on-click="onCancelContactClick">
+        <iron-icon class="file-folder__icon file-folder__icon--close"
+                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+      </a>
     </template>
 
   </template>
@@ -1653,6 +1810,12 @@
                       reflectToAttribute: true,
                       value: false
                   },
+                  deleteContact: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
               };
           }
 
@@ -1671,6 +1834,7 @@
                   this.querySelector('iron-dropdown').open();
               }));
           }
+
           selectAllFalse(e) {
               this.view === 'Module' ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
 
@@ -1727,8 +1891,17 @@
           onCancelContactClick(e) {
               e.preventDefault();
               this.addContact = false;
+              this.deleteContact = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
+
+          onDeleteContactClick(e) {
+              e.preventDefault();
+              this.deleteContact = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+
       }
 
       //Now, register your new custom element so the browser can use it
