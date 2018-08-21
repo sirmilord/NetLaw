@@ -748,7 +748,7 @@
                     <iron-dropdown>
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
-                        <li>Add Sub-Folder
+                        <li on-click="onAddFolderClick"Add Sub-Folder
                           <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
@@ -924,7 +924,7 @@
                     <iron-dropdown>
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
-                        <li>Add Sub-Folder
+                        <li on-click="onAddFolderClick">Add Sub-Folder
                           <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
@@ -955,7 +955,7 @@
                     <iron-dropdown>
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
-                        <li>Add Sub-Folder
+                        <li on-click="onAddFolderClick">Add Sub-Folder
                           <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
@@ -986,7 +986,7 @@
                     <iron-dropdown>
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                           slot="dropdown-content">
-                        <li>Add Sub-Folder
+                        <li on-click="onAddFolderClick">Add Sub-Folder
                           <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                         </li>
                         <li>Download
@@ -1015,10 +1015,10 @@
       </section>
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <!--<netlaw-contacts-create name="create" on-add-contact="onAddContactChild"></netlaw-contacts-create>-->
         <netlaw-contacts-create name="create"></netlaw-contacts-create>
         <netlaw-contacts-family name="family"></netlaw-contacts-family>
       </iron-pages>
+
       <template is="dom-if" if="[[addFolder]]">
         <div class="overlay"></div>
         <div class="file-folder">
