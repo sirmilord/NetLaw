@@ -118,7 +118,7 @@
                   <div class="login__margin ">
                     <label for="login-name"></label>
                     <input type="text" class="login__input" id="login-name" name="login" placeholder="Username*"
-                           required>
+                           required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]">
                   </div>
                   <div class="login__margin">
                     <label for="login-pass"></label>
@@ -130,7 +130,7 @@
                   </div>
                   <hr class="login__divider-small">
                   <div class="login__margin-bottom">
-                    <button class="btn btn-primary" on-click="onLoginClick">Login</button>
+                    <button class="btn btn-primary" on-click="onLoginClick" >Login</button>
                   </div>
                 </form>
               </div>
@@ -452,7 +452,15 @@
                   mobile: {type: Boolean, value: false},
                   sms: {type: Boolean, value: false},
                   email: {type: Boolean, value: false},
-                  method: {type: Boolean, value: false}
+                  method: {type: Boolean, value: false},
+
+                  loading: { type: Boolean, value: false, observer: '_loadingChanged' },
+                  selected: { type: String, value: "signin", observer: '_selectedChanged' },
+
+                  identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
+
+                  name: String,
+                  password: String,
               };
           }
 
@@ -469,6 +477,39 @@
               // this.first = false;
               // this.method = false;
               // this.security = true;
+          }
+
+          onSignIn(e) {
+              this.loading = true;
+              this.error = null;
+              localStorage.setItem("name", this.identifier);
+
+              api.accounts.findAccount(this.identifier)
+                  .success(r => {
+                      this.selected = "signin-password";
+                      //this.identifier = data.identifier;
+                      this.userId = r.user_id;
+                      this.name = r.name;
+                  })
+                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
+                  .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
+                  .serverError(ex => { this.error = "Server error please try again."; })
+                  //.catch(ex => { this.error = "Request error."; })
+                  .finally(() => this.loading = false);
+          }
+
+          onSignInNext(e) {
+              this.loading = true;
+              this.error = null;
+
+              api.accounts.login(this.identifier, this.password, this.name, this.phone)
+                  .success(r => {
+                      this._setSession(r);
+                      return this._fetchProfiles()
+                          .then(() => this.password = null);
+                  })
+                  .notFound(ex => this.error = "Wrong password. Try again or try resetting it.")
+                  .finally(() => this.loading = false);
           }
 
           onBackToPrevClick(e) {
@@ -546,6 +587,20 @@
               this.confirm = false;
               this.first = true;
           }
+
+          _loadingChanged(value) {
+              if (value) return; //focus when done loading
+              let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+              if (elements.length) elements[0].focus();
+          }
+
+          _selectedChanged(value) {
+              this.error = null;
+              this.loading = false;
+              let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+              if (elements.length) elements[0].focus();
+          }
+
       }
 
       //Now, register your new custom element so the browser can use it
