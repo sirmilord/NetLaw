@@ -5,7 +5,7 @@
 <dom-module id="netlaw-contacts">
   <!-- Defines the element's style and local DOM -->
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         box-sizing: border-box;
       }
@@ -96,6 +96,11 @@
         vertical-align: center;
       }
 
+      .contacts__list-link:hover,
+      .contacts__list-link:focus {
+        text-decoration: none;
+      }
+
       .contacts__list-link iron-icon {
         margin-right: 10px;
         --iron-icon-width: 15px;
@@ -113,6 +118,11 @@
         padding-bottom: 15px;
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
+      }
+
+      .contacts__list-link-lvl2:hover,
+      .contacts__list-link-lvl2:focus {
+        text-decoration: none;
       }
 
       a.contacts__list-link-lvl2 > iron-icon {
@@ -134,6 +144,11 @@
         padding-bottom: 10px;
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
+      }
+
+      .contacts__list-link-lvl3:hover,
+      .contacts__list-link-lvl3:focus {
+        text-decoration: none;
       }
 
       .contacts__list-item-lvl2--top-border:before {
@@ -465,6 +480,145 @@
         top: 425px;
       }
 
+      .overlay {
+        position: fixed;
+        z-index: 104;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.95;
+        left: 0;
+        top: 0;
+      }
+
+      .file-folder {
+        position: fixed;
+        z-index: 105;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        color: #fff;
+      }
+
+      .file-folder__icon {
+        --iron-icon-width: 85px;
+        --iron-icon-height: 85px;
+      }
+
+      .file-folder__icon--folder {
+        --iron-icon-fill-color: #fff;
+        --iron-icon-stroke-color: #000;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .file-folder__icon--recyclebin {
+        --iron-icon-fill-color: #000;
+        --iron-icon-width: 75px;
+        --iron-icon-height: 75px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .file-folder__icon--close {
+        --iron-icon-fill-color: #4a4a4a;
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 105;
+      }
+
+      .file-folder__title {
+        color: #4A4A4A;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+      }
+
+      .file-folder label {
+        color: #C2C2C2;
+        font-size: 10px;
+      }
+
+      .file-folder .file-folder__text-align {
+        text-align: left;
+      }
+
+      .file-folder input {
+        background-color: #fff;
+      }
+
+      .file-folder .login__divider-small {
+        margin-top: 35px;
+        margin-bottom: 35px;
+      }
+
+      .file-folder .btn-cancel {
+        color: #4A4A4A;
+      }
+
+      .file-folder__desc {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-style: normal;
+        text-align: center;
+      }
+
+      .file-folder__desc span {
+        font-weight: 600;
+      }
+
+      .file-folder__wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+      }
+
+      .file-folder__form {
+
+      }
+
+      .file-folder__form--w100 {
+        width: 100%;
+      }
+
+      .file-folder__img {
+        margin: 0 10px 0 0;
+        --iron-icon-fill-color: #000;
+        --iron-icon-height: 26px;
+        --iron-icon-width: 26px;
+        border: 1px solid #E1E1E1;
+        background-color: #FFFFFF;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .file-folder__img iron-icon {
+        opacity: 0.3;
+      }
+
+      .file-folder__name {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+        margin-right: 10px;
+      }
+
+      .file-folder__version {
+        color: #4A90E2;
+        font-size: 18px;
+        font-weight: 300;
+      }
+
       @media (max-width: 767px) {
         iron-pages {
           flex: 1 1 100%;
@@ -568,7 +722,7 @@
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown>
                 <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
-                  <li>Add Folder
+                  <li on-click="onAddFolderClick">Add Folder
                     <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                   </li>
                   <li>Download
@@ -865,7 +1019,31 @@
         <netlaw-contacts-create name="create"></netlaw-contacts-create>
         <netlaw-contacts-family name="family"></netlaw-contacts-family>
       </iron-pages>
-
+      <template is="dom-if" if="[[addFolder]]">
+        <div class="overlay"></div>
+        <div class="file-folder">
+          <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
+          <b class="file-folder__title">Add Folder</b>
+          <form action="javascript:;" method="post" class="login-form login__align-center">
+            <div class="login__margin file-folder__text-align">
+              <label for="folderinput">FOLDER TITLE</label>
+              <input type="text" class="login__input" id="folderinput" name="folder"
+                     placeholder="Enter in your new folder title…">
+            </div>
+            <hr class="login__divider-small">
+            <div class="login__margin">
+              <button class="btn btn-primary">Create Folder</button>
+            </div>
+            <div class="login__margin">
+              <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
+            </div>
+          </form>
+        </div>
+        <a href="javascript:;" on-click="onCancelFolderClick">
+          <iron-icon class="file-folder__icon file-folder__icon--close"
+                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+        </a>
+      </template>
     </main>
 
   </template>
@@ -897,6 +1075,12 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
+                  },
+                  addFolder: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
                   },
               };
           }
@@ -964,11 +1148,16 @@
               this.$.contactsdrawer.close();
           }
 
-          onAddContactChild() {
-              console.log("yes");
-              let child = this.shadowRoot.querySelector("netlaw-contacts-family");
-              child.onAddContactClick();
-              console.log(child);
+          onAddFolderClick(e) {
+              e.preventDefault();
+              this.addFolder = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+          onCancelFolderClick(e) {
+              e.preventDefault();
+              this.addFolder = false;
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
       }
