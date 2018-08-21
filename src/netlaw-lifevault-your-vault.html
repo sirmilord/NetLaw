@@ -145,7 +145,6 @@
           }
 
           onAddFolderClick(e) {
-              console.log("there");
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('add-folder'), {bubbles: true, composed: true});
           }

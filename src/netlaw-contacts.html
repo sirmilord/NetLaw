@@ -861,10 +861,10 @@
       </section>
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+        <!--<netlaw-contacts-create name="create" on-add-contact="onAddContactChild"></netlaw-contacts-create>-->
         <netlaw-contacts-create name="create"></netlaw-contacts-create>
         <netlaw-contacts-family name="family"></netlaw-contacts-family>
       </iron-pages>
-
 
     </main>
 
@@ -962,6 +962,13 @@
 
           closeDrawer(e) {
               this.$.contactsdrawer.close();
+          }
+
+          onAddContactChild() {
+              console.log("yes");
+              let child = this.shadowRoot.querySelector("netlaw-contacts-family");
+              child.onAddContactClick();
+              console.log(child);
           }
 
       }

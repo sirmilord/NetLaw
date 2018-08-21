@@ -1884,7 +1884,7 @@
           }
 
           onAddContactClick(e) {
-              e.preventDefault();
+              // e.preventDefault();
               this.addContact = true;
               this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
           }

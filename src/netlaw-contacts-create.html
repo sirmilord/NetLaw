@@ -668,6 +668,424 @@
         --iron-icon-height: 154px;
       }
 
+      .file-folder {
+        position: absolute;
+        z-index: 105;
+        left: 0;
+        top: 0;
+        /*transform: translate(-50%, -50%);*/
+        width: calc(100% - 100px);
+        color: #fff;
+        margin-left: 30px;
+        margin-top: 30px;
+      }
+
+      .file-folder--delete {
+        position: fixed;
+        z-index: 105;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .file-folder__header {
+        display: flex;
+        min-height: 65px;
+        width: 100%;
+        background-color: #4a4a4a;
+        align-items: center;
+      }
+
+      .file-folder__header-left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        /*display: flex;*/
+      }
+
+      .file-folder__header-left iron-icon {
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        margin-left: 30px;
+      }
+
+      .file-folder__header-right {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .file-folder__title {
+        align-self: center;
+        color: #ffffff;
+        font-size: 26px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 300;
+        position: relative;
+        margin-left: 70px;
+      }
+
+      .btn--back-dash {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        color: #cdcdcd;
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        --iron-icon-fill-color: #979797;
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .file-folder__wrapper {
+        display: flex;
+      }
+
+      .file-folder__left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        display: flex;
+        position: relative;
+        min-height: calc(100vh - 80px - 65px);
+      }
+
+      .file-folder__left:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 2px;
+        height: 60%;
+        background-color: #e9e9e9;
+      }
+
+      .file-folder__left paper-icon-button {
+        position: relative;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        background-color: #e1e1e1;
+        margin-left: auto;
+        margin-right: 20%;
+        margin-top: 20%;
+        padding: 25px;
+        --iron-icon-fill-color: #9B9B9B;
+      }
+
+      .file-folder__right {
+        flex: 1 1 100%;
+        max-width: 100%;
+
+      }
+
+      .form {
+        margin-left: 70px;
+        max-width: 600px;
+        width: 70%;
+        margin-top: 35px;
+        position: relative;
+      }
+
+      .form fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .form legend {
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #4A4A4A;
+        --iron-icon-height: 60px;
+        --iron-icon-width: 60px;
+
+      }
+
+      .form__row {
+        display: flex;
+        margin-right: -10px;
+        margin-left: -10px;
+      }
+
+      .form__group {
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .form__group--half {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .form__group--third {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .form__group--center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .label {
+        color: #9b9b9b;
+        font-size: 10px;
+        font-weight: 400;
+      }
+
+      .label--hide {
+        display: none;
+      }
+
+      .input-text {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 10px;
+        background: #fff;
+        color: #666;
+        height: 45px;
+        border: 1px solid #9B9B9B;
+        border-radius: 2px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      .input-text--area {
+        height: 110px;
+      }
+
+      .input-text:focus {
+        border-color: #01AA50;
+        outline: 0;
+      }
+
+      .input-text::placeholder {
+        color: #C2C2C2;
+        font-size: 16px;
+      }
+
+      .form__line {
+        margin: 20px auto;
+        width: 60%;
+        background-color: #e9e9e9;
+        height: 2px;
+      }
+
+      .btn--import {
+        background-color: #fff;
+        width: 170px;
+        border: 1px solid #4A90E2;
+        color: #4A90E2;
+        border-radius: 22.5px;
+        font-size: 14px;
+        padding: 0 22px;
+        margin-bottom: 20px;
+      }
+
+      .btn--import:hover,
+      .btn--import:focus {
+        background-color: #4A90E2;
+        color: #fff;
+      }
+
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      .btn--cancel {
+        border: 0;
+        background-color: transparent;
+        font-weight: 300;
+        font-size: 18px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #4A4A4A;
+        font-size: 16px;
+      }
+
+      .btn--cancel:hover,
+      .btn--cancel:focus {
+        font-weight: 600;
+      }
+
+      .btn--next {
+        border: 1px solid #01AA50;
+        background-color: transparent;
+        color: #01AA50;
+        font-size: 16px;
+        /*width: 170px;*/
+        margin-left: 20px;
+      }
+
+      .btn--next:hover,
+      .btn--next:focus {
+        background-color: #019948;
+        border-color: #019948;
+        color: #fff;
+      }
+
+      .overlay {
+        position: fixed;
+        z-index: 104;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.95;
+        left: 0;
+        top: 0;
+      }
+
+      .file-folder__icon {
+        --iron-icon-width: 45px;
+        --iron-icon-height: 45px;
+      }
+
+      .file-folder__icon--close {
+        --iron-icon-fill-color: #4a4a4a;
+        position: fixed;
+        bottom: 5%;
+        right: 2%;
+        z-index: 105;
+      }
+
+      .file-folder__icon--recyclebin {
+        --iron-icon-fill-color: #000;
+        --iron-icon-width: 75px;
+        --iron-icon-height: 75px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-bottom: 20px;
+      }
+
+      .file-folder__title-delete {
+        color: #4A4A4A;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+      }
+
+      .file-folder__desc {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-style: normal;
+        text-align: center;
+      }
+
+      .file-folder__desc span {
+        font-weight: 600;
+      }
+
+      .file-folder label {
+        color: #C2C2C2;
+        font-size: 10px;
+      }
+
+      .file-folder .file-folder__text-align {
+        text-align: left;
+      }
+
+      .file-folder .login__divider-small {
+        margin-top: 35px;
+        margin-bottom: 35px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .file-folder__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*width: 400px;*/
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+
+      .file-folder__form--w100 {
+        width: 100%;
+      }
+
+      .file-folder .btn-cancel {
+        color: #4A4A4A;
+      }
+
+      .file-folder__item {
+        flex: 1 1 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .file-folder__photo {
+        margin: 0 10px 0 0;
+        --iron-icon-fill-color: #000;
+        --iron-icon-height: 40px;
+        --iron-icon-width: 40px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .file-folder__surname {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .file-folder__surname-desc {
+        color: #4A4A4A;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+      .file-folder__item-wrap {
+
+      }
+
+      @media (min-width: 1200px) {
+        .file-folder__left paper-icon-button {
+          width: 160px;
+          height: 160px;
+          padding: 50px;
+        }
+
+        .btn--import {
+          position: absolute;
+          margin-bottom: 0;
+          top: 10px;
+          right: 0;
+        }
+
+        .file-folder__icon {
+          --iron-icon-width: 85px;
+          --iron-icon-height: 85px;
+        }
+
+        .file-folder__icon--close {
+          right: 5%;
+        }
+      }
+
+
 
     </style>
 
@@ -681,9 +1099,100 @@
         <p>(you also search for attorneys and add them to you list)</p>
         <hr>
         </div>
-        <button class="btn btn--primary">Create Contact</button>
+        <button class="btn btn--primary" on-click="onAddContactClick">Create Contact</button>
       </section>
+    <template is="dom-if" if="[[addContact]]">
+      <div class="overlay"></div>
+      <section class="file-folder">
+        <div class="file-folder__wrapper">
+          <div class="file-folder__left">
+            <paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>
+          </div>
+          <div class="file-folder__right">
+            <form class="form" action="javascript:;" method="post">
 
+              <fieldset>
+                <legend>
+                  <iron-icon class="" icon="netlaw-icons:add-contact-o"></iron-icon>
+                  Add NewContact
+                </legend>
+                <button class="btn btn--import">Import Contacts</button>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="firstname">FIRST NAME</label>
+                    <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="lastname">LAST NAME</label>
+                    <input type="text" id="lastname" class="input-text" placeholder="i.e. Wayne">
+                  </div>
+                </div>
+                <div class="form__group">
+                  <label class="label" for="address">ADDRESS</label>
+                  <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
+                </div>
+                <div class="form__group">
+                  <label class="label" for="relationship">RELATIONSHIP TO YOU</label>
+                  <input type="text" id="relationship" class="input-text"
+                         placeholder="i.e. Brother, Cousin, Financial Lawyer">
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--third">
+                    <label for="city" class="label label--hide"></label>
+                    <input type="text" id="city" class="input-text" placeholder="Gotham City">
+                  </div>
+                  <div class="form__group form__group--third">
+                    <label for="state" class="label label--hide"></label>
+                    <input type="text" id="state" class="input-text" placeholder="New Jersey">
+                  </div>
+                  <div class="form__group form__group--third">
+                    <label for="code" class="label label--hide"></label>
+                    <input type="text" id="code" class="input-text" placeholder="04400">
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="officephone">OFFICE PHONE NUMBER</label>
+                    <input type="number" id="officephone" class="input-text" placeholder="i.e. 5089685522">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="mobilenumber">MOBILE NUMBER</label>
+                    <input type="number" id="mobilenumber" class="input-text" placeholder="i.e. 5089685522">
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="emailaddress">EMAIL ADDRESS</label>
+                    <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="website">WEBSITE</label>
+                    <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
+                  </div>
+                </div>
+                <div class="form__group">
+                  <label for="comments" class="label">COMMENTS</label>
+                  <textarea rows="3" id="comments" class="input-text input-text--area"
+                            placeholder="Is there anything you would like to say about this contact?"></textarea>
+                </div>
+                <div class="form__line"></div>
+                <div class="form__group form__group--center">
+                  <a href="javascript:;" class="btn btn--primary">Save Contact</a>
+                  <a href="javascript:;" class="btn btn--next">Save + Add New</a>
+                </div>
+                <div class="form__group form__group--center">
+                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelContactClick">Cancel</a>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <a href="javascript:;" on-click="onCancelContactClick">
+          <iron-icon class="file-folder__icon file-folder__icon--close"
+                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+        </a>
+      </section>
+    </template>
 
   </template>
   <script>
@@ -693,94 +1202,33 @@
               return 'netlaw-contacts-create';
           }
 
-          // static get properties() {
-          //     return {
-          //         view: {
-          //             type: Boolean,
-          //             notify: true,
-          //             reflectToAttribute: true,
-          //             value: false
-          //         },
-          //         checkboxes: {
-          //             type: Array,
-          //             notify: true,
-          //             reflectToAttribute: true,
-          //         },
-          //         toggleIcon: {
-          //             type: String
-          //         },
-          //     };
-          // }
-          //
-          // constructor() {
-          //     super();
-          //     this.toggleIcon = 'icons:add-circle-outline';
-          //     this.view = 'Module';
-          // }
-          //
-          // toggle(e) {
+          static get properties() {
+              return {
+                  addContact: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+              };
+          }
+
+          // onAddContactClick(e) {
           //     e.preventDefault();
-          //     this.$.collapse.toggle();
-          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-          //     this.$.collapse.opened ? this.toggleIcon = 'icons:remove-circle-outline' : this.toggleIcon = 'icons:add-circle-outline';
+          //     this.dispatchEvent(new CustomEvent('add-contact'), {bubbles: true, composed: true});
           // }
-          //
-          // toggleLvl2(e) {
-          //     e.preventDefault();
-          //     this.$.collapselvl2.toggle();
-          //     this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
-          // }
-          //
-          // openSortBy() {
-          //     this.$.sortbydropdown.open();
-          // }
-          //
-          // openBulkAction() {
-          //     this.$.bulkactiondropdown.open();
-          // }
-          //
-          // selectAll() {
-          //     // let checkboxes;
-          //     this.view === "Module" ? this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = Polymer.dom(this.root).querySelectorAll('.contacts__checkbox-container--list input');
-          //
-          //     if (this.$.selectall.checked !== true && this.checkboxes.length > 0) {
-          //
-          //         for (let i = 0; i < this.checkboxes.length; i++) {
-          //             this.checkboxes[i].checked = true;
-          //         }
-          //
-          //     } else if (this.$.selectall.checked !== false && this.checkboxes.length > 0) {
-          //
-          //         for (let i = 0; i < this.checkboxes.length; i++) {
-          //             this.checkboxes[i].checked = false;
-          //         }
-          //     }
-          //
-          // }
-          //
-          // _isEqualTo(view, string) {
-          //     return view === string;
-          // }
-          //
-          // chooseModule(e) {
-          //     e.preventDefault();
-          //     this.view = "Module";
-          //     this.$.selectall.checked = false;
-          //
-          //     for (let i = 0; i < this.checkboxes.length; i++) {
-          //         this.checkboxes[i].checked = false;
-          //     }
-          // }
-          //
-          // chooseList(e) {
-          //     e.preventDefault();
-          //     this.view = "List";
-          //     this.$.selectall.checked = false;
-          //
-          //     for (let i = 0; i < this.checkboxes.length; i++) {
-          //         this.checkboxes[i].checked = false;
-          //     }
-          // }
+          onAddContactClick(e) {
+              // e.preventDefault();
+              this.addContact = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+          onCancelContactClick(e) {
+              e.preventDefault();
+              this.addContact = false;
+              this.deleteContact = false;
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+          }
       }
 
       //Now, register your new custom element so the browser can use it
