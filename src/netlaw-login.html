@@ -101,7 +101,7 @@
 
           <div id="wrapper" class="login__align-center login">
 
-            <template is="dom-if" if="[[first]]">
+            <template is="dom-if" if="[[firstScreen]]">
               <h1>Login to your Account</h1>
 
               <div class="login-buttons">
@@ -143,7 +143,7 @@
             </template>
 
 
-            <template is="dom-if" if="[[createAccount]]">
+            <template is="dom-if" if="[[createAccountScreen]]">
               <div name="create-account" xwide login>
                 <h1>Create your NetLaw Account</h1>
                 <p>to continue to NetDraft</p>
@@ -183,7 +183,7 @@
             </template>
 
 
-            <template is="dom-if" if="[[forgot]]">
+            <template is="dom-if" if="[[passResetScreen]]">
               <h1>Password Reset</h1>
               <h3>Which was the email address of your account?</h3>
               <p><i>(we will send a link and get you setup again shortly)</i></p>
@@ -202,7 +202,7 @@
               </form>
             </template>
 
-            <template is="dom-if" if="[[confirm]]">
+            <template is="dom-if" if="[[passConfirmScreen]]">
               <h1>Password Reset</h1>
               <h3>Your recovery link has been sent.</h3>
               <p><i>(be certain to check your spam or junkmail folder)</i></p>
@@ -217,7 +217,7 @@
               </div>
             </template>
 
-            <template is="dom-if" if="[[newPass]]">
+            <template is="dom-if" if="[[newPassScreen]]">
               <h1>New Password Setup</h1>
               <h3>What would you like your new password to be?</h3>
               <form action="javascript:;" method="post" class="login-form login__align-center">
@@ -241,7 +241,7 @@
               </form>
             </template>
 
-            <template is="dom-if" if="[[security]]">
+            <template is="dom-if" if="[[securityScreen]]">
               <button class="btn btn--back-dash btn--position" on-click="onBackToPrevClick">
                 <iron-icon icon="netlaw-icons:back"></iron-icon>
                 Back to Previous
@@ -269,7 +269,7 @@
               </div>
             </template>
 
-            <template is="dom-if" if="[[secure]]">
+            <template is="dom-if" if="[[secureScreen]]">
               <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
                 <iron-icon icon="netlaw-icons:back"></iron-icon>
                 Back to Security Settings
@@ -315,7 +315,7 @@
               </div>
             </template>
 
-            <template is="dom-if" if="[[method]]">
+            <template is="dom-if" if="[[methodScreen]]">
               <h1>Add New Login Method</h1>
 
               <div class="login-buttons">
@@ -356,7 +356,7 @@
               </p>
             </template>
 
-            <template is="dom-if" if="[[mobile]]">
+            <template is="dom-if" if="[[mobileScreen]]">
               <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
                 <iron-icon icon="netlaw-icons:back"></iron-icon>
                 Back to Security Settings
@@ -391,7 +391,7 @@
               </form>
             </template>
 
-            <template is="dom-if" if="[[sms]]">
+            <template is="dom-if" if="[[smsScreen]]">
               <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
                 <iron-icon icon="netlaw-icons:back"></iron-icon>
                 Back to Security Settings
@@ -431,7 +431,7 @@
               </form>
             </template>
 
-            <template is="dom-if" if="[[email]]">
+            <template is="dom-if" if="[[emailScreen]]">
               <button class="btn btn--back-dash btn--position" on-click="onBackToSecurityClick">
                 <iron-icon icon="netlaw-icons:back"></iron-icon>
                 Back to Security Settings
@@ -485,23 +485,25 @@
 
           static get properties() {
               return {
-                  first: {type: Boolean, value: true},
-                  forgot: {type: Boolean, value: false},
-                  newPass: {type: Boolean, value: false},
-                  confirm: {type: Boolean, value: false},
-                  security: {type: Boolean, value: false},
-                  secure: {type: Boolean, value: false},
-                  mobile: {type: Boolean, value: false},
-                  sms: {type: Boolean, value: false},
-                  email: {type: Boolean, value: false},
-                  method: {type: Boolean, value: false},
-                  createAccount: {type: Boolean, value: false},
+                  firstScreen: {type: Boolean, value: true},
+                  passResetScreen: {type: Boolean, value: false},
+                  newPassScreen: {type: Boolean, value: false},
+                  passConfirmScreen: {type: Boolean, value: false},
+                  securityScreen: {type: Boolean, value: false},
+                  secureScreen: {type: Boolean, value: false},
+                  mobileScreen: {type: Boolean, value: false},
+                  smsScreen: {type: Boolean, value: false},
+                  emailScreen: {type: Boolean, value: false},
+                  methodScreen: {type: Boolean, value: false},
+                  createAccountScreen: {type: Boolean, value: false},
 
                   loading: { type: Boolean, value: false, observer: '_loadingChanged' },
                   selected: { type: String, value: "signin", observer: '_selectedChanged' },
 
                   identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
 
+                  email: String,
+                  phone: String,
                   name: String,
                   password: String,
               };
@@ -517,20 +519,22 @@
 
               // Login Security screens
               // this.$.wrapper.classList.add('login--security');
-              // this.first = false;
-              // this.method = false;
-              // this.security = true;
+              // this.firstScreen = false;
+              // this.methodScreen = false;
+              // this.securityScreen = true;
           }
 
           onCreateAccount(e) {
-              this.first = false;
-              this.method = false;
-              this.security = false;
-              this.newPass = false;
-              this.createAccount = true;
+              this.firstScreen = false;
+              this.methodScreen = false;
+              this.securityScreen = false;
+              this.newPassScreen = false;
+              this.emailScreen = false;
+              this.createAccountScreen = true;
 
               this.loading = true;
-              api.accounts.createAccount(this.email, this.password, this.name)
+
+              api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
                       this.selected = "create-profile";
                       this.accountId = r.user_id;
@@ -586,45 +590,45 @@
 
           onBackToPrevClick(e) {
               this.$.wrapper.classList.remove('login--security');
-              this.security = false;
-              this.first = true;
-              this.createAccount = false;
+              this.securityScreen = false;
+              this.firstScreen = true;
+              this.createAccountScreen = false;
           }
 
           onBackToSecurityClick(e) {
               e.preventDefault();
-              this.secure = false;
-              this.mobile = false;
-              this.sms = false;
-              this.email = false;
-              this.security = true;
+              this.secureScreen = false;
+              this.mobileScreen = false;
+              this.smsScreen = false;
+              this.emailScreen = false;
+              this.securityScreen = true;
           }
 
           onMobileClick(e) {
-              this.secure = false;
-              this.mobile = true;
+              this.secureScreen = false;
+              this.mobileScreen = true;
           }
 
           onSmsClick(e) {
-              this.secure = false;
-              this.sms = true;
+              this.secureScreen = false;
+              this.smsScreen = true;
           }
 
           onEmailClick(e) {
-              this.secure = false;
-              this.email = true;
+              this.secureScreen = false;
+              this.emailScreen = true;
           }
 
           onAddSecurityDeviceClick(e) {
 
-              this.security = false;
-              this.secure = true;
+              this.securityScreen = false;
+              this.secureScreen = true;
           }
 
           onAddLoginMethodClick(e) {
-              this.$.wrapper.classList.remove('login--security');
-              this.security = false;
-              this.method = true;
+              this.$.wrapper.classList.remove('login--securityScreen');
+              this.securityScreen = false;
+              this.methodScreen = true;
           }
 
           onContinueClick(e) {
@@ -633,32 +637,33 @@
 
           onForgotClick(e) {
               e.preventDefault();
-              this.first = false;
-              this.method = false;
-              this.forgot = true;
+              this.firstScreen = false;
+              this.methodScreen = false;
+              this.passResetScreen = true;
           }
 
           onNewPassClick(e) {
               e.preventDefault();
-              this.first = false;
-              this.method = false;
-              this.security = false;
-              this.confirm = false;
-              this.newPass = true;
+              this.firstScreen = false;
+              this.methodScreen = false;
+              this.securityScreen = false;
+              this.passConfirmScreen = false;
+              this.newPassScreen = true;
           }
 
           onConfirmClick(e) {
               e.preventDefault();
-              this.forgot = false;
-              this.confirm = true;
+              this.passResetScreen = false;
+              this.passConfirmScreen = true;
           }
 
           onCancelClick(e) {
               e.preventDefault();
-              this.forgot = false;
-              this.newPass = false;
-              this.confirm = false;
-              this.first = true;
+              this.passResetScreen = false;
+              this.newPassScreen = false;
+              this.passConfirmScreen = false;
+              this.createAccountScreen = false;
+              this.firstScreen = true;
           }
 
           _loadingChanged(value) {
