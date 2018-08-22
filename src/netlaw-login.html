@@ -4,6 +4,8 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-password-input/paper-password-input.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 
 <link rel="import" href="netlaw-icons.html">
 <link rel="import" href="shared-styles.html">
@@ -11,6 +13,7 @@
 <dom-module id="netlaw-login">
   <!-- Defines the element's style and local DOM -->
   <template>
+    <style is="custom-style" include="iron-flex iron-flex-factors"></style>
     <style include="shared-styles">
       :host {
         --iron-icon-fill-color: #ffffff;
@@ -134,15 +137,89 @@
                   </div>
                 </form>
               </div>
-              <p class="login__margin">Don’t have an account? <a href="javascript:;" on-click="onNewPassClick">Request
+              <p class="login__margin">Don’t have an account? <a href="javascript:;" on-click="onCreateAccount">Request
                 One</a>
               </p>
             </template>
 
-            <template is="dom-if" if="[[newpass]]">
+
+            <template is="dom-if" if="[[createAccount]]">
+              <div name="create-account" xwide login>
+                <h1>Create your NetLaw Account</h1>
+                <p>to continue to NetDraft</p>
+
+                <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus
+                             disabled="[[loading]]" value="{{name}}"></paper-input>
+                <paper-input class="flex-6" label="Your email address" name="email" autocomplete="email"
+                             disabled="[[loading]]" value="{{email}}"></paper-input>
+                <paper-password-input class="flex-6" label="Enter your password" name="password"
+                                      autocomplete="current-password" disabled="[[loading]]"
+                                      value="{{password}}"></paper-password-input>
+                <paper-input label="Your phone (optional)" name="phone" autocomplete="phone" disabled="[[loading]]"
+                             value="{{phone}}"></paper-input>
+
+                <div class="margin-top-32px">
+                  <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong>Terms of Use</strong>
+                    for this site
+                  </paper-checkbox>
+                </div>
+
+                <div class="layout horizontal margin-top-16px">
+                  <div class="flex-8">
+                    <paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in
+                      instead
+                    </paper-button>
+                  </div>
+                  <div class="flex-4 text-right">
+                    <paper-button class="primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next
+                    </paper-button>
+                  </div>
+                  <div class="login__margin">
+                    <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+                  </div>
+                </div>
+
+              </div>
+            </template>
+
+
+            <template is="dom-if" if="[[forgot]]">
+              <h1>Password Reset</h1>
+              <h3>Which was the email address of your account?</h3>
+              <p><i>(we will send a link and get you setup again shortly)</i></p>
+              <form action="javascript:;" method="post" class="login-form login__align-center">
+                <div class="login__margin ">
+                  <label for="email"></label>
+                  <input type="password" class="login__input" id="email" name="email" placeholder="Email address..">
+                </div>
+                <hr class="login__divider-small">
+                <div class="login__margin">
+                  <button class="btn btn-primary" on-click="onConfirmClick">Send My Link</button>
+                </div>
+                <div class="login__margin">
+                  <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+                </div>
+              </form>
+            </template>
+
+            <template is="dom-if" if="[[confirm]]">
+              <h1>Password Reset</h1>
+              <h3>Your recovery link has been sent.</h3>
+              <p><i>(be certain to check your spam or junkmail folder)</i></p>
+              <hr class="login__divider-small">
+              <div class="login__margin">
+                <button class="btn btn-primary">Resend Link</button>
+              </div>
+              <div class="login__margin">
+                <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
+                <p class="login__margin"><a href="javascript:;" on-click="onNewPassClick">New Password Setup</a>
+                </p>
+              </div>
+            </template>
+
+            <template is="dom-if" if="[[newPass]]">
               <h1>New Password Setup</h1>
               <h3>What would you like your new password to be?</h3>
-              <!--<p><i>(we will send a link and get you setup again shortly)</i></p>-->
               <form action="javascript:;" method="post" class="login-form login__align-center">
                 <div class="login__margin ">
                   <label for="new-pass"></label>
@@ -160,43 +237,8 @@
                 </div>
                 <div class="login__margin">
                   <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
-                  <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
                 </div>
               </form>
-            </template>
-
-            <template is="dom-if" if="[[forgot]]">
-              <h1>Password Reset</h1>
-              <h3>Which was the email address of your account?</h3>
-              <p><i>(we will send a link and get you setup again shortly)</i></p>
-              <form action="javascript:;" method="post" class="login-form login__align-center">
-                <div class="login__margin ">
-                  <label for="email"></label>
-                  <input type="password" class="login__input" id="email" name="email" placeholder="Email address..">
-                </div>
-                <hr class="login__divider-small">
-                <div class="login__margin">
-                  <button class="btn btn-primary" on-click="onConfirmClick">Send My Link</button>
-                </div>
-                <div class="login__margin">
-                  <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
-                  <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
-                </div>
-              </form>
-            </template>
-
-            <template is="dom-if" if="[[confirm]]">
-              <h1>Password Reset</h1>
-              <h3>Your recovery link has been sent.</h3>
-              <p><i>(be certain to check your spam or junkmail folder)</i></p>
-              <hr class="login__divider-small">
-              <div class="login__margin">
-                <button class="btn btn-primary">Resend Link</button>
-              </div>
-              <div class="login__margin">
-                <button class="btn btn-cancel" on-click="onCancelClick">Cancel</button>
-                <!--<a href="javascript:;" on-click="onCancelClick">Cancel</a>-->
-              </div>
             </template>
 
             <template is="dom-if" if="[[security]]">
@@ -445,7 +487,7 @@
               return {
                   first: {type: Boolean, value: true},
                   forgot: {type: Boolean, value: false},
-                  newpass: {type: Boolean, value: false},
+                  newPass: {type: Boolean, value: false},
                   confirm: {type: Boolean, value: false},
                   security: {type: Boolean, value: false},
                   secure: {type: Boolean, value: false},
@@ -453,6 +495,7 @@
                   sms: {type: Boolean, value: false},
                   email: {type: Boolean, value: false},
                   method: {type: Boolean, value: false},
+                  createAccount: {type: Boolean, value: false},
 
                   loading: { type: Boolean, value: false, observer: '_loadingChanged' },
                   selected: { type: String, value: "signin", observer: '_selectedChanged' },
@@ -477,6 +520,35 @@
               // this.first = false;
               // this.method = false;
               // this.security = true;
+          }
+
+          onCreateAccount(e) {
+              this.first = false;
+              this.method = false;
+              this.security = false;
+              this.newPass = false;
+              this.createAccount = true;
+
+              this.loading = true;
+              api.accounts.createAccount(this.email, this.password, this.name)
+                  .success(r => {
+                      this.selected = "create-profile";
+                      this.accountId = r.user_id;
+                      this.accountName = r.name;
+                      // this.agreesWithTerms = false;
+                      return api.accounts.login(this.email, this.password)
+                          .success(r => {
+                              api.ticket = r.ticket;
+                              this.ticket = r.ticket;
+                              this.username = r.username;
+                              this.session_id = r.session_id;
+                              this.account_id = r.account_id;
+                          });
+                  })
+                  .error(ex => {
+                      this.error = ex.message;
+                  })
+                  .finally(() => this.loading = false);
           }
 
           onSignIn(e) {
@@ -516,6 +588,7 @@
               this.$.wrapper.classList.remove('login--security');
               this.security = false;
               this.first = true;
+              this.createAccount = false;
           }
 
           onBackToSecurityClick(e) {
@@ -570,11 +643,11 @@
               this.first = false;
               this.method = false;
               this.security = false;
-              this.newpass = true;
+              this.confirm = false;
+              this.newPass = true;
           }
 
           onConfirmClick(e) {
-              e.preventDefault();
               e.preventDefault();
               this.forgot = false;
               this.confirm = true;
@@ -583,7 +656,7 @@
           onCancelClick(e) {
               e.preventDefault();
               this.forgot = false;
-              this.newpass = false;
+              this.newPass = false;
               this.confirm = false;
               this.first = true;
           }
