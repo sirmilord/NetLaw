@@ -142,11 +142,9 @@
               </p>
             </template>
 
-
             <template is="dom-if" if="[[createAccountScreen]]">
               <div name="create-account" xwide login>
                 <h1>Create your NetLaw Account</h1>
-                <p>to continue to NetDraft</p>
 
                 <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus
                              disabled="[[loading]]" value="{{name}}"></paper-input>
@@ -181,7 +179,6 @@
 
               </div>
             </template>
-
 
             <template is="dom-if" if="[[passResetScreen]]">
               <h1>Password Reset</h1>
@@ -536,7 +533,7 @@
 
               api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
-                      this.selected = "create-profile";
+                      // this.selected = "create-profile";
                       this.accountId = r.user_id;
                       this.accountName = r.name;
                       // this.agreesWithTerms = false;
