@@ -595,6 +595,40 @@
                   .finally(() => this.loading = false);
           }
 
+          _setSession(session) {
+              if (session == null) {
+                  localStorage.removeItem("session-id");
+                  localStorage.removeItem("session-ticket");
+                  localStorage.removeItem("account-id");
+                  localStorage.removeItem("account-name");
+                  api.ticket = null;
+              } else {
+                  localStorage.setItem("session-id", session.session_id);
+                  localStorage.setItem("session-ticket", session.ticket);
+                  localStorage.setItem("account-id", session.account_id);
+                  localStorage.setItem("account-name", session.username);
+                  api.ticket = session.ticket;
+              }
+          }
+
+          _fetchProfiles() {
+              return api.draft.listAccounts()
+                  .success(r => {
+                      this.profiles = r;
+
+                      if (!r.length) {
+                          this.selected = "create-profile";
+                      } else if (r.length == 1) {
+                          this._setProfile(r[0]);
+                          this.selected = "signin";
+
+                          this.dispatchEvent(new CustomEvent('logged-in'));
+                      } else {
+                          this.selected = "choose-profile";
+                      }
+                  });
+          }
+
           // old nav
 
           /*onBackToPrevClick(e) {
