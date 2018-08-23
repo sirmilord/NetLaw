@@ -123,6 +123,31 @@
             paper-progress[disabled] {
                 --paper-progress-container-color: transparent;
             }
+
+            /*
+            iron-pages .flex-4,
+            iron-pages .flex-6,
+            iron-pages .flex-8 {
+                flex: 0 1 46%;
+                margin:2%;
+                max-width:none;
+            }*/
+            iron-pages .flex-4,
+            iron-pages .flex-6,
+            iron-pages .flex-8 {
+                flex:6;
+                margin:0;
+                max-width:none;
+            }
+            @media(max-width: 480px) {
+                iron-pages .flex-4,
+                iron-pages .flex-6,
+                iron-pages .flex-8 {
+                    flex:6;
+                    margin:0;
+                    max-width:none;
+                }
+            }
         </style>
 
         <paper-toast id="toast" class="fit-bottom"></paper-toast>
@@ -144,7 +169,7 @@
                             <h1>Sign in</h1>
                             <p>to continue to NetDraft</p>
 
-                            <paper-input class="flex-6" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>
+                            <paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>
                             <!--<p class="margin-top-32px">or sign in with</p>
                             <paper-icon-button icon="ap-icons:google-color" name="google" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
                             <paper-icon-button icon="ap-icons:facebook" style="color:#3b5998;" name="facebook" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
@@ -152,8 +177,8 @@
                             <paper-icon-button icon="ap-icons:twitter" style="color:#00aced;" name="twitter" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>-->
 
                             <div class="layout horizontal margin-top-16px">
-                                <div class="flex-8"><paper-button class="flat" name="create-account" on-click="onNavigate" disabled="[[loading]]">Create account</paper-button></div>
-                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignIn" disabled="[[loading]]">Next</paper-button></div>
+                                <div class="flex-6"><paper-button class="flat" name="create-account" on-click="onNavigate" disabled="[[loading]]">Create account</paper-button></div>
+                                <div class="flex-6 text-right"><paper-button class="primary margin-right-0" on-click="onSignIn" disabled="[[loading]]">Next</paper-button></div>
                             </div>
                         </div>
 
@@ -171,7 +196,7 @@
                             <paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>
                             <!--<div class="error">Tough luck bro, try again</div>-->
                             <div class="layout horizontal margin-top-16px">
-                                <div class="flex-4 text-right"><paper-button class="primary" on-click="onSignInNext" disabled="[[loading]]">Next</paper-button></div>
+                                <div class="flex-12 text-right"><paper-button class="primary margin-right-0" on-click="onSignInNext" disabled="[[loading]]">Next</paper-button></div>
                             </div>
                         </div>
 
@@ -198,9 +223,9 @@
                             <h1>Create your NetLaw Account</h1>
                             <p>to continue to NetDraft</p>
 
-                            <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus disabled="[[loading]]" value="{{name}}"></paper-input>
-                            <paper-input class="flex-6" label="Your email address" name="email" autocomplete="email" disabled="[[loading]]" value="{{email}}"></paper-input>
-                            <paper-password-input class="flex-6" label="Enter your password" name="password" autocomplete="current-password" disabled="[[loading]]" value="{{password}}"></paper-password-input>
+                            <paper-input class="" label="Your name" name="name" autocomplete="name" autofocus disabled="[[loading]]" value="{{name}}"></paper-input>
+                            <paper-input class="" label="Your email address" name="email" autocomplete="email" disabled="[[loading]]" value="{{email}}"></paper-input>
+                            <paper-password-input class="" label="Enter your password" name="password" autocomplete="current-password" disabled="[[loading]]" value="{{password}}"></paper-password-input>
                             <paper-input label="Your phone (optional)" name="phone" autocomplete="phone" disabled="[[loading]]" value="{{phone}}"></paper-input>
 
                             <div class="margin-top-32px">
@@ -208,8 +233,8 @@
                             </div>
 
                             <div class="layout horizontal margin-top-16px">
-                                <div class="flex-8"><paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in instead</paper-button></div>
-                                <div class="flex-4 text-right"><paper-button class="primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next</paper-button></div>
+                                <div class="flex-6"><paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in instead</paper-button></div>
+                                <div class="flex-6 text-right"><paper-button class="primary margin-right-0" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next</paper-button></div>
                             </div>
                         </div>
 

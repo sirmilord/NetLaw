@@ -71,6 +71,7 @@
       }
 
       @media (min-width: 320px) and (max-width: 767px) {
+
         .login-buttons {
           margin-top: 45px;
         }
@@ -78,17 +79,19 @@
         .navbar--login {
           height: 50px;
         }
+
         .login__item-desc {
           min-height: fit-content;
         }
+
         .login__row.login__margin-top-big  hr {
           display: none;
         }
+
       }
 
     </style>
 
-    <!--<app-route route="{{route}}" pattern="/:id" data="{{routeData}}" tail="{{subroute}}"></app-route>-->
     <app-header-layout fullbleed="" narrow="{{narrow}}">
       <app-header  slot="header" condenses="" reveals="" effects="waterfall">
         <app-toolbar class="navbar navbar--login">
@@ -133,7 +136,8 @@
                   </div>
                   <hr class="login__divider-small">
                   <div class="login__margin-bottom">
-                    <button class="btn btn-primary" on-click="onLoginClick" >Login</button>
+                    <!--<button class="btn btn-primary" on-click="onLoginClick" >Login</button>-->
+                    <button class="btn btn-primary" on-click="onSignIn" >Login</button>
                   </div>
                 </form>
               </div>
@@ -510,6 +514,8 @@
               super();
           }
 
+          onNavigate(e) { this.selected = e.currentTarget.attributes.name.value; }
+
           onLoginClick(e) {
               // Direct login on login button click
               this.dispatchEvent(new CustomEvent("logged-in"));
@@ -521,38 +527,10 @@
               // this.securityScreen = true;
           }
 
-          onCreateAccount(e) {
-              this.firstScreen = false;
-              this.methodScreen = false;
-              this.securityScreen = false;
-              this.newPassScreen = false;
-              this.emailScreen = false;
-              this.createAccountScreen = true;
-
-              this.loading = true;
-
-              api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
-                  .success(r => {
-                      // this.selected = "create-profile";
-                      this.accountId = r.user_id;
-                      this.accountName = r.name;
-                      // this.agreesWithTerms = false;
-                      return api.accounts.login(this.email, this.password)
-                          .success(r => {
-                              api.ticket = r.ticket;
-                              this.ticket = r.ticket;
-                              this.username = r.username;
-                              this.session_id = r.session_id;
-                              this.account_id = r.account_id;
-                          });
-                  })
-                  .error(ex => {
-                      this.error = ex.message;
-                  })
-                  .finally(() => this.loading = false);
-          }
-
           onSignIn(e) {
+
+              this.dispatchEvent(new CustomEvent("logged-in"));
+
               this.loading = true;
               this.error = null;
               localStorage.setItem("name", this.identifier);
@@ -584,6 +562,35 @@
                   .notFound(ex => this.error = "Wrong password. Try again or try resetting it.")
                   .finally(() => this.loading = false);
           }
+
+          onCreateAccount(e) {
+
+              this.firstScreen = false;
+              this.createAccountScreen = true;
+
+              this.loading = true;
+              api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
+                  .success(r => {
+                      this.selected = "create-profile";
+                      this.accountId = r.user_id;
+                      this.accountName = r.name;
+                      this.agreesWithTerms = false;
+                      return api.accounts.login(this.email, this.password)
+                          .success(r => {
+                              api.ticket = r.ticket;
+                              this.ticket = r.ticket;
+                              this.username = r.username;
+                              this.session_id = r.session_id;
+                              this.account_id = r.account_id;
+                          });
+                  })
+                  .error(ex => {
+                      this.error = ex.message;
+                  })
+                  .finally(() => this.loading = false);
+          }
+
+          // nav
 
           onBackToPrevClick(e) {
               this.$.wrapper.classList.remove('login--security');
