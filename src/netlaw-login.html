@@ -136,6 +136,7 @@
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
                       <button class="btn btn-primary" on-click="onSignInNext">Login</button>
+                      <!--<button class="btn btn-primary" name="security" on-click="onNavigate">Login</button>-->
                     </div>
                   </form>
                 </div>
@@ -510,13 +511,18 @@
           }
 
           onNavigate(e) {
-
               // add different background on 5 Login Security Screens
-              // if ( this.selected === 'security' || this.selected === 'secure' || this.selected === 'mobile' ||  this.selected === 'sms' ||  this.selected === 'email' ) {
-              //     this.$.wrapper.classList.remove('login--security');
-              // } else {
-              //     this.$.wrapper.classList.add('login--security');
-              // }
+              if ( e.currentTarget.attributes.name.value === 'security') {
+                  this.$.wrapper.classList.add('login--security');
+              }
+
+              if ( e.currentTarget.attributes.name.value === 'method') {
+                  this.$.wrapper.classList.remove('login--security');
+              }
+
+              if ( e.currentTarget.attributes.name.value === 'signin') {
+                  this.$.wrapper.classList.remove('login--security');
+              }
 
               this.selected = e.currentTarget.attributes.name.value;
           }
@@ -524,12 +530,6 @@
           onLoginClick(e) {
               // Direct login on login button click
               this.dispatchEvent(new CustomEvent("logged-in"));
-
-              // Login Security screens
-              // this.$.wrapper.classList.add('login--security');
-              // this.firstScreen = false;
-              // this.methodScreen = false;
-              // this.securityScreen = true;
           }
 
           onSignIn(e) {
@@ -669,7 +669,7 @@
           }
 
           onAddLoginMethodClick(e) {
-              this.$.wrapper.classList.remove('login--securityScreen');
+              this.$.wrapper.classList.remove('login--security');
               this.securityScreen = false;
               this.methodScreen = true;
           }
