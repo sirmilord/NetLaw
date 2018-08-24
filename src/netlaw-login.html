@@ -122,13 +122,19 @@
                   <form action="javascript:;" method="post" class="login-form login__align-center" novalidate>
                     <div class="login__margin ">
                       <label for="login-name"></label>
-                      <input type="text" class="login__input" id="login-name" name="login" placeholder="Username*"
+                      <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
                              required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]">
+
+                      <!--<paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>-->
+
                     </div>
                     <div class="login__margin">
                       <label for="login-pass"></label>
-                      <input type="password" class="login__input" id="login-pass" name="pass" placeholder="Password*"
-                             required>
+                      <input type="password" class="login__input" id="login-pass" name="password" placeholder="Password*"
+                             autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+
+                      <!--<paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>-->
+
                     </div>
                     <div class="login__margin-top">
                       <a href="javascript:;" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
