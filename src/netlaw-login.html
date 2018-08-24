@@ -548,6 +548,19 @@
               this.loading = true;
               this.error = null;
 
+              api.accounts.findAccount(this.identifier)
+                  .success(r => {
+                      //this.selected = "signin-password";
+                      //this.identifier = data.identifier;
+                      this.userId = r.user_id;
+                      this.name = r.name;
+                  })
+                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
+                  .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
+                  .serverError(ex => { this.error = "Server error please try again."; })
+                  //.catch(ex => { this.error = "Request error."; })
+                  .finally(() => this.loading = false);
+
               api.accounts.login(this.identifier, this.password, this.name, this.phone)
                   .success(r => {
                       this._setSession(r);
