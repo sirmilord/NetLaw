@@ -261,8 +261,8 @@
                     <button class="btn btn-yellow" name="secure" on-click="onNavigate">Add a Security Device</button>
                   </p>
                   <p class="login__padding">
-                    <!-- Authorization - login -->
-                    <button class="btn btn-primary">Continue</button>
+                    <!-- go to Authorization - login -->
+                    <button class="btn btn-primary" name="singin" on-click="onNavigate">Continue</button>
                   </p>
                 </div>
               </div>
@@ -482,17 +482,6 @@
 
           static get properties() {
               return {
-                  /*firstScreen: {type: Boolean, value: true},
-                  passResetScreen: {type: Boolean, value: false},
-                  newPassScreen: {type: Boolean, value: false},
-                  passConfirmScreen: {type: Boolean, value: false},
-                  securityScreen: {type: Boolean, value: false},
-                  secureScreen: {type: Boolean, value: false},
-                  mobileScreen: {type: Boolean, value: false},
-                  smsScreen: {type: Boolean, value: false},
-                  emailScreen: {type: Boolean, value: false},
-                  methodScreen: {type: Boolean, value: false},
-                  createAccountScreen: {type: Boolean, value: false},*/
 
                   loading: { type: Boolean, value: false, observer: '_loadingChanged' },
                   selected: { type: String, value: "signin", observer: '_selectedChanged' },
@@ -503,6 +492,7 @@
                   phone: String,
                   name: String,
                   password: String,
+                  profiles: Array,
               };
           }
 
@@ -534,7 +524,7 @@
 
           onSignIn(e) {
 
-              this.dispatchEvent(new CustomEvent("logged-in"));
+              // this.dispatchEvent(new CustomEvent("logged-in"));
 
               this.loading = true;
               this.error = null;
@@ -570,13 +560,10 @@
 
           onCreateAccount(e) {
 
-              this.firstScreen = false;
-              this.createAccountScreen = true;
-
               this.loading = true;
               api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
-                      this.selected = "create-profile";
+                      this.selected = "security";
                       this.accountId = r.user_id;
                       this.accountName = r.name;
                       this.agreesWithTerms = false;
@@ -611,6 +598,13 @@
               }
           }
 
+          _setProfile(profile) {
+              localStorage.setItem("attorney-id", profile.attorney_id);
+              localStorage.setItem("attorney-name", profile.name);
+              localStorage.setItem("firm-id", profile.firm_id);
+              localStorage.setItem("firm-name", profile.firm_name);
+          }
+
           _fetchProfiles() {
               return api.draft.listAccounts()
                   .success(r => {
@@ -628,86 +622,6 @@
                       }
                   });
           }
-
-          // old nav
-
-          /*onBackToPrevClick(e) {
-              this.$.wrapper.classList.remove('login--security');
-              this.securityScreen = false;
-              this.firstScreen = true;
-              this.createAccountScreen = false;
-          }
-
-          onBackToSecurityClick(e) {
-              e.preventDefault();
-              this.secureScreen = false;
-              this.mobileScreen = false;
-              this.smsScreen = false;
-              this.emailScreen = false;
-              this.securityScreen = true;
-          }
-
-          onMobileClick(e) {
-              this.secureScreen = false;
-              this.mobileScreen = true;
-          }
-
-          onSmsClick(e) {
-              this.secureScreen = false;
-              this.smsScreen = true;
-          }
-
-          onEmailClick(e) {
-              this.secureScreen = false;
-              this.emailScreen = true;
-          }
-
-          onAddSecurityDeviceClick(e) {
-
-              this.securityScreen = false;
-              this.secureScreen = true;
-          }
-
-          onAddLoginMethodClick(e) {
-              this.$.wrapper.classList.remove('login--security');
-              this.securityScreen = false;
-              this.methodScreen = true;
-          }
-
-          onContinueClick(e) {
-              this.dispatchEvent(new CustomEvent("logged-in"));
-          }
-
-          onForgotClick(e) {
-              e.preventDefault();
-              this.firstScreen = false;
-              this.methodScreen = false;
-              this.passResetScreen = true;
-          }
-
-          onNewPassClick(e) {
-              e.preventDefault();
-              this.firstScreen = false;
-              this.methodScreen = false;
-              this.securityScreen = false;
-              this.passConfirmScreen = false;
-              this.newPassScreen = true;
-          }
-
-          onConfirmClick(e) {
-              e.preventDefault();
-              this.passResetScreen = false;
-              this.passConfirmScreen = true;
-          }
-
-          onCancelClick(e) {
-              e.preventDefault();
-              this.passResetScreen = false;
-              this.newPassScreen = false;
-              this.passConfirmScreen = false;
-              this.createAccountScreen = false;
-              this.firstScreen = true;
-          }*/
 
           _loadingChanged(value) {
               if (value) return; //focus when done loading
