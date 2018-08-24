@@ -559,7 +559,7 @@
               api.accounts.findAccount(this.identifier)
                   .success(r => {
                       //this.selected = "signin-password";
-                      //this.identifier = data.identifier;
+                      this.identifier = data.identifier;
                       this.userId = r.user_id;
                       this.name = r.name;
                   })
