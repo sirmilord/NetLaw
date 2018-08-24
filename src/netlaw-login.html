@@ -123,7 +123,7 @@
                     <div class="login__margin ">
                       <label for="login-name"></label>
                       <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
-                             required autofocus autocomplete="username" value="{{identifier:input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                             required autofocus autocomplete="username" value="{{identifier::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
 
                       <!--<paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>-->
 
@@ -131,7 +131,7 @@
                     <div class="login__margin">
                       <label for="login-pass"></label>
                       <input type="password" class="login__input" id="login-pass" name="password" placeholder="Password*"
-                             autocomplete="current-password" autofocus value="{{password:input.}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+                             autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
 
                       <!--<paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>-->
 
@@ -555,19 +555,19 @@
               this.error = null;
 
               localStorage.setItem("name", this.identifier);
-
-              api.accounts.findAccount(this.identifier)
-                  .success(r => {
-                      //this.selected = "signin-password";
-                      //this.identifier = data.identifier;
-                      this.userId = r.user_id;
-                      this.name = r.name;
-                  })
-                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
-                  .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
-                  .serverError(ex => { this.error = "Server error please try again."; })
-                  //.catch(ex => { this.error = "Request error."; })
-                  .finally(() => this.loading = false);
+              //
+              // api.accounts.findAccount(this.identifier)
+              //     .success(r => {
+              //         //this.selected = "signin-password";
+              //         //this.identifier = data.identifier;
+              //         this.userId = r.user_id;
+              //         this.name = r.name;
+              //     })
+              //     .badRequest(ex => { this.error = "Please specify your email or phone"; })
+              //     .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
+              //     .serverError(ex => { this.error = "Server error please try again."; })
+              //     //.catch(ex => { this.error = "Request error."; })
+              //     .finally(() => this.loading = false);
 
               api.accounts.login(this.identifier, this.password, this.name, this.phone)
                   .success(r => {
