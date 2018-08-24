@@ -123,7 +123,7 @@
                     <div class="login__margin ">
                       <label for="login-name"></label>
                       <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
-                             required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]">
+                             required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
 
                       <!--<paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>-->
 
@@ -553,6 +553,8 @@
           onSignInNext(e) {
               this.loading = true;
               this.error = null;
+
+              localStorage.setItem("name", this.identifier);
 
               api.accounts.findAccount(this.identifier)
                   .success(r => {
