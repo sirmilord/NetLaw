@@ -27,6 +27,9 @@
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
       }
 
       .account__row {
@@ -36,6 +39,7 @@
         margin-left: -20px;
         box-sizing: border-box;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       .account__item {
@@ -45,12 +49,27 @@
         background-color: rgba(216,216,216,0.5);
         background-clip: content-box;
         min-height: 50vh;
+        margin-bottom: 20px;
+      }
+
+      .account__item:not(:last-child) {
+
       }
 
       .account__item--third {
-        flex: 1 1 33.33333%;
-        max-width: 226px;
-        /*max-width: 33.33333%;*/
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      @media (min-width: 992px) {
+        .account__item--third {
+          flex: 1 1 33.33333%;
+          max-width: 226px;
+        }
+
+        .account__item {
+          margin-bottom: 0;
+        }
       }
 
     </style>
