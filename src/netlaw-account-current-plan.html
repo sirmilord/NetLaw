@@ -31,16 +31,14 @@
       }
 
       .account__right {
-        flex: 1 1 70%;
-        max-width: 70%;
-
+        width: 100%;
       }
 
       .form {
         margin-left: 70px;
-        min-width: 39em;
-        max-width: 500px;
-        /*width: 70%;*/
+        max-width: 600px;
+        padding-left: 10px;
+        padding-right: 10px;
         margin-top: 35px;
       }
 
@@ -60,6 +58,7 @@
         display: flex;
         margin-right: -10px;
         margin-left: -10px;
+        flex-wrap: wrap;
       }
 
       .form__group {
@@ -79,8 +78,8 @@
       }
 
       .form__group--half {
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 100%;
+        max-width: 100%;
         padding-right: 10px;
         padding-left: 10px;
       }
@@ -93,8 +92,8 @@
       }
 
       .form__group--fourth {
-        flex: 0 0 25%;
-        max-width: 25%;
+        flex: 0 0 50%;
+        max-width: 50%;
         padding-right: 10px;
         padding-left: 10px;
       }
@@ -238,7 +237,6 @@
       .account__plan {
         margin-left: 70px;
         max-width: 100%;
-        width: 70%;
         margin-top: 35px;
       }
 
@@ -256,10 +254,11 @@
 
       .account__bill-info {
         margin-left: 70px;
-        min-width: 39em;
         max-width: 600px;
-        width: 70%;
+        /*width: 70%;*/
         margin-top: 35px;
+        padding-right: 10px;
+        padding-left: 10px;
       }
 
       .account__bill-title {
@@ -274,14 +273,19 @@
         margin-right: -10px;
         margin-left: -10px;
         box-sizing: border-box;
+        flex-wrap: wrap;
       }
 
       .account__bill-item {
-        flex: 0 0 50%;
-        max-width: 50%;
+        flex: 0 0 100%;
+        max-width: 100%;
         padding-right: 10px;
         padding-left: 10px;
         box-sizing: border-box;
+      }
+
+      .account__bill-item:not(:last-child) {
+        margin-bottom: 20px;
       }
 
       .account__bill-item-border {
@@ -320,6 +324,27 @@
         height: 2px;
         margin-top: 40px;
         margin-bottom: 20px;
+      }
+
+      @media (min-width: 1200px) {
+        .form__group--half {
+          flex: 1 1 50%;
+          max-width: 50%;
+        }
+
+        .account__bill-item {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+
+        .account__bill-item:not(:last-child) {
+          margin-bottom: 0;
+        }
+
+        .form__group--fourth {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
       }
 
     </style>
