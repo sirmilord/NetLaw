@@ -35,8 +35,6 @@
         flex: 1 1 100%;
         max-width: 100%;
         background-color: #f9f9f9;
-        border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -168,6 +166,7 @@
 
       .smartguid__step-item--mt {
         margin-top: 10px;
+        display: none;
       }
 
       .smartguid__step-circle {
@@ -209,7 +208,6 @@
       }
 
       .form {
-        margin-left: 70px;
         max-width: 600px;
         width: 70%;
         margin-top: 35px;
@@ -248,6 +246,8 @@
 
       .form__group--center {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
       }
 
@@ -301,6 +301,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
       }
 
       .btn--next:hover,
@@ -330,15 +331,14 @@
 
       .btn--one-border {
         border: 1px solid transparent;
-        border-left: 1px solid #979797;
         background-color: transparent;
-        margin-left: 37px;
         color: #9B9B9B;
         font-size: 14px;
         font-weight: 300;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
       }
 
       .btn--one-border:hover,
@@ -553,6 +553,7 @@
           border-color: #fff;
           margin-left: 0;
           margin-top: 20px;
+          margin-bottom: 40px;
         }
 
         .form__group--center {
@@ -564,6 +565,30 @@
           margin-top: 20px;
         }
 
+      }
+
+      @media (min-width: 1200px) {
+        .smartguid__step-item--mt {
+          display: flex;
+        }
+
+        .form {
+          margin-left: 70px;
+        }
+
+        .form__group--center {
+          flex-direction: row;
+        }
+
+        .btn--one-border {
+          margin-left: 37px;
+          border-left: 1px solid #979797;
+          margin-top: 0;
+        }
+
+        .btn--next {
+          margin-top: 0;
+        }
       }
 
 
