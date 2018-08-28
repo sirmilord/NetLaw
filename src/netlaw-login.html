@@ -19,7 +19,6 @@
         --iron-icon-fill-color: #ffffff;
       }
 
-      /*.login__container.netlaw-login {*/
       .login__container {
         background-image: url("../images/Login_BG.png");
         background-repeat: no-repeat;
@@ -426,7 +425,7 @@
                   </div>
                   <hr class="login__divider-small">
                   <div class="login__margin-bottom">
-                    <button class="btn btn-primary">Atttach</button>
+                    <button class="btn btn-primary">Attach</button>
                   </div>
                   <div class="login__margin-bottom">
                     <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
@@ -466,7 +465,7 @@
                   </div>
                   <hr class="login__divider-small">
                   <div class="login__margin-bottom">
-                    <button class="btn btn-primary">Atttach</button>
+                    <button class="btn btn-primary">Attach</button>
                   </div>
                   <div class="login__margin-bottom">
                     <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
@@ -494,7 +493,7 @@
                   loading: { type: Boolean, value: false, observer: '_loadingChanged' },
                   selected: { type: String, value: "signin", observer: '_selectedChanged' },
 
-                  identifier: { type: String, value: () => localStorage.getItem("name") || "vasily.demish@gmail.com" },
+                  identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
 
                   email: String,
                   phone: String,
