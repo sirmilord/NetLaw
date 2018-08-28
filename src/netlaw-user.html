@@ -13,19 +13,22 @@
 
       }
 
-      iron-icon {
-        --iron-icon-width: 45px;
-        --iron-icon-height: 45px;
+      .profile {
         display: inline-block;
         margin: 0 10px;
         vertical-align: middle;
+        width: 45px;
+        height: 45px;
       }
 
     </style>
 
-    <a href="[[rootPath]]profile">
-      <iron-icon icon="netlaw-icons:profile-placeholder"></iron-icon>
-    </a>
+    <div class="profile">
+      <a href="[[rootPath]]profile">
+        <!--<iron-icon icon="netlaw-icons:profile-placeholder"></iron-icon>-->
+        <img src="../images/profile.jpg" height="45" width="45" alt="Profile Image">
+      </a>
+    </div>
 
   </template>
 
