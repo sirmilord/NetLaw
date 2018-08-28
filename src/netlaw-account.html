@@ -141,11 +141,11 @@
         background-color: #dadada;
       }
 
-      .account__list-link--active {
+      .iron-selected.account__list-link {
         color: #01aa50;
       }
 
-      .account__list-link--active:before {
+      .iron-selected.account__list-link:before {
         content: '';
         width: 4px;
         height: 50%;
@@ -237,9 +237,8 @@
         }
 
         /*.login-buttons {*/
-          /*margin-right: 60px;*/
+        /*margin-right: 60px;*/
         /*}*/
-
         .account__list {
           margin-right: 60px;
           margin-left: 0;
@@ -310,14 +309,16 @@
       </div>
       <div class="account__wrapper">
         <div class="account__left">
-          <nav class="account__list">
-            <a id="infolink" name="info" href="[[routePath]]account/info" class="account__list-link account__list-link--active"><span>Account
+          <iron-selector selected="[[page]]" attr-for-selected="name" class="account__list"
+                         role="navigation">
+            <a id="infolink" name="info" href="[[routePath]]account/info"
+               class="account__list-link"><span>Account
               Information</span></a>
             <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link"><span>Security Settings</span></a>
             <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link"><span>Current Billing
               Plan</span></a>
             <a name="plans" href="[[routePath]]account-plans" class="account__list-link"><span>View Billing Plans</span></a>
-          </nav>
+          </iron-selector>
           <div class="login-buttons">
             <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"
                                on-click="onLoginClick"></paper-icon-button>
@@ -325,7 +326,8 @@
                                on-click="onLoginClick"></paper-icon-button>
             <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"
                                on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter" on-click="onLoginClick"></paper-icon-button>
+            <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"
+                               on-click="onLoginClick"></paper-icon-button>
           </div>
         </div>
 
@@ -365,24 +367,6 @@
 
           _routePageChanged(page) {
               this.page = page || 'info';
-
-              if (this.page === 'info') {
-                  this.$.securitylink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.remove('account__list-link--active');
-                  this.$.infolink.classList.add('account__list-link--active');
-              }
-              else if (this.page === 'security') {
-                  this.$.infolink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.remove('account__list-link--active');
-                  this.$.securitylink.classList.add('account__list-link--active');
-
-              }
-              else if (this.page === 'current-plan') {
-                  this.$.securitylink.classList.remove('account__list-link--active');
-                  this.$.infolink.classList.remove('account__list-link--active');
-                  this.$.currentlink.classList.add('account__list-link--active');
-
-              }
           }
       }
 
