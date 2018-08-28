@@ -20,12 +20,11 @@
         flex: 1 1 100%;
         max-width: 100%;
         background-color: #fff;
-        border-right: 1px solid #dfdfdf;
-        border-bottom: 1px solid #dfdfdf;
         display: flex;
         align-items: center;
         flex-direction: column;
         position: relative;
+        box-sizing: border-box;
       }
 
       ul {
@@ -147,11 +146,9 @@
 
         --add-module-checkbox: {
           display: none;
-        }
-
-        --add-module-bulkaction: {
-          display: none;
-        }
+        } --add-module-bulkaction: {
+        display: none;
+      }
       }
 
       .add-module__checkbox-container {
@@ -164,7 +161,6 @@
         height: 45px;
         border-radius: 2px;
       }
-
 
       .add-module__checkbox-container input {
         position: absolute;
@@ -594,7 +590,6 @@
           margin-right: 30px;
         }
 
-
       }
 
       @media (min-width: 1200px) {
@@ -628,15 +623,17 @@
 
       <section class="add-module__content">
         <!--<netlaw-topbar>-->
-          <!--<h2 slot="title" >Module Market</h2>-->
-          <!--<div slot="sub">Increase productivity by adding some of the modules below</div>-->
+        <!--<h2 slot="title" >Module Market</h2>-->
+        <!--<div slot="sub">Increase productivity by adding some of the modules below</div>-->
         <!--</netlaw-topbar>-->
         <div class="add-module__content-header">
           <h2 class="add-module__title">Module Market</h2>
           <div class="add-module__header-desc">Increase productivity by adding some of the modules below</div>
         </div>
         <netlaw-dashboard class="add-module__content-dashboard">
-          <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
+          <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
+                                 on-select-all-true="selectAllTrue" on-view-module="chooseModule"
+                                 on-view-list="chooseList"></netlaw-dashboard-form>
         </netlaw-dashboard>
 
         <!--module layout-->

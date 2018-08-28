@@ -91,9 +91,8 @@
         max-width: 40%;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
         position: relative;
-        min-height: calc(100vh - 80px - 65px);
+        /*min-height: calc(100vh - 80px - 65px);*/
       }
 
       .account__left:after {
@@ -106,182 +105,10 @@
         background-color: #e9e9e9;
       }
 
-      .form {
-        margin-left: 70px;
-        max-width: 500px;
-        /*width: 70%;*/
-        margin-top: 35px;
-      }
-
-      .form fieldset {
-        margin: 0;
-        padding: 0;
-        border: 0;
-      }
-
-      .form legend {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
-
-      .form__row {
-        display: flex;
-        margin-right: -10px;
-        margin-left: -10px;
-      }
-
-      .form__group {
-        margin-bottom: 20px;
-        box-sizing: border-box;
-      }
-
-      .form__group--right {
-        display: flex;
-        align-items: flex-end;
-        flex-direction: column;
-      }
-
-      .form__group--center {
-        display: flex;
-        justify-content: center;
-      }
-
-      .form__group--half {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
-
-      .form__group--third {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
-
-      .label {
-        color: #9f9f9f;
-        font-size: 12px;
-        font-weight: 400;
-      }
-
-      .input-text {
-        max-width: 100%;
-        width: 100%;
-        padding: 0 10px;
-        background-color: #fff;
-        color: #666;
-        height: 45px;
-        border: 1px solid #9B9B9B;
-        border-radius: 2px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-
-      .input-text--disabled {
-        background-color: #ececec;
-        border-color: transparent;
-      }
-
-      .input-text--disabled::placeholder {
-        color: #a2a2a2;
-      }
-
-      .input-text:focus {
-        border-color: #01AA50;
-        outline: 0;
-      }
-
-      .input-text::placeholder {
-        color: #C2C2C2;
-        font-size: 16px;
-      }
-
-      .form__line {
-        margin: 20px auto;
-        width: 60%;
-        background-color: #e9e9e9;
-        height: 2px;
-      }
-
-      .form__line--short {
-        width: 180px;
-        margin-left: 0;
-        margin-right: 0;
-      }
-
-      .form__line--long {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-      }
-
-      .btn--primary {
-        background-color: #01AA50;
-        color: #fff;
-        width: 195px;
-      }
-
-      .btn--primary:hover,
-      .btn--primary:focus {
-        background-color: #019948;
-      }
-
-      .btn--cancel-bordered {
-        border: 1px solid #9B9B9B;
-        background-color: transparent;
-        font-size: 18px;
-        color: #767677;
-        margin-left: 20px;
-        width: 195px;
-      }
-
-      .btn--cancel-bordered:hover,
-      .btn--cancel-bordered:focus {
-        color: #ffffff;
-        background-color: #9B9B9B;
-        border-color: #9B9B9B;
-        cursor: pointer;
-      }
-
-      .btn--facebook {
-        background-color: #4a90e2;
-        color: #fff;
-        width: 200px;
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-bottom: 20px;
-        margin-right: 60px;
-      }
-
-      .btn--facebook:hover,
-      .btn--facebook:focus {
-        background-color: #3483de;
-        color: #fff;
-      }
-
-      .btn--linkedin {
-        background-color: #546b87;
-        color: #fff;
-        width: 200px;
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-right: 60px;
-      }
-
-      .btn--linkedin:hover,
-      .btn--linkedin:focus {
-        background-color: #444f5c;
-        color: #fff;
-      }
-
       .account__list {
         margin-top: 75px;
         margin-bottom: 40px;
-        margin-right: auto;
-        margin-left: auto;
+        width: 100%;
       }
 
       .account__list-link {
@@ -292,7 +119,10 @@
         position: relative;
         padding-top: 15px;
         padding-bottom: 15px;
-        width: 185px;
+      }
+
+      .account__list-link span {
+        margin-left: 20%;
       }
 
       .account__list-link:hover,
@@ -302,11 +132,12 @@
 
       .account__list-link:after {
         content: '';
-        width: calc(100% - 10px);
+        width: 175px;
         height: 1px;
         position: absolute;
         bottom: 0;
-        left: 10px;
+        left: 55%;
+        transform: translateX(-55%);
         background-color: #dadada;
       }
 
@@ -321,7 +152,7 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        right: -19%;
+        right: 2px;
         background-color: #01aa50;
       }
 
@@ -378,22 +209,9 @@
         max-width: 60%;
       }
 
-      netlaw-account-info {
-        width: 100%;
-      }
-
-      netlaw-account-security {
-        width: 100%;
-      }
-
-      netlaw-account-current-plan {
-        width: 100%;
-      }
-
-
       @media (min-width: 992px) {
-        .account__list-link--active:before {
-          right: -43%;
+        .account__list-link span {
+          margin-left: 25%;
         }
       }
 
@@ -418,17 +236,30 @@
           max-width: 70%;
         }
 
-        .login-buttons {
-          margin-right: 60px;
-        }
+        /*.login-buttons {*/
+          /*margin-right: 60px;*/
+        /*}*/
 
         .account__list {
           margin-right: 60px;
           margin-left: 0;
         }
 
-        .account__list-link--active:before {
-          right: -31%;
+        .account__list-link span {
+          margin-left: 28%;
+        }
+
+      }
+
+      @media (min-width: 1400px) {
+        .account__list-link span {
+          margin-left: 32%;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        .account__list-link span {
+          margin-left: 35%;
         }
       }
 
@@ -455,6 +286,12 @@
         }
       }
 
+      @media (min-width: 2500px) {
+        .account__list-link span {
+          margin-left: 40%;
+        }
+      }
+
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -474,12 +311,12 @@
       <div class="account__wrapper">
         <div class="account__left">
           <nav class="account__list">
-            <a id="infolink" name="info" href="[[routePath]]account/info" class="account__list-link account__list-link--active">Account
-              Information</a>
-            <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link">Security Settings</a>
-            <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link">Current Billing
-              Plan</a>
-            <a name="plans" href="[[routePath]]account-plans" class="account__list-link">View Billing Plans</a>
+            <a id="infolink" name="info" href="[[routePath]]account/info" class="account__list-link account__list-link--active"><span>Account
+              Information</span></a>
+            <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link"><span>Security Settings</span></a>
+            <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link"><span>Current Billing
+              Plan</span></a>
+            <a name="plans" href="[[routePath]]account-plans" class="account__list-link"><span>View Billing Plans</span></a>
           </nav>
           <div class="login-buttons">
             <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"
