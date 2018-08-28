@@ -153,7 +153,7 @@
                 </p>
               </div>
 
-              <div name="create-account" xwide login>
+              <div name="create-account" login>
                 <h1>Create your NetLaw Account</h1>
 
                 <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus
@@ -557,19 +557,6 @@
               this.error = null;
 
               localStorage.setItem("name", this.identifier);
-              //
-              // api.accounts.findAccount(this.identifier)
-              //     .success(r => {
-              //         //this.selected = "signin-password";
-              //         //this.identifier = data.identifier;
-              //         this.userId = r.user_id;
-              //         this.name = r.name;
-              //     })
-              //     .badRequest(ex => { this.error = "Please specify your email or phone"; })
-              //     .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
-              //     .serverError(ex => { this.error = "Server error please try again."; })
-              //     //.catch(ex => { this.error = "Request error."; })
-              //     .finally(() => this.loading = false);
 
               api.accounts.login(this.identifier, this.password, this.name, this.phone)
                   .success(r => {
