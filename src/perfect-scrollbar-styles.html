@@ -35,7 +35,7 @@
         width: 8px;
         background-color: #d8d8d8;
         /* there must be 'right' or 'left' for ps__rail-y */
-        left: 97% !important;
+        left: 95% !important;
         right: 25px;
         /* please don't change 'position' */
         position: absolute;
@@ -44,9 +44,29 @@
         /*transform: translateY(-50px) !important;*/
       }
 
-      @media (min-width: 1800px) {
+      @media (min-width: 992px) {
+        .ps__rail-y {
+          left: 96% !important;
+        }
+
+      }
+
+      @media (min-width: 1200px) {
+        .ps__rail-y {
+          left: 97% !important;
+        }
+
+      }
+
+      @media (min-width: 1600px) {
         .ps__rail-y {
           left: 98% !important;
+        }
+
+      }
+      @media (min-width: 2200px) {
+        .ps__rail-y {
+          left: 99% !important;
         }
 
       }
