@@ -673,9 +673,9 @@
       }
 
       @media (max-width: 767px) {
-        .lifevault-mobile {
-          margin-top: 50px;
-        }
+        /*.lifevault-mobile {*/
+          /*margin-top: 50px;*/
+        /*}*/
 
         .lifevault-mobile__dashboard {
           display: flex;
@@ -1106,8 +1106,7 @@
           </iron-dropdown>
         </li>
         <li class="lifevault-mobile__dashboard-item">
-          <!--<a class="lifevault-mobile__dashboard-close" href="[[rootPath]]lifevault/mobile-menu" on-click="hideDashboard">-->
-          <a class="lifevault-mobile__dashboard-close" href="[[rootPath]]lifevault/mobile-menu">
+          <a class="lifevault-mobile__dashboard-close" href="[[rootPath]]lifevault" on-click="onClose">
             <iron-icon icon="netlaw-icons:close"></iron-icon>
           </a>
         </li>
@@ -2550,7 +2549,9 @@
             <label for="sharesearch"></label>
             <input type="search" class="login__input" id="sharesearch" name="sharesearch"
                    placeholder="Search contacts…">
-            <button class="btn btn--search"><iron-icon icon="netlaw-icons:search"></iron-icon></button>
+            <button class="btn btn--search">
+              <iron-icon icon="netlaw-icons:search"></iron-icon>
+            </button>
           </div>
           <div class="login__margin file-folder__wrapper">
             <div class="file-folder__item">
@@ -2759,6 +2760,12 @@
           hideDashboard() {
               this.close = true;
           }
+
+          //for mobile
+          onClose(e) {
+              this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
+          }
+
       }
 
       window.customElements.define(NetlawLifevaultManagement.is, NetlawLifevaultManagement);
