@@ -607,6 +607,13 @@
       .lifevault__details--list {
         margin-left: 0;
       }
+      .lifevault__mobile[hidden] {
+        display: none;
+      }
+
+      .lifevault__content[hidden] {
+        display: none;
+      }
 
       @media (min-width: 768px) {
         .lifevault__col-module {
@@ -664,18 +671,12 @@
         }
       }
 
-      .lifevault__mobile[hidden] {
-        display: none;
-      }
-
-      .lifevault__content[hidden] {
-        display: none;
-      }
 
       @media (max-width: 767px) {
-        /*.lifevault-mobile {*/
-          /*margin-top: 50px;*/
-        /*}*/
+
+        .lifevault__list-left {
+          margin-right: 15px;
+        }
 
         .lifevault-mobile__dashboard {
           display: flex;
@@ -789,10 +790,10 @@
 
         .lifevault__module-list-item:after {
           content: '';
-          width: 60%;
+          width: 100%;
           height: 1px;
           background-color: #979797;
-          left: 20px;
+          left: 0;
           bottom: 0;
           position: absolute;
           opacity: .3;
@@ -1057,7 +1058,7 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
-    <template id="menu">
+    <template slot="placeholder" id="menu">
       <h3>lifevault-management</h3>
       <paper-button>click</paper-button>
     </template>
@@ -2663,8 +2664,6 @@
                   e.preventDefault();
                   this.querySelector('iron-dropdown').open();
               }));
-
-              // let temp = this.shadowRoot.querySelector('.overlay'); console.log(temp);
 
               this.menu = this.$.menu;
 

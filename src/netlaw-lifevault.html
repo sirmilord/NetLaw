@@ -1565,17 +1565,13 @@
 
                   if (this.page === 'management') {
                       this.childPage = true;
-                      // this.$.lifevaultdrawer.open();
-                      // this.toggleHeaderIcon = 'netlaw-icons:menu-filter';
+                      this.toggleHeaderIcon = 'netlaw-icons:close';
                       //this is polyfill for this.$.pages2.selectedItem;
-                      // let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
-                      // console.log(sc);
-                      // if (sc) sc.open();
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      console.log(sc);
+                      if (sc) sc.open();
                   }
 
-                  if (this.page === 'doc') {
-                      // this.$.lifevaultdrawer.open();
-                  }
               }
           }
 
@@ -1600,7 +1596,7 @@
                   // this.$.headerdropdown.open();
               }
           }
-
+          //for mobile
           _showMobileMenu(e) {
               this.childPage = false;
               this.page = null;
