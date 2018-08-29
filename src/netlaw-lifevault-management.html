@@ -1066,6 +1066,9 @@
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
       <ul class="lifevault-mobile__dashboard" hidden$="{{close}}">
         <li class="lifevault-mobile__dashboard-item">
+          <netlaw-search></netlaw-search>
+        </li>
+        <li class="lifevault-mobile__dashboard-item">
           <a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openSortBy">Sort By</a>
           <iron-dropdown id="sortbydropdown" vertical-offset="0">
             <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
