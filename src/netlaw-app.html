@@ -407,14 +407,14 @@
       <app-header-layout has-scrolling-region>
 
         <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
-          <app-toolbar class="navbar-mobile">
+          <div class="navbar-mobile">
               <paper-icon-button icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <slot name="placeholder" id="placeholder"></slot>
             <div id="mainmenu" show$={{show}}>
               <netlaw-logo class="mobile"></netlaw-logo>
               <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
             </div>
-          </app-toolbar>
+          </div>
 
           <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
             <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"

@@ -1561,7 +1561,6 @@
 
               if (this.mobile) {
 
-                   // this.page = page || 'management';
                    this.page = page;
 
                   if (this.page === 'management') {
@@ -1584,6 +1583,7 @@
               this.$.lifevaultdrawer.open();
           }
 
+          //for mobile
           _childPage(e) {
               this.$.lifevaultdrawer.close();
               this.$.collapsemobilelvl2.toggle();
