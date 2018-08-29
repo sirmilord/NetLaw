@@ -718,7 +718,7 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-icon-button icon="[[toggleHeaderIcon]]" on-click="_onFolders">
+      <paper-icon-button icon="netlaw-icons:menu-circle" on-click="_onFolders">
         <iron-dropdown id="headerdropdown">
           <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
             <li>Add Folder
@@ -1453,9 +1453,9 @@
                       type: String
                   },
                   //for mobile
-                  toggleHeaderIcon: {
-                      type: String
-                  },
+                  // toggleHeaderIcon: {
+                  //     type: String
+                  // },
                   //for mobile
                   childPage: {
                       type: Boolean,
@@ -1492,7 +1492,7 @@
           constructor() {
               super();
               this.toggleIcon = 'netlaw-icons:plus-icon';
-              this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
+              // this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
           }
 
           _onToggle(e) {
@@ -1565,7 +1565,7 @@
 
                   if (this.page === 'management') {
                       this.childPage = true;
-                      this.toggleHeaderIcon = 'netlaw-icons:close';
+                      // this.toggleHeaderIcon = 'netlaw-icons:close';
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
                       console.log(sc);
@@ -1591,10 +1591,9 @@
           //for mobile - change icon in the header
           _onFolders(e) {
               // debugger;
-              if (this.toggleHeaderIcon === 'netlaw-icons:menu-circle') {
-                  console.log(this);
-                  // this.$.headerdropdown.open();
-              }
+              // console.log(e.target.querySelector('#headerdropdown'));
+              e.target.querySelector('iron-dropdown').open();
+
           }
           //for mobile
           _showMobileMenu(e) {
