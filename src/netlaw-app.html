@@ -568,6 +568,7 @@
                       reflectToAttribute: true,
                       value: false
                   },
+
               };
           }
 
@@ -616,9 +617,7 @@
               else this.page = page || 'login';
 
               let pageSelected = this.$.pages.selectedItem;
-              //console.log(pageSelected);
               let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
-
               this._applyMenu(pageSelected, template);
           }
 
@@ -666,10 +665,6 @@
               }
           }
 
-          // onCloseMobileDropdown(e){
-          //     this.$.dropdownmobilenotification.close();
-          // }
-
           BubbleUps(e) {
               if (e.type === "overlay-show") {
                   Polymer.dom(this.root).querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
@@ -683,12 +678,18 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('menu-changed', this._onMenuChanged);
+              this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
           }
-
 
           _onMenuChanged(e){
                 debugger;
               this._applyMenu(e.path[0],e.detail);
+
+          }
+
+          _closeLifevaultChild() {
+              this.$.pages.selectedItem.childPage = false;
+              this.$.pages.selectedItem.page = null;
           }
       }
 
