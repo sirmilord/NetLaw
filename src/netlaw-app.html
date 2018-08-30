@@ -427,8 +427,8 @@
           <netlaw-account-security name="account-security"></netlaw-account-security>
           <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
           <netlaw-account-plans name="account-plans"></netlaw-account-plans>
-          <netlaw-lifevault name="lifevault" route="[[subroute]]" on-menu-changed="_onMenuChanged"></netlaw-lifevault>
-          <!--<netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>-->
+          <!--<netlaw-lifevault name="lifevault" route="[[subroute]]" on-menu-changed="_onMenuChanged"></netlaw-lifevault>-->
+          <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
           <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
           <netlaw-contact-details name="contact-details"></netlaw-contact-details>
           <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
@@ -682,13 +682,13 @@
               super.ready();
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
-              //this.addEventListener('menu-changed', this._onMenuChanged);
+              this.addEventListener('menu-changed', this._onMenuChanged);
           }
 
 
           _onMenuChanged(e){
-                //debugger;
-              this._applyMenu(e.path[0],e.detail.value);
+                debugger;
+              this._applyMenu(e.path[0],e.detail);
           }
       }
 
