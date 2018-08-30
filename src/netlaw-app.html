@@ -48,7 +48,7 @@
 <link rel="import" href="netlaw-initial-screen.html">
 <link rel="import" href="netlaw-view-404.html">
 
-<script type="module" src="./src/api.js"></script>
+<script type="module" src="api.js"></script>
 
 <dom-module id="netlaw-app">
   <template>
@@ -358,13 +358,7 @@
     <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
 
 
-    <!--<template is="dom-if" if="[[!loggedIn]]">-->
-
     <netlaw-login on-logged-in="onLoggedIn" nologin$="[[loggedIn]]"></netlaw-login>
-
-    <!--</template>-->
-
-    <!--<template is="dom-if" if="[[loggedIn]]">-->
 
     <!--Main content mobile-->
     <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}" login$="[[!loggedIn]]">
@@ -434,6 +428,7 @@
           <netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>
           <netlaw-account-plans name="account-plans"></netlaw-account-plans>
           <netlaw-lifevault name="lifevault" route="[[subroute]]" on-menu-changed="_onMenuChanged"></netlaw-lifevault>
+          <!--<netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>-->
           <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
           <netlaw-contact-details name="contact-details"></netlaw-contact-details>
           <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
@@ -687,11 +682,12 @@
               super.ready();
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
+              //this.addEventListener('menu-changed', this._onMenuChanged);
           }
 
 
           _onMenuChanged(e){
-               // debugger;
+                //debugger;
               this._applyMenu(e.path[0],e.detail.value);
           }
       }

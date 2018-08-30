@@ -2673,6 +2673,7 @@
           }
 
           open() {
+              //debugger;
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
