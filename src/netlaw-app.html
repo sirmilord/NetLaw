@@ -19,6 +19,8 @@
 <link rel="import" href="../bower_components/paper-styles/demo-pages.html">
 <link rel="import" href="../bower_components/iron-demo-helpers/demo-snippet.html">
 <link rel="import" href="../bower_components/iron-demo-helpers/demo-pages-shared-styles.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../bower_components/web-animations-js/web-animations-next.min.html">
 
 <link rel="import" href="netlaw-icons.html">
 <link rel="import" href="netlaw-logo.html">
@@ -360,6 +362,7 @@
 
     <netlaw-login on-logged-in="onLoggedIn" nologin$="[[loggedIn]]"></netlaw-login>
 
+    <template is="dom-if" if="[[mobile]]">
     <!--Main content mobile-->
     <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}" login$="[[!loggedIn]]">
 
@@ -419,7 +422,7 @@
         </app-header>
         <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
         <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
-                    fallback-selection="initial-screen">
+                    fallback-selection="initial-screen"  on-menu-changed="_onMenuChanged">
           <netlaw-smartguide name="smartguide" route="[[subroute]]"
                              on-smartguide-open-left-drawer="onDrawerShow"></netlaw-smartguide>
           <netlaw-profile name="profile"></netlaw-profile>
@@ -466,9 +469,10 @@
       </netlaw-mobile-drawer>
 
     </app-drawer-layout>
+    </template>
 
     <!-- Main content desktop-->
-
+<template is="dom-if" if="[[!mobile]]">
     <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}" hidden$="{{mobile}}" login$="[[!loggedIn]]">
 
       <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
@@ -529,7 +533,7 @@
       </app-drawer-layout>
     </app-header-layout>
     <!--</template>-->
-
+</template>
   </template>
 
   <script>
@@ -575,10 +579,14 @@
 
           constructor() {
               super();
-              /*window.navigate = path => {
-                  window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
+              window.app=this;
+              window.navigate = path => {
+                  console.log("navigating to:", path);
+                  window.history.pushState({}, null, `${path || ""}`);
+                  //window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
+                  //window.location = `${this.rootPath}${path || ""}`;
                   window.dispatchEvent(new CustomEvent('location-changed'));
-              };*/
+              };
               this.toggleIcon = 'netlaw-icons:notifications';
               this.show = false;
           }
@@ -616,17 +624,20 @@
 
               else this.page = page || 'login';
 
-              let pageSelected = this.$.pages.selectedItem;
-              let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
-              this._applyMenu(pageSelected, template);
+              // if (!this.shadowRoot.querySelector("#pages"))return;
+              // let pageSelected = this.shadowRoot.querySelector("#pages").selectedItem;
+              // let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
+              // this._applyMenu(pageSelected, template);
           }
 
           _applyMenu(component, template) {
-              while (this.$.placeholder.firstChild) this.$.placeholder.removeChild(this.$.placeholder.firstChild);
+              let placeholder = this.shadowRoot.querySelector('#placeholder');
+              if (!placeholder) { setTimeout(() => this._applyMenu(component, template)); return; }
+              while (placeholder.firstChild) placeholder.removeChild(placeholder.firstChild);
 
               if (template) {
                   let instance = component instanceof Polymer.Element ? component._stampTemplate(template) : this._stampTemplate(template);
-                  this.$.placeholder.appendChild(instance);
+                  placeholder.appendChild(instance);
                   this.show = false;
               } else {
                   this.show = true;
@@ -657,19 +668,19 @@
               this.visible = !this.visible;
 
               if (this.visible) {
-                  this.$.dropdownmobilenotification.open();
+                  this.shadowRoot.querySelector("#dropdownmobilenotification").open();
                   this.toggleIcon = 'netlaw-icons:notifications-open'
               } else {
-                  this.$.dropdownmobilenotification.close();
+                  this.shadowRoot.querySelector("#dropdownmobilenotification").close();
                   this.toggleIcon = 'netlaw-icons:notifications'
               }
           }
 
           BubbleUps(e) {
               if (e.type === "overlay-show") {
-                  Polymer.dom(this.root).querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
+                  this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {
-                  Polymer.dom(this.root).querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
+                  this.shadowRoot.querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
               }
           }
 
@@ -677,19 +688,18 @@
               super.ready();
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
-              this.addEventListener('menu-changed', this._onMenuChanged);
               this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
           }
 
           _onMenuChanged(e){
-                debugger;
               this._applyMenu(e.path[0],e.detail);
-
           }
 
           _closeLifevaultChild() {
-              this.$.pages.selectedItem.childPage = false;
-              this.$.pages.selectedItem.page = null;
+              // this.$.pages.selectedItem.childPage = false;
+              // this.$.pages.selectedItem.page = null;
+            navigate("/lifevault");
+
           }
       }
 
