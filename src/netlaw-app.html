@@ -685,10 +685,11 @@
               if (template) {
                   let instance = component instanceof Polymer.Element ? component._stampTemplate(template) : this._stampTemplate(template);
                   placeholder.appendChild(instance);
-                  this.show = false;
-              } else {
-                  this.show = true;
+                  // this.show = false;
               }
+              // else {
+              //     this.show = true;
+              // }
 
           }
 
@@ -738,8 +739,6 @@
           }
 
           _closeLifevaultChild() {
-              // this.$.pages.selectedItem.childPage = false;
-              // this.$.pages.selectedItem.page = null;
               navigate("/lifevault");
 
           }
