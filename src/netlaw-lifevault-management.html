@@ -1,5 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-
+<link rel="import" href="netlaw-dashboard.html">
+<link rel="import" href="netlaw-dashboard-form.html">
+<link rel="import" href="netlaw-dashboard-mobile.html">
 
 <dom-module id="netlaw-lifevault-management">
   <template>
@@ -1065,54 +1067,55 @@
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
-      <ul class="lifevault-mobile__dashboard" >
-        <li class="lifevault-mobile__dashboard-item">
-          <netlaw-search></netlaw-search>
-        </li>
-        <li class="lifevault-mobile__dashboard-item">
-          <a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openSortBy">Sort By</a>
-          <iron-dropdown id="sortbydropdown" vertical-offset="0">
-            <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
-              <li>Sort By - - -</li>
-              <li>Title
-                <iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>
-              </li>
-              <li>Newest
-                <iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>
-              </li>
-              <li>Oldest
-                <iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>
-              </li>
-              <li>SmartGuide Only
-                <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-              </li>
-            </ul>
-          </iron-dropdown>
-        </li>
-        <li class="lifevault-mobile__dashboard-item">
-          <a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openBulkAction">Bulk Action</a>
-          <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
-            <!--no-auto-focus no-cancel-on-outside-click>-->
-            <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
-              <li>Bulk Action -</li>
-              <li>Download
-                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-              </li>
-              <li>Print
-                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-              </li>
-              <li on-click="onShareFileClick">Share
-                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-              </li>
-              <li>Delete
-                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-              </li>
-            </ul>
-          </iron-dropdown>
-        </li>
-        <li class="lifevault-mobile__dashboard-item">
-        </li>
-      </ul>
+      <netlaw-dashboard-mobile></netlaw-dashboard-mobile>
+      <!--<ul class="lifevault-mobile__dashboard" >-->
+        <!--<li class="lifevault-mobile__dashboard-item">-->
+          <!--<netlaw-search></netlaw-search>-->
+        <!--</li>-->
+        <!--<li class="lifevault-mobile__dashboard-item">-->
+          <!--<a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openSortBy">Sort By</a>-->
+          <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
+            <!--<ul class="addfolder-dropdown addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
+              <!--<li>Sort By - - -</li>-->
+              <!--<li>Title-->
+                <!--<iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li>Newest-->
+                <!--<iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li>Oldest-->
+                <!--<iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li>SmartGuide Only-->
+                <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</iron-dropdown>-->
+        <!--</li>-->
+        <!--<li class="lifevault-mobile__dashboard-item">-->
+          <!--<a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openBulkAction">Bulk Action</a>-->
+          <!--<iron-dropdown id="bulkactiondropdown" vertical-offset="0">-->
+            <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
+            <!--<ul class="addfolder-dropdown addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
+              <!--<li>Bulk Action -</li>-->
+              <!--<li>Download-->
+                <!--<iron-icon icon="netlaw-icons:download-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li>Print-->
+                <!--<iron-icon icon="netlaw-icons:print-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li on-click="onShareFileClick">Share-->
+                <!--<iron-icon icon="netlaw-icons:share-icon"></iron-icon>-->
+              <!--</li>-->
+              <!--<li>Delete-->
+                <!--<iron-icon icon="netlaw-icons:delete-icon"></iron-icon>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</iron-dropdown>-->
+        <!--</li>-->
+        <!--<li class="lifevault-mobile__dashboard-item">-->
+        <!--</li>-->
+      <!--</ul>-->
 
       <div class="lifevault__module lifevault__module--list">
         <div class="lifevault__module-list-item">

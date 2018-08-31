@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<dom-module id="netlaw-dashboard-form">
+<dom-module id="netlaw-dashboard-mobile">
 
   <template>
 
@@ -282,6 +282,11 @@
         @apply --add-module-checkbox;
       }
 
+      .lifevault-mobile__dashboard-link {
+        color: #4A90E2;
+        text-decoration: none;
+      }
+
       @media (min-width: 768px) {
         .checkbox-container--ml {
           margin-left: 5px;
@@ -419,23 +424,9 @@
     </style>
 
     <form action="javascript:;" method="post">
-      <label class="checkbox-container checkbox-container--ml">Select All
-        <input id="selectall" type="checkbox">
-        <span class="content-checkmark" on-tap="selectAllClick"></span>
-      </label>
-      <label class="search">
-        <input type="search" id="search" name="search" placeholder="Search...">
-        <button class="btn btn--search">
-          <iron-icon icon="netlaw-icons:inner-search-icon"></iron-icon>
-        </button>
-      </label>
-      <div class="sort" id="sortby" slot="dropdown-trigger" on-tap="openSortBy">
-        <div class="sort-arrows">
-          <iron-icon icon="icons:arrow-upward"></iron-icon>
-          <iron-icon icon="icons:arrow-downward"></iron-icon>
-        </div>
-        <span>Sort By</span>
-        <iron-icon icon="icons:expand-more"></iron-icon>
+      <netlaw-search></netlaw-search>
+      <div class="sort">
+        <a class="lifevault-mobile__dashboard-link" slot="dropdown-trigger" href="javascript:;" on-click="_openSortBy">Sort By</a>
         <iron-dropdown id="sortbydropdown" vertical-offset="0">
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
             <li>Sort By - - -</li>
@@ -454,12 +445,8 @@
           </ul>
         </iron-dropdown>
       </div>
-      <div id="bulkaction" class="sort" on-tap="openBulkAction">
-        <div class="bulkaction">
-          <iron-icon icon="netlaw-icons:menu"></iron-icon>
-        </div>
-        <span>Bulk Action</span>
-        <iron-icon icon="icons:expand-more"></iron-icon>
+      <div class="sort">
+        <a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="_openBulkAction">Bulk Action</a>
         <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
           <!--no-auto-focus no-cancel-on-outside-click>-->
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
@@ -470,7 +457,7 @@
             <li>Print
               <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
             </li>
-            <li>Share
+            <li on-click="onShareFileClick">Share
               <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
             </li>
             <li>Delete
@@ -491,25 +478,16 @@
 
   <script>
 
-      class NetlawDashboardForm extends Polymer.Element {
+      class NetlawDashboardMobile extends Polymer.Element {
           static get is() {
-              return 'netlaw-dashboard-form';
+              return 'netlaw-dashboard-mobile';
           }
 
-          // static get properties() {
-          //     return {
-          //     };
-          // }
-          //
-          // constructor() {
-          //     super();
-          // }
-
-          openSortBy() {
+          _openSortBy() {
               this.$.sortbydropdown.open();
           }
 
-          openBulkAction() {
+          _openBulkAction() {
               this.$.bulkactiondropdown.open();
           }
 
@@ -544,7 +522,7 @@
           }
       }
 
-      customElements.define(NetlawDashboardForm.is, NetlawDashboardForm);
+      customElements.define(NetlawDashboardMobile.is, NetlawDashboardMobile);
   </script>
 
 </dom-module>
