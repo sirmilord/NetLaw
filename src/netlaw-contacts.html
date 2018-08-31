@@ -667,6 +667,27 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
+    <template slot="placeholder" id="menu">
+      <h3>Key People</h3>
+      <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-align="top">
+        <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
+        <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
+          <li>Add Folder
+            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+          </li>
+          <li>Download
+            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+          </li>
+          <li>Print
+            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+          </li>
+          <li>Share
+            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
+        </ul>
+      </paper-menu-button>
+    </template>
+
     <main class="contacts-mobile" hidden$="{{!mobile}}">
       <section class="contacts-mobile__nav">
         <div class="contacts-mobile__header">
@@ -1128,6 +1149,10 @@
 
               this.page = page || 'create';
 
+              if(page == "" || page == null || page == "create") {
+                  this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              }
+
               if (this.page === 'create') {
                   this.toggleIcon = 'netlaw-icons:plus-icon';
                   this.$.button1.setAttribute('aria-expanded', false);
@@ -1162,6 +1187,11 @@
               e.preventDefault();
               this.addFolder = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+          }
+
+          ready() {
+              super.ready();
+              this.menu = this.$.menu;
           }
 
       }

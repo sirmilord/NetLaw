@@ -1521,7 +1521,7 @@
 
           _pageChanged(page) {
 
-              console.log(page);
+              // console.log(page);
 
               if (!this.mobile) {
                   this.page = page || 'your-vault';
@@ -1543,12 +1543,12 @@
 
               }
 
+
               if(page == "" || page == null || page == "empty") {
                   this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
               }
 
               if (this.mobile) {
-
                   if (page === 'management') {
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
