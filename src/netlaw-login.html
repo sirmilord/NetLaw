@@ -560,6 +560,7 @@
               api.accounts.login(this.identifier, this.password, this.name, this.phone)
                   .success(r => {
                       this._setSession(r);
+                      this.dispatchEvent(new CustomEvent("logged-in"));
                       return this._fetchProfiles()
                           .then(() => this.password = null);
                   })
