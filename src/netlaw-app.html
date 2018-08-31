@@ -458,10 +458,9 @@
               <slot name="placeholder" id="placeholder"></slot>
               <div id="mainmenu" show$={{show}}>
                 <netlaw-logo class="mobile"></netlaw-logo>
-                <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
+                <paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>
               </div>
             </div>
-
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
               <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"
                                           on-close-mobile-dropdown="onNavigateNotification"></netlaw-mobile-notification>
@@ -714,15 +713,15 @@
               this.shadowRoot.querySelector('#drawer').toggle();
           }
 
-          onNavigateNotification(e) {
-              this.visible = !this.visible;
+          _onNavigateNotification(e) {
+              // this.visible = !this.visible;
 
-              if (this.visible) {
+              if (e.type === "mobile-notification-open") {
                   this.shadowRoot.querySelector("#dropdownmobilenotification").open();
-                  this.toggleIcon = 'netlaw-icons:notifications-open'
+                  // this.toggleIcon = 'netlaw-icons:notifications-open'
               } else {
                   this.shadowRoot.querySelector("#dropdownmobilenotification").close();
-                  this.toggleIcon = 'netlaw-icons:notifications'
+                  // this.toggleIcon = 'netlaw-icons:notifications'
               }
           }
 
@@ -742,6 +741,8 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
+              this.addEventListener('mobile-notification-open', this._onNavigateNotification);
+              this.addEventListener('mobile-notification-close', this._onNavigateNotification);
           }
 
           _onMenuChanged(e) {

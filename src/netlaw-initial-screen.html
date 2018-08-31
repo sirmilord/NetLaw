@@ -129,8 +129,8 @@
 
     <template slot="placeholder" id="menu">
       <netlaw-logo class="mobile"></netlaw-logo>
-      <!--<paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>-->
-      <paper-icon-button id="" icon="netlaw-icons:notifications"></paper-icon-button>
+      <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
+      <!--<paper-icon-button id="" icon="netlaw-icons:notifications"></paper-icon-button>-->
     </template>
 
     <main class="initial-screen">
@@ -153,12 +153,39 @@
           static get is() {
               return 'netlaw-initial-screen';
           }
+          static get properties() {
+              return {
+                  toggleIcon: {
+                      type: String
+                  },
+              };
+          }
+
+          constructor() {
+              super();
+              this.toggleIcon = 'netlaw-icons:notifications';
+          }
 
           ready(e) {
               super.ready();
 
               this.menu = this.$.menu;
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+          }
+
+          onNavigateNotification(e) {
+
+              if (this.visible) {
+                  // this.shadowRoot.querySelector("#dropdownmobilenotification").open();
+                  this.dispatchEvent(new CustomEvent('mobile-notification-open', {bubbles: true, composed: true}));
+                  this.toggleIcon = 'netlaw-icons:notifications-open'
+              } else {
+                  this.dispatchEvent(new CustomEvent('mobile-notification-close', {bubbles: true, composed: true}));
+                  // this.shadowRoot.querySelector("#dropdownmobilenotification").close();
+                  this.toggleIcon = 'netlaw-icons:notifications'
+              }
+
+              this.visible = !this.visible;
           }
       }
 
