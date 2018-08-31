@@ -615,196 +615,6 @@
         display: none;
       }
 
-      @media (min-width: 768px) {
-        .lifevault__col-module {
-          flex: 1 1 100%;
-          max-width: 100%;
-          padding-left: 15px;
-          padding-right: 15px;
-          box-sizing: border-box;
-        }
-      }
-
-      @media (min-width: 992px) {
-
-        .lifevault__module--list {
-          padding: 20px 30px;
-        }
-
-        .lifevault__module-list-item {
-          padding: 20px 30px;
-        }
-
-        .lifevault__col-module {
-          flex: 1 1 33%;
-          max-width: 33%;
-        }
-
-        .lifevault__list-left {
-          margin-right: 30px;
-        }
-
-      }
-
-      @media (min-width: 1200px) {
-        .lifevault__details--list {
-          margin-left: 20px;
-        }
-
-        .lifevault__list-update {
-          flex: 1 1 100%;
-          max-width: 100%;
-        }
-      }
-
-      @media (min-width: 1300px) {
-        .lifevault__col-module {
-          flex: 1 1 25%;
-          max-width: 25%;
-        }
-      }
-
-      @media (min-width: 1600px) {
-        .lifevault__col-module {
-          flex: 1 1 20%;
-          max-width: 20%;
-        }
-      }
-
-
-      @media (max-width: 767px) {
-
-        .lifevault__list-left {
-          margin-right: 15px;
-        }
-
-        .lifevault-mobile__dashboard {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .lifevault-mobile__dashboard[hidden] {
-          display: none;
-        }
-
-        .lifevault-mobile__dashboard-item {
-          padding: 15px 25px;
-        }
-
-        .lifevault-mobile__dashboard-item:not(:last-child) {
-          border-right: 1px solid rgba(151, 151, 151, 0.3);
-
-        }
-
-        .lifevault-mobile__dashboard-link {
-          color: #4A90E2;
-          text-decoration: none;
-        }
-
-        .lifevault-mobile__dashboard-close {
-          --iron-icon-width: 15px;
-          --iron-icon-height: 15px;
-          margin-left: auto;
-          margin-right: 20px;
-        }
-
-        .addfolder-dropdown {
-          width: 137px;
-          border: 1px solid #C2C2C2;
-          border-radius: 2px;
-          background-color: #FFFFFF;
-          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
-          padding-left: 15px;
-          padding-right: 15px;
-        }
-
-        .addfolder-dropdown li {
-          color: #4A4A4A;
-          font-size: 14px;
-          display: flex;
-          padding-top: 8px;
-          padding-bottom: 8px;
-        }
-
-        .addfolder-dropdown iron-icon {
-          margin-left: auto;
-          --iron-icon-fill-color: #C2C2C2;
-        }
-
-        ul.addfolder-dropdown > li > iron-icon {
-          --iron-icon-width: 20px;
-          --iron-icon-height: 20px;
-        }
-
-        ul.addfolder-dropdown--sub > li > iron-icon {
-          --iron-icon-height: 16px;
-          --iron-icon-width: 16px;
-        }
-
-        .addfolder-dropdown--sort {
-          width: 182px;
-        }
-
-        .lifevault__module-list-item {
-          padding: 20px;
-        }
-
-        .lifevault__list-body {
-          width: 36px;
-          height: 36px;
-          padding: 0;
-        }
-
-        .lifevault__document.lifevault__document--list iron-icon[icon="netlaw-icons:page"] {
-          width: 18px;
-          height: 18px;
-        }
-
-        .lifevault__list-center {
-          text-align: left;
-        }
-
-        .lifevault__name-desc {
-          font-size: 16px;
-        }
-
-        .lifevault__menu {
-          --iron-icon-width: 24px;
-          --iron-iocn-height: 24px;
-        }
-
-        .btn--charm {
-          margin-right: 10px;
-        }
-
-        .lifevault__details--list {
-          font-size: 14px;
-          color: #01AA50;
-          --iron-icon-width: 24px;
-          --iron-icon-height: 24px;
-        }
-
-        .lifevault__module-list-item {
-          position: relative;
-        }
-
-        .lifevault__module-list-item:after {
-          content: '';
-          width: 100%;
-          height: 1px;
-          background-color: #979797;
-          left: 0;
-          bottom: 0;
-          position: absolute;
-          opacity: .3;
-        }
-
-        .lifevault__version-dropdown a {
-          font-size: 14px;
-          color: #01AA50;
-        }
-      }
-
       .lifevault__version-dropdown .lifevault__date {
         color: #9B9B9B;
         font-size: 10px;
@@ -1054,17 +864,208 @@
         height: auto;
       }
 
+      @media (min-width: 768px) {
+        .lifevault__col-module {
+          flex: 1 1 100%;
+          max-width: 100%;
+          padding-left: 15px;
+          padding-right: 15px;
+          box-sizing: border-box;
+        }
+      }
+
+      @media (min-width: 992px) {
+
+        .lifevault__module--list {
+          padding: 20px 30px;
+        }
+
+        .lifevault__module-list-item {
+          padding: 20px 30px;
+        }
+
+        .lifevault__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+        }
+
+        .lifevault__list-left {
+          margin-right: 30px;
+        }
+
+      }
+
+      @media (min-width: 1200px) {
+        .lifevault__details--list {
+          margin-left: 20px;
+        }
+
+        .lifevault__list-update {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+
+      @media (min-width: 1300px) {
+        .lifevault__col-module {
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+      }
+
+      @media (min-width: 1600px) {
+        .lifevault__col-module {
+          flex: 1 1 20%;
+          max-width: 20%;
+        }
+      }
+
+      @media (max-width: 767px) {
+
+        .lifevault__list-left {
+          margin-right: 15px;
+        }
+
+        .lifevault-mobile__dashboard {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .lifevault-mobile__dashboard[hidden] {
+          display: none;
+        }
+
+        .lifevault-mobile__dashboard-item {
+          padding: 15px 25px;
+        }
+
+        .lifevault-mobile__dashboard-item:not(:last-child) {
+          border-right: 1px solid rgba(151, 151, 151, 0.3);
+
+        }
+
+        .lifevault-mobile__dashboard-link {
+          color: #4A90E2;
+          text-decoration: none;
+        }
+
+        .lifevault-mobile__dashboard-close {
+          --iron-icon-width: 15px;
+          --iron-icon-height: 15px;
+          margin-left: auto;
+          margin-right: 20px;
+        }
+
+        .addfolder-dropdown {
+          width: 137px;
+          border: 1px solid #C2C2C2;
+          border-radius: 2px;
+          background-color: #FFFFFF;
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+
+        .addfolder-dropdown li {
+          color: #4A4A4A;
+          font-size: 14px;
+          display: flex;
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+
+        .addfolder-dropdown iron-icon {
+          margin-left: auto;
+          --iron-icon-fill-color: #C2C2C2;
+        }
+
+        ul.addfolder-dropdown > li > iron-icon {
+          --iron-icon-width: 20px;
+          --iron-icon-height: 20px;
+        }
+
+        ul.addfolder-dropdown--sub > li > iron-icon {
+          --iron-icon-height: 16px;
+          --iron-icon-width: 16px;
+        }
+
+        .addfolder-dropdown--sort {
+          width: 182px;
+        }
+
+        .lifevault__module-list-item {
+          padding: 20px;
+        }
+
+        .lifevault__list-body {
+          width: 36px;
+          height: 36px;
+          padding: 0;
+        }
+
+        .lifevault__document.lifevault__document--list iron-icon[icon="netlaw-icons:page"] {
+          width: 18px;
+          height: 18px;
+        }
+
+        .lifevault__list-center {
+          text-align: left;
+        }
+
+        .lifevault__name-desc {
+          font-size: 16px;
+        }
+
+        .lifevault__menu {
+          --iron-icon-width: 24px;
+          --iron-iocn-height: 24px;
+        }
+
+        .btn--charm {
+          margin-right: 10px;
+        }
+
+        .lifevault__details--list {
+          font-size: 14px;
+          color: #01AA50;
+          --iron-icon-width: 24px;
+          --iron-icon-height: 24px;
+        }
+
+        .lifevault__module-list-item {
+          position: relative;
+        }
+
+        .lifevault__module-list-item:after {
+          content: '';
+          width: 100%;
+          height: 1px;
+          background-color: #979797;
+          left: 0;
+          bottom: 0;
+          position: absolute;
+          opacity: .3;
+        }
+
+        .lifevault__version-dropdown a {
+          font-size: 14px;
+          color: #01AA50;
+        }
+      }
+
+
+
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">Home Management</h3>
-      <paper-icon-button icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
+      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
-      <ul class="lifevault-mobile__dashboard" hidden$="{{close}}">
+      <ul class="lifevault-mobile__dashboard" >
         <li class="lifevault-mobile__dashboard-item">
           <netlaw-search></netlaw-search>
         </li>
@@ -1110,9 +1111,6 @@
           </iron-dropdown>
         </li>
         <li class="lifevault-mobile__dashboard-item">
-          <a class="lifevault-mobile__dashboard-close" href="[[rootPath]]lifevault" on-click="onClose">
-            <iron-icon icon="netlaw-icons:close"></iron-icon>
-          </a>
         </li>
       </ul>
 
