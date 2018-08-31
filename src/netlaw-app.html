@@ -344,7 +344,7 @@
           background-color: #fff;
         }
 
-        .lifevault__addfolder-dropdown {
+        #placeholder .addfolder-dropdown {
           /*min-height: 154px;*/
           width: 137px;
           border: 1px solid #C2C2C2;
@@ -355,22 +355,23 @@
           padding-right: 15px;
         }
 
-        .lifevault__addfolder-dropdown li {
-          color: #4A4A4A;
+        #placeholder .addfolder-dropdown li {
+          color: #4A90E2;
           font-size: 14px;
           display: flex;
           padding-top: 8px;
           padding-bottom: 8px;
           --iron-icon-width: 15px;
           --iron-icon-height: 15px;
+          --iron-icon-fill-color: #4A90E2;
         }
 
-        .lifevault__addfolder-dropdown iron-icon {
+        #placeholder .addfolder-dropdown iron-icon {
           margin-left: auto;
           margin-top: 3px;
         }
 
-        .lifevault__addfolder-dropdown--sub {
+        #placeholder .addfolder-dropdown--sub {
           width: 162px;
         }
 
@@ -490,6 +491,7 @@
         </app-header-layout>
 
         <netlaw-mobile-drawer>
+          <div class="drawer-overlay"></div>
           <iron-selector selected="[[page]]" attr-for-selected="name"
                          class="drawer-nav drawer-list drawer-nav--mobile"
                          role="navigation">
@@ -720,9 +722,9 @@
           }
 
           BubbleUps(e) {
-              if (this.mobile) {
-                  return;
-              }
+              // if (this.mobile) {
+              //     return;
+              // }
               if (e.type === "overlay-show") {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {

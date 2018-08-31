@@ -644,6 +644,25 @@
           right: 10px;
         }
 
+        .lifevault__add-folder {
+          position: fixed;
+          bottom: 20%;
+          right: 5%;
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+          --iron-icon-fill-color: #01AA50;
+          /*--iron-icon-stroke-color: #fff;*/
+        }
+
+        .file-folder__icon {
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+        }
+
+        .file-folder__icon--close {
+          bottom: 7%;
+        }
+
       }
 
       @media (max-width: 991px) {
@@ -716,7 +735,7 @@
       <h3 class="lifevault__header">MyFiles</h3>
       <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-align="top">
         <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
-        <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
+        <ul class="addfolder-dropdown" slot="dropdown-content">
           <li>Add Folder
             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
           </li>
@@ -1048,7 +1067,9 @@
           <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
         </iron-pages>
       </app-drawer-layout>
-
+      <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
+        <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+      </a>
     </main>
 
     <!--Desktop layout-->
@@ -1379,62 +1400,63 @@
         <netlaw-lifevault-management name="management" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
         <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
       </iron-pages>
-
-      <template is="dom-if" if="[[addFolder]]">
-        <div class="overlay"></div>
-        <div class="file-folder">
-          <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
-          <b class="file-folder__title">Add Folder</b>
-          <form action="javascript:;" method="post" class="login-form login__align-center">
-            <div class="login__margin file-folder__text-align">
-              <label for="folderinput">FOLDER TITLE</label>
-              <input type="text" class="login__input" id="folderinput" name="folder"
-                     placeholder="Enter in your new folder title…">
-            </div>
-            <hr class="login__divider-small">
-            <div class="login__margin">
-              <button class="btn btn-primary">Create Folder</button>
-            </div>
-            <div class="login__margin">
-              <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
-            </div>
-          </form>
-        </div>
-        <a href="javascript:;" on-click="onCancelFolderClick">
-          <iron-icon class="file-folder__icon file-folder__icon--close"
-                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
-        </a>
-      </template>
-
-      <template is="dom-if" if="[[deleteFileFolder]]">
-        <div class="overlay"></div>
-        <div class="file-folder">
-          <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
-          <b class="file-folder__title">Just Confirming </b>
-          <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these files?</p>
-          <form action="javascript:;" method="post" class="login-form login__align-center  file-folder__form file-folder__form--w100">
-            <div class="login__margin file-folder__wrap">
-              <figure class="file-folder__img">
-                <iron-icon icon="netlaw-icons:page"></iron-icon>
-              </figure>
-              <div class="file-folder__name">Estimate for Home Management .PDF</div>
-              <div class="file-folder__version">1.1</div>
-            </div>
-            <hr class="login__divider-small">
-            <div class="login__margin">
-              <button class="btn btn--warning">Confirm Deletion</button>
-            </div>
-            <div class="login__margin">
-              <button class="btn btn-cancel" on-click="onCancelFileFolderClick">Cancel</button>
-            </div>
-          </form>
-        </div>
-        <a href="javascript:;" on-click="onCancelFileFolderClick">
-          <iron-icon class="file-folder__icon file-folder__icon--close"
-                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
-        </a>
-      </template>
     </main>
+
+    <template is="dom-if" if="[[addFolder]]">
+      <div class="overlay"></div>
+      <div class="file-folder">
+        <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
+        <b class="file-folder__title">Add Folder</b>
+        <form action="javascript:;" method="post" class="login-form login__align-center">
+          <div class="login__margin file-folder__text-align">
+            <label for="folderinput">FOLDER TITLE</label>
+            <input type="text" class="login__input" id="folderinput" name="folder"
+                   placeholder="Enter in your new folder title…">
+          </div>
+          <hr class="login__divider-small">
+          <div class="login__margin">
+            <button class="btn btn-primary">Create Folder</button>
+          </div>
+          <div class="login__margin">
+            <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <a href="javascript:;" on-click="onCancelFolderClick">
+        <iron-icon class="file-folder__icon file-folder__icon--close"
+                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+      </a>
+    </template>
+
+    <template is="dom-if" if="[[deleteFileFolder]]">
+      <div class="overlay"></div>
+      <div class="file-folder">
+        <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
+        <b class="file-folder__title">Just Confirming </b>
+        <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these files?</p>
+        <form action="javascript:;" method="post" class="login-form login__align-center  file-folder__form file-folder__form--w100">
+          <div class="login__margin file-folder__wrap">
+            <figure class="file-folder__img">
+              <iron-icon icon="netlaw-icons:page"></iron-icon>
+            </figure>
+            <div class="file-folder__name">Estimate for Home Management .PDF</div>
+            <div class="file-folder__version">1.1</div>
+          </div>
+          <hr class="login__divider-small">
+          <div class="login__margin">
+            <button class="btn btn--warning">Confirm Deletion</button>
+          </div>
+          <div class="login__margin">
+            <button class="btn btn-cancel" on-click="onCancelFileFolderClick">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <a href="javascript:;" on-click="onCancelFileFolderClick">
+        <iron-icon class="file-folder__icon file-folder__icon--close"
+                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+      </a>
+    </template>
+
   </template>
 
   <script>
