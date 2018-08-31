@@ -465,26 +465,6 @@
         --iron-icon-width: 28px;
       }
 
-      .contacts-mobile__drawer-wrap {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-      }
-
-      .contacts-mobile__arrow {
-        position: absolute;
-        top: 335px;
-        left: -30px;
-        --iron-icon-fill-color: #999;
-        --iron-icon-height: 28px;
-        --iron-icon-width: 28px;
-      }
-
-      .contacts-mobile__arrow--bottom {
-        top: 425px;
-      }
-
       .overlay {
         position: fixed;
         z-index: 105;
@@ -634,6 +614,52 @@
           --app-drawer-width: 100%;
         }
 
+        .contacts-mobile__drawer-wrap {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+        }
+
+        .contacts-mobile__arrow {
+          position: absolute;
+          top: 335px;
+          left: -30px;
+          --iron-icon-fill-color: #999;
+          --iron-icon-height: 28px;
+          --iron-icon-width: 28px;
+        }
+
+        .contacts-mobile__arrow--bottom {
+          top: 425px;
+        }
+
+        .contacts__nav-mobile {
+          margin-top: 50px;
+          text-align: left;
+        }
+
+        .contacts__list-lvl2 {
+          padding-top: 15px;
+        }
+
+        .contacts__list-link-lvl2 {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          --iron-icon-width: 18px;
+          --iron-icon-height: 18px;
+        }
+
+        .contacts__list-item-lvl2--top-border:before {
+          border-bottom: 1px solid #979797;
+          left: 0;
+          transform: none;
+        }
+
+        .contacts__btn {
+          right: 10px;
+        }
+
       }
 
       @media (min-width: 992px) {
@@ -732,10 +758,10 @@
                       </ul>
                     </iron-dropdown>
                   </a>
-                  <iron-collapse id="collapselvl2">
+                  <iron-collapse id="collapsemobilelvl2">
                     <ul class="contacts__list-lvl3">
                       <li class="contacts__list-item-lvl3">
-                        <a name="family" href="[[routePath]]contacts/family" id="family"
+                        <a name="family" href="[[routePath]]contacts/family" id="family2"
                            class="contacts__list-link-lvl3">
                           <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Immediate Family</a>
@@ -878,7 +904,7 @@
                     </ul>
                   </iron-collapse>
                 </li>
-                <li id="mod" class="contacts__list-item-lvl2 ">
+                <li id="modmobile" class="contacts__list-item-lvl2 ">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Friends</a>
@@ -1405,6 +1431,12 @@
               this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
           }
 
+          _onToggleMobileLvl2(e) {
+              e.preventDefault();
+              this.$.collapsemobilelvl2.toggle();
+              this.$.collapsemobilelvl2.opened ? this.$.modmobilemobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobilemobile.classList.remove('lifevault__list-item-lvl2--top-border');
+          }
+
           ready(e) {
               super.ready();
 
@@ -1424,10 +1456,10 @@
 
                   if (this.page === 'create') {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
-                      this.$.button1.setAttribute('aria-expanded', false);
+                      // this.$.button1.setAttribute('aria-expanded', false);
                       this.$.collapse.hide();
                       this.$.collapselvl2.hide();
-                      this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
+                      this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
                   }
 
                   if (this.page === 'family') {
