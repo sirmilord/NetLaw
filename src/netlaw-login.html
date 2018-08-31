@@ -560,6 +560,7 @@
               api.accounts.login(this.identifier, this.password, this.name, this.phone)
                   .success(r => {
                       this._setSession(r);
+                      this.dispatchEvent(new CustomEvent("logged-in"));
                       return this._fetchProfiles()
                           .then(() => this.password = null);
                   })
@@ -572,10 +573,9 @@
               this.loading = true;
               api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
-                      this.selected = "security";
+                      //this.selected = "security";
                       this.accountId = r.user_id;
                       this.accountName = r.name;
-                      this.agreesWithTerms = false;
                       return api.accounts.login(this.email, this.password)
                           .success(r => {
                               api.ticket = r.ticket;
@@ -583,6 +583,7 @@
                               this.username = r.username;
                               this.session_id = r.session_id;
                               this.account_id = r.account_id;
+                              this.dispatchEvent(new CustomEvent("logged-in"));
                           });
                   })
                   .error(ex => {
