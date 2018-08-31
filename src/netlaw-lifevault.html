@@ -733,10 +733,10 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-align="top">
+      <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-offset="50" vertical-align="bottom">
         <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
-          <li>Add Folder
+          <li on-click="onAddFolderClick">Add Folder
             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
           </li>
           <li>Download
@@ -1062,14 +1062,14 @@
               </iron-selector>
             </ul>
             <a href="[[routePath]]smartguide/setup" class="btn btn--full">Begin SmartGuide Setup</a>
+            <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
+              <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+            </a>
           </section>
           <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
           <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
         </iron-pages>
       </app-drawer-layout>
-      <a id="addfolder" class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
-        <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
-      </a>
     </main>
 
     <!--Desktop layout-->
@@ -1587,6 +1587,7 @@
           }
 
           onAddFolderClick(e) {
+              debugger;
               e.preventDefault();
               this.addFolder = true;
               this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
