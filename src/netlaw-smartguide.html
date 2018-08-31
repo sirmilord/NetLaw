@@ -400,7 +400,7 @@
           <iron-icon icon="icons:icons:chevron-left"></iron-icon>
         </div>
         <div class="smartguide-mobile__drawer-wrap">
-          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
+          <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
             <netlaw-smartguide-setup name="setup"
                                      on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
             <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
@@ -498,28 +498,28 @@
 
                   if (this.page === 'setup') {
                       this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
                       if (sc) sc.open();
                   }
 
                   if (this.page === 'setup-step1') {
                       this.$.smartguidedrawer.open();
                       this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
                       if (sc) sc.open();
                   }
 
                   if (this.page === 'setup-step2') {
                       this.$.smartguidedrawer.open();
                       this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
                       if (sc) sc.open();
                   }
 
                   if (this.page === 'templates') {
                       this.$.smartguidedrawer.open();
                       this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
                       if (sc) sc.open();
                   }
 
