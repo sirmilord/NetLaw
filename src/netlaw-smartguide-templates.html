@@ -327,6 +327,10 @@
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
+    <template id="menu">
+      <h3>SmartGuide</h3>
+    </template>
+
     <section class="smartguide__content">
       <div class="smartguide__content-dashboard smartguide__content-dashboard--templates">
         <div class="smartguide__dashboard-row">
@@ -414,6 +418,10 @@
               else {
                   return 'Setup must be completed to use templates. It’s quick and easy!';
               }
+          }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
       }

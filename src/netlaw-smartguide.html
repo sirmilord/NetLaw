@@ -362,8 +362,6 @@
     <!--Mobile layout-->
     <main class="smartguide-mobile" hidden$="{{!mobile}}">
 
-
-
       <section class="smartguide-mobile__nav">
         <div class="smartguide-mobile__header">
           <figure class="smartguide-mobile__img">
@@ -403,7 +401,7 @@
           <iron-icon icon="icons:icons:chevron-left"></iron-icon>
         </div>
         <div class="smartguide-mobile__drawer-wrap">
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-smartguide-setup name="setup"
                                      on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
             <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
@@ -476,41 +474,59 @@
           }
 
           _routePageChanged(page) {
+
+              if (!this.mobile) {
+                  this.page = page || 'setup';
+
+                  // Change active class
+                  if (this.page === 'setup' && !this.mobile) {
+                      this.$.templateslink.classList.remove('smartguide__list-link--active');
+                      this.$.setuplink.classList.add('smartguide__list-link--active');
+                  }
+
+                  else if (this.page === 'templates' && !this.mobile) {
+                      this.$.setuplink.classList.remove('smartguide__list-link--active');
+                      this.$.templateslink.classList.add('smartguide__list-link--active');
+
+                  }
+              }
+
+              if (this.mobile) {
+
+                  this.page = page;
+              }
               // Hide empty drawer when active screen is not SmartGuide
               if (page !== undefined || page !== 'setup' || page !== 'templates' || page !== 'setup-step1'|| page !== 'setup-step2' ) {
-                   this.$.smartguidedrawer.close();
-              }
-
-              this.page = page || 'setup';
-
-              // Change active class
-              if (this.page === 'setup' && !this.mobile) {
-                  this.$.templateslink.classList.remove('smartguide__list-link--active');
-                  this.$.setuplink.classList.add('smartguide__list-link--active');
-              }
-
-              else if (this.page === 'templates' && !this.mobile) {
-                  this.$.setuplink.classList.remove('smartguide__list-link--active');
-                  this.$.templateslink.classList.add('smartguide__list-link--active');
-
+                  this.$.smartguidedrawer.close();
               }
 
               // Open Drawer after page refresh
               if (this.mobile) {
                   if (this.page === 'setup') {
                       this.$.smartguidedrawer.open();
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      if (sc) sc.open();
                   }
 
                   if (this.page === 'setup-step1') {
                       this.$.smartguidedrawer.open();
+                      this.$.smartguidedrawer.open();
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      if (sc) sc.open();
                   }
 
                   if (this.page === 'setup-step2') {
                       this.$.smartguidedrawer.open();
+                      this.$.smartguidedrawer.open();
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      if (sc) sc.open();
                   }
 
                   if (this.page === 'templates') {
                       this.$.smartguidedrawer.open();
+                      this.$.smartguidedrawer.open();
+                      let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
+                      if (sc) sc.open();
                   }
               }
             //change drawer width to 100% and move back
@@ -520,6 +536,10 @@
               } else {
                   this.$.smartguidedrawer.classList.remove('smartguide-mobile__drawer--width');
                   this.$.smartguidedrawer.persistent = false;
+              }
+
+              if(page == "" || page == null || page == "empty") {
+                  this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
               }
           }
 

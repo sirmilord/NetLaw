@@ -463,7 +463,7 @@
             </div>
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
               <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"
-                                          on-close-mobile-dropdown="onNavigateNotification"></netlaw-mobile-notification>
+                                          on-close-mobile-dropdown="_onNavigateNotification"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
           <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"

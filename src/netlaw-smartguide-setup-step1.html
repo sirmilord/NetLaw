@@ -536,6 +536,10 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout -->
+    <template id="menu">
+      <h3>SmartGuide</h3>
+    </template>
+
     <main class="smartguide smartguide--mobile" hidden$="{{!mobile}}">
       <div class="smartguide__content-dashboard">
         <nav class="smartguid__step-list">
@@ -737,6 +741,10 @@
 
           tooltip() {
               this.$.dropdown.open();
+          }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
       }
 

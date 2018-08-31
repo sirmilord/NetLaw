@@ -195,6 +195,10 @@
     </style>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
+    <template id="menu">
+      <h3>SmartGuide</h3>
+    </template>
+
     <section class="smartguide__content">
       <h1>SmartGuide Setup</h1>
       <figure>
@@ -219,6 +223,10 @@
 
           closeDrawer(e) {
               this.dispatchEvent(new CustomEvent("close-smartguide-drawer"));
+          }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
       }
 
