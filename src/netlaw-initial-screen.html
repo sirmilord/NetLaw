@@ -176,7 +176,7 @@
               super.ready();
 
               this.menu = this.$.menu;
-              // this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
           open() {

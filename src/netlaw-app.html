@@ -505,7 +505,7 @@
               <iron-icon icon="netlaw-icons:find-attorney" slot="item-icon"></iron-icon>
               Find Attorney
             </a>
-            <a name="contacts" href="[[rootPath]]contacts/create">
+            <a name="contacts" href="[[rootPath]]contacts">
               <iron-icon icon="netlaw-icons:contacts" slot="item-icon"></iron-icon>
               Contacts
             </a>
@@ -671,7 +671,9 @@
               // let pageSelected = this.shadowRoot.querySelector("#pages").selectedItem;
               // let template = pageSelected && (pageSelected.menu || this.querySelector("#mainmenu"));
               // this._applyMenu(pageSelected, template);
-
+              if(page == "" || page == null || page == "initial-screen") {
+                  this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              }
 
 
           }

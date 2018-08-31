@@ -484,17 +484,18 @@
                   }
               }
 
-              if(page == "" || page == null || page == "setup") {
-                  this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
-              }
-
               // Hide empty drawer when active screen is not SmartGuide
-              if (page !== undefined || page !== 'setup' || page !== 'templates' || page !== 'setup-step1'|| page !== 'setup-step2' ) {
+              /*if (page !== undefined || page !== 'setup' || page !== 'templates' || page !== 'setup-step1'|| page !== 'setup-step2' ) {
                   this.$.smartguidedrawer.close();
-              }
+              }*/
 
               // Open Drawer after page refresh
               if (this.mobile) {
+
+                  if(page == "" || page == null || page == "setup") {
+                      this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+                  }
+
                   if (this.page === 'setup') {
                       this.$.smartguidedrawer.open();
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
