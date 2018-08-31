@@ -156,7 +156,13 @@
           static get properties() {
               return {
                   toggleIcon: {
-                      type: String
+                      type: String,
+                  },
+                  visible: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
                   },
               };
           }
@@ -174,18 +180,9 @@
           }
 
           onNavigateNotification(e) {
-
-              if (this.visible) {
-                  // this.shadowRoot.querySelector("#dropdownmobilenotification").open();
-                  this.dispatchEvent(new CustomEvent('mobile-notification-open', {bubbles: true, composed: true}));
-                  this.toggleIcon = 'netlaw-icons:notifications-open'
-              } else {
-                  this.dispatchEvent(new CustomEvent('mobile-notification-close', {bubbles: true, composed: true}));
-                  // this.shadowRoot.querySelector("#dropdownmobilenotification").close();
-                  this.toggleIcon = 'netlaw-icons:notifications'
-              }
-
               this.visible = !this.visible;
+              this.visible ?  this.toggleIcon = 'netlaw-icons:notifications-open': this.toggleIcon = 'netlaw-icons:notifications';
+              this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
           }
       }
 

@@ -456,17 +456,16 @@
             <div class="navbar-mobile">
               <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
               <slot name="placeholder" id="placeholder"></slot>
-              <div id="mainmenu" show$={{show}}>
-                <netlaw-logo class="mobile"></netlaw-logo>
-                <paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>
-              </div>
+              <!--<div id="mainmenu" show$={{show}}>-->
+                <!--<netlaw-logo class="mobile"></netlaw-logo>-->
+                <!--<paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>-->
+              <!--</div>-->
             </div>
             <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
               <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"
                                           on-close-mobile-dropdown="onNavigateNotification"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
-          <!--<iron-pages selected="[[active]]" attr-for-selected="name" role="main" fallback-selection="initial-screen">-->
           <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                       fallback-selection="initial-screen" on-menu-changed="_onMenuChanged">
             <netlaw-smartguide name="smartguide" route="[[subroute]]"
@@ -491,7 +490,6 @@
         </app-header-layout>
 
         <netlaw-mobile-drawer>
-          <!--<iron-selector selected="[[active]]" attr-for-selected="name" class="drawer-nav drawer-list drawer-nav&#45;&#45;mobile"-->
           <iron-selector selected="[[page]]" attr-for-selected="name"
                          class="drawer-nav drawer-list drawer-nav--mobile"
                          role="navigation">
@@ -709,20 +707,11 @@
           }
 
           onDrawerShow(e) {
-              console.log('yes');
               this.shadowRoot.querySelector('#drawer').toggle();
           }
 
           _onNavigateNotification(e) {
-              // this.visible = !this.visible;
-
-              if (e.type === "mobile-notification-open") {
-                  this.shadowRoot.querySelector("#dropdownmobilenotification").open();
-                  // this.toggleIcon = 'netlaw-icons:notifications-open'
-              } else {
-                  this.shadowRoot.querySelector("#dropdownmobilenotification").close();
-                  // this.toggleIcon = 'netlaw-icons:notifications'
-              }
+              this.shadowRoot.querySelector("#dropdownmobilenotification").toggle();
           }
 
           BubbleUps(e) {
@@ -741,8 +730,7 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
-              this.addEventListener('mobile-notification-open', this._onNavigateNotification);
-              this.addEventListener('mobile-notification-close', this._onNavigateNotification);
+              this.addEventListener('mobile-notification', this._onNavigateNotification);
           }
 
           _onMenuChanged(e) {
