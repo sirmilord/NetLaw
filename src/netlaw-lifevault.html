@@ -718,27 +718,10 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <button on-click="_onFolders">MENU</button>
-      <paper-icon-button icon="netlaw-icons:menu-circle" on-click="_onFolders"></paper-icon-button>
-        <iron-dropdown id="headerdropdown">
-          <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
-            <li>Add Folder
-              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-            </li>
-            <li>Download
-              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-            </li>
-            <li>Print
-              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-            </li>
-            <li>Share
-              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-            </li>
-          </ul>
-        </iron-dropdown>
 
-      <paper-menu-button  horizontal-align="right" vertical-align="top">
-        <paper-icon-button icon="menu" slot="dropdown-trigger"></paper-icon-button>
+
+      <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-align="top">
+        <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
         <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
           <li>Add Folder
             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
@@ -754,26 +737,6 @@
           </li>
         </ul>
       </paper-menu-button>
-
-      <!--<a href="javascript:;" on-click="_onFolders">-->
-        <!--<iron-icon icon="netlaw-icons:menu-circle" ></iron-icon>-->
-        <!--<iron-dropdown id="headerdropdown">-->
-          <!--<ul class="lifevault__addfolder-dropdown" slot="dropdown-content">-->
-            <!--<li>Add Folder-->
-              <!--<iron-icon icon="netlaw-icons:add-icon"></iron-icon>-->
-            <!--</li>-->
-            <!--<li>Download-->
-              <!--<iron-icon icon="netlaw-icons:download-icon"></iron-icon>-->
-            <!--</li>-->
-            <!--<li>Print-->
-              <!--<iron-icon icon="netlaw-icons:print-icon"></iron-icon>-->
-            <!--</li>-->
-            <!--<li>Share-->
-              <!--<iron-icon icon="netlaw-icons:share-icon"></iron-icon>-->
-            <!--</li>-->
-          <!--</ul>-->
-        <!--</iron-dropdown>-->
-      <!--</a>-->
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
