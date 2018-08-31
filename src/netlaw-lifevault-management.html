@@ -1053,6 +1053,12 @@
           font-size: 14px;
           color: #01AA50;
         }
+
+        .lifevault__add-folder {
+          bottom: 10%;
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+        }
       }
 
 
@@ -1068,55 +1074,6 @@
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
       <netlaw-dashboard-mobile></netlaw-dashboard-mobile>
-      <!--<ul class="lifevault-mobile__dashboard" >-->
-        <!--<li class="lifevault-mobile__dashboard-item">-->
-          <!--<netlaw-search></netlaw-search>-->
-        <!--</li>-->
-        <!--<li class="lifevault-mobile__dashboard-item">-->
-          <!--<a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openSortBy">Sort By</a>-->
-          <!--<iron-dropdown id="sortbydropdown" vertical-offset="0">-->
-            <!--<ul class="addfolder-dropdown addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
-              <!--<li>Sort By - - -</li>-->
-              <!--<li>Title-->
-                <!--<iron-icon icon="netlaw-icons:sort-title-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li>Newest-->
-                <!--<iron-icon icon="netlaw-icons:sort-newest-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li>Oldest-->
-                <!--<iron-icon icon="netlaw-icons:sort-oldest-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li>SmartGuide Only-->
-                <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
-              <!--</li>-->
-            <!--</ul>-->
-          <!--</iron-dropdown>-->
-        <!--</li>-->
-        <!--<li class="lifevault-mobile__dashboard-item">-->
-          <!--<a class="lifevault-mobile__dashboard-link" href="javascript:;" on-click="openBulkAction">Bulk Action</a>-->
-          <!--<iron-dropdown id="bulkactiondropdown" vertical-offset="0">-->
-            <!--&lt;!&ndash;no-auto-focus no-cancel-on-outside-click>&ndash;&gt;-->
-            <!--<ul class="addfolder-dropdown addfolder-dropdown&#45;&#45;sort" slot="dropdown-content">-->
-              <!--<li>Bulk Action -</li>-->
-              <!--<li>Download-->
-                <!--<iron-icon icon="netlaw-icons:download-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li>Print-->
-                <!--<iron-icon icon="netlaw-icons:print-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li on-click="onShareFileClick">Share-->
-                <!--<iron-icon icon="netlaw-icons:share-icon"></iron-icon>-->
-              <!--</li>-->
-              <!--<li>Delete-->
-                <!--<iron-icon icon="netlaw-icons:delete-icon"></iron-icon>-->
-              <!--</li>-->
-            <!--</ul>-->
-          <!--</iron-dropdown>-->
-        <!--</li>-->
-        <!--<li class="lifevault-mobile__dashboard-item">-->
-        <!--</li>-->
-      <!--</ul>-->
-
       <div class="lifevault__module lifevault__module--list">
         <div class="lifevault__module-list-item">
           <div class="lifevault__list-left">
@@ -1527,7 +1484,10 @@
           </div>
         </div>
       </div>
-
+      <a id="addfile" on-click="onAddFileClick" class="lifevault__add-folder lifevault__add-folder--show"
+         href="javascript:;">
+        <iron-icon icon="netlaw-icons:add-file"></iron-icon>
+      </a>
     </main>
 
     <!--Desktop layout-->
@@ -2745,19 +2705,19 @@
           }
 
           //for mobile
-          openSortBy() {
-              this.$.sortbydropdown.open();
-          }
+          // openSortBy() {
+          //     this.$.sortbydropdown.open();
+          // }
 
           //for mobile
-          openBulkAction() {
-              this.$.bulkactiondropdown.open();
-          }
+          // openBulkAction() {
+          //     this.$.bulkactiondropdown.open();
+          // }
 
           //for mobile
-          hideDashboard() {
-              this.close = true;
-          }
+          // hideDashboard() {
+          //     this.close = true;
+          // }
 
           //for mobile
           onClose(e) {
