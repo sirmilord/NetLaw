@@ -718,8 +718,6 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-
-
       <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-align="top">
         <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
         <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
@@ -1462,17 +1460,6 @@
                   toggleIcon: {
                       type: String
                   },
-                  //for mobile
-                  // toggleHeaderIcon: {
-                  //     type: String
-                  // },
-                  //for mobile
-                  // childPage: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
 
                   page: { type: String, observer:'_pageChanged' },
 
@@ -1534,7 +1521,7 @@
 
               this.menu = this.$.menu;
               //close lifevault-management
-              this.addEventListener('close-lifevault-child', this._closeChild);
+              // this.addEventListener('close-lifevault-child', this._closeChild);
           }
 
           _pageChanged(page) {
@@ -1561,15 +1548,13 @@
 
               }
 
-              if(page =="" || page ==null || page =="empty") {
+              if(page == "" || page == null || page == "empty") {
                   this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
               }
 
               if (this.mobile) {
 
                   if (page === 'management') {
-                      // this.childPage = true;
-                      // this.toggleHeaderIcon = 'netlaw-icons:close';
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
                       if (sc) sc.open();
@@ -1591,23 +1576,23 @@
           }
 
           //for mobile - change icon in the header
-          _onFolders(e) {
+          // _onFolders(e) {
               // debugger;
               // console.log(Polymer.dom(this.root).querySelector('iron-dropdown'));
               // console.log(Polymer.dom(this.root).querySelector('#headerdropdown'));
               //  console.log(e.target.querySelector('#headerdropdown'));
               //  console.log(e.target.querySelector('iron-dropdown'));
-              let dropdown = this.shadowRoot.querySelector('iron-dropdown');
-              dropdown.toggle();
+              // let dropdown = this.shadowRoot.querySelector('iron-dropdown');
+              // dropdown.toggle();
               //if (dropdown.opened) dropdown.close(); else dropdown.open();
-              console.log(dropdown.opened);
+              // console.log(dropdown.opened);
               //this.$.headerdropdown.open();
-          }
+          // }
 
           //for mobile
           _closeChild(e) {
               // this.childPage = false;
-              this.page = null;
+              // this.page = null;
           }
 
           onAddFolderClick(e) {
