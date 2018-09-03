@@ -604,6 +604,88 @@
         font-weight: 300;
       }
 
+      .file-folder__title-delete {
+        color: #4A4A4A;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+      }
+
+      .file-folder label {
+        color: #C2C2C2;
+        font-size: 10px;
+      }
+
+      .file-folder .file-folder__text-align {
+        text-align: left;
+      }
+
+      .file-folder .login__divider-small {
+        margin-top: 35px;
+        margin-bottom: 35px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .file-folder__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*width: 400px;*/
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+
+      .file-folder__form--w100 {
+        width: 100%;
+      }
+
+      .file-folder .btn-cancel {
+        color: #4A4A4A;
+      }
+
+      .file-folder__item {
+        flex: 1 1 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .file-folder__photo {
+        margin: 0 10px 0 0;
+        --iron-icon-fill-color: #000;
+        --iron-icon-height: 40px;
+        --iron-icon-width: 40px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .file-folder__surname {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .file-folder__surname-desc {
+        color: #4A4A4A;
+        font-size: 12px;
+        font-weight: 300;
+      }
+
+
+
+
+
+
+
+
       .conatcts__list-item-lvl2--top-border:before {
         content: '';
         position: absolute;
@@ -775,7 +857,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -805,7 +887,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -833,7 +915,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -861,7 +943,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -889,7 +971,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -917,7 +999,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -951,7 +1033,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -982,7 +1064,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1013,7 +1095,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1047,7 +1129,7 @@
               </iron-selector>
             </ul>
           </section>
-          <netlaw-contacts-family name="family"></netlaw-contacts-family>
+          <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
         </iron-pages>
       </app-drawer-layout>
     </main>
@@ -1107,7 +1189,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1137,7 +1219,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -1165,7 +1247,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -1193,7 +1275,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -1221,7 +1303,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -1249,7 +1331,7 @@
                               <li>Share
                                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                               </li>
-                              <li>Delete
+                              <li on-click="onDeleteContactClick">Delete
                                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                               </li>
                             </ul>
@@ -1283,7 +1365,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1314,7 +1396,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1345,7 +1427,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteContactClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1360,7 +1442,7 @@
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
         <netlaw-contacts-create name="create"></netlaw-contacts-create>
-        <netlaw-contacts-family name="family"></netlaw-contacts-family>
+        <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
       </iron-pages>
     </main>
 
@@ -1385,6 +1467,49 @@
         </form>
       </div>
       <a href="javascript:;" on-click="onCancelFolderClick">
+        <iron-icon class="file-folder__icon file-folder__icon--close"
+                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+      </a>
+    </template>
+
+    <template is="dom-if" if="[[deleteContact]]">
+      <div class="overlay"></div>
+      <div class="file-folder">
+        <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
+        <b class="file-folder__title-delete">Just Confirming </b>
+        <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these contacts?</p>
+        <form action="javascript:;" method="post"
+              class="login-form login__align-center  file-folder__form file-folder__form--w100">
+          <div class="login__margin file-folder__wrapper">
+            <div class="file-folder__item">
+              <figure class="file-folder__photo">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </figure>
+              <div class="file-folder__item-wrap">
+                <div class="file-folder__surname">Hannah Doe</div>
+                <div class="file-folder__surname-desc">Eldest Daughter</div>
+              </div>
+            </div>
+            <div class="file-folder__item">
+              <figure class="file-folder__photo">
+                <iron-icon icon="netlaw-icons:page"></iron-icon>
+              </figure>
+              <div class="file-folder__item-wrap">
+                <div class="file-folder__surname">Hannah Doe</div>
+                <div class="file-folder__surname-desc">Eldest Daughter</div>
+              </div>
+            </div>
+          </div>
+          <hr class="login__divider-small">
+          <div class="login__margin">
+            <button class="btn btn--warning">Confirm Deletion</button>
+          </div>
+          <div class="login__margin">
+            <button class="btn btn-cancel" on-click="onCancelDeleteContactClick">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <a href="javascript:;" on-click="onCancelDeleteContactClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -1427,6 +1552,12 @@
                   subroute: Object,
                   page: {type: String, observer: '_pageChanged'},
                   addFolder: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  deleteContact: {
                       type: Boolean,
                       notify: true,
                       reflectToAttribute: true,
@@ -1531,6 +1662,18 @@
               this.$.contactsdrawer.close();
               this.$.collapsemobilelvl2.toggle();
               this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
+          }
+
+          onDeleteContactClick(e) {
+              e.preventDefault();
+              this.deleteContact = true;
+              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+          }
+
+          onCancelDeleteContactClick(e) {
+              e.preventDefault();
+              this.deleteContact = false;
+              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
       }
 
