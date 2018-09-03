@@ -126,6 +126,8 @@
                       <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
                              required autofocus autocomplete="username" value="{{identifier::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
 
+                      <span hidden$="[[!error]]">[[error]]</span>
+
                       <!--<paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>-->
 
                     </div>
@@ -564,7 +566,7 @@
                       return this._fetchProfiles()
                           .then(() => this.password = null);
                   })
-                  .notFound(ex => this.error = "Wrong password. Try again or try resetting it.")
+                  .notFound(ex => this.error = "Wrong username or password. Try again or try resetting it.")
                   .finally(() => this.loading = false);
           }
 

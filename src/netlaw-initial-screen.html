@@ -157,35 +157,27 @@
               return {
                   toggleIcon: {
                       type: String,
+                      computed: '_computeIcon(opened)',
                   },
-                  visible: {
+                  opened: {
                       type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
                       value: false
                   },
               };
           }
 
-          constructor() {
-              super();
-              this.toggleIcon = 'netlaw-icons:notifications';
-          }
-
-          ready(e) {
-              super.ready();
-
-              this.menu = this.$.menu;
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+          _computeIcon(opened){
+              return opened ? 'netlaw-icons:notifications-open': 'netlaw-icons:notifications';
           }
 
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: false, menu: this.$.menu}}));
           }
 
           onNavigateNotification(e) {
-              this.visible = !this.visible;
-              this.visible ?  this.toggleIcon = 'netlaw-icons:notifications-open': this.toggleIcon = 'netlaw-icons:notifications';
+              console.log(e);
+              //this.visible = !this.visible;
+              //this.visible ?  this.toggleIcon = 'netlaw-icons:notifications-open': this.toggleIcon = 'netlaw-icons:notifications';
               this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
           }
       }

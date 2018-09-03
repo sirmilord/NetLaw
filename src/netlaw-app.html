@@ -456,16 +456,15 @@
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <div class="navbar-mobile">
-              <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle></paper-icon-button>
+              <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle hidden$="[[fullMenu]]"></paper-icon-button>
               <slot name="placeholder" id="placeholder"></slot>
               <!--<div id="mainmenu" show$={{show}}>-->
                 <!--<netlaw-logo class="mobile"></netlaw-logo>-->
                 <!--<paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>-->
               <!--</div>-->
             </div>
-            <iron-dropdown id="dropdownmobilenotification" vertical-offset="50">
-              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"
-                                          on-close-mobile-dropdown="_onNavigateNotification"></netlaw-mobile-notification>
+            <iron-dropdown id="dropdownmobilenotification" vertical-offset="50" opened="{{notificationOpened}}">
+              <netlaw-mobile-notification id="mobilenotification" slot="dropdown-content"></netlaw-mobile-notification>
             </iron-dropdown>
           </app-header>
           <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
@@ -484,7 +483,7 @@
             <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
             <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
             <netlaw-add-module name="add-module"></netlaw-add-module>
-            <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
+            <netlaw-initial-screen name="initial-screen" opened="[[notificationOpened]]"></netlaw-initial-screen>
             <netlaw-mobile-notification name="mobile-notification"></netlaw-mobile-notification>
             <view-404 name="view-404"></view-404>
           </iron-pages>
@@ -619,7 +618,7 @@
                       reflectToAttribute: true,
                       value: false
                   },
-
+                  fullMenu: {type:Boolean, value:false},
               };
           }
 
@@ -681,14 +680,15 @@
 
           }
 
-          _applyMenu(component, template) {
+          _applyMenu(component, template, full = false) {
               let placeholder = this.shadowRoot.querySelector('#placeholder');
               if (!placeholder) {
-                  setTimeout(() => this._applyMenu(component, template));
+                  setTimeout(() => this._applyMenu(component, template, full));
                   return;
               }
               while (placeholder.firstChild) placeholder.removeChild(placeholder.firstChild);
 
+              this.fullMenu=full;
               if (template) {
                   let instance = component instanceof Polymer.Element ? component._stampTemplate(template) : this._stampTemplate(template);
                   placeholder.appendChild(instance);
@@ -708,6 +708,12 @@
                   null,
                   this._showPage404.bind(this),
                   true);
+
+              let pages = this.shadowRoot.querySelector("iron-pages");
+              console.log(pages,pages && pages.selectedItem);
+              if (!pages) setTimeout(()=> this._pageChanged(page));
+              else if (pages.selectedItem.open) pages.selectedItem.open();
+
           }
 
           _showPage404() {
@@ -742,7 +748,8 @@
           }
 
           _onMenuChanged(e) {
-              this._applyMenu(e.path[0], e.detail);
+              let issimple = e.detail instanceof Element;
+              this._applyMenu(e.path[0], issimple ? e.detail: e.detail.menu, issimple ? false: e.detail.full);
           }
 
           // _closeLifevaultChild() {
