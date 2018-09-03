@@ -1,0 +1,189 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+<!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
+<!--<link rel="import" href="../bower_components/neon-animation/web-animations.html">-->
+
+<dom-module id="netlaw-search">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      :host([pressed]) iron-icon {
+        border-bottom: 1px solid var(--app-header-color);
+      }
+
+      :host([pressed]) input {
+        border-bottom: 1px solid var(--app-header-color);
+      }
+
+      netlaw-search paper-icon-button {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+      }
+
+      :host([pressed]) paper-icon-button {
+        padding: 8px 12px;
+      }
+
+      paper-icon-button {
+        z-index: 99;
+      }
+
+      input[type=search] {
+        border: 0;
+        padding-left: 26px;
+        top: 9px;
+        position: absolute;
+        left: 13px;
+        width: 270px;
+        height: 24px;
+        line-height: 24px;
+        border-bottom: 1px solid #979797;
+        -webkit-appearance: textfield;
+      }
+
+      input[type=search]::placeholder {
+        font-size: 14px;
+      }
+
+      input[type=search]:focus {
+        outline: 0;
+      }
+
+      #dropdown {
+        width: 300px;
+        background-color: var(--app-header-bg);
+        border: 1px solid #C2C2C2;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.30);
+        border-radius: 2px;
+      }
+
+      paper-icon-button {
+        z-index: 99;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        font-size: 16px;
+        padding: 10px;
+        color: #333;
+      }
+
+      #dropdown {
+        background-color: var(--app-header-bg);
+        padding: 15px;
+        border: 1px solid #C2C2C2;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.30);
+        border-radius: 2px;
+      }
+
+      @media (min-width: 1200px) {
+        :host {
+          margin-left: 15%;
+        }
+      }
+
+    </style>
+
+    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
+
+    <!--<iron-input>-->
+      <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
+           hidden$="[[!visible]]" on-mouseover="openChoices">
+    <!--</iron-input>-->
+
+    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
+      <ul slot="dropdown-content">
+        <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
+        <li>Listed result contact item 2 …</li>
+        <li>Listed result contact item 3…</li>
+        <li>Listed result contact item 4…</li>
+        <br/>
+        <li>Listed result in document item 1…</li>
+        <li>Listed result in document item 2…</li>
+        <li>Listed result in document item 3…</li>
+        <li>Listed result in document item 4…</li>
+      </ul>
+    </iron-dropdown>
+
+  </template>
+
+  <script>
+
+      class NetlawSearch extends Polymer.Element {
+          static get is() {
+              return 'netlaw-search';
+          }
+
+          static get properties() {
+              return {
+                  pressed: {
+                      type: Boolean,
+                      notify: true,
+                      reflectToAttribute: true,
+                      value: false
+                  },
+                  toggleIcon: {
+                      type: String
+                  },
+                  visible: {type: Boolean, value: false,},
+              };
+          }
+
+          constructor() {
+              super();
+              this.addEventListener('blur', e => this.close());
+              this.toggleIcon = 'netlaw-icons:search';
+              // this.target = this.$.search;
+          }
+
+          open() {
+              this.visible = true;
+              this.pressed = true;
+              this.toggleIcon = 'netlaw-icons:close-search';
+              this.$.search.focus();
+
+          }
+
+          close() {
+              this.visible = false;
+              this.pressed = false;
+              this.$.dropdown.close();
+              this.toggleIcon = 'netlaw-icons:search';
+          }
+
+          toggle() {
+              this.visible ? this.close() : this.open();
+          }
+
+          openChoices() {
+              this.$.dropdown.open();
+          }
+          // ready(){
+          //     super.ready();
+          //     console.log(this.$.dropdown.querySelector('ul'));
+          //     console.log(this.shadowRoot.querySelector('ul'));
+          // }
+
+      }
+
+      customElements.define(NetlawSearch.is, NetlawSearch);
+  </script>
+
+</dom-module>

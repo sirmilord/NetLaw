@@ -25,6 +25,7 @@
 <link rel="import" href="netlaw-icons.html">
 <link rel="import" href="netlaw-logo.html">
 <link rel="import" href="netlaw-search.html">
+<link rel="import" href="netlaw-search-mobile.html">
 <link rel="import" href="netlaw-notification.html">
 <link rel="import" href="netlaw-user.html">
 <link rel="import" href="netlaw-user-menu.html">
@@ -736,7 +737,7 @@
               super.ready();
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
-              this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
+              // this.addEventListener('close-lifevault-child', this._closeLifevaultChild);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
           }
 
