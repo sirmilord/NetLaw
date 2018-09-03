@@ -1223,7 +1223,12 @@
 
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
+    <!--Mobile layout-->
+    <main class="contacts__mobile" hidden$={{!mobile}}>
+      <netlaw-dashboard-mobile></netlaw-dashboard-mobile>
+    </main>
 
+    <!--Desktop layout-->
     <section class="contacts__content" hidden$={{mobile}}>
       <netlaw-topbar>
         <h2 slot="title">Immediate Family</h2>
