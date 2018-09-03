@@ -605,7 +605,7 @@
 
       .contacts__name {
         width: 100%;
-        color: #a2a2a2;
+        color: #4A4A4A;
         font-size: 18px;
         font-weight: 300;
         line-height: 1.2;
@@ -688,7 +688,7 @@
       .contacts__name-desc {
         flex: 1 1 100%;
         max-width: 100%;
-        color: #a2a2a2;
+        color: #4A4A4A;
         font-size: 18px;
         font-weight: 300;
       }
@@ -1027,15 +1027,15 @@
       }
 
       .file-folder__icon {
-        --iron-icon-width: 45px;
-        --iron-icon-height: 45px;
+        --iron-icon-width: 85px;
+        --iron-icon-height: 85px;
       }
 
       .file-folder__icon--close {
         --iron-icon-fill-color: #4a4a4a;
         position: fixed;
         bottom: 5%;
-        right: 2%;
+        right: 5%;
         z-index: 105;
       }
 
@@ -1147,7 +1147,6 @@
         display: none;
       }
 
-
       @media (min-width: 1200px) {
         .file-folder__left paper-icon-button {
           width: 160px;
@@ -1219,11 +1218,254 @@
         }
       }
 
+      @media (max-width: 767px) {
+        .file-folder__icon--close {
+          bottom: 7%;
+        }
+
+        .file-folder__icon {
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+        }
+
+        .contacts__module-list-item {
+          padding-left: 20px;
+          padding-right: 20px;
+          position: relative;
+        }
+
+        .contacts__module-list-item:after {
+          content: '';
+          width: 100%;
+          height: 1px;
+          background-color: #979797;
+          left: 0;
+          bottom: 0;
+          position: absolute;
+          opacity: .3;
+        }
+
+        .contacts__file-folder {
+          bottom: 10%;
+          right: 5%;
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+        }
+
+        .contacts__photo--list img {
+          width: 36px;
+          height: 36px;
+        }
+
+        .contacts__list-left {
+          margin-right: 15px;
+        }
+
+        .contacts__name {
+          font-size: 16px;
+        }
+
+        .contacts__desc {
+          font-size: 14px;
+        }
+        
+        .contacts__details--list {
+          color: #01AA50;
+          font-size: 14px;
+        }
+
+        .contacts__menu {
+          --iron-icon-height: 32px;
+          --iron-icon-width: 32px;
+          margin-left: 20px;
+        }
+
+        .contacts__list-right {
+          display: flex;
+          align-items: center;
+        }
+
+        .file-folder__desc {
+          width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .file-folder__wrapper {
+          width: 360px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
     </style>
 
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
+    <!--Mobile layout-->
+    <main class="contacts__mobile" hidden$={{!mobile}}>
+      <netlaw-dashboard-mobile></netlaw-dashboard-mobile>
+      <div class="contacts__module contacts__module--list">
+        <div class="contacts__module-list-item">
+          <div class="contacts__list-left">
+            <figure class="contacts__photo contacts__photo--list">
+              <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+            </figure>
+          </div>
+          <div class="contacts__list-center">
+            <span class="contacts__name">Mabelle Doe</span>
+            <span class="contacts__desc">Spouse</span>
+          </div>
+          <div class="contacts__list-right">
+            <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            </a>
+            <a class="contacts__menu" href="javascript:;">
+              <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown horizontal-align="right">
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                    slot="dropdown-content">
+                  <li>Download
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                  </li>
+                  <li>Rename
+                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                  </li>
+                  <li on-click="onDeleteContactClick">Delete
+                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
+            </a>
+          </div>
+        </div>
+        <div class="contacts__module-list-item">
+          <div class="contacts__list-left">
+            <figure class="contacts__photo contacts__photo--list">
+              <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+            </figure>
+          </div>
+          <div class="contacts__list-center">
+            <span class="contacts__name">Mabelle Doe</span>
+            <span class="contacts__desc">Spouse</span>
+          </div>
+          <div class="contacts__list-right">
+            <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            </a>
+            <a class="contacts__menu" href="javascript:;">
+              <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown horizontal-align="right">
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                    slot="dropdown-content">
+                  <li>Download
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                  </li>
+                  <li>Rename
+                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                  </li>
+                  <li on-click="onDeleteContactClick">Delete
+                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
+            </a>
+          </div>
+        </div>
+        <div class="contacts__module-list-item">
+          <div class="contacts__list-left">
+            <figure class="contacts__photo contacts__photo--list">
+              <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+            </figure>
+          </div>
+          <div class="contacts__list-center">
+            <span class="contacts__name">Mabelle Doe</span>
+            <span class="contacts__desc">Spouse</span>
+          </div>
+          <div class="contacts__list-right">
+            <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            </a>
+            <a class="contacts__menu" href="javascript:;">
+              <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown horizontal-align="right">
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                    slot="dropdown-content">
+                  <li>Download
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                  </li>
+                  <li>Rename
+                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                  </li>
+                  <li on-click="onDeleteContactClick">Delete
+                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
+            </a>
+          </div>
+        </div>
+        <div class="contacts__module-list-item">
+          <div class="contacts__list-left">
+            <figure class="contacts__photo contacts__photo--list">
+              <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+            </figure>
+          </div>
+          <div class="contacts__list-center">
+            <span class="contacts__name">Mabelle Doe</span>
+            <span class="contacts__desc">Spouse</span>
+          </div>
+          <div class="contacts__list-right">
+            <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            </a>
+            <a class="contacts__menu" href="javascript:;">
+              <iron-icon icon="icons:more-vert"></iron-icon>
+              <iron-dropdown horizontal-align="right">
+                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                    slot="dropdown-content">
+                  <li>Download
+                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                  </li>
+                  <li>Print
+                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                  </li>
+                  <li>Rename
+                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                  </li>
+                  <li>Share
+                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                  </li>
+                  <li on-click="onDeleteContactClick">Delete
+                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                  </li>
+                </ul>
+              </iron-dropdown>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
 
+    <!--Desktop layout-->
     <section class="contacts__content" hidden$={{mobile}}>
       <netlaw-topbar>
         <h2 slot="title">Immediate Family</h2>
@@ -1478,7 +1720,7 @@
       </div>
 
       <div id="list" class="contacts__wrap">
-        <div class="contacts__module--list">
+        <div class="contacts__module contacts__module--list">
           <div class="contacts__module-list-item">
             <div class="contacts__list-left">
               <label class="contacts__checkbox-container contacts__checkbox-container--list">
@@ -1652,10 +1894,11 @@
           </div>
         </div>
       </div>
-      <a class="contacts__file-folder" href="javascript:;" on-click="onAddContactClick">
-        <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
-      </a>
     </section>
+
+    <a class="contacts__file-folder" href="javascript:;" on-click="onAddContactClick">
+      <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
+    </a>
 
     <template is="dom-if" if="[[addContact]]">
       <div class="overlay"></div>
@@ -1750,49 +1993,6 @@
       </section>
     </template>
 
-    <template is="dom-if" if="[[deleteContact]]">
-      <div class="overlay"></div>
-      <div class="file-folder file-folder--delete">
-        <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
-        <b class="file-folder__title-delete">Just Confirming </b>
-        <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these contacts?</p>
-        <form action="javascript:;" method="post"
-              class="login-form login__align-center  file-folder__form file-folder__form--w100">
-          <div class="login__margin file-folder__wrapper">
-            <div class="file-folder__item">
-              <figure class="file-folder__photo">
-                <iron-icon icon="netlaw-icons:page"></iron-icon>
-              </figure>
-              <div class="file-folder__item-wrap">
-              <div class="file-folder__surname">Hannah Doe</div>
-              <div class="file-folder__surname-desc">Eldest Daughter</div>
-              </div>
-            </div>
-            <div class="file-folder__item">
-              <figure class="file-folder__photo">
-                <iron-icon icon="netlaw-icons:page"></iron-icon>
-              </figure>
-              <div class="file-folder__item-wrap">
-              <div class="file-folder__surname">Hannah Doe</div>
-              <div class="file-folder__surname-desc">Eldest Daughter</div>
-              </div>
-            </div>
-          </div>
-          <hr class="login__divider-small">
-          <div class="login__margin">
-            <button class="btn btn--warning">Confirm Deletion</button>
-          </div>
-          <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onCancelContactClick">Cancel</button>
-          </div>
-        </form>
-      </div>
-      <a href="javascript:;" on-click="onCancelContactClick">
-        <iron-icon class="file-folder__icon file-folder__icon--close"
-                   icon="netlaw-icons:cancel-btn-circle"></iron-icon>
-      </a>
-    </template>
-
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
@@ -1818,12 +2018,6 @@
                       type: String
                   },
                   addContact: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  deleteContact: {
                       type: Boolean,
                       notify: true,
                       reflectToAttribute: true,
@@ -1904,14 +2098,12 @@
           onCancelContactClick(e) {
               e.preventDefault();
               this.addContact = false;
-              this.deleteContact = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
           onDeleteContactClick(e) {
               e.preventDefault();
-              this.deleteContact = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('delete-contact', {bubbles: true, composed: true}));
           }
 
 
