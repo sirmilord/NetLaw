@@ -69,6 +69,13 @@
         min-height: 75px;
       }
 
+      .login__error {
+        color: #ff0000;
+        margin-top: 15px;
+        display: block;
+        transition: all 0.3s;
+      }
+
       @media (min-width: 320px) and (max-width: 767px) {
 
         .login-buttons {
@@ -125,18 +132,12 @@
                       <label for="login-name"></label>
                       <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
                              required autofocus autocomplete="username" value="{{identifier::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
-
-                      <span hidden$="[[!error]]">[[error]]</span>
-
-                      <!--<paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>-->
-
                     </div>
                     <div class="login__margin">
                       <label for="login-pass"></label>
                       <input type="password" class="login__input" id="login-pass" name="password" placeholder="Password*"
                              autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
-
-                      <!--<paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>-->
+                      <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
 
                     </div>
                     <div class="login__margin-top">

@@ -1555,6 +1555,8 @@
               }));
 
               this.menu = this.$.menu;
+
+              this._pageChanged(this.page);
           }
 
           open(){
@@ -1567,6 +1569,8 @@
 
               if (!this.mobile) {
                   this.page = page || 'your-vault';
+
+                  if (!this.$ || !this.$.button1) return;
 
                   if (this.page === 'your-vault') {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
