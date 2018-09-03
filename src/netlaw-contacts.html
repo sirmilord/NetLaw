@@ -771,7 +771,7 @@
                     <ul class="contacts__list-lvl3">
                       <li class="contacts__list-item-lvl3">
                         <a name="family" href="[[routePath]]contacts/family" id="family2"
-                           class="contacts__list-link-lvl3">
+                           class="contacts__list-link-lvl3" on-click="_childPage">
                           <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                           Immediate Family</a>
                         <a class="contacts__btn contacts__btn--lvl3" href="javascript:;">
@@ -1511,6 +1511,12 @@
               e.preventDefault();
               this.addFolder = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+          }
+
+          _childPage(e) {
+              this.$.contactsdrawer.close();
+              this.$.collapsemobilelvl2.toggle();
+              this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
           }
       }
 

@@ -1139,6 +1139,15 @@
 
       }
 
+      .contacts__mobile[hidden] {
+        display: none;
+      }
+
+      .contacts__content[hidden] {
+        display: none;
+      }
+
+
       @media (min-width: 1200px) {
         .file-folder__left paper-icon-button {
           width: 160px;
@@ -1212,7 +1221,10 @@
 
     </style>
 
-    <section class="contacts__content">
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
+
+
+    <section class="contacts__content" hidden$={{mobile}}>
       <netlaw-topbar>
         <h2 slot="title">Immediate Family</h2>
         <div slot="update">Updated 1d ago</div>
