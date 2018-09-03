@@ -663,6 +663,18 @@
           bottom: 7%;
         }
 
+        .file-folder__wrap {
+          width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .file-folder__desc {
+          width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
       }
 
       @media (max-width: 991px) {
@@ -791,7 +803,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -828,7 +840,7 @@
                                   <iron-icon
                                       icon="netlaw-icons:share-icon"></iron-icon>
                                 </li>
-                                <li>Delete
+                                <li on-click="onDeleteFileFolderClick">Delete
                                   <iron-icon
                                       icon="netlaw-icons:delete-icon"></iron-icon>
                                 </li>
@@ -861,7 +873,7 @@
                                   <iron-icon
                                       icon="netlaw-icons:share-icon"></iron-icon>
                                 </li>
-                                <li>Delete
+                                <li on-click="onDeleteFileFolderClick">Delete
                                   <iron-icon
                                       icon="netlaw-icons:delete-icon"></iron-icon>
                                 </li>
@@ -897,7 +909,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -928,7 +940,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -959,7 +971,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -990,7 +1002,7 @@
                         <li>Share
                           <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                         </li>
-                        <li>Delete
+                        <li on-click="onDeleteFileFolderClick">Delete
                           <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                         </li>
                       </ul>
@@ -1066,7 +1078,7 @@
               <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
             </a>
           </section>
-          <netlaw-lifevault-management name="management"></netlaw-lifevault-management>
+          <netlaw-lifevault-management name="management" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
           <netlaw-lifevault-doc name="doc"></netlaw-lifevault-doc>
         </iron-pages>
       </app-drawer-layout>

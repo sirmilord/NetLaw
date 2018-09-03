@@ -610,6 +610,7 @@
       .lifevault__details--list {
         margin-left: 0;
       }
+
       .lifevault__mobile[hidden] {
         display: none;
       }
@@ -1060,8 +1061,36 @@
           --iron-icon-width: 60px;
           --iron-icon-height: 60px;
         }
-      }
 
+        .file-folder__wrap {
+          width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .file-folder__wrapper {
+          width: 360px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .file-folder__icon--close {
+          bottom: 7%;
+        }
+
+        .file-folder__icon {
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+        }
+
+        .file-folder__icon--close {
+          bottom: 7%;
+        }
+
+        .btn-cancel {
+          margin-bottom: 30px;
+        }
+      }
 
 
     </style>
@@ -1070,7 +1099,8 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">Home Management</h3>
-      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
+      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
+                         on-click="onClose"></paper-icon-button>
     </template>
 
     <main class="lifevault-mobile" hidden$="{{!mobile}}">
@@ -1170,7 +1200,7 @@
                   <li on-click="onShareFileClick">Share
                     <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                   </li>
-                  <li>Delete
+                  <li on-click="onDeleteFileFolderClick">Delete
                     <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                   </li>
                 </ul>
@@ -1272,7 +1302,7 @@
                   <li on-click="onShareFileClick">Share
                     <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                   </li>
-                  <li>Delete
+                  <li on-click="onDeleteFileFolderClick">Delete
                     <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                   </li>
                 </ul>
@@ -1374,7 +1404,7 @@
                   <li on-click="onShareFileClick">Share
                     <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                   </li>
-                  <li>Delete
+                  <li on-click="onDeleteFileFolderClick">Delete
                     <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                   </li>
                 </ul>
