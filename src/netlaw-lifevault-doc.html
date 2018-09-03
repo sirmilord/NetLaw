@@ -205,25 +205,19 @@
         text-align: center;
       }
 
-      @media (max-width: 768px) {
-
-        .lifevault__content-header {
-          /*margin-top: 50px;*/
-        }
-
-        .lifevault__content-title {
-          font-size: 21px;
-          text-align: left;
-          margin-top: 5px;
-          margin-bottom: 5px;
-        }
+      @media (max-width: 767px) {
 
         .lifevault__doc-title {
-          font-size: 21px;
+          font-size: 16px;
+          line-height: 1.2;
         }
 
         .lifevault__document {
-          padding: 20px 30px;
+          padding: 20px 10px;
+        }
+
+        .lifevault__doc-item {
+          height: 20px;
         }
 
         .lifevault__content-update {
@@ -237,7 +231,7 @@
         }
 
         .lifevault__signature {
-          font-size: 21px;
+          font-size: 13px;
           padding-bottom: 5px;
         }
 
@@ -245,56 +239,123 @@
 
 
     </style>
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
-    <section class="lifevault__content">
-
-      <div class="lifevault__content-header">
-        <a href="[[routePath]]lifevault/management" class="btn btn--back-dash">
-          <iron-icon icon="netlaw-icons:chevron-left"></iron-icon>
-        </a>
-        <h2 class="lifevault__content-title">Estimate for Home Management .PDF v1.1</h2>
-        <div class="lifevault__content-update">Updated 1d ago</div>
-      </div>
-      <div class="lifevault__document">
-        <h1 class="lifevault__doc-title">VIEW OF DOCUMENT</h1>
-        <ul class="lifevault__doc-desc">
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
-          <li class="lifevault__doc-item"></li>
+    <!--Mobile layout-->
+    <template slot="placeholder" id="menu">
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top">
+        <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
+        <ul class="addfolder-dropdown" slot="dropdown-content">
+          <li on-click="onAddFolderClick">Add Folder
+            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+          </li>
+          <li>Download
+            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+          </li>
+          <li>Print
+            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+          </li>
+          <li>Share
+            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
         </ul>
-        <div class="lifevault__row">
-          <div class="lifevault__col-half">
-            <div class="lifevault__signature">
-              Signature
+      </paper-menu-button>
+      <h3 class="lifevault__header">Estimate for Home Management...</h3>
+      <paper-icon-button class="lifevault__close-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
+    </template>
+    <template is="dom-if" if="[[mobile]]">
+      <main>
+        <div class="lifevault__document">
+          <h1 class="lifevault__doc-title">VIEW OF DOCUMENT</h1>
+          <ul class="lifevault__doc-desc">
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+          </ul>
+          <div class="lifevault__row">
+            <div class="lifevault__col-half">
+              <div class="lifevault__signature">
+                Signature
+              </div>
             </div>
-          </div>
-          <div class="lifevault__col-half">
-            <div class="lifevault__signature">
-              12/12/2018
+            <div class="lifevault__col-half">
+              <div class="lifevault__signature">
+                12/12/2018
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
+    </template>
 
-      <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show lifevault__add-folder--doc"
-         href="javascript:;">
-        <iron-icon icon="icons:more-vert"></iron-icon>
-      </a>
-    </section>
+    <!--Desktop layout-->
+    <template is="dom-if" if="[[!mobile]]">
+      <section class="lifevault__content">
+
+        <div class="lifevault__content-header">
+          <a href="[[routePath]]lifevault/management" class="btn btn--back-dash">
+            <iron-icon icon="netlaw-icons:chevron-left"></iron-icon>
+          </a>
+          <h2 class="lifevault__content-title">Estimate for Home Management .PDF v1.1</h2>
+          <div class="lifevault__content-update">Updated 1d ago</div>
+        </div>
+        <div class="lifevault__document">
+          <h1 class="lifevault__doc-title">VIEW OF DOCUMENT</h1>
+          <ul class="lifevault__doc-desc">
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+            <li class="lifevault__doc-item"></li>
+          </ul>
+          <div class="lifevault__row">
+            <div class="lifevault__col-half">
+              <div class="lifevault__signature">
+                Signature
+              </div>
+            </div>
+            <div class="lifevault__col-half">
+              <div class="lifevault__signature">
+                12/12/2018
+              </div>
+            </div>
+          </div>
+        </div>
+        <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show lifevault__add-folder--doc"
+           href="javascript:;">
+          <iron-icon icon="icons:more-vert"></iron-icon>
+        </a>
+      </section>
+    </template>
 
   </template>
 
@@ -304,6 +365,32 @@
           static get is() {
               return 'netlaw-lifevault-doc';
           }
+
+          static get properties() {
+              return {
+                  menu: {
+                      type: Object,
+                      notify: true
+                  },
+              };
+          }
+
+          ready(e) {
+              super.ready();
+              this.menu = this.$.menu;
+          }
+
+          //for mobile
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+          }
+
+          //for mobile
+          onClose(e) {
+              navigate("/lifevault/management");
+              // this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
+          }
+
       }
 
       window.customElements.define(NetlawLifevaultDoc.is, NetlawLifevaultDoc);

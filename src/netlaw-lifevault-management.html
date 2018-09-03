@@ -2705,7 +2705,8 @@
 
           //for mobile
           onClose(e) {
-              this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
+              navigate("/lifevault");
+              // this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
           }
 
       }
