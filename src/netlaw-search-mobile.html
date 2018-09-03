@@ -6,7 +6,7 @@
 <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
 <!--<link rel="import" href="../bower_components/neon-animation/web-animations.html">-->
 
-<dom-module id="netlaw-search">
+<dom-module id="netlaw-search-mobile">
 
   <template>
 
@@ -14,8 +14,6 @@
       /* shadow DOM styles go here */
       :host {
         position: relative;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       :host([pressed]) iron-icon {
@@ -26,14 +24,18 @@
         border-bottom: 1px solid var(--app-header-color);
       }
 
-      netlaw-search paper-icon-button {
-        width: 28px;
-        height: 28px;
+      :host paper-icon-button {
+        width: 20px;
+        height: 20px;
         padding: 0;
+        --iron-icon-fill-color: #4A4A4A;
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
       }
 
       :host([pressed]) paper-icon-button {
-        padding: 8px 12px;
+        padding: 3px 3px;
+
       }
 
       paper-icon-button {
@@ -43,7 +45,7 @@
       input[type=search] {
         border: 0;
         padding-left: 26px;
-        top: 9px;
+        top: 1px;
         position: absolute;
         left: 13px;
         width: 270px;
@@ -67,10 +69,6 @@
         border: 1px solid #C2C2C2;
         box-shadow: 0 2px 3px 0 rgba(0,0,0,0.30);
         border-radius: 2px;
-      }
-
-      paper-icon-button {
-        z-index: 99;
       }
 
       ul {
@@ -104,7 +102,7 @@
     <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
 
     <!--<iron-input>-->
-      <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
+      <input id="search" type="search" name="search" placeholder="Search Documents" autocomplete="off"
            hidden$="[[!visible]]" on-mouseover="openChoices">
     <!--</iron-input>-->
 
@@ -126,9 +124,9 @@
 
   <script>
 
-      class NetlawSearch extends Polymer.Element {
+      class NetlawSearchMobile extends Polymer.Element {
           static get is() {
-              return 'netlaw-search';
+              return 'netlaw-search-mobile';
           }
 
           static get properties() {
@@ -183,7 +181,7 @@
 
       }
 
-      customElements.define(NetlawSearch.is, NetlawSearch);
+      customElements.define(NetlawSearchMobile.is, NetlawSearchMobile);
   </script>
 
 </dom-module>
