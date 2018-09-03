@@ -733,7 +733,7 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-menu-button  class="lifevault__myfiles" horizontal-align="right" vertical-offset="50" vertical-align="bottom">
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top">
         <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
           <li on-click="onAddFolderClick">Add Folder
@@ -1587,7 +1587,6 @@
           }
 
           onAddFolderClick(e) {
-              debugger;
               e.preventDefault();
               this.addFolder = true;
               this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
