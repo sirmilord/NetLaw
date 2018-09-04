@@ -679,13 +679,6 @@
         font-weight: 300;
       }
 
-
-
-
-
-
-
-
       .conatcts__list-item-lvl2--top-border:before {
         content: '';
         position: absolute;
@@ -763,6 +756,22 @@
 
         .file-folder__icon--close {
           bottom: 7%;
+        }
+
+        .file-folder__desc {
+          width: 290px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .file-folder__wrapper {
+          width: 360px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .login__divider-small::after {
+          border-top: 1px solid #e5e5e5;
         }
 
       }
@@ -1623,19 +1632,6 @@
                       this.$.family.classList.remove('contacts__list-link-lvl3--active');
                   }
               }
-
-              // if (this.mobile) {
-              //
-              //     if (page == "" || page == null || page == "empty2") {
-              //         this.dispatchEvent(new CustomEvent('menu-changed', {
-              //             bubbles: true,
-              //             composed: true,
-              //             detail: this.$.menu
-              //         }));
-              //     }
-              // }
-
-
           }
 
           open(){
