@@ -582,8 +582,8 @@
             </app-toolbar>
           </app-header>
 
-          <app-drawer-layout id="drawerLayout" login$="[[!loggedIn]]">
-            <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]" login$="[[!loggedIn]]">
+          <app-drawer-layout id="drawerLayout">
+            <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
               <div class="drawer-overlay"></div>
               <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                              role="navigation">
@@ -690,7 +690,7 @@
               this.loggedIn = true;
               // Show initial screen on login
               this.page = 'initial-screen';
-              this.shadowRoot.querySelector("app-header-layout")._updateLayoutStates();
+              // this.shadowRoot.querySelector("app-header-layout")._updateLayoutStates();
           }
 
           onSignOutClick(e) {
