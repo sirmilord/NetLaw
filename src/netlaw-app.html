@@ -345,6 +345,44 @@
         padding: 0;
       }
 
+      .lifevault__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .lifevault__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .lifevault__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        --iron-icon-fill-color: #C2C2C2;
+      }
+
+      ul.lifevault__addfolder-dropdown > li > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
+      .lifevault__addfolder-dropdown--sub {
+        width: 164px;
+      }
+
+      ul.lifevault__addfolder-dropdown--sub > li > iron-icon {
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
+      }
+
       @media (max-width: 767px) {
         app-header-layout {
           background-color: #fff;

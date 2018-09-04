@@ -205,6 +205,8 @@
         text-align: center;
       }
 
+
+
       @media (max-width: 767px) {
 
         .lifevault__doc-title {
@@ -243,25 +245,32 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
-      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top">
+      <paper-menu-button class="lifevault__menu" horizontal-align="left" vertical-align="top" vertical-offset="45">
         <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
-        <ul class="addfolder-dropdown" slot="dropdown-content">
-          <li on-click="onAddFolderClick">Add Folder
-            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-          </li>
+        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+            slot="dropdown-content">
           <li>Download
             <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
           </li>
           <li>Print
             <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
           </li>
-          <li>Share
+          <li>Replace
+            <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+          </li>
+          <li>Rename
+            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+          </li>
+          <li on-click="onShareFileClick">Share
             <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
+          <li on-click="onDeleteFileFolderClick">Delete
+            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
           </li>
         </ul>
       </paper-menu-button>
       <h3 class="lifevault__header">Estimate for Home Management...</h3>
-      <paper-icon-button class="lifevault__close-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
+      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
     </template>
     <template is="dom-if" if="[[mobile]]">
       <main>
@@ -388,7 +397,12 @@
           //for mobile
           onClose(e) {
               navigate("/lifevault/management");
-              // this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
+          }
+
+          onDeleteFileFolderClick(e) {
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('delete-file', {bubbles: true, composed: true}));
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select',{bubbles: true, composed: true}));
           }
 
       }
