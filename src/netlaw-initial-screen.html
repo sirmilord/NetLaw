@@ -130,7 +130,6 @@
     <template slot="placeholder" id="menu">
       <netlaw-logo class="mobile"></netlaw-logo>
       <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
-      <!--<paper-icon-button id="" icon="netlaw-icons:notifications"></paper-icon-button>-->
     </template>
 
     <main class="initial-screen">
@@ -175,9 +174,6 @@
           }
 
           onNavigateNotification(e) {
-              console.log(e);
-              //this.visible = !this.visible;
-              //this.visible ?  this.toggleIcon = 'netlaw-icons:notifications-open': this.toggleIcon = 'netlaw-icons:notifications';
               this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
           }
       }
