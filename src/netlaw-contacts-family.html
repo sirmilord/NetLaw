@@ -1315,7 +1315,251 @@
 
     <!--Mobile layout-->
     <main class="contacts__mobile" hidden$={{!mobile}}>
-      <netlaw-dashboard-mobile></netlaw-dashboard-mobile>
+      <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
+                               on-select-all-true="selectAllTrue" on-view-module="chooseModule"
+                               on-view-list="chooseList"></netlaw-dashboard-mobile>
+      <div id="module" class="contacts__wrap contacts__wrap--show">
+        <div class="contacts__module">
+          <div class="contacts__row layout horizontal">
+            <div class="contacts__col-module">
+              <div class="contacts__module-item">
+                <div class="contacts__module-body">
+                  <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                  </label>
+                  <a class="contacts__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="contacts__photo">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+                  </figure>
+                  <!--<button class="btn btn&#45;&#45;charm">-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--</button>-->
+                </div>
+                <div class="contacts__module-footer">
+                  <span class="contacts__name">Mabelle Doe</span>
+                  <span class="contacts__desc">Spouse</span>
+                  <span class="contacts__module-update">Updated 1d ago</span>
+                  <a class="contacts__details" href="[[rootPath]]contact-details">Details
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="contacts__col-module">
+              <div class="contacts__module-item">
+                <div class="contacts__module-body">
+                  <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                  </label>
+                  <a class="contacts__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="contacts__photo">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+                  </figure>
+                  <!--<button class="btn btn&#45;&#45;charm">-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--</button>-->
+                </div>
+                <div class="contacts__module-footer">
+                  <span class="contacts__name">Joshua Doe</span>
+                  <span class="contacts__desc">Eldest Son</span>
+                  <span class="contacts__module-update">Updated 1d ago</span>
+                  <a class="contacts__details" href="[[rootPath]]contact-details">Details
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="contacts__col-module">
+              <div class="contacts__module-item">
+                <div class="contacts__module-body">
+                  <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                  </label>
+                  <a class="contacts__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="contacts__photo">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+                  </figure>
+                  <!--<button class="btn btn&#45;&#45;charm">-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--</button>-->
+                </div>
+                <div class="contacts__module-footer">
+                  <span class="contacts__name">Hannah Doe</span>
+                  <span class="contacts__desc">Eldest Daughter</span>
+                  <span class="contacts__module-update">Updated 1d ago</span>
+                  <a class="contacts__details" href="[[rootPath]]contact-details">Details
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="contacts__col-module">
+              <div class="contacts__module-item">
+                <div class="contacts__module-body">
+                  <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                  </label>
+                  <a class="contacts__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="contacts__photo">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+                  </figure>
+                  <!--<button class="btn btn&#45;&#45;charm">-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--</button>-->
+                </div>
+                <div class="contacts__module-footer">
+                  <span class="contacts__name">Jennifer Doe</span>
+                  <span class="contacts__desc">Youngest Daughter</span>
+                  <span class="contacts__module-update">Updated 1d ago</span>
+                  <a class="contacts__details" href="[[rootPath]]contact-details">Details
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="contacts__col-module">
+              <div class="contacts__module-item">
+                <div class="contacts__module-body">
+                  <label class="contacts__checkbox-container contacts__checkbox-container--module">
+                    <input type="checkbox">
+                    <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
+                  </label>
+                  <a class="contacts__menu" href="javascript:;">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown horizontal-align="right">
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
+                  <figure class="contacts__photo">
+                    <img src="../images/contact.jpg" height="60" width="60" alt="contact">
+                  </figure>
+                  <!--<button class="btn btn&#45;&#45;charm">-->
+                  <!--<iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>-->
+                  <!--</button>-->
+                </div>
+                <div class="contacts__module-footer">
+                  <span class="contacts__name">Jennifer Doe</span>
+                  <span class="contacts__desc">Youngest Daughter</span>
+                  <span class="contacts__module-update">Updated 1d ago</span>
+                  <a class="contacts__details" href="[[rootPath]]contact-details">Details
+                    <iron-icon icon="icons:expand-more"></iron-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="list" class="contacts__wrap">
       <div class="contacts__module contacts__module--list">
         <div class="contacts__module-list-item">
           <div class="contacts__list-left">
@@ -1473,6 +1717,7 @@
             </a>
           </div>
         </div>
+      </div>
       </div>
     </main>
 
