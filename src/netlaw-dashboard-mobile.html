@@ -278,11 +278,19 @@
         text-decoration: none;
       }
 
+      .mobile-search {
+        @apply --contacts-family-search;
+      }
+
 
     </style>
 
     <form action="javascript:;" method="post">
-      <netlaw-search-mobile></netlaw-search-mobile>
+      <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
+      <label class="checkbox-container checkbox-container--ml">Select All
+        <input id="selectall" type="checkbox">
+        <span class="content-checkmark" on-tap="selectAllClick"></span>
+      </label>
       <div class="sort">
         <a class="dashboard-link" slot="dropdown-trigger" href="javascript:;" on-click="_openSortBy">Sort By</a>
         <iron-dropdown id="sortbydropdown" vertical-offset="0">
