@@ -675,18 +675,18 @@
                   toggleIcon: {
                       type: String
                   },
-                  visible: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  show: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
+                  // visible: {
+                  //     type: Boolean,
+                  //     notify: true,
+                  //     reflectToAttribute: true,
+                  //     value: false
+                  // },
+                  // show: {
+                  //     type: Boolean,
+                  //     notify: true,
+                  //     reflectToAttribute: true,
+                  //     value: false
+                  // },
                   fullMenu: {type:Boolean, value:false},
               };
           }
@@ -762,12 +762,7 @@
               if (template) {
                   let instance = component instanceof Polymer.Element ? component._stampTemplate(template) : this._stampTemplate(template);
                   placeholder.appendChild(instance);
-                  // this.show = false;
               }
-              // else {
-              //     this.show = true;
-              // }
-
           }
 
           _pageChanged(page) {
@@ -780,7 +775,7 @@
                   true);
 
               let pages = this.shadowRoot.querySelector("iron-pages");
-              console.log(pages,pages && pages.selectedItem);
+              //console.log(pages,pages && pages.selectedItem);
               if (!pages) setTimeout(()=> this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
@@ -799,9 +794,6 @@
           }
 
           BubbleUps(e) {
-              // if (this.mobile) {
-              //     return;
-              // }
               if (e.type === "overlay-show") {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {
@@ -821,11 +813,6 @@
               let issimple = e.detail instanceof Element;
               this._applyMenu(e.path[0], issimple ? e.detail: e.detail.menu, issimple ? false: e.detail.full);
           }
-
-          // _closeLifevaultChild() {
-          //     navigate("/lifevault");
-          //
-          // }
       }
 
       window.customElements.define(NetlawApp.is, NetlawApp);
