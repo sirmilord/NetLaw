@@ -1305,12 +1305,6 @@
           border-top: 1px solid #e5e5e5;
         }
 
-        .contacts__mobile {
-        --contacts-family-search: {
-          display: none;
-        }
-      }
-
         .contacts__col-module {
           flex: 1 1 33.333333%;
           max-width: 33.333333%;
@@ -1343,6 +1337,7 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
+      <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
       <h3 class="lifevault__header">Immediate Family</h3>
       <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
                          on-click="onClose"></paper-icon-button>
@@ -2342,7 +2337,7 @@
           }
 
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
           }
 
           //for mobile
