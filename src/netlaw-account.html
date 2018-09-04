@@ -401,6 +401,10 @@
           _onChangedMenuIcon(e) {
               e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
           }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
+          }
       }
 
       window.customElements.define(NetlawAccount.is, NetlawAccount);
