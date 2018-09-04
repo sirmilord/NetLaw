@@ -327,7 +327,13 @@
       }
 
     </style>
-
+    <template slot="placeholder" id="menu">
+      <a href="[[rootPath]]initial-screen" class="btn btn--back-dash">
+        <iron-icon icon="netlaw-icons:back"></iron-icon>
+        Back
+      </a>
+      <h3 class="lifevault__header">My Profile</h3>
+    </template>
     <main class="profile">
       <div class="profile__header">
         <div class="profile__header-left">
@@ -346,7 +352,7 @@
           <img src="../images/profile.jpg" alt="Profile Image">
         </div>
         <div class="profile__right">
-          <form class="form" action="/" method="post">
+          <form class="form" action="#" method="post">
             <fieldset>
               <legend>Personal Information</legend>
               <div class="form__row">
@@ -387,7 +393,8 @@
               </div>
               <div class="form__line"></div>
               <div class="form__group form__group--center">
-                <a href="javascript:;" class="btn btn--primary" on-click="onPreventDefault">Update Details</a>
+                <!--<a href="javascript:;" class="btn btn&#45;&#45;primary" on-click="onPreventDefault">Update Details</a>-->
+                <a href="javascript:;" class="btn btn--primary">Update Details</a>
                 <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered">Cancel</a>
               </div>
             </fieldset>
@@ -403,8 +410,13 @@
               return 'netlaw-profile';
           }
 
-          onPreventDefault(e) {
-              e.preventDefault();
+          // onPreventDefault(e) {
+          //     e.preventDefault();
+          // }
+
+          //for mobile
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
           }
       }
 
