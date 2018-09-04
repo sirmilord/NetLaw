@@ -294,51 +294,85 @@
     </style>
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
-    <main class="account">
-      <div class="account__header">
-        <div class="account__header-left">
-          <a href="[[roothPath]]initial-screen" class="btn btn--back-dash">
-            <iron-icon icon="netlaw-icons:back"></iron-icon>
-            Back to Dash
-          </a>
-        </div>
-        <div class="account__header-right">
-          <h2 class="account__title">Account Settings</h2>
-        </div>
-      </div>
-      <div class="account__wrapper">
-        <div class="account__left">
-          <iron-selector selected="[[page]]" attr-for-selected="name" class="account__list"
-                         role="navigation">
-            <a id="infolink" name="info" href="[[routePath]]account/info"
-               class="account__list-link"><span>Account
-              Information</span></a>
-            <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link"><span>Security Settings</span></a>
-            <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link"><span>Current Billing
-              Plan</span></a>
-            <a name="plans" href="[[routePath]]account-plans" class="account__list-link"><span>View Billing Plans</span></a>
-          </iron-selector>
-          <div class="login-buttons">
-            <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"
-                               on-click="onLoginClick"></paper-icon-button>
-            <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"
-                               on-click="onLoginClick"></paper-icon-button>
+    <!--Mobile lauout-->
+    <template slot="placeholder" id="menu">
+      <a href="[[rootPath]]initial-screen" class="btn btn--back-dash">
+        <iron-icon icon="netlaw-icons:back"></iron-icon>
+        Back
+      </a>
+      <h3 class="lifevault__header">Account Settings</h3>
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]" on-click="_onChangedMenuIcon">
+        <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
+        <ul class="addfolder-dropdown" slot="dropdown-content">
+          <li on-click="onAddFolderClick">Add Folder
+            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+          </li>
+          <li>Download
+            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+          </li>
+          <li>Print
+            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+          </li>
+          <li>Share
+            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
+        </ul>
+      </paper-menu-button>
+    </template>
+
+    <template is="dom-if" if="[[!mobile]]">
+
+    </template>
+    <!--Desktop layout-->
+    <template is="dom-if" if="[[!mobile]]">
+      <main class="account">
+        <div class="account__header">
+          <div class="account__header-left">
+            <a href="[[roothPath]]initial-screen" class="btn btn--back-dash">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Dash
+            </a>
+          </div>
+          <div class="account__header-right">
+            <h2 class="account__title">Account Settings</h2>
           </div>
         </div>
+        <div class="account__wrapper">
+          <div class="account__left">
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="account__list"
+                           role="navigation">
+              <a id="infolink" name="info" href="[[routePath]]account/info"
+                 class="account__list-link"><span>Account
+              Information</span></a>
+              <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link"><span>Security Settings</span></a>
+              <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link"><span>Current Billing
+              Plan</span></a>
+              <a name="plans" href="[[routePath]]account-plans" class="account__list-link"><span>View Billing Plans</span></a>
+            </iron-selector>
+            <div class="login-buttons">
+              <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"
+                                 on-click="onLoginClick"></paper-icon-button>
+              <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"
+                                 on-click="onLoginClick"></paper-icon-button>
+            </div>
+          </div>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-account-info name="info"></netlaw-account-info>
-          <netlaw-account-security name="security"></netlaw-account-security>
-          <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
-        </iron-pages>
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+            <netlaw-account-info name="info"></netlaw-account-info>
+            <netlaw-account-security name="security"></netlaw-account-security>
+            <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
+          </iron-pages>
 
-      </div>
-    </main>
+        </div>
+      </main>
+    </template>
+
   </template>
 
   <script>
@@ -353,11 +387,19 @@
                   routeData: { type: Object, observer(value) { this.page = value.page || null; } },
                   subroute: Object,
                   page: { type: String, observer:'_pageChanged' },
+                  toggleMenu: {
+                      type: String,
+                      value: 'netlaw-icons:menu-circle'
+                  },
               };
           }
 
-          _PageChanged(page) {
+          _pageChanged(page) {
               // this.page = page || 'info';
+          }
+
+          _onChangedMenuIcon(e) {
+              e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
           }
       }
 

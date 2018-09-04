@@ -810,8 +810,8 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3>Key People</h3>
-      <paper-menu-button class="contacts__menu" horizontal-align="right" vertical-align="top">
-        <paper-icon-button icon="netlaw-icons:menu-circle" slot="dropdown-trigger"></paper-icon-button>
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]" on-click="_onChangedMenuIcon">
+        <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
           <li on-click="onAddFolderClick">Add Folder
             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
@@ -1548,6 +1548,10 @@
                   toggleIcon: {
                       type: String
                   },
+                  toggleMenu: {
+                      type: String,
+                      value: 'netlaw-icons:menu-circle'
+                  },
                   route: {
                       type: Object, observer(value) {
                           if (!value || !value.path) this.page = null;
@@ -1674,6 +1678,10 @@
               e.preventDefault();
               this.deleteContact = false;
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+          }
+
+          _onChangedMenuIcon(e) {
+              e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
           }
       }
 
