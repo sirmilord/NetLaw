@@ -427,7 +427,7 @@
           font-weight: 600;
         }
 
-        #placeholder paper-menu-button  {
+        #placeholder paper-menu-button {
           padding: 0;
           --iron-icon-fill-color: red;
         }
@@ -452,15 +452,16 @@
     <iron-media-query query="min-width: 1200px" query-matches="{{xl}}"></iron-media-query>
     <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
 
+    <template is="dom-if" if="[[!loggedIn]]">
+      <netlaw-login on-logged-in="onLoggedIn" ></netlaw-login>
+    </template>
 
-    <netlaw-login on-logged-in="onLoggedIn" nologin$="[[loggedIn]]"></netlaw-login>
     <!--Main content mobile-->
     <template is="dom-if" if="[[mobile]]">
       <template is="dom-if" if="[[loggedIn]]">
-        <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}" hidden$="{{!mobile}}">
+        <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}">
 
-          <app-drawer id="mobiledrawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]"
-                      hidden$="{{!mobile}}">
+          <app-drawer id="mobiledrawer" class="mobile-drawer" slot="drawer" swipe-open="[[narrow]]">
             <app-toolbar class="navbar-mobile navbar-mobile--drawer">
               <netlaw-logo class="mobile"></netlaw-logo>
               <button class="navbar-mobile__toggle" drawer-toggle>
@@ -780,7 +781,6 @@
           BubbleUps(e) {
 
               if (e.type === "overlay-show") {
-                  console.log(this.shadowRoot.querySelector('.drawer-overlay'));
                   this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
