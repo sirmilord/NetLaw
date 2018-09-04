@@ -349,24 +349,15 @@
 
           static get properties() {
               return {
-                  rootPath: String,
-                  route: {type: Object},
-                  page: {
-                      type: String,
-                      reflectToAttribute: true,
-                      // observer: '_pageChanged',
-                  },
+                  route: { type: Object, observer(value) { if (!value || !value.path) this.page = null; } },
+                  routeData: { type: Object, observer(value) { this.page = value.page || null; } },
+                  subroute: Object,
+                  page: { type: String, observer:'_pageChanged' },
               };
           }
 
-          static get observers() {
-              return [
-                  '_routePageChanged(routeData.page)',
-              ];
-          }
-
-          _routePageChanged(page) {
-              this.page = page || 'info';
+          _PageChanged(page) {
+              // this.page = page || 'info';
           }
       }
 
