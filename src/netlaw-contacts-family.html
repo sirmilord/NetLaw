@@ -1342,6 +1342,12 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
+    <template slot="placeholder" id="menu">
+      <h3 class="lifevault__header">Immediate Family</h3>
+      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
+                         on-click="onClose"></paper-icon-button>
+    </template>
+
     <main class="contacts__mobile" hidden$={{!mobile}}>
       <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
                                on-select-all-true="selectAllTrue" on-view-module="chooseModule"
@@ -2335,6 +2341,14 @@
               this.dispatchEvent(new CustomEvent('delete-contact', {bubbles: true, composed: true}));
           }
 
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+          }
+
+          //for mobile
+          onClose(e) {
+              navigate("/contacts");
+          }
 
       }
 

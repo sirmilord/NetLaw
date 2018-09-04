@@ -483,6 +483,10 @@
 
               if (this.mobile) {
 
+                  if(page == null && this.classList.contains("iron-selected")) {
+                      this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+                  }
+
                   if (this.page === 'setup') {
                       this.$.smartguidedrawer.open();
                       let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
