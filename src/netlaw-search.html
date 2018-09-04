@@ -135,7 +135,7 @@
               return {
                   pressed: {
                       type: Boolean,
-                      notify: true,
+                     // notify: true,
                       reflectToAttribute: true,
                       value: false
                   },
@@ -150,7 +150,6 @@
               super();
               this.addEventListener('blur', e => this.close());
               this.toggleIcon = 'netlaw-icons:search';
-              // this.target = this.$.search;
           }
 
           open() {
@@ -175,12 +174,6 @@
           openChoices() {
               this.$.dropdown.open();
           }
-          // ready(){
-          //     super.ready();
-          //     console.log(this.$.dropdown.querySelector('ul'));
-          //     console.log(this.shadowRoot.querySelector('ul'));
-          // }
-
       }
 
       customElements.define(NetlawSearch.is, NetlawSearch);
