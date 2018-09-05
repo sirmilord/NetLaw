@@ -469,6 +469,49 @@
           color: #b2b2b2;
 
         }
+
+        .account__dropdown {
+          /*height: 209px;*/
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .3);
+        }
+
+        .account__dropdown-title {
+          color: #4A90E2;
+          padding: 12px 22px;
+          font-size: 14px;
+          background-color: #fff;
+        }
+
+        .login-buttons {
+          width: 188px;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .login-buttons paper-icon-button {
+          flex: 1 1 50%;
+          max-width: 50%;
+          height: 84px;
+          --iron-icon-width: 94px;
+          --iron-icon-height: 84px;
+          --iron-icon-fill-color: #ffffff;
+        }
+
+        .login-buttons paper-icon-button[name="googleplus"] {
+          background: #FF3624;
+        }
+
+        .login-buttons paper-icon-button[name="facebook"] {
+          background: #024DAF;
+        }
+
+        .login-buttons paper-icon-button[name="linkedin"] {
+          background: #0178BD;
+        }
+
+        .login-buttons paper-icon-button[name="twitter"] {
+          background: #01B8EC;
+        }
       }
 
     </style>
@@ -484,7 +527,7 @@
     <iron-media-query query="min-width: 1800px" query-matches="{{xxl}}"></iron-media-query>
 
     <template is="dom-if" if="[[!loggedIn]]">
-      <netlaw-login on-logged-in="onLoggedIn" ></netlaw-login>
+      <netlaw-login on-logged-in="onLoggedIn"></netlaw-login>
     </template>
 
     <!--Main content mobile-->
@@ -545,7 +588,8 @@
             <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                         fallback-selection="initial-screen" on-menu-changed="_onMenuChanged">
               <netlaw-smartguide name="smartguide" route="[[subroute]]"
-                                 on-smartguide-open-left-drawer="onDrawerShow" opened="[[notificationOpened]]"></netlaw-smartguide>
+                                 on-smartguide-open-left-drawer="onDrawerShow"
+                                 opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
               <netlaw-account-security name="account-security"></netlaw-account-security>
