@@ -78,7 +78,7 @@
 
     <paper-icon-button icon="[[toggleIcon]]" name="notifications" on-click="toggle"></paper-icon-button>
 
-    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus>
+    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus opened="{{notificationOpened}}" opened$="[[notificationOpened]]">
         <ul class="notifications" slot="dropdown-content">
           <li><a href="javascript:;">SmartGuide</a> is at 0% completed <span>1 min ago</span></li>
           <li>Alexander Dumas has shared a <a href="javascript:;">new document</a> with you.<span>20 mins ago</span></li>
@@ -97,34 +97,28 @@
 
           static get properties() {
               return {
-                  visible: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
                   toggleIcon: {
-                      type: String
+                      type: String,
+                      computed: '_computeIcon(notificationOpened)',
+                      value: 'netlaw-icons:notifications'
                   },
+                  notificationOpened: {
+                      type: Boolean,
+                      value: false
+                  }
               };
           }
 
           constructor() {
               super();
-              this.toggleIcon = 'netlaw-icons:notifications';
           }
 
           toggle() {
-              this.visible = !this.visible;
+              this.$.dropdown.toggle();
+          }
 
-              if (this.visible) {
-                  this.$.dropdown.open();
-                  this.toggleIcon = 'netlaw-icons:notifications-open';
-              }
-              else {
-                  this.$.dropdown.close();
-                  this.toggleIcon = 'netlaw-icons:notifications';
-              }
+          _computeIcon(notificationOpened) {
+              return notificationOpened ? 'netlaw-icons:notifications-open': 'netlaw-icons:notifications';
           }
       }
 
