@@ -212,7 +212,7 @@
         right: -40px;
         background-color: #fff;
         height: 50px;
-        width: 40px;
+        width: 41px;
         z-index: 100;
         --iron-icon-height: 24px;
         --iron-icon-width: 24px;
@@ -249,13 +249,13 @@
       .mobile-drawer__message {
         color: #4A4A4A;
         font-weight: 900;
-        font-size: 16px;
+        font-size: 20px;
         text-align: center;
         margin-top: 25px;
       }
 
       .mobile-drawer__name {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 400;
         color: #0178BD;
         text-decoration: none;
@@ -269,7 +269,7 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        border-top: 1px solid #979797;
+        border-top: 1px solid rgba(151, 151, 151, .3);
       }
 
       .mobile-drawer__link {
@@ -536,10 +536,6 @@
                 <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle
                                    hidden$="[[fullMenu]]"></paper-icon-button>
                 <slot name="placeholder" id="placeholder"></slot>
-                <!--<div id="mainmenu" show$={{show}}>-->
-                <!--<netlaw-logo class="mobile"></netlaw-logo>-->
-                <!--<paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>-->
-                <!--</div>-->
               </div>
               <iron-dropdown id="dropdownmobilenotification" vertical-offset="50" opened="{{notificationOpened}}">
                 <netlaw-mobile-notification id="mobilenotification"
@@ -549,7 +545,7 @@
             <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                         fallback-selection="initial-screen" on-menu-changed="_onMenuChanged">
               <netlaw-smartguide name="smartguide" route="[[subroute]]"
-                                 on-smartguide-open-left-drawer="onDrawerShow"></netlaw-smartguide>
+                                 on-smartguide-open-left-drawer="onDrawerShow" opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
               <netlaw-account-security name="account-security"></netlaw-account-security>

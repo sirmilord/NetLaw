@@ -8,8 +8,6 @@
   <template>
 
     <style>
-      /* todo clear up styles *
-      */
       :host {
         box-sizing: border-box;
         --iron-icon-width: 22px;
@@ -357,7 +355,9 @@
 
     <template slot="placeholder" id="menu">
       <h3>SmartGuide</h3>
+      <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
     </template>
+
     <!--Mobile layout-->
     <main class="smartguide-mobile" hidden$="{{!mobile}}">
 
@@ -461,6 +461,14 @@
                   subroute: Object,
                   page: { type: String, observer:'_pageChanged' },
                   menu: { type: Object, notify: true },
+                  toggleIcon: {
+                      type: String,
+                      computed: '_computeIcon(opened)',
+                  },
+                  opened: {
+                      type: Boolean,
+                      value: false
+                  },
               };
           }
 
@@ -544,6 +552,15 @@
 
           onDrawerShow2(e) {
               this.dispatchEvent(new CustomEvent("smartguide-open-left-drawer"));
+          }
+
+          _computeIcon(opened){
+              console.log(this.opened);
+              return opened ? 'netlaw-icons:notifications-open': 'netlaw-icons:notifications';
+          }
+
+          onNavigateNotification(e) {
+              this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
           }
       }
 
