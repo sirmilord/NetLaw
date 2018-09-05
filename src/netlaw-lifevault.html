@@ -1657,10 +1657,6 @@
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
-          // _onChangedMenuIcon(e) {
-              // e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
-          // }
-
           _computeMenu(opened){
               // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active': 'netlaw-icons:menu-circle';
