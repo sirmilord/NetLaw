@@ -749,7 +749,7 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]" on-click="_onChangedMenuIcon">
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
           <li on-click="onAddFolderClick">Add Folder
@@ -1492,11 +1492,14 @@
                   },
                   toggleMenu: {
                       type: String,
+                      computed: '_computeMenu(menuOpened)',
                       value: 'netlaw-icons:menu-circle'
                   },
-
+                  menuOpened: {
+                      type: Boolean,
+                      value: false
+                  },
                   page: { type: String, observer:'_pageChanged' },
-
                   //for mobile
                   menu: {
                       type: Object,
@@ -1654,8 +1657,13 @@
               this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
           }
 
-          _onChangedMenuIcon(e) {
-              e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
+          // _onChangedMenuIcon(e) {
+              // e.target.hasAttribute("focused") ? this.toggleMenu = "netlaw-icons:more-vert-active" : this.toggleMenu = "netlaw-icons:menu-circle";
+          // }
+
+          _computeMenu(opened){
+              // console.log(this.opened);
+              return opened ? 'netlaw-icons:more-vert-active': 'netlaw-icons:menu-circle';
           }
 
       }
