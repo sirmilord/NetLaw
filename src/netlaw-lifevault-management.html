@@ -1520,10 +1520,6 @@
           </div>
         </div>
       </div>
-      <a id="addfile" on-click="onAddFileClick" class="lifevault__add-folder lifevault__add-folder--show"
-         href="javascript:;">
-        <iron-icon icon="netlaw-icons:add-file"></iron-icon>
-      </a>
     </main>
 
     <!--Desktop layout-->
@@ -2494,12 +2490,12 @@
           </div>
         </div>
       </div>
-
-      <a id="addfile" on-click="onAddFileClick" class="lifevault__add-folder lifevault__add-folder--show"
-         href="javascript:;">
-        <iron-icon icon="netlaw-icons:add-file"></iron-icon>
-      </a>
     </section>
+
+    <a id="addfile" on-click="onAddFileClick" class="lifevault__add-folder lifevault__add-folder--show"
+       href="javascript:;">
+      <iron-icon icon="netlaw-icons:add-file"></iron-icon>
+    </a>
 
     <template is="dom-if" if="[[addFile]]">
       <div class="overlay"></div>
