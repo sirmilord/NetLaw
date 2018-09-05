@@ -86,15 +86,15 @@
 
 
     <span class="message">
-      Welcome Back, <a href="#" on-click="toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
+      Welcome Back, <a href="javascript:;" on-click="_toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
-    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right">
+    <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" opened="{{userMenuOpened}}" opened$="[[userMenuOpened]]">
         <ul class="profile" slot="dropdown-content">
-          <li><a name="profile" href="[[rootPath]]profile" on-click="onLinkClick">My Profile</a></li>
-          <li><a name="account" href="[[rootPath]]account/info" on-click="onLinkClick">Account Settings</a></li>
-          <li><a name="refer" href="[[rootPath]]" on-click="onLinkClick">Refer a Friend</a></li>
-          <li><a name="help" href="[[rootPath]]" on-click="onLinkClick">Help</a></li>
+          <li><a name="profile" href="[[rootPath]]profile" on-click="_toggle">My Profile</a></li>
+          <li><a name="account" href="[[rootPath]]account/info" on-click="_toggle">Account Settings</a></li>
+          <li><a name="refer" href="[[rootPath]]" on-click="_toggle">Refer a Friend</a></li>
+          <li><a name="help" href="[[rootPath]]" on-click="_toggle">Help</a></li>
           <li><a name="logout" href="[[rootPath]]" on-click="onSignOutClick">Log Out</a></li>
         </ul>
     </iron-dropdown>
@@ -110,10 +110,13 @@
 
           static get properties() {
               return {
-                  visible: {
+                  toggleIcon: {
+                      type: String,
+                      computed: '_computeIcon(userMenuOpened)',
+                      value: 'icons:expand-more'
+                  },
+                  userMenuOpened: {
                       type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
                       value: false
                   },
               };
@@ -121,22 +124,15 @@
 
           constructor() {
               super();
-              this.toggleIcon = 'expand-more';
           }
 
-          onLinkClick() {
-
-             this.$.user_dropdown.close();
-             this.visible = !this.visible;
-              /*this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();*/
+          _toggle(e) {
+              // e.preventDefault();
+              this.$.user_dropdown.toggle();
           }
 
-          toggle(e) {
-              e.preventDefault();
-              this.visible = !this.visible;
-              this.visible ? this.$.user_dropdown.open() : this.$.user_dropdown.close();
-
-
+          _computeIcon(userMenuOpened) {
+              return userMenuOpened ? 'icons:expand-less': 'icons:expand-more';
           }
 
           onSignOutClick(e) {
