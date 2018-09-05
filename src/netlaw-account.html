@@ -4,6 +4,7 @@
 <link rel="import" href="netlaw-account-plans.html">
 <link rel="import" href="netlaw-account-info.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tab.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 
 <dom-module id="netlaw-account">
   <template>
@@ -299,9 +300,12 @@
         }
 
         .account__tabs {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
+          --paper-tabs: {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            height: auto;
+          };
         }
 
         .account__tab {
@@ -309,6 +313,8 @@
             padding-top: 15px;
             padding-bottom: 15px;
             background-color: rgba(202, 201, 202, 0.2);
+            flex: 1 1 50%;
+            max-width: 50%;
           };
           --paper-tab-ink: rgba(0, 0, 0, 0.2)
         }
@@ -357,7 +363,7 @@
 
     <template is="dom-if" if="[[mobile]]">
 
-      <paper-tabs id="accounttabs" class="account__tabs" selected="[[page]]" attr-for-selected="name" fallback-selection="info" role="navigation">
+      <paper-tabs id="accounttabs" class="account__tabs" selected="[[page]]" attr-for-selected="name" fallback-selection="info" role="navigation" nobar>
         <paper-tab class="account__tab" name="info">
           <a href="[[routePath]]account/info" class="account__tab-link" tabindex="-1">Account Information</a>
         </paper-tab>
