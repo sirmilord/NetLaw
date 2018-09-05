@@ -536,10 +536,6 @@
                 <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle
                                    hidden$="[[fullMenu]]"></paper-icon-button>
                 <slot name="placeholder" id="placeholder"></slot>
-                <!--<div id="mainmenu" show$={{show}}>-->
-                <!--<netlaw-logo class="mobile"></netlaw-logo>-->
-                <!--<paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>-->
-                <!--</div>-->
               </div>
               <iron-dropdown id="dropdownmobilenotification" vertical-offset="50" opened="{{notificationOpened}}">
                 <netlaw-mobile-notification id="mobilenotification"
@@ -549,7 +545,7 @@
             <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                         fallback-selection="initial-screen" on-menu-changed="_onMenuChanged">
               <netlaw-smartguide name="smartguide" route="[[subroute]]"
-                                 on-smartguide-open-left-drawer="onDrawerShow"></netlaw-smartguide>
+                                 on-smartguide-open-left-drawer="onDrawerShow" opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
               <netlaw-account-security name="account-security"></netlaw-account-security>
