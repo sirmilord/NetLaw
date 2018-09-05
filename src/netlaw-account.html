@@ -321,9 +321,31 @@
       </paper-menu-button>
     </template>
 
-    <template is="dom-if" if="[[!mobile]]">
+    <template is="dom-if" if="[[mobile]]">
 
+      <paper-tabs id="plain-tabs" selected="{{page}}" attr-for-selected="name" no-bar fallback-selection="info" fit-container role="navigation">
+        <paper-tab link name="info">
+          <a href="[[routePath]]account/info" class="" tabindex="-1">Account Information</a>
+        </paper-tab>
+        <paper-tab link name="security">
+          <a href="[[routePath]]account/security" class="" tabindex="-1">Current Billing Plan</a>
+        </paper-tab>
+        <paper-tab link name="current-plan">
+          <a href="[[routePath]]account/current-plan" class="" tabindex="-1">Security Settings</a>
+        </paper-tab>
+        <paper-tab link name="account-plans">
+          <a href="[[routePath]]account/account-plans" class="" tabindex="-1">View Billing Plans</a>
+        </paper-tab>
+      </paper-tabs>
+
+      <iron-pages selected="{{page}}" attr-for-selected="name" role="main">
+        <netlaw-account-info name="info"></netlaw-account-info>
+        <netlaw-account-security name="security"></netlaw-account-security>
+        <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
+        <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+      </iron-pages>
     </template>
+
     <!--Desktop layout-->
     <template is="dom-if" if="[[!mobile]]">
       <main class="account">
