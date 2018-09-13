@@ -8,7 +8,7 @@
       .btn {
         margin: 0;
         border: none;
-        border-radius: 0;
+        border-radius: 2px;
         overflow: visible;
         font: inherit;
         color: inherit;
@@ -110,8 +110,6 @@
         padding-left: 10px;
       }
 
-
-
       .btn--plan {
         color: #4e92e3;
         padding: 10px;
@@ -119,11 +117,13 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 1.7;
-        background-color: #ececec;
         cursor: pointer;
+        background: #fff;
+        border: 1px solid #9B9B9B;
+        border-radius: 2px;
       }
 
-      .btn--plan a:visited {
+      .btn--plan a, .btn--plan a:visited {
         text-decoration: none;
         color: #4e92e3;
       }
@@ -131,8 +131,8 @@
       .form__line {
         margin: 20px auto;
         width: 60%;
-        background-color: #e9e9e9;
-        height: 2px;
+        background-color: rgba(151, 151, 151, .3);
+        height: 1px;
       }
 
       .form__line--short {
@@ -185,7 +185,7 @@
         display: block;
         overflow: hidden;
         cursor: pointer;
-        border: 1px solid #626262;
+        border: 1px solid #C2C2C2;
         border-radius: 20px;
       }
 
@@ -212,14 +212,14 @@
         content: "Yes";
         padding-left: 10px;
         background-color: #FFFFFF;
-        color: #626262;
+        color: #4A4A4A;
       }
 
       .field-toggler__inner:after {
         content: "No";
         padding-right: 10px;
         background-color: #FFFFFF;
-        color: #626262;
+        color: #4A4A4A;
         text-align: right;
       }
 
@@ -227,7 +227,7 @@
         display: block;
         width: 22px;
         margin: 5px;
-        background: #626262;
+        background: #4A4A4A;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -256,7 +256,7 @@
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 20px;
-        color: #626262;
+        color: #4A4A4A;
       }
 
       .account__plan-desc {
@@ -277,7 +277,7 @@
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 20px;
-        color: #626262;
+        color: #4A4A4A;
       }
 
       .account__bill-row {
@@ -306,7 +306,7 @@
       }
 
       .account__bill-item-title {
-        color: #626262;
+        color: #4A4A4A;
         font-weight: 400;
         font-size: 18px;
         margin-bottom: 20px;
@@ -326,8 +326,9 @@
         padding: 10px;
         box-sizing: border-box;
         text-align: center;
-        color: #C2C2C2;
+        color: #9B9B9B;
         font-size: 16px;
+        border-radius: 2px;
       }
 
       .account__line {
@@ -363,7 +364,7 @@
 
       <form class="form" action="/" method="post">
         <fieldset>
-          <legend>Plan Information</legend>
+          <legend class="account__bill-title">Plan Information</legend>
           <div class="badge">Active</div>
           <div class="form__row">
             <div class="form__group form__group--fourth">

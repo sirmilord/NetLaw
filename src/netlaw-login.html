@@ -107,25 +107,20 @@
 
       <div class="login__main login__section login__position-relative">
         <div class="login__container ">
-
           <div id="wrapper" class="login__align-center login">
 
             <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
 
               <div name="signin" login>
                 <h1>Login to your Account</h1>
-
                 <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
-
                 <div class="login-buttons">
                   <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"></paper-icon-button>
                 </div>
-
                 <div class="login__divider-icon">OR</div>
-
                 <div class="login__margin login__align-center">
                   <form action="javascript:;" method="post" class="login-form login__align-center" novalidate>
                     <div class="login__margin ">
@@ -138,56 +133,58 @@
                       <input type="password" class="login__input" id="login-pass" name="password" placeholder="Password*"
                              autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
                       <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
-
                     </div>
                     <div class="login__margin-top">
                       <a href="javascript:;" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
                     </div>
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
-                      <button class="btn btn-primary" on-click="onSignInNext">Login</button>
-                      <!--<button class="btn btn-primary" name="security" on-click="onNavigate">Login</button>-->
+                      <button class="btn btn-primary" on-click="onSignIn">Login</button>
                     </div>
                   </form>
                 </div>
                 <p class="login__margin">Don’t have an account? <a href="javascript:;" name="create-account" on-click="onNavigate">Request
                   One</a>
                 </p>
+
               </div>
 
               <div name="create-account" login>
+
                 <h1>Create your NetLaw Account</h1>
 
-                <paper-input class="flex-6" label="Your name" name="name" autocomplete="name" autofocus
-                             disabled="[[loading]]" value="{{name}}"></paper-input>
-                <paper-input class="flex-6" label="Your email address" name="email" autocomplete="email"
-                             disabled="[[loading]]" value="{{email}}"></paper-input>
-                <paper-password-input class="flex-6" label="Enter your password" name="password"
-                                      autocomplete="current-password" disabled="[[loading]]"
-                                      value="{{password}}"></paper-password-input>
-                <paper-input label="Your phone (optional)" name="phone" autocomplete="phone" disabled="[[loading]]"
-                             value="{{phone}}"></paper-input>
-
-                <div class="margin-top-32px">
-                  <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong>Terms of Use</strong>
-                    for this site
-                  </paper-checkbox>
+                <div class="login__margin login__align-center">
+                  <form action="javascript:;" method="post" class="login-form login__align-center" novalidate>
+                    <div class="login__margin ">
+                      <label for="register-name"></label>
+                      <input type="text" id="register-name" class="login__input" name="name" placeholder="Your name *"
+                             required autofocus autocomplete="name" value="{{name::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                    </div>
+                    <div class="login__margin ">
+                      <label for="register-email"></label>
+                      <input type="text" id="register-email"class="login__input" name="email" placeholder="Your email address *"
+                             required autofocus autocomplete="email" value="{{email::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                    </div>
+                    <div class="login__margin">
+                      <label for="register-pass"></label>
+                      <input type="password" id="register-pass" class="login__input" name="password" placeholder="Password *"
+                             autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+                      <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
+                    </div>
+                    <div class="login__margin-top">
+                      <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong><a href="javascript:;" name="pass-reset" on-click="onNavigate">Terms of Use</a></strong>
+                      </paper-checkbox>
+                    </div>
+                    <hr class="login__divider-small">
+                    <div class="login__margin">
+                      <button class="btn btn-primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Create Account</button>
+                    </div>
+                    <div class="login__margin">
+                      <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
+                    </div>
+                  </form>
                 </div>
 
-                <div class="layout horizontal margin-top-16px">
-                  <div class="flex-8">
-                    <paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in
-                      instead
-                    </paper-button>
-                  </div>
-                  <div class="flex-4 text-right">
-                    <paper-button class="primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next
-                    </paper-button>
-                  </div>
-                  <div class="login__margin">
-                    <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
-                  </div>
-                </div>
               </div>
 
               <div name="pass-reset">
@@ -254,9 +251,7 @@
                   Back to Previous
                 </button>
                 <h1>Login Security Settings</h1>
-
                 <h3>Would you like to change or add login credentials?</h3>
-
                 <p class="login__margin">Username: robkerr2004@hotmail.com</p>
                 <p class="login__horizontal"><a href="javascript:;" name="new-pass" on-click="onNavigate">Change Password</a> | <a
                     href="javascript:;">Remove Login Method</a></p>
@@ -271,7 +266,6 @@
                     <button class="btn btn-yellow" name="secure" on-click="onNavigate">Add a Security Device</button>
                   </p>
                   <p class="login__padding">
-                    <!-- go to Authorization - login -->
                     <button class="btn btn-primary" name="singin" on-click="onNavigate">Continue</button>
                   </p>
                 </div>
@@ -283,9 +277,7 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure Your Account</h1>
-
                 <h3>Choose a desired method to enhance your security. </h3>
-
                 <div class="login__row login__margin-top-big">
                   <div class="login__item login__item--third">
                     <iron-icon icon="netlaw-icons:secure-mobile"></iron-icon>
@@ -325,16 +317,13 @@
 
               <div name="method">
                 <h1>Add New Login Method</h1>
-
                 <div class="login-buttons">
                   <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"></paper-icon-button>
                 </div>
-
                 <div class="login__divider-icon">OR</div>
-
                 <div class="login__margin login__align-center">
                   <form action="javascript:;" method="post" class="login-form login__align-center" novalidate>
                     <div class="login__margin ">
@@ -352,7 +341,7 @@
                     </div>
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
-                      <button class="btn btn-primary" on-click="onSignInNext" >Login</button>
+                      <button class="btn btn-primary" on-click="onSignIn" >Login</button>
                     </div>
                   </form>
                 </div>
@@ -367,19 +356,15 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with Mobile</h1>
-
                 <h3>Scan this code with your mobile authenticator <br>
                   and enter the generated code in the box below.</h3>
-
                 <figure class="login__img">
                   <img src="/images/QR-code.jpg" alt="QR code">
                 </figure>
-
                 <div class="login__padding">
                   <button class="btn btn--google-play"></button>
                   <button class="btn btn--apple-store"></button>
                 </div>
-
                 <form action="javascript:;" method="post" class="login-form login__align-center">
                   <div class="login__margin">
                     <label for="securecode"></label>
@@ -402,10 +387,8 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with SMS</h1>
-
                 <h3>Type in your phone number, enter the code you <br>
                   receive in the section below.</h3>
-
                 <form action="javascript:;" method="post" class="login-form login__align-center">
                   <div class="login__margin">
                     <label for="phonenumber"></label>
@@ -442,10 +425,8 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with Email</h1>
-
                 <h3>Type in your email address, enter the code you<br>
                   receive in the section below.</h3>
-
                 <form action="javascript:;" method="post" class="login-form login__align-center">
                   <div class="login__margin">
                     <label for="phonenumber2"></label>
@@ -484,7 +465,6 @@
     </app-header-layout>
   </template>
   <script>
-      // Your new element extends the Polymer.Element base class
       class NetlawLogin extends Polymer.Element {
           static get is() {
               return 'netlaw-login';
@@ -527,34 +507,7 @@
               this.selected = e.currentTarget.attributes.name.value;
           }
 
-          onLoginClick(e) {
-              // Direct login on login button click
-              this.dispatchEvent(new CustomEvent("logged-in"));
-          }
-
           onSignIn(e) {
-
-              // this.dispatchEvent(new CustomEvent("logged-in"));
-
-              this.loading = true;
-              this.error = null;
-              localStorage.setItem("name", this.identifier);
-
-              api.accounts.findAccount(this.identifier)
-                  .success(r => {
-                      this.selected = "signin-password";
-                      //this.identifier = data.identifier;
-                      this.userId = r.user_id;
-                      this.name = r.name;
-                  })
-                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
-                  .notFound(ex => { this.error = "Couldn't find your NetLaw Account"; })
-                  .serverError(ex => { this.error = "Server error please try again."; })
-                  //.catch(ex => { this.error = "Request error."; })
-                  .finally(() => this.loading = false);
-          }
-
-          onSignInNext(e) {
               this.loading = true;
               this.error = null;
 
@@ -567,7 +520,9 @@
                       return this._fetchProfiles()
                           .then(() => this.password = null);
                   })
+                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
                   .notFound(ex => this.error = "Wrong username or password. Try again or try resetting it.")
+                  .serverError(ex => { this.error = "Server error please try again."; })
                   .finally(() => this.loading = false);
           }
 
@@ -576,7 +531,7 @@
               this.loading = true;
               api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
-                      //this.selected = "security";
+                      //this.selected = "security"; //go to security settings
                       this.accountId = r.user_id;
                       this.accountName = r.name;
                       return api.accounts.login(this.email, this.password)
@@ -651,7 +606,6 @@
 
       }
 
-      //Now, register your new custom element so the browser can use it
       customElements.define(NetlawLogin.is, NetlawLogin);
   </script>
 </dom-module>
