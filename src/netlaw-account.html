@@ -301,29 +301,38 @@
 
         .account__tabs {
           --paper-tabs: {
-            display: flex;
-            align-items: center;
             flex-wrap: wrap;
             height: auto;
+          };
+
+          --paper-tabs-container: {
+
+          };
+
+          --paper-tabs-content: {
+            flex-wrap: wrap;
+            display: flex;
           };
         }
 
         .account__tab {
           --paper-tab: {
-            padding-top: 15px;
-            padding-bottom: 15px;
+
             background-color: rgba(202, 201, 202, 0.2);
             flex: 1 1 50%;
             max-width: 50%;
+            padding-left: 0;
+            padding-right: 0;
           };
+
           --paper-tab-ink: rgba(0, 0, 0, 0.2)
         }
 
-        .account__tab[focused] {
+        .account__tab.iron-selected {
           background-color: #4A4A4A;
         }
-        
-        .account__tab[focused] .account__tab-link {
+
+        .account__tab.iron-selected .account__tab-link {
           color: #fff;
         }
 
@@ -331,6 +340,8 @@
           text-decoration: none;
           color: #9B9B9B;
           text-align: center;
+          padding-top: 15px;
+          padding-bottom: 15px;
         }
 
       }
@@ -347,7 +358,8 @@
         Back
       </a>
       <h3 class="lifevault__header">Account Settings</h3>
-      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]">
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
+                         opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
         <div class="account__dropdown" slot="dropdown-content">
           <div class="account__dropdown-title">Connect account using</div>
@@ -363,17 +375,18 @@
 
     <template is="dom-if" if="[[mobile]]">
 
-      <paper-tabs id="accounttabs" class="account__tabs" selected="[[page]]" attr-for-selected="name" fallback-selection="info" role="navigation" nobar>
-        <paper-tab class="account__tab" name="info">
+      <paper-tabs id="accounttabs" class="account__tabs" selected="[[page]]" attr-for-selected="name"
+                  fallback-selection="info" role="navigation" no-bar >
+        <paper-tab class="account__tab" link name="info">
           <a href="[[routePath]]account/info" class="account__tab-link" tabindex="-1">Account Information</a>
         </paper-tab>
-        <paper-tab class="account__tab" name="security">
-          <a href="[[routePath]]account/security" class="account__tab-link" tabindex="-1">Current Billing Plan</a>
+        <paper-tab class="account__tab" link name="current-plan">
+          <a href="[[routePath]]account/current-plan" class="account__tab-link" tabindex="-1">Current Billing Plan</a>
         </paper-tab>
-        <paper-tab class="account__tab" name="current-plan">
-          <a href="[[routePath]]account/current-plan" class="account__tab-link" tabindex="-1">Security Settings</a>
+        <paper-tab class="account__tab" link name="security">
+          <a href="[[routePath]]account/security" class="account__tab-link" tabindex="-1">Security Settings</a>
         </paper-tab>
-        <paper-tab class="account__tab" name="account-plans">
+        <paper-tab class="account__tab" link name="account-plans">
           <a href="[[routePath]]account/account-plans" class="account__tab-link" tabindex="-1">View Billing Plans</a>
         </paper-tab>
       </paper-tabs>
@@ -407,10 +420,13 @@
               <a id="infolink" name="info" href="[[routePath]]account/info"
                  class="account__list-link"><span>Account
               Information</span></a>
-              <a id="securitylink" name="security" href="[[routePath]]account/security" class="account__list-link"><span>Security Settings</span></a>
-              <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan" class="account__list-link"><span>Current Billing
+              <a id="securitylink" name="security" href="[[routePath]]account/security"
+                 class="account__list-link"><span>Security Settings</span></a>
+              <a id="currentlink" name="current-plan" href="[[routePath]]account/current-plan"
+                 class="account__list-link"><span>Current Billing
               Plan</span></a>
-              <a name="plans" href="[[routePath]]account-plans" class="account__list-link"><span>View Billing Plans</span></a>
+              <a name="plans" href="[[routePath]]account-plans"
+                 class="account__list-link"><span>View Billing Plans</span></a>
             </iron-selector>
             <div class="login-buttons">
               <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"></paper-icon-button>
@@ -440,10 +456,18 @@
 
           static get properties() {
               return {
-                  route: { type: Object, observer(value) { if (!value || !value.path) this.page = null; } },
-                  routeData: { type: Object, observer(value) { this.page = value.page || null; } },
+                  route: {
+                      type: Object, observer(value) {
+                          if (!value || !value.path) this.page = null;
+                      }
+                  },
+                  routeData: {
+                      type: Object, observer(value) {
+                          this.page = value.page || null;
+                      }
+                  },
                   subroute: Object,
-                  page: { type: String, observer:'_pageChanged' },
+                  page: {type: String, observer: '_pageChanged'},
                   toggleMenu: {
                       type: String,
                       computed: '_computeMenu(menuOpened)',
@@ -460,17 +484,21 @@
               // this.page = page || 'info';
           }
 
-          _computeMenu(opened){
+          _computeMenu(opened) {
               // console.log(this.opened);
-              return opened ? 'netlaw-icons:more-vert-active': 'netlaw-icons:menu-circle';
+              return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
           }
 
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
+              }));
           }
 
           _selectedAttr(e) {
-              e.target.selectedClass ='iron-selected';
+              e.target.selectedClass = 'iron-selected';
           }
       }
 
