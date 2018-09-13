@@ -16,14 +16,6 @@
         position: relative;
       }
 
-      :host([pressed]) iron-icon {
-        border-bottom: 1px solid var(--app-header-color);
-      }
-
-      :host([pressed]) input {
-        border-bottom: 1px solid var(--app-header-color);
-      }
-
       :host paper-icon-button {
         width: 20px;
         height: 20px;
@@ -33,7 +25,7 @@
         --iron-icon-height: 20px;
       }
 
-      :host([pressed]) paper-icon-button {
+      :host([focused]) paper-icon-button {
         padding: 3px 3px;
 
       }
@@ -45,10 +37,10 @@
       input[type=search] {
         border: 0;
         padding-left: 26px;
-        top: 1px;
-        position: absolute;
-        left: 13px;
-        width: 270px;
+        /*top: 1px;*/
+        /*position: absolute;*/
+        /*left: 13px;*/
+        width: 90%;
         height: 24px;
         line-height: 24px;
         border-bottom: 1px solid #979797;
@@ -57,6 +49,8 @@
 
       input[type=search]::placeholder {
         font-size: 14px;
+        text-align: center;
+        color: #9B9B9B;
       }
 
       input[type=search]:focus {
@@ -64,17 +58,18 @@
       }
 
       #dropdown {
-        width: 300px;
+        width: 100%;
         background-color: var(--app-header-bg);
-        border: 1px solid #C2C2C2;
-        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.30);
+        box-shadow: 0 2px 3px 0 rgba(0,0,0, .30);
         border-radius: 2px;
+        padding: 15px;
       }
 
       ul {
         list-style: none;
         margin: 0;
         padding: 0;
+        margin-top: 20px;
       }
 
       li {
@@ -83,41 +78,27 @@
         color: #333;
       }
 
-      #dropdown {
-        background-color: var(--app-header-bg);
-        padding: 15px;
-        border: 1px solid #C2C2C2;
-        box-shadow: 0 2px 3px 0 rgba(0,0,0,0.30);
-        border-radius: 2px;
-      }
 
-      @media (min-width: 1200px) {
-        :host {
-          margin-left: 15%;
-        }
-      }
 
     </style>
 
-    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
+    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="_toggle"></paper-icon-button>
 
-    <!--<iron-input>-->
-      <input id="search" type="search" name="search" placeholder="Search Documents" autocomplete="off"
-           hidden$="[[!visible]]" on-mouseover="openChoices">
-    <!--</iron-input>-->
-
-    <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus no-cancel-on-outside-click>
-      <ul slot="dropdown-content">
-        <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
-        <li>Listed result contact item 2 …</li>
-        <li>Listed result contact item 3…</li>
-        <li>Listed result contact item 4…</li>
-        <br/>
-        <li>Listed result in document item 1…</li>
-        <li>Listed result in document item 2…</li>
-        <li>Listed result in document item 3…</li>
-        <li>Listed result in document item 4…</li>
-      </ul>
+    <iron-dropdown id="dropdown" vertical-offset="35" horizontal-offset="-20" no-auto-focus opened="{{searchOpened}}" opened$="[[searchOpened]]">
+      <div slot="dropdown-content">
+        <input id="search" type="search" name="search" placeholder="Search Documents..." autocomplete="off">
+        <ul>
+          <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
+          <li>Listed result contact item 2 …</li>
+          <li>Listed result contact item 3…</li>
+          <li>Listed result contact item 4…</li>
+          <br/>
+          <li>Listed result in document item 1…</li>
+          <li>Listed result in document item 2…</li>
+          <li>Listed result in document item 3…</li>
+          <li>Listed result in document item 4…</li>
+        </ul>
+      </div>
     </iron-dropdown>
 
   </template>
@@ -133,46 +114,57 @@
               return {
                   pressed: {
                       type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
                       value: false
                   },
                   toggleIcon: {
-                      type: String
+                      type: String,
+                      computed: '_computeIcon(searchOpened)',
+                      value: 'netlaw-icons:search'
                   },
-                  visible: {type: Boolean, value: false,},
+                  searchOpened: {
+                      type: Boolean,
+                      value: false
+                  },
               };
           }
 
           constructor() {
               super();
-              this.addEventListener('blur', e => this.close());
-              this.toggleIcon = 'netlaw-icons:search';
+              // this.addEventListener('blur', e => this.close());
+              // this.toggleIcon = 'netlaw-icons:search';
               // this.target = this.$.search;
           }
 
-          open() {
-              this.visible = true;
-              this.pressed = true;
-              this.toggleIcon = 'netlaw-icons:close-search';
-              this.$.search.focus();
+          // open() {
+          //     this.visible = true;
+          //     this.pressed = true;
+          //     this.toggleIcon = 'netlaw-icons:close-search';
+          //     this.$.search.focus();
+          //     this.$.dropdown.open();
+          //
+          // }
+          //
+          // close() {
+          //     this.visible = false;
+          //     this.pressed = false;
+          //     this.$.dropdown.close();
+          //     this.toggleIcon = 'netlaw-icons:search';
+          //     this.$.dropdown.close();
+          // }
 
+          _toggle() {
+              // this.visible ? this.close() : this.open();
+              this.$.dropdown.toggle();
           }
 
-          close() {
-              this.visible = false;
-              this.pressed = false;
-              this.$.dropdown.close();
-              this.toggleIcon = 'netlaw-icons:search';
+          _computeIcon(searchOpened) {
+              return searchOpened ? 'netlaw-icons:close-search': 'netlaw-icons:search';
           }
 
-          toggle() {
-              this.visible ? this.close() : this.open();
-          }
 
-          openChoices() {
-              this.$.dropdown.open();
-          }
+          // openChoices() {
+          //     this.$.dropdown.open();
+          // }
           // ready(){
           //     super.ready();
           //     console.log(this.$.dropdown.querySelector('ul'));
