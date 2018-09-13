@@ -86,7 +86,8 @@
 
       .form__group--center {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
       }
 
       .form__group--half {
@@ -360,6 +361,89 @@
         }
       }
 
+      @media (max-width: 767px ) {
+        .form {
+          margin-left: 0;
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-right: 0;
+        }
+
+        .account__bill-title {
+          font-size: 20px;
+          text-align: center;
+        }
+
+        .account__label {
+          font-size: 10px;
+        }
+
+        .form__group--fourth {
+          flex: 0 0 38.5%;
+          max-width: 38.5%;
+          padding-right: 7.5px;
+          padding-left: 7.5px;
+        }
+
+        .form__group--half {
+          padding-right: 7.5px;
+          padding-left: 7.5px;
+        }
+
+        .form__group--center {
+          display: flex;
+          justify-content: center;
+        }
+
+        .badge {
+          top: 75px;
+          left: auto;
+          right: 20px;
+        }
+
+        .field-toggler__title {
+          font-size: 10px;
+          margin-right: 15px;
+        }
+
+        .field-toggler {
+          display: flex;
+          align-items: center;
+        }
+
+        .field-toggler__wrap {
+          margin-top: 0;
+        }
+
+        .account__bill-info {
+          margin-left: 0;
+          padding-left: 40px;
+          padding-right: 40px;
+          margin-right: 0;
+        }
+
+        .account__bill-item-title {
+          font-size: 16px;
+        }
+
+        .account__bill-item:not(:last-child) {
+          margin-bottom: 15px;
+        }
+
+        .account__plan {
+          margin-left: 0;
+          padding-left: 40px;
+          padding-right: 40px;
+          margin-right: 0;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .account__plan-title {
+          font-size: 20px;
+        }
+      }
+
     </style>
 
       <form class="form" action="/" method="post">
@@ -393,9 +477,9 @@
               </div>
             </div>
           </div>
-          <div class="form__group">
+          <div class="form__group form__group--center">
             <div class="form__line form__line--short"></div>
-            <button class="btn btn--primary">Save Password</button>
+            <button class="btn btn--primary">Update Billing</button>
           </div>
         </fieldset>
         <div class="form__line form__line--long"></div>
