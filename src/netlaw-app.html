@@ -713,6 +713,7 @@
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   profile: {
                       type: Boolean,
+                      notify: true,
                       reflectToAttribute: true,
                       value: true
                   },
@@ -802,14 +803,6 @@
                       detail: this.$.menu
                   }));
               }
-
-              if (this.page === 'profile') {
-                  this._onDrawerClose();
-              } else {
-                  this._onDrawerShow();
-              }
-
-
           }
 
           _applyMenu(component, template, full = false) {
@@ -841,16 +834,24 @@
               if (!pages) setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
+              if (this.page === 'profile') {
+                  this._onDrawerClose();
+                  //this.shadowRoot.querySelector("app-header-layout")._updateLayoutStates();
+                  // let drawerLayout = this.shadowRoot.querySelector("app-drawer-layout");
+                  // drawerLayout._updateLayoutStates()
+              } else {
+                  this._onDrawerShow();
+              }
           }
 
           _showPage404() {
               this.page = 'view-404';
           }
 
-          _onDrawerShow(e) {
+          _onDrawerShow() {
               this.profile = true;
           }
-          _onDrawerClose(e) {
+          _onDrawerClose() {
               this.profile = false;
           }
 
@@ -872,7 +873,7 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
-              this.addEventListener('profile-close-drawer', this._onDrawerShow);
+              // this.addEventListener('profile-close-drawer', this._onDrawerShow());
           }
 
           _onMenuChanged(e) {
