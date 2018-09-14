@@ -843,24 +843,15 @@
               if (!pages) setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
-              if (this.page === 'profile') {
-                  this._onDrawerClose();
-                  //this.shadowRoot.querySelector("app-header-layout")._updateLayoutStates();
-              } else {
-                  this._onDrawerShow();
-              }
+              //hide drawer on this page
+              this.page === 'profile' ? this.profile = false : this.profile = true;
+
           }
 
           _showPage404() {
               this.page = 'view-404';
           }
 
-          _onDrawerShow() {
-              this.profile = true;
-          }
-          _onDrawerClose() {
-              this.profile = false;
-          }
 
           _onNavigateNotification(e) {
               this.shadowRoot.querySelector("#dropdownmobilenotification").toggle();
