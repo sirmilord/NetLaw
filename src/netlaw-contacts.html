@@ -1130,7 +1130,7 @@
               <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
                 <li class="contacts-mobile__list-item contacts-mobile__list-item--top-border contacts-mobile__list-item--bottom-border">
                   <a name="" href="javascript:;"
-                     class="contacts-mobile__list-link" on-click="openDrawer">
+                     class="contacts-mobile__list-link" on-click="_openDrawer">
                     <span class="contacts-mobile__list-text">Key People</span>
                     <iron-icon icon="icons:icons:chevron-right"></iron-icon>
                   </a>
@@ -1660,13 +1660,13 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
-          openDrawer(e) {
+          _openDrawer(e) {
               this.$.contactsdrawer.open();
           }
 
-          closeDrawer(e) {
-              this.$.contactsdrawer.close();
-          }
+          // closeDrawer(e) {
+          //     this.$.contactsdrawer.close();
+          // }
 
           onAddFolderClick(e) {
               e.preventDefault();
