@@ -594,10 +594,7 @@
                                  opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-              <!--<netlaw-account-security name="account-security"></netlaw-account-security>-->
-              <!--<netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>-->
               <netlaw-account-plans name="account-plans"></netlaw-account-plans>
-              <!--<netlaw-lifevault name="lifevault" route="[[subroute]]" on-menu-changed="_onMenuChanged"></netlaw-lifevault>-->
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
               <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
               <netlaw-contact-details name="contact-details"></netlaw-contact-details>
@@ -642,9 +639,7 @@
     <!-- Main content desktop-->
     <template is="dom-if" if="[[!mobile]]">
       <template is="dom-if" if="[[loggedIn]]">
-        <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}" hidden$="{{mobile}}">
-          <!--<app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}" hidden$="{{mobile}}"-->
-          <!--login$="[[!loggedIn]]">-->
+        <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}">
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
             <app-toolbar class="navbar">
@@ -657,7 +652,7 @@
           </app-header>
 
           <app-drawer-layout id="drawerLayout">
-            <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+            <app-drawer id="drawer" slot="drawer" opened="{{profile}}">
               <div class="drawer-overlay"></div>
               <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                              role="navigation">
@@ -687,8 +682,6 @@
               <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-              <!--<netlaw-account-security name="account-security"></netlaw-account-security>-->
-              <!--<netlaw-account-current-plan name="account-current-plan"></netlaw-account-current-plan>-->
               <netlaw-account-plans name="account-plans"></netlaw-account-plans>
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
               <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
@@ -718,6 +711,11 @@
           static get properties() {
               return {
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
+                  profile: {
+                      type: Boolean,
+                      reflectToAttribute: true,
+                      value: true
+                  },
                   rootPath: String,
                   route: {type: Object},
                   routeData: Object,
@@ -805,6 +803,10 @@
                   }));
               }
 
+              if (this.page === 'profile') {
+                  this._onDrawerShow();
+              }
+
 
           }
 
@@ -843,8 +845,8 @@
               this.page = 'view-404';
           }
 
-          onDrawerShow(e) {
-              this.shadowRoot.querySelector('#drawer').toggle();
+          _onDrawerShow(e) {
+              this.profile = false;
           }
 
           _onNavigateNotification(e) {
@@ -865,6 +867,7 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
+              this.addEventListener('profile-close-drawer', this._onDrawerShow);
           }
 
           _onMenuChanged(e) {

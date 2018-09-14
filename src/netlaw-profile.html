@@ -7,12 +7,13 @@
 
       .profile {
         background-color: #f9f9f9;
+        font-family: 'Lato';
       }
 
       .btn {
         margin: 0;
         border: none;
-        border-radius: 0;
+        border-radius: 2px;
         overflow: visible;
         font: inherit;
         color: inherit;
@@ -74,6 +75,11 @@
         --iron-icon-fill-color: #979797;
         font-size: 14px;
         font-weight: 400;
+      }
+
+      .btn--back-dash:hover,
+      .btn--back-dash:focus {
+        color: #fff;
       }
 
       .profile__wrapper {
@@ -396,7 +402,6 @@
               </div>
               <div class="form__line"></div>
               <div class="form__group form__group--center">
-                <!--<a href="javascript:;" class="btn btn&#45;&#45;primary" on-click="onPreventDefault">Update Details</a>-->
                 <a href="javascript:;" class="btn btn--primary">Update Details</a>
                 <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered">Cancel</a>
               </div>
@@ -412,15 +417,20 @@
           static get is() {
               return 'netlaw-profile';
           }
-
-          // onPreventDefault(e) {
-          //     e.preventDefault();
-          // }
+          constructor() {
+              super();
+          }
 
           //for mobile
           open() {
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
           }
+
+          // ready() {
+          //     super.ready();
+          //     console.log('ready');
+          //     this.dispatchEvent(new CustomEvent('profile-close-drawer', {bubbles: true, composed: true}));
+          // }
       }
 
       window.customElements.define(NetlawProfile.is, NetlawProfile);
