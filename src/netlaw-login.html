@@ -76,6 +76,10 @@
         transition: all 0.3s;
       }
 
+      .login_link {
+        font-size: 16px;
+      }
+
       @media (min-width: 320px) and (max-width: 767px) {
 
         .login-buttons {
@@ -135,7 +139,7 @@
                       <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
                     </div>
                     <div class="login__margin-top">
-                      <a href="javascript:;" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
+                      <a href="javascript:;" class="login_link" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
                     </div>
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
@@ -143,7 +147,7 @@
                     </div>
                   </form>
                 </div>
-                <p class="login__margin">Don’t have an account? <a href="javascript:;" name="create-account" on-click="onNavigate">Request
+                <p class="login__margin">Don’t have an account? <a href="javascript:;" class="login_link" name="create-account" on-click="onNavigate">Request
                   One</a>
                 </p>
 
