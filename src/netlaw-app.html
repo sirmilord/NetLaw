@@ -804,6 +804,8 @@
               }
 
               if (this.page === 'profile') {
+                  this._onDrawerClose();
+              } else {
                   this._onDrawerShow();
               }
 
@@ -846,6 +848,9 @@
           }
 
           _onDrawerShow(e) {
+              this.profile = true;
+          }
+          _onDrawerClose(e) {
               this.profile = false;
           }
 
