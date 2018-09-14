@@ -26,14 +26,21 @@
         border-bottom: 1px solid var(--app-header-color);
       }
 
-      netlaw-search paper-icon-button {
-        width: 28px;
-        height: 28px;
-        padding: 0;
+      paper-icon-button {
+        --paper-icon-button: {
+          width: 23px;
+          height: 23px;
+          padding: 0;
+          --iron-icon-fill-color: #000;
+        }
       }
 
       :host([pressed]) paper-icon-button {
-        padding: 8px 12px;
+        --paper-icon-button: {
+          width: 23px;
+          height: 23px;
+          padding: 0;
+        }
       }
 
       paper-icon-button {
@@ -69,10 +76,6 @@
         border-radius: 2px;
       }
 
-      paper-icon-button {
-        z-index: 99;
-      }
-
       ul {
         list-style: none;
         margin: 0;
@@ -101,7 +104,7 @@
 
     </style>
 
-    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
+    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle" noink></paper-icon-button>
 
     <!--<iron-input>-->
       <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
