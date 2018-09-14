@@ -426,11 +426,6 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
           }
 
-          // ready() {
-          //     super.ready();
-          //     console.log('ready');
-          //     this.dispatchEvent(new CustomEvent('profile-close-drawer', {bubbles: true, composed: true}));
-          // }
       }
 
       window.customElements.define(NetlawProfile.is, NetlawProfile);
