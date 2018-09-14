@@ -120,11 +120,6 @@
         --iron-icon-height: 15px;
       }
 
-      .contacts__list-link-lvl2:hover,
-      .contacts__list-link-lvl2:focus {
-        text-decoration: none;
-      }
-
       a.contacts__list-link-lvl2 > iron-icon {
         margin-bottom: 3px;
         margin-right: 10px;
@@ -202,8 +197,10 @@
       }
 
       .contacts__list-link-lvl2:hover,
+      .contacts__list-link-lvl2--active,
       .contacts__list-link-lvl2:focus {
         color: #4a4a4a;
+        text-decoration: none;
       }
 
       .contacts__list-link-lvl3:hover,
@@ -1608,12 +1605,14 @@
               e.preventDefault();
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
+              this.$.collapselvl2.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
           }
 
           _onToggleMobileLvl2(e) {
               e.preventDefault();
               this.$.collapsemobilelvl2.toggle();
               this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('contacts__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
+              this.$.collapsemobilelvl2.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
           }
 
           ready(e) {

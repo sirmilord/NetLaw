@@ -89,7 +89,7 @@
       }
 
       .lifevault__list-link {
-        font-size: 18px;
+        font-size: 16px;
         color: #414142;
         text-decoration: none;
         padding-top: 20px;
@@ -111,7 +111,7 @@
       }
 
       .lifevault__list-link-lvl2 {
-        font-size: 16px;
+        font-size: 14px;
         color: #e5e5e5;
         text-decoration: none;
         display: inline-block;
@@ -120,11 +120,6 @@
         padding-bottom: 15px;
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
-      }
-
-      .lifevault__list-link-lvl2:hover,
-      .lifevault__list-link-lvl2:focus {
-        text-decoration: none;
       }
 
       a.lifevault__list-link-lvl2 > iron-icon {
@@ -213,10 +208,13 @@
         fill: #01AA50;
       }
 
-      .lifevault__list-link-lvl2:hover {
-        /*.lifevault__list-link-lvl2:focus {*/
+      .lifevault__list-link-lvl2:hover,
+      .lifevault__list-link-lvl2--active,
+      .lifevault__list-link-lvl2:focus {
         color: #4a4a4a;
+        text-decoration: none;
       }
+
 
       .lifevault__list-link-lvl3:hover,
       .lifevault__list-link-lvl3:focus,
@@ -707,10 +705,6 @@
           flex: 1 1 70%;
           max-width: 75%;
         }
-
-        .lifevault__list-link {
-          font-size: 17px;
-        }
       }
 
       @media (min-width: 1200px) {
@@ -722,9 +716,6 @@
           position: relative;
         }
 
-        .lifevault__list-link {
-          font-size: 18px;
-        }
       }
 
       @media (min-width: 1800px) {
@@ -1547,12 +1538,15 @@
               e.preventDefault();
               this.$.collapselvl2.toggle();
               this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+              this.$.collapselvl2.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
           }
 
           _onToggleMobileLvl2(e) {
               e.preventDefault();
               this.$.collapsemobilelvl2.toggle();
               this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
+              this.$.collapsemobilelvl2.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
+
           }
 
           ready(e) {
