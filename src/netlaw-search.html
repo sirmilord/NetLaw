@@ -32,7 +32,8 @@
           height: 24px;
           padding: 0;
           --iron-icon-fill-color: #000;
-        }
+        };
+        --paper-icon-button-ink-color: transparent;
       }
 
       :host([pressed]) paper-icon-button {
@@ -104,7 +105,7 @@
 
     </style>
 
-    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle" noink></paper-icon-button>
+    <paper-icon-button icon="[[toggleIcon]]" name="search" on-click="toggle"></paper-icon-button>
 
     <!--<iron-input>-->
       <input id="search" type="search" name="search" placeholder="Search Documents and Contacts..." autocomplete="off"
