@@ -312,6 +312,7 @@
       .lifevault__module-update {
         /*flex: 0 0 50%;*/
         font-size: 12px;
+        font-weight: 300;
         color: #4A4A4A;
         margin-right: auto;
         align-self: center;
@@ -320,6 +321,7 @@
       .lifevault__details {
         /*flex: 0 0 50%;*/
         font-size: 18px;
+        font-weight: 300;
         color: #68a2e6;
         margin-left: auto;
         text-decoration: none;
@@ -337,6 +339,8 @@
 
       .lifevault__details iron-icon {
         /*margin-top: 3px;*/
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
       }
 
       .lifevault__module-list-item {
@@ -995,8 +999,12 @@
         }
 
         .lifevault__menu {
-          --iron-icon-width: 24px;
-          --iron-iocn-height: 24px;
+
+        }
+
+        .lifevault__menu iron-icon {
+          --iron-icon-width: 20px;
+          --iron-iocn-height: 20px;
         }
 
         .btn--charm {
