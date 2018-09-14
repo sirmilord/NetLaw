@@ -13,23 +13,23 @@
         position: relative;
         margin-left: auto;
         margin-right: 20px;
+        --iron-icon-height: 18px;
+        --iron-icon-width: 18px;
       }
 
       :host paper-icon-button {
-        padding: 9px;
-      }
-
-      :host paper-icon-button[icon="netlaw-icons:notifications"],
-      :host paper-icon-button[icon="netlaw-icons:notifications-open"] {
-        width: 22px;
-        height: 22px;
-        --iron-icon-height: 22px;
-        --iron-icon-width: 22px;
-        padding: 0;
-        display: inline-block;
-        vertical-align: middle;
+        /*padding: 9px;*/
 
       }
+
+      /*:host paper-icon-button[icon="netlaw-icons:notifications"],*/
+      /*:host paper-icon-button[icon="netlaw-icons:notifications-open"] {*/
+        /*width: 22px;*/
+        /*height: 22px;*/
+        /*--iron-icon-height: 22px;*/
+        /*--iron-icon-width: 22px;*/
+        /*padding: 0;*/
+      /*}*/
 
       #dropdown {
         background-color: var(--app-header-bg);
@@ -76,7 +76,7 @@
 
     </style>
 
-    <paper-icon-button icon="[[toggleIcon]]" name="notifications" on-click="_toggle"></paper-icon-button>
+    <iron-icon icon="[[toggleIcon]]" name="notifications" on-click="_toggle"></iron-icon>
 
     <iron-dropdown id="dropdown" vertical-offset="47" no-auto-focus opened="{{notificationOpened}}" opened$="[[notificationOpened]]">
         <ul class="notifications" slot="dropdown-content">
