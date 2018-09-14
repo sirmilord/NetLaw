@@ -102,7 +102,7 @@
 
     <main class="account account--info">
       <div class="account__container">
-        <h1 class="account__title">Billing Plans</h1>
+        <h1 class="account__title" on-click="_click">Billing Plans</h1>
         <b class="account__desc">Links to Information Site Showing All Plan
           Information</b>
         <div class="account__row">
@@ -127,6 +127,21 @@
       class NetlawAccountPlans extends Polymer.Element {
           static get is() {
               return 'netlaw-account-plans';
+          }
+
+         ready() {
+              super.ready();
+              this.dispatchEvent(new CustomEvent('account-list-hide', {
+                  bubbles: true,
+                  composed: true
+              }));
+          }
+
+          _click(e) {
+              this.dispatchEvent(new CustomEvent('account-list-hide', {
+                  bubbles: true,
+                  composed: true
+              }));
           }
       }
 

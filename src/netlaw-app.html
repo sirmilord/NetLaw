@@ -691,7 +691,7 @@
               <netlaw-smartguide name="smartguide" route="[[subroute]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-              <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+              <!--<netlaw-account-plans name="account-plans"></netlaw-account-plans>-->
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
               <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
               <netlaw-contact-details name="contact-details"></netlaw-contact-details>
@@ -765,7 +765,7 @@
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };
               this.toggleIcon = 'netlaw-icons:notifications';
-              this.show = false;
+              // this.show = false;
           }
 
           onLoggedIn(e) {
@@ -871,6 +871,7 @@
               this.addEventListener('overlay-show', this.BubbleUps);
               this.addEventListener('overlay-hide', this.BubbleUps);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
+
           }
 
           _onMenuChanged(e) {
