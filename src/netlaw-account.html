@@ -167,43 +167,51 @@
       .login-buttons {
         max-width: 285px;
         width: 200px;
-        margin: 40px auto 0;
+        margin: 0 auto 0;
         display: flex;
         justify-content: center;
         --iron-icon-fill-color: #ffffff;
       }
 
-      .login-buttons paper-icon-button {
-        flex: 1 1 25%;
+      .login-buttons iron-icon {
+        flex: 0 0 25%;
         max-width: 25%;
-        --iron-icon-width: 40px;
-        --iron-icon-height: 40px;
+        --iron-icon-width: 30px;
+        --iron-icon-height: 30px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
 
-      .login-buttons paper-icon-button:first-child {
+      .login-buttons iron-icon:first-child {
         border-top-left-radius: 2px;
         border-bottom-left-radius: 2px;
       }
 
-      .login-buttons paper-icon-button:last-child {
+      .login-buttons iron-icon:last-child {
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
       }
 
-      .login-buttons paper-icon-button[name="googleplus"] {
+      .login-buttons iron-icon[name="googleplus"] {
         background: #FF3624;
       }
 
-      .login-buttons paper-icon-button[name="facebook"] {
+      .login-buttons iron-icon[name="facebook"] {
         background: #024DAF;
       }
 
-      .login-buttons paper-icon-button[name="linkedin"] {
+      .login-buttons iron-icon[name="linkedin"] {
         background: #0178BD;
       }
 
-      .login-buttons paper-icon-button[name="twitter"] {
+      .login-buttons iron-icon[name="twitter"] {
         background: #01B8EC;
+      }
+      .account_icon-title {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 10px;
       }
 
       iron-pages {
@@ -428,11 +436,12 @@
               <a name="plans" href="[[routePath]]account-plans"
                  class="account__list-link"><span>View Billing Plans</span></a>
             </iron-selector>
+            <div class="account_icon-title">Connect account with</div>
             <div class="login-buttons">
-              <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"></paper-icon-button>
-              <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"></paper-icon-button>
-              <paper-icon-button icon="netlaw-icons:login-linkedin" name="linkedin"></paper-icon-button>
-              <paper-icon-button icon="netlaw-icons:login-twitter" name="twitter"></paper-icon-button>
+              <iron-icon icon="netlaw-icons:login-googleplus" name="googleplus"></iron-icon>
+              <iron-icon icon="netlaw-icons:login-facebook" name="facebook"></iron-icon>
+              <iron-icon icon="netlaw-icons:login-linkedin" name="linkedin"></iron-icon>
+              <iron-icon icon="netlaw-icons:login-twitter" name="twitter"></iron-icon>
             </div>
           </div>
 
