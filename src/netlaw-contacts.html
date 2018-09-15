@@ -1668,13 +1668,25 @@
           onAddFolderClick(e) {
               e.preventDefault();
               this.addFolder = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onCancelFolderClick(e) {
               e.preventDefault();
               this.addFolder = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
           }
 
           _childPage(e) {
@@ -1686,13 +1698,25 @@
           onDeleteContactClick(e) {
               e.preventDefault();
               this.deleteContact = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onCancelDeleteContactClick(e) {
               e.preventDefault();
               this.deleteContact = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
           }
 
           _computeMenu(opened){

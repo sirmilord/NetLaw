@@ -1223,14 +1223,26 @@
           onAddContactClick(e) {
               // e.preventDefault();
               this.addContact = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onCancelContactClick(e) {
               e.preventDefault();
               this.addContact = false;
               this.deleteContact = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
           }
       }
 

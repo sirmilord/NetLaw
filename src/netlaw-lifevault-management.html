@@ -3249,7 +3249,13 @@
           onAddFileClick(e) {
               e.preventDefault();
               this.addFile = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onDeleteFileFolderClick(e) {
@@ -3261,14 +3267,26 @@
           onShareFileClick(e) {
               e.preventDefault();
               this.shareFile = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onCancelFileClick(e) {
               e.preventDefault();
               this.addFile = false;
               this.shareFile = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
           }
 
           //for mobile

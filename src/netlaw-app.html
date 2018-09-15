@@ -845,7 +845,7 @@
 
           BubbleUps(e) {
 
-              if (e.type === "overlay-show") {
+              if (e.detail.display === true) {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
               } else {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
@@ -854,8 +854,7 @@
 
           ready() {
               super.ready();
-              this.addEventListener('overlay-show', this.BubbleUps);
-              this.addEventListener('overlay-hide', this.BubbleUps);
+              this.addEventListener('overlay-display', this.BubbleUps);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
 
           }

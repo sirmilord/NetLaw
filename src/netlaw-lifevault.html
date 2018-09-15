@@ -1628,7 +1628,13 @@
           onAddFolderClick(e) {
               e.preventDefault();
               this.addFolder = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
               e.srcElement.dispatchEvent(new CustomEvent('iron-select',{bubbles: true, composed: true}));
               //app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").close();
           }
@@ -1636,19 +1642,37 @@
           onCancelFolderClick(e) {
               e.preventDefault();
               this.addFolder = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                  display: false
+              }
+              }));
           }
 
           onDeleteFileFolderClick(e) {
               e.preventDefault();
               this.deleteFileFolder = true;
-              this.dispatchEvent(new CustomEvent('overlay-show', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
           }
 
           onCancelFileFolderClick(e) {
               e.preventDefault();
               this.deleteFileFolder = false;
-              this.dispatchEvent(new CustomEvent('overlay-hide', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
           }
 
           _computeMenu(opened){
