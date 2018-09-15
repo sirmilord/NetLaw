@@ -661,7 +661,7 @@
           </app-header>
 
           <app-drawer-layout id="drawerLayout" >
-            <app-drawer id="drawer" slot="drawer" opened="{{profile}}">
+            <app-drawer id="drawer" slot="drawer" opened="{{hideDrawer}}">
               <div class="drawer-overlay"></div>
               <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                              role="navigation">
@@ -720,9 +720,8 @@
           static get properties() {
               return {
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
-                  profile: {
+                  hideDrawer: {
                       type: Boolean,
-                      // notify: true,
                       reflectToAttribute: true,
                       value: true
                   },
@@ -737,18 +736,6 @@
                   toggleIcon: {
                       type: String
                   },
-                  // visible: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
-                  // show: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
                   fullMenu: {type: Boolean, value: false},
               };
           }
@@ -765,7 +752,6 @@
                   window.dispatchEvent(new CustomEvent('location-changed'));
               };
               this.toggleIcon = 'netlaw-icons:notifications';
-              // this.show = false;
           }
 
           onLoggedIn(e) {
@@ -844,7 +830,7 @@
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
               //hide drawer on this page
-              this.page === 'profile' ? this.profile = false : this.profile = true;
+              this.page === 'profile' || this.page === 'account' ? this.hideDrawer = false : this.hideDrawer = true;
 
           }
 
