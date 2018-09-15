@@ -52,7 +52,7 @@
         position: relative;
       }
 
-      .contacts__list-item--top-border:before {
+      .contacts__list-item-lvl2--top-border:before {
         content: '';
         position: absolute;
         display: block;
@@ -65,7 +65,7 @@
         transform: translateX(-50%);
       }
 
-      .contacts__list-item--bottom-border:after {
+      .contacts__list-item-lvl2--bottom-border:after {
         content: '';
         position: absolute;
         display: block;
@@ -228,15 +228,6 @@
       a.contacts__btn.contacts__btn--lvl3 > iron-icon {
         margin-bottom: 5px;
       }
-
-      /*h1 {*/
-      /*font-weight: bold;*/
-      /*color: #4A4A4A;*/
-      /*font-size: 56px;*/
-      /*line-height: 67px;*/
-      /*margin-top: 80px;*/
-      /*margin-bottom: 30px;*/
-      /*}*/
 
       figure {
         margin-bottom: 30px;
@@ -1151,34 +1142,34 @@
     <main class="contacts" hidden$="{{mobile}}">
 
       <section class="contacts__drawer">
-        <ul class="contacts__list">
-          <li class="contacts__list-item contacts__list-item--top-border contacts__list-item--bottom-border">
-            <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
-              <iron-icon icon="[[toggleIcon]]"></iron-icon>
-              <span class="contacts__list-text">Key People</span>
-            </a>
-            <a class="contacts__btn contacts__btn--lvl1" href="javascript:;">
-              <iron-icon icon="icons:more-vert"></iron-icon>
-              <iron-dropdown>
-                <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
-                  <li on-click="onAddFolderClick">Add Folder
-                    <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                  </li>
-                  <li>Download
-                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                  </li>
-                  <li>Print
-                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                  </li>
-                  <li>Share
-                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                  </li>
-                </ul>
-              </iron-dropdown>
-            </a>
-            <iron-collapse id="collapse">
+        <div class="contacts__list">
+          <!-- <li class="contacts__list-item contacts__list-item&#45;&#45;top-border contacts__list-item&#45;&#45;bottom-border">
+             <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
+               <iron-icon icon="[[toggleIcon]]"></iron-icon>
+               <span class="contacts__list-text">Key People</span>
+             </a>
+             <a class="contacts__btn contacts__btn&#45;&#45;lvl1" href="javascript:;">
+               <iron-icon icon="icons:more-vert"></iron-icon>
+               <iron-dropdown>
+                 <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
+                   <li on-click="onAddFolderClick">Add Folder
+                     <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                   </li>
+                   <li>Download
+                     <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                   </li>
+                   <li>Print
+                     <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                   </li>
+                   <li>Share
+                     <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                   </li>
+                 </ul>
+               </iron-dropdown>
+             </a>
+             <iron-collapse id="collapse">-->
               <ul class="contacts__list-lvl2">
-                <li class="contacts__list-item-lvl2">
+                <li class="contacts__list-item-lvl2 contacts__list-item-lvl2--top-border">
                   <a class="contacts__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Family</a>
@@ -1416,7 +1407,7 @@
                     </iron-dropdown>
                   </a>
                 </li>
-                <li class="contacts__list-item-lvl2">
+                <li class="contacts__list-item-lvl2 contacts__list-item-lvl2--bottom-border">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Other</a>
@@ -1448,9 +1439,9 @@
                   </a>
                 </li>
               </ul>
-            </iron-collapse>
-          </li>
-        </ul>
+         <!--   </iron-collapse>
+          </li>-->
+        </div>
       </section>
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
@@ -1594,12 +1585,12 @@
               this.view = 'Module';
           }
 
-          toggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-          }
+          // toggle(e) {
+          //     e.preventDefault();
+          //     this.$.collapse.toggle();
+          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
+          //     this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
+          // }
 
           toggleLvl2(e) {
               e.preventDefault();
@@ -1635,7 +1626,7 @@
                   if (this.page === 'create') {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
                       // this.$.button1.setAttribute('aria-expanded', false);
-                      this.$.collapse.hide();
+                      // this.$.collapse.hide();
                       this.$.collapselvl2.hide();
                       this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
                   }
