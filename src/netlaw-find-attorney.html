@@ -231,7 +231,7 @@
       .btn {
         margin: 0;
         border: none;
-        border-radius: 0;
+        border-radius: 2px;
         overflow: visible;
         font: inherit;
         color: inherit;
@@ -753,16 +753,18 @@
       }
 
       .find-attorney__details-dropdown {
-        width: 170px;
+        width: 185px;
         background-color: #f9f9f9;
+        padding-left: 15px;
+        padding-right: 15px;
+        --iron-icon-height: 20px;
+        --iron-icon-width: 20px;
       }
 
       .find-attorney__details-dropdown li {
         color: #01AA50;
         font-size: 14px;
         display: flex;
-        align-items: center;
-        /*justify-content: space-between;*/
         padding-top: 8px;
         padding-bottom: 8px;
       }
@@ -771,6 +773,8 @@
         font-weight: 300;
         color: #4A4A4A;
         font-size: 14px;
+        font-style: normal;
+        text-align: left;
       }
 
       .find-attorney__details-dropdown iron-icon {
@@ -784,6 +788,39 @@
         font-size: 12px;
         height: auto;
         line-height: 35px;
+      }
+
+      .find-attorney__details-collapse {
+        width: 100%;
+        color: #01AA50;
+        font-size: 14px;
+        --iron-icon-fill-color: #01AA50;
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
+      .find-attorney__details-collapse li {
+        margin-bottom: 25px;
+      }
+
+      .find-attorney__details-collapse li iron-icon {
+        margin-right: 10px;
+      }
+
+      .find-attorney__details-collapse address {
+        color: #4A4A4A;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: normal;
+        text-align: left;
+      }
+
+      .find-attorney__details-collapse .btn {
+        padding: 0 15px;
+        height: 30px;
+        font-size: 12px;
+        line-height: 2.3;
+        margin-left: 32px;
       }
 
       .find-attorney__line {
@@ -914,7 +951,6 @@
         };
       }
 
-
       @media (min-width: 768px) {
         .find-attorney__col-module {
           flex: 1 1 50%;
@@ -984,7 +1020,9 @@
           <div slot="update">Updated 1d ago</div>
         </netlaw-topbar>
         <netlaw-dashboard>
-          <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse" on-select-all-true="selectAllTrue" on-view-module="chooseModule" on-view-list="chooseList"></netlaw-dashboard-form>
+          <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
+                                 on-select-all-true="selectAllTrue" on-view-module="chooseModule"
+                                 on-view-list="chooseList"></netlaw-dashboard-form>
         </netlaw-dashboard>
 
         <div id="module" class="find-attorney__wrap find-attorney__wrap--show">
@@ -1042,14 +1080,14 @@
                             slot="dropdown-content">
                           <li>
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                            <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                            <address>#12345 Center St. Orem, Utah 50679</address>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:phone"></iron-icon>
                             <span>689-892-7856</span>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:email"></iron-icon>
                             <span>toni.bruen@cleora.ca</span>
                           </li>
                           <li>
@@ -1116,14 +1154,14 @@
                             slot="dropdown-content">
                           <li>
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                            <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                            <address>#12345 Center St. Orem, Utah 50679</address>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:phone"></iron-icon>
                             <span>689-892-7856</span>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:email"></iron-icon>
                             <span>toni.bruen@cleora.ca</span>
                           </li>
                           <li>
@@ -1190,14 +1228,14 @@
                             slot="dropdown-content">
                           <li>
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                            <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                            <address>#12345 Center St. Orem, Utah 50679</address>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:phone"></iron-icon>
                             <span>689-892-7856</span>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:email"></iron-icon>
                             <span>toni.bruen@cleora.ca</span>
                           </li>
                           <li>
@@ -1264,14 +1302,14 @@
                             slot="dropdown-content">
                           <li>
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                            <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                            <address>#12345 Center St. Orem, Utah 50679</address>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:phone"></iron-icon>
                             <span>689-892-7856</span>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:email"></iron-icon>
                             <span>toni.bruen@cleora.ca</span>
                           </li>
                           <li>
@@ -1338,14 +1376,14 @@
                             slot="dropdown-content">
                           <li>
                             <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                            <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                            <address>#12345 Center St. Orem, Utah 50679</address>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:phone"></iron-icon>
                             <span>689-892-7856</span>
                           </li>
                           <li>
-                            <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                            <iron-icon icon="netlaw-icons:email"></iron-icon>
                             <span>toni.bruen@cleora.ca</span>
                           </li>
                           <li>
@@ -1401,30 +1439,31 @@
               </div>
               <iron-collapse id="detail1">
                 <div class="find-attorney__row">
-                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center find-attorney__item--p0">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center find-attorney__item--p0">
                     <figure class="find-attorney__img">
                       <img src="/images/map.jpg" alt="map">
                     </figure>
                   </div>
-                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                    <ul class="find-attorney__details-dropdown">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <ul class="find-attorney__details-collapse">
                       <li>
-                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                        <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                        <address>#12345 Center St. Orem, Utah 50679</address>
                       </li>
                       <li>
-                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                        <iron-icon icon="netlaw-icons:phone"></iron-icon>
                         <span>689-892-7856</span>
                       </li>
                       <li>
-                        <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                        <iron-icon icon="netlaw-icons:email"></iron-icon>
                         <span>toni.bruen@cleora.ca</span>
                       </li>
                       <li>
                         <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
                       </li>
                       <!--<li>-->
-                        <!--<div class="find-attorney__line"></div>-->
+                      <!--<div class="find-attorney__line"></div>-->
                       <!--</li>-->
                     </ul>
                   </div>
@@ -1464,16 +1503,210 @@
               </div>
               <iron-collapse id="detail2">
                 <div class="find-attorney__row">
-                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
                     <figure class="find-attorney__img">
                       <img src="/images/map.jpg" alt="map">
                     </figure>
                   </div>
-                  <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <ul class="find-attorney__details-collapse">
+                      <li>
+                        <address>#12345 Center St. Orem, Utah 50679</address>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                        <span>689-892-7856</span>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:email"></iron-icon>
+                        <span>toni.bruen@cleora.ca</span>
+                      </li>
+                      <li>
+                        <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
+                      </li>
+                      <!--<li>-->
+                      <!--<div class="find-attorney__line"></div>-->
+                      <!--</li>-->
+                    </ul>
+                  </div>
+                </div>
+                <div class="find-attorney__line"></div>
+              </iron-collapse>
+            </div>
+            <div class="find-attorney__module-list-item">
+              <div class="find-attorney__list-left">
+                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+                </label>
+                <div class="find-attorney__list-body">
+                  <figure class="find-attorney__photo find-attorney__photo--list">
+                    <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
+                  </figure>
+                </div>
+              </div>
+              <div class="find-attorney__list-center">
+                <div class="find-attorney__name-wrap">
+                  <span class="find-attorney__name">Stella Brown</span>
+                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
+                </div>
+                <span class="find-attorney__location">Orem, Utah (UT)</span>
+                <div class="rating">
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <span class="rating__number">3/5</span>
+                </div>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle3">details
+                  <iron-icon icon="[[detailsIcon3]]"></iron-icon>
+                </a>
+              </div>
+              <iron-collapse id="detail3">
+                <div class="find-attorney__row">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <figure class="find-attorney__img">
+                      <img src="/images/map.jpg" alt="map">
+                    </figure>
+                  </div>
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <ul class="find-attorney__details-collapse">
+                      <li>
+                        <address>#12345 Center St. Orem, Utah 50679</address>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                        <span>689-892-7856</span>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:email"></iron-icon>
+                        <span>toni.bruen@cleora.ca</span>
+                      </li>
+                      <li>
+                        <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
+                      </li>
+                      <!--<li>-->
+                      <!--<div class="find-attorney__line"></div>-->
+                      <!--</li>-->
+                    </ul>
+                  </div>
+                </div>
+                <div class="find-attorney__line"></div>
+              </iron-collapse>
+            </div>
+            <div class="find-attorney__module-list-item">
+              <div class="find-attorney__list-left">
+                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+                </label>
+                <div class="find-attorney__list-body">
+                  <figure class="find-attorney__photo find-attorney__photo--list">
+                    <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
+                  </figure>
+                </div>
+              </div>
+              <div class="find-attorney__list-center">
+                <div class="find-attorney__name-wrap">
+                  <span class="find-attorney__name">Stella Brown</span>
+                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
+                </div>
+                <span class="find-attorney__location">Orem, Utah (UT)</span>
+                <div class="rating">
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <span class="rating__number">2/5</span>
+                </div>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle4">details
+                  <iron-icon icon="[[detailsIcon4]]"></iron-icon>
+                </a>
+              </div>
+              <iron-collapse id="detail4">
+                <div class="find-attorney__row">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <figure class="find-attorney__img">
+                      <img src="/images/map.jpg" alt="map">
+                    </figure>
+                  </div>
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <ul class="find-attorney__details-collapse">
+                      <li>
+                        <address>#12345 Center St. Orem, Utah 50679</address>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                        <span>689-892-7856</span>
+                      </li>
+                      <li>
+                        <iron-icon icon="netlaw-icons:email"></iron-icon>
+                        <span>toni.bruen@cleora.ca</span>
+                      </li>
+                      <li>
+                        <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
+                      </li>
+                      <!--<li>-->
+                      <!--<div class="find-attorney__line"></div>-->
+                      <!--</li>-->
+                    </ul>
+                  </div>
+                </div>
+                <div class="find-attorney__line"></div>
+              </iron-collapse>
+            </div>
+            <div class="find-attorney__module-list-item">
+              <div class="find-attorney__list-left">
+                <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
+                  <input type="checkbox">
+                  <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
+                </label>
+                <div class="find-attorney__list-body">
+                  <figure class="find-attorney__photo find-attorney__photo--list">
+                    <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
+                  </figure>
+                </div>
+              </div>
+              <div class="find-attorney__list-center">
+                <div class="find-attorney__name-wrap">
+                  <span class="find-attorney__name">Dale McBride</span>
+                  <span class="find-attorney__list-update">Civil Defense Attorney</span>
+                </div>
+                <span class="find-attorney__location">Orem, Utah (UT)</span>
+                <div class="rating">
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <iron-icon class="rating__color" icon="icons:star"></iron-icon>
+                  <span class="rating__number">3/5</span>
+                </div>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle5">details
+                  <iron-icon icon="[[detailsIcon5]]"></iron-icon>
+                </a>
+              </div>
+              <iron-collapse id="detail5">
+                <div class="find-attorney__row">
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                    <figure class="find-attorney__img">
+                      <img src="/images/map.jpg" alt="map">
+                    </figure>
+                  </div>
+                  <div
+                      class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
                     <ul class="find-attorney__details-dropdown">
                       <li>
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                        <address>#12345 Center St.<br> Orem, Utah 50679</address>
+                        <address>#12345 Center St. Orem, Utah 50679</address>
                       </li>
                       <li>
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
@@ -1487,202 +1720,13 @@
                         <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
                       </li>
                       <!--<li>-->
-                        <!--<div class="find-attorney__line"></div>-->
+                      <!--<div class="find-attorney__line"></div>-->
                       <!--</li>-->
                     </ul>
                   </div>
                 </div>
                 <div class="find-attorney__line"></div>
               </iron-collapse>
-          </div>
-          <div class="find-attorney__module-list-item">
-            <div class="find-attorney__list-left">
-              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                <input type="checkbox">
-                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-              </label>
-              <div class="find-attorney__list-body">
-                <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
-                </figure>
-              </div>
-            </div>
-            <div class="find-attorney__list-center">
-              <div class="find-attorney__name-wrap">
-                <span class="find-attorney__name">Stella Brown</span>
-                <span class="find-attorney__list-update">Civil Defense Attorney</span>
-              </div>
-              <span class="find-attorney__location">Orem, Utah (UT)</span>
-              <div class="rating">
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <span class="rating__number">3/5</span>
-              </div>
-              <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle3">details
-                <iron-icon icon="[[detailsIcon3]]"></iron-icon>
-              </a>
-            </div>
-            <iron-collapse id="detail3">
-              <div class="find-attorney__row">
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <figure class="find-attorney__img">
-                    <img src="/images/map.jpg" alt="map">
-                  </figure>
-                </div>
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <ul class="find-attorney__details-dropdown">
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>689-892-7856</span>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>toni.bruen@cleora.ca</span>
-                    </li>
-                    <li>
-                      <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
-                    </li>
-                    <!--<li>-->
-                      <!--<div class="find-attorney__line"></div>-->
-                    <!--</li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="find-attorney__line"></div>
-            </iron-collapse>
-          </div>
-          <div class="find-attorney__module-list-item">
-            <div class="find-attorney__list-left">
-              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                <input type="checkbox">
-                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-              </label>
-              <div class="find-attorney__list-body">
-                <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
-                </figure>
-              </div>
-            </div>
-            <div class="find-attorney__list-center">
-              <div class="find-attorney__name-wrap">
-                <span class="find-attorney__name">Stella Brown</span>
-                <span class="find-attorney__list-update">Civil Defense Attorney</span>
-              </div>
-              <span class="find-attorney__location">Orem, Utah (UT)</span>
-              <div class="rating">
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <span class="rating__number">2/5</span>
-              </div>
-              <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle4">details
-                <iron-icon icon="[[detailsIcon4]]"></iron-icon>
-              </a>
-            </div>
-            <iron-collapse id="detail4">
-              <div class="find-attorney__row">
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <figure class="find-attorney__img">
-                    <img src="/images/map.jpg" alt="map">
-                  </figure>
-                </div>
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <ul class="find-attorney__details-dropdown">
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>689-892-7856</span>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>toni.bruen@cleora.ca</span>
-                    </li>
-                    <li>
-                      <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
-                    </li>
-                    <!--<li>-->
-                      <!--<div class="find-attorney__line"></div>-->
-                    <!--</li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="find-attorney__line"></div>
-            </iron-collapse>
-          </div>
-          <div class="find-attorney__module-list-item">
-            <div class="find-attorney__list-left">
-              <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                <input type="checkbox">
-                <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-              </label>
-              <div class="find-attorney__list-body">
-                <figure class="find-attorney__photo find-attorney__photo--list">
-                  <img src="../images/attorney.jpg" height="60" width="60" alt="attorney">
-                </figure>
-              </div>
-            </div>
-            <div class="find-attorney__list-center">
-              <div class="find-attorney__name-wrap">
-                <span class="find-attorney__name">Dale McBride</span>
-                <span class="find-attorney__list-update">Civil Defense Attorney</span>
-              </div>
-              <span class="find-attorney__location">Orem, Utah (UT)</span>
-              <div class="rating">
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <iron-icon class="rating__color" icon="icons:star"></iron-icon>
-                <span class="rating__number">3/5</span>
-              </div>
-              <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle5">details
-                <iron-icon icon="[[detailsIcon5]]"></iron-icon>
-              </a>
-            </div>
-            <iron-collapse id="detail5">
-              <div class="find-attorney__row">
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <figure class="find-attorney__img">
-                    <img src="/images/map.jpg" alt="map">
-                  </figure>
-                </div>
-                <div class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                  <ul class="find-attorney__details-dropdown">
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <address>#12345 Center St.<br> Orem, Utah 50679</address>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>689-892-7856</span>
-                    </li>
-                    <li>
-                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                      <span>toni.bruen@cleora.ca</span>
-                    </li>
-                    <li>
-                      <a href="[[rootPath]]attorney-details" class="btn btn--primary">View Profile</a>
-                    </li>
-                    <!--<li>-->
-                      <!--<div class="find-attorney__line"></div>-->
-                    <!--</li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="find-attorney__line"></div>
-            </iron-collapse>
             </div>
 
           </div>
@@ -1707,12 +1751,12 @@
 
           static get properties() {
               return {
-/*                  view: {
-                      type: String,
-                      // notify: true,
-                      // reflectToAttribute: true,
-                      // value: false
-                  },*/
+                  /*                  view: {
+                                        type: String,
+                                        // notify: true,
+                                        // reflectToAttribute: true,
+                                        // value: false
+                                    },*/
                   view: {
                       type: Boolean,
                       notify: true,
