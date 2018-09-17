@@ -454,6 +454,44 @@
         height: auto;
       }
 
+      .lifevault__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .lifevault__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .lifevault__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        --iron-icon-fill-color: #C2C2C2;
+      }
+
+      ul.lifevault__addfolder-dropdown > li > iron-icon {
+        --iron-icon-width: 20px;
+        --iron-icon-height: 20px;
+      }
+
+      .lifevault__addfolder-dropdown--sub {
+        width: 164px;
+      }
+
+      ul.lifevault__addfolder-dropdown--sub > li > iron-icon {
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
+      }
+
       @media (max-width: 767px) {
 
         .lifevault__doc-title {
@@ -546,7 +584,8 @@
         </ul>
       </paper-menu-button>
       <h3 class="lifevault__header">Estimate for Home Management...</h3>
-      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close" on-click="onClose"></paper-icon-button>
+      <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
+                         on-click="onClose"></paper-icon-button>
     </template>
     <template is="dom-if" if="[[mobile]]">
       <main>
@@ -636,8 +675,31 @@
           </div>
         </div>
         <a id="addfolder" class="lifevault__add-folder lifevault__add-folder--show lifevault__add-folder--doc"
-           href="javascript:;">
+           href="javascript:;" on-click="_onMenu">
           <iron-icon icon="icons:more-vert"></iron-icon>
+          <iron-dropdown horizontal-align="right" vertical-align="bottom">
+            <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                slot="dropdown-content">
+              <li>Download
+                <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+              </li>
+              <li>Print
+                <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+              </li>
+              <li>Replace
+                <iron-icon icon="netlaw-icons:replace-icon"></iron-icon>
+              </li>
+              <li>Rename
+                <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+              </li>
+              <li on-click="onShareFileClick">Share
+                <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+              </li>
+              <li on-click="onDeleteFileFolderClick">Delete
+                <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+              </li>
+            </ul>
+          </iron-dropdown>
         </a>
       </section>
     </template>
@@ -705,11 +767,11 @@
             <button class="btn btn-primary">Share File</button>
           </div>
           <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onClose">Cancel</button>
+            <button class="btn btn-cancel" on-click="onCancelFileClick">Cancel</button>
           </div>
         </form>
       </div>
-      <a href="javascript:;" on-click="onClose">
+      <a href="javascript:;" on-click="onCancelFileClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -744,7 +806,11 @@
 
           //for mobile
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: { full: true, menu: this.$.menu}}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
+              }));
           }
 
           //for mobile
@@ -755,7 +821,7 @@
           onDeleteFileFolderClick(e) {
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('delete-file', {bubbles: true, composed: true}));
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select',{bubbles: true, composed: true}));
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
           onShareFileClick(e) {
@@ -768,9 +834,26 @@
                       display: true
                   }
               }));
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select',{bubbles: true, composed: true}));
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
+          _onMenu(e) {
+              console.log();
+              e.currentTarget.querySelector('iron-dropdown').toggle();
+          }
+
+          onCancelFileClick(e) {
+                 e.preventDefault();
+                  this.addFile = false;
+                  this.shareFile = false;
+                  this.dispatchEvent(new CustomEvent('overlay-display', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                          display: false
+                      }
+                  }));
+          }
       }
 
       window.customElements.define(NetlawLifevaultDoc.is, NetlawLifevaultDoc);
