@@ -146,19 +146,6 @@
         text-decoration: none;
       }
 
-      .contacts__list-item-lvl2--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 1px dashed #979797;
-        opacity: .5;
-        left: 50%;
-        top: -7px;
-        transform: translateX(-50%);
-      }
-
       .contacts__btn {
         position: absolute;
         color: #414142;
@@ -681,6 +668,23 @@
         color: #4a4a4a;
       }
 
+      .contacts__list-item-lvl2 .iron-collapse-opened {
+        position: relative;
+      }
+
+      .iron-collapse-opened:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        bottom: -20px;
+        transform: translateX(-50%);
+      }
+
       @media (max-width: 767px) {
         iron-pages {
           flex: 1 1 100%;
@@ -727,12 +731,6 @@
           --iron-icon-height: 18px;
         }
 
-        .contacts__list-item-lvl2--top-border:before {
-          border-bottom: 1px solid #979797;
-          left: 0;
-          transform: none;
-        }
-
         .contacts__btn {
           right: 10px;
         }
@@ -762,6 +760,11 @@
           border-top: 1px solid #e5e5e5;
         }
 
+        .iron-collapse-opened:before {
+          left: 0;
+          transform: none;
+          border-bottom: 1px solid #979797;
+        }
       }
 
       @media (min-width: 992px) {
@@ -835,10 +838,25 @@
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
           </div>
           <div class="contacts-mobile__drawer-wrap">
-            <section id="navmobile" class="contacts__nav-mobile">
+
+
+          </div>
+        </app-drawer>
+        <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
+          <section name="empty2" class="contacts-mobile__nav">
+            <div class="contacts-mobile__header">
+              <figure class="contacts-mobile__img">
+                <iron-icon icon="netlaw-icons:organizer"></iron-icon>
+              </figure>
+              <div class="contacts-mobile__header-wrap">
+                <h1 class="contacts-mobile__title">Contacts</h1>
+                <div class="contacts-mobile__sub">Add beneficaries, exectors of an estate.</div>
+              </div>
+            </div>
+            <div id="navmobile" class="contacts__nav-mobile">
               <ul class="contacts__list-lvl2">
                 <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleMobileLvl2">
+                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Family</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
@@ -867,7 +885,7 @@
                       </ul>
                     </iron-dropdown>
                   </a>
-                  <iron-collapse id="collapsemobilelvl2">
+                  <iron-collapse >
                     <ul class="contacts__list-lvl3">
                       <li class="contacts__list-item-lvl3">
                         <a name="family" href="[[routePath]]contacts/family" id="family2"
@@ -1013,7 +1031,7 @@
                     </ul>
                   </iron-collapse>
                 </li>
-                <li id="modmobile" class="contacts__list-item-lvl2 ">
+                <li class="contacts__list-item-lvl2 ">
                   <a class="contacts__list-link-lvl2" href="javascript:;">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Friends</a>
@@ -1107,31 +1125,7 @@
                   </a>
                 </li>
               </ul>
-            </section>
-          </div>
-        </app-drawer>
-        <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
-          <section name="empty2" class="contacts-mobile__nav">
-            <div class="contacts-mobile__header">
-              <figure class="contacts-mobile__img">
-                <iron-icon icon="netlaw-icons:organizer"></iron-icon>
-              </figure>
-              <div class="contacts-mobile__header-wrap">
-                <h1 class="contacts-mobile__title">Contacts</h1>
-                <div class="contacts-mobile__sub">Add beneficaries, exectors of an estate.</div>
-              </div>
             </div>
-            <ul class="contacts-mobile__list">
-              <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-                <li class="contacts-mobile__list-item contacts-mobile__list-item--top-border contacts-mobile__list-item--bottom-border">
-                  <a name="" href="javascript:;"
-                     class="contacts-mobile__list-link" on-click="_openDrawer">
-                    <span class="contacts-mobile__list-text">Key People</span>
-                    <iron-icon icon="icons:icons:chevron-right"></iron-icon>
-                  </a>
-                </li>
-              </iron-selector>
-            </ul>
           </section>
           <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
         </iron-pages>
@@ -1143,34 +1137,9 @@
 
       <section class="contacts__drawer">
         <div class="contacts__list">
-          <!-- <li class="contacts__list-item contacts__list-item&#45;&#45;top-border contacts__list-item&#45;&#45;bottom-border">
-             <a href="javascript:;" id="button1" class="contacts__list-link" on-click="toggle">
-               <iron-icon icon="[[toggleIcon]]"></iron-icon>
-               <span class="contacts__list-text">Key People</span>
-             </a>
-             <a class="contacts__btn contacts__btn&#45;&#45;lvl1" href="javascript:;">
-               <iron-icon icon="icons:more-vert"></iron-icon>
-               <iron-dropdown>
-                 <ul class="contacts__addfolder-dropdown" slot="dropdown-content">
-                   <li on-click="onAddFolderClick">Add Folder
-                     <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                   </li>
-                   <li>Download
-                     <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                   </li>
-                   <li>Print
-                     <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                   </li>
-                   <li>Share
-                     <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                   </li>
-                 </ul>
-               </iron-dropdown>
-             </a>
-             <iron-collapse id="collapse">-->
               <ul class="contacts__list-lvl2">
                 <li class="contacts__list-item-lvl2 contacts__list-item-lvl2--top-border">
-                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
+                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
                     <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                     Family</a>
                   <a class="contacts__btn contacts__btn--lvl2" href="javascript:;">
@@ -1439,8 +1408,6 @@
                   </a>
                 </li>
               </ul>
-         <!--   </iron-collapse>
-          </li>-->
         </div>
       </section>
 
@@ -1585,25 +1552,11 @@
               this.view = 'Module';
           }
 
-          // toggle(e) {
-          //     e.preventDefault();
-          //     this.$.collapse.toggle();
-          //     this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-          //     this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-          // }
-
-          toggleLvl2(e) {
+          _onToggleCollapse(e) {
               e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('contacts__list-item-lvl2--top-border') : this.$.mod.classList.remove('contacts__list-item-lvl2--top-border');
-              this.$.collapselvl2.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
-          }
-
-          _onToggleMobileLvl2(e) {
-              e.preventDefault();
-              this.$.collapsemobilelvl2.toggle();
-              this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('contacts__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
-              this.$.collapsemobilelvl2.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
+              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
+              ironCollapse.toggle();
+              ironCollapse.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
           }
 
           ready(e) {
@@ -1621,22 +1574,22 @@
           _pageChanged(page) {
 
               if (!this.mobile) {
-                  this.page = page || 'create';
+                  // this.page = page || 'create';
 
-                  if (this.page === 'create') {
-                      this.toggleIcon = 'netlaw-icons:plus-icon';
+                  // if (this.page === 'create') {
+                  //     this.toggleIcon = 'netlaw-icons:plus-icon';
                       // this.$.button1.setAttribute('aria-expanded', false);
                       // this.$.collapse.hide();
-                      this.$.collapselvl2.hide();
-                      this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
-                  }
+                      // this.$.collapselvl2.hide();
+                      // this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
+                  // }
 
-                  if (this.page === 'family') {
-                      this.$.family.classList.add('contacts__list-link-lvl3--active');
-                  }
-                  else {
-                      this.$.family.classList.remove('contacts__list-link-lvl3--active');
-                  }
+              //     if (this.page === 'family') {
+              //         this.$.family.classList.add('contacts__list-link-lvl3--active');
+              //     }
+              //     else {
+              //         this.$.family.classList.remove('contacts__list-link-lvl3--active');
+              //     }
               }
 
               if (this.mobile) {
@@ -1656,14 +1609,6 @@
           open(){
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
-
-          _openDrawer(e) {
-              this.$.contactsdrawer.open();
-          }
-
-          // closeDrawer(e) {
-          //     this.$.contactsdrawer.close();
-          // }
 
           onAddFolderClick(e) {
               e.preventDefault();
@@ -1690,9 +1635,8 @@
           }
 
           _childPage(e) {
-              this.$.contactsdrawer.close();
-              this.$.collapsemobilelvl2.toggle();
-              this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
+              let ironCollapse = e.currentTarget.closest('iron-collapse');
+              ironCollapse.toggle();
           }
 
           onDeleteContactClick(e) {
