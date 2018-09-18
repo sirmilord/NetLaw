@@ -1220,6 +1220,12 @@
       }
 
       @media (max-width: 767px) {
+
+
+        .contacts__module {
+          padding-bottom: 50px;
+        }
+
         .file-folder__icon--close {
           bottom: 7%;
         }
@@ -1369,7 +1375,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1413,7 +1419,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1457,7 +1463,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1501,7 +1507,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1561,7 +1567,7 @@
             <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
               <iron-icon icon="icons:expand-more"></iron-icon>
             </a>
-            <a class="contacts__menu" href="javascript:;">
+            <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown horizontal-align="right">
                 <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1604,7 +1610,7 @@
             <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
               <iron-icon icon="icons:expand-more"></iron-icon>
             </a>
-            <a class="contacts__menu" href="javascript:;">
+            <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown horizontal-align="right">
                 <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1647,7 +1653,7 @@
             <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
               <iron-icon icon="icons:expand-more"></iron-icon>
             </a>
-            <a class="contacts__menu" href="javascript:;">
+            <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown horizontal-align="right">
                 <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1690,7 +1696,7 @@
             <a class="contacts__details contacts__details--list" href="[[rootPath]]contact-details">details
               <iron-icon icon="icons:expand-more"></iron-icon>
             </a>
-            <a class="contacts__menu" href="javascript:;">
+            <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown horizontal-align="right">
                 <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1741,7 +1747,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1788,7 +1794,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1835,7 +1841,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1882,7 +1888,7 @@
                     <input type="checkbox">
                     <span class="contacts__content-checkmark contacts__content-checkmark--module"></span>
                   </label>
-                  <a class="contacts__menu" href="javascript:;">
+                  <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                     <iron-icon icon="icons:more-vert"></iron-icon>
                     <iron-dropdown horizontal-align="right">
                       <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -1993,7 +1999,7 @@
               </a>
             </div>
             <div class="contacts__list-right">
-              <a class="contacts__menu" href="javascript:;">
+              <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                 <iron-icon icon="icons:more-vert"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -2036,7 +2042,7 @@
               </a>
             </div>
             <div class="contacts__list-right">
-              <a class="contacts__menu" href="javascript:;">
+              <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                 <iron-icon icon="icons:more-vert"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -2079,7 +2085,7 @@
               </a>
             </div>
             <div class="contacts__list-right">
-              <a class="contacts__menu" href="javascript:;">
+              <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                 <iron-icon icon="icons:more-vert"></iron-icon>
                 <iron-dropdown horizontal-align="right">
                   <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
@@ -2122,7 +2128,7 @@
               </a>
             </div>
             <div class="contacts__list-right">
-              <a class="contacts__menu" href="javascript:;">
+              <a class="contacts__menu" href="javascript:;" on-click="_onToggleDropdown">
                 <iron-icon icon="icons:more-vert"></iron-icon>
                 <iron-dropdown horizontal-align="right" vertical-align="top">
                   <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub" slot="dropdown-content">
@@ -2258,23 +2264,15 @@
           static get properties() {
               return {
                   view: {
-                      type: Boolean,
-                      //notify: true,
-                      //reflectToAttribute: true,
-                      value: false
+                      type: String,
+                      value: 'Module'
                   },
-                  checkboxes: {
-                      type: Array,
-                      //notify: true,
-                      //reflectToAttribute: true,
-                  },
+
                   toggleIcon: {
                       type: String
                   },
                   addContact: {
                       type: Boolean,
-                      //notify: true,
-                      //reflectToAttribute: true,
                       value: false
                   },
               };
@@ -2282,18 +2280,17 @@
 
           constructor() {
               super();
-              this.view = 'Module';
-              this.checkboxes = 0;
           }
 
           ready(e) {
               super.ready();
+          }
 
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
+          _onToggleDropdown(e) {
+              e.preventDefault();
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              ironDropdown.toggle();
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
           selectAllFalse(e) {
