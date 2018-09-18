@@ -706,7 +706,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -744,7 +744,7 @@
                     <span class="find-attorney__name">J. Glen Wagstaff</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -780,7 +780,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -818,7 +818,7 @@
                     <span class="find-attorney__name">Jeff Cobb</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -855,7 +855,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -893,7 +893,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -929,7 +929,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -967,7 +967,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1003,7 +1003,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1041,7 +1041,7 @@
                     <span class="find-attorney__name">Dale McBride</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1400,28 +1400,11 @@
           static get properties() {
               return {
 
-                  // view: {
-                  //     type: Boolean,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  //     value: false
-                  // },
-                  // checkboxes: {
-                  //     type: Array,
-                  //     notify: true,
-                  //     reflectToAttribute: true,
-                  // },
-                  // toggleIcon: {
-                  //     type: String
-                  // },
               };
           }
 
           constructor() {
               super();
-              // this.view = 'Module';
-              // this.view = true;
-              // this.checkboxes = 0;
           }
 
           _toggleCollapse(e) {
@@ -1431,20 +1414,22 @@
               ironCollapse.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
           }
 
+          _onToggleDropdown(e) {
+              e.preventDefault();
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              ironDropdown.toggle();
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+          }
+
+          _onToggleDetails(e) {
+              e.preventDefault();
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              ironDropdown.toggle();
+              ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
+          }
+
           ready(e) {
               super.ready();
-
-              // let btnDetailsModule = this.shadowRoot.querySelectorAll('.find-attorney__details--module');
-              // btnDetailsModule.forEach(btn => btn.addEventListener('click', function (e) {
-              //     this.querySelector('iron-dropdown').opened ? this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-more') : this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
-              //     this.querySelector('iron-dropdown').open();
-              // }));
-
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
           }
 
           selectAllFalse(e) {
