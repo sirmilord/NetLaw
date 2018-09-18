@@ -5,8 +5,6 @@
   <template>
 
     <style>
-      /* todo clear up styles *
-      */
       :host {
         box-sizing: border-box;
       }
@@ -34,154 +32,6 @@
         list-style: none;
         margin: 0;
         padding: 0;
-      }
-
-      .find-attorney__list {
-        margin-left: 45px;
-        margin-right: 30px;
-        margin-top: 30px;
-        position: relative;
-      }
-
-      .find-attorney__list-lvl2 {
-        margin-left: 25px;
-        margin-bottom: 20px;
-      }
-
-      .find-attorney__list-lvl3 {
-        margin-left: 15px;
-        margin-bottom: 20px;
-      }
-
-      .find-attorney__list-item {
-        position: relative;
-      }
-
-      .find-attorney__list-item--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-      }
-
-      .find-attorney__list-item--bottom-border:after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%);
-      }
-
-      .find-attorney__list-item-lvl2 {
-        position: relative;
-      }
-
-      .find-attorney__list-item-lvl3 {
-        position: relative;
-      }
-
-      .find-attorney__list-link {
-        font-size: 18px;
-        color: #414142;
-        text-decoration: none;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        display: inline-block;
-        vertical-align: center;
-      }
-
-      .find-attorney__list-link iron-icon {
-        margin-right: 10px;
-      }
-
-      .find-attorney__list-link-lvl2 {
-        font-size: 16px;
-        color: #e5e5e5;
-        text-decoration: none;
-        display: inline-block;
-        vertical-align: center;
-        padding-top: 15px;
-        padding-bottom: 15px;
-      }
-
-      .find-attorney__list-link-lvl3 {
-        font-size: 14px;
-        color: #b7b7b7;
-        text-decoration: none;
-        display: inline-block;
-        vertical-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-
-      .find-attorney__list-item-lvl2--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 3px dotted #e4e4e4;
-        left: 50%;
-        top: -7px;
-        transform: translateX(-50%);
-      }
-
-      .find-attorney__btn {
-        position: absolute;
-        color: #414142;
-        width: 24px;
-        height: 24px;
-        right: 0;
-        top: 21px;
-      }
-
-      .find-attorney__btn--lvl2 {
-        top: 15px;
-        color: #e5e5e5;
-      }
-
-      .find-attorney__btn--lvl2-first {
-        top: 27px;
-      }
-
-      .find-attorney__btn--lvl3 {
-        top: 9px;
-        color: #b7b7b7;
-      }
-
-      .find-attorney__list-link[aria-expanded=true] iron-icon {
-        fill: #01AA50;
-      }
-
-      .find-attorney__list-link-lvl2:hover,
-      .find-attorney__list-link-lvl2:focus {
-        color: #4a4a4a;
-      }
-
-      .find-attorney__list-link-lvl3:hover,
-      .find-attorney__list-link-lvl3:focus {
-        color: #01AA50;
-      }
-
-      .find-attorney__list-link-lvl3:hover:before,
-      .find-attorney__list-link-lvl3:focus:before {
-        content: '';
-        position: absolute;
-        height: 50%;
-        right: -30px;
-        top: 50%;
-        width: 4px;
-        background-color: #01AA50;
-        transform: translateY(-50%);
       }
 
       h1 {
@@ -259,66 +109,6 @@
         background-color: #019948;
       }
 
-      /*Immedeaty Family*/
-      .find-attorney__content-header {
-        display: flex;
-        min-height: 65px;
-        width: 100%;
-        background-color: #4a4a4a;
-      }
-
-      .find-attorney__content-title {
-        align-self: center;
-        margin-left: 60px;
-        color: #d1d1d1;
-        font-size: 26px;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-weight: 300;
-      }
-
-      .find-attorney__content-update {
-        margin-bottom: 15px;
-        align-self: flex-end;
-        font-size: 14px;
-        margin-right: 30px;
-        margin-left: auto;
-        color: #b2b2b2;
-      }
-
-      .find-attorney__content-dashboard {
-        width: 100%;
-        background-color: #f9f9f9;
-        min-height: 90px;
-        position: relative;
-        padding-left: 30px;
-        padding-right: 30px;
-        box-sizing: border-box;
-      }
-
-      .find-attorney__content-dashboard:after {
-        content: '';
-        position: absolute;
-        width: 91%;
-        height: 1px;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        border-bottom: 1px dashed #979797;
-        opacity: .5;
-      }
-
-      .find-attorney__content-dashboard form {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        min-height: 90px;
-        flex-wrap: wrap;
-        /*align-content: space-around;*/
-        /*height: 120px;*/
-      }
-
       .find-attorney__checkbox-container {
         display: block;
         position: relative;
@@ -380,117 +170,6 @@
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
-      }
-
-      .find-attorney__search {
-        display: flex;
-        margin-right: 25px;
-      }
-
-      .find-attorney__search input {
-        height: 45px;
-        border: 1px solid #c2c2c2;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-        padding-left: 15px;
-        font-size: 18px;
-      }
-
-      .find-attorney__search input::placeholder {
-        color: #c2c2c2;
-        font-size: 16px;
-      }
-
-      .btn--search {
-        color: #c2c2c2;
-        padding: 0 8px;
-        height: 45px;
-        background-color: #fff;
-        border: 1px solid #c2c2c2;
-        border-left: 0;
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
-
-      .find-attorney__sort {
-        border: 1px solid #c2c2c2;
-        height: 45px;
-        width: 150px;
-        padding-left: 15px;
-        padding-right: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: #c2c2c2;
-        background-color: #fff;
-        position: relative;
-        cursor: pointer;
-      }
-
-      .find-attorney__sort-arrows {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-        position: absolute;
-        top: 50%;
-        left: -25px;
-        transform: translateY(-50%);
-      }
-
-      .find-attorney__sort-arrows iron-icon:last-child {
-        margin-top: -5px;
-      }
-
-      .btn--module {
-        background-color: transparent;
-        padding: 0;
-        width: 33px;
-        height: 33px;
-        --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 33px;
-        --iron-icon-height: 33px;
-        display: flex;
-        cursor: pointer;
-      }
-
-      ul.find-attorney__addfolder-dropdown--sub > li > iron-icon {
-        --iron-icon-height: 16px;
-        --iron-icon-width: 16px;
-      }
-
-      .btn--list {
-        background-color: transparent;
-        padding: 0;
-        width: 33px;
-        height: 33px;
-        --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 33px;
-        --iron-icon-height: 33px;
-        display: flex;
-        cursor: pointer;
-      }
-
-      .btn--active {
-        --iron-icon-fill-color: #414142;
-      }
-
-      #sortby {
-        position: relative;
-      }
-
-      #sortbydropdown {
-        background-color: #fff;
-      }
-
-      #bulkaction {
-        position: relative;
-      }
-
-      #bulkactiondropdown {
-        background-color: #fff;
       }
 
       .find-attorney__module {
@@ -582,19 +261,6 @@
 
       .find-attorney__photo img {
         border-radius: 50%;
-      }
-
-      .btn--charm {
-        background-color: transparent;
-        border: 0;
-        padding: 0;
-        margin-bottom: 0;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: auto;
-        --iron-icon-fill-color: #b2b2b2;
       }
 
       .find-attorney__module-footer {
@@ -951,6 +617,10 @@
         };
       }
 
+      .find-attorney__module-item {
+        margin-bottom: 20px;
+      }
+
       @media (min-width: 768px) {
         .find-attorney__col-module {
           flex: 1 1 50%;
@@ -959,10 +629,6 @@
           padding-right: 15px;
           box-sizing: border-box;
         }
-      }
-
-      .find-attorney__module-item {
-        margin-bottom: 20px;
       }
 
       @media (min-width: 992px) {
@@ -1001,6 +667,11 @@
           max-width: 20%;
         }
       }
+
+      @media (max-width: 767px ) {
+
+      }
+
     </style>
 
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
@@ -1013,7 +684,7 @@
     <main class="find-attorney" hidden$="{{mobile}}">
 
 
-      <d class="find-attorney__content">
+      <div class="find-attorney__content">
 
         <netlaw-topbar>
           <h2 slot="title">Search Attorney</h2>
@@ -1035,7 +706,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1073,7 +744,7 @@
                     <span class="find-attorney__name">J. Glen Wagstaff</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1109,7 +780,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1147,7 +818,7 @@
                     <span class="find-attorney__name">Jeff Cobb</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1184,7 +855,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1222,7 +893,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1258,7 +929,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1296,7 +967,7 @@
                     <span class="find-attorney__name">Stella Brown</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1332,7 +1003,7 @@
                       <input type="checkbox">
                       <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
                     </label>
-                    <button class="find-attorney__menu">
+                    <button class="find-attorney__menu" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown horizontal-align="right">
                         <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
@@ -1370,7 +1041,7 @@
                     <span class="find-attorney__name">Dale McBride</span>
                     <span class="find-attorney__desc">Civil Defense Attorney</span>
                     <span class="find-attorney__module-update">Orem, UT</span>
-                    <button class="find-attorney__details find-attorney__details--module">details
+                    <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                       <iron-dropdown horizontal-align="right" vertical-offset="30">
                         <ul class="find-attorney__details-dropdown"
@@ -1434,8 +1105,8 @@
                   <iron-icon icon="icons:star"></iron-icon>
                   <span class="rating__number">5/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle">details
-                  <iron-icon icon="[[detailsIcon]]"></iron-icon>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="_toggleCollapse">details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
               </div>
               <iron-collapse id="detail1">
@@ -1495,8 +1166,8 @@
                   <iron-icon class="rating__color" icon="icons:star"></iron-icon>
                   <span class="rating__number">4/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle2">details
-                  <iron-icon icon="[[detailsIcon2]]"></iron-icon>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="_toggleCollapse">details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
               </div>
               <iron-collapse id="detail2">
@@ -1556,8 +1227,8 @@
                   <iron-icon class="rating__color" icon="icons:star"></iron-icon>
                   <span class="rating__number">3/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle3">details
-                  <iron-icon icon="[[detailsIcon2]]"></iron-icon>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="_toggleCollapse">details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
               </div>
               <iron-collapse id="detail3">
@@ -1617,8 +1288,8 @@
                   <iron-icon class="rating__color" icon="icons:star"></iron-icon>
                   <span class="rating__number">2/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle4">details
-                  <iron-icon icon="[[detailsIcon2]]"></iron-icon>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="_toggleCollapse">details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
               </div>
               <iron-collapse id="detail4">
@@ -1678,8 +1349,8 @@
                   <iron-icon class="rating__color" icon="icons:star"></iron-icon>
                   <span class="rating__number">2/5</span>
                 </div>
-                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="toggle5">details
-                  <iron-icon icon="[[detailsIcon2]]"></iron-icon>
+                <a class="find-attorney__details find-attorney__details--list" href="javascript:;" on-click="_toggleCollapse">details
+                  <iron-icon icon="icons:expand-more"></iron-icon>
                 </a>
               </div>
               <iron-collapse id="detail5">
@@ -1715,6 +1386,7 @@
             </div>
           </div>
         </div>
+      </div>
     </main>
   </template>
 
@@ -1728,111 +1400,36 @@
           static get properties() {
               return {
 
-                  view: {
-                      type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
-                      value: false
-                  },
-                  checkboxes: {
-                      type: Array,
-                      notify: true,
-                      reflectToAttribute: true,
-                  },
-                  // toggleIcon: {
-                  //     type: String
-                  // },
-                  detailsIcon: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
-
-                  detailsIcon2: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
-                  detailsIcon3: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
-                  detailsIcon4: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
-                  detailsIcon5: {
-                      type: String,
-                      reflectToAttribute: true,
-                      notify: true
-                  },
               };
           }
 
-          // todo: remake expand list
           constructor() {
               super();
-              this.detailsIcon = 'icons:expand-more';
-              this.detailsIcon2 = 'icons:expand-more';
-              this.detailsIcon3 = 'icons:expand-more';
-              this.detailsIcon4 = 'icons:expand-more';
-              this.detailsIcon5 = 'icons:expand-more';
-              this.view = 'Module';
-              // this.view = true;
-              this.checkboxes = 0;
           }
 
-          toggle(e) {
+          _toggleCollapse(e) {
               e.preventDefault();
-              this.$.detail1.toggle();
-              this.$.detail1.setAttribute('aria-expanded', this.$.detail1.opened);
-              this.$.detail1.opened ? this.detailsIcon = 'icons:expand-less' : this.detailsIcon = 'icons:expand-more';
+              let ironCollapse = e.currentTarget.parentNode.nextElementSibling;
+              ironCollapse.toggle();
+              ironCollapse.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
           }
 
-          toggle2(e) {
+          _onToggleDropdown(e) {
               e.preventDefault();
-              this.$.detail2.toggle();
-              this.$.detail2.setAttribute('aria-expanded', this.$.detail2.opened);
-              this.$.detail2.opened ? this.detailsIcon2 = 'icons:expand-less' : this.detailsIcon2 = 'icons:expand-more';
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              ironDropdown.toggle();
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
-          toggle3(e) {
+          _onToggleDetails(e) {
               e.preventDefault();
-              this.$.detail3.toggle();
-              this.$.detail3.setAttribute('aria-expanded', this.$.detail3.opened);
-              this.$.detail3.opened ? this.detailsIcon3 = 'icons:expand-less' : this.detailsIcon3 = 'icons:expand-more';
-          }
-
-          toggle4(e) {
-              e.preventDefault();
-              this.$.detail4.toggle();
-              this.$.detail4.setAttribute('aria-expanded', this.$.detail4.opened);
-              this.$.detail4.opened ? this.detailsIcon4 = 'icons:expand-less' : this.detailsIcon4 = 'icons:expand-more';
-          }
-
-          toggle5(e) {
-              e.preventDefault();
-              this.$.detail5.toggle();
-              this.$.detail5.setAttribute('aria-expanded', this.$.detail5.opened);
-              this.$.detail5.opened ? this.detailsIcon5 = 'icons:expand-less' : this.detailsIcon5 = 'icons:expand-more';
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              ironDropdown.toggle();
+              ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
           }
 
           ready(e) {
               super.ready();
-
-              let btnDetailsModule = this.shadowRoot.querySelectorAll('.find-attorney__details--module');
-              btnDetailsModule.forEach(btn => btn.addEventListener('click', function (e) {
-                  this.querySelector('iron-dropdown').opened ? this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-more') : this.querySelector('iron-icon').setAttribute('icon', 'icons:expand-less');
-                  this.querySelector('iron-dropdown').open();
-              }));
-
-              let btnVerts = this.shadowRoot.querySelectorAll('[icon="icons:more-vert"]');
-              btnVerts.forEach(btn => btn.parentNode.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  this.querySelector('iron-dropdown').open();
-              }));
           }
 
           selectAllFalse(e) {
