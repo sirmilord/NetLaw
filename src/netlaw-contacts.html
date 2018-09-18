@@ -828,8 +828,8 @@
       </paper-menu-button>
     </template>
 
-    <!--<template is="dom-if" if="[[mobile]]">-->
-    <main class="contacts-mobile" hidden$="{{!mobile}}">
+    <template is="dom-if" if="[[mobile]]">
+    <main class="contacts-mobile">
       <app-drawer-layout>
         <app-drawer id="contactsdrawer" class="contacts-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                     hidden$="{{!mobile}}" align="right">
@@ -1131,7 +1131,7 @@
         </iron-pages>
       </app-drawer-layout>
     </main>
-    <!--</template>-->
+    </template>
 
     <!--Desktop layout-->
     <template is="dom-if" if="[[!mobile]]">
