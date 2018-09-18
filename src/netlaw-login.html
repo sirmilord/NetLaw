@@ -172,13 +172,18 @@
                     <div class="login__margin">
                       <label for="register-pass"></label>
                       <input type="password" id="register-pass" class="login__input" name="password" placeholder="Password *"
-                             autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
-                      <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
+                             autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+                    </div>
+                    <div class="login__margin">
+                      <label for="confirm-password"></label>
+                      <input type="password" id="confirm-password" class="login__input" name="confirm_password" placeholder="Confirm Password *"
+                             autofocus value="{{confirm_password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
                     </div>
                     <div class="login__margin-top">
                       <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong><a href="javascript:;" name="pass-reset" on-click="onNavigate">Terms of Use</a></strong>
                       </paper-checkbox>
                     </div>
+                    <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
                     <hr class="login__divider-small">
                     <div class="login__margin">
                       <button class="btn btn-primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Create Account</button>
@@ -486,6 +491,7 @@
                   phone: String,
                   name: String,
                   password: String,
+                  confirm_password: String,
                   profiles: Array,
               };
           }
@@ -533,7 +539,17 @@
           onCreateAccount(e) {
 
               this.loading = true;
-              api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
+
+              console.log(this.password);
+              console.log(this.confirm_password);
+
+              if(this.password !== this.confirm_password) {
+                  ex => this.error = "Please specify your email or phone";
+              }
+
+              else {
+
+                  /*api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
                   .success(r => {
                       //this.selected = "security"; //go to security settings
                       this.accountId = r.user_id;
@@ -551,7 +567,8 @@
                   .error(ex => {
                       this.error = ex.message;
                   })
-                  .finally(() => this.loading = false);
+                  .finally(() => this.loading = false);*/
+              }
           }
 
           _setSession(session) {
