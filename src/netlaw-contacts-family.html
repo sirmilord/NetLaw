@@ -1219,6 +1219,12 @@
       }
 
       @media (max-width: 767px) {
+
+
+        .contacts__module {
+          padding-bottom: 50px;
+        }
+
         .file-folder__icon--close {
           bottom: 7%;
         }
@@ -2257,16 +2263,14 @@
           static get properties() {
               return {
                   view: {
-                      type: Boolean,
+                      type: String,
+                      value: 'Module'
+                  },
+                  // checkboxes: {
+                  //     type: Array,
                       //notify: true,
                       //reflectToAttribute: true,
-                      value: false
-                  },
-                  checkboxes: {
-                      type: Array,
-                      //notify: true,
-                      //reflectToAttribute: true,
-                  },
+                  // },
                   toggleIcon: {
                       type: String
                   },
@@ -2281,8 +2285,8 @@
 
           constructor() {
               super();
-              this.view = 'Module';
-              this.checkboxes = 0;
+              // this.view = 'Module';
+              // this.checkboxes = 0;
           }
 
           ready(e) {

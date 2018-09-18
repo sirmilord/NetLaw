@@ -1624,6 +1624,11 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
+          _childPage(e) {
+              let ironCollapse = e.currentTarget.closest('iron-collapse');
+              ironCollapse.toggle();
+          }
+
           onAddFolderClick(e) {
               e.preventDefault();
               this.addFolder = true;
@@ -1647,11 +1652,6 @@
                       display: false
                   }
               }));
-          }
-
-          _childPage(e) {
-              let ironCollapse = e.currentTarget.closest('iron-collapse');
-              ironCollapse.toggle();
           }
 
           onDeleteContactClick(e) {
