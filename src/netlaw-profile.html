@@ -1,8 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-image-upload-button/paper-image-upload-button.html">
 
 <dom-module id="netlaw-profile">
   <template>
-
     <style>
 
       .profile {
@@ -104,20 +104,21 @@
         background-color: #e9e9e9;
       }
 
-      .profile__left paper-icon-button {
+      .profile__image {
         position: relative;
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        background-color: #e1e1e1;
+        width: 160px;
+        height: 160px;
         margin-left: auto;
         margin-right: 20%;
         margin-top: 20%;
-        padding: 25px;
         --iron-icon-fill-color: #9B9B9B;
+        --paper-image-upload-button-width: 160px;
+        --paper-image-upload-button-height: 160px;
+        --paper-image-upload-button-border-width: 1px;
+        --paper-image-upload-button-border-color: #9B9B9B;
       }
 
-      .profile__left img {
+/*      .profile__left img {
         margin-top: 20%;
         position: relative;
         border-radius: 50%;
@@ -126,7 +127,7 @@
         padding: 0;
         margin-left: auto;
         margin-right: auto;
-      }
+      }*/
 
       .profile__right {
         flex: 1 1 100%;
@@ -283,8 +284,14 @@
           box-sizing: border-box;
         }
 
-        .profile__left img {
+        .profile__image {
           margin-top: 30px;
+          margin-left: auto;
+          margin-right: auto;
+          width: 120px;
+          height: 120px;
+          --paper-image-upload-button-width: 120px;
+          --paper-image-upload-button-height: 120px;
         }
 
         .form {
@@ -358,7 +365,12 @@
       <div class="profile__wrapper">
         <div class="profile__left">
           <!--<paper-icon-button icon="netlaw-icons:profile-plus" name="profile"></paper-icon-button>-->
-          <img src="../images/profile.jpg" alt="Profile Image">
+          <!--<img src="../images/profile.jpg" alt="Profile Image">-->
+          <div class="profile__image">
+            <paper-image-upload-button
+              image="../images/profile.jpg"
+          ></paper-image-upload-button>
+          </div>
         </div>
         <div class="profile__right">
           <form class="form" action="#" method="post">
