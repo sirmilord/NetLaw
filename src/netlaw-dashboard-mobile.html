@@ -287,8 +287,8 @@
         <span class="content-checkmark" on-tap="selectAllClick"></span>
       </label>
       <div class="sort">
-        <a class="dashboard-link" slot="dropdown-trigger" href="javascript:;" on-click="_openSortBy">Sort By</a>
-        <iron-dropdown id="sortbydropdown" vertical-offset="0">
+        <a class="dashboard-link" slot="dropdown-trigger" href="javascript:;" on-tap="_toggle">Sort By</a>
+        <iron-dropdown vertical-offset="0">
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
             <li>Sort By - - -</li>
             <li>ABC
@@ -307,9 +307,8 @@
         </iron-dropdown>
       </div>
       <div class="sort">
-        <a class="dashboard-link" href="javascript:;" on-click="_openBulkAction">Bulk Action</a>
-        <iron-dropdown id="bulkactiondropdown" vertical-offset="0">
-          <!--no-auto-focus no-cancel-on-outside-click>-->
+        <a class="dashboard-link" href="javascript:;" on-tap="_toggle">Bulk Action</a>
+        <iron-dropdown vertical-offset="0">
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
             <li>Bulk Action -</li>
             <li>Download
@@ -344,12 +343,9 @@
               return 'netlaw-dashboard-mobile';
           }
 
-          _openSortBy() {
-              this.$.sortbydropdown.open();
-          }
-
-          _openBulkAction() {
-              this.$.bulkactiondropdown.open();
+          _toggle(e) {
+              e.preventDefault();
+              e.currentTarget.parentNode.querySelector('iron-dropdown').toggle();
           }
 
           selectAllClick(e) {
