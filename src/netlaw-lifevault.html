@@ -1502,7 +1502,8 @@
                   routeData: { type: Object, observer(value) { this.page = value.page || null; } },
                   subroute: Object,
                   toggleIcon: {
-                      type: String
+                      type: String,
+                      value: 'netlaw-icons:plus-icon'
                   },
                   toggleMenu: {
                       type: String,
@@ -1539,8 +1540,6 @@
 
           constructor() {
               super();
-              this.toggleIcon = 'netlaw-icons:plus-icon';
-              // this.toggleHeaderIcon = 'netlaw-icons:menu-circle';
               if (!window.vault)              window.vault=this;
               else window.vault2=this;
           }
@@ -1585,25 +1584,13 @@
               // console.log(page);
 
               if (!this.mobile) {
-                  //this.page = page || 'your-vault';
-
-                  if (!this.$ || !this.$.button1) return;
 
                    if (this.page === 'your-vault') {
                        this.toggleIcon = 'netlaw-icons:plus-icon';
-                       this.$.button1.setAttribute('aria-expanded', false);
-                       this.$.collapse.hide();
-                       this.$.collapselvl2.hide();
-                       this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+                       this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
+                       this.shadowRoot.querySelector('#collapse').hide();
+                       this.shadowRoot.querySelector('#collapselvl2').hide();
                    }
-
-                  // if (this.page === 'management') {
-                  //     this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
-                  // }
-                  // else {
-                  //     this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
-                  // }
-
               }
 
               if (this.mobile) {
