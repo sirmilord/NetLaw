@@ -2289,8 +2289,10 @@
           _onToggleDropdown(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
-              ironDropdown.toggle();
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              if (ironDropdown) {
+                  ironDropdown.toggle();
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              }
           }
 
           selectAllFalse(e) {

@@ -2290,22 +2290,28 @@
           _toggleCollapse(e) {
               e.preventDefault();
               let ironCollapse = e.currentTarget.parentNode.nextElementSibling;
-              ironCollapse.toggle();
-              ironCollapse.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
+              if (ironCollapse) {
+                  ironCollapse.toggle();
+                  ironCollapse.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
+              }
           }
 
           _onToggleDropdown(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
-              ironDropdown.toggle();
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              if (ironDropdown) {
+                  ironDropdown.toggle();
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              }
           }
 
           _onToggleDetails(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
-              ironDropdown.toggle();
-              ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
+              if (ironDropdown) {
+                  ironDropdown.toggle();
+                  ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
+              }
           }
 
           ready(e) {
@@ -2321,7 +2327,7 @@
           }
 
           selectAllFalse(e) {
-              this.view  ? this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--list input');
+              this.view ? this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--list input');
               if (this.checkboxes.length > 0) {
 
                   for (let i = 0; i < this.checkboxes.length; i++) {

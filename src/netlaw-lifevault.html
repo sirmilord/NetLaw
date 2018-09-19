@@ -215,7 +215,6 @@
         text-decoration: none;
       }
 
-
       .lifevault__list-link-lvl3:hover,
       .lifevault__list-link-lvl3:focus,
       .lifevault__list-link-lvl3--active {
@@ -763,7 +762,8 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <h3 class="lifevault__header">MyFiles</h3>
-      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top"  vertical-offset="45" opened="{{menuOpened}}" opened$="[[menuOpened]]">
+      <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
+                         opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
           <li on-click="onAddFolderClick">Add Folder
@@ -837,7 +837,8 @@
                              class="lifevault__list-link-lvl3" on-click="_childPage">
                             <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                             Home Management</a>
-                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;" on-click="_onToggleDropdown">
+                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
+                             on-click="_onToggleDropdown">
                             <iron-icon icon="icons:more-vert"></iron-icon>
                             <iron-dropdown horizontal-align="right">
                               <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
@@ -870,7 +871,8 @@
                           <a class="lifevault__list-link-lvl3" href="javascript:;">
                             <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                             Documents of Estate</a>
-                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;" on-click="_onToggleDropdown">
+                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
+                             on-click="_onToggleDropdown">
                             <iron-icon icon="icons:more-vert"></iron-icon>
                             <iron-dropdown horizontal-align="right">
                               <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
@@ -1096,7 +1098,8 @@
               <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
             </a>
           </section>
-          <netlaw-lifevault-management name="management" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
+          <netlaw-lifevault-management name="management"
+                                       on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
           <netlaw-lifevault-doc name="doc" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-doc>
         </iron-pages>
       </app-drawer-layout>
@@ -1111,7 +1114,8 @@
               <iron-icon icon="[[toggleIcon]]"></iron-icon>
               <span class="lifevault__list-text">My Files</span>
             </a>
-            <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger" on-click="_onToggleDropdown">
+            <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger"
+               on-click="_onToggleDropdown">
               <iron-icon icon="icons:more-vert"></iron-icon>
               <iron-dropdown>
                 <ul class="lifevault__addfolder-dropdown" slot="dropdown-content">
@@ -1132,6 +1136,92 @@
             </a>
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
+
+                <template is="dom-repeat" items="{{folders}}" as="folders">
+
+                  <li class="lifevault__list-item-lvl2">
+                    <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
+                      <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                      {{folders.name}}
+                    </a>
+                    <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li on-click="onAddFolderClick">Add Sub-Folder
+                            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                          </li>
+                          <li>Download
+                            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                          </li>
+                          <li on-click="onDeleteFileFolderClick">Delete
+                            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
+                    </a>
+
+                    <template is="dom-repeat" items="{{folders.folders2}}" as="folders2">
+
+                      <iron-collapse id="collapselvl2">
+                        <ul class="lifevault__list-lvl3">
+                          <iron-selector selected="[[page]]" attr-for-selected="name"
+                                         role="navigation">
+                            <li class="lifevault__list-item-lvl3">
+                              <a name="management" href="{{folders2.link}}"
+                                 class="lifevault__list-link-lvl3">
+                                <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                                {{folders2.name}}</a>
+                              <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
+                                 on-click="_onToggleDropdown">
+                                <iron-icon icon="icons:more-vert"></iron-icon>
+                                <iron-dropdown>
+                                  <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                      slot="dropdown-content">
+                                    <li>Download
+                                      <iron-icon
+                                          icon="netlaw-icons:download-icon"></iron-icon>
+                                    </li>
+                                    <li>Print
+                                      <iron-icon
+                                          icon="netlaw-icons:print-icon"></iron-icon>
+                                    </li>
+                                    <li>Rename
+                                      <iron-icon
+                                          icon="netlaw-icons:rename-icon"></iron-icon>
+                                    </li>
+                                    <li>Share
+                                      <iron-icon
+                                          icon="netlaw-icons:share-icon"></iron-icon>
+                                    </li>
+                                    <li on-click="onDeleteFileFolderClick">Delete
+                                      <iron-icon
+                                          icon="netlaw-icons:delete-icon"></iron-icon>
+                                    </li>
+                                  </ul>
+                                </iron-dropdown>
+                              </a>
+                            </li>
+                          </iron-selector>
+                        </ul>
+                      </iron-collapse>
+
+                    </template>
+                  </li>
+
+                </template>
+
+
                 <li class="lifevault__list-item-lvl2">
                   <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
@@ -1173,7 +1263,8 @@
                              class="lifevault__list-link-lvl3">
                             <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                             Home Management</a>
-                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;" on-click="_onToggleDropdown">
+                          <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
+                             on-click="_onToggleDropdown">
                             <iron-icon icon="icons:more-vert"></iron-icon>
                             <iron-dropdown>
                               <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
@@ -1427,7 +1518,8 @@
 
       <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
         <netlaw-lifevault-your-vault name="your-vault" on-add-folder="onAddFolderClick"></netlaw-lifevault-your-vault>
-        <netlaw-lifevault-management name="management" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
+        <netlaw-lifevault-management name="management"
+                                     on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-management>
         <netlaw-lifevault-doc name="doc" on-delete-file="onDeleteFileFolderClick"></netlaw-lifevault-doc>
       </iron-pages>
     </main>
@@ -1464,7 +1556,8 @@
         <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
         <b class="file-folder__title">Just Confirming </b>
         <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these files?</p>
-        <form action="javascript:;" method="post" class="login-form login__align-center  file-folder__form file-folder__form--w100">
+        <form action="javascript:;" method="post"
+              class="login-form login__align-center  file-folder__form file-folder__form--w100">
           <div class="login__margin file-folder__wrap">
             <figure class="file-folder__img">
               <iron-icon icon="netlaw-icons:page"></iron-icon>
@@ -1498,8 +1591,16 @@
 
           static get properties() {
               return {
-                  route: { type: Object, observer(value) { if (!value || !value.path) this.page = null; } },
-                  routeData: { type: Object, observer(value) { this.page = value.page || null; } },
+                  route: {
+                      type: Object, observer(value) {
+                          if (!value || !value.path) this.page = null;
+                      }
+                  },
+                  routeData: {
+                      type: Object, observer(value) {
+                          this.page = value.page || null;
+                      }
+                  },
                   subroute: Object,
                   toggleIcon: {
                       type: String,
@@ -1514,7 +1615,7 @@
                       type: Boolean,
                       value: false
                   },
-                  page: { type: String, observer:'_pageChanged' },
+                  page: {type: String, observer: '_pageChanged'},
                   //for mobile
                   menu: {
                       type: Object,
@@ -1528,20 +1629,36 @@
                       type: Boolean,
                       value: false
                   },
-                  folders: { type:Object, value :()=>[
-                          {id :"a79c41ab-c486-46fe-9b2a-8a2268e98b0d", name :"Estate Planning", folders:[
-                                  {id :"", name: "Home Managment" },
-                                  {id :"", name: "Documents of Estate" },
-                              ]},
-                          {id:"a48b0e44-6705-4662-bb8e-690225785e23", name: "Tax Returns"},
-                      ]},
+                  folders: {
+                      type: Object, value: () => [
+                          {
+                              id: "a79c41ab-c486-46fe-9b2a-8a2268e98b0d", name: "Estate Planning", folders2: [
+                                  {
+                                      id: "ac4048b8-28e5-404c-9e61-a7d908a475d1",
+                                      name: "Home Managment",
+                                      link: "lifevault/management"
+                                  },
+                                  {
+                                      id: "284065ea-23ee-490b-bd25-49019f436099",
+                                      name: "Documents of Estate",
+                                      link: "lifevault/doc"
+                                  },
+                              ]
+                          },
+                          {id: "a48b0e44-6705-4662-bb8e-690225785e23", name: "Misc. Docs"},
+                          {id: "3c37fa5e-bdb3-43bf-be3a-bb50325501de", name: "Insurance Policies"},
+                          {id: "625ea46b-9407-4d2f-9cde-150dc77ba47d", name: "Deeds"},
+                          {id: "8b859027-f9e9-4cc5-aba1-9c4efeb7f9f9", name: "Tax Returns"},
+                          {id: "59405904-f7f2-44a4-8186-93e842fcc915", name: "Asset/Financial"},
+                      ]
+                  },
               };
           }
 
           constructor() {
               super();
-              if (!window.vault)              window.vault=this;
-              else window.vault2=this;
+              if (!window.vault) window.vault = this;
+              else window.vault2 = this;
           }
 
           _onToggleCollapse(e) {
@@ -1555,15 +1672,19 @@
           _onToggleCollapseLvl2(e) {
               e.preventDefault();
               let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              ironCollapse.toggle();
-              ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
+              if (ironCollapse) {
+                  ironCollapse.toggle();
+                  ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
+              }
           }
 
           _onToggleDropdown(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
-              ironDropdown.toggle();
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              if (ironDropdown) {
+                  ironDropdown.toggle();
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              }
           }
 
           ready(e) {
@@ -1575,7 +1696,7 @@
               // app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").hasAttribute('opened') ? this.toggleMenu = 'netlaw-icons:menu-filter' : this.toggleMenu = 'netlaw-icons:menu-circle';
           }
 
-          open(){
+          open() {
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
@@ -1585,18 +1706,22 @@
 
               if (!this.mobile) {
 
-                   if (this.page === 'your-vault') {
-                       this.toggleIcon = 'netlaw-icons:plus-icon';
-                       this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
-                       this.shadowRoot.querySelector('#collapse').hide();
-                       this.shadowRoot.querySelector('#collapselvl2').hide();
-                   }
+                  if (this.page === 'your-vault') {
+                      this.toggleIcon = 'netlaw-icons:plus-icon';
+                      this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
+                      this.shadowRoot.querySelector('#collapse').hide();
+                      this.shadowRoot.querySelector('#collapselvl2').hide();
+                  }
               }
 
               if (this.mobile) {
 
-                  if(page == null && this.classList.contains("iron-selected")) {
-                      this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+                  if (page == null && this.classList.contains("iron-selected")) {
+                      this.dispatchEvent(new CustomEvent('menu-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: this.$.menu
+                      }));
                   }
 
                   if (page === 'management') {
@@ -1634,7 +1759,7 @@
                       display: true
                   }
               }));
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select',{bubbles: true, composed: true}));
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
               //app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").close();
           }
 
@@ -1645,8 +1770,8 @@
                   bubbles: true,
                   composed: true,
                   detail: {
-                  display: false
-              }
+                      display: false
+                  }
               }));
           }
 
@@ -1674,9 +1799,9 @@
               }));
           }
 
-          _computeMenu(opened){
+          _computeMenu(opened) {
               // console.log(this.opened);
-              return opened ? 'netlaw-icons:more-vert-active': 'netlaw-icons:menu-circle';
+              return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
           }
 
       }
