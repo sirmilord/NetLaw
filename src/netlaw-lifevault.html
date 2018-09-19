@@ -1173,7 +1173,8 @@
 
                     <template is="dom-repeat" items="{{folders.folders2}}" as="folders2">
 
-                      <iron-collapse id="collapselvl2">
+                      <!--<iron-collapse id="collapselvl2">-->
+                      <iron-collapse id="{{index}}">
                         <ul class="lifevault__list-lvl3">
                           <iron-selector selected="[[page]]" attr-for-selected="name"
                                          role="navigation">
