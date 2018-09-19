@@ -832,17 +832,17 @@
     <template is="dom-if" if="[[mobile]]">
     <main class="contacts-mobile">
       <app-drawer-layout>
-        <app-drawer id="contactsdrawer" class="contacts-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                    hidden$="{{!mobile}}" align="right">
-          <div class="contacts-mobile__arrow">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
-          <div class="contacts-mobile__arrow contacts-mobile__arrow--bottom">
-            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-          </div>
-          <div class="contacts-mobile__drawer-wrap">
-          </div>
-        </app-drawer>
+        <!--<app-drawer id="contactsdrawer" class="contacts-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"-->
+                    <!--hidden$="{{!mobile}}" align="right">-->
+          <!--<div class="contacts-mobile__arrow">-->
+            <!--<iron-icon icon="icons:icons:chevron-left"></iron-icon>-->
+          <!--</div>-->
+          <!--<div class="contacts-mobile__arrow contacts-mobile__arrow&#45;&#45;bottom">-->
+            <!--<iron-icon icon="icons:icons:chevron-left"></iron-icon>-->
+          <!--</div>-->
+          <!--<div class="contacts-mobile__drawer-wrap">-->
+          <!--</div>-->
+        <!--</app-drawer>-->
         <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
           <section name="empty2" class="contacts-mobile__nav">
             <div class="contacts-mobile__header">
@@ -1135,7 +1135,7 @@
     </template>
 
     <!--Desktop layout-->
-    <template is="dom-if" if="[[!mobile]]">
+    <template id="desktop" is="dom-if" if="[[!mobile]]">
       <main class="contacts">
         <section class="contacts__drawer">
           <div class="contacts__list">
@@ -1170,7 +1170,7 @@
                     </ul>
                   </iron-dropdown>
                 </a>
-                <iron-collapse id="collapselvl2">
+                <iron-collapse id="collapselvl2" opened={{hideCollapse}}">
                   <ul class="contacts__list-lvl3">
                     <li class="contacts__list-item-lvl3">
                       <a name="family" href="[[routePath]]contacts/family" id="family"
@@ -1537,6 +1537,11 @@
                       type: Boolean,
                       value: false
                   },
+                  hideCollapse: {
+                      type: Boolean,
+                      reflectToAttribute: true,
+                      value: true
+                  },
               };
           }
 
@@ -1573,13 +1578,11 @@
               if (!this.mobile) {
                   // this.page = page || 'create';
 
-                  // if (this.page === 'create') {
-                  //     this.toggleIcon = 'netlaw-icons:plus-icon';
-                  // this.$.button1.setAttribute('aria-expanded', false);
-                  // this.$.collapse.hide();
-                  // this.$.collapselvl2.hide();
-                  // this.$.modmobile.classList.remove('contacts__list-item-lvl2--top-border');
-                  // }
+                  if (this.page === 'create') {
+                  // this.shadowRoot.querySelector('#collapselvl2').hide();
+                     this.hideCollapse = false;
+
+                  }
 
                   //     if (this.page === 'family') {
                   //         this.$.family.classList.add('contacts__list-link-lvl3--active');
