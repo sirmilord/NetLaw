@@ -586,6 +586,23 @@
         display: none;
       }
 
+      .lifevault__list-item-lvl2 .iron-collapse-opened {
+        position: relative;
+      }
+
+      .iron-collapse-opened:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        bottom: -20px;
+        transform: translateX(-50%);
+      }
+
       @media (max-width: 767px) {
 
         iron-pages {
@@ -675,6 +692,12 @@
 
         .login__divider-small::after {
           border-top: 1px solid #e5e5e5;
+        }
+
+        .iron-collapse-opened:before {
+          left: 0;
+          transform: none;
+          border-bottom: 1px solid #979797;
         }
 
       }
@@ -774,7 +797,7 @@
             <section id="navmobile" class="lifevault__nav-mobile">
               <ul class="lifevault__list-lvl2">
                 <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleMobileLvl2">
+                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                     Estate Planning
                   </a>
@@ -1084,7 +1107,7 @@
       <section class="lifevault__drawer">
         <ul class="lifevault__list">
           <li class="lifevault__list-item lifevault__list-item--top-border">
-            <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggle">
+            <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
               <iron-icon icon="[[toggleIcon]]"></iron-icon>
               <span class="lifevault__list-text">My Files</span>
             </a>
@@ -1110,7 +1133,7 @@
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
                 <li class="lifevault__list-item-lvl2">
-                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleLvl2">
+                  <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                     Estate Planning
                   </a>
@@ -1374,7 +1397,7 @@
               </ul>
             </iron-collapse>
           </li>
-          <li class="lifevault__list-item lifevault__list-item--top-border lifevault__list-item--bottom-border">
+          <li class="lifevault__list-item lifevault__list-item--bottom-border">
             <a href="javascript:;" class="lifevault__list-link">
               <iron-icon icon="netlaw-icons:plus-icon"></iron-icon>
               <span class="lifevault__list-text">Shared with My Attorneys</span>
@@ -1522,33 +1545,19 @@
               else window.vault2=this;
           }
 
-          _onToggle(e) {
-              e.preventDefault();
-              this.$.collapse.toggle();
-              this.$.button1.setAttribute('aria-expanded', this.$.collapse.opened);
-              this.$.collapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-          }
-
-          _onToggleLvl2(e) {
-              e.preventDefault();
-              this.$.collapselvl2.toggle();
-              this.$.collapselvl2.opened ? this.$.mod.classList.add('lifevault__list-item-lvl2--top-border') : this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-              this.$.collapselvl2.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
-          }
-
-          _onToggleMobileLvl2(e) {
-              e.preventDefault();
-              this.$.collapsemobilelvl2.toggle();
-              this.$.collapsemobilelvl2.opened ? this.$.modmobile.classList.add('lifevault__list-item-lvl2--top-border') : this.$.modmobile.classList.remove('lifevault__list-item-lvl2--top-border');
-              this.$.collapsemobilelvl2.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
-
-          }
-
           _onToggleCollapse(e) {
               e.preventDefault();
               let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
               ironCollapse.toggle();
-              ironCollapse.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
+              ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
+              ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
+          }
+
+          _onToggleCollapseLvl2(e) {
+              e.preventDefault();
+              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
+              ironCollapse.toggle();
+              ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
           }
 
           _onToggleDropdown(e) {
@@ -1576,24 +1585,24 @@
               // console.log(page);
 
               if (!this.mobile) {
-                  this.page = page || 'your-vault';
+                  //this.page = page || 'your-vault';
 
                   if (!this.$ || !this.$.button1) return;
 
-                  if (this.page === 'your-vault') {
-                      this.toggleIcon = 'netlaw-icons:plus-icon';
-                      this.$.button1.setAttribute('aria-expanded', false);
-                      this.$.collapse.hide();
-                      this.$.collapselvl2.hide();
-                      this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
-                  }
+                   if (this.page === 'your-vault') {
+                       this.toggleIcon = 'netlaw-icons:plus-icon';
+                       this.$.button1.setAttribute('aria-expanded', false);
+                       this.$.collapse.hide();
+                       this.$.collapselvl2.hide();
+                       this.$.mod.classList.remove('lifevault__list-item-lvl2--top-border');
+                   }
 
-                  if (this.page === 'management') {
-                      this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
-                  }
-                  else {
-                      this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
-                  }
+                  // if (this.page === 'management') {
+                  //     this.$.homemanage.classList.add('lifevault__list-link-lvl3--active');
+                  // }
+                  // else {
+                  //     this.$.homemanage.classList.remove('lifevault__list-link-lvl3--active');
+                  // }
 
               }
 
