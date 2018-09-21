@@ -376,115 +376,6 @@
         transform: rotate(45deg);
       }
 
-      .contacts__search {
-        display: flex;
-        margin-right: 25px;
-      }
-
-      .contacts__search input {
-        height: 45px;
-        border: 1px solid #c2c2c2;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-        padding-left: 15px;
-        font-size: 18px;
-      }
-
-      .contacts__search input::placeholder {
-        color: #c2c2c2;
-        font-size: 16px;
-      }
-
-      .btn--search {
-        color: #c2c2c2;
-        padding: 0 8px;
-        height: 45px;
-        background-color: #fff;
-        border: 1px solid #c2c2c2;
-        border-left: 0;
-        border-top-right-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
-
-      .contacts__sort {
-        border: 1px solid #c2c2c2;
-        height: 45px;
-        width: 150px;
-        padding-left: 15px;
-        padding-right: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: #c2c2c2;
-        background-color: #fff;
-        position: relative;
-        cursor: pointer;
-      }
-
-      .contacts__sort-arrows {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-        position: absolute;
-        top: 50%;
-        left: -25px;
-        transform: translateY(-50%);
-      }
-
-      .contacts__sort > iron-icon {
-        --iron-icon-width: 20px;
-        --iron-icon-height: 20px;
-        margin-right: -10px;
-        cursor: pointer;
-      }
-
-      .contacts__sort-arrows iron-icon:last-child {
-        margin-top: -5px;
-      }
-
-      .btn--module {
-        background-color: transparent;
-        padding: 0;
-        width: 33px;
-        height: 33px;
-        --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 33px;
-        --iron-icon-height: 33px;
-        display: flex;
-        cursor: pointer;
-      }
-
-      .btn--list {
-        background-color: transparent;
-        padding: 0;
-        width: 33px;
-        height: 33px;
-        --iron-icon-fill-color: #e6e6e6;
-        --iron-icon-width: 33px;
-        --iron-icon-height: 33px;
-        display: flex;
-        cursor: pointer;
-      }
-
-      #sortby {
-        position: relative;
-      }
-
-      #sortbydropdown {
-        background-color: #fff;
-      }
-
-      #bulkaction {
-        position: relative;
-      }
-
-      #bulkactiondropdown {
-        background-color: #fff;
-      }
-
       .contacts__addfolder-dropdown {
         /*min-height: 154px;*/
         width: 137px;
@@ -581,21 +472,6 @@
 
       .contacts__photo img {
         border-radius: 50%;
-      }
-
-      .btn--charm {
-        background-color: transparent;
-        border: 0;
-        padding: 0;
-        margin-bottom: 0;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: auto;
-        --iron-icon-fill-color: #b2b2b2;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
       }
 
       .contacts__module-footer {
@@ -835,17 +711,18 @@
         background-color: #e9e9e9;
       }
 
-      .file-folder__left paper-icon-button {
+      .file-folder__left paper-image-upload-button {
         position: relative;
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        background-color: #e1e1e1;
+        width: 160px;
+        height: 160px;
         margin-left: auto;
         margin-right: 20%;
         margin-top: 20%;
-        padding: 25px;
         --iron-icon-fill-color: #9B9B9B;
+        --paper-image-upload-button-width: 160px;
+        --paper-image-upload-button-height: 160px;
+        --paper-image-upload-button-border-width: 1px;
+        --paper-image-upload-button-border-color: #9B9B9B;
       }
 
       .file-folder__right {
@@ -1143,29 +1020,6 @@
         display: none;
       }
 
-      @media (min-width: 1200px) {
-        .file-folder__left paper-icon-button {
-          width: 160px;
-          height: 160px;
-          padding: 50px;
-        }
-
-        .btn--import {
-          position: absolute;
-          margin-bottom: 0;
-          top: 10px;
-          right: 0;
-        }
-
-        .file-folder__icon {
-          --iron-icon-width: 85px;
-          --iron-icon-height: 85px;
-        }
-
-        .file-folder__icon--close {
-          right: 5%;
-        }
-      }
 
       @media (min-width: 768px) {
         .contacts__col-module {
@@ -1195,6 +1049,30 @@
 
         .contacts__list-left {
           margin-right: 30px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .file-folder__left paper-icon-button {
+          width: 160px;
+          height: 160px;
+          padding: 50px;
+        }
+
+        .btn--import {
+          position: absolute;
+          margin-bottom: 0;
+          top: 10px;
+          right: 0;
+        }
+
+        .file-folder__icon {
+          --iron-icon-width: 85px;
+          --iron-icon-height: 85px;
+        }
+
+        .file-folder__icon--close {
+          right: 5%;
         }
       }
 
@@ -2169,7 +2047,8 @@
       <section class="file-folder">
         <div class="file-folder__wrapper">
           <div class="file-folder__left">
-            <paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>
+            <!--<paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>-->
+            <paper-image-upload-button image="../images/profile.jpg"></paper-image-upload-button>
           </div>
           <div class="file-folder__right">
             <form class="form" action="javascript:;" method="post">
@@ -2280,6 +2159,43 @@
                   addContact: {
                       type: Boolean,
                       value: false
+                  },
+                  contacts: {
+                      type: Object, value: () => [
+                          {
+                              id: "7a42af6e-2d58-4fe5-8d99-b5f92db4a804",
+                              name: "Mabelle Doe",
+                              relationship: "Spouse",
+                              status: "Updated 1d ago",
+                              photo: "../images/contact-1.jpg",
+                              details: "contact-details"
+                          },
+                          {
+                              id: "21caa9f8-32f4-47b5-a279-b11e301c41df",
+                              name: "Joshua Doe",
+                              relationship: "Eldest Son",
+                              status: "Updated 1d ago",
+                              photo: "../images/contact-2.jpg",
+                              details: "contact-details"
+                          },
+                          {
+                              id: "71881d24-0a74-4593-86dc-6cf53ebe9156",
+                              name: "Hannah Doe",
+                              relationship: "Eldest Daughter",
+                              status: "Updated 1d ago",
+                              photo: "../images/contact-3.jpg",
+                              details: "contact-details"
+                          },
+
+                          {
+                              id: "c6c5b605-3046-4b8f-9c3c-fc4c6377f82b",
+                              name: "Jennifer Doe",
+                              relationship: "Youngest Daughter",
+                              status: "Updated 1d ago",
+                              photo: "../images/contact-4.jpg",
+                              details: "contact-details"
+                          }
+                      ]
                   },
               };
           }

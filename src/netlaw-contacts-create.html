@@ -1061,8 +1061,18 @@
         font-weight: 300;
       }
 
-      .file-folder__item-wrap {
-
+      .file-folder__left paper-image-upload-button {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        margin-left: auto;
+        margin-right: 20%;
+        margin-top: 20%;
+        --iron-icon-fill-color: #9B9B9B;
+        --paper-image-upload-button-width: 160px;
+        --paper-image-upload-button-height: 160px;
+        --paper-image-upload-button-border-width: 1px;
+        --paper-image-upload-button-border-color: #9B9B9B;
       }
 
       @media (min-width: 1200px) {
@@ -1110,7 +1120,8 @@
       <section class="file-folder">
         <div class="file-folder__wrapper">
           <div class="file-folder__left">
-            <paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>
+            <!--<paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>-->
+            <paper-image-upload-button image="../images/profile.jpg"></paper-image-upload-button>
           </div>
           <div class="file-folder__right">
             <form class="form" action="javascript:;" method="post">
