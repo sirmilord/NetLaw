@@ -1,0 +1,92 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+
+<dom-module id="netlaw-star-rating">
+  <template>
+    <style>
+      iron-icon {
+        color: var(--theme-color1, #4775D1);
+      }
+
+      paper-icon-button {
+        color: var(--theme-color1, #4775D1);
+        --paper-icon-button-disabled: {
+          color: #4775D1;
+        };
+      }
+
+      [score] {
+        @apply --layout-horizontal;
+        @apply --layout-center;
+      }
+    </style>
+    <div score>
+      <template id="domRepeat" is="dom-repeat" items="{{_stars}}" as="star">
+        <template is="dom-if" if="[[readOnly]]">
+          <iron-icon icon="{{star}}"></iron-icon>
+        </template>
+        <template is="dom-if" if="[[!readOnly]]">
+          <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate"
+                             icon="{{star}}"></paper-icon-button>
+        </template>
+      </template>
+      <template is="dom-if" if="[[readOnly]]">
+        <content select='[votes]'></content>
+      </template>
+    </div>
+  </template>
+  <script>
+      class NetlawStarRating extends Polymer.Element {
+          static get is() {
+              return 'netlaw-star-rating';
+          }
+
+          static get properties() {
+              return {
+                  _stars: {type: Array, value: ["star", "star", "star-half", "star", "star-border"]},
+                  // number of stars assigned for score
+                  rate: {type: Number, value: 0, observer: '_updateStars'},
+                  // show votes and disble scoring option
+                  readOnly: {type: Boolean, value: false}
+              }
+          }
+
+          constructor() {
+              super();
+          }
+
+          _updateRate(e) {
+              var id = parseInt(e.currentTarget.id);
+              this.rate = id + 1;
+              this._updateStars();
+          }
+
+          _updateStars() {
+              var intPart = Math.floor(this.rate);
+              var decimalPart = this.rate % 1;
+              for (var i = 0; i < 5; i++) {
+                  this._stars[i] = "star";
+                  if (i < intPart)
+                      this._stars[i] = "star";
+              }
+              if (decimalPart >= 0.5)
+                  this._stars[intPart] = "star-half";
+              var array = this._stars;
+              this._stars = [];
+              this._stars = array;
+          }
+
+          ready() {
+              super.ready();
+              this._updateStars();
+              this.$.domRepeat.render();
+          }
+      }
+
+      customElements.define(NetlawStarRating.is, NetlawStarRating);
+  </script>
+</dom-module>
