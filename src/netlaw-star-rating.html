@@ -47,7 +47,7 @@
 
           static get properties() {
               return {
-                  _stars: {type: Array, value: ["star", "star", "star-half", "star", "star-border"]},
+                  _stars: {type: Array, value: ["netlaw-icons:star", "netlaw-icons:star", "star-half", "netlaw-icons:star", "netlaw-icons:star-grey"]},
                   // number of stars assigned for score
                   rate: {type: Number, value: 0, observer: '_updateStars'},
                   // show votes and disble scoring option
@@ -69,9 +69,9 @@
               var intPart = Math.floor(this.rate);
               var decimalPart = this.rate % 1;
               for (var i = 0; i < 5; i++) {
-                  this._stars[i] = "star";
+                  this._stars[i] = "netlaw-icons:star";
                   if (i < intPart)
-                      this._stars[i] = "star";
+                      this._stars[i] = "netlaw-icons:star";
               }
               if (decimalPart >= 0.5)
                   this._stars[intPart] = "star-half";
