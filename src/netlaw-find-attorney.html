@@ -1940,9 +1940,6 @@
                     </div>
                   </div>
                 </div>
-                <a class="find-attorney__add-contact" href="javascript:;">
-                  <iron-icon icon="icons:account-circle"></iron-icon>
-                </a>
               </div>
             </div>
           </template>
@@ -2262,6 +2259,10 @@
               </div>
             </div>
           </template>
+
+          <a class="find-attorney__add-contact" href="javascript:;">
+            <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
+          </a>
         </div>
       </main>
     </template>
@@ -2282,6 +2283,56 @@
                   },
                   checkboxes: {
                       type: Array,
+                  },
+                  attornes: {
+                      type: Object, value: () => [
+                          {
+                              id: "8987fc79-79c7-4075-ba40-277b35b2d391",
+                              name: "J. Glen Wagstaff",
+                              type: "Civil Defense Attorney",
+                              location: "Orem, UT",
+                              photo: "../images/attorney-1.jpg",
+                              profile: "/attorney-details",
+                              rating: "5"
+                          },
+                          {
+                              id: "3ea2d937-ee24-4627-8e18-de97975b3f46",
+                              name: "Jeff Cobb",
+                              type: "Civil Defense Attorney",
+                              location: "Orem, UT",
+                              photo: "../images/attorney-2.jpg",
+                              profile: "/attorney-details",
+                              rating: "5"
+                          },
+                          {
+                              id: "87716c5b-43d2-4129-abcd-e94b7fb11510",
+                              name: "Stella Brown",
+                              type: "Civil Defense Attorney",
+                              location: "Orem, UT",
+                              photo: "../images/attorney-3.jpg",
+                              profile: "/attorney-details",
+                              rating: "5"
+                          },
+
+                          {
+                              id: "dd0ef0c8-5bb6-49f5-913b-c66f9a89acf0",
+                              name: "Stella Brown",
+                              type: "Civil Defense Attorney",
+                              location: "Orem, UT",
+                              photo: "../images/attorney-4.jpg",
+                              profile: "/attorney-details",
+                              rating: "5"
+                          },
+                          {
+                              id: "074aaf12-1fa1-4535-bb66-262d26dd990e",
+                              name: "Dale McBride",
+                              type: "Civil Defense Attorney",
+                              location: "Orem, UT",
+                              photo: "../images/attorney-4.jpg",
+                              profile: "/attorney-details",
+                              rating: "5"
+                          }
+                      ]
                   },
               };
           }
