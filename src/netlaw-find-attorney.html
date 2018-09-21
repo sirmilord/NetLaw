@@ -1593,11 +1593,7 @@
                             <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
                           </figure>
                           <div class="rating rating--module">
-                            <iron-icon icon="icons:star"></iron-icon>
-                            <iron-icon icon="icons:star"></iron-icon>
-                            <iron-icon icon="icons:star"></iron-icon>
-                            <iron-icon icon="icons:star"></iron-icon>
-                            <iron-icon icon="icons:star"></iron-icon>
+                            <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
                           </div>
                         </div>
                         <div class="find-attorney__module-footer">
@@ -1647,7 +1643,9 @@
 
             <div id="list" class="find-attorney__wrap">
               <div class="find-attorney__module">
+
                 <template is="dom-repeat" items="{{attorneys}}" as="attorney">
+
                   <div class="find-attorney__module-list-item">
                     <div class="find-attorney__list-left">
                       <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
@@ -1707,6 +1705,7 @@
                       <div class="find-attorney__line"></div>
                     </iron-collapse>
                   </div>
+
                 </template>
               </div>
             </div>
