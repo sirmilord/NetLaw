@@ -1519,6 +1519,42 @@
                       type: Boolean,
                       value: false
                   },
+                  folders: {
+                      type: Object, value: () => [
+                          {
+                              id: "0bbed731-6c58-4a39-891b-9a3a9930ec98", name: "Family", folders2: [
+                                  {
+                                      id: "6426746b-c581-4d74-8b96-9674ebd9b3c0",
+                                      name: "Immediate Family",
+                                      link: "contacts/family"
+                                  },
+                                  {
+                                      id: "62179869-2daf-418a-9ad5-6d2f29323017",
+                                      name: "Extended Family",
+                                      link: "contacts/family"
+                                  },
+                                  {
+                                      id: "8cf7041f-98b1-45dc-b6ee-7ce01cd66a0e",
+                                      name: "In-Law",
+                                      link: "contacts/family"
+                                  },
+                                  {
+                                      id: "1706415a-077c-431e-8b0a-a05f86f117e1",
+                                      name: "Distant Relatives",
+                                      link: "contacts/family"
+                                  },
+                                  {
+                                      id: "a8c19c56-ecd3-4313-8ea1-ce719251f5c6",
+                                      name: "Other",
+                                      link: "contacts/family"
+                                  },
+                              ]
+                          },
+                          {id: "d02dbc28-0791-445d-bf23-65cb9c2e97d0", name: "Friends"},
+                          {id: "e261b242-ffbc-47e7-a8ae-dff4d7e6b1e8", name: "Attorneys"},
+                          {id: "cc39ed49-b299-431e-a927-7b92f9326ff3", name: " Other"},
+                      ]
+                  },
                   mobile: {
                       type: Boolean, observer(value) {
                           this._pageChanged(this.page);
