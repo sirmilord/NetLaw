@@ -903,7 +903,7 @@
                               <span>[[attorney.email]]</span>
                             </li>
                             <li>
-                              <a href="{{attorney.profile}}" class="btn btn--primary" on-click="_onNavigateProfile">View Profile</a>
+                              <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
                             </li>
                             <li>
                               <div class="find-attorney__line"></div>
@@ -980,7 +980,7 @@
                           <span>[[attorney.email]]</span>
                         </li>
                         <li>
-                          <a href="{{attorney.profile}}" class="btn btn--primary" on-click="_onNavigateProfile">View Profile</a>
+                          <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
                         </li>
                       </ul>
                     </div>
@@ -1302,12 +1302,6 @@
                   ironDropdown.toggle();
                   ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
               }
-          }
-
-          // TODO question for Zlatko: Why links don't work in the repeat templates
-          _onNavigateProfile(e) {
-              let profile = e.currentTarget.getAttribute('href');
-              navigate(profile);
           }
 
           ready(e) {

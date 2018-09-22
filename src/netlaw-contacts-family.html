@@ -1907,11 +1907,6 @@
               }
           }
 
-          _onNavigateProfile(e) {
-              let detailUrl = e.currentTarget.getAttribute('href');
-              navigate(detailUrl);
-          }
-
           selectAllFalse(e) {
               this.view ? this.checkboxes = this.shadowRoot.querySelectorAll('.contacts__checkbox-container--module input') : this.checkboxes = this.shadowRoot.querySelectorAll('.contacts__checkbox-container--list input');
               if (this.checkboxes.length > 0) {

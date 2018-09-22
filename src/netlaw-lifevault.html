@@ -1137,12 +1137,12 @@
             <iron-collapse id="collapse">
               <ul class="lifevault__list-lvl2">
 
-                <template is="dom-repeat" items="{{folders}}" as="folders">
+                <template is="dom-repeat" items="{{folders}}">
 
                   <li class="lifevault__list-item-lvl2">
                     <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                      {{folders.name}}
+                      {{item.name}}
                     </a>
                     <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
@@ -1170,19 +1170,20 @@
                         </ul>
                       </iron-dropdown>
                     </a>
-
-                    <template is="dom-repeat" items="{{folders.folders2}}" as="folders2">
+                    <iron-collapse id="{{index}}">
+                      <ul class="lifevault__list-lvl3">
+                    <template is="dom-repeat" items="{{item.folders2}}" as="item2">
 
                       <!--<iron-collapse id="collapselvl2">-->
-                      <iron-collapse id="{{index}}">
-                        <ul class="lifevault__list-lvl3">
+
+
                           <iron-selector selected="[[page]]" attr-for-selected="name"
                                          role="navigation">
                             <li class="lifevault__list-item-lvl3">
-                              <a name="management" href="{{folders2.link}}"
+                              <a name="management" href="{{item2.link}}"
                                  class="lifevault__list-link-lvl3">
                                 <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                                {{folders2.name}}</a>
+                                {{item2.name}}</a>
                               <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
                                  on-click="_onToggleDropdown">
                                 <iron-icon icon="icons:more-vert"></iron-icon>
@@ -1214,10 +1215,12 @@
                               </a>
                             </li>
                           </iron-selector>
-                        </ul>
-                      </iron-collapse>
+
+
 
                     </template>
+                      </ul>
+                    </iron-collapse>
                   </li>
 
                 </template>
@@ -1642,6 +1645,11 @@
                                   {
                                       id: "284065ea-23ee-490b-bd25-49019f436099",
                                       name: "Documents of Estate",
+                                      link: "lifevault/doc"
+                                  },
+                                  {
+                                      id: "284065ea-23ee-491b-bd25-49019f436099",
+                                      name: "Documents of Estate 2",
                                       link: "lifevault/doc"
                                   },
                               ]

@@ -1170,7 +1170,7 @@
                     </ul>
                   </iron-dropdown>
                 </a>
-                <iron-collapse id="collapselvl2" opened={{hideCollapse}}">
+                <iron-collapse id="collapselvl2">
                   <ul class="contacts__list-lvl3">
                     <li class="contacts__list-item-lvl3">
                       <a name="family" href="[[routePath]]contacts/family" id="family"
@@ -1530,11 +1530,7 @@
                       type: Boolean,
                       value: false
                   },
-                  hideCollapse: {
-                      type: Boolean,
-                      reflectToAttribute: true,
-                      value: true
-                  },
+                  mobile: { type: Boolean, observer(value) { this._pageChanged(this.page); } },
               };
           }
 
@@ -1558,7 +1554,8 @@
 
               this.menu = this.$.menu;
 
-              this._pageChanged(this.page);
+              this.contentReady = true;
+              setTimeout(() => this._pageChanged(this.page));
           }
 
           _onToggleDropdown(e) {
@@ -1571,22 +1568,13 @@
           }
 
           _pageChanged(page) {
+              if (!this.contentReady) return;
 
               if (!this.mobile) {
-                  // this.page = page || 'create';
 
                   if (this.page === 'create') {
-                      // this.shadowRoot.querySelector('#collapselvl2').hide();
-                      this.hideCollapse = false;
-
+                     this.shadowRoot.querySelector('#collapselvl2').hide();
                   }
-
-                  //     if (this.page === 'family') {
-                  //         this.$.family.classList.add('contacts__list-link-lvl3--active');
-                  //     }
-                  //     else {
-                  //         this.$.family.classList.remove('contacts__list-link-lvl3--active');
-                  //     }
               }
 
               if (this.mobile) {
