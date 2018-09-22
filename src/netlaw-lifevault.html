@@ -1300,14 +1300,12 @@
 
                   if (page === 'management') {
                       //this is polyfill for this.$.pages2.selectedItem;
-                      // let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
                       let sc = Array.from(this.shadowRoot.querySelector('#pages2').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages2').selected)[0];
                       if (sc) sc.open();
                   }
 
                   if (page === 'doc') {
                       //this is polyfill for this.$.pages2.selectedItem;
-                      // let sc = Array.from(this.$.pages2.children).filter(c => c.getAttribute("name") == this.$.pages2.selected)[0];
                       let sc = Array.from(this.shadowRoot.querySelector('#pages2').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages2').selected)[0];
                       if (sc) sc.open();
                   }
