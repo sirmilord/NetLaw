@@ -720,7 +720,7 @@
       }
 
     </style>
-
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
@@ -1058,6 +1058,11 @@
 
         </div>
       </main>
+
+      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+        <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
+      </iron-pages>
+
     </template>
   </template>
 
@@ -1070,6 +1075,17 @@
 
           static get properties() {
               return {
+                  route: {
+                      type: Object, observer(value) {
+                          if (!value || !value.path) this.page = null;
+                      }
+                  },
+                  routeData: {
+                      type: Object, observer(value) {
+                          this.page = value.page || null;
+                      }
+                  },
+                  subroute: Object,
                   view: {
                       type: Boolean,
                       value: true
