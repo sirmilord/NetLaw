@@ -692,13 +692,19 @@
                   bubbles: true,
                   composed: true
               }));
+
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
+              }));
           }
 
           open() {
               this.dispatchEvent(new CustomEvent('menu-changed', {
                   bubbles: true,
                   composed: true,
-                  detail: {full: false, menu: this.$.menu}
+                  detail: {full: true, menu: this.$.menu}
               }));
           }
       }
