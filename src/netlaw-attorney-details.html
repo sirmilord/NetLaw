@@ -503,7 +503,7 @@
     <section class="attorney">
       <div class="attorney__header">
         <div class="attorney__header-left">
-          <a href="[[rootPath]]find-attorney" class="btn btn--back-dash">
+          <a href="[[rootPath]]find-attorney" class="btn btn--back-dash" on-click="_onBackClick">
             <iron-icon icon="netlaw-icons:back"></iron-icon>
             Back to Find Attorney
           </a>
@@ -677,6 +677,13 @@
       class NetlawAttorneyDetails extends Polymer.Element {
           static get is() {
               return 'netlaw-attorney-details';
+          }
+
+          _onBackClick(e) {
+              this.dispatchEvent(new CustomEvent('back-find-attorney', {
+                  bubbles: true,
+                  composed: true
+              }));
           }
       }
 

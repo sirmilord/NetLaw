@@ -466,7 +466,7 @@
       }
 
       /*.rating__color {*/
-        /*--iron-icon-fill-color: #e1e1e1;*/
+      /*--iron-icon-fill-color: #e1e1e1;*/
       /*}*/
 
       .rating__number {
@@ -732,180 +732,16 @@
     </template>
 
     <template is="dom-if" if="[[mobile]]">
-      <main class="find-attorney-mobile">
-        <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
-                                 on-select-all-true="selectAllTrue" on-view-module="chooseModule"
-                                 on-view-list="chooseList"></netlaw-dashboard-mobile>
-        <template is="dom-if" if="[[view]]">
 
-          <div id="modulemob" class="find-attorney__wrap">
-            <div class="find-attorney__module">
-              <div class="find-attorney__row">
+      <template is="dom-if" if="[[!details]]">
 
-                <template is="dom-repeat" items="{{attorneys}}" as="attorney">
-
-                  <div class="find-attorney__col-module">
-                  <div class="find-attorney__module-item">
-                    <div class="find-attorney__module-body">
-                      <button class="find-attorney__menu" on-click="_onToggleDropdown">
-                        <iron-icon icon="icons:more-vert"></iron-icon>
-                        <iron-dropdown horizontal-align="right">
-                          <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
-                              slot="dropdown-content">
-                            <li>Download
-                              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                            </li>
-                            <li>Print
-                              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                            </li>
-                            <li>Rename
-                              <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                            </li>
-                            <li>Share
-                              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                            </li>
-                            <li>Delete
-                              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                            </li>
-                          </ul>
-                        </iron-dropdown>
-                      </button>
-                      <figure class="find-attorney__photo">
-                        <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
-                      </figure>
-                      <div class="rating rating--module">
-                        <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
-                      </div>
-                    </div>
-                    <div class="find-attorney__module-footer">
-                      <span class="find-attorney__name">[[attorney.name]]</span>
-                      <span class="find-attorney__desc">[[attorney.type]]</span>
-                      <span class="find-attorney__module-update">[[attorney.location]]</span>
-                      <button class="find-attorney__details find-attorney__details--module" on-click="_onToggleDetails">
-                        details
-                        <iron-icon icon="icons:expand-more"></iron-icon>
-                        <iron-dropdown horizontal-align="right" vertical-offset="30">
-                          <ul class="find-attorney__details-dropdown"
-                              slot="dropdown-content">
-                            <li>
-                              <iron-icon icon="netlaw-icons:address"></iron-icon>
-                              <address>[[attorney.address]]</address>
-                            </li>
-                            <li>
-                              <iron-icon icon="netlaw-icons:phone"></iron-icon>
-                              <span>[[attorney.phone]]</span>
-                            </li>
-                            <li>
-                              <iron-icon icon="netlaw-icons:email"></iron-icon>
-                              <span>[[attorney.email]]</span>
-                            </li>
-                            <li>
-                              <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
-                            </li>
-                            <li>
-                              <div class="find-attorney__line"></div>
-                            </li>
-                          </ul>
-                        </iron-dropdown>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                </template>
-
-              </div>
-            </div>
-          </div>
-
-        </template>
-
-        <template is="dom-if" if="[[!view]]">
-
-          <div id="listmob" class="find-attorney__wrap">
-            <div class="find-attorney__module find-attorney__module--list">
-
-              <template is="dom-repeat" items="{{attorneys}}" as="attorney">
-
-                <div class="find-attorney__module-list-item">
-                <div class="find-attorney__list-left">
-                  <div class="find-attorney__list-body">
-                    <figure class="find-attorney__photo find-attorney__photo--list">
-                      <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
-                    </figure>
-                  </div>
-                </div>
-                <div class="find-attorney__list-center">
-                  <div class="find-attorney__name-wrap">
-                    <span class="find-attorney__name">[[attorney.name]]</span>
-                    <span class="find-attorney__list-update">[[attorney.type]]</span>
-                    <span class="find-attorney__location">[[attorney.location]]</span>
-                    <div class="rating">
-                      <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
-                      <span class="rating__number">[[attorney.rating]]/5</span>
-                    </div>
-                  </div>
-                  <a class="find-attorney__details find-attorney__details--list" href="javascript:;"
-                     on-click="_toggleCollapse">details
-                    <iron-icon icon="icons:expand-more"></iron-icon>
-                  </a>
-                </div>
-                <iron-collapse>
-                  <div class="find-attorney__row">
-                    <div
-                        class="find-attorney__item find-attorney__item--half find-attorney__item--center find-attorney__item--p0">
-                      <figure class="find-attorney__img">
-                        <img src="{{attorney.map}}" alt="map">
-                      </figure>
-                    </div>
-                    <div
-                        class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
-                      <ul class="find-attorney__details-collapse">
-                        <li>
-                          <address>[[attorney.address]]</address>
-                        </li>
-                        <li>
-                          <iron-icon icon="netlaw-icons:phone"></iron-icon>
-                          <span>[[attorney.phone]]</span>
-                        </li>
-                        <li>
-                          <iron-icon icon="netlaw-icons:email"></iron-icon>
-                          <span>[[attorney.email]]</span>
-                        </li>
-                        <li>
-                          <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </iron-collapse>
-              </div>
-
-              </template>
-
-            </div>
-          </div>
-        </template>
-
-      </main>
-    </template>
-
-    <!--Desktop layout-->
-    <template is="dom-if" if="[[!mobile]]">
-      <main class="find-attorney">
-        <div class="find-attorney__content">
-          <netlaw-topbar>
-            <h2 slot="title">Search Attorney</h2>
-            <div slot="update">Updated 1d ago</div>
-          </netlaw-topbar>
-          <netlaw-dashboard>
-            <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
+        <main class="find-attorney-mobile">
+          <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
                                    on-select-all-true="selectAllTrue" on-view-module="chooseModule"
-                                   on-view-list="chooseList"></netlaw-dashboard-form>
-          </netlaw-dashboard>
+                                   on-view-list="chooseList"></netlaw-dashboard-mobile>
           <template is="dom-if" if="[[view]]">
 
-            <div id="module" class="find-attorney__wrap">
+            <div id="modulemob" class="find-attorney__wrap">
               <div class="find-attorney__module">
                 <div class="find-attorney__row">
 
@@ -968,7 +804,8 @@
                                   <span>[[attorney.email]]</span>
                                 </li>
                                 <li>
-                                  <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
+                                  <a href="/find-attorney/{{attorney.profile}}" class="btn btn--primary"
+                                     on-click="_onDetailsClick">View Profile</a>
                                 </li>
                                 <li>
                                   <div class="find-attorney__line"></div>
@@ -979,6 +816,7 @@
                         </div>
                       </div>
                     </div>
+
                   </template>
 
                 </div>
@@ -989,8 +827,8 @@
 
           <template is="dom-if" if="[[!view]]">
 
-            <div id="list" class="find-attorney__wrap">
-              <div class="find-attorney__module">
+            <div id="listmob" class="find-attorney__wrap">
+              <div class="find-attorney__module find-attorney__module--list">
 
                 <template is="dom-repeat" items="{{attorneys}}" as="attorney">
 
@@ -1004,21 +842,20 @@
                     </div>
                     <div class="find-attorney__list-center">
                       <div class="find-attorney__name-wrap">
-                        <span class="find-attorney__name">{{attorney.name}}</span>
-                        <span class="find-attorney__list-update">{{attorney.type}}</span>
-                      </div>
-                      <span class="find-attorney__location">{{attorney.location}}</span>
-
-                      <div class="rating">
-                        <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
+                        <span class="find-attorney__name">[[attorney.name]]</span>
+                        <span class="find-attorney__list-update">[[attorney.type]]</span>
+                        <span class="find-attorney__location">[[attorney.location]]</span>
+                        <div class="rating">
+                          <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
                           <span class="rating__number">[[attorney.rating]]/5</span>
+                        </div>
                       </div>
                       <a class="find-attorney__details find-attorney__details--list" href="javascript:;"
-                         on-click="_toggleCollapse">details
+                         on-click="_onToggleCollapse">details
                         <iron-icon icon="icons:expand-more"></iron-icon>
                       </a>
                     </div>
-                    <iron-collapse id="detail1">
+                    <iron-collapse>
                       <div class="find-attorney__row">
                         <div
                             class="find-attorney__item find-attorney__item--half find-attorney__item--center find-attorney__item--p0">
@@ -1030,39 +867,226 @@
                             class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
                           <ul class="find-attorney__details-collapse">
                             <li>
-                              <address>{{attorney.address}}</address>
+                              <address>[[attorney.address]]</address>
                             </li>
                             <li>
                               <iron-icon icon="netlaw-icons:phone"></iron-icon>
-                              <span>{{attorney.phone}}</span>
+                              <span>[[attorney.phone]]</span>
                             </li>
                             <li>
                               <iron-icon icon="netlaw-icons:email"></iron-icon>
-                              <span>attorney.email</span>
+                              <span>[[attorney.email]]</span>
                             </li>
                             <li>
-                              <a href="{{attorney.profile}}" class="btn btn--primary">View Profile</a>
+                              <a href="/find-attorney/{{attorney.profile}}" class="btn btn--primary"
+                                 on-click="_onDetailsClick">View Profile</a>
                             </li>
                           </ul>
                         </div>
                       </div>
-                      <div class="find-attorney__line"></div>
                     </iron-collapse>
                   </div>
 
                 </template>
+
               </div>
             </div>
-
           </template>
 
-        </div>
-      </main>
+        </main>
 
-      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>
-      </iron-pages>
+      </template>
 
+      <template is="dom-if" if="[[details]]">
+        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <netlaw-attorney-details name="attorney-details"
+                                   on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
+        </iron-pages>
+      </template>
+
+    </template>
+
+
+    <!--Desktop layout-->
+    <template is="dom-if" if="[[!mobile]]">
+
+      <template is="dom-if" if="[[!details]]">
+        <main class="find-attorney">
+          <div class="find-attorney__content">
+            <netlaw-topbar>
+              <h2 slot="title">Search Attorney</h2>
+              <div slot="update">Updated 1d ago</div>
+            </netlaw-topbar>
+            <netlaw-dashboard>
+              <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
+                                     on-select-all-true="selectAllTrue" on-view-module="chooseModule"
+                                     on-view-list="chooseList"></netlaw-dashboard-form>
+            </netlaw-dashboard>
+            <template is="dom-if" if="[[view]]">
+
+              <div id="module" class="find-attorney__wrap">
+                <div class="find-attorney__module">
+                  <div class="find-attorney__row">
+
+                    <template is="dom-repeat" items="{{attorneys}}" as="attorney">
+
+                      <div class="find-attorney__col-module">
+                        <div class="find-attorney__module-item">
+                          <div class="find-attorney__module-body">
+                            <button class="find-attorney__menu" on-click="_onToggleDropdown">
+                              <iron-icon icon="icons:more-vert"></iron-icon>
+                              <iron-dropdown horizontal-align="right">
+                                <ul class="find-attorney__addfolder-dropdown find-attorney__addfolder-dropdown--sub"
+                                    slot="dropdown-content">
+                                  <li>Download
+                                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                                  </li>
+                                  <li>Print
+                                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                                  </li>
+                                  <li>Rename
+                                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                                  </li>
+                                  <li>Share
+                                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                                  </li>
+                                  <li>Delete
+                                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                                  </li>
+                                </ul>
+                              </iron-dropdown>
+                            </button>
+                            <figure class="find-attorney__photo">
+                              <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
+                            </figure>
+                            <div class="rating rating--module">
+                              <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
+                            </div>
+                          </div>
+                          <div class="find-attorney__module-footer">
+                            <span class="find-attorney__name">[[attorney.name]]</span>
+                            <span class="find-attorney__desc">[[attorney.type]]</span>
+                            <span class="find-attorney__module-update">[[attorney.location]]</span>
+                            <button class="find-attorney__details find-attorney__details--module"
+                                    on-click="_onToggleDetails">
+                              details
+                              <iron-icon icon="icons:expand-more"></iron-icon>
+                              <iron-dropdown horizontal-align="right" vertical-offset="30">
+                                <ul class="find-attorney__details-dropdown"
+                                    slot="dropdown-content">
+                                  <li>
+                                    <iron-icon icon="netlaw-icons:address"></iron-icon>
+                                    <address>[[attorney.address]]</address>
+                                  </li>
+                                  <li>
+                                    <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                                    <span>[[attorney.phone]]</span>
+                                  </li>
+                                  <li>
+                                    <iron-icon icon="netlaw-icons:email"></iron-icon>
+                                    <span>[[attorney.email]]</span>
+                                  </li>
+                                  <li>
+                                    <a href="/find-attorney/{{attorney.profile}}" class="btn btn--primary"
+                                       on-click="_onDetailsClick">View Profile</a>
+                                  </li>
+                                  <li>
+                                    <div class="find-attorney__line"></div>
+                                  </li>
+                                </ul>
+                              </iron-dropdown>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+
+                  </div>
+                </div>
+              </div>
+
+            </template>
+
+            <template is="dom-if" if="[[!view]]">
+
+              <div id="list" class="find-attorney__wrap">
+                <div class="find-attorney__module">
+
+                  <template is="dom-repeat" items="{{attorneys}}" as="attorney">
+
+                    <div class="find-attorney__module-list-item">
+                      <div class="find-attorney__list-left">
+                        <div class="find-attorney__list-body">
+                          <figure class="find-attorney__photo find-attorney__photo--list">
+                            <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
+                          </figure>
+                        </div>
+                      </div>
+                      <div class="find-attorney__list-center">
+                        <div class="find-attorney__name-wrap">
+                          <span class="find-attorney__name">{{attorney.name}}</span>
+                          <span class="find-attorney__list-update">{{attorney.type}}</span>
+                        </div>
+                        <span class="find-attorney__location">{{attorney.location}}</span>
+
+                        <div class="rating">
+                          <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
+                          <span class="rating__number">[[attorney.rating]]/5</span>
+                        </div>
+                        <a class="find-attorney__details find-attorney__details--list" href="javascript:;"
+                           on-click="_onToggleCollapse">details
+                          <iron-icon icon="icons:expand-more"></iron-icon>
+                        </a>
+                      </div>
+                      <iron-collapse id="detail1">
+                        <div class="find-attorney__row">
+                          <div
+                              class="find-attorney__item find-attorney__item--half find-attorney__item--center find-attorney__item--p0">
+                            <figure class="find-attorney__img">
+                              <img src="{{attorney.map}}" alt="map">
+                            </figure>
+                          </div>
+                          <div
+                              class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
+                            <ul class="find-attorney__details-collapse">
+                              <li>
+                                <address>{{attorney.address}}</address>
+                              </li>
+                              <li>
+                                <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                                <span>{{attorney.phone}}</span>
+                              </li>
+                              <li>
+                                <iron-icon icon="netlaw-icons:email"></iron-icon>
+                                <span>attorney.email</span>
+                              </li>
+                              <li>
+                                <a href="/find-attorney/{{attorney.profile}}" class="btn btn--primary"
+                                   on-click="_onDetailsClick">View Profile</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="find-attorney__line"></div>
+                      </iron-collapse>
+                    </div>
+
+                  </template>
+                </div>
+              </div>
+
+            </template>
+
+          </div>
+        </main>
+      </template>
+
+      <template is="dom-if" if="[[details]]">
+        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <netlaw-attorney-details name="attorney-details"
+                                   on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
+        </iron-pages>
+      </template>
     </template>
   </template>
 
@@ -1168,6 +1192,10 @@
                           // this.open();
                       }
                   },
+                  details: {
+                      type: Boolean,
+                      value: false
+                  }
               };
           }
 
@@ -1175,7 +1203,17 @@
               super();
           }
 
-          _toggleCollapse(e) {
+          _onDetailsClick(e) {
+              let details = e.currentTarget.getAttribute('href');
+              navigate(details);
+              this.details = true;
+          }
+
+          backFromDetails(e) {
+              this.details = false;
+          }
+
+          _onToggleCollapse(e) {
               e.preventDefault();
               let ironCollapse = e.currentTarget.parentNode.nextElementSibling;
               if (ironCollapse) {
