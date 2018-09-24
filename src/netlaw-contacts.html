@@ -26,8 +26,8 @@
       }
 
       .contacts__content {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 1 1 70%;
+        max-width: 70%;
         background-color: #f9f9f9;
         display: flex;
         align-items: center;
@@ -440,7 +440,6 @@
         width: 100%;
       }
 
-
       .file-folder__img iron-icon {
         opacity: 0.3;
       }
@@ -567,7 +566,7 @@
         background-color: #019948;
       }
 
-      figure iron-icon {
+      .contacts__content figure iron-icon {
         --iron-icon-width: 154px;
         --iron-icon-height: 154px;
       }
@@ -917,35 +916,35 @@
 
                   <template is="dom-repeat" items="{{folders}}">
                     <li class="contacts__list-item-lvl2">
-                    <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
-                      <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                      [[item.name]]</a>
-                    <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
-                      <iron-icon icon="icons:more-vert"></iron-icon>
-                      <iron-dropdown horizontal-align="right">
-                        <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
-                            slot="dropdown-content">
-                          <li on-click="onAddFolderClick">Add Sub-Folder
-                            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                          </li>
-                          <li>Download
-                            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                          </li>
-                          <li>Print
-                            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                          </li>
-                          <li>Rename
-                            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                          </li>
-                          <li>Share
-                            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                          </li>
-                          <li on-click="onDeleteContactClick">Delete
-                            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                          </li>
-                        </ul>
-                      </iron-dropdown>
-                    </a>
+                      <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+                        <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
+                        [[item.name]]</a>
+                      <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+                        <iron-icon icon="icons:more-vert"></iron-icon>
+                        <iron-dropdown horizontal-align="right">
+                          <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                              slot="dropdown-content">
+                            <li on-click="onAddFolderClick">Add Sub-Folder
+                              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                            </li>
+                            <li>Download
+                              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                            </li>
+                            <li>Print
+                              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                            </li>
+                            <li>Rename
+                              <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                            </li>
+                            <li>Share
+                              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                            </li>
+                            <li on-click="onDeleteContactClick">Delete
+                              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                            </li>
+                          </ul>
+                        </iron-dropdown>
+                      </a>
 
                       <template is="dom-if" if=[[item.folders2]]>
 
@@ -990,7 +989,7 @@
 
                       </template>
 
-                  </li>
+                    </li>
                   </template>
 
                 </ul>
@@ -1011,35 +1010,35 @@
 
               <template is="dom-repeat" items="{{folders}}">
                 <li class="contacts__list-item-lvl2">
-                <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
-                  <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                  [[item.name]]</a>
-                <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
-                    <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
-                        slot="dropdown-content">
-                      <li on-click="onAddFolderClick">Add Sub-Folder
-                        <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                      </li>
-                      <li>Download
-                        <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                      </li>
-                      <li>Share
-                        <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                      </li>
-                      <li on-click="onDeleteContactClick">Delete
-                        <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                      </li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
+                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
+                    [[item.name]]</a>
+                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+                    <iron-icon icon="icons:more-vert"></iron-icon>
+                    <iron-dropdown>
+                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                          slot="dropdown-content">
+                        <li on-click="onAddFolderClick">Add Sub-Folder
+                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+                        </li>
+                        <li>Download
+                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                        </li>
+                        <li>Print
+                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                        </li>
+                        <li>Rename
+                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                        </li>
+                        <li>Share
+                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                        </li>
+                        <li on-click="onDeleteContactClick">Delete
+                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                        </li>
+                      </ul>
+                    </iron-dropdown>
+                  </a>
 
                   <template is="dom-if" if=[[item.folders2]]>
 
@@ -1048,7 +1047,7 @@
 
                         <template is="dom-repeat" items="{{item.folders2}}" as="item2">
                           <li class="contacts__list-item-lvl3">
-                            <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3">
+                            <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3" on-click="_onLinkClick">
                               <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                               [[item2.name]]</a>
                             <a class="contacts__btn contacts__btn--lvl3" href="javascript:;"
@@ -1089,23 +1088,31 @@
           </div>
         </section>
 
-        <section class="contacts__content">
-          <h1>Contacts</h1>
-          <figure>
-            <iron-icon icon="netlaw-icons:organizer"></iron-icon>
-          </figure>
-          <b>Add beneficaries, exectors of an estate and more</b>
-          <div class="contacts__content-wrapper">
-            <p>(you also search for attorneys and add them to you list)</p>
-            <hr>
-          </div>
-          <button class="btn btn--primary" on-click="onAddContactClick">Create Contact</button>
-        </section>
+        <template is="dom-if" if="[[createContact]]">
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <!--<netlaw-contacts-create name="create"></netlaw-contacts-create>-->
-          <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
-        </iron-pages>
+          <section class="contacts__content">
+            <h1>Contacts</h1>
+            <figure>
+              <iron-icon icon="netlaw-icons:organizer"></iron-icon>
+            </figure>
+            <b>Add beneficaries, exectors of an estate and more</b>
+            <div class="contacts__content-wrapper">
+              <p>(you also search for attorneys and add them to you list)</p>
+              <hr>
+            </div>
+            <button class="btn btn--primary" on-click="onAddContactClick">Create Contact</button>
+          </section>
+
+        </template>
+
+        <template is="dom-if" if="[[!createContact]]">
+
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+            <!--<netlaw-contacts-create name="create"></netlaw-contacts-create>-->
+            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
+          </iron-pages>
+
+        </template>
       </main>
     </template>
 
@@ -1318,6 +1325,10 @@
                       type: Boolean,
                       value: false
                   },
+                  createContact: {
+                      type: Boolean,
+                      value: true
+                  },
                   folders: {
                       type: Object, value: () => [
                           {
@@ -1511,6 +1522,10 @@
           _computeMenu(opened) {
               // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
+          }
+
+          _onLinkClick(e) {
+              this.createContact = false;
           }
       }
 

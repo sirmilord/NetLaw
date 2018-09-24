@@ -500,7 +500,15 @@
 
     </style>
 
-    <section class="attorney">
+    <!--Mobile layout-->
+    <template slot="placeholder" id="menu">
+      <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
+      <h3 class="lifevault__header">Attorney Details</h3>
+      <!--<paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"-->
+      <!--on-click="onClose"></paper-icon-button>-->
+    </template>
+
+    <main class="attorney">
       <div class="attorney__header">
         <div class="attorney__header-left">
           <a href="[[rootPath]]find-attorney" class="btn btn--back-dash" on-click="_onBackClick">
@@ -670,7 +678,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </main>
   </template>
 
   <script>
@@ -683,6 +691,14 @@
               this.dispatchEvent(new CustomEvent('back-find-attorney', {
                   bubbles: true,
                   composed: true
+              }));
+          }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
               }));
           }
       }
