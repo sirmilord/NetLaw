@@ -1212,6 +1212,11 @@
 
           backFromDetails(e) {
               this.details = false;
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: this.$.menu
+              }));
           }
 
           _onToggleCollapse(e) {
@@ -1268,8 +1273,8 @@
 
                   if (page === 'attorney-details') {
                       //this is polyfill for this.$.pages2.selectedItem;
-                      let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
-                      if (sc) sc.open();
+                      // let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
+                      // if (sc) sc.open();
                   }
               }
           }
