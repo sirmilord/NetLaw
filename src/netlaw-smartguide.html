@@ -454,6 +454,12 @@
                       type: Boolean,
                       value: false
                   },
+                  mobile: {
+                      type: Boolean, observer(value) {
+                          // this._pageChanged(this.page);
+                          // this.open();
+                      }
+                  },
               };
           }
 
