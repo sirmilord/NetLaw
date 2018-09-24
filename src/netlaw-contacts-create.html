@@ -9,16 +9,7 @@
         box-sizing: border-box;
       }
 
-      .contacts__content {
-        flex: 1 1 100%;
-        max-width: 100%;
-        background-color: #f9f9f9;
-        /*border-right: 1px solid #dfdfdf;*/
-        /*border-bottom: 1px solid #dfdfdf;*/
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-      }
+
 
       ul {
         list-style: none;
@@ -26,14 +17,7 @@
         padding: 0;
       }
 
-      h1 {
-        font-weight: bold;
-        color: #4A4A4A;
-        font-size: 56px;
-        line-height: 67px;
-        margin-top: 80px;
-        margin-bottom: 30px;
-      }
+
 
       figure {
         margin-bottom: 30px;
@@ -87,229 +71,6 @@
         text-decoration: none;
       }
 
-      .btn--primary {
-        background-color: #01AA50;
-        color: #fff;
-      }
-
-      .btn--primary:hover,
-      .btn--primary:focus {
-        background-color: #019948;
-      }
-
-      figure iron-icon {
-        --iron-icon-width: 154px;
-        --iron-icon-height: 154px;
-      }
-
-      .file-folder {
-        position: absolute;
-        z-index: 105;
-        left: 0;
-        top: 0;
-        /*transform: translate(-50%, -50%);*/
-        width: calc(100% - 100px);
-        color: #fff;
-        margin-left: 30px;
-        margin-top: 30px;
-      }
-
-      .file-folder__wrapper {
-        display: flex;
-      }
-
-      .file-folder__left {
-        flex: 1 1 30%;
-        max-width: 30%;
-        display: flex;
-        position: relative;
-        min-height: calc(100vh - 80px - 65px);
-      }
-
-      .file-folder__left:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 40px;
-        width: 1px;
-        height: 60%;
-        background-color: #e9e9e9;
-      }
-
-      .file-folder__left paper-icon-button {
-        position: relative;
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        background-color: #e1e1e1;
-        margin-left: auto;
-        margin-right: 20%;
-        margin-top: 20%;
-        padding: 25px;
-        --iron-icon-fill-color: #9B9B9B;
-      }
-
-      .file-folder__right {
-        flex: 1 1 100%;
-        max-width: 100%;
-
-      }
-
-      .form {
-        margin-left: 70px;
-        max-width: 600px;
-        width: 70%;
-        margin-top: 35px;
-        position: relative;
-      }
-
-      .form fieldset {
-        margin: 0;
-        padding: 0;
-        border: 0;
-      }
-
-      .form legend {
-        font-size: 26px;
-        margin-bottom: 20px;
-        color: #4A4A4A;
-        --iron-icon-height: 60px;
-        --iron-icon-width: 60px;
-
-      }
-
-      .form__row {
-        display: flex;
-        margin-right: -10px;
-        margin-left: -10px;
-      }
-
-      .form__group {
-        margin-bottom: 20px;
-        box-sizing: border-box;
-      }
-
-      .form__group--half {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
-
-      .form__group--third {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
-
-      .form__group--center {
-        display: flex;
-        justify-content: center;
-      }
-
-      .label {
-        color: #9b9b9b;
-        font-size: 10px;
-        font-weight: 400;
-      }
-
-      .label--hide {
-        display: none;
-      }
-
-      .input-text {
-        max-width: 100%;
-        width: 100%;
-        padding: 0 10px;
-        background: #fff;
-        color: #666;
-        height: 45px;
-        border: 1px solid #9B9B9B;
-        border-radius: 2px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-
-      .input-text--area {
-        height: 110px;
-      }
-
-      .input-text:focus {
-        border-color: #01AA50;
-        outline: 0;
-      }
-
-      .input-text::placeholder {
-        color: #C2C2C2;
-        font-size: 16px;
-      }
-
-      .form__line {
-        margin: 20px auto;
-        width: 60%;
-        background-color: rgba(151, 151, 151, .3);
-        height: 1px;
-      }
-
-      .btn--import {
-        background-color: #fff;
-        width: 170px;
-        border: 1px solid #4A90E2;
-        color: #4A90E2;
-        border-radius: 22.5px;
-        font-size: 14px;
-        padding: 0 22px;
-        margin-bottom: 20px;
-      }
-
-      .btn--import:hover,
-      .btn--import:focus {
-        background-color: #4A90E2;
-        color: #fff;
-      }
-
-      .btn--primary {
-        background-color: #01AA50;
-        color: #fff;
-        font-size: 16px;
-      }
-
-      .btn--primary:hover,
-      .btn--primary:focus {
-        background-color: #019948;
-      }
-
-      .btn--cancel {
-        border: 0;
-        background-color: transparent;
-        font-weight: 300;
-        margin-left: auto;
-        margin-right: auto;
-        color: #4A4A4A;
-        font-size: 16px;
-      }
-
-      .btn--cancel:hover,
-      .btn--cancel:focus {
-        font-weight: 600;
-      }
-
-      .btn--next {
-        border: 1px solid #01AA50;
-        background-color: transparent;
-        color: #01AA50;
-        font-size: 16px;
-        /*width: 170px;*/
-        margin-left: 20px;
-      }
-
-      .btn--next:hover,
-      .btn--next:focus {
-        background-color: #019948;
-        border-color: #019948;
-        color: #fff;
-      }
 
       .overlay {
         position: fixed;
@@ -335,51 +96,9 @@
         z-index: 105;
       }
 
-      .file-folder__desc span {
-        font-weight: 600;
-      }
-
-      .file-folder label {
-        color: #C2C2C2;
-        font-size: 10px;
-      }
-
-      .file-folder__wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /*width: 400px;*/
-        margin-left: -10px;
-        margin-right: -10px;
-      }
-
-      .file-folder__left paper-image-upload-button {
-        position: relative;
-        width: 160px;
-        height: 160px;
-        margin-left: auto;
-        margin-right: 20%;
-        margin-top: 20%;
-        --iron-icon-fill-color: #9B9B9B;
-        --paper-image-upload-button-width: 160px;
-        --paper-image-upload-button-height: 160px;
-        --paper-image-upload-button-border-width: 1px;
-        --paper-image-upload-button-border-color: #9B9B9B;
-      }
 
       @media (min-width: 1200px) {
-        .file-folder__left paper-icon-button {
-          width: 160px;
-          height: 160px;
-          padding: 50px;
-        }
 
-        .btn--import {
-          position: absolute;
-          margin-bottom: 0;
-          top: 10px;
-          right: 0;
-        }
 
         .file-folder__icon {
           --iron-icon-width: 85px;
@@ -513,8 +232,6 @@
               return {
                   addContact: {
                       type: Boolean,
-                      notify: true,
-                      reflectToAttribute: true,
                       value: false
                   },
               };

@@ -25,6 +25,15 @@
 
       }
 
+      .contacts__content {
+        flex: 1 1 100%;
+        max-width: 100%;
+        background-color: #f9f9f9;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
       ul {
         list-style: none;
         margin: 0;
@@ -46,10 +55,6 @@
       .contacts__list-lvl3 {
         margin-left: 15px;
         margin-bottom: 20px;
-      }
-
-      .contacts__list-item {
-        position: relative;
       }
 
       .contacts__list-item-lvl2--top-border:before {
@@ -84,21 +89,6 @@
 
       .contacts__list-item-lvl3 {
         position: relative;
-      }
-
-      .contacts__list-link {
-        font-size: 18px;
-        color: #414142;
-        text-decoration: none;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        display: inline-block;
-        vertical-align: center;
-      }
-
-      .contacts__list-link:hover,
-      .contacts__list-link:focus {
-        text-decoration: none;
       }
 
       .contacts__list-link iron-icon {
@@ -155,21 +145,11 @@
         top: 21px;
       }
 
-      .contacts__btn--lvl1 {
-        color: #e5e5e5;
-        --iron-icon-width: 24px;
-        --iron-icon-height: 24px;
-      }
-
       .contacts__btn--lvl2 {
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
         top: 15px;
         color: #e5e5e5;
-      }
-
-      .contacts__btn--lvl2-first {
-        top: 27px;
       }
 
       .contacts__btn--lvl3 {
@@ -241,6 +221,15 @@
         font-weight: 300;
       }
 
+      h1 {
+        font-weight: bold;
+        color: #4A4A4A;
+        font-size: 56px;
+        line-height: 67px;
+        margin-top: 80px;
+        margin-bottom: 30px;
+      }
+
       hr {
         width: 75%;
         border-top: none;
@@ -265,54 +254,11 @@
         text-decoration: none;
       }
 
-      .btn--primary {
-        background-color: #01AA50;
-        color: #fff;
-      }
-
-      .btn--primary:hover,
-      .btn--primary:focus {
-        background-color: #019948;
-      }
-
-      .contacts__add-contact {
-        position: fixed;
-        bottom: 5%;
-        right: 5%;
-        --iron-icon-width: 100px;
-        --iron-icon-height: 100px;
-        --iron-icon-fill-color: #01AA50;
-      }
-
-      netlaw-contacts-create {
-        width: 100%;
-      }
-
       iron-pages {
         flex: 1 1 60%;
       }
 
-      netlaw-contacts-family {
-        width: 100%;
-      }
-
-      .contacts__add-folder {
-        position: fixed;
-        bottom: 5%;
-        right: 5%;
-        --iron-icon-width: 100px;
-        --iron-icon-height: 100px;
-        --iron-icon-fill-color: #01AA50;
-        /*--iron-icon-stroke-color: #fff;*/
-        display: none;
-      }
-
-      .contacts__add-folder--show {
-        display: block;
-      }
-
       .contacts__addfolder-dropdown {
-        /*min-height: 154px;*/
         width: 137px;
         border: 1px solid #C2C2C2;
         border-radius: 2px;
@@ -353,10 +299,6 @@
         font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       }
 
-      .contacts-mobile__nav {
-
-      }
-
       .contacts-mobile__header {
         display: flex;
         align-items: center;
@@ -385,62 +327,6 @@
         font-weight: 300;
       }
 
-      .contacts-mobile__list {
-        margin-top: 35px;
-        position: relative;
-        margin-left: 30px;
-      }
-
-      .contacts-mobile__list-item {
-        position: relative;
-      }
-
-      .contacts-mobile__list-item--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 90%;
-        height: 1px;
-        border-bottom: 1px dashed #e4e4e4;
-        left: 0;
-        top: 0;
-      }
-
-      .contacts-mobile__list-item--bottom-border:after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 90%;
-        height: 1px;
-        border-bottom: 1px dashed #e4e4e4;
-        left: 0;
-        bottom: 0;
-      }
-
-      .contacts-mobile__list-link {
-        color: #4A4A4A;
-        font-size: 18px;
-        text-decoration: none;
-        padding-top: 30px;
-        padding-bottom: 30px;
-        padding-left: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .contacts-mobile__list-link:hover,
-      .contacts-mobile__list-link:focus {
-        text-decoration: none;
-      }
-
-      .contacts-mobile__list-link iron-icon {
-        margin-right: 15px;
-        --iron-icon-fill-color: #CAC9CA;
-        --iron-icon-height: 28px;
-        --iron-icon-width: 28px;
-      }
-
       .overlay {
         position: fixed;
         z-index: 105;
@@ -453,13 +339,25 @@
       }
 
       .file-folder {
+        position: absolute;
+        z-index: 105;
+        left: 0;
+        top: 0;
+        width: calc(100% - 100px);
+        color: #fff;
+        margin-left: 30px;
+        margin-top: 30px;
+      }
+
+      .file-folder--fixed {
         position: fixed;
         z-index: 105;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
-        color: #fff;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .file-folder__icon {
@@ -534,13 +432,6 @@
         font-weight: 600;
       }
 
-      .file-folder__wrap {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 400px;
-      }
-
       .file-folder__form {
 
       }
@@ -549,35 +440,9 @@
         width: 100%;
       }
 
-      .file-folder__img {
-        margin: 0 10px 0 0;
-        --iron-icon-fill-color: #000;
-        --iron-icon-height: 26px;
-        --iron-icon-width: 26px;
-        border: 1px solid #E1E1E1;
-        background-color: #FFFFFF;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
 
       .file-folder__img iron-icon {
         opacity: 0.3;
-      }
-
-      .file-folder__name {
-        color: #4A4A4A;
-        font-size: 16px;
-        font-weight: 300;
-        margin-right: 10px;
-      }
-
-      .file-folder__version {
-        color: #4A90E2;
-        font-size: 18px;
-        font-weight: 300;
       }
 
       .file-folder__title-delete {
@@ -610,6 +475,12 @@
         /*width: 400px;*/
         margin-left: -10px;
         margin-right: -10px;
+      }
+
+      .file-folder__wrapper--small {
+        width: 360px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .file-folder__form--w100 {
@@ -655,18 +526,18 @@
         font-weight: 300;
       }
 
-      .conatcts__list-item-lvl2--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 1px dashed #979797;
-        opacity: .5;
-        left: 50%;
-        top: -7px;
-        transform: translateX(-50%);
-        color: #4a4a4a;
+      .file-folder__left paper-image-upload-button {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin-left: auto;
+        margin-right: 20%;
+        margin-top: 20%;
+        --iron-icon-fill-color: #9B9B9B;
+        --paper-image-upload-button-width: 120px;
+        --paper-image-upload-button-height: 120px;
+        --paper-image-upload-button-border-width: 1px;
+        --paper-image-upload-button-border-color: #9B9B9B;
       }
 
       .contacts__list-item-lvl2 .iron-collapse-opened {
@@ -686,34 +557,218 @@
         transform: translateX(-50%);
       }
 
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      figure iron-icon {
+        --iron-icon-width: 154px;
+        --iron-icon-height: 154px;
+      }
+
+      .form {
+        margin-left: 70px;
+        max-width: 600px;
+        width: 70%;
+        margin-top: 35px;
+        position: relative;
+      }
+
+      .form fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .form legend {
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: #4A4A4A;
+        --iron-icon-height: 60px;
+        --iron-icon-width: 60px;
+
+      }
+
+      .form__row {
+        display: flex;
+        margin-right: -10px;
+        margin-left: -10px;
+      }
+
+      .form__group {
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .form__group--half {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .form__group--third {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .form__group--center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .label {
+        color: #9b9b9b;
+        font-size: 10px;
+        font-weight: 400;
+      }
+
+      .label--hide {
+        display: none;
+      }
+
+      .input-text {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 10px;
+        background: #fff;
+        color: #666;
+        height: 45px;
+        border: 1px solid #9B9B9B;
+        border-radius: 2px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      .input-text--area {
+        height: 110px;
+      }
+
+      .input-text:focus {
+        border-color: #01AA50;
+        outline: 0;
+      }
+
+      .input-text::placeholder {
+        color: #C2C2C2;
+        font-size: 16px;
+      }
+
+      .form__line {
+        margin: 20px auto;
+        width: 60%;
+        background-color: rgba(151, 151, 151, .3);
+        height: 1px;
+      }
+
+      .btn--import {
+        background-color: #fff;
+        width: 170px;
+        border: 1px solid #4A90E2;
+        color: #4A90E2;
+        border-radius: 22.5px;
+        font-size: 14px;
+        padding: 0 22px;
+        margin-bottom: 20px;
+      }
+
+      .btn--import:hover,
+      .btn--import:focus {
+        background-color: #4A90E2;
+        color: #fff;
+      }
+
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      .btn--cancel {
+        border: 0;
+        background-color: transparent;
+        font-weight: 300;
+        margin-left: auto;
+        margin-right: auto;
+        color: #4A4A4A;
+        font-size: 16px;
+      }
+
+      .btn--cancel:hover,
+      .btn--cancel:focus {
+        font-weight: 600;
+      }
+
+      .btn--next {
+        border: 1px solid #01AA50;
+        background-color: transparent;
+        color: #01AA50;
+        font-size: 16px;
+        /*width: 170px;*/
+        margin-left: 20px;
+      }
+
+      .btn--next:hover,
+      .btn--next:focus {
+        background-color: #019948;
+        border-color: #019948;
+        color: #fff;
+      }
+
+      .file-folder__left {
+        flex: 1 1 30%;
+        max-width: 30%;
+        display: flex;
+        position: relative;
+        min-height: calc(100vh - 80px - 65px);
+      }
+
+      .file-folder__left:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 1px;
+        height: 60%;
+        background-color: #e9e9e9;
+      }
+
+      .file-folder__left paper-icon-button {
+        position: relative;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        background-color: #e1e1e1;
+        margin-left: auto;
+        margin-right: 20%;
+        margin-top: 20%;
+        padding: 25px;
+        --iron-icon-fill-color: #9B9B9B;
+      }
+
+      .file-folder__right {
+        flex: 1 1 100%;
+        max-width: 100%;
+
+      }
+
       @media (max-width: 767px) {
         iron-pages {
           flex: 1 1 100%;
           max-width: 100%;
-        }
-
-        .contacts-mobile__drawer--width {
-          --app-drawer-width: 100%;
-        }
-
-        .contacts-mobile__drawer-wrap {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          overflow: auto;
-        }
-
-        .contacts-mobile__arrow {
-          position: absolute;
-          top: 335px;
-          left: -30px;
-          --iron-icon-fill-color: #999;
-          --iron-icon-height: 28px;
-          --iron-icon-width: 28px;
-        }
-
-        .contacts-mobile__arrow--bottom {
-          top: 425px;
         }
 
         .contacts__nav-mobile {
@@ -751,12 +806,6 @@
           margin-right: auto;
         }
 
-        .file-folder__wrapper {
-          width: 360px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
         .login__divider-small::after {
           border-top: 1px solid #e5e5e5;
         }
@@ -778,12 +827,32 @@
           flex: 1 1 70%;
           max-width: 75%;
         }
+
+        .file-folder__left paper-image-upload-button {
+          width: 160px;
+          height: 160px;
+          --paper-image-upload-button-width: 160px;
+          --paper-image-upload-button-height: 160px;
+        }
       }
 
       @media (min-width: 1200px) {
 
         .contacts__list {
           margin-left: 40px;
+        }
+
+        .file-folder__left paper-icon-button {
+          width: 160px;
+          height: 160px;
+          padding: 50px;
+        }
+
+        .btn--import {
+          position: absolute;
+          margin-bottom: 0;
+          top: 10px;
+          right: 0;
         }
       }
 
@@ -1020,8 +1089,21 @@
           </div>
         </section>
 
+        <section class="contacts__content">
+          <h1>Contacts</h1>
+          <figure>
+            <iron-icon icon="netlaw-icons:organizer"></iron-icon>
+          </figure>
+          <b>Add beneficaries, exectors of an estate and more</b>
+          <div class="contacts__content-wrapper">
+            <p>(you also search for attorneys and add them to you list)</p>
+            <hr>
+          </div>
+          <button class="btn btn--primary" on-click="onAddContactClick">Create Contact</button>
+        </section>
+
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-contacts-create name="create"></netlaw-contacts-create>
+          <!--<netlaw-contacts-create name="create"></netlaw-contacts-create>-->
           <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
         </iron-pages>
       </main>
@@ -1029,7 +1111,7 @@
 
     <template is="dom-if" if="[[addFolder]]">
       <div class="overlay"></div>
-      <div class="file-folder">
+      <div class="file-folder  file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
         <b class="file-folder__title">Add Folder</b>
         <form action="javascript:;" method="post" class="login-form login__align-center">
@@ -1055,13 +1137,13 @@
 
     <template is="dom-if" if="[[deleteContact]]">
       <div class="overlay"></div>
-      <div class="file-folder">
+      <div class="file-folder file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
         <b class="file-folder__title-delete">Just Confirming </b>
         <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these contacts?</p>
         <form action="javascript:;" method="post"
               class="login-form login__align-center  file-folder__form file-folder__form--w100">
-          <div class="login__margin file-folder__wrapper">
+          <div class="login__margin file-folder__wrapper file-folder__wrapper--small">
             <div class="file-folder__item">
               <figure class="file-folder__photo">
                 <iron-icon icon="netlaw-icons:page"></iron-icon>
@@ -1094,6 +1176,100 @@
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
+    </template>
+
+    <template is="dom-if" if="[[addContact]]">
+      <div class="overlay"></div>
+      <section class="file-folder">
+        <div class="file-folder__wrapper">
+          <div class="file-folder__left">
+            <!--<paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>-->
+            <paper-image-upload-button image="../images/profile.jpg"></paper-image-upload-button>
+          </div>
+          <div class="file-folder__right">
+            <form class="form" action="javascript:;" method="post">
+
+              <fieldset>
+                <legend>
+                  <iron-icon class="" icon="netlaw-icons:add-contact-o"></iron-icon>
+                  Add NewContact
+                </legend>
+                <button class="btn btn--import">Import Contacts</button>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="firstname">FIRST NAME</label>
+                    <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="lastname">LAST NAME</label>
+                    <input type="text" id="lastname" class="input-text" placeholder="i.e. Wayne">
+                  </div>
+                </div>
+                <div class="form__group">
+                  <label class="label" for="address">ADDRESS</label>
+                  <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
+                </div>
+                <div class="form__group">
+                  <label class="label" for="relationship">RELATIONSHIP TO YOU</label>
+                  <input type="text" id="relationship" class="input-text"
+                         placeholder="i.e. Brother, Cousin, Financial Lawyer">
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--third">
+                    <label for="city" class="label label--hide"></label>
+                    <input type="text" id="city" class="input-text" placeholder="Gotham City">
+                  </div>
+                  <div class="form__group form__group--third">
+                    <label for="state" class="label label--hide"></label>
+                    <input type="text" id="state" class="input-text" placeholder="New Jersey">
+                  </div>
+                  <div class="form__group form__group--third">
+                    <label for="code" class="label label--hide"></label>
+                    <input type="text" id="code" class="input-text" placeholder="04400">
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="officephone">OFFICE PHONE NUMBER</label>
+                    <input type="number" id="officephone" class="input-text" placeholder="i.e. 5089685522">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="mobilenumber">MOBILE NUMBER</label>
+                    <input type="number" id="mobilenumber" class="input-text" placeholder="i.e. 5089685522">
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__group form__group--half">
+                    <label class="label" for="emailaddress">EMAIL ADDRESS</label>
+                    <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
+                  </div>
+                  <div class="form__group form__group--half">
+                    <label class="label" for="website">WEBSITE</label>
+                    <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
+                  </div>
+                </div>
+                <div class="form__group">
+                  <label for="comments" class="label">COMMENTS</label>
+                  <textarea rows="3" id="comments" class="input-text input-text--area"
+                            placeholder="Is there anything you would like to say about this contact?"></textarea>
+                </div>
+                <div class="form__line"></div>
+                <div class="form__group form__group--center">
+                  <a href="javascript:;" class="btn btn--primary">Save Contact</a>
+                  <a href="javascript:;" class="btn btn--next">Save + Add New</a>
+                </div>
+                <div class="form__group form__group--center">
+                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelContactClick">Cancel</a>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <a href="javascript:;" on-click="onCancelContactClick">
+          <iron-icon class="file-folder__icon file-folder__icon--close"
+                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
+        </a>
+      </section>
     </template>
 
   </template>
@@ -1135,6 +1311,10 @@
                       value: false
                   },
                   deleteContact: {
+                      type: Boolean,
+                      value: false
+                  },
+                  addContact: {
                       type: Boolean,
                       value: false
                   },
@@ -1293,6 +1473,31 @@
 
           onCancelDeleteContactClick(e) {
               e.preventDefault();
+              this.deleteContact = false;
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: false
+                  }
+              }));
+          }
+
+          onAddContactClick(e) {
+              // e.preventDefault();
+              this.addContact = true;
+              this.dispatchEvent(new CustomEvent('overlay-display', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      display: true
+                  }
+              }));
+          }
+
+          onCancelContactClick(e) {
+              e.preventDefault();
+              this.addContact = false;
               this.deleteContact = false;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
