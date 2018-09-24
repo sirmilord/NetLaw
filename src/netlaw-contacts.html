@@ -1411,8 +1411,9 @@
 
               if (!this.mobile) {
 
-                  if (this.page === 'create') {
-                      this.shadowRoot.querySelector('#collapsetwo0').hide();
+                  if (this.page === null) {
+                      // this.shadowRoot.querySelector('#collapsetwo0').hide();
+                      this.createContact = true;
                   }
               }
 
