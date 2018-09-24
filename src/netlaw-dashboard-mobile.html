@@ -286,7 +286,7 @@
         <input id="selectall" type="checkbox">
         <span class="content-checkmark" on-tap="selectAllClick"></span>
       </label>
-      <div class="sort">
+      <div id="sortby" class="sort">
         <a class="dashboard-link" slot="dropdown-trigger" href="javascript:;" on-tap="_toggle">Sort By</a>
         <iron-dropdown vertical-offset="0">
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">
@@ -306,7 +306,7 @@
           </ul>
         </iron-dropdown>
       </div>
-      <div class="sort">
+      <div id="bulkaction" class="sort">
         <a class="dashboard-link" href="javascript:;" on-tap="_toggle">Bulk Action</a>
         <iron-dropdown vertical-offset="0">
           <ul class="addfolder-dropdown addfolder-dropdown--sort" slot="dropdown-content">

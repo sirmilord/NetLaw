@@ -109,69 +109,6 @@
         background-color: #019948;
       }
 
-      .find-attorney__checkbox-container {
-        display: block;
-        position: relative;
-        cursor: pointer;
-        font-size: 9px;
-        user-select: none;
-        color: #d6d6d6;
-        height: 45px;
-        border-radius: 2px;
-      }
-
-      .find-attorney__checkbox-container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-      }
-
-      .find-attorney__content-checkmark {
-        position: absolute;
-        top: 15px;
-        left: 8px;
-        height: 18px;
-        width: 18px;
-        background-color: #fff;
-        border: 1px solid #c2c2c2;
-        border-radius: 2px;
-      }
-
-      label.find-attorney__search > button > iron-icon {
-        --iron-icon-width: 18px;
-        --iron-icon-height: 18px;
-      }
-
-      .find-attorney__checkbox-container:hover input ~ .find-attorney__content-checkmark {
-        background-color: #fff;
-      }
-
-      .find-attorney__checkbox-container input:checked ~ .find-attorney__content-checkmark {
-        background-color: #fff;
-      }
-
-      .find-attorney__content-checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-      }
-
-      .find-attorney__checkbox-container input:checked ~ .find-attorney__content-checkmark:after {
-        display: block;
-      }
-
-      .find-attorney__checkbox-container .find-attorney__content-checkmark:after {
-        left: 6px;
-        top: 3px;
-        width: 5px;
-        height: 9px;
-        border: solid #01AA50;
-        border-width: 0 2px 2px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
-
       .find-attorney__module {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -219,22 +156,6 @@
         display: flex;
         flex-wrap: wrap;
         position: relative;
-      }
-
-      .find-attorney__list-body .btn--charm {
-        position: absolute;
-        bottom: 3px;
-        right: 3px;
-      }
-
-      .find-attorney__checkbox-container--module {
-        margin-right: auto;
-        height: 27px;
-      }
-
-      .find-attorney__content-checkmark--module {
-        top: 0;
-        left: 0;
       }
 
       .find-attorney__menu {
@@ -323,13 +244,6 @@
         flex: 1 1 70%;
         margin-left: auto;
         margin-right: auto;
-      }
-
-      .find-attorney__checkbox-container--list {
-        margin-right: 16px;
-        margin-left: 16px;
-        height: 27px;
-        width: 27px;
       }
 
       .find-attorney__content-checkmark--list {
@@ -601,7 +515,8 @@
         padding-right: 0;
       }
 
-      .find-attorney {
+      .find-attorney,
+      .find-attorney-mobile {
         --dashboard-filter: flex;
 
         --attorney-filter-992: {
@@ -639,10 +554,7 @@
 
         .find-attorney__list-left {
           margin-right: 30px;
-        }
-
-        .find-attorney__checkbox-container--list {
-          margin-right: 30px;
+          margin-left: 15px;
         }
       }
 
@@ -731,7 +643,7 @@
         .find-attorney__menu {
           --iron-icon-height: 32px;
           --iron-icon-width: 32px;
-          margin-left: 20px;
+          margin-left: auto;
         }
 
         .login__divider-small::after {
@@ -753,13 +665,6 @@
         .find-attorney__module-update {
           font-size: 10px;
           align-self: center;
-        }
-
-        .find-attorney__checkbox-container--list {
-          margin-left: 0;
-          margin-right: 15px;
-          height: 18px;
-          width: 25px;
         }
 
         .rating--module {
@@ -812,13 +717,6 @@
           font-size: 12px;
         }
 
-        .find-attorney__add-contact {
-          bottom: 10%;
-          right: 5%;
-          --iron-icon-width: 60px;
-          --iron-icon-height: 60px;
-        }
-
       }
 
     </style>
@@ -849,10 +747,6 @@
                   <div class="find-attorney__col-module">
                   <div class="find-attorney__module-item">
                     <div class="find-attorney__module-body">
-                      <label class="find-attorney__checkbox-container find-attorney__checkbox-container--module">
-                        <input type="checkbox">
-                        <span class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
-                      </label>
                       <button class="find-attorney__menu" on-click="_onToggleDropdown">
                         <iron-icon icon="icons:more-vert"></iron-icon>
                         <iron-dropdown horizontal-align="right">
@@ -935,10 +829,6 @@
 
                 <div class="find-attorney__module-list-item">
                 <div class="find-attorney__list-left">
-                  <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                    <input type="checkbox">
-                    <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-                  </label>
                   <div class="find-attorney__list-body">
                     <figure class="find-attorney__photo find-attorney__photo--list">
                       <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
@@ -997,10 +887,6 @@
           </div>
         </template>
 
-        <a class="find-attorney__add-contact" href="javascript:;">
-          <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
-        </a>
-
       </main>
     </template>
 
@@ -1028,11 +914,6 @@
                     <div class="find-attorney__col-module">
                       <div class="find-attorney__module-item">
                         <div class="find-attorney__module-body">
-                          <label class="find-attorney__checkbox-container find-attorney__checkbox-container--module">
-                            <input type="checkbox">
-                            <span
-                                class="find-attorney__content-checkmark find-attorney__content-checkmark--module"></span>
-                          </label>
                           <button class="find-attorney__menu" on-click="_onToggleDropdown">
                             <iron-icon icon="icons:more-vert"></iron-icon>
                             <iron-dropdown horizontal-align="right">
@@ -1115,10 +996,6 @@
 
                   <div class="find-attorney__module-list-item">
                     <div class="find-attorney__list-left">
-                      <label class="find-attorney__checkbox-container find-attorney__checkbox-container--list">
-                        <input type="checkbox">
-                        <span class="find-attorney__content-checkmark find-attorney__content-checkmark--list"></span>
-                      </label>
                       <div class="find-attorney__list-body">
                         <figure class="find-attorney__photo find-attorney__photo--list">
                           <img src="{{attorney.photo}}" height="60" width="60" alt="attorney">
@@ -1179,9 +1056,6 @@
 
           </template>
 
-          <a class="find-attorney__add-contact" href="javascript:;">
-            <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
-          </a>
         </div>
       </main>
     </template>
