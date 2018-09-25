@@ -734,9 +734,8 @@
 
     <template is="dom-if" if="[[mobile]]">
 
-      <template is="dom-if" if="[[!details]]">
-
-        <main class="find-attorney-mobile">
+      <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
+        <main name="empty2" class="find-attorney-mobile">
           <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
                                    on-select-all-true="selectAllTrue" on-view-module="chooseModule"
                                    on-view-list="chooseList"></netlaw-dashboard-mobile>
@@ -895,15 +894,9 @@
           </template>
 
         </main>
-
-      </template>
-
-      <template is="dom-if" if="[[details]]">
-        <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-attorney-details name="attorney-details"
-                                   on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
-        </iron-pages>
-      </template>
+        <netlaw-attorney-details name="attorney-details"
+                                 on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
+      </iron-pages>
 
     </template>
 
@@ -911,8 +904,8 @@
     <!--Desktop layout-->
     <template is="dom-if" if="[[!mobile]]">
 
-      <template is="dom-if" if="[[!details]]">
-        <main class="find-attorney">
+      <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
+        <main name="empty2" class="find-attorney">
           <div class="find-attorney__content">
             <netlaw-topbar>
               <h2 slot="title">Search Attorney</h2>
@@ -1080,14 +1073,10 @@
 
           </div>
         </main>
-      </template>
+        <netlaw-attorney-details name="attorney-details"
+                                 on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
+      </iron-pages>
 
-      <template is="dom-if" if="[[details]]">
-        <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-attorney-details name="attorney-details"
-                                   on-back-find-attorney="backFromDetails"></netlaw-attorney-details>
-        </iron-pages>
-      </template>
     </template>
   </template>
 
@@ -1194,10 +1183,6 @@
                           // this.open();
                       }
                   },
-                  details: {
-                      type: Boolean,
-                      value: false
-                  }
               };
           }
 
@@ -1208,7 +1193,6 @@
           _onDetailsClick(e) {
               let details = e.currentTarget.getAttribute('href');
               navigate(details);
-              this.details = true;
               this.dispatchEvent(new CustomEvent('drawer-changed', {
                   bubbles: true,
                   composed: true,
@@ -1217,7 +1201,6 @@
           }
 
           backFromDetails(e) {
-              this.details = false;
               this.dispatchEvent(new CustomEvent('drawer-changed', {
                   bubbles: true,
                   composed: true,
@@ -1251,6 +1234,7 @@
                   ironDropdown.opened ? e.currentTarget.children[0].setAttribute('icon', 'icons:expand-less') : e.currentTarget.children[0].setAttribute('icon', 'icons:expand-more');
               }
           }
+
           ready(e) {
               super.ready();
 
@@ -1264,15 +1248,7 @@
           _pageChanged(page) {
               if (!this.contentReady) return;
 
-                  // console.log(this.details);
               if (!this.mobile) {
-
-                  if (page === 'attorney-details') {
-                      this.details = true;
-                      console.log(this.shadowRoot.querySelector('#pages3'));
-                      let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
-                      if (sc) sc.open();
-                  }
 
               }
 
@@ -1286,11 +1262,11 @@
                       }));
                   }
 
-                   if (page === 'attorney-details') {
-                     //this is polyfill for this.$.pages2.selectedItem;
+                  if (page === 'attorney-details') {
+                      //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
-                       if (sc) sc.open();
-                   }
+                      if (sc) sc.open();
+                  }
               }
           }
 

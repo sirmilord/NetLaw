@@ -830,6 +830,9 @@
 
               //hide drawer on this pages
               this.page === 'profile' || this.page === 'account' ? this.hideDrawer = false : this.hideDrawer = true;
+              this.page === 'find-attorney' && this.subroute.path === '/attorney-details' ? this.hideDrawer = false : null;
+
+
 
           }
 

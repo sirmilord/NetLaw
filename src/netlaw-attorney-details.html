@@ -698,7 +698,6 @@
 
           ready() {
               super.ready();
-              this.open;
           }
 
           open() {
@@ -708,7 +707,9 @@
                       composed: true,
                       detail: {full: true, menu: this.$.menu}
                   }));
-              } else {
+              }
+
+              if (!this.mobile) {
                   this.dispatchEvent(new CustomEvent('drawer-changed', {
                       bubbles: true,
                       composed: true,
