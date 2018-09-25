@@ -1333,7 +1333,7 @@
                   },
                   createContact: {
                       type: Boolean,
-                      value: true
+                      value: false
                   },
                   folders: {
                       type: Object, value: () => [
@@ -1425,7 +1425,7 @@
 
               if (!this.mobile) {
 
-                  if (this.page == null) {
+                  if (page == null) {
                       // this.shadowRoot.querySelector('#collapsetwo0').hide();
                       this.createContact = true;
                       this.details = false;
@@ -1435,7 +1435,9 @@
                           composed: true,
                           detail: {opened: true}
                       }));
-                  } else if (this.page === 'contact-details') {
+                  }
+
+                  if (this.page === 'contact-details') {
                       this.createContact = false;
                       this.details = true;
                       this.flex = 'flex: 1 1 100%; max-width: 100%;';
