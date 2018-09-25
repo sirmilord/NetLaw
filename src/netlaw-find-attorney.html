@@ -720,6 +720,7 @@
       }
 
     </style>
+
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
@@ -1208,10 +1209,20 @@
               let details = e.currentTarget.getAttribute('href');
               navigate(details);
               this.details = true;
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
           }
 
           backFromDetails(e) {
               this.details = false;
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
           }
 
           _onToggleCollapse(e) {
@@ -1280,27 +1291,6 @@
                   composed: true,
                   detail: {full: true, menu: this.$.menu}
               }));
-          }
-
-          selectAllFalse(e) {
-              this.view ? this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--list input');
-              if (this.checkboxes.length > 0) {
-
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = true;
-                  }
-              }
-          }
-
-          selectAllTrue(e) {
-              this.view ? this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--module input') : this.checkboxes = this.shadowRoot.querySelectorAll('.find-attorney__checkbox-container--list input');
-
-              if (this.checkboxes.length > 0) {
-
-                  for (let i = 0; i < this.checkboxes.length; i++) {
-                      this.checkboxes[i].checked = false;
-                  }
-              }
           }
 
           chooseModule(e) {
