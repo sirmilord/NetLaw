@@ -1,5 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/paper-image-upload-button/paper-image-upload-button.html">
+<link rel="import" href="paper-image-upload-button.html">
 
 <dom-module id="netlaw-profile">
   <template>
@@ -116,6 +116,17 @@
         --paper-image-upload-button-height: 160px;
         --paper-image-upload-button-border-width: 1px;
         --paper-image-upload-button-border-color: #9B9B9B;
+        --iron-icon-width: 56px;
+        --iron-icon-height: 56px;
+        --iron-icon-fill-color: #fff;
+        --paper-image-upload-button-hover-background-color: #000;
+        --paper-image-upload-button-background-color: #e1e1e1;
+        --paper-image-upload-button-border-color: #e1e1e1;
+      }
+
+      .proflie__image paper-image-upload-button .icon {
+        top: calc(50% - 23px);
+        left: calc(50% - 23px);
       }
 
 /*      .profile__left img {
@@ -367,7 +378,7 @@
           <!--<paper-icon-button icon="netlaw-icons:profile-plus" name="profile"></paper-icon-button>-->
           <!--<img src="../images/profile.jpg" alt="Profile Image">-->
           <div class="profile__image">
-            <paper-image-upload-button image="../images/profile.jpg"></paper-image-upload-button>
+            <paper-image-upload-button icon="netlaw-icons:profile-plus" image="{{uploadImage}}"></paper-image-upload-button>
           </div>
         </div>
         <div class="profile__right">
@@ -427,6 +438,16 @@
           static get is() {
               return 'netlaw-profile';
           }
+
+          static get properties() {
+              return {
+                 uploadImage: {
+                     type: String,
+                     value: './images/profile-default.png'
+                 }
+              };
+          }
+
           constructor() {
               super();
           }
