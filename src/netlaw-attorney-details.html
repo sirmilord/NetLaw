@@ -500,6 +500,8 @@
 
     </style>
 
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
+
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
@@ -694,12 +696,26 @@
               }));
           }
 
+          ready() {
+              super.ready();
+              this.open;
+          }
+
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {
-                  bubbles: true,
-                  composed: true,
-                  detail: {full: true, menu: this.$.menu}
-              }));
+              if (this.mobile) {
+                  this.dispatchEvent(new CustomEvent('menu-changed', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {full: true, menu: this.$.menu}
+                  }));
+              } else {
+                  this.dispatchEvent(new CustomEvent('drawer-changed', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {opened: false}
+                  }));
+              }
+
           }
       }
 

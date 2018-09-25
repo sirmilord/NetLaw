@@ -995,7 +995,9 @@
                 </ul>
               </div>
             </section>
-            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
+            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"
+                                    on-to-details="_onToDetails"></netlaw-contacts-family>
+            <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
         </app-drawer-layout>
       </main>
@@ -1460,6 +1462,7 @@
                   }
 
                   if (page === 'family') {
+                      console.log(this.shadowRoot.querySelector('#pages3'));
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
                       if (sc) sc.open();
