@@ -824,7 +824,7 @@
 
         iron-pages {
           flex: 1 1 70%;
-          max-width: 75%;
+          max-width: 70%;
         }
 
         .file-folder__left paper-image-upload-button {
@@ -1004,89 +1004,94 @@
     <!--Desktop layout-->
     <template id="desktop" is="dom-if" if="[[!mobile]]">
       <main class="contacts">
-        <section class="contacts__drawer">
-          <div class="contacts__list">
-            <ul class="contacts__list-lvl2 contacts__list-item-lvl2--top-border contacts__list-item-lvl2--bottom-border">
+        <template is="dom-if" if="[[!details]]">
 
-              <template is="dom-repeat" items="{{folders}}">
-                <li class="contacts__list-item-lvl2">
-                  <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
-                    <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                    [[item.name]]</a>
-                  <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
-                    <iron-icon icon="icons:more-vert"></iron-icon>
-                    <iron-dropdown>
-                      <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
-                          slot="dropdown-content">
-                        <li on-click="onAddFolderClick">Add Sub-Folder
-                          <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                        </li>
-                        <li>Download
-                          <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                        </li>
-                        <li>Print
-                          <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                        </li>
-                        <li>Rename
-                          <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                        </li>
-                        <li>Share
-                          <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                        </li>
-                        <li on-click="onDeleteContactClick">Delete
-                          <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                        </li>
-                      </ul>
-                    </iron-dropdown>
-                  </a>
+          <section class="contacts__drawer">
+            <div class="contacts__list">
+              <ul class="contacts__list-lvl2 contacts__list-item-lvl2--top-border contacts__list-item-lvl2--bottom-border">
 
-                  <template is="dom-if" if=[[item.folders2]]>
-
-                    <iron-collapse id="collapsetwo{{index}}">
-                      <ul class="contacts__list-lvl3">
-
-                        <template is="dom-repeat" items="{{item.folders2}}" as="item2">
-                          <li class="contacts__list-item-lvl3">
-                            <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3" on-click="_onLinkClick">
-                              <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                              [[item2.name]]</a>
-                            <a class="contacts__btn contacts__btn--lvl3" href="javascript:;"
-                               on-click="_onToggleDropdown">
-                              <iron-icon icon="icons:more-vert"></iron-icon>
-                              <iron-dropdown>
-                                <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
-                                    slot="dropdown-content">
-                                  <li>Download
-                                    <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                                  </li>
-                                  <li>Print
-                                    <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                                  </li>
-                                  <li>Rename
-                                    <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                                  </li>
-                                  <li>Share
-                                    <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                                  </li>
-                                  <li on-click="onDeleteContactClick">Delete
-                                    <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                                  </li>
-                                </ul>
-                              </iron-dropdown>
-                            </a>
+                <template is="dom-repeat" items="{{folders}}">
+                  <li class="contacts__list-item-lvl2">
+                    <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+                      <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
+                      [[item.name]]</a>
+                    <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+                      <iron-icon icon="icons:more-vert"></iron-icon>
+                      <iron-dropdown>
+                        <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                            slot="dropdown-content">
+                          <li on-click="onAddFolderClick">Add Sub-Folder
+                            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                           </li>
-                        </template>
+                          <li>Download
+                            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                          </li>
+                          <li>Print
+                            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                          </li>
+                          <li>Rename
+                            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                          </li>
+                          <li>Share
+                            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                          </li>
+                          <li on-click="onDeleteContactClick">Delete
+                            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                          </li>
+                        </ul>
+                      </iron-dropdown>
+                    </a>
 
-                      </ul>
-                    </iron-collapse>
-                  </template>
+                    <template is="dom-if" if=[[item.folders2]]>
 
-                </li>
-              </template>
+                      <iron-collapse id="collapsetwo{{index}}">
+                        <ul class="contacts__list-lvl3">
 
-            </ul>
-          </div>
-        </section>
+                          <template is="dom-repeat" items="{{item.folders2}}" as="item2">
+                            <li class="contacts__list-item-lvl3">
+                              <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3"
+                                 on-click="_onLinkClick">
+                                <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
+                                [[item2.name]]</a>
+                              <a class="contacts__btn contacts__btn--lvl3" href="javascript:;"
+                                 on-click="_onToggleDropdown">
+                                <iron-icon icon="icons:more-vert"></iron-icon>
+                                <iron-dropdown>
+                                  <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
+                                      slot="dropdown-content">
+                                    <li>Download
+                                      <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+                                    </li>
+                                    <li>Print
+                                      <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+                                    </li>
+                                    <li>Rename
+                                      <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+                                    </li>
+                                    <li>Share
+                                      <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+                                    </li>
+                                    <li on-click="onDeleteContactClick">Delete
+                                      <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+                                    </li>
+                                  </ul>
+                                </iron-dropdown>
+                              </a>
+                            </li>
+                          </template>
+
+                        </ul>
+                      </iron-collapse>
+                    </template>
+
+                  </li>
+                </template>
+
+              </ul>
+            </div>
+          </section>
+
+        </template>
 
         <template is="dom-if" if="[[createContact]]">
 
@@ -1107,9 +1112,10 @@
 
         <template is="dom-if" if="[[!createContact]]">
 
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <!--<netlaw-contacts-create name="create"></netlaw-contacts-create>-->
-            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"></netlaw-contacts-family>
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
+            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"
+                                    on-to-details="_onToDetails"></netlaw-contacts-family>
+            <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
 
         </template>
@@ -1370,6 +1376,14 @@
                           // this._pageChanged(this.page);
                       }
                   },
+                  details: {
+                      type: Boolean,
+                      value: false
+                  },
+                  flex: {
+                      type: String,
+                      value: ''
+                  }
               };
           }
 
@@ -1411,9 +1425,25 @@
 
               if (!this.mobile) {
 
-                  if (this.page === null) {
+                  if (this.page == null) {
                       // this.shadowRoot.querySelector('#collapsetwo0').hide();
                       this.createContact = true;
+                      this.details = false;
+                      this.flex = '';
+                      this.dispatchEvent(new CustomEvent('drawer-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {opened: true}
+                      }));
+                  } else if (this.page === 'contact-details') {
+                      this.createContact = false;
+                      this.details = true;
+                      this.flex = 'flex: 1 1 100%; max-width: 100%;';
+                      this.dispatchEvent(new CustomEvent('drawer-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {opened: false}
+                      }));
                   }
               }
 
@@ -1439,6 +1469,7 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
+          //for mobile
           _childPage(e) {
               let ironCollapse = e.currentTarget.closest('iron-collapse');
               if (ironCollapse) {
@@ -1527,6 +1558,26 @@
 
           _onLinkClick(e) {
               this.createContact = false;
+          }
+
+          _onToDetails(e) {
+              this.details = true;
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
+              this.flex = 'flex: 1 1 100%; max-width: 100%;';
+          }
+
+          _backFromDetails(e) {
+              this.details = false;
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
+              this.flex = '';
           }
       }
 

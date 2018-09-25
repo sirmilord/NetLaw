@@ -1604,7 +1604,7 @@
                         <span class="contacts__name">[[contact.name]]</span>
                         <span class="contacts__desc">[[contact.relationship]]</span>
                         <span class="contacts__module-update">[[contact.status]]</span>
-                        <a class="contacts__details" href="{{contact.detailsUrl}}">Details
+                        <a class="contacts__details" href="{{contact.detailsUrl}}" on-click="_onDetailsClick">Details
                           <iron-icon icon="icons:expand-more"></iron-icon>
                         </a>
                       </div>
@@ -1636,7 +1636,7 @@
                   <div class="contacts__list-center">
                     <span class="contacts__name-desc">[[contact.name]] | [[contact.relationship]]</span>
                     <span class="contacts__list-update">[[contact.status]]</span>
-                    <a class="contacts__details contacts__details--list" href="{{contact.detailsUrl}}" >Show Details
+                    <a class="contacts__details contacts__details--list" href="{{contact.detailsUrl}}" on-click="_onDetailsClick">Show Details
                       <iron-icon icon="icons:expand-more"></iron-icon>
                     </a>
                   </div>
@@ -1804,7 +1804,7 @@
                               relationship: "Spouse",
                               status: "Updated 1d ago",
                               photo: "../images/contact-1.jpg",
-                              detailsUrl: "contact-details"
+                              detailsUrl: "/contacts/contact-details"
                           },
                           {
                               id: "21caa9f8-32f4-47b5-a279-b11e301c41df",
@@ -1812,7 +1812,7 @@
                               relationship: "Eldest Son",
                               status: "Updated 1d ago",
                               photo: "../images/contact-2.jpg",
-                              detailsUrl: "contact-details"
+                              detailsUrl: "/contacts/contact-details"
                           },
                           {
                               id: "71881d24-0a74-4593-86dc-6cf53ebe9156",
@@ -1820,7 +1820,7 @@
                               relationship: "Eldest Daughter",
                               status: "Updated 1d ago",
                               photo: "../images/contact-3.jpg",
-                              detailsUrl: "contact-details"
+                              detailsUrl: "/contacts/contact-details"
                           },
 
                           {
@@ -1829,7 +1829,7 @@
                               relationship: "Youngest Daughter",
                               status: "Updated 1d ago",
                               photo: "../images/contact-4.jpg",
-                              detailsUrl: "contact-details"
+                              detailsUrl: "/contacts/contact-details"
                           }
                       ]
                   },
@@ -1932,6 +1932,13 @@
           //for mobile
           onClose(e) {
               navigate("/contacts");
+          }
+
+          _onDetailsClick(e) {
+              this.dispatchEvent(new CustomEvent('to-details', {
+                  bubbles: true,
+                  composed: true,
+              }));
           }
 
       }

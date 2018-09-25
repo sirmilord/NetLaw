@@ -607,10 +607,10 @@
                                  opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
-              <netlaw-account-plans name="account-plans"></netlaw-account-plans>
+              <!--<netlaw-account-plans name="account-plans"></netlaw-account-plans>-->
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
               <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
-              <netlaw-contact-details name="contact-details"></netlaw-contact-details>
+              <!--<netlaw-contact-details name="contact-details"></netlaw-contact-details>-->
               <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
               <!--<netlaw-attorney-details name="attorney-details"></netlaw-attorney-details>-->
               <netlaw-add-module name="add-module"></netlaw-add-module>
@@ -698,9 +698,7 @@
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
               <netlaw-contacts name="contacts" route="[[subroute]]"></netlaw-contacts>
-              <netlaw-contact-details name="contact-details"></netlaw-contact-details>
-              <netlaw-find-attorney name="find-attorney" route="[[subroute]]"
-                                    on-drawer-changed="_onDrawerChanged"></netlaw-find-attorney>
+              <netlaw-find-attorney name="find-attorney" route="[[subroute]]"></netlaw-find-attorney>
               <netlaw-add-module name="add-module"></netlaw-add-module>
               <netlaw-initial-screen name="initial-screen"></netlaw-initial-screen>
               <view-404 name="view-404"></view-404>
@@ -847,7 +845,7 @@
               this.shadowRoot.querySelector("#dropdownmobilenotification").toggle();
           }
 
-          BubbleUps(e) {
+          _onOverlayChanged(e) {
 
               if (e.detail.display === true) {
                   this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
@@ -858,7 +856,8 @@
 
           ready() {
               super.ready();
-              this.addEventListener('overlay-display', this.BubbleUps);
+              this.addEventListener('overlay-display', this._onOverlayChanged);
+              this.addEventListener('drawer-changed', this._onDrawerChanged);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
 
           }

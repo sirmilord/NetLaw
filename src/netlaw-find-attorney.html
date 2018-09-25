@@ -1264,7 +1264,11 @@
               if (!this.contentReady) return;
 
               if (!this.mobile) {
-
+                  if (page == null && this.classList.contains("iron-selected")) {
+                      this.details = false;
+                  } else {
+                      this.details = true;
+                  }
               }
 
               if (this.mobile) {
