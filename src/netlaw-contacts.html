@@ -761,8 +761,8 @@
       .file-folder__right {
         flex: 1 1 100%;
         max-width: 100%;
-
       }
+
 
       @media (max-width: 767px) {
         iron-pages {
@@ -813,6 +813,15 @@
           left: 0;
           transform: none;
           border-bottom: 1px solid #979797;
+        }
+
+        .contacts__add-folder {
+          position: fixed;
+          bottom: 10%;
+          right: 5%;
+          --iron-icon-width: 60px;
+          --iron-icon-height: 60px;
+          --iron-icon-fill-color: #01AA50;
         }
       }
 
@@ -994,6 +1003,10 @@
 
                 </ul>
               </div>
+
+              <a  class="contacts__add-folder" href="javascript:;" on-click="onAddFolderClick">
+                <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+              </a>
             </section>
             <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
