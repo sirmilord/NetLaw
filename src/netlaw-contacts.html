@@ -890,7 +890,7 @@
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
         <ul class="addfolder-dropdown" slot="dropdown-content">
-          <li on-click="onAddFolderClick">Add Folder
+          <li on-click="_onAddFolderClick">Add Folder
             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
           </li>
           <li>Download
@@ -933,7 +933,7 @@
                         <iron-dropdown horizontal-align="right">
                           <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                               slot="dropdown-content">
-                            <li on-click="onAddFolderClick">Add Sub-Folder
+                            <li on-click="_onAddFolderClick">Add Sub-Folder
                               <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                             </li>
                             <li>Download
@@ -948,7 +948,7 @@
                             <li>Share
                               <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                             </li>
-                            <li on-click="onDeleteContactClick">Delete
+                            <li on-click="_onDeleteContactClick">Delete
                               <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                             </li>
                           </ul>
@@ -984,7 +984,7 @@
                                       <li>Share
                                         <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                                       </li>
-                                      <li on-click="onDeleteContactClick">Delete
+                                      <li on-click="_onDeleteContactClick">Delete
                                         <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                                       </li>
                                     </ul>
@@ -1004,11 +1004,11 @@
                 </ul>
               </div>
 
-              <a  class="contacts__add-folder" href="javascript:;" on-click="onAddFolderClick">
+              <a  class="contacts__add-folder" href="javascript:;" on-click="_onAddFolderClick">
                 <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
               </a>
             </section>
-            <netlaw-contacts-family name="family" on-add-contact="onAddContactClick" on-delete-contact="onDeleteContactClick"
+            <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick" on-delete-contact="_onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
@@ -1035,7 +1035,7 @@
                       <iron-dropdown>
                         <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
                             slot="dropdown-content">
-                          <li on-click="onAddFolderClick">Add Sub-Folder
+                          <li on-click="_onAddFolderClick">Add Sub-Folder
                             <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                           </li>
                           <li>Download
@@ -1050,7 +1050,7 @@
                           <li>Share
                             <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                           </li>
-                          <li on-click="onDeleteContactClick">Delete
+                          <li on-click="_onDeleteContactClick">Delete
                             <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                           </li>
                         </ul>
@@ -1086,7 +1086,7 @@
                                     <li>Share
                                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                                     </li>
-                                    <li on-click="onDeleteContactClick">Delete
+                                    <li on-click="_onDeleteContactClick">Delete
                                       <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
                                     </li>
                                   </ul>
@@ -1120,7 +1120,7 @@
               <p>(you also search for attorneys and add them to you list)</p>
               <hr>
             </div>
-            <button class="btn btn--primary" on-click="onAddContactClick">Create Contact</button>
+            <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
           </section>
 
         </template>
@@ -1128,7 +1128,7 @@
         <template is="dom-if" if="[[!createContact]]">
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
-            <netlaw-contacts-family name="family" on-add-contact="onAddContactClick" on-delete-contact="onDeleteContactClick"
+            <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick" on-delete-contact="_onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
@@ -1153,11 +1153,11 @@
             <button class="btn btn-primary">Create Folder</button>
           </div>
           <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onCancelFolderClick">Cancel</button>
+            <button class="btn btn-cancel" on-click="onCancelOverlayClick">Cancel</button>
           </div>
         </form>
       </div>
-      <a href="javascript:;" on-click="onCancelFolderClick">
+      <a href="javascript:;" on-click="onCancelOverlayClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -1196,11 +1196,11 @@
             <button class="btn btn--warning">Confirm Deletion</button>
           </div>
           <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onCancelDeleteContactClick">Cancel</button>
+            <button class="btn btn-cancel" on-click="onCancelOverlayClick">Cancel</button>
           </div>
         </form>
       </div>
-      <a href="javascript:;" on-click="onCancelDeleteContactClick">
+      <a href="javascript:;" on-click="onCancelOverlayClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -1287,13 +1287,13 @@
                   <a href="javascript:;" class="btn btn--next">Save + Add New</a>
                 </div>
                 <div class="form__group form__group--center">
-                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelContactClick">Cancel</a>
+                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelOverlayClick">Cancel</a>
                 </div>
               </fieldset>
             </form>
           </div>
         </div>
-        <a href="javascript:;" on-click="onCancelContactClick">
+        <a href="javascript:;" on-click="onCancelOverlayClick">
           <iron-icon class="file-folder__icon file-folder__icon--close"
                      icon="netlaw-icons:cancel-btn-circle"></iron-icon>
         </a>
@@ -1495,7 +1495,7 @@
               }
           }
 
-          onAddFolderClick(e) {
+          _onAddFolderClick(e) {
               e.preventDefault();
               this.addFolder = true;
               this.dispatchEvent(new CustomEvent('overlay-display', {
@@ -1508,19 +1508,7 @@
               e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
-          onCancelFolderClick(e) {
-              e.preventDefault();
-              this.addFolder = false;
-              this.dispatchEvent(new CustomEvent('overlay-display', {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                      display: false
-                  }
-              }));
-          }
-
-          onDeleteContactClick(e) {
+          _onDeleteContactClick(e) {
               e.preventDefault();
               this.deleteContact = true;
               this.dispatchEvent(new CustomEvent('overlay-display', {
@@ -1532,19 +1520,7 @@
               }));
           }
 
-          onCancelDeleteContactClick(e) {
-              e.preventDefault();
-              this.deleteContact = false;
-              this.dispatchEvent(new CustomEvent('overlay-display', {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                      display: false
-                  }
-              }));
-          }
-
-          onAddContactClick(e) {
+          _onAddContactClick(e) {
               // e.preventDefault();
               this.addContact = true;
               this.dispatchEvent(new CustomEvent('overlay-display', {
@@ -1556,8 +1532,9 @@
               }));
           }
 
-          onCancelContactClick(e) {
+          onCancelOverlayClick(e) {
               e.preventDefault();
+              this.addFolder = false;
               this.addContact = false;
               this.deleteContact = false;
               this.dispatchEvent(new CustomEvent('overlay-display', {
