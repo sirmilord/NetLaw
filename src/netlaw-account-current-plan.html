@@ -345,16 +345,29 @@
         align-items: flex-start;
       }
 
+      @media (min-width: 992px) {
+        .account__bill-item {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+        .form__group--fourth {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+        .form__group--half {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+
+
       @media (min-width: 1200px) {
         .form__group--half {
           flex: 1 1 50%;
           max-width: 50%;
         }
 
-        .account__bill-item {
-          flex: 0 0 50%;
-          max-width: 50%;
-        }
+
 
         .account__bill-item:not(:last-child) {
           margin-bottom: 0;
