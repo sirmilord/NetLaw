@@ -1437,100 +1437,6 @@
       <iron-icon icon="netlaw-icons:add-contact"></iron-icon>
     </a>
 
-    <template is="dom-if" if="[[addContact]]">
-      <div class="overlay"></div>
-      <section class="file-folder">
-        <div class="file-folder__wrapper">
-          <div class="file-folder__left">
-            <!--<paper-icon-button icon="netlaw-icons:add-icon" name="file-folder" on-click=""></paper-icon-button>-->
-            <paper-image-upload-button image="../images/profile.jpg"></paper-image-upload-button>
-          </div>
-          <div class="file-folder__right">
-            <form class="form" action="javascript:;" method="post">
-
-              <fieldset>
-                <legend>
-                  <iron-icon class="" icon="netlaw-icons:add-contact-o"></iron-icon>
-                  Add NewContact
-                </legend>
-                <button class="btn btn--import">Import Contacts</button>
-                <div class="form__row">
-                  <div class="form__group form__group--half">
-                    <label class="label" for="firstname">FIRST NAME</label>
-                    <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce">
-                  </div>
-                  <div class="form__group form__group--half">
-                    <label class="label" for="lastname">LAST NAME</label>
-                    <input type="text" id="lastname" class="input-text" placeholder="i.e. Wayne">
-                  </div>
-                </div>
-                <div class="form__group">
-                  <label class="label" for="address">ADDRESS</label>
-                  <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
-                </div>
-                <div class="form__group">
-                  <label class="label" for="relationship">RELATIONSHIP TO YOU</label>
-                  <input type="text" id="relationship" class="input-text"
-                         placeholder="i.e. Brother, Cousin, Financial Lawyer">
-                </div>
-                <div class="form__row">
-                  <div class="form__group form__group--third">
-                    <label for="city" class="label label--hide"></label>
-                    <input type="text" id="city" class="input-text" placeholder="Gotham City">
-                  </div>
-                  <div class="form__group form__group--third">
-                    <label for="state" class="label label--hide"></label>
-                    <input type="text" id="state" class="input-text" placeholder="New Jersey">
-                  </div>
-                  <div class="form__group form__group--third">
-                    <label for="code" class="label label--hide"></label>
-                    <input type="text" id="code" class="input-text" placeholder="04400">
-                  </div>
-                </div>
-                <div class="form__row">
-                  <div class="form__group form__group--half">
-                    <label class="label" for="officephone">OFFICE PHONE NUMBER</label>
-                    <input type="number" id="officephone" class="input-text" placeholder="i.e. 5089685522">
-                  </div>
-                  <div class="form__group form__group--half">
-                    <label class="label" for="mobilenumber">MOBILE NUMBER</label>
-                    <input type="number" id="mobilenumber" class="input-text" placeholder="i.e. 5089685522">
-                  </div>
-                </div>
-                <div class="form__row">
-                  <div class="form__group form__group--half">
-                    <label class="label" for="emailaddress">EMAIL ADDRESS</label>
-                    <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
-                  </div>
-                  <div class="form__group form__group--half">
-                    <label class="label" for="website">WEBSITE</label>
-                    <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
-                  </div>
-                </div>
-                <div class="form__group">
-                  <label for="comments" class="label">COMMENTS</label>
-                  <textarea rows="3" id="comments" class="input-text input-text--area"
-                            placeholder="Is there anything you would like to say about this contact?"></textarea>
-                </div>
-                <div class="form__line"></div>
-                <div class="form__group form__group--center">
-                  <a href="javascript:;" class="btn btn--primary">Save Contact</a>
-                  <a href="javascript:;" class="btn btn--next">Save + Add New</a>
-                </div>
-                <div class="form__group form__group--center">
-                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelContactClick">Cancel</a>
-                </div>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-        <a href="javascript:;" on-click="onCancelContactClick">
-          <iron-icon class="file-folder__icon file-folder__icon--close"
-                     icon="netlaw-icons:cancel-btn-circle"></iron-icon>
-        </a>
-      </section>
-    </template>
-
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
@@ -1550,10 +1456,6 @@
                   },
                   toggleIcon: {
                       type: String
-                  },
-                  addContact: {
-                      type: Boolean,
-                      value: false
                   },
                   contacts: {
                       type: Object, value: () => [
@@ -1656,28 +1558,10 @@
           }
 
           onAddContactClick(e) {
-              // e.preventDefault();
-              this.addContact = true;
-              this.dispatchEvent(new CustomEvent('overlay-display', {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                      display: true
-                  }
-              }));
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('add-contact', {bubbles: true, composed: true}));
           }
 
-          onCancelContactClick(e) {
-              e.preventDefault();
-              this.addContact = false;
-              this.dispatchEvent(new CustomEvent('overlay-display', {
-                  bubbles: true,
-                  composed: true,
-                  detail: {
-                      display: false
-                  }
-              }));
-          }
 
           onDeleteContactClick(e) {
               e.preventDefault();

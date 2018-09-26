@@ -1008,7 +1008,7 @@
                 <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
               </a>
             </section>
-            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"
+            <netlaw-contacts-family name="family" on-add-contact="onAddContactClick" on-delete-contact="onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
@@ -1128,7 +1128,7 @@
         <template is="dom-if" if="[[!createContact]]">
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
-            <netlaw-contacts-family name="family" on-delete-contact="onDeleteContactClick"
+            <netlaw-contacts-family name="family" on-add-contact="onAddContactClick" on-delete-contact="onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
