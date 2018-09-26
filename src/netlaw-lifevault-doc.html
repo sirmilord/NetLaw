@@ -294,17 +294,17 @@
           <li>Rename
             <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
           </li>
-          <li on-click="onShareFileClick">Share
+          <li on-click="_onShareFileClick">Share
             <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
           </li>
-          <li on-click="onDeleteFileFolderClick">Delete
+          <li on-click="_onDeleteFileFolderClick">Delete
             <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
           </li>
         </ul>
       </paper-menu-button>
       <h3 class="lifevault__header">Estimate for Home Management...</h3>
       <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
-                         on-click="onClose"></paper-icon-button>
+                         on-click="_onClose"></paper-icon-button>
     </template>
     <template is="dom-if" if="[[mobile]]">
       <main>
@@ -411,10 +411,10 @@
               <li>Rename
                 <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
               </li>
-              <li on-click="onShareFileClick">Share
+              <li on-click="_onShareFileClick">Share
                 <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
               </li>
-              <li on-click="onDeleteFileFolderClick">Delete
+              <li on-click="_onDeleteFileFolderClick">Delete
                 <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
               </li>
             </ul>
@@ -460,17 +460,17 @@
           }
 
           //for mobile
-          onClose(e) {
+          _onClose(e) {
               navigate("/lifevault/management");
           }
 
-          onDeleteFileFolderClick(e) {
+          _onDeleteFileFolderClick(e) {
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('delete-file', {bubbles: true, composed: true}));
               e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
           }
 
-          onShareFileClick(e) {
+          _onShareFileClick(e) {
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('share-file', {bubbles: true, composed: true}));
               e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
