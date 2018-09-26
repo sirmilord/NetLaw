@@ -239,7 +239,7 @@
       .btn {
         margin: 0;
         border: none;
-        border-radius: 0;
+        border-radius: 2px;
         overflow: visible;
         font: inherit;
         color: inherit;
@@ -645,6 +645,7 @@
         border-radius: 2px;
         box-sizing: border-box;
         font-size: 16px;
+        line-height: 1.5;
       }
 
       .input-text--area {
@@ -842,6 +843,14 @@
           --paper-image-upload-button-width: 160px;
           --paper-image-upload-button-height: 160px;
         }
+
+        .btn--import {
+          position: absolute;
+          margin-bottom: 0;
+          top: 10px;
+          right: 0;
+        }
+
       }
 
       @media (min-width: 1200px) {
@@ -856,12 +865,6 @@
           padding: 50px;
         }
 
-        .btn--import {
-          position: absolute;
-          margin-bottom: 0;
-          top: 10px;
-          right: 0;
-        }
       }
 
       @media (min-width: 1800px) {
@@ -1174,7 +1177,7 @@
           <div class="login__margin file-folder__wrapper file-folder__wrapper--small">
             <div class="file-folder__item">
               <figure class="file-folder__photo">
-                <iron-icon icon="netlaw-icons:page"></iron-icon>
+                <iron-icon src="../images/contact-3.jpg"></iron-icon>
               </figure>
               <div class="file-folder__item-wrap">
                 <div class="file-folder__surname">Hannah Doe</div>
@@ -1183,11 +1186,11 @@
             </div>
             <div class="file-folder__item">
               <figure class="file-folder__photo">
-                <iron-icon icon="netlaw-icons:page"></iron-icon>
+                <iron-icon src="../images/contact-4.jpg"></iron-icon>
               </figure>
               <div class="file-folder__item-wrap">
-                <div class="file-folder__surname">Hannah Doe</div>
-                <div class="file-folder__surname-desc">Eldest Daughter</div>
+                <div class="file-folder__surname">Jennifer Doe</div>
+                <div class="file-folder__surname-desc">Youngest Daughter</div>
               </div>
             </div>
           </div>

@@ -1018,10 +1018,10 @@
                       </div>
                       <div class="find-attorney__list-center">
                         <div class="find-attorney__name-wrap">
-                          <span class="find-attorney__name">{{attorney.name}}</span>
-                          <span class="find-attorney__list-update">{{attorney.type}}</span>
+                          <span class="find-attorney__name">[[attorney.name]]</span>
+                          <span class="find-attorney__list-update">[[attorney.type]]</span>
                         </div>
-                        <span class="find-attorney__location">{{attorney.location}}</span>
+                        <span class="find-attorney__location">[[attorney.location]]</span>
 
                         <div class="rating">
                           <netlaw-star-rating rate="{{attorney.rating}}" read-only></netlaw-star-rating>
@@ -1044,15 +1044,15 @@
                               class="find-attorney__item find-attorney__item--half find-attorney__item--center  find-attorney__item--p0">
                             <ul class="find-attorney__details-collapse">
                               <li>
-                                <address>{{attorney.address}}</address>
+                                <address>[[attorney.address]]</address>
                               </li>
                               <li>
                                 <iron-icon icon="netlaw-icons:phone"></iron-icon>
-                                <span>{{attorney.phone}}</span>
+                                <span>[[attorney.phone]]</span>
                               </li>
                               <li>
                                 <iron-icon icon="netlaw-icons:email"></iron-icon>
-                                <span>attorney.email</span>
+                                <span>[[attorney.email]]</span>
                               </li>
                               <li>
                                 <a href="/find-attorney/{{attorney.profile}}" class="btn btn--primary"
