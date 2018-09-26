@@ -506,8 +506,8 @@
       }
 
       /*.file-folder .login__divider-small {*/
-        /*margin-top: 35px;*/
-        /*margin-bottom: 35px;*/
+      /*margin-top: 35px;*/
+      /*margin-bottom: 35px;*/
       /*}*/
 
       .file-folder .btn-cancel {
@@ -1014,9 +1014,8 @@
         }
 
         /*.login__divider-small::after {*/
-          /*border-top: 1px solid #e5e5e5;*/
+        /*border-top: 1px solid #e5e5e5;*/
         /*}*/
-
         .iron-collapse-opened:before {
           left: 0;
           transform: none;
@@ -1248,7 +1247,7 @@
 
                 </ul>
 
-                <a  class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
+                <a class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
                   <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
                 </a>
               </section>
@@ -1289,8 +1288,10 @@
               </a>
             </section>
             <netlaw-lifevault-management name="management"
-                                         on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick" on-share-file="_onShareFileClick"></netlaw-lifevault-management>
-            <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
+                                         on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
+                                         on-share-file="_onShareFileClick"></netlaw-lifevault-management>
+            <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
+                                  on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
           </iron-pages>
         </app-drawer-layout>
       </main>
@@ -1451,10 +1452,13 @@
         </section>
 
         <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-lifevault-your-vault name="your-vault" on-add-folder="_onAddFolderClick"></netlaw-lifevault-your-vault>
+          <netlaw-lifevault-your-vault name="your-vault"
+                                       on-add-folder="_onAddFolderClick"></netlaw-lifevault-your-vault>
           <netlaw-lifevault-management name="management"
-                                       on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick" on-share-file="_onShareFileClick"></netlaw-lifevault-management>
-          <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
+                                       on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
+                                       on-share-file="_onShareFileClick"></netlaw-lifevault-management>
+          <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
+                                on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
         </iron-pages>
       </main>
     </template>
@@ -1674,7 +1678,9 @@
                   folders: {
                       type: Object, value: () => [
                           {
-                              id: "a79c41ab-c486-46fe-9b2a-8a2268e98b0d", name: "Estate Planning", folders2: [
+                              id: "a79c41ab-c486-46fe-9b2a-8a2268e98b0d",
+                              name: "Estate Planning",
+                              folders2: [
                                   {
                                       id: "ac4048b8-28e5-404c-9e61-a7d908a475d1",
                                       name: "Home Managment",
@@ -1692,11 +1698,26 @@
                                   },
                               ]
                           },
-                          {id: "a48b0e44-6705-4662-bb8e-690225785e23", name: "Misc. Docs"},
-                          {id: "3c37fa5e-bdb3-43bf-be3a-bb50325501de", name: "Insurance Policies"},
-                          {id: "625ea46b-9407-4d2f-9cde-150dc77ba47d", name: "Deeds"},
-                          {id: "8b859027-f9e9-4cc5-aba1-9c4efeb7f9f9", name: "Tax Returns"},
-                          {id: "59405904-f7f2-44a4-8186-93e842fcc915", name: "Asset/Financial"},
+                          {
+                              id: "a48b0e44-6705-4662-bb8e-690225785e23",
+                              name: "Misc. Docs"
+                          },
+                          {
+                              id: "3c37fa5e-bdb3-43bf-be3a-bb50325501de",
+                              name: "Insurance Policies"
+                          },
+                          {
+                              id: "625ea46b-9407-4d2f-9cde-150dc77ba47d",
+                              name: "Deeds"
+                          },
+                          {
+                              id: "8b859027-f9e9-4cc5-aba1-9c4efeb7f9f9",
+                              name: "Tax Returns"
+                          },
+                          {
+                              id: "59405904-f7f2-44a4-8186-93e842fcc915",
+                              name: "Asset/Financial"
+                          },
                       ]
                   },
                   mobile: {
