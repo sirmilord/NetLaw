@@ -1153,11 +1153,11 @@
             <button class="btn btn-primary">Create Folder</button>
           </div>
           <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onCancelOverlayClick">Cancel</button>
+            <button class="btn btn-cancel" on-click="_onCancelOverlayClick">Cancel</button>
           </div>
         </form>
       </div>
-      <a href="javascript:;" on-click="onCancelOverlayClick">
+      <a href="javascript:;" on-click="_onCancelOverlayClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -1196,11 +1196,11 @@
             <button class="btn btn--warning">Confirm Deletion</button>
           </div>
           <div class="login__margin">
-            <button class="btn btn-cancel" on-click="onCancelOverlayClick">Cancel</button>
+            <button class="btn btn-cancel" on-click="_onCancelOverlayClick">Cancel</button>
           </div>
         </form>
       </div>
-      <a href="javascript:;" on-click="onCancelOverlayClick">
+      <a href="javascript:;" on-click="_onCancelOverlayClick">
         <iron-icon class="file-folder__icon file-folder__icon--close"
                    icon="netlaw-icons:cancel-btn-circle"></iron-icon>
       </a>
@@ -1287,13 +1287,13 @@
                   <a href="javascript:;" class="btn btn--next">Save + Add New</a>
                 </div>
                 <div class="form__group form__group--center">
-                  <a href="javascript:;" class="btn btn--cancel" on-click="onCancelOverlayClick">Cancel</a>
+                  <a href="javascript:;" class="btn btn--cancel" on-click="_onCancelOverlayClick">Cancel</a>
                 </div>
               </fieldset>
             </form>
           </div>
         </div>
-        <a href="javascript:;" on-click="onCancelOverlayClick">
+        <a href="javascript:;" on-click="_onCancelOverlayClick">
           <iron-icon class="file-folder__icon file-folder__icon--close"
                      icon="netlaw-icons:cancel-btn-circle"></iron-icon>
         </a>
@@ -1475,7 +1475,6 @@
                   }
 
                   if (page === 'family') {
-                      console.log(this.shadowRoot.querySelector('#pages3'));
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
                       if (sc) sc.open();
@@ -1532,7 +1531,7 @@
               }));
           }
 
-          onCancelOverlayClick(e) {
+          _onCancelOverlayClick(e) {
               e.preventDefault();
               this.addFolder = false;
               this.addContact = false;
