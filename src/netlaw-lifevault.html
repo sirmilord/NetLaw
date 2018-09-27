@@ -305,18 +305,6 @@
         width: 162px;
       }
 
-      netlaw-lifevault-your-vault {
-        width: 100%;
-      }
-
-      netlaw-lifevault-management {
-        width: 100%;
-      }
-
-      netlaw-lifevault-doc {
-        width: 100%;
-      }
-
       iron-pages {
         flex: 1 1 60%;
       }
@@ -505,11 +493,6 @@
         background-color: #fff;
       }
 
-      /*.file-folder .login__divider-small {*/
-      /*margin-top: 35px;*/
-      /*margin-bottom: 35px;*/
-      /*}*/
-
       .file-folder .btn-cancel {
         color: #4A4A4A;
       }
@@ -530,10 +513,6 @@
         justify-content: center;
         align-items: center;
         width: 400px;
-      }
-
-      .file-folder__form {
-
       }
 
       .file-folder__form--w100 {
@@ -610,8 +589,6 @@
         min-height: 215px;
         padding-left: 30px;
         padding-right: 30px;
-        /*flex: 0 1 33%;*/
-        /*max-width: 33%;*/
       }
 
       .files__title {
@@ -727,7 +704,6 @@
         margin-bottom: 35px;
         margin-left: auto;
         margin-right: auto;
-        /*border-top: 1px solid #979797;*/
       }
 
       .file-folder .login__divider-long {
@@ -756,10 +732,6 @@
         justify-content: center;
         align-items: center;
         width: 400px;
-      }
-
-      .file-folder__form {
-
       }
 
       .file-folder__form--w100 {
@@ -824,8 +796,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        /*padding-right: 10px;*/
-        /*padding-left: 10px;*/
       }
 
       .file-folder__photo {
@@ -858,8 +828,6 @@
         justify-content: center;
         align-items: center;
         width: 400px;
-        /*margin-left: -10px;*/
-        /*margin-right: -10px;*/
       }
 
       .file-folder__item-close {
@@ -920,6 +888,64 @@
         left: 50%;
         bottom: -20px;
         transform: translateX(-50%);
+      }
+
+      .lifevault__content {
+        flex: 1 1 100%;
+        max-width: 100%;
+        background-color: #f9f9f9;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      h1 {
+        font-weight: bold;
+        color: #4A4A4A;
+        font-size: 56px;
+        line-height: 67px;
+        margin-top: 80px;
+        margin-bottom: 30px;
+      }
+
+      figure {
+        margin-bottom: 30px;
+      }
+
+      .lifevault__content-wrapper {
+        margin-top: 10px;
+        margin-bottom: 40px;
+      }
+
+      hr {
+        width: 75%;
+        border-top: none;
+        border-bottom: 1px solid rgba(151, 151, 151, .3);
+      }
+
+      .btn--primary {
+        background-color: #01AA50;
+        color: #fff;
+      }
+
+      .btn--primary:hover,
+      .btn--primary:focus {
+        background-color: #019948;
+      }
+
+      .lifevault__add-folder {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        --iron-icon-width: 90px;
+        --iron-icon-height: 90px;
+        --iron-icon-fill-color: #01AA50;
+      }
+
+      .lifevault__content figure iron-icon {
+        --iron-icon-width: 154px;
+        --iron-icon-height: 154px;
       }
 
       @media (max-width: 767px) {
@@ -1451,15 +1477,39 @@
           </ul>
         </section>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-          <netlaw-lifevault-your-vault name="your-vault"
-                                       on-add-folder="_onAddFolderClick"></netlaw-lifevault-your-vault>
-          <netlaw-lifevault-management name="management"
-                                       on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
-                                       on-share-file="_onShareFileClick"></netlaw-lifevault-management>
-          <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
-                                on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
-        </iron-pages>
+
+        <template is="dom-if" if="[[yourVault]]">
+
+          <section class="lifevault__content">
+            <h1>LifeVault</h1>
+            <figure>
+              <iron-icon icon="netlaw-icons:documents"></iron-icon>
+            </figure>
+            <b>This is where you would keep all your important legal documents.</b>
+            <div class="lifevault__content-wrapper">
+              <p>(you can also download, replace or share these documents with others)</p>
+              <hr>
+            </div>
+            <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
+            <a class="lifevault__add-folder" href="javascript:;" on-click="onAddFolderClick">
+              <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+            </a>
+          </section>
+
+        </template>
+
+        <template is="dom-if" if="[[!yourVault]]">
+
+          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+            <netlaw-lifevault-management name="management"
+                                         on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
+                                         on-share-file="_onShareFileClick"></netlaw-lifevault-management>
+            <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
+                                  on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
+          </iron-pages>
+
+        </template>
+
       </main>
     </template>
 
@@ -1675,6 +1725,10 @@
                       type: Boolean,
                       value: false
                   },
+                  yourVault: {
+                      type: Boolean,
+                      value: true
+                  },
                   folders: {
                       type: Object, value: () => [
                           {
@@ -1781,11 +1835,17 @@
 
               if (!this.mobile) {
 
-                  if (this.page === 'your-vault') {
+                  if (this.page === 'null') {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
                       this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
                       this.shadowRoot.querySelector('#collapse').hide();
                       this.shadowRoot.querySelector('#collapsetwo0').hide();
+
+                      this.yourVault = true;
+                  }
+
+                  if (this.page != null) {
+                      this.yourVault = false;
                   }
               }
 

@@ -1012,10 +1012,10 @@
         </template>
         <template is="dom-if" if="[[!view]]">
           <div class="lifevault__wrap">
+            <div class="lifevault__module lifevault__module--list">
 
-            <template is="dom-repeat" items="{{files}}" as="file">
+              <template is="dom-repeat" items="{{files}}" as="file">
 
-              <div class="lifevault__module lifevault__module--list">
                 <div class="lifevault__module-list-item">
                   <div class="lifevault__list-left">
                     <label class="lifevault__checkbox-container lifevault__checkbox-container--list">
@@ -1092,9 +1092,10 @@
                     </a>
                   </div>
                 </div>
-              </div>
 
-            </template>
+              </template>
+
+            </div>
           </div>
         </template>
 
