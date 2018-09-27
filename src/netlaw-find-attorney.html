@@ -1250,6 +1250,21 @@
 
               if (!this.mobile) {
 
+                  if (page === 'attorney-details') {
+                      this.dispatchEvent(new CustomEvent('drawer-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {opened: false}
+                      }));
+                  }
+                  if (page === 'empty2') {
+                      this.dispatchEvent(new CustomEvent('drawer-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {opened: true}
+                      }));
+                  }
+
               }
 
               if (this.mobile) {
