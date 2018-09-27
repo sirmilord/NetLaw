@@ -1844,7 +1844,7 @@
 
               if (!this.mobile) {
 
-                  if (this.page === 'null') {
+                  if (page == null) {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
                       this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
                       this.shadowRoot.querySelector('#collapse').hide();
@@ -1853,7 +1853,8 @@
                       this.yourVault = true;
                   }
 
-                  if (this.page != null) {
+                  if (this.page !== null) {
+
                       this.yourVault = false;
                   }
               }
