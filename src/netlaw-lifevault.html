@@ -1144,7 +1144,12 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
-      <netlaw-logo class="mobile"></netlaw-logo>
+      <!--<template is="dom-if" if="[[displayLogo]]">-->
+        <netlaw-logo class="mobile"></netlaw-logo>
+      <!--</template>-->
+      <!--<template is="dom-if" if="[[!displayLogo]]">-->
+        <!--<h3 class="lifevault__header">MyFiles</h3>-->
+      <!--</template>-->
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
@@ -1164,13 +1169,12 @@
         </ul>
       </paper-menu-button>
     </template>
-
     <template is="dom-if" if="[[mobile]]">
       <main class="lifevault-mobile">
 
         <app-drawer-layout>
           <app-drawer id="lifevaultdrawer" class="lifevault-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                      align="right">
+                      align="right" on-opened-changed="_ifDrawerClosed">
             <div class="lifevault-mobile__arrow">
               <iron-icon icon="icons:icons:chevron-left"></iron-icon>
             </div>
@@ -1730,6 +1734,10 @@
                       type: Boolean,
                       value: true
                   },
+                  displayLogo: {
+                      type: Boolean,
+                      value: true
+                  },
                   folders: {
                       type: Object, value: () => [
                           {
@@ -1961,6 +1969,10 @@
           _computeMenu(opened) {
               // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
+          }
+
+          _ifDrawerClosed(e) {
+              e.detail.value ? this.displayLogo = false : this.displayLogo = true;
           }
 
       }
