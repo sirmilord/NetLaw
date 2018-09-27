@@ -1144,7 +1144,7 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
-      <h3 class="lifevault__header">MyFiles</h3>
+      <netlaw-logo class="mobile"></netlaw-logo>
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
@@ -1164,6 +1164,7 @@
         </ul>
       </paper-menu-button>
     </template>
+
     <template is="dom-if" if="[[mobile]]">
       <main class="lifevault-mobile">
 
