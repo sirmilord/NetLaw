@@ -831,9 +831,9 @@
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
               //hide drawer on this pages
-              this.page === 'account' ? this.hideDrawer = false : this.hideDrawer = true;
-              // console.log(this.hideDrawer);
-              this.page === 'find-attorney' && this.subroute.path === '/attorney-details' ? this.hideDrawer = false : null;
+              if(this.page === 'account') this.hideDrawer = false;
+              if(this.page === 'find-attorney' && this.subroute.path === '/attorney-details') this.hideDrawer = false;
+              if(this.page === 'profile') this.hideDrawer = false;
           }
 
           _showPage404() {
@@ -869,6 +869,7 @@
           }
 
           _onDrawerChanged(e) {
+              // console.log(e);
               e.detail.opened === false ? this.hideDrawer = false : this.hideDrawer = true;
           }
       }

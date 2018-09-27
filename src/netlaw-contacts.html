@@ -1452,11 +1452,11 @@
                       this.createContact = true;
                       this.details = false;
                       this.flex = '';
-                      this.dispatchEvent(new CustomEvent('drawer-changed', {
-                          bubbles: true,
-                          composed: true,
-                          detail: {opened: true}
-                      }));
+                      // this.dispatchEvent(new CustomEvent('drawer-changed', {
+                      //     bubbles: true,
+                      //     composed: true,
+                      //     detail: {opened: true}
+                      // }));
                   }
 
                   if (page != null) {
@@ -1466,6 +1466,7 @@
                   if (this.page === 'contact-details') {
                       this.details = true;
                       this.flex = 'flex: 1 1 100%; max-width: 100%;';
+
                       this.dispatchEvent(new CustomEvent('drawer-changed', {
                           bubbles: true,
                           composed: true,
