@@ -744,7 +744,7 @@
               super();
               window.app = this;
               window.navigate = path => {
-                  console.log("navigating to:", path);
+                  // console.log("navigating to:", path);
                   window.history.pushState({}, null, `${path || ""}`);
                   //window.history.pushState({}, null, `${this.rootPath}${path || ""}`);
                   //window.location = `${this.rootPath}${path || ""}`;

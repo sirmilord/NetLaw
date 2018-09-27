@@ -288,7 +288,6 @@
         top: 425px;
       }
 
-
       @media (max-width: 767px) {
         iron-pages {
           flex: 1 1 100%;
@@ -337,99 +336,102 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
-
+    <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <netlaw-logo class="mobile"></netlaw-logo>
       <paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>
     </template>
 
-    <!--Mobile layout-->
-    <main class="smartguide-mobile" hidden$="{{!mobile}}">
+    <!--<template is="dom-if" if="[[!mobile]]">-->
+      <main class="smartguide-mobile" hidden$="{{!mobile}}">
 
-      <section class="smartguide-mobile__nav">
-        <div class="smartguide-mobile__header">
-          <figure class="smartguide-mobile__img">
-            <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
-          </figure>
-          <div class="smartguide-mobile__header-wrap">
-            <h1 class="smartguide-mobile__title">SmartGuide</h1>
-            <div class="smartguide-mobile__sub">Draft legal documents with ease.</div>
+        <section class="smartguide-mobile__nav">
+          <div class="smartguide-mobile__header">
+            <figure class="smartguide-mobile__img">
+              <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
+            </figure>
+            <div class="smartguide-mobile__header-wrap">
+              <h1 class="smartguide-mobile__title">SmartGuide</h1>
+              <div class="smartguide-mobile__sub">Draft legal documents with ease.</div>
+            </div>
           </div>
-        </div>
-        <ul class="smartguide-mobile__list">
-          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
-              <a name="setup" href="[[routePath]]smartguide/setup"
-                 class="smartguide-mobile__list-link" on-click="_openDrawer">
-                <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
-                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
-              </a>
-            </li>
-            <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
-              <a name="templates" href="[[routePath]]smartguide/templates"
-                 class="smartguide-mobile__list-link" on-click="_openDrawer">
-                <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
-                <iron-icon icon="icons:icons:chevron-right"></iron-icon>
-              </a>
-            </li>
-          </iron-selector>
-        </ul>
-      </section>
+          <ul class="smartguide-mobile__list">
+            <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+              <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
+                <a name="setup" href="[[routePath]]smartguide/setup"
+                   class="smartguide-mobile__list-link" on-click="_openDrawer">
+                  <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
+                  <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+                </a>
+              </li>
+              <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
+                <a name="templates" href="[[routePath]]smartguide/templates"
+                   class="smartguide-mobile__list-link" on-click="_openDrawer">
+                  <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
+                  <iron-icon icon="icons:icons:chevron-right"></iron-icon>
+                </a>
+              </li>
+            </iron-selector>
+          </ul>
+        </section>
 
-      <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                  hidden$="{{!mobile}}" align="right" on-opened-changed="_ifDrawerClosed">
-        <div class="smartguide-mobile__arrow">
-          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-        </div>
-        <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
-          <iron-icon icon="icons:icons:chevron-left"></iron-icon>
-        </div>
-        <div class="smartguide-mobile__drawer-wrap">
-          <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
-            <netlaw-smartguide-setup name="setup"
-                                     on-close-smartguide-drawer="_closeDrawer"></netlaw-smartguide-setup>
-            <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
-            <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
-            <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
-          </iron-pages>
-        </div>
-      </app-drawer>
-    </main>
+        <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
+                    hidden$="{{!mobile}}" align="right" on-opened-changed="_ifDrawerClosed">
+          <div class="smartguide-mobile__arrow">
+            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+          </div>
+          <div class="smartguide-mobile__arrow smartguide-mobile__arrow--bottom">
+            <iron-icon icon="icons:icons:chevron-left"></iron-icon>
+          </div>
+          <div class="smartguide-mobile__drawer-wrap">
+            <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
+              <netlaw-smartguide-setup name="setup"
+                                       on-close-smartguide-drawer="_closeDrawer"></netlaw-smartguide-setup>
+              <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+              <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+              <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
+            </iron-pages>
+          </div>
+        </app-drawer>
+      </main>
+    <!--</template>-->
 
     <!--Desktop layout-->
-    <main class="smartguide" hidden$="{{mobile}}">
-      <section class="smartguide__drawer">
-        <ul class="smartguide__list">
+    <!--<template is="dom-if" if="[[!mobile]]">-->
+      <main class="smartguide" hidden$="{{mobile}}">
+        <section class="smartguide__drawer">
+          <ul class="smartguide__list">
 
-          <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+            <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
 
-            <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
-              <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink"
-                 class="smartguide__list-link smartguide__list-link--active">
-                <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
-                <span class="smartguide__list-text">SmartGuide Setup</span>
-              </a>
-            </li>
-            <li class="smartguide__list-item smartguide__list-item--bottom-border">
-              <a name="templates" href="[[routePath]]smartguide/templates" id="templateslink"
-                 class="smartguide__list-link">
-                <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
-                <span class="smartguide__list-text">SmartGuide Templates</span>
-              </a>
-            </li>
+              <li class="smartguide__list-item smartguide__list-item--top-border smartguide__list-item--bottom-border">
+                <a name="setup" href="[[routePath]]smartguide/setup" id="setuplink"
+                   class="smartguide__list-link smartguide__list-link--active">
+                  <iron-icon icon="netlaw-icons:smatrguide-setup"></iron-icon>
+                  <span class="smartguide__list-text">SmartGuide Setup</span>
+                </a>
+              </li>
+              <li class="smartguide__list-item smartguide__list-item--bottom-border">
+                <a name="templates" href="[[routePath]]smartguide/templates" id="templateslink"
+                   class="smartguide__list-link">
+                  <iron-icon icon="netlaw-icons:smartguide-templates"></iron-icon>
+                  <span class="smartguide__list-text">SmartGuide Templates</span>
+                </a>
+              </li>
 
-          </iron-selector>
+            </iron-selector>
 
-        </ul>
-      </section>
+          </ul>
+        </section>
 
-      <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-        <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
-        <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
-        <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
-        <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
-      </iron-pages>
-    </main>
+        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
+          <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
+          <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
+          <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
+        </iron-pages>
+      </main>
+    <!--</template>-->
 
   </template>
 
@@ -441,11 +443,19 @@
 
           static get properties() {
               return {
-                  route: { type: Object, observer(value) { if (!value || !value.path) this.page = null; } },
-                  routeData: { type: Object, observer(value) { this.page = value.page || null; } },
+                  route: {
+                      type: Object, observer(value) {
+                          if (!value || !value.path) this.page = null;
+                      }
+                  },
+                  routeData: {
+                      type: Object, observer(value) {
+                          this.page = value.page || null;
+                      }
+                  },
                   subroute: Object,
-                  page: { type: String, observer:'_pageChanged' },
-                  menu: { type: Object, notify: true },
+                  page: {type: String, observer: '_pageChanged'},
+                  menu: {type: Object, notify: true},
                   toggleIcon: {
                       type: String,
                       computed: '_computeIcon(opened)',
@@ -465,75 +475,65 @@
 
           _pageChanged(page) {
 
+              if (!this.contentReady) return;
+
               if (!this.mobile) {
                   this.page = page || 'setup';
                   // Change active class
                   if (this.page === 'setup' && !this.mobile) {
-                      this.$.templateslink.classList.remove('smartguide__list-link--active');
-                      this.$.setuplink.classList.add('smartguide__list-link--active');
+                      this.shadowRoot.querySelector("#templateslink").classList.remove('smartguide__list-link--active');
+                      this.shadowRoot.querySelector("#setuplink").classList.add('smartguide__list-link--active');
                   }
 
                   else if (this.page === 'templates' && !this.mobile) {
-                      this.$.setuplink.classList.remove('smartguide__list-link--active');
-                      this.$.templateslink.classList.add('smartguide__list-link--active');
+                      this.shadowRoot.querySelector("#setuplink").classList.remove('smartguide__list-link--active');
+                      this.shadowRoot.querySelector("#templateslink").classList.add('smartguide__list-link--active');
 
                   }
               }
 
               if (this.mobile) {
 
-                  if(page == null && this.classList.contains("iron-selected")) {
-                      this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+                  if (page == null && this.classList.contains("iron-selected")) {
+                      this.dispatchEvent(new CustomEvent('menu-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: this.shadowRoot.querySelector("#menu")
+                      }));
                   }
 
-                  if (this.page === 'setup') {
-                      this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
-                      if (sc) sc.open();
-                  }
-
-                  if (this.page === 'setup-step1') {
-                      this.$.smartguidedrawer.open();
-                      this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
-                      if (sc) sc.open();
-                  }
-
-                  if (this.page === 'setup-step2') {
-                      this.$.smartguidedrawer.open();
-                      this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
-                      if (sc) sc.open();
-                  }
-
-                  if (this.page === 'templates') {
-                      this.$.smartguidedrawer.open();
-                      this.$.smartguidedrawer.open();
-                      let sc = Array.from(this.$.pages4.children).filter(c => c.getAttribute("name") == this.$.pages4.selected)[0];
+                  if (this.page !== null) {
+                      // this.shadowRoot.querySelector("#smartguidedrawer").open();
+                      let sc = Array.from(this.shadowRoot.querySelector("#pages4").children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector("#pages4").selected)[0];
                       if (sc) sc.open();
                   }
 
                   //change drawer width to 100% and move back
-                  if (this.page === 'setup-step1' || this.page === 'setup-step2' ) {
-                      this.$.smartguidedrawer.classList.add('smartguide-mobile__drawer--width');
-                      this.$.smartguidedrawer.persistent = true;
-                  } else {
-                      this.$.smartguidedrawer.classList.remove('smartguide-mobile__drawer--width');
-                      this.$.smartguidedrawer.persistent = false;
+                  if (this.page === 'setup-step1' || this.page === 'setup-step2') {
+                      this.shadowRoot.querySelector("#smartguidedrawer").classList.add('smartguide-mobile__drawer--width');
+                      this.shadowRoot.querySelector("#smartguidedrawer").persistent = true;
+                  }
+                  else {
+                      this.shadowRoot.querySelector("#smartguidedrawer").classList.remove('smartguide-mobile__drawer--width');
+                      this.shadowRoot.querySelector("#smartguidedrawer").persistent = false;
                   }
               }
           }
 
-          open(){
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+          open() {
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: this.shadowRoot.querySelector("#menu")
+              }));
           }
 
           _openDrawer(e) {
-              this.$.smartguidedrawer.open();
+              this.shadowRoot.querySelector("#smartguidedrawer").open();
           }
 
           _closeDrawer(e) {
-              this.$.smartguidedrawer.close();
+              this.shadowRoot.querySelector("#smartguidedrawer").close();
               navigate('smartguide');
           }
 
@@ -545,12 +545,15 @@
 
           ready() {
               super.ready();
-              this.menu = this.$.menu;
+              this.menu = this.shadowRoot.querySelector("#menu");
+
+              this.contentReady = true;
+              setTimeout(() => this._pageChanged(this.page));
           }
 
-          _computeIcon(opened){
+          _computeIcon(opened) {
               // console.log(this.opened);
-              return opened ? 'netlaw-icons:notifications-open': 'netlaw-icons:notifications';
+              return opened ? 'netlaw-icons:notifications-open' : 'netlaw-icons:notifications';
           }
 
           _onNavigateNotification(e) {
