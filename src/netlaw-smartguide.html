@@ -538,8 +538,9 @@
           }
 
           _ifDrawerClosed(e) {
-              if (!e.detail.value) {
-                  // navigate('smartguide');
+
+              if (!e.detail.value && this.page === "setup" || this.page === "templates")  {
+                  navigate('smartguide');
               }
           }
 
