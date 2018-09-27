@@ -346,7 +346,7 @@
             <a href="/smartguide/setup" class="btn btn--next">Begin Setup</a>
           </div>
           <div class="smartguide__dashboard-right">
-            <b class="smartguide__dashboard-title">[[dashboardTitle(mobile)]]</b>
+            <b class="smartguide__dashboard-title">[[_dashboardTitle(mobile)]]</b>
             <p class="smartguide__dashboard-desc smartguide__dashboard-desc--mobile">Currently 0% completed. Please
               complete in order to use
               SmartGuides</p>
@@ -419,7 +419,7 @@
               super();
           }
 
-          dashboardTitle(mobile) {
+          _dashboardTitle(mobile) {
               if (mobile) {
                   return 'It’s quick and easy!';
               }

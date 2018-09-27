@@ -339,8 +339,8 @@
 
 
     <template slot="placeholder" id="menu">
-      <h3>SmartGuide</h3>
-      <paper-icon-button id="" icon="[[toggleIcon]]" on-click="onNavigateNotification"></paper-icon-button>
+      <netlaw-logo class="mobile"></netlaw-logo>
+      <paper-icon-button id="" icon="[[toggleIcon]]" on-click="_onNavigateNotification"></paper-icon-button>
     </template>
 
     <!--Mobile layout-->
@@ -360,14 +360,14 @@
           <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
             <li class="smartguide-mobile__list-item smartguide-mobile__list-item--top-border smartguide-mobile__list-item--bottom-border">
               <a name="setup" href="[[routePath]]smartguide/setup"
-                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                 class="smartguide-mobile__list-link" on-click="_openDrawer">
                 <span class="smartguide-mobile__list-text">SmartGuide Setup</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
             </li>
             <li class="smartguide-mobile__list-item smartguide-mobile__list-item--bottom-border">
               <a name="templates" href="[[routePath]]smartguide/templates"
-                 class="smartguide-mobile__list-link" on-click="openDrawer">
+                 class="smartguide-mobile__list-link" on-click="_openDrawer">
                 <span class="smartguide-mobile__list-text">SmartGuide Templates</span>
                 <iron-icon icon="icons:icons:chevron-right"></iron-icon>
               </a>
@@ -377,7 +377,7 @@
       </section>
 
       <app-drawer id="smartguidedrawer" class="smartguide-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                  hidden$="{{!mobile}}" align="right">
+                  hidden$="{{!mobile}}" align="right" on-opened-changed="_ifDrawerClosed">
         <div class="smartguide-mobile__arrow">
           <iron-icon icon="icons:icons:chevron-left"></iron-icon>
         </div>
@@ -387,7 +387,7 @@
         <div class="smartguide-mobile__drawer-wrap">
           <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
             <netlaw-smartguide-setup name="setup"
-                                     on-close-smartguide-drawer="closeDrawer"></netlaw-smartguide-setup>
+                                     on-close-smartguide-drawer="_closeDrawer"></netlaw-smartguide-setup>
             <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
             <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
             <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
@@ -528,12 +528,19 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
           }
 
-          openDrawer(e) {
+          _openDrawer(e) {
               this.$.smartguidedrawer.open();
           }
 
-          closeDrawer(e) {
+          _closeDrawer(e) {
               this.$.smartguidedrawer.close();
+              navigate('smartguide');
+          }
+
+          _ifDrawerClosed(e) {
+              if (!e.detail.value) {
+                  navigate('smartguide');
+              }
           }
 
           ready() {
@@ -541,16 +548,12 @@
               this.menu = this.$.menu;
           }
 
-          onDrawerShow2(e) {
-              this.dispatchEvent(new CustomEvent("smartguide-open-left-drawer"));
-          }
-
           _computeIcon(opened){
               // console.log(this.opened);
               return opened ? 'netlaw-icons:notifications-open': 'netlaw-icons:notifications';
           }
 
-          onNavigateNotification(e) {
+          _onNavigateNotification(e) {
               this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
           }
       }
