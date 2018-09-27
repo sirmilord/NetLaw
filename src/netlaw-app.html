@@ -590,6 +590,7 @@
           <app-header-layout has-scrolling-region>
 
             <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+              <div class="drawer-overlay"></div>
               <div class="navbar-mobile">
                 <paper-icon-button class="navbar-menu" icon="netlaw-icons:menu" drawer-toggle
                                    hidden$="[[fullMenu]]"></paper-icon-button>
@@ -652,6 +653,7 @@
         <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}">
 
           <app-header slot="header" condenses="" reveals="" effects="waterfall" fixed>
+            <div class="drawer-overlay"></div>
             <app-toolbar class="navbar">
               <netlaw-logo></netlaw-logo>
               <netlaw-search></netlaw-search>
@@ -844,11 +846,12 @@
           }
 
           _onOverlayChanged(e) {
+              let overlays = this.shadowRoot.querySelectorAll('.drawer-overlay');
 
               if (e.detail.display === true) {
-                  this.shadowRoot.querySelector('.drawer-overlay').classList.add('drawer-overlay--show');
+                  overlays.forEach(overlay => overlay.classList.add('drawer-overlay--show'));
               } else {
-                  this.shadowRoot.querySelector('.drawer-overlay').classList.remove('drawer-overlay--show')
+                  overlays.forEach(overlay => overlay.classList.remove('drawer-overlay--show'));
               }
           }
 
@@ -866,7 +869,7 @@
           }
 
           _onDrawerChanged(e) {
-             e.detail.opened === false ? this.hideDrawer = false : this.hideDrawer = true;
+              e.detail.opened === false ? this.hideDrawer = false : this.hideDrawer = true;
           }
       }
 
