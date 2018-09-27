@@ -1459,8 +1459,11 @@
                       }));
                   }
 
-                  if (this.page === 'contact-details') {
+                  if (page != null) {
                       this.createContact = false;
+                  }
+
+                  if (this.page === 'contact-details') {
                       this.details = true;
                       this.flex = 'flex: 1 1 100%; max-width: 100%;';
                       this.dispatchEvent(new CustomEvent('drawer-changed', {
