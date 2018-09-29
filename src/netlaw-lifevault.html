@@ -34,7 +34,7 @@
       }
 
       .lifevault__list {
-        margin-left: 20px;
+        margin-left: 30px;
         margin-right: 12px;
         margin-top: 30px;
         position: relative;
@@ -1102,7 +1102,12 @@
 
       @media (min-width: 992px) {
 
-        iron-pages {
+        .lifevault__drawer {
+          flex: 1 1 30%;
+          max-width: 30%;
+        }
+
+        .lifevault__content {
           flex: 1 1 70%;
           max-width: 70%;
         }
@@ -1118,13 +1123,28 @@
           position: relative;
         }
 
+        .lifevault__drawer {
+          flex: 1 1 28%;
+          max-width: 28%;
+        }
+
+        .lifevault__content {
+          flex: 1 1 72%;
+          max-width: 72%;
+        }
+
       }
 
       @media (min-width: 1400px) {
 
         .lifevault__drawer {
-          flex: 1 1 30%;
-          max-width: 30%;
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+
+        .lifevault__content {
+          flex: 1 1 75%;
+          max-width: 75%;
         }
 
       }
