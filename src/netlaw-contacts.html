@@ -1485,7 +1485,7 @@
                       }));
                   }
 
-                  if (page === 'family') {
+                  if (page === 'family' || page === 'contact-details') {
                       //this is polyfill for this.$.pages2.selectedItem;
                       let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
                       if (sc) sc.open();

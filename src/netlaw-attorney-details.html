@@ -503,15 +503,17 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
-    <template is="dom-if" if="[[mobile]]">
+    <template slot="placeholder" id="menu">
+      <a href="[[rootPath]]find-attorney" class="btn btn--back-dash" on-click="_onBackClick">
+        <iron-icon icon="netlaw-icons:back"></iron-icon>
+        Back
+      </a>
+      <h3 class="lifevault__header">Attorney Details</h3>
+      <iron-icon></iron-icon>
+      <iron-icon></iron-icon>
+    </template>
 
-      <template slot="placeholder" id="menu">
-        <a href="[[rootPath]]find-attorney" class="btn btn--back-dash" on-click="_onBackClick">
-          <iron-icon icon="netlaw-icons:back"></iron-icon>
-          Back
-        </a>
-        <h3 class="lifevault__header">Attorney Details</h3>
-      </template>
+    <template is="dom-if" if="[[mobile]]">
 
       <section class="contact-mobile">
 
@@ -715,7 +717,7 @@
           }
 
           open() {
-              /*if (this.mobile) {
+              if (this.mobile) {
                   this.dispatchEvent(new CustomEvent('menu-changed', {
                       bubbles: true,
                       composed: true,
@@ -723,7 +725,7 @@
                   }));
               }
 
-              if (!this.mobile) {
+              /*if (!this.mobile) {
                   this.dispatchEvent(new CustomEvent('drawer-changed', {
                       bubbles: true,
                       composed: true,
