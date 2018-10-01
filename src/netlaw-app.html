@@ -664,7 +664,7 @@
           </app-header>
 
           <app-drawer-layout id="drawerLayout">
-            <app-drawer id="drawer" slot="drawer" opened="{{hideDrawer}}">
+            <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}">
               <div class="drawer-overlay"></div>
               <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-nav drawer-list"
                              role="navigation">
@@ -721,10 +721,10 @@
           static get properties() {
               return {
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
-                  hideDrawer: {
+                  drawerOpened: {
                       type: Boolean,
-                      reflectToAttribute: true,
-                      value: true
+                      //reflectToAttribute: true,
+                      value: true,
                   },
                   rootPath: String,
                   route: {type: Object},
@@ -738,6 +738,12 @@
                       type: String
                   },
                   fullMenu: {type: Boolean, value: false},
+
+                  mobile: {
+                      type: Boolean, observer(value) {
+                          this._pageChanged(this.page);
+                      }
+                  },
               };
           }
 
@@ -817,6 +823,8 @@
           }
 
           _pageChanged(page) {
+              if (!this.contentReady) return;
+              console.log("app page changed");
               // Load page import on demand. Show 404 page if fails
               const resolvedPageUrl = this.resolveUrl('netlaw-' + page + '.html');
               Polymer.importHref(
@@ -831,11 +839,12 @@
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
               //hide drawer on this pages
-              if (this.page === 'profile' || this.page === 'account' || this.page === 'find-attorney' && this.subroute.path === '/attorney-details') {
-                  this.hideDrawer = false;
-              } else {
-                  this.hideDrawer = true;
-              }
+              // if (this.page === 'profile' || this.page === 'account' || this.page === 'find-attorney' && this.subroute.path === '/attorney-details') {
+              // if (this.page === 'profile' || this.page === 'account') {
+              //     this.hideDrawer = false;
+              // } else {
+              //     this.hideDrawer = true;
+              // }
           }
 
           _showPage404() {
@@ -863,6 +872,8 @@
               this.addEventListener('drawer-changed', this._onDrawerChanged);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
 
+              this.contentReady = true;
+              Polymer.RenderStatus.afterNextRender(this, () => this._pageChanged(this.page));
           }
 
           _onMenuChanged(e) {
@@ -871,8 +882,8 @@
           }
 
           _onDrawerChanged(e) {
-              // console.log(e);
-              e.detail.opened === false ? this.hideDrawer = false : this.hideDrawer = true;
+              console.log("opened:",e.detail.opened);
+              Polymer.RenderStatus.afterNextRender(this, () => this.drawerOpened = e.detail.opened);
           }
       }
 

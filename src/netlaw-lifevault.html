@@ -1144,12 +1144,12 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
-      <!--<template is="dom-if" if="[[displayLogo]]">-->
+      <template is="dom-if" if="[[displayLogo]]">
         <netlaw-logo class="mobile"></netlaw-logo>
-      <!--</template>-->
-      <!--<template is="dom-if" if="[[!displayLogo]]">-->
-        <!--<h3 class="lifevault__header">MyFiles</h3>-->
-      <!--</template>-->
+      </template>
+      <template is="dom-if" if="[[!displayLogo]]">
+        <h3 class="lifevault__header">MyFiles</h3>
+      </template>
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
@@ -1830,17 +1830,26 @@
               this.menu = this.$.menu;
 
               this.contentReady = true;
-              setTimeout(() => this._pageChanged(this.page));
               // app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").hasAttribute('opened') ? this.toggleMenu = 'netlaw-icons:menu-filter' : this.toggleMenu = 'netlaw-icons:menu-circle';
           }
 
           open() {
+              console.log("open, lifevault");
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
           }
 
           _pageChanged(page) {
 
-              if (!this.contentReady) return;
+              if (!this.contentReady || this.route.prefix !== '/lifevault' ) return;
+
+              let pages = this.shadowRoot.querySelector("#pages2");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+              else this.open();
 
               if (!this.mobile) {
 
@@ -1859,28 +1868,6 @@
                   }
               }
 
-              if (this.mobile) {
-
-                  if (page == null && this.classList.contains("iron-selected")) {
-                      this.dispatchEvent(new CustomEvent('menu-changed', {
-                          bubbles: true,
-                          composed: true,
-                          detail: this.$.menu
-                      }));
-                  }
-
-                  if (page === 'management') {
-                      //this is polyfill for this.$.pages2.selectedItem;
-                      let sc = Array.from(this.shadowRoot.querySelector('#pages2').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages2').selected)[0];
-                      if (sc) sc.open();
-                  }
-
-                  if (page === 'doc') {
-                      //this is polyfill for this.$.pages2.selectedItem;
-                      let sc = Array.from(this.shadowRoot.querySelector('#pages2').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages2').selected)[0];
-                      if (sc) sc.open();
-                  }
-              }
           }
 
           _onOpenDrawer(e) {

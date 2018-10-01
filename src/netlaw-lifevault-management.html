@@ -1028,7 +1028,7 @@
                           <iron-icon icon="{{file.icon}}"></iron-icon>
                         </a>
                       </figure>
-                      <a href="javascript:;" class="btn btn--charm btn--hide">
+                      <a href="javascript:;" class$="btn btn--charm [[if(item.smartguide, '', 'btn--hide')]]">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                     </div>
@@ -1131,7 +1131,7 @@
                               id: "4975f0a0-5b41-4773-9446-54a2921ee764",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: "btn btn--charm btn--hide",
+                              smartguide: false,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1168,7 +1168,7 @@
                               id: "c0cd1612-21e7-40b3-8a02-527e08fedbb9",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: "btn btn--charm",
+                              smartguide: true,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1319,6 +1319,8 @@
           constructor() {
               super();
           }
+
+          if (condition, ifTrue, ifFalse) { return condition ? ifTrue || null : ifFalse || null; }
 
           _onToggleDropdown(e) {
               e.preventDefault();

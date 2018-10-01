@@ -701,22 +701,17 @@
           }
 
           open() {
-              if (this.mobile) {
-                  this.dispatchEvent(new CustomEvent('menu-changed', {
-                      bubbles: true,
-                      composed: true,
-                      detail: {full: true, menu: this.$.menu}
-                  }));
-              }
-
-              if (!this.mobile) {
-                  this.dispatchEvent(new CustomEvent('drawer-changed', {
-                      bubbles: true,
-                      composed: true,
-                      detail: {opened: false}
-                  }));
-              }
-
+              console.log("open, att details");
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
+              }));
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
           }
       }
 
