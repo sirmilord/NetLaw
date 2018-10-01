@@ -482,127 +482,140 @@
 
     </style>
 
-    <!--<iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>-->
+    <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
+
+    <!--Mobile layout-->
+    <template slot="placeholder" id="menu">
+      <a href="[[rootPath]]contacts/family" class="btn btn--back-dash" on-click="_backToContacts">
+        <iron-icon icon="netlaw-icons:back"></iron-icon>
+        Back
+      </a>
+      <h3 class="lifevault__header">Contact Details</h3>
+      <iron-icon></iron-icon>
+      <iron-icon></iron-icon>
+    </template>
+
+    <template is="dom-if" if="[[mobile]]">
+      <section class="contact-mobile">
+
+      </section>
+    </template>
 
 
-    <!--<template is="dom-if" if="[[mobile]]">-->
-    <!--<section class="contact-mobile">-->
-
-    <!--</section>-->
-    <!--</template>-->
-
-    <!--<template is="dom-if" if="[[!mobile]]">-->
-    <section class="contact">
-      <div class="contact__header">
-        <div class="contact__header-left">
-          <a href="[[rootPath]]contacts/family" class="btn btn--back-dash" on-click="_backToContacts">
-            <iron-icon icon="netlaw-icons:back"></iron-icon>
-            Back to Contacts
-          </a>
+    <!--Desktop layout-->
+    <template is="dom-if" if="[[!mobile]]">
+      <section class="contact">
+        <div class="contact__header">
+          <div class="contact__header-left">
+            <a href="[[rootPath]]contacts/family" class="btn btn--back-dash" on-click="_backToContacts">
+              <iron-icon icon="netlaw-icons:back"></iron-icon>
+              Back to Contacts
+            </a>
+          </div>
+          <div class="contact__header-right">
+            <h2 class="contact__title">Profile Details</h2>
+            <div class="contact__content-update">Updated 1d ago</div>
+          </div>
         </div>
-        <div class="contact__header-right">
-          <h2 class="contact__title">Profile Details</h2>
-          <div class="contact__content-update">Updated 1d ago</div>
-        </div>
-      </div>
-      <div class="contact__wrapper">
-        <div class="contact__left">
-          <figure class="contact__img">
-            <img src="../images/contact.jpg" height="160" width="160" alt="contact">
-          </figure>
-          <a class="contact__link" href="javascript:;">Invite to NetLaw</a>
-          <button class="btn btn--primary">Share Files</button>
-          <div class="contact__line contact__line--left"></div>
-          <ul class="contact__contacts">
-            <li><a href="mailto:sue_frazier@verna.ca" class="contact__contacts-link">
-              <iron-icon icon="netlaw-icons:email"></iron-icon>
-              sue_frazier@verna.ca</a>
-            </li>
-            <li><a href="tel:689-892-1154" class="contact__contacts-link">
-              <iron-icon icon="netlaw-icons:phone"></iron-icon>
-              689-892-1154</a>
-            </li>
-            <li><a href="tel:689-892-5629" class="contact__contacts-link">
-              <iron-icon icon="netlaw-icons:mobile"></iron-icon>
-              689-892-5629</a>
-            </li>
-            <li><a href="www.susanfrazier.com" class="contact__contacts-link">
-              <iron-icon icon="netlaw-icons:web"></iron-icon>
-              www.susanfrazier.com</a>
-            </li>
-          </ul>
-        </div>
-        <div class="contact__right">
+        <div class="contact__wrapper">
+          <div class="contact__left">
+            <figure class="contact__img">
+              <img src="../images/contact.jpg" height="160" width="160" alt="contact">
+            </figure>
+            <a class="contact__link" href="javascript:;">Invite to NetLaw</a>
+            <button class="btn btn--primary">Share Files</button>
+            <div class="contact__line contact__line--left"></div>
+            <ul class="contact__contacts">
+              <li><a href="mailto:sue_frazier@verna.ca" class="contact__contacts-link">
+                <iron-icon icon="netlaw-icons:email"></iron-icon>
+                sue_frazier@verna.ca</a>
+              </li>
+              <li><a href="tel:689-892-1154" class="contact__contacts-link">
+                <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                689-892-1154</a>
+              </li>
+              <li><a href="tel:689-892-5629" class="contact__contacts-link">
+                <iron-icon icon="netlaw-icons:mobile"></iron-icon>
+                689-892-5629</a>
+              </li>
+              <li><a href="www.susanfrazier.com" class="contact__contacts-link">
+                <iron-icon icon="netlaw-icons:web"></iron-icon>
+                www.susanfrazier.com</a>
+              </li>
+            </ul>
+          </div>
+          <div class="contact__right">
 
-          <div class="contact__container">
-            <div class="contact__row">
-              <div class="contact__col">
-                <h1 class="contact__name">Susan Frazier</h1>
-              </div>
-              <div class="contact__col">
-                <button class="btn btn--unbordered">Revise Search</button>
-              </div>
-            </div>
-            <div class="contact__section">
-              <b class="contact__section-title">RELATIONSHIP</b>
-              <b class="contact__work">Sister In-law</b>
-            </div>
-            <div class="contact__row">
-              <div class="contact__col">
-                <address class="contact__address">#12345 Bumpy Rd.<br>New York, NY 50679</address>
-              </div>
-              <div class="contact__col">
-                <div class="contact__since">
-                  Added: May 3, 2018
+            <div class="contact__container">
+              <div class="contact__row">
+                <div class="contact__col">
+                  <h1 class="contact__name">Susan Frazier</h1>
                 </div>
-                <div class="contact__license">
-                  Referred: Not Yet <a href="javascript:;">Refer Now</a>
+                <div class="contact__col">
+                  <button class="btn btn--unbordered">Revise Search</button>
                 </div>
               </div>
-            </div>
-            <div class="contact__line contact__line--right"></div>
-            <div class="contact__section">
-              <b class="contact__section-title">FILES SHARED</b>
-              <table>
-                <thead>
-                <tr>
-                  <th></th>
-                  <th>Shared</th>
-                  <th>Viewed</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Legal Document 1</td>
-                  <td>03/06/2018</td>
-                  <td>Yes (05/06/2018)</td>
-                </tr>
-                <tr>
-                  <td>Legal Document 2</td>
-                  <td>03/06/2018</td>
-                  <td>Yes (05/06/2018)</td>
-                </tr>
-                <tr>
-                  <td>Legal Document 3</td>
-                  <td>03/06/2018</td>
-                  <td>No</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="contact__line contact__line--right"></div>
-            <div class="contact__section">
-              <b class="contact__section-title">COMMENTS</b>
-              <p class="contact__desc">
-                In the event that something happens to me, Susan is the godmother of my children and should take sole
-                custody in the event me and my spouse are deceased or incapacitated.</p>
-              <p class="contact__desc">The document to support this is located in LifeVault.</p>
+              <div class="contact__section">
+                <b class="contact__section-title">RELATIONSHIP</b>
+                <b class="contact__work">Sister In-law</b>
+              </div>
+              <div class="contact__row">
+                <div class="contact__col">
+                  <address class="contact__address">#12345 Bumpy Rd.<br>New York, NY 50679</address>
+                </div>
+                <div class="contact__col">
+                  <div class="contact__since">
+                    Added: May 3, 2018
+                  </div>
+                  <div class="contact__license">
+                    Referred: Not Yet <a href="javascript:;">Refer Now</a>
+                  </div>
+                </div>
+              </div>
+              <div class="contact__line contact__line--right"></div>
+              <div class="contact__section">
+                <b class="contact__section-title">FILES SHARED</b>
+                <table>
+                  <thead>
+                  <tr>
+                    <th></th>
+                    <th>Shared</th>
+                    <th>Viewed</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Legal Document 1</td>
+                    <td>03/06/2018</td>
+                    <td>Yes (05/06/2018)</td>
+                  </tr>
+                  <tr>
+                    <td>Legal Document 2</td>
+                    <td>03/06/2018</td>
+                    <td>Yes (05/06/2018)</td>
+                  </tr>
+                  <tr>
+                    <td>Legal Document 3</td>
+                    <td>03/06/2018</td>
+                    <td>No</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="contact__line contact__line--right"></div>
+              <div class="contact__section">
+                <b class="contact__section-title">COMMENTS</b>
+                <p class="contact__desc">
+                  In the event that something happens to me, Susan is the godmother of my children and should take sole
+                  custody in the event me and my spouse are deceased or incapacitated.</p>
+                <p class="contact__desc">The document to support this is located in LifeVault.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <!--</template>-->
+      </section>
+    </template>
+
   </template>
 
   <script>
@@ -616,6 +629,29 @@
                   bubbles: true,
                   composed: true,
               }));
+          }
+
+          ready() {
+              super.ready();
+          }
+
+          open() {
+              if (this.mobile) {
+                  this.dispatchEvent(new CustomEvent('menu-changed', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {full: true, menu: this.$.menu}
+                  }));
+              }
+
+              if (!this.mobile) {
+                  this.dispatchEvent(new CustomEvent('drawer-changed', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {opened: false}
+                  }));
+              }
+
           }
       }
 

@@ -34,7 +34,7 @@
       }
 
       .lifevault__list {
-        margin-left: 20px;
+        margin-left: 30px;
         margin-right: 12px;
         margin-top: 30px;
         position: relative;
@@ -1097,6 +1097,7 @@
         .lifevault__list-item--top-border:before, .lifevault__list-item--bottom-border:after {
           width: 75%;
         }
+
       }
 
       @media (min-width: 992px) {
@@ -1106,10 +1107,11 @@
           max-width: 30%;
         }
 
-        iron-pages {
+        .lifevault__content {
           flex: 1 1 70%;
           max-width: 70%;
         }
+
       }
 
       @media (min-width: 1200px) {
@@ -1119,6 +1121,30 @@
           margin-right: 15px;
           margin-top: 30px;
           position: relative;
+        }
+
+        .lifevault__drawer {
+          flex: 1 1 28%;
+          max-width: 28%;
+        }
+
+        .lifevault__content {
+          flex: 1 1 72%;
+          max-width: 72%;
+        }
+
+      }
+
+      @media (min-width: 1400px) {
+
+        .lifevault__drawer {
+          flex: 1 1 25%;
+          max-width: 25%;
+        }
+
+        .lifevault__content {
+          flex: 1 1 75%;
+          max-width: 75%;
         }
 
       }
@@ -1144,12 +1170,12 @@
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
-      <template is="dom-if" if="[[displayLogo]]">
+      <!--<template is="dom-if" if="[[displayLogo]]">-->
         <netlaw-logo class="mobile"></netlaw-logo>
-      </template>
-      <template is="dom-if" if="[[!displayLogo]]">
-        <h3 class="lifevault__header">MyFiles</h3>
-      </template>
+      <!--</template>-->
+      <!--<template is="dom-if" if="[[!displayLogo]]">-->
+        <!--<h3 class="lifevault__header">MyFiles</h3>-->
+      <!--</template>-->
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
         <paper-icon-button icon="[[toggleMenu]]" slot="dropdown-trigger"></paper-icon-button>
@@ -1197,7 +1223,7 @@
                         <iron-dropdown horizontal-align="right">
                           <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                               slot="dropdown-content">
-                            <li>Add Sub-Folder
+                            <li on-click="_onAddFolderClick">Add Sub-Folder
                               <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
                             </li>
                             <li>Download
@@ -1209,7 +1235,7 @@
                             <li>Rename
                               <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                             </li>
-                            <li>Share
+                            <li on-click="_onShareFileClick">Share
                               <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                             </li>
                             <li on-click="_onDeleteFileFolderClick">Delete
@@ -1352,7 +1378,7 @@
                     <li>Print
                       <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                     </li>
-                    <li>Share
+                    <li on-click="_onShareFileClick">Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1385,7 +1411,7 @@
                             <li>Rename
                               <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
                             </li>
-                            <li>Share
+                            <li on-click="_onShareFileClick">Share
                               <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                             </li>
                             <li on-click="_onDeleteFileFolderClick">Delete
@@ -1427,7 +1453,7 @@
                                           <iron-icon
                                               icon="netlaw-icons:rename-icon"></iron-icon>
                                         </li>
-                                        <li>Share
+                                        <li on-click="_onShareFileClick">Share
                                           <iron-icon
                                               icon="netlaw-icons:share-icon"></iron-icon>
                                         </li>
@@ -1472,7 +1498,7 @@
                     <li>Print
                       <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
                     </li>
-                    <li>Share
+                    <li on-click="_onShareFileClick">Share
                       <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
                     </li>
                   </ul>
@@ -1518,6 +1544,7 @@
       </main>
     </template>
 
+    <!--Action overlays-->
     <template is="dom-if" if="[[addFolder]]">
       <div class="overlay"></div>
       <div class="file-folder file-folder--fixed">
