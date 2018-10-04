@@ -604,9 +604,7 @@
             </app-header>
             <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main"
                         fallback-selection="initial-screen" on-menu-changed="_onMenuChanged">
-              <netlaw-smartguide name="smartguide" route="[[subroute]]"
-                                 on-smartguide-open-left-drawer="onDrawerShow"
-                                 opened="[[notificationOpened]]"></netlaw-smartguide>
+              <netlaw-smartguide name="smartguide" route="[[subroute]]" opened="[[notificationOpened]]"></netlaw-smartguide>
               <netlaw-profile name="profile"></netlaw-profile>
               <netlaw-account name="account" route="[[subroute]]"></netlaw-account>
               <netlaw-lifevault name="lifevault" route="[[subroute]]"></netlaw-lifevault>
@@ -739,12 +737,15 @@
                       type: String
                   },
                   fullMenu: {type: Boolean, value: false},
-
                   mobile: {
                       type: Boolean, observer(value) {
                           // this._pageChanged(this.page);
                       }
                   },
+                  notificationOpened: {
+                      type: Boolean,
+                      value: false
+                  }
               };
           }
 
@@ -835,9 +836,9 @@
                   true);
 
               let pages = this.shadowRoot.querySelector("iron-pages");
-              console.log(pages,pages && pages.selectedItem);
+              //console.log(pages,pages && pages.selectedItem);
               //TODO ASK Zlatko
-              //settimeout need on initail page after login
+              //settimeout need on initail-screen page after login
               if (!pages) ; //setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
           }
@@ -848,7 +849,7 @@
 
 
           _onNavigateNotification(e) {
-              this.shadowRoot.querySelector("#dropdownmobilenotification").toggle();
+              this.notificationOpened = !this.notificationOpened;
           }
 
           _onOverlayChanged(e) {

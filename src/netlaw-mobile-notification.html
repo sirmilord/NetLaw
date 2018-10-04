@@ -174,8 +174,8 @@
         <p class="mobile-notification__text">(you can always take this tour anytime
           by going into your account) </p>
         <div class="mobile-notification__line"></div>
-        <a href="[[rootPath]]smartguide" class="btn btn--primary" on-click="onClose">Sure, let's do it!</a>
-        <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered" on-click="onClose">No thanks.</a>
+        <a href="[[rootPath]]smartguide" class="btn btn--primary" on-click="_onClose">Sure, let's do it!</a>
+        <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered" on-click="_onClose">No thanks.</a>
       </div>
     </main>
 
@@ -187,8 +187,11 @@
               return 'netlaw-mobile-notification';
           }
 
-          onClose(e) {
-              this.dispatchEvent(new CustomEvent("close-mobile-dropdown"));
+          _onClose(e) {
+              this.dispatchEvent(new CustomEvent('mobile-notification', {
+                  bubbles: true,
+                  composed: true
+              }));
           }
       }
       window.customElements.define(NetlawMobileNotification.is, NetlawMobileNotification);
