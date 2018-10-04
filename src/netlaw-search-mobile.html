@@ -152,30 +152,9 @@
 
           constructor() {
               super();
-              // this.addEventListener('blur', e => this.close());
-              // this.toggleIcon = 'netlaw-icons:search';
-              // this.target = this.$.search;
           }
 
-          // open() {
-          //     this.visible = true;
-          //     this.pressed = true;
-          //     this.toggleIcon = 'netlaw-icons:close-search';
-          //     this.$.search.focus();
-          //     this.$.dropdown.open();
-          //
-          // }
-          //
-          // close() {
-          //     this.visible = false;
-          //     this.pressed = false;
-          //     this.$.dropdown.close();
-          //     this.toggleIcon = 'netlaw-icons:search';
-          //     this.$.dropdown.close();
-          // }
-
           _toggle() {
-              // this.visible ? this.close() : this.open();
               this.$.dropdown.toggle();
           }
 
@@ -183,16 +162,6 @@
               // return searchOpened ? 'netlaw-icons:close-search': 'netlaw-icons:search';
               return searchOpened ? '': 'netlaw-icons:search';
           }
-
-
-          // openChoices() {
-          //     this.$.dropdown.open();
-          // }
-          // ready(){
-          //     super.ready();
-          //     console.log(this.$.dropdown.querySelector('ul'));
-          //     console.log(this.shadowRoot.querySelector('ul'));
-          // }
 
       }
 
