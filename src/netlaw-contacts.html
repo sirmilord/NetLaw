@@ -1395,7 +1395,7 @@
                   },
                   mobile: {
                       type: Boolean, observer(value) {
-                          this.open();
+                          // this.open();
                       }
                   },
                   details: {
@@ -1470,7 +1470,11 @@
           }
 
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: this.$.menu
+              }));
 
 
               this.dispatchEvent(new CustomEvent('drawer-changed', {
@@ -1479,8 +1483,8 @@
                   detail: {opened: true}
               }));
 
-              let pages = this.shadowRoot.querySelector("#pages3");
-              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+              // let pages = this.shadowRoot.querySelector("#pages3");
+              // if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           //for mobile

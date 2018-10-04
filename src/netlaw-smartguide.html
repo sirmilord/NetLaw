@@ -469,7 +469,7 @@
                   fullWidth: {type: Boolean, value: false,},
                   mobile: {
                       type: Boolean, observer(value) {
-                          this.open();
+                          // this.open();
                       }
                   },
               };
@@ -488,7 +488,6 @@
               }
               else {
                   this.open();
-                  this.shadowRoot.querySelector("#smartguidedrawer").close();
               }
 
               if (!this.mobile) {

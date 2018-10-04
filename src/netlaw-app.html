@@ -743,7 +743,6 @@
                   mobile: {
                       type: Boolean, observer(value) {
                           // this._pageChanged(this.page);
-                          // this.open();
                       }
                   },
               };
@@ -871,6 +870,7 @@
           }
 
           _onMenuChanged(e) {
+
               let issimple = e.detail instanceof Element;
               this._applyMenu(e.path[0], issimple ? e.detail : e.detail.menu, issimple ? false : e.detail.full);
           }
