@@ -386,7 +386,7 @@
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
           </div>
           <div class="smartguide-mobile__drawer-wrap">
-            <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
+            <iron-pages id="pages1" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
               <netlaw-smartguide-setup name="setup"
                                        on-to-smartguide="_closeDrawer"></netlaw-smartguide-setup>
               <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
@@ -426,7 +426,7 @@
           </ul>
         </section>
 
-        <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main">
+        <iron-pages id="pages1" selected="[[page]]" attr-for-selected="name" role="main">
           <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
           <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
           <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
@@ -482,7 +482,7 @@
           _pageChanged(page) {
 
               if (!this.contentReady || this.route.prefix !== '/smartguide') return;
-              let pages = this.shadowRoot.querySelector("#pages");
+              let pages = this.shadowRoot.querySelector("#pages1");
               if (pages && pages.selectedItem && pages.selectedItem.open) {
                   pages.selectedItem.open();
               }
@@ -528,7 +528,7 @@
                   detail: {opened: true}
               }));
               //
-              // let pages = this.shadowRoot.querySelector("#pages");
+              // let pages = this.shadowRoot.querySelector("#pages1");
               // if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
