@@ -1132,7 +1132,7 @@
 
         <template is="dom-if" if="[[!createContact]]">
 
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
+          <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
             <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick" on-delete-contact="_onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
@@ -1445,6 +1445,10 @@
           _pageChanged(page) {
               if (!this.contentReady) return;
 
+              let pages = this.shadowRoot.querySelector("#pages3");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+              else this.open();
+
               if (!this.mobile) {
 
                   if (page == null) {
@@ -1452,11 +1456,6 @@
                       this.createContact = true;
                       this.details = false;
                       this.flex = '';
-                      // this.dispatchEvent(new CustomEvent('drawer-changed', {
-                      //     bubbles: true,
-                      //     composed: true,
-                      //     detail: {opened: true}
-                      // }));
                   }
 
                   if (page != null) {
@@ -1466,35 +1465,22 @@
                   if (this.page === 'contact-details') {
                       this.details = true;
                       this.flex = 'flex: 1 1 100%; max-width: 100%;';
-
-                      this.dispatchEvent(new CustomEvent('drawer-changed', {
-                          bubbles: true,
-                          composed: true,
-                          detail: {opened: false}
-                      }));
-                  }
-              }
-
-              if (this.mobile) {
-
-                  if (page == null && this.classList.contains("iron-selected")) {
-                      this.dispatchEvent(new CustomEvent('menu-changed', {
-                          bubbles: true,
-                          composed: true,
-                          detail: this.$.menu
-                      }));
-                  }
-
-                  if (page === 'family' || page === 'contact-details') {
-                      //this is polyfill for this.$.pages2.selectedItem;
-                      let sc = Array.from(this.shadowRoot.querySelector('#pages3').children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector('#pages3').selected)[0];
-                      if (sc) sc.open();
                   }
               }
           }
 
           open() {
               this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+
+
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
+
+              let pages = this.shadowRoot.querySelector("#pages3");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           //for mobile

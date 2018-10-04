@@ -1245,8 +1245,9 @@
           }
 
           _pageChanged(page) {
+              if (!this.contentReady || this.route.prefix !== '/find-attorney' ) return;
               if (!this.contentReady) return;
-              console .log("find attorney page-changed");
+              // console .log("find attorney page-changed");
 
               let pages = this.shadowRoot.querySelector("#pages4");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
@@ -1254,7 +1255,7 @@
           }
 
           open() {
-              console.log("open, find-attorney");
+              // console.log("open, find-attorney");
               this.dispatchEvent(new CustomEvent('menu-changed', {
                   bubbles: true,
                   composed: true,

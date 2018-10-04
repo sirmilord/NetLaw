@@ -883,6 +883,7 @@
           }
 
           _onDrawerChanged(e) {
+              //debugger;
               console.log("opened:",e.detail.opened);
               Polymer.RenderStatus.afterNextRender(this, () => this.drawerOpened = e.detail.opened);
           }

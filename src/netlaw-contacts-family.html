@@ -1574,6 +1574,12 @@
                   composed: true,
                   detail: {full: true, menu: this.$.menu}
               }));
+
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
           }
 
           //for mobile
