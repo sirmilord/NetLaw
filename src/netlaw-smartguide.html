@@ -388,7 +388,7 @@
           <div class="smartguide-mobile__drawer-wrap">
             <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
               <netlaw-smartguide-setup name="setup"
-                                       on-close-smartguide-drawer="_closeDrawer"></netlaw-smartguide-setup>
+                                       on-to-smartguide="_closeDrawer"></netlaw-smartguide-setup>
               <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
               <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
               <netlaw-smartguide-setup-step2 name="setup-step2"></netlaw-smartguide-setup-step2>
@@ -466,13 +466,6 @@
                       type: Boolean,
                       value: false
                   },
-                  mobile: {
-                      type: Boolean, observer(value) {
-                          // this._pageChanged(this.page);
-                          // this.open();
-                      }
-                  },
-
                   fullWidth: {type: Boolean, value: false,},
               };
           }
@@ -482,16 +475,15 @@
           }
 
           _pageChanged(page) {
+
               if (!this.contentReady || this.route.prefix !== '/smartguide') return;
-
-              if (!this.contentReady) return;
-
               let pages = this.shadowRoot.querySelector("#pages");
               if (pages && pages.selectedItem && pages.selectedItem.open) {
                   pages.selectedItem.open();
               }
               else {
                   this.open();
+                  this.shadowRoot.querySelector("#smartguidedrawer").close();
               }
 
               if (!this.mobile) {
@@ -510,28 +502,12 @@
               }
 
               if (this.mobile) {
-
-                  // if (page == null && this.classList.contains("iron-selected")) {
-                  //     this.dispatchEvent(new CustomEvent('menu-changed', {
-                  //         bubbles: true,
-                  //         composed: true,
-                  //         detail: this.shadowRoot.querySelector("#menu")
-                  //     }));
-                  // }
-
-                  // if (this.page !== null) {
-                  //     // this.shadowRoot.querySelector("#smartguidedrawer").open();
-                  //     let sc = Array.from(this.shadowRoot.querySelector("#pages").children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector("#pages").selected)[0];
-                  //     if (sc) sc.open();
-                  // }
-
                   //change drawer width to 100% and move back
-                  if (this.page === 'setup-step1' || this.page === 'setup-step2') {
-                      this.fullWidth = true;
-                  }
-                  else {
-                      this.fullWidth = false;
-                  }
+                  //todo Ask Zlatko:
+                  // When we navigate from SmartGude step1 or step2 to any other page
+                  // (eg. LifeVault) and click back to SmartGuide, drawer is opened.
+                  // How to close drawer when returning back to SmartGuide?
+                  this.fullWidth = this.page === 'setup-step1' || this.page === 'setup-step2';
               }
           }
 
@@ -547,9 +523,9 @@
                   composed: true,
                   detail: {opened: true}
               }));
-
-              let pages = this.shadowRoot.querySelector("#pages");
-              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+              //
+              // let pages = this.shadowRoot.querySelector("#pages");
+              // if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           _openDrawer(e) {
@@ -563,7 +539,7 @@
 
           _ifDrawerClosed(e) {
               if (this.route.prefix !== '/smartguide') return;
-              if (!e.detail.value && this.mobile === true && this.page === "setup" || this.page === "templates") {
+              if (!e.detail.value) {
                   navigate('smartguide');
                   this.open();
               }
