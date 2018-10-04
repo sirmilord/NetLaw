@@ -1812,8 +1812,7 @@
                   },
                   mobile: {
                       type: Boolean, observer(value) {
-                          // this._pageChanged(this.page);
-                          // this.open();
+                          this.open();
                       }
                   },
               };
@@ -1853,8 +1852,6 @@
 
           ready(e) {
               super.ready();
-
-              this.menu = this.$.menu;
 
               this.contentReady = true;
               // app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").hasAttribute('opened') ? this.toggleMenu = 'netlaw-icons:menu-filter' : this.toggleMenu = 'netlaw-icons:menu-circle';

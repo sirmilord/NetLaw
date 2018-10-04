@@ -212,6 +212,7 @@
       .login-buttons iron-icon[name="twitter"] {
         background: #01B8EC;
       }
+
       .account_icon-title {
         font-size: 12px;
         text-align: center;
@@ -234,6 +235,7 @@
         .account__list-link span {
           margin-left: 28%;
         }
+
         .account__list-link:after {
           left: 47%;
         }
@@ -395,7 +397,7 @@
     <template is="dom-if" if="[[mobile]]">
 
       <paper-tabs id="accounttabs" class="account__tabs" selected="[[page]]" attr-for-selected="name"
-                  fallback-selection="info" role="navigation" no-bar >
+                  fallback-selection="info" role="navigation" no-bar>
         <paper-tab class="account__tab" link name="info">
           <a href="[[routePath]]account/info" class="account__tab-link" tabindex="-1">Account Information</a>
         </paper-tab>
@@ -410,7 +412,7 @@
         </paper-tab>
       </paper-tabs>
 
-      <iron-pages selected="{{page}}" attr-for-selected="name" role="main">
+      <iron-pages id="pages6" selected="{{page}}" attr-for-selected="name" role="main">
         <netlaw-account-info name="info"></netlaw-account-info>
         <netlaw-account-security name="security"></netlaw-account-security>
         <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
@@ -456,7 +458,7 @@
             </div>
           </div>
 
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
+          <iron-pages id="pages6" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
             <netlaw-account-info name="info"></netlaw-account-info>
             <netlaw-account-security name="security"></netlaw-account-security>
             <netlaw-account-current-plan name="current-plan"></netlaw-account-current-plan>
@@ -505,23 +507,37 @@
                   flex: {
                       type: String,
                       value: ''
-                  }
+                  },
+                  mobile: {
+                      type: Boolean, observer(value) {
+                          this.open();
+                      }
+                  },
               };
           }
 
           _pageChanged(page) {
-              if (this.page ===  'billing-plans') {
-                  this.display = 'display: none';
-                  this.flex = 'flex: 1 1 100%; max-width: 100%;';
+              if (!this.contentReady || this.route.prefix !== '/account') return;
+              // console.log(this.route.prefix);
+              // debugger;
 
-              } else {
-                  this.display = 'display: flex';
-                  this.flex = '';
+              let pages = this.shadowRoot.querySelector("#pages6");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+              else this.open();
+
+              if (!this.mobile) {
+                  if (this.page === 'billing-plans') {
+                      this.display = 'display: none';
+                      this.flex = 'flex: 1 1 100%; max-width: 100%;';
+
+                  } else {
+                      this.display = 'display: flex';
+                      this.flex = '';
+                  }
               }
           }
 
           _computeMenu(opened) {
-              // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
           }
 
@@ -531,11 +547,18 @@
                   composed: true,
                   detail: {full: true, menu: this.$.menu}
               }));
+
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
           }
 
-          // _selectedAttr(e) {
-          //     e.target.selectedClass = 'iron-selected';
-          // }
+          ready(e) {
+              super.ready();
+              this.contentReady = true;
+          }
       }
 
       window.customElements.define(NetlawAccount.is, NetlawAccount);

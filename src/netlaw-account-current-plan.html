@@ -550,6 +550,15 @@
           static get is() {
               return 'netlaw-account-current-plan';
           }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
+
+          }
       }
 
       window.customElements.define(NetlawAccountCurrentPlan.is, NetlawAccountCurrentPlan);

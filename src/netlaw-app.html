@@ -742,7 +742,8 @@
 
                   mobile: {
                       type: Boolean, observer(value) {
-                          this._pageChanged(this.page);
+                          // this._pageChanged(this.page);
+                          // this.open();
                       }
                   },
               };
@@ -838,14 +839,6 @@
               //console.log(pages,pages && pages.selectedItem);
               if (!pages) ; //setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
-
-              //hide drawer on this pages
-              // if (this.page === 'profile' || this.page === 'account' || this.page === 'find-attorney' && this.subroute.path === '/attorney-details') {
-              // if (this.page === 'profile' || this.page === 'account') {
-              //     this.hideDrawer = false;
-              // } else {
-              //     this.hideDrawer = true;
-              // }
           }
 
           _showPage404() {

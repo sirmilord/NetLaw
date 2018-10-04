@@ -467,6 +467,11 @@
                       value: false
                   },
                   fullWidth: {type: Boolean, value: false,},
+                  mobile: {
+                      type: Boolean, observer(value) {
+                          this.open();
+                      }
+                  },
               };
           }
 

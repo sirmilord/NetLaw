@@ -432,6 +432,15 @@
           static get is() {
               return 'netlaw-account-security';
           }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
+
+          }
       }
 
       window.customElements.define(NetlawAccountSecurity.is, NetlawAccountSecurity);

@@ -143,6 +143,15 @@
                   composed: true
               }));
           }
+
+          open() {
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
+
+          }
       }
 
       window.customElements.define(NetlawAccountPlans.is, NetlawAccountPlans);
