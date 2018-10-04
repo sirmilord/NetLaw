@@ -176,7 +176,7 @@
 
       .lifevault__module {
         /*padding: 40px 50px;*/
-        padding: 20px 30px 140px;
+        padding: 20px 30px 110px;
         width: 100%;
         box-sizing: border-box;
         position: relative;
@@ -264,8 +264,8 @@
       }
 
       .lifevault__document iron-icon {
-        width: 50px;
-        height: 50px;
+        --iron-icon-width: 50px;
+        --iron-icon-height: 50px;
         --iron-icon-fill-color: #000;
       }
 
@@ -661,8 +661,8 @@
         }
 
         .lifevault__menu iron-icon {
-          --iron-icon-width: 20px;
-          --iron-iocn-height: 20px;
+          --iron-icon-width: 32px;
+          --iron-iocn-height: 32px;
         }
 
         .btn--charm {
@@ -707,6 +707,45 @@
           margin-left: 0;
           height: 18px;
           width: 18px;
+        }
+
+        .lifevault__col-module {
+          flex: 1 1 33%;
+          max-width: 33%;
+          padding-left: 7.5px;
+          padding-right: 7.5px;
+          box-sizing: border-box;
+        }
+
+        .lifevault__document {
+          margin: 0;
+        }
+
+        .lifevault__document iron-icon {
+          --iron-icon-width: 35px;
+          --iron-icon-height: 35px;
+        }
+
+        .lifevault__module-body {
+          padding: 5px;
+        }
+
+        .lifevault__name {
+          font-size: 13px;
+        }
+
+        .lifevault__module-update {
+          font-size: 10px;
+        }
+
+        .lifevault__details {
+          color: #01AA50;
+          font-size: 14px;
+        }
+
+        .lifevault__details iron-icon {
+          --iron-icon-height: 20px;
+          --iron-icon-width: 20px;
         }
       }
 
@@ -781,7 +820,7 @@
                         <a class="lifevault__footer-link" href="{{file.link}}">
                           <span class="lifevault__name">[[file.name]]</span>
                         </a>
-                        <span class="lifevault__module-update">[[file.status]]</span>
+                        <span class="lifevault__module-update">[[file.mstatus]]</span>
                         <button class="lifevault__details" on-click="_onToggleDropdown">v1.1
                           <iron-icon icon="icons:expand-more"></iron-icon>
                           <iron-dropdown horizontal-align="right">
@@ -1131,7 +1170,7 @@
                               id: "4975f0a0-5b41-4773-9446-54a2921ee764",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: false,
+                              smartguide: true,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1139,27 +1178,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: "true"
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: "false"
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: "true"
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: "false"
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: "false"
                                   },
                               ]
                           },
@@ -1205,7 +1244,7 @@
                               id: "d40b2f61-9a89-47c6-8bdb-9a0229ac55f6",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: "btn btn--charm",
+                              smartguide: false,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1242,7 +1281,7 @@
                               id: "f164d232-dd89-4354-be99-1367de325ce6",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: "btn btn--charm btn--charm",
+                              smartguide: false,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1279,7 +1318,7 @@
                               id: "609871d7-0f06-4ee5-9258-f5a26f6705db",
                               icon: "netlaw-icons:page",
                               link: "lifevault/doc",
-                              smartguide: "btn btn--charm btn--charm",
+                              smartguide: false,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
                               name: "Estimate for Home Management.PDF",
@@ -1320,7 +1359,9 @@
               super();
           }
 
-          if (condition, ifTrue, ifFalse) { return condition ? ifTrue || null : ifFalse || null; }
+          if(condition, ifTrue, ifFalse) {
+              return condition ? ifTrue || null : ifFalse || null;
+          }
 
           _onToggleDropdown(e) {
               e.preventDefault();
