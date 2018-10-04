@@ -375,7 +375,9 @@
           </ul>
         </section>
 
-        <app-drawer id="smartguidedrawer" class$="smartguide-mobile__drawer [[if(fullWidth, 'smartguide-mobile__drawer--width')]]" slot="drawer" swipe-open="[[narrow]]"
+        <app-drawer id="smartguidedrawer"
+                    class$="smartguide-mobile__drawer [[if(fullWidth, 'smartguide-mobile__drawer--width')]]"
+                    slot="drawer" swipe-open="[[narrow]]"
                     hidden$="{{!mobile}}" align="right" on-opened-changed="_ifDrawerClosed">
           <div class="smartguide-mobile__arrow">
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
@@ -384,7 +386,7 @@
             <iron-icon icon="icons:icons:chevron-left"></iron-icon>
           </div>
           <div class="smartguide-mobile__drawer-wrap">
-            <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
+            <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="setup">
               <netlaw-smartguide-setup name="setup"
                                        on-close-smartguide-drawer="_closeDrawer"></netlaw-smartguide-setup>
               <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
@@ -424,7 +426,7 @@
           </ul>
         </section>
 
-        <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+        <iron-pages id="pages" selected="[[page]]" attr-for-selected="name" role="main">
           <netlaw-smartguide-setup name="setup"></netlaw-smartguide-setup>
           <netlaw-smartguide-templates name="templates"></netlaw-smartguide-templates>
           <netlaw-smartguide-setup-step1 name="setup-step1"></netlaw-smartguide-setup-step1>
@@ -471,15 +473,26 @@
                       }
                   },
 
-                  fullWidth: { type:Boolean, value: false, },
+                  fullWidth: {type: Boolean, value: false,},
               };
           }
 
-          if (condition, ifTrue, ifFalse) { return condition ? ifTrue || null : ifFalse || null; }
+          if(condition, ifTrue, ifFalse) {
+              return condition ? ifTrue || null : ifFalse || null;
+          }
 
           _pageChanged(page) {
+              if (!this.contentReady || this.route.prefix !== '/smartguide') return;
 
               if (!this.contentReady) return;
+
+              let pages = this.shadowRoot.querySelector("#pages");
+              if (pages && pages.selectedItem && pages.selectedItem.open) {
+                  pages.selectedItem.open();
+              }
+              else {
+                  this.open();
+              }
 
               if (!this.mobile) {
                   this.page = page || 'setup';
@@ -498,30 +511,26 @@
 
               if (this.mobile) {
 
-                  if (page == null && this.classList.contains("iron-selected")) {
-                      this.dispatchEvent(new CustomEvent('menu-changed', {
-                          bubbles: true,
-                          composed: true,
-                          detail: this.shadowRoot.querySelector("#menu")
-                      }));
-                  }
+                  // if (page == null && this.classList.contains("iron-selected")) {
+                  //     this.dispatchEvent(new CustomEvent('menu-changed', {
+                  //         bubbles: true,
+                  //         composed: true,
+                  //         detail: this.shadowRoot.querySelector("#menu")
+                  //     }));
+                  // }
 
-                  if (this.page !== null) {
-                      // this.shadowRoot.querySelector("#smartguidedrawer").open();
-                      let sc = Array.from(this.shadowRoot.querySelector("#pages4").children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector("#pages4").selected)[0];
-                      if (sc) sc.open();
-                  }
+                  // if (this.page !== null) {
+                  //     // this.shadowRoot.querySelector("#smartguidedrawer").open();
+                  //     let sc = Array.from(this.shadowRoot.querySelector("#pages").children).filter(c => c.getAttribute("name") == this.shadowRoot.querySelector("#pages").selected)[0];
+                  //     if (sc) sc.open();
+                  // }
 
                   //change drawer width to 100% and move back
                   if (this.page === 'setup-step1' || this.page === 'setup-step2') {
-                      this.fullWidth=true;
-                      // this.shadowRoot.querySelector("#smartguidedrawer").classList.add('smartguide-mobile__drawer--width');
-                      // this.shadowRoot.querySelector("#smartguidedrawer").persistent = true;
+                      this.fullWidth = true;
                   }
                   else {
-                      this.fullWidth =false;
-                      // this.shadowRoot.querySelector("#smartguidedrawer").classList.remove('smartguide-mobile__drawer--width');
-                      // this.shadowRoot.querySelector("#smartguidedrawer").persistent = false;
+                      this.fullWidth = false;
                   }
               }
           }
@@ -530,8 +539,17 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {
                   bubbles: true,
                   composed: true,
-                  detail: this.shadowRoot.querySelector("#menu")
+                  detail: this.$.menu
               }));
+
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
+
+              let pages = this.shadowRoot.querySelector("#pages");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           _openDrawer(e) {
@@ -544,9 +562,10 @@
           }
 
           _ifDrawerClosed(e) {
-
-              if (!e.detail.value && this.page === "setup" || this.page === "templates")  {
+              if (this.route.prefix !== '/smartguide') return;
+              if (!e.detail.value && this.mobile === true && this.page === "setup" || this.page === "templates") {
                   navigate('smartguide');
+                  this.open();
               }
           }
 

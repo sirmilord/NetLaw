@@ -1531,7 +1531,7 @@
 
         <template is="dom-if" if="[[!yourVault]]">
 
-          <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-lifevault-management name="management"
                                          on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
                                          on-share-file="_onShareFileClick"></netlaw-lifevault-management>
@@ -1862,12 +1862,20 @@
 
           open() {
               console.log("open, lifevault");
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: this.$.menu
+              }));
+
               this.dispatchEvent(new CustomEvent('drawer-changed', {
                   bubbles: true,
                   composed: true,
                   detail: {opened: true}
               }));
+
+              let pages = this.shadowRoot.querySelector("#pages2");
+              if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           _pageChanged(page) {

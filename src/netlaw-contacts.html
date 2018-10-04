@@ -1443,7 +1443,7 @@
           }
 
           _pageChanged(page) {
-              if (!this.contentReady) return;
+              if (!this.contentReady || this.route.prefix !== '/contacts' ) return;
 
               let pages = this.shadowRoot.querySelector("#pages3");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();

@@ -211,8 +211,8 @@
       <div class="smartguide__content-wrapper">
         <hr>
       </div>
-      <a href="/smartguide/setup-step1" class="btn btn--primary">Let's begin</a>
-      <a href="/smartguide" class="btn btn--cancel" on-click="closeDrawer">Cancel</a>
+      <a href="[[rootPath]]smartguide/setup-step1" class="btn btn--primary">Let's begin</a>
+      <a href="[[rootPath]]smartguide" class="btn btn--cancel" on-click="closeDrawer">Cancel</a>
     </section>
 
   </template>
@@ -228,7 +228,17 @@
           }
 
           open() {
-              this.dispatchEvent(new CustomEvent('menu-changed', {bubbles: true, composed: true, detail: this.$.menu}));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: this.$.menu
+              }));
+
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: true}
+              }));
           }
       }
 
