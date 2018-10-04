@@ -3,6 +3,8 @@
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
 
+<link rel="import" href="../bower_components/paper-search/paper-search.html">
+
 <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
 <!--<link rel="import" href="../bower_components/neon-animation/web-animations.html">-->
 
@@ -86,18 +88,33 @@
 
     <iron-dropdown id="dropdown" vertical-offset="35" horizontal-offset="-20" no-auto-focus opened="{{searchOpened}}" opened$="[[searchOpened]]">
       <div slot="dropdown-content">
-        <input id="search" type="search" name="search" placeholder="Search Documents..." autocomplete="off">
-        <ul>
-          <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
-          <li>Listed result contact item 2 …</li>
-          <li>Listed result contact item 3…</li>
-          <li>Listed result contact item 4…</li>
-          <br/>
-          <li>Listed result in document item 1…</li>
-          <li>Listed result in document item 2…</li>
-          <li>Listed result in document item 3…</li>
-          <li>Listed result in document item 4…</li>
-        </ul>
+        <!--<input id="search" type="search" name="search" placeholder="Search Documents..." autocomplete="off">-->
+        <!--<ul>-->
+          <!--<li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>-->
+          <!--<li>Listed result contact item 2 …</li>-->
+          <!--<li>Listed result contact item 3…</li>-->
+          <!--<li>Listed result contact item 4…</li>-->
+          <!--<br/>-->
+          <!--<li>Listed result in document item 1…</li>-->
+          <!--<li>Listed result in document item 2…</li>-->
+          <!--<li>Listed result in document item 3…</li>-->
+          <!--<li>Listed result in document item 4…</li>-->
+        <!--</ul>-->
+        <paper-search-panel
+            search="{{search}}"
+            count="{{count}}"
+            items="[[items]]"
+            has-more="[[hasMore]]"
+            loading="[[loading]]"
+            filters="[[filters]]"
+            selected-filters="{{selectedFilters}}"
+            on-change-request-params="loadData">
+
+          <div>
+            <!--Show your [[count]] results for "[[search]]"-->
+          </div>
+        </paper-search-panel>
+
       </div>
     </iron-dropdown>
 
@@ -125,6 +142,11 @@
                       type: Boolean,
                       value: false
                   },
+
+                  filters:  {
+                      type: Boolean,
+                      value: false
+                  }
               };
           }
 
@@ -158,7 +180,8 @@
           }
 
           _computeIcon(searchOpened) {
-              return searchOpened ? 'netlaw-icons:close-search': 'netlaw-icons:search';
+              // return searchOpened ? 'netlaw-icons:close-search': 'netlaw-icons:search';
+              return searchOpened ? '': 'netlaw-icons:search';
           }
 
 
