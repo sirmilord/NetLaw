@@ -835,7 +835,9 @@
                   true);
 
               let pages = this.shadowRoot.querySelector("iron-pages");
-              //console.log(pages,pages && pages.selectedItem);
+              console.log(pages,pages && pages.selectedItem);
+              //TODO ASK Zlatko
+              //settimeout need on initail page after login
               if (!pages) ; //setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
           }
