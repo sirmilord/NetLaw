@@ -1,22 +1,26 @@
-﻿"use strict";
+﻿'use strict';
 
-import NlpAccountsApi from "../bower_components/nlp-api/nlp-api-accounts.js";
-import NlpDraftApi from "../bower_components/nlp-api/nlp-api-draft.js";
-
-let apikey = "8eae8cce-302e-4f8f-a82e-54470d6e4642";
+let apikey = "eaa6dcf1-c067-416a-adca-31656c18225d"; //customers API Key
 
 window.api = {
     set ticket(value) {
-        this.draft.ticket = value;
         this.accounts.ticket = value;
+        this.draft.ticket = value;
+        this.customers.ticket = value;
+        this.vault.ticket = value;
         if (value) localStorage.setItem('session-ticket', value); else localStorage.removeItem("session-ticket");
     },
     set onUnauthorized(handler) {
         api.accounts.onUnauthorized = handler;
         api.draft.onUnauthorized = handler;
+        api.customers.onUnauthorized = handler;
+        api.vault.onUnauthorized = handler;
     },
-    accounts: new NlpAccountsApi("https://accounts.netlawplatform.com", apikey),
-    draft: new NlpDraftApi("https://draft.netlawplatform.com", apikey),
+
+    accounts: new NetLawPlatform.AccountsApi("https://accounts.netlawplatform.com", apikey),
+    draft: new NetLawPlatform.DraftApi("https://draft.netlawplatform.com", apikey),
+    customers: new NetLawPlatform.CustomersApi("https://customers.netlawplatform.com", apikey),
+    vault: new NetLawPlatform.VaultApi("https://vault.netlawplatform.com", apikey),
 };
 
 if (localStorage.getItem('session-ticket')) api.ticket = localStorage.getItem('session-ticket');

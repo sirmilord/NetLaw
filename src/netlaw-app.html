@@ -57,6 +57,7 @@
 <link rel="import" href="netlaw-view-404.html">
 <link rel="import" href="netlaw-star-rating.html">
 
+<link rel="import" href="../bower_components/nlp-api/nlp-api.html">
 <script type="module" src="api.js"></script>
 
 <dom-module id="netlaw-app">
@@ -835,7 +836,7 @@
 
               let pages = this.shadowRoot.querySelector("iron-pages");
               //console.log(pages,pages && pages.selectedItem);
-              if (!pages) setTimeout(() => this._pageChanged(page));
+              if (!pages) ; //setTimeout(() => this._pageChanged(page));
               else if (pages.selectedItem.open) pages.selectedItem.open();
 
               //hide drawer on this pages

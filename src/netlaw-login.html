@@ -592,7 +592,7 @@
           }
 
           _fetchProfiles() {
-              return api.draft.listAccounts()
+              return api.customers.listAccounts()
                   .success(r => {
                       this.profiles = r;
 
