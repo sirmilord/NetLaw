@@ -734,7 +734,7 @@
 
     <template is="dom-if" if="[[mobile]]" restamp>
 
-      <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
+      <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
         <main name="empty2" class="find-attorney-mobile">
           <netlaw-dashboard-mobile on-select-all-false="selectAllFalse"
                                    on-select-all-true="selectAllTrue" on-view-module="chooseModule"
@@ -904,7 +904,7 @@
     <!--Desktop layout-->
     <template is="dom-if" if="[[!mobile]]" restamp>
 
-      <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
+      <iron-pages id="pages4" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
         <main name="empty2" class="find-attorney">
           <div class="find-attorney__content">
             <netlaw-topbar>
@@ -1248,7 +1248,7 @@
               if (!this.contentReady) return;
               console .log("find attorney page-changed");
 
-              let pages = this.shadowRoot.querySelector("#pages3");
+              let pages = this.shadowRoot.querySelector("#pages4");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
               else this.open();
           }
@@ -1267,7 +1267,7 @@
                   detail: {opened: true}
               }));
 
-              let pages = this.shadowRoot.querySelector("#pages3");
+              let pages = this.shadowRoot.querySelector("#pages4");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
           }
 
