@@ -381,6 +381,7 @@
 
       .contact__col {
         flex: 1 1 50%;
+        max-width: 50%;
         padding-left: 10px;
         padding-right: 10px;
       }
@@ -443,6 +444,102 @@
 
       @media (max-width: 767px) {
 
+        .contact-mobile {
+          padding: 20px;
+          padding-bottom: 70px;
+        }
+
+        .contact__row--top {
+          margin: 0;
+        }
+
+        .contact__col--top-left {
+          flex: 1 1 32%;
+          max-width: 32%;
+          padding: 0;
+        }
+
+        .contact__col--top-right {
+          flex: 1 1 68%;
+          max-width: 68%;
+          padding: 0;
+        }
+
+        .contact__img {
+          margin: 0;
+        }
+
+        .contact__name {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+
+        .contact__section-title {
+          margin-bottom: 0;
+        }
+
+        .contact__work {
+          margin-bottom: 0;
+          font-size: 14px;
+        }
+
+        .contact__since {
+          font-size: 12px;
+        }
+
+        .contact__license {
+          font-size: 12px;
+          margin-bottom: 5px;
+        }
+
+        .btn--refer {
+          background-color: #fff;
+          border: 1px solid #4A90E2;
+          color: #4A90E2;
+          font-size: 12px;
+          padding-left: 10px;
+          padding-right: 10px;
+          line-height: 33px;
+          font-weight: 400;
+        }
+
+        .btn--refer:hover,
+        .btn--refer:focus {
+          background-color: #4A90E2;
+          color: #fff;
+        }
+
+        .contact__line--right {
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+
+        .contact__contacts-link {
+          font-size: 12px;
+        }
+
+        .contact__address {
+          font-size: 14px;
+        }
+
+        .contact__section table {
+          width: 100%;
+          max-width: 415px;
+          margin-bottom: 20px;
+        }
+
+        table tr th {
+          font-size: 12px;
+        }
+
+        table tr td {
+          font-size: 12px;
+        }
+
+        .contact__desc {
+          font-size: 14px;
+        }
+
       }
 
       @media (min-width: 992px) {
@@ -496,9 +593,94 @@
     </template>
 
     <template is="dom-if" if="[[mobile]]">
-      <section class="contact-mobile">
-
-      </section>
+      <main class="contact-mobile">
+        <section class="contact__row contact__row--top">
+          <div class="contact__col contact__col--top-left">
+            <figure class="contact__img">
+              <img src="../images/contact.jpg" height="90" width="90" alt="contact">
+            </figure>
+          </div>
+          <div class="contacts__col contact__col--top-right">
+            <h1 class="contact__name">Susan Frazier</h1>
+            <div class="contact__row">
+              <div class="contact__col">
+                <b class="contact__section-title">RELATIONSHIP</b>
+                <b class="contact__work">Sister In-law</b>
+              </div>
+              <div class="contact__col">
+                <div class="contact__since">
+                  Added: May 3, 2018
+                </div>
+                <div class="contact__license">Referred: Not Yet</div>
+                <button class="btn btn--refer">Refer Now</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="contact__line contact__line--right"></div>
+        <section class="contact__section">
+          <div class="contact__row">
+            <div class="contact__col">
+              <ul class="contact__contacts">
+                <li><a href="mailto:sue_frazier@verna.ca" class="contact__contacts-link">
+                  <iron-icon icon="netlaw-icons:email"></iron-icon>
+                  sue_frazier@verna.ca</a>
+                </li>
+                <li><a href="tel:689-892-1154" class="contact__contacts-link">
+                  <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                  689-892-1154</a>
+                </li>
+                <li><a href="tel:689-892-5629" class="contact__contacts-link">
+                  <iron-icon icon="netlaw-icons:mobile"></iron-icon>
+                  689-892-5629</a>
+                </li>
+                <li><a href="www.susanfrazier.com" class="contact__contacts-link">
+                  <iron-icon icon="netlaw-icons:web"></iron-icon>
+                  www.susanfrazier.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="contact__col">
+              <address class="contact__address">#12345 Bumpy Rd.<br>New York, NY 50679</address>
+            </div>
+          </div>
+        </section>
+        <div class="contact__section">
+          <b class="contact__section-title">FILES SHARED</b>
+          <table>
+            <thead>
+            <tr>
+              <th></th>
+              <th>Shared</th>
+              <th>Viewed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Legal Document 1</td>
+              <td>03/06/2018</td>
+              <td>Yes (05/06/2018)</td>
+            </tr>
+            <tr>
+              <td>Legal Document 2</td>
+              <td>03/06/2018</td>
+              <td>Yes (05/06/2018)</td>
+            </tr>
+            <tr>
+              <td>Legal Document 3</td>
+              <td>03/06/2018</td>
+              <td>No</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="contact__section">
+          <b class="contact__section-title">COMMENTS</b>
+          <p class="contact__desc">
+            In the event that something happens to me, Susan is the godmother of my children and should take sole
+            custody in the event me and my spouse are deceased or incapacitated.</p>
+        </div>
+      </main>
     </template>
 
 
@@ -636,17 +818,17 @@
           }
 
           open() {
-                  this.dispatchEvent(new CustomEvent('menu-changed', {
-                      bubbles: true,
-                      composed: true,
-                      detail: {full: true, menu: this.$.menu}
-                  }));
+              this.dispatchEvent(new CustomEvent('menu-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {full: true, menu: this.$.menu}
+              }));
 
-                  this.dispatchEvent(new CustomEvent('drawer-changed', {
-                      bubbles: true,
-                      composed: true,
-                      detail: {opened: false}
-                  }));
+              this.dispatchEvent(new CustomEvent('drawer-changed', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {opened: false}
+              }));
 
 
           }
