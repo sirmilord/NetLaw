@@ -400,6 +400,7 @@
 
       .attorney__col {
         flex: 1 1 50%;
+        max-width: 50%;
         padding-left: 10px;
         padding-right: 10px;
       }
@@ -497,6 +498,123 @@
         }
       }
 
+      @media (max-width: 767px) {
+        .attorney-mobile {
+          padding: 20px 20px 70px;
+        }
+
+        .attorney__top {
+          display: flex;
+        }
+
+        .attorney__top-left {
+          flex: 1 1 32%;
+          max-width: 32%;
+        }
+
+        .attorney__top-right {
+          flex: 1 1 68%;
+          max-width: 68%;
+        }
+
+        .attorney__img {
+          margin: 0;
+          display: flex;
+          margin-bottom: 5px;
+        }
+
+        .rating {
+          --iron-icon-width: 16px;
+          --iron-icon-height: 16px;
+          display: flex;
+          margin-left: 5px;
+        }
+
+        .attorney__name {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+
+        .attorney__section-title {
+          margin-bottom: 4px;
+        }
+
+        .attorney__work {
+          font-size: 12px;
+          margin-bottom: 8px;
+        }
+
+        .btn--feedback {
+          font-size: 12px;
+          border: 1px solid #4A90E2;
+          padding-left: 10px;
+          padding-right: 10px;
+          color: #4A90E2;
+          background-color: #fff;
+          line-height: 33px;
+        }
+
+        .btn--feedback:hover,
+        .btn--feedback:focus {
+          color: #fff;
+          background-color: #4A90E2;
+        }
+
+        .attorney__since {
+          font-size: 12px;
+        }
+
+        .attorney__license {
+          font-size: 12px;
+        }
+
+        .attorney__line--right {
+          margin-top: 5px;
+          margin-bottom: 20px;
+        }
+
+        .attorney__contacts-link {
+          font-size: 12px;
+        }
+
+        .attorney__address {
+          font-size: 14px;
+          text-align: center;
+        }
+
+        .social {
+          margin-top: 40px;
+        }
+
+        .social__link {
+          width: 30px;
+          height: 30px;
+        }
+
+        .attorney__desc {
+          font-size: 14px;
+          margin-top: 6px;
+          margin-bottom: 20px;
+        }
+
+        .attorney__section table {
+          width: 330px;
+          margin-bottom: 20px;
+        }
+
+        table tr th {
+          font-size: 12px;
+        }
+
+        table tr td {
+          font-size: 12px;
+        }
+
+        table tr td:first-child {
+          font-size: 12px;
+        }
+      }
+
 
     </style>
 
@@ -509,15 +627,163 @@
         Back
       </a>
       <h3 class="lifevault__header">Attorney Details</h3>
-      <iron-icon></iron-icon>
-      <iron-icon></iron-icon>
+      <paper-icon-button class="attorney__paper-button" icon="netlaw-icons:close"
+                         on-click=""></paper-icon-button>
     </template>
 
     <template is="dom-if" if="[[mobile]]">
 
-      <section class="contact-mobile">
+      <main class="attorney-mobile">
+        <section class="attorney__top">
+          <div class="attorney__top-left">
+            <figure class="attorney__img">
+              <img src="../images/attorney.jpg" height="90" width="90" alt="attorney">
+            </figure>
+            <div class="rating">
+              <netlaw-star-rating rate="5" read-only></netlaw-star-rating>
+            </div>
+          </div>
+          <div class="attorney__top-right">
+            <h1 class="attorney__name">Joshua Simmons</h1>
 
-      </section>
+            <div class="attorney__row">
+              <div class="attorney__col">
+                <b class="attorney__section-title">PRACTICE INFO</b>
+                <b class="attorney__work">Inter Vivos, PLLC</b>
+                <button class="btn btn--feedback" href="javascript:;">View Feadback</button>
+              </div>
+              <div class="attorney__col">
+                <div class="attorney__since">
+                  Practicing since: 2013
+                </div>
+                <div class="attorney__license">
+                  Licensed in: Not Yet
+                </div>
+                <div class="attorney__license">
+                  Licensed in: UT, AZ, CA, NV, WA
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <div class="attorney__line attorney__line--right"></div>
+        <section class="attorney__section">
+          <div class="attorney__row">
+            <div class="attorney__col">
+              <ul class="attorney__contacts">
+                <li><a href="mailto:toni.bruen@cleora.ca" class="attorney__contacts-link">
+                  <iron-icon icon="netlaw-icons:email"></iron-icon>
+                  toni.bruen@cleora.ca</a>
+                </li>
+                <li><a href="tel:689-892-7856" class="attorney__contacts-link">
+                  <iron-icon icon="netlaw-icons:phone"></iron-icon>
+                  689-892-7856</a>
+                </li>
+                <li><a href="tel:689-892-1234" class="attorney__contacts-link">
+                  <iron-icon icon="netlaw-icons:mobile"></iron-icon>
+                  689-892-1234</a>
+                </li>
+                <li><a href="http://www.intervivos.com" class="attorney__contacts-link">
+                  <iron-icon icon="netlaw-icons:web"></iron-icon>
+                  www.intervivos.com</a>
+                </li>
+              </ul>
+            </div>
+            <div class="attorney__col">
+              <address class="attorney__address">#12345 Center St.<br> Orem, Utah 50679</address>
+              <nav class="social">
+                <a href="http://facebook.com" class="social__link">
+                  <iron-icon icon="netlaw-icons:facebook"></iron-icon>
+                </a>
+                <a href="http://twitter.com" class="social__link">
+                  <iron-icon icon="netlaw-icons:twitter"></iron-icon>
+                </a>
+                <a href="http://linkedin.com" class="social__link">
+                  <iron-icon icon="netlaw-icons:linkedin"></iron-icon>
+                </a>
+              </nav>
+            </div>
+          </div>
+        </section>
+        <section class="attorney__section">
+          <b class="attorney__section-title">ABOUT ATTORNEY</b>
+          <p class="attorney__desc">Inter Vivos is a specialty law firm focusing on estate planning for your
+            specific
+            needs. From NFA Gun Trusts to Comprehensive Trust Plans for Professionals, we can help you and your
+            family
+            with your individual probate/ estate planning needs. Let Us Earn Your Family's Trust!</p>
+        </section>
+        <section class="attorney__section">
+          <b class="attorney__section-title">EDUCATION</b>
+          <p class="attorney__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern
+            California,
+            B.A.</p>
+        </section>
+        <section class="attorney__section">
+          <b class="attorney__section-title">PROFESSIONAL ACTIVITIES</b>
+          <p class="attorney__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
+            Justice * 2011 - American Bar Association, Real Property, Trust and Estate Law Section * 2011 </p>
+        </section>
+        <section class="attorney__section">
+          <b class="attorney__section-title">GENERAL SERVICES</b>
+          <table>
+            <thead>
+            <tr>
+              <th></th>
+              <th>Standard Fees</th>
+              <th>Members Pay</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Document Review</td>
+              <td>$150</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>New Consultation</td>
+              <td>$150</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Hourly Rate</td>
+              <td>$300</td>
+              <td>$200</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="attorney__section">
+          <b class="attorney__section-title">FIXED PRICE DOCUMENTS</b>
+          <table>
+            <thead>
+            <tr>
+              <th></th>
+              <th>Members Pay</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Revocable Living Trust</td>
+              <td>$750</td>
+            </tr>
+            <tr>
+              <td>Irrevocable Life Insurance Trust</td>
+              <td>$1000</td>
+            </tr>
+            <tr>
+              <td>Grantor Retained Annuity Trust</td>
+              <td>$1000</td>
+            </tr>
+            <tr>
+              <td>IRA TRUST</td>
+              <td>$1000</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
 
     </template>
 
@@ -542,11 +808,7 @@
               <img src="../images/attorney.jpg" height="160" width="160" alt="attorney">
             </figure>
             <div class="rating">
-              <iron-icon icon="icons:star"></iron-icon>
-              <iron-icon icon="icons:star"></iron-icon>
-              <iron-icon icon="icons:star"></iron-icon>
-              <iron-icon icon="icons:star"></iron-icon>
-              <iron-icon icon="icons:star"></iron-icon>
+              <netlaw-star-rating rate="5" read-only></netlaw-star-rating>
             </div>
             <a class="attorney__link" href="javascript:;">View Feadback</a>
             <button class="btn btn--primary">Leave Review</button>
@@ -592,10 +854,10 @@
                   <button class="btn btn--unbordered">Revise Search</button>
                 </div>
               </div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">PRACTICE INFORMATION</b>
                 <b class="attorney__work">Inter Vivos, PLLC</b>
-              </div>
+              </section>
               <div class="attorney__row">
                 <div class="attorney__col">
                   <address class="attorney__address">#12345 Center St.<br> Orem, Utah 50679</address>
@@ -610,29 +872,29 @@
                 </div>
               </div>
               <div class="attorney__line attorney__line--right"></div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">ABOUT ATTORNEY</b>
                 <p class="attorney__desc">Inter Vivos is a specialty law firm focusing on estate planning for your
                   specific
                   needs. From NFA Gun Trusts to Comprehensive Trust Plans for Professionals, we can help you and your
                   family
                   with your individual probate/ estate planning needs. Let Us Earn Your Family's Trust!</p>
-              </div>
+              </section>
               <div class="attorney__line attorney__line--right"></div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">EDUCATION</b>
                 <p class="attorney__desc">*2013 - Brigham Young University, J.D. * 2010 - University of Southern
                   California,
                   B.A.</p>
-              </div>
+              </section>
               <div class="attorney__line attorney__line--right"></div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">PROFESSIONAL ACTIVITIES</b>
                 <p class="attorney__desc">* 2013 - Utah State Bar, Estate Planning Section * 2012 - Utah Association for
                   Justice * 2011 - American Bar Association, Real Property, Trust and Estate Law Section * 2011 </p>
-              </div>
+              </section>
               <div class="attorney__line attorney__line--right"></div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">GENERAL SERVICES</b>
                 <table>
                   <thead>
@@ -660,9 +922,9 @@
                   </tr>
                   </tbody>
                 </table>
-              </div>
+              </section>
               <div class="attorney__line attorney__line--right"></div>
-              <div class="attorney__section">
+              <section class="attorney__section">
                 <b class="attorney__section-title">FIXED PRICE DOCUMENTS</b>
                 <table>
                   <thead>
@@ -690,7 +952,7 @@
                   </tr>
                   </tbody>
                 </table>
-              </div>
+              </section>
             </div>
           </div>
         </div>
