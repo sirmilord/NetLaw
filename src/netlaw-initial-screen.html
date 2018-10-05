@@ -176,18 +176,21 @@
               this.dispatchEvent(new CustomEvent('menu-changed', {
                   bubbles: true,
                   composed: true,
-                  detail: { full: false, menu: this.$.menu}
+                  detail: { full: false, menu: this.$.menu }
               }));
 
               this.dispatchEvent(new CustomEvent('drawer-changed', {
                   bubbles: true,
                   composed: true,
-                  detail: {opened: true}
+                  detail: { opened: true }
               }));
           }
 
           onNavigateNotification(e) {
-              this.dispatchEvent(new CustomEvent('mobile-notification', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('mobile-notification', {
+                  bubbles: true,
+                  composed: true
+              }));
           }
       }
 

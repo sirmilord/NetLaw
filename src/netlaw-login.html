@@ -3,15 +3,11 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/paper-password-input/paper-password-input.html">
-<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 
 <link rel="import" href="netlaw-icons.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="netlaw-login">
-  <!-- Defines the element's style and local DOM -->
   <template>
     <style is="custom-style" include="iron-flex iron-flex-factors"></style>
     <style include="shared-styles">
@@ -94,7 +90,7 @@
           min-height: fit-content;
         }
 
-        .login__row.login__margin-top-big  hr {
+        .login__row.login__margin-top-big hr {
           display: none;
         }
 
@@ -103,7 +99,8 @@
     </style>
 
     <app-header-layout fullbleed="" narrow="{{narrow}}">
-      <app-header  slot="header" condenses="" reveals="" effects="waterfall">
+
+      <app-header slot="header" condenses="" reveals="" effects="waterfall">
         <app-toolbar class="navbar navbar--login">
           <netlaw-logo></netlaw-logo>
         </app-toolbar>
@@ -115,6 +112,7 @@
 
             <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
 
+              <!-- Login-->
               <div name="signin" login>
                 <h1>Login to your Account</h1>
                 <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
@@ -130,29 +128,35 @@
                     <div class="login__margin ">
                       <label for="login-name"></label>
                       <input type="text" class="login__input" id="login-name" name="identifier" placeholder="Username*"
-                             required autofocus autocomplete="username" value="{{identifier::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                             required autofocus autocomplete="username" value="{{identifier::input}}"
+                             invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
                     </div>
                     <div class="login__margin">
                       <label for="login-pass"></label>
-                      <input type="password" class="login__input" id="login-pass" name="password" placeholder="Password*"
-                             autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
-                      <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
+                      <input type="password" class="login__input" id="login-pass" name="password"
+                             placeholder="Password*"
+                             autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}"
+                             error-message="{{error}}" disabled="[[loading]]">
+                      <span class="login__error" hidden$="[[!error]]">[[error]]</span>
                     </div>
                     <div class="login__margin-top">
-                      <a href="javascript:;" class="login_link" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
+                      <a href="javascript:;" class="login_link" name="pass-reset" on-click="_onNavigate">Forgot Your
+                        Password?</a>
                     </div>
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
-                      <button class="btn btn-primary" on-click="onSignIn">Login</button>
+                      <button class="btn btn-primary" on-click="_onSignIn">Login</button>
                     </div>
                   </form>
                 </div>
-                <p class="login__margin">Don’t have an account? <a href="javascript:;" class="login_link" name="create-account" on-click="onNavigate">Request
+                <p class="login__margin">Don’t have an account? <a href="javascript:;" class="login_link"
+                                                                   name="create-account" on-click="_onNavigate">Request
                   One</a>
                 </p>
 
               </div>
 
+              <!-- Create Account-->
               <div name="create-account" login>
 
                 <h1>Create your NetLaw Account</h1>
@@ -162,40 +166,51 @@
                     <div class="login__margin ">
                       <label for="register-name"></label>
                       <input type="text" id="register-name" class="login__input" name="name" placeholder="Your name *"
-                             required autofocus autocomplete="name" value="{{name::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                             required autofocus autocomplete="name" value="{{name::input}}" invalid$="{{error}}"
+                             error-message="{{error}}" disabled="[[loading]]">
                     </div>
                     <div class="login__margin ">
                       <label for="register-email"></label>
-                      <input type="text" id="register-email"class="login__input" name="email" placeholder="Your email address *"
-                             required autofocus autocomplete="email" value="{{email::input}}" invalid$="{{error}}" error-message="{{error}}"  disabled="[[loading]]">
+                      <input type="text" id="register-email" class="login__input" name="email"
+                             placeholder="Your email address *"
+                             required autofocus autocomplete="email" value="{{email::input}}" invalid$="{{error}}"
+                             error-message="{{error}}" disabled="[[loading]]">
                     </div>
                     <div class="login__margin">
                       <label for="register-pass"></label>
-                      <input type="password" id="register-pass" class="login__input" name="password" placeholder="Password *"
-                             autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+                      <input type="password" id="register-pass" class="login__input" name="password"
+                             placeholder="Password *"
+                             autofocus value="{{password::input}}" invalid$="{{error}}" error-message="{{error}}"
+                             disabled="[[loading]]">
                     </div>
                     <div class="login__margin">
                       <label for="confirm-password"></label>
-                      <input type="password" id="confirm-password" class="login__input" name="confirm_password" placeholder="Confirm Password *"
-                             autofocus value="{{confirm_password::input}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]">
+                      <input type="password" id="confirm-password" class="login__input" name="confirm_password"
+                             placeholder="Confirm Password *"
+                             autofocus value="{{confirm_password::input}}" invalid$="{{error}}"
+                             error-message="{{error}}" disabled="[[loading]]">
                     </div>
                     <div class="login__margin-top">
-                      <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong><a href="javascript:;" name="pass-reset" on-click="onNavigate">Terms of Use</a></strong>
+                      <paper-checkbox checked="{{agreesWithTerms}}">I acknowledge and agree to <strong><a
+                          href="javascript:;" name="pass-reset" on-click="_onNavigate">Terms of Use</a></strong>
                       </paper-checkbox>
                     </div>
-                    <span  class="login__error" hidden$="[[!error]]">[[error]]</span>
+                    <span class="login__error" hidden$="[[!error]]">[[error]]</span>
                     <hr class="login__divider-small">
                     <div class="login__margin">
-                      <button class="btn btn-primary" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Create Account</button>
+                      <button class="btn btn-primary" disabled="[[!canCreateAccount]]" on-click="_onCreateAccount">Create
+                        Account
+                      </button>
                     </div>
                     <div class="login__margin">
-                      <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
+                      <button class="btn btn-cancel" name="signin" on-click="_onNavigate">Cancel</button>
                     </div>
                   </form>
                 </div>
 
               </div>
 
+              <!-- Password Reset-->
               <div name="pass-reset">
                 <h1>Password Reset</h1>
                 <h3>Which was the email address of your account?</h3>
@@ -207,14 +222,15 @@
                   </div>
                   <hr class="login__divider-small">
                   <div class="login__margin">
-                    <button class="btn btn-primary" name="pass-confirm" on-click="onNavigate">Send My Link</button>
+                    <button class="btn btn-primary" name="pass-confirm" on-click="_onNavigate">Send My Link</button>
                   </div>
                   <div class="login__margin">
-                    <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
+                    <button class="btn btn-cancel" name="signin" on-click="_onNavigate">Cancel</button>
                   </div>
                 </form>
               </div>
 
+              <!-- Password Reset Confirmation-->
               <div name="pass-confirm">
                 <h1>Password Reset</h1>
                 <h3>Your recovery link has been sent.</h3>
@@ -224,19 +240,22 @@
                   <button class="btn btn-primary">Resend Link</button>
                 </div>
                 <div class="login__margin">
-                  <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
-                  <p class="login__margin"><a href="javascript:;" name="new-pass" on-click="onNavigate">New Password Setup</a>
+                  <button class="btn btn-cancel" name="signin" on-click="_onNavigate">Cancel</button>
+                  <p class="login__margin"><a href="javascript:;" name="new-pass" on-click="_onNavigate">New Password
+                    Setup</a>
                   </p>
                 </div>
               </div>
 
+              <!-- New Password Setup-->
               <div name="new-pass">
                 <h1>New Password Setup</h1>
                 <h3>What would you like your new password to be?</h3>
                 <form action="javascript:;" method="post" class="login-form login__align-center">
                   <div class="login__margin ">
                     <label for="new-password"></label>
-                    <input type="password" class="login__input" id="new-password" name="new-pass" placeholder="New Password*"
+                    <input type="password" class="login__input" id="new-password" name="new-pass"
+                           placeholder="New Password*"
                            required="">
                   </div>
                   <div class="login__margin">
@@ -249,39 +268,42 @@
                     <button class="btn btn-primary">Save New Password</button>
                   </div>
                   <div class="login__margin">
-                    <button class="btn btn-cancel" name="signin" on-click="onNavigate">Cancel</button>
+                    <button class="btn btn-cancel" name="signin" on-click="_onNavigate">Cancel</button>
                   </div>
                 </form>
               </div>
 
+              <!-- Security Settings-->
               <div name="security">
-                <button class="btn btn--back-dash btn--position" name="signin" on-click="onNavigate">
+                <button class="btn btn--back-dash btn--position" name="signin" on-click="_onNavigate">
                   <iron-icon icon="netlaw-icons:back"></iron-icon>
                   Back to Previous
                 </button>
                 <h1>Login Security Settings</h1>
                 <h3>Would you like to change or add login credentials?</h3>
                 <p class="login__margin">Username: robkerr2004@hotmail.com</p>
-                <p class="login__horizontal"><a href="javascript:;" name="new-pass" on-click="onNavigate">Change Password</a> | <a
+                <p class="login__horizontal"><a href="javascript:;" name="new-pass" on-click="_onNavigate">Change
+                  Password</a> | <a
                     href="javascript:;">Remove Login Method</a></p>
                 <hr class="login__divider">
                 <p class="login__margin">
-                  <button class="btn btn-yellow" name="method" on-click="onNavigate">Add Login Method</button>
+                  <button class="btn btn-yellow" name="method" on-click="_onNavigate">Add Login Method</button>
                 </p>
                 <div class="login__margin-top-big">
                   <h3>Would you like to add or change a security device?</h3>
                   <hr class="login__divider">
                   <p class="login__margin">
-                    <button class="btn btn-yellow" name="secure" on-click="onNavigate">Add a Security Device</button>
+                    <button class="btn btn-yellow" name="secure" on-click="_onNavigate">Add a Security Device</button>
                   </p>
                   <p class="login__padding">
-                    <button class="btn btn-primary" name="singin" on-click="onNavigate">Continue</button>
+                    <button class="btn btn-primary" name="singin" on-click="_onNavigate">Continue</button>
                   </p>
                 </div>
               </div>
 
+              <!-- Choose Security Method-->
               <div name="secure">
-                <button class="btn btn--back-dash btn--position" name="security" on-click="onNavigate">
+                <button class="btn btn--back-dash btn--position" name="security" on-click="_onNavigate">
                   <iron-icon icon="netlaw-icons:back"></iron-icon>
                   Back to Security Settings
                 </button>
@@ -294,16 +316,16 @@
                       Note: You will be required to download an app. </p>
                     <hr class="login__divider-small">
                     <p class="login__margin">
-                      <button class="btn btn-primary" name="mobile" on-click="onNavigate">Secure with Mobile</button>
+                      <button class="btn btn-primary" name="mobile" on-click="_onNavigate">Secure with Mobile</button>
                     </p>
                   </div>
                   <div class="login__item login__item--third">
                     <iron-icon icon="netlaw-icons:secure-sms"></iron-icon>
                     <p class="login__item-desc login__margin">Receieve an SMS message security code on your phone.
-                      Note: Any celluar phone will work.</p>
+                      Note: Any cellular phone will work.</p>
                     <hr class="login__divider-small">
                     <p class="login__margin">
-                      <button class="btn btn-primary" name="sms" on-click="onNavigate">Secure with SMS</button>
+                      <button class="btn btn-primary" name="sms" on-click="_onNavigate">Secure with SMS</button>
                     </p>
                   </div>
                   <div class="login__item login__item--third">
@@ -312,18 +334,19 @@
                       email inbox. </p>
                     <hr class="login__divider-small">
                     <p class="login__margin">
-                      <button class="btn btn-primary" name="email" on-click="onNavigate">Secure with Email</button>
+                      <button class="btn btn-primary" name="email" on-click="_onNavigate">Secure with Email</button>
                     </p>
                   </div>
                   <div class="login__item login__margin-top-big">
                     <hr class="login__divider">
                     <p class="login__margin">
-                      <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
+                      <button class="btn btn--cancel-bordered" name="security" on-click="_onNavigate">Cancel</button>
                     </p>
                   </div>
                 </div>
               </div>
 
+              <!-- Add New Login Method-->
               <div name="method">
                 <h1>Add New Login Method</h1>
                 <div class="login-buttons">
@@ -338,29 +361,33 @@
                     <div class="login__margin ">
                       <label for="login-name-new"></label>
                       <input type="text" class="login__input" id="login-name-new" name="login" placeholder="Username*"
-                             required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]">
+                             required autofocus autocomplete="username" value="{{identifier}}" invalid$="{{error}}"
+                             error-message="{{error}}" on-keydown="" disabled="[[loading]]">
                     </div>
                     <div class="login__margin">
                       <label for="login-pass-new"></label>
-                      <input type="password" class="login__input" id="login-pass-new" name="pass" placeholder="Password*"
+                      <input type="password" class="login__input" id="login-pass-new" name="pass"
+                             placeholder="Password*"
                              required>
                     </div>
                     <div class="login__margin-top">
-                      <a href="javascript:;" name="pass-reset" on-click="onNavigate">Forgot Your Password?</a>
+                      <a href="javascript:;" name="pass-reset" on-click="_onNavigate">Forgot Your Password?</a>
                     </div>
                     <hr class="login__divider-small">
                     <div class="login__margin-bottom">
-                      <button class="btn btn-primary" on-click="onSignIn" >Login</button>
+                      <button class="btn btn-primary" on-click="_onSignIn">Login</button>
                     </div>
                   </form>
                 </div>
-                <p class="login__margin">Don’t have an account? <a href="javascript:;" name="create-account" on-click="onNavigate">Request
+                <p class="login__margin">Don’t have an account? <a href="javascript:;" name="create-account"
+                                                                   on-click="_onNavigate">Request
                   One</a>
                 </p>
               </div>
 
+              <!-- Secure with Mobile-->
               <div name="mobile">
-                <button class="btn btn--back-dash btn--position" name="security" on-click="onNavigate">
+                <button class="btn btn--back-dash btn--position" name="security" on-click="_onNavigate">
                   <iron-icon icon="netlaw-icons:back"></iron-icon>
                   Back to Security Settings
                 </button>
@@ -385,13 +412,14 @@
                     <button class="btn btn-primary">Atttach Authenticator</button>
                   </div>
                   <div class="login__margin-bottom">
-                    <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
+                    <button class="btn btn--cancel-bordered" name="security" on-click="_onNavigate">Cancel</button>
                   </div>
                 </form>
               </div>
 
+              <!-- Secure with SMS-->
               <div name="sms">
-                <button class="btn btn--back-dash btn--position" name="security" on-click="onNavigate">
+                <button class="btn btn--back-dash btn--position" name="security" on-click="_onNavigate">
                   <iron-icon icon="netlaw-icons:back"></iron-icon>
                   Back to Security Settings
                 </button>
@@ -423,13 +451,14 @@
                     <button class="btn btn-primary">Attach</button>
                   </div>
                   <div class="login__margin-bottom">
-                    <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
+                    <button class="btn btn--cancel-bordered" name="security" on-click="_onNavigate">Cancel</button>
                   </div>
                 </form>
               </div>
 
+              <!-- Secure with Email-->
               <div name="email">
-                <button class="btn btn--back-dash btn--position" name="security" on-click="onNavigate">
+                <button class="btn btn--back-dash btn--position" name="security" on-click="_onNavigate">
                   <iron-icon icon="netlaw-icons:back"></iron-icon>
                   Back to Security Settings
                 </button>
@@ -461,7 +490,7 @@
                     <button class="btn btn-primary">Attach</button>
                   </div>
                   <div class="login__margin-bottom">
-                    <button class="btn btn--cancel-bordered" name="security" on-click="onNavigate">Cancel</button>
+                    <button class="btn btn--cancel-bordered" name="security" on-click="_onNavigate">Cancel</button>
                   </div>
                 </form>
               </div>
@@ -482,10 +511,13 @@
           static get properties() {
               return {
 
-                  loading: { type: Boolean, value: false, observer: '_loadingChanged' },
-                  selected: { type: String, value: "signin", observer: '_selectedChanged' },
+                  loading: {type: Boolean, value: false, observer: '_loadingChanged'},
+                  selected: {type: String, value: "signin", observer: '_selectedChanged'},
 
-                  identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
+                  identifier: {
+                      type: String,
+                      value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com"
+                  },
 
                   email: String,
                   phone: String,
@@ -500,24 +532,24 @@
               super();
           }
 
-          onNavigate(e) {
-              // add different background on 5 Login Security Screens
-              if ( e.currentTarget.attributes.name.value === 'security') {
+          _onNavigate(e) {
+              // add no-logo background on 5 Security Screens
+              if (e.currentTarget.attributes.name.value === 'security') {
                   this.$.wrapper.classList.add('login--security');
               }
 
-              if ( e.currentTarget.attributes.name.value === 'method') {
+              if (e.currentTarget.attributes.name.value === 'method') {
                   this.$.wrapper.classList.remove('login--security');
               }
 
-              if ( e.currentTarget.attributes.name.value === 'signin') {
+              if (e.currentTarget.attributes.name.value === 'signin') {
                   this.$.wrapper.classList.remove('login--security');
               }
 
               this.selected = e.currentTarget.attributes.name.value;
           }
 
-          onSignIn(e) {
+          _onSignIn(e) {
               this.loading = true;
               this.error = null;
 
@@ -530,15 +562,19 @@
                       return this._fetchProfiles()
                           .then(() => this.password = null);
                   })
-                  .badRequest(ex => { this.error = "Please specify your email or phone"; })
+                  .badRequest(ex => {
+                      this.error = "Please specify your email or phone";
+                  })
                   .notFound(ex => this.error = "Wrong username or password. Try again or try resetting it.")
-                  .serverError(ex => { this.error = "Server error please try again."; })
+                  .serverError(ex => {
+                      this.error = "Server error please try again.";
+                  })
                   .finally(() => this.loading = false);
           }
 
-          onCreateAccount(e) {
+          _onCreateAccount(e) {
 
-              if(this.password !== this.confirm_password) {
+              if (this.password !== this.confirm_password) {
                   this.error = "Passwords don't match. Please try again.";
               }
 
@@ -547,24 +583,24 @@
                   this.loading = true;
 
                   api.accounts.createAccount(this.email, this.password, this.name, this.email, this.phone)
-                  .success(r => {
-                      //this.selected = "security"; //go to security settings
-                      this.accountId = r.user_id;
-                      this.accountName = r.name;
-                      return api.accounts.login(this.email, this.password)
-                          .success(r => {
-                              api.ticket = r.ticket;
-                              this.ticket = r.ticket;
-                              this.username = r.username;
-                              this.session_id = r.session_id;
-                              this.account_id = r.account_id;
-                              this.dispatchEvent(new CustomEvent("logged-in"));
-                          });
-                  })
-                  .error(ex => {
-                      this.error = ex.message;
-                  })
-                  .finally(() => this.loading = false);
+                      .success(r => {
+                          //this.selected = "security"; //go to security settings
+                          this.accountId = r.user_id;
+                          this.accountName = r.name;
+                          return api.accounts.login(this.email, this.password)
+                              .success(r => {
+                                  api.ticket = r.ticket;
+                                  this.ticket = r.ticket;
+                                  this.username = r.username;
+                                  this.session_id = r.session_id;
+                                  this.account_id = r.account_id;
+                                  this.dispatchEvent(new CustomEvent("logged-in"));
+                              });
+                      })
+                      .error(ex => {
+                          this.error = ex.message;
+                      })
+                      .finally(() => this.loading = false);
               }
           }
 
