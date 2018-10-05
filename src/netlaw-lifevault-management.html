@@ -728,6 +728,7 @@
 
         .lifevault__module-body {
           padding: 5px;
+          padding-bottom: 25px;
         }
 
         .lifevault__name {
@@ -741,11 +742,24 @@
         .lifevault__details {
           color: #01AA50;
           font-size: 14px;
+          padding: 0;
         }
 
         .lifevault__details iron-icon {
           --iron-icon-height: 20px;
           --iron-icon-width: 20px;
+        }
+
+        .lifevault__module-footer .btn--charm {
+          --iron-icon-height: 11px;
+          --iron-icon-width: 11px;
+          margin-right: auto;
+          margin-left: auto;
+        }
+
+        .lifevault__charm iron-icon {
+          --iron-icon-height: 11px;
+          --iron-icon-width: 11px;
         }
       }
 
@@ -812,15 +826,15 @@
                             <iron-icon icon="{{file.icon}}"></iron-icon>
                           </a>
                         </figure>
-                        <a href="javascript:;" class="btn btn--charm btn--hide">
-                          <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                        </a>
                       </div>
                       <div class="lifevault__module-footer">
                         <a class="lifevault__footer-link" href="{{file.link}}">
                           <span class="lifevault__name">[[file.name]]</span>
                         </a>
                         <span class="lifevault__module-update">[[file.mstatus]]</span>
+                        <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
+                          <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                        </a>
                         <button class="lifevault__details" on-click="_onToggleDropdown">v1.1
                           <iron-icon icon="icons:expand-more"></iron-icon>
                           <iron-dropdown horizontal-align="right">
@@ -830,7 +844,7 @@
                               <template is="dom-repeat" items="{{file.versions}}" as="version">
 
                                 <li>
-                                  <a href="javascript:;" class="lifevault__charm">
+                                  <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
                                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                                   </a>
                                   <a href="{{version.link}}">
@@ -881,7 +895,7 @@
                       <span class="lifevault__name-desc">[[file.name]]</span>
                     </a>
                     <span class="lifevault__list-update">[[file.status]]</span>
-                    <a href="javascript:;" class="btn btn--charm">
+                    <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
                     <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">v1.1
@@ -893,7 +907,7 @@
                           <template is="dom-repeat" items="{{file.versions}}" as="version">
 
                             <li>
-                              <a href="javascript:;" class="lifevault__charm">
+                              <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
                                 <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                               </a>
                               <a href="[[rootPath]]lifevault/doc">
@@ -1005,7 +1019,7 @@
                             <iron-icon icon="{{file.icon}}"></iron-icon>
                           </a>
                         </figure>
-                        <a href="javascript:;" class="btn btn--charm btn--hide">
+                        <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                           <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                         </a>
                       </div>
@@ -1023,7 +1037,7 @@
                               <template is="dom-repeat" items="{{file.versions}}" as="version">
 
                                 <li>
-                                  <a href="javascript:;" class="lifevault__charm">
+                                  <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
                                     <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                                   </a>
                                   <a href="{{version.link}}">
@@ -1067,7 +1081,7 @@
                           <iron-icon icon="{{file.icon}}"></iron-icon>
                         </a>
                       </figure>
-                      <a href="javascript:;" class$="btn btn--charm [[if(item.smartguide, '', 'btn--hide')]]">
+                      <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                         <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                       </a>
                     </div>
@@ -1085,7 +1099,7 @@
                           <template is="dom-repeat" items="{{file.versions}}" as="version">
 
                             <li>
-                              <a href="javascript:;" class="lifevault__charm">
+                              <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
                                 <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                               </a>
                               <a href="{{version.link}}">
@@ -1178,27 +1192,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "true"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "false"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "true"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "false"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "false"
+                                      smartguide: false
                                   },
                               ]
                           },
@@ -1215,27 +1229,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                               ]
                           },
@@ -1252,27 +1266,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                               ]
                           },
@@ -1289,27 +1303,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                               ]
                           },
@@ -1326,27 +1340,27 @@
                                   {
                                       version: "Jan 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Feb 20/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Mar 11/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm lifevault__charm--hide"
+                                      smartguide: true
                                   },
                                   {
                                       version: "Jun 15/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                                   {
                                       version: "Aug 18/18",
                                       link: "lifevault/doc",
-                                      smartguide: "lifevault__charm"
+                                      smartguide: false
                                   },
                               ]
                           }
