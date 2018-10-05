@@ -843,7 +843,47 @@
         }
 
         .file-folder--add-contact {
-          margin-top: 70px;
+          margin-top: 80px;
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .form iron-icon {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 20px;
+        }
+
+        .form legend {
+          font-size: 24px;
+          text-align: center;
+        }
+
+        .form {
+          width: 100%;
+          margin-left: 0;
+          margin-top: 0;
+          padding-bottom: 70px;
+        }
+
+        .file-folder__upload-wrap {
+          width: 117px;
+          height: 117px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 25px;
+        }
+
+        .form fieldset {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .form__line {
+          margin-top: 30px;
+          margin-bottom: 25px;
         }
       }
 
@@ -1240,14 +1280,18 @@
       <div class="overlay"></div>
 
       <template is="dom-if" if="[[mobile]]">
-        <section class="file-folder">
+        <section class="file-folder file-folder--add-contact">
 
           <form class="form" action="javascript:;" method="post">
             <fieldset>
               <legend>
-                <iron-icon class="" icon="netlaw-icons:add-contact-o"></iron-icon>Add NewContact
+                <iron-icon class="" icon="netlaw-icons:add-contact-o"></iron-icon>
+                Add NewContact
               </legend>
-              <paper-image-upload-button icon="netlaw-icons:profile-plus" image="{{uploadImage}}"></paper-image-upload-button>
+              <div class="file-folder__upload-wrap">
+                <paper-image-upload-button icon="netlaw-icons:profile-plus"
+                                           image="{{uploadImage}}"></paper-image-upload-button>
+              </div>
               <div class="form__row">
                 <div class="form__group form__group--half">
                   <label class="label" for="firstname">FIRST NAME</label>
@@ -1259,13 +1303,13 @@
                 </div>
               </div>
               <div class="form__group">
-                <label class="label" for="address">ADDRESS</label>
-                <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
-              </div>
-              <div class="form__group">
                 <label class="label" for="relationship">RELATIONSHIP TO YOU</label>
                 <input type="text" id="relationship" class="input-text"
                        placeholder="i.e. Brother, Cousin, Financial Lawyer">
+              </div>
+              <div class="form__group">
+                <label class="label" for="address">ADDRESS</label>
+                <input type="text" id="address" class="input-text" placeholder="i.e. 1007 Mountain Drive">
               </div>
               <div class="form__row">
                 <div class="form__group form__group--third">
@@ -1283,7 +1327,7 @@
               </div>
               <div class="form__row">
                 <div class="form__group form__group--half">
-                  <label class="label" for="officephone">OFFICE PHONE NUMBER</label>
+                  <label class="label" for="officephone">OFFICE NUMBER</label>
                   <input type="number" id="officephone" class="input-text" placeholder="i.e. 5089685522">
                 </div>
                 <div class="form__group form__group--half">
@@ -1291,16 +1335,14 @@
                   <input type="number" id="mobilenumber" class="input-text" placeholder="i.e. 5089685522">
                 </div>
               </div>
-              <div class="form__row">
-                <div class="form__group form__group--half">
+                <div class="form__group">
                   <label class="label" for="emailaddress">EMAIL ADDRESS</label>
                   <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
                 </div>
-                <div class="form__group form__group--half">
+                <div class="form__group">
                   <label class="label" for="website">WEBSITE</label>
                   <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
                 </div>
-              </div>
               <div class="form__group">
                 <label for="comments" class="label">COMMENTS</label>
                 <textarea rows="3" id="comments" class="input-text input-text--area"
@@ -1308,11 +1350,10 @@
               </div>
               <div class="form__line"></div>
               <div class="form__group form__group--center">
-                <a href="javascript:;" class="btn btn--primary">Save Contact</a>
-                <a href="javascript:;" class="btn btn--next">Save + Add New</a>
+                <button class="btn btn--primary">Update Details</button>
               </div>
               <div class="form__group form__group--center">
-                <a href="javascript:;" class="btn btn--cancel" on-click="_onCancelOverlayClick">Cancel</a>
+                <button class="btn btn--cancel" on-click="_onCancelOverlayClick">Cancel</button>
               </div>
             </fieldset>
           </form>
