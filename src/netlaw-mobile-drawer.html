@@ -12,6 +12,11 @@
         left: 0;
         width: 100%;
         height: var(--netlaw-mobile-drawer-height, 50px);
+        transition: all .5s;
+      }
+
+      :host(.hide) {
+        transform: translateY(var(--netlaw-mobile-drawer-height, 50px));
       }
 
     </style>
@@ -25,11 +30,26 @@
               return 'netlaw-mobile-drawer';
           }
 
+          static get properties() {
+              return {
+                  opened: {
+                      type: Boolean,
+                      value: false,
+                      reflectToAttribute: true,
+                      observer: '_openChanged',
+                  },
+              };
+          }
+
           constructor() {
               super();
           }
 
+          _openChanged(opened) {
+           opened ? this.classList.remove('hide') : this.classList.add('hide')
       }
+      }
+
       customElements.define(NetlawMobileDrawer.is, NetlawMobileDrawer);
   </script>
 

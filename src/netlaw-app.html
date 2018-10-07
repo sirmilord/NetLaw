@@ -618,7 +618,7 @@
 
           </app-header-layout>
 
-          <netlaw-mobile-drawer>
+          <netlaw-mobile-drawer opened="{{drawerOpened}}">
             <div class="drawer-overlay"></div>
             <iron-selector selected="[[page]]" attr-for-selected="name"
                            class="drawer-nav drawer-list drawer-nav--mobile"
@@ -722,7 +722,6 @@
                   loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
                   drawerOpened: {
                       type: Boolean,
-                      //reflectToAttribute: true,
                       value: true,
                   },
                   rootPath: String,
