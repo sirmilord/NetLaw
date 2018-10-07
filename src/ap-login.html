@@ -1,7 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-
 <link rel="import" href="../bower_components/paper-password-input/paper-password-input.html">
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 
@@ -89,6 +88,7 @@
             }
 
             .choose-account-menu-like-trigger .indetifier {
+                text-transform: none;
                 word-break: break-all;
                 flex-grow: 1;
                 padding: 0 16px;
@@ -96,7 +96,6 @@
 
             .choose-account-menu-like-trigger .arrow {
                 flex: 0 0 40px;
-
             }
 
             .choose-account paper-icon-item,
@@ -112,6 +111,41 @@
                 margin-bottom: 12px;
             }
 
+            .title {
+                text-align: center;
+                font-style: normal;
+            }
+
+            .sub-title {
+                margin-top: 0;
+                margin-bottom: 16px;
+                text-align: center;
+            }
+
+            .profile-list {
+                margin: 16px 0;
+            }
+
+            .profile-list > a + a paper-item-body {
+                border-top: 1px solid #ccc;
+            }
+            /*
+            .profile-list > a:last-of-type:after {
+                content:"";
+                display:block;
+                padding:0 16px;
+                margin-top:16px;
+                height:0;
+                border-bottom:1px solid #ccc;
+            }*/
+            .profile-list-item {
+                display: block;
+            }
+
+            .profile-list-item paper-icon-item {
+                padding: 0;
+            }
+
             paper-progress {
                 --paper-progress-active-color: var(--app-primary-color);
                 width: calc(100% + 32px);
@@ -123,32 +157,9 @@
             paper-progress[disabled] {
                 --paper-progress-container-color: transparent;
             }
-
-            /*
-            iron-pages .flex-4,
-            iron-pages .flex-6,
-            iron-pages .flex-8 {
-                flex: 0 1 46%;
-                margin:2%;
-                max-width:none;
-            }*/
-            iron-pages .flex-4,
-            iron-pages .flex-6,
-            iron-pages .flex-8 {
-                flex:6;
-                margin:0;
-                max-width:none;
-            }
-            @media(max-width: 480px) {
-                iron-pages .flex-4,
-                iron-pages .flex-6,
-                iron-pages .flex-8 {
-                    flex:6;
-                    margin:0;
-                    max-width:none;
-                }
-            }
         </style>
+
+        <iron-a11y-keys id="ally" keys="enter" on-keys-pressed="onEnter"></iron-a11y-keys>
 
         <paper-toast id="toast" class="fit-bottom"></paper-toast>
 
@@ -159,44 +170,57 @@
                     <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
 
                     <p class="text-center">
-                        <img class="logo logo-netdraft" src="/images/logo-netdraft.png" alt="NetDraft">
+                        <img class="logo logo-netdraft" src="/images/logo-netdraft.svg" alt="NetDraft">
                         <img class="logo logo-netlaw" src="/images/logo-netlaw.png" alt="NetLaw">
                     </p>
 
                     <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
 
                         <div name="signin" login>
-                            <h1>Sign in</h1>
-                            <p>to continue to NetDraft</p>
+                            <h1 class="title">Sign in</h1>
+                            <p class="sub-title">to continue to NetDraft</p>
 
                             <paper-input class="" label="Email or phone" name="identifier" autocomplete="username" required autofocus value="{{identifier}}" invalid$="{{error}}" error-message="{{error}}" on-keydown="" disabled="[[loading]]"></paper-input>
                             <!--<p class="margin-top-32px">or sign in with</p>
-                            <paper-icon-button icon="ap-icons:google-color" name="google" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
-                            <paper-icon-button icon="ap-icons:facebook" style="color:#3b5998;" name="facebook" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
-                            <paper-icon-button icon="ap-icons:linkedin" style="color:#0077B5;" name="linkedin" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
-                            <paper-icon-button icon="ap-icons:twitter" style="color:#00aced;" name="twitter" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>-->
+                            <paper-icon-button icon="draft:google-color" name="google" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="draft:facebook" style="color:#3b5998;" name="facebook" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="draft:linkedin" style="color:#0077B5;" name="linkedin" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>
+                            <paper-icon-button icon="draft:twitter" style="color:#00aced;" name="twitter" on-click="onSocial" disabled="[[loading]]"></paper-icon-button>-->
 
                             <div class="layout horizontal margin-top-16px">
-                                <div class="flex-6"><paper-button class="flat" name="create-account" on-click="onNavigate" disabled="[[loading]]">Create account</paper-button></div>
-                                <div class="flex-6 text-right"><paper-button class="primary margin-right-0" on-click="onSignIn" disabled="[[loading]]">Next</paper-button></div>
+                                <div class="flex-1"><paper-button class="flat" name="create-account" on-click="onNavigate" disabled="[[loading]]">Create account</paper-button></div>
+                                <div class="flex-1 text-right"><paper-button class="primary margin-right-0 importance-high" on-click="onSignIn" disabled="[[loading]]">Next</paper-button></div>
                             </div>
                         </div>
 
                         <div name="signin-password" login>
-                            <h1>Welcome</h1>
+                            <h1 class="title">Welcome</h1>
 
                             <div class="choose-account-menu-like-trigger">
-                                <iron-icon icon="ap-icons:person" class="icon-people" style="width:24px;"></iron-icon>
-                                <span class="indetifier">[[name]]</span>
-                                <paper-icon-button class="arrow" icon="ap-icons:keyboard-arrow-down" name="signin" on-click="onNavigate" disabled="[[loading]]"></paper-icon-button>
+                                <paper-button disabled="[[loading]]" on-click="onNavigate" name="signin" class="rounded width-100">
+                                    <!--iron-icon icon="draft:person" class="icon-people" style="width:24px;"></iron-icon-->
+                                    <div class="avatar avatar-20px">
+                                        <iron-letter-image style="font-size: .6em;" color="[[accountId]]" text="[[name]]" src="//placehold.it/20x20"></iron-letter-image>
+                                    </div>
+                                    <span class="indetifier">[[name]]</span>
+                                    <iron-icon icon="draft:keyboard-arrow-down" class="arrow" style="width:24px;"></iron-icon>
+                                </paper-button>
+
+                                <!--paper-icon-button class="arrow" icon="draft:keyboard-arrow-down" name="signin" on-click="onNavigate" disabled="[[loading]]"></paper-icon-button-->
                             </div>
 
-                            <p>To continue, first verify it's you</p>
+                            <!--div class="choose-account-menu-like-trigger">
+                                <iron-icon icon="draft:person" class="icon-people" style="width:24px;"></iron-icon>
+                                <span class="indetifier">[[name]]</span>
+                                <paper-icon-button class="arrow" icon="draft:keyboard-arrow-down" name="signin" on-click="onNavigate" disabled="[[loading]]"></paper-icon-button>
+                            </div-->
+
+                            <p class="margin-top-32px margin-bottom-0">To continue, first verify it's you</p>
 
                             <paper-password-input label="Enter your password" name="password" autocomplete="current-password" autofocus value="{{password}}" invalid$="{{error}}" error-message="{{error}}" disabled="[[loading]]"></paper-password-input>
                             <!--<div class="error">Tough luck bro, try again</div>-->
-                            <div class="layout horizontal margin-top-16px">
-                                <div class="flex-12 text-right"><paper-button class="primary margin-right-0" on-click="onSignInNext" disabled="[[loading]]">Next</paper-button></div>
+                            <div class="text-right margin-top-16px">
+                                <paper-button class="primary margin-right-0 importance-high" on-click="onSignInNext" disabled="[[loading]]">Next</paper-button>
                             </div>
                         </div>
 
@@ -220,8 +244,8 @@
 
 
                         <div name="create-account" xwide login>
-                            <h1>Create your NetLaw Account</h1>
-                            <p>to continue to NetDraft</p>
+                            <h1 class="title">Create your NetLaw Account</h1>
+                            <p class="sub-title">to continue to NetDraft</p>
 
                             <paper-input class="" label="Your name" name="name" autocomplete="name" autofocus disabled="[[loading]]" value="{{name}}"></paper-input>
                             <paper-input class="" label="Your email address" name="email" autocomplete="email" disabled="[[loading]]" value="{{email}}"></paper-input>
@@ -233,37 +257,42 @@
                             </div>
 
                             <div class="layout horizontal margin-top-16px">
-                                <div class="flex-6"><paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in instead</paper-button></div>
-                                <div class="flex-6 text-right"><paper-button class="primary margin-right-0" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next</paper-button></div>
+                                <div class="flex-1"><paper-button class="flat" name="signin" disabled="[[loading]]" on-click="onNavigate">Sign in instead</paper-button></div>
+                                <div class="flex-1 text-right"><paper-button class="primary margin-right-0" disabled="[[!canCreateAccount]]" on-click="onCreateAccount">Next</paper-button></div>
                             </div>
                         </div>
 
                         <div name="choose-profile">
-                            <h1 class="margin-bottom-16px">Choose a profile</h1>
+                            <h1 class="title">Choose a profile</h1>
 
-                            <template is="dom-repeat" items="{{profiles}}">
-                                <a href="javascript:;" disabled$="[[loading]]">
-                                    <paper-icon-item disabled="[[loading]]" on-click="onProfileChoice">
-                                        <div class="avatar" slot="item-icon"><iron-icon icon="ap-icons:person"></iron-icon></div>
-                                        <paper-item-body two-line>
-                                            <div>{{item.name}}</div>
-                                            <div secondary>{{item.firm_name}}</div>
-                                        </paper-item-body>
-                                    </paper-icon-item>
-                                </a>
-                            </template>
+                            <div class="profile-list">
+                                <template is="dom-repeat" items="{{profiles}}">
+                                    <a href="javascript:;" class="profile-list-item" disabled$="[[loading]]">
+                                        <paper-icon-item disabled="[[loading]]" on-click="onProfileChoice">
+                                            <div class="avatar avatar-40px" slot="item-icon">
+                                                <iron-letter-image color="[[item.attorney_id]]" text="[[item.name]]" src="//placehold.it/20x20"></iron-letter-image>
+                                            </div>
+                                            <paper-item-body two-line>
+                                                <div>{{item.name}}</div>
+                                                <div secondary>{{item.firm_name}}</div>
+                                            </paper-item-body>
+                                        </paper-icon-item>
+                                    </a>
+                                </template>
+                            </div>
 
-                            <paper-item name="create-profile" disabled="[[loading]]" on-click="onNavigate" class="margin-top-16px">
+                            <!--paper-item name="create-profile" disabled="[[loading]]" on-click="onNavigate" class="margin-top-16px">
                                 <paper-item-body>Create a New Profile</paper-item-body>
-                            </paper-item>
+                            </paper-item-->
 
-                            <div class="layout horizontal margin-top-16px">
-                                <div class="flex-8"><paper-button class="flat" disabled="[[loading]]" on-click="onSignOut">Sign Out</paper-button></div>
+                            <div class="layout horizontal margin-top-32px">
+                                <div class="flex-1"><paper-button class="flat" disabled="[[loading]]" on-click="onSignOut">Sign Out</paper-button></div>
+                                <div class="flex-2 text-right "><paper-button class="flat text-center" disabled="[[loading]]" on-click="onNavigate" name="create-profile">Create a New Profile</paper-button></div>
                             </div>
                         </div>
 
                         <div name="create-profile" wide>
-                            <h1>Create your NetDraft Profile</h1>
+                            <h1 class="title">Create your NetDraft Profile</h1>
 
                             <!--div class="layout horizontal padded margin-top-16px"-->
                             <div class="padded">
@@ -297,10 +326,10 @@
                 </div>
 
                 <div class="layout horizontal align-with-card">
-                    <div class="flex-8">
+                    <div class="flex-2">
                         <!--<span>English (United States) <iron-icon icon="arrow-drop-down"></iron-icon></span>-->
                     </div>
-                    <div class="flex-4 text-right">
+                    <div class="flex-1 text-right">
                         <span>Terms</span>
                         <span>&nbsp;</span>
                         <span>Help</span>
@@ -321,6 +350,7 @@
                     login: { type: Boolean, computed: '_isLogin(selected)', reflectToAttribute: true },
 
                     identifier: { type: String, value: () => localStorage.getItem("name") || "kyle@draft.netlawplatform.com" },
+                    accountId: String,
 
                     email: String,
                     phone: String,
@@ -362,15 +392,21 @@
 
             _loadingChanged(value) {
                 if (value) return; //focus when done loading
-                let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
-                if (elements.length) elements[0].focus();
+                let elements = Array.from(this.shadowRoot.querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+                if (elements.length) {
+                    if (elements[0].nodeName === "PAPER-PASSWORD-INPUT") elements[0].shadowRoot.querySelector("paper-input").focus();
+                    else elements[0].focus();
+                }
             }
 
             _selectedChanged(value) {
                 this.error = null;
                 this.loading = false;
-                let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
-                if (elements.length) elements[0].focus();
+                let elements = Array.from(this.shadowRoot.querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
+                if (elements.length) {
+                    if (elements[0].nodeName === "PAPER-PASSWORD-INPUT") elements[0].shadowRoot.querySelector("paper-input").focus();
+                    else elements[0].focus();
+                }
             }
 
             _setSession(session) {
@@ -394,6 +430,7 @@
                 localStorage.setItem("attorney-name", profile.name);
                 localStorage.setItem("firm-id", profile.firm_id);
                 localStorage.setItem("firm-name", profile.firm_name);
+                api.vault.cell = `attorney:${profile.attorney_id}`;
             }
 
             _fetchProfiles() {
@@ -468,7 +505,7 @@
                     .success(r => {
                         this.selected = "signin-password";
                         //this.identifier = data.identifier;
-                        this.userId = r.user_id;
+                        this.accountId = r.account_id;
                         this.name = r.name;
                     })
                     .badRequest(ex => { this.error = "Please specify your email or phone"; })
@@ -482,7 +519,7 @@
                 this.loading = true;
                 this.error = null;
 
-                api.accounts.login(this.identifier, this.password, this.name, this.phone)
+                api.accounts.login(this.identifier, this.password)
                     .success(r => {
                         this._setSession(r);
                         return this._fetchProfiles()
@@ -536,6 +573,13 @@
                 }).error(ex => {
                     this.error = ex.message;
                 }).finally(() => this.loading = false);
+            }
+
+            onEnter(e) {
+                switch (this.selected) {
+                    case "signin": this.onSignIn(); break;
+                    case "signin-password": this.onSignInNext(); break;
+                }
             }
         }
 
