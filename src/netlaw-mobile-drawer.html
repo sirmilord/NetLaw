@@ -34,7 +34,7 @@
               return {
                   opened: {
                       type: Boolean,
-                      value: false,
+                      value: true,
                       reflectToAttribute: true,
                       observer: '_openChanged',
                   },
@@ -44,7 +44,7 @@
           constructor() {
               super();
           }
-
+//TODO Ask Zlatko Mobile dtawer is hide on change dektop/mobile view in browser
           _openChanged(opened) {
            opened ? this.classList.remove('hide') : this.classList.add('hide')
       }
