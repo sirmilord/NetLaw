@@ -75,12 +75,10 @@
       }
 
       li {
-        font-size: 16px;
-        padding: 10px;
+        font-size: 14px;
+        padding: 5px 20px;
         color: #333;
       }
-
-
 
     </style>
 
@@ -89,17 +87,6 @@
     <iron-dropdown id="dropdown" vertical-offset="35" horizontal-offset="-20" no-auto-focus opened="{{searchOpened}}" opened$="[[searchOpened]]">
       <div slot="dropdown-content">
         <!--<input id="search" type="search" name="search" placeholder="Search Documents..." autocomplete="off">-->
-        <!--<ul>-->
-          <!--<li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>-->
-          <!--<li>Listed result contact item 2 …</li>-->
-          <!--<li>Listed result contact item 3…</li>-->
-          <!--<li>Listed result contact item 4…</li>-->
-          <!--<br/>-->
-          <!--<li>Listed result in document item 1…</li>-->
-          <!--<li>Listed result in document item 2…</li>-->
-          <!--<li>Listed result in document item 3…</li>-->
-          <!--<li>Listed result in document item 4…</li>-->
-        <!--</ul>-->
         <paper-search-panel
             search="{{search}}"
             count="{{count}}"
@@ -112,6 +99,17 @@
 
           <div>
             <!--Show your [[count]] results for "[[search]]"-->
+            <ul>
+            <li><a href="[[rootPath]]profile">Listed result contact item 1 …</a></li>
+            <li>Listed result contact item 2 …</li>
+            <li>Listed result contact item 3…</li>
+            <li>Listed result contact item 4…</li>
+            <br/>
+            <li>Listed result in document item 1…</li>
+            <li>Listed result in document item 2…</li>
+            <li>Listed result in document item 3…</li>
+            <li>Listed result in document item 4…</li>
+            </ul>
           </div>
         </paper-search-panel>
 
