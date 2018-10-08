@@ -136,11 +136,32 @@
           }
 
           onSignOutClick(e) {
+              debugger;
               this.loggedIn = false;
               // Show login screen on logout
               this.page = 'login';
               window.location.href='/';
               window.location.reload(true);
+
+              api.accounts.logout();
+              this._setSession(null);
+              this.selected = "signin";
+          }
+
+          _setSession(session) {
+              if (session == null) {
+                  localStorage.removeItem("session-id");
+                  localStorage.removeItem("session-ticket");
+                  localStorage.removeItem("account-id");
+                  localStorage.removeItem("account-name");
+                  api.ticket = null;
+              } else {
+                  localStorage.setItem("session-id", session.session_id);
+                  localStorage.setItem("session-ticket", session.ticket);
+                  localStorage.setItem("account-id", session.account_id);
+                  localStorage.setItem("account-name", session.username);
+                  api.ticket = session.ticket;
+              }
           }
 
       }

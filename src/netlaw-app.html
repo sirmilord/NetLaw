@@ -770,6 +770,7 @@
           }
 
           onSignOutClick(e) {
+              debugger;
               this.loggedIn = false;
               // Show login screen on logout
               this.page = 'login';
@@ -777,11 +778,10 @@
               // window.location.href='/';
               window.location.reload(true);
 
-              // api.accounts.logout();
-              // this._setSession(null);
-              // this.selected = "signin";
+               // api.accounts.logout();
+               // this._setSession(null);
+               // this.selected = "signin";
           }
-
 
           static get observers() {
               return [

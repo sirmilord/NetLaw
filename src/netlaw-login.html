@@ -72,6 +72,13 @@
         transition: all 0.3s;
       }
 
+      .login__info {
+        color: #4A90E2;
+        margin-top: 15px;
+        display: block;
+        transition: all 0.3s;
+      }
+
       .login_link {
         font-size: 16px;
       }
@@ -138,6 +145,7 @@
                              autocomplete="current-password" autofocus value="{{password::input}}" invalid$="{{error}}"
                              error-message="{{error}}" disabled="[[loading]]">
                       <span class="login__error" hidden$="[[!error]]">[[error]]</span>
+                      <span class="login__info" hidden$="[[!info]]">[[info]]</span>
                     </div>
                     <div class="login__margin-top">
                       <a href="javascript:;" class="login_link" name="pass-reset" on-click="_onNavigate">Forgot Your
@@ -510,7 +518,7 @@
 
           static get properties() {
               return {
-
+                  skipSessionRestore: { type: Boolean, value: false },
                   loading: {type: Boolean, value: false, observer: '_loadingChanged'},
                   selected: {type: String, value: "signin", observer: '_selectedChanged'},
 
@@ -520,6 +528,7 @@
                   },
 
                   email: String,
+                  info: String,
                   phone: String,
                   name: String,
                   password: String,
@@ -530,6 +539,10 @@
 
           constructor() {
               super();
+
+              Polymer.RenderStatus.afterNextRender(this, function () {
+                  if (!this.skipSessionRestore) this.tryRestoreSession();
+              }.bind(this));
           }
 
           _onNavigate(e) {
@@ -656,6 +669,32 @@
               this.loading = false;
               let elements = Array.from(Polymer.dom(this.root).querySelectorAll("[autofocus]")).filter(e => e.offsetParent);
               if (elements.length) elements[0].focus();
+          }
+
+          tryRestoreSession() {
+              if (!(api.ticket = localStorage.getItem('session-ticket'))) return;
+
+              this.loading = true;
+              this.info = 'Logging you in...';
+              api.accounts.checkSession()
+                  .success(r => {
+                      this.selected = "signin";
+                      this.dispatchEvent(new CustomEvent("logged-in"));
+                      this._setSession(r);
+                      return this._fetchProfiles();
+                  })
+                  .unauthorized(ex => {
+                      //ticket expired
+                      localStorage.removeItem("session-ticket");
+                      this.info = 'Previous session expired, please log in again.';
+                  })
+                  .finally(() => this.loading = false);
+          }
+
+          onSignOut(e) {
+              api.accounts.logout();
+              this._setSession(null);
+              this.selected = "signin";
           }
 
       }
