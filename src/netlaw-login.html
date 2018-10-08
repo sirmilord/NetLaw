@@ -83,7 +83,17 @@
         font-size: 16px;
       }
 
-      @media (min-width: 320px) and (max-width: 767px) {
+      paper-progress {
+        width: 285px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      paper-progress[disabled] {
+        --paper-progress-container-color: transparent;
+      }
+
+      @media (max-width: 767px) {
 
         .login-buttons {
           margin-top: 45px;
@@ -116,6 +126,7 @@
       <div class="login__main login__section login__position-relative">
         <div class="login__container ">
           <div id="wrapper" class="login__align-center login">
+
 
             <iron-pages id="panel" attr-for-selected="name" selected="[[selected]]">
 
@@ -168,7 +179,7 @@
               <div name="create-account" login>
 
                 <h1>Create your NetLaw Account</h1>
-
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <div class="login__margin login__align-center">
                   <form action="javascript:;" method="post" class="login-form login__align-center" novalidate>
                     <div class="login__margin ">
@@ -221,6 +232,7 @@
               <!-- Password Reset-->
               <div name="pass-reset">
                 <h1>Password Reset</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Which was the email address of your account?</h3>
                 <p><i>(we will send a link and get you setup again shortly)</i></p>
                 <form action="javascript:;" method="post" class="login-form login__align-center">
@@ -241,6 +253,7 @@
               <!-- Password Reset Confirmation-->
               <div name="pass-confirm">
                 <h1>Password Reset</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Your recovery link has been sent.</h3>
                 <p><i>(be certain to check your spam or junkmail folder)</i></p>
                 <hr class="login__divider-small">
@@ -258,6 +271,7 @@
               <!-- New Password Setup-->
               <div name="new-pass">
                 <h1>New Password Setup</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>What would you like your new password to be?</h3>
                 <form action="javascript:;" method="post" class="login-form login__align-center">
                   <div class="login__margin ">
@@ -288,6 +302,7 @@
                   Back to Previous
                 </button>
                 <h1>Login Security Settings</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Would you like to change or add login credentials?</h3>
                 <p class="login__margin">Username: robkerr2004@hotmail.com</p>
                 <p class="login__horizontal"><a href="javascript:;" name="new-pass" on-click="_onNavigate">Change
@@ -316,6 +331,7 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure Your Account</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Choose a desired method to enhance your security. </h3>
                 <div class="login__row login__margin-top-big">
                   <div class="login__item login__item--third">
@@ -357,6 +373,7 @@
               <!-- Add New Login Method-->
               <div name="method">
                 <h1>Add New Login Method</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <div class="login-buttons">
                   <paper-icon-button icon="netlaw-icons:login-googleplus" name="googleplus"></paper-icon-button>
                   <paper-icon-button icon="netlaw-icons:login-facebook" name="facebook"></paper-icon-button>
@@ -400,6 +417,7 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with Mobile</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Scan this code with your mobile authenticator <br>
                   and enter the generated code in the box below.</h3>
                 <figure class="login__img">
@@ -432,6 +450,7 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with SMS</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Type in your phone number, enter the code you <br>
                   receive in the section below.</h3>
                 <form action="javascript:;" method="post" class="login-form login__align-center">
@@ -471,6 +490,7 @@
                   Back to Security Settings
                 </button>
                 <h1>Secure with Email</h1>
+                <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
                 <h3>Type in your email address, enter the code you<br>
                   receive in the section below.</h3>
                 <form action="javascript:;" method="post" class="login-form login__align-center">
