@@ -560,9 +560,8 @@
           constructor() {
               super();
 
-              Polymer.RenderStatus.afterNextRender(this, function () {
-                  if (!this.skipSessionRestore) this.tryRestoreSession();
-              }.bind(this));
+              Polymer.RenderStatus.afterNextRender(this,
+                  () => !this.skipSessionRestore && this.tryRestoreSession());
           }
 
           _onNavigate(e) {

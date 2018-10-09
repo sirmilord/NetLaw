@@ -548,7 +548,7 @@
     </template>
 
     <!--Main content mobile-->
-    <template is="dom-if" if="[[mobile]]">
+    <template is="dom-if" if="[[mobile]]" restamp>
       <template is="dom-if" if="[[loggedIn]]">
         <app-drawer-layout class="mobile-layout" fullbleed narrow="{{narrow}}">
 
@@ -648,7 +648,7 @@
     </template>
 
     <!-- Main content desktop-->
-    <template is="dom-if" if="[[!mobile]]">
+    <template is="dom-if" if="[[!mobile]]" restamp>
       <template is="dom-if" if="[[loggedIn]]">
         <app-header-layout class="desktop-layout" fullbleed narrow="{{narrow}}">
 
@@ -731,7 +731,7 @@
                   page: {
                       type: String,
                       reflectToAttribute: true,
-                      observer: '_pageChanged',
+                      //observer: '_pageChanged',
                   },
                   toggleIcon: {
                       type: String
@@ -739,7 +739,7 @@
                   fullMenu: {type: Boolean, value: false},
                   mobile: {
                       type: Boolean, observer(value) {
-                          // this._pageChanged(this.page);
+                          setTimeout(() => this._pageChanged(this.page, this.loggedIn));
                       }
                   },
                   notificationOpened: {
@@ -767,6 +767,8 @@
               this.loggedIn = true;
               // Show initial screen on login
               this.page = 'initial-screen';
+              //this._pageChanged(this.page);
+              //this.dispatchEvent(new CustomEvent("page-changed"));
               // this.shadowRoot.querySelector("app-header-layout")._updateLayoutStates();
           }
 
@@ -787,6 +789,7 @@
           static get observers() {
               return [
                   '_routePageChanged(routeData.page)',
+                  '_pageChanged(page, loggedIn)'
               ];
           }
 
@@ -824,7 +827,7 @@
               }
           }
 
-          _pageChanged(page) {
+          _pageChanged(page, loggedIn) {
               if (!this.contentReady) return;
               console.log("app page changed");
               // Load page import on demand. Show 404 page if fails
@@ -837,10 +840,8 @@
 
               let pages = this.shadowRoot.querySelector("iron-pages");
               //console.log(pages,pages && pages.selectedItem);
-              //TODO ASK Zlatko
-              //settimeout need on initail-screen page after login
-              if (!pages) ; //setTimeout(() => this._pageChanged(page));
-              else if (pages.selectedItem.open) pages.selectedItem.open();
+              if (!pages && loggedIn) setTimeout(() => this._pageChanged(page));
+              else if (pages && pages.selectedItem.open) pages.selectedItem.open();
           }
 
           _showPage404() {

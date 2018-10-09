@@ -1392,8 +1392,6 @@
                       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                         <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                         [[item.name]]
-                        <!--TODO ASK Zlatko
-                        There is first link don't clickable-->
                       </a>
                       <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
                         <iron-icon icon="icons:more-vert"></iron-icon>
@@ -1509,38 +1507,30 @@
           </ul>
         </section>
 
+          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty">
 
-        <template is="dom-if" if="[[yourVault]]">
+            <section name="empty" class="lifevault__content">
+              <h1>LifeVault</h1>
+              <figure>
+                <iron-icon icon="netlaw-icons:documents"></iron-icon>
+              </figure>
+              <b>This is where you would keep all your important legal documents.</b>
+              <div class="lifevault__content-wrapper">
+                <p>(you can also download, replace or share these documents with others)</p>
+                <hr>
+              </div>
+              <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
+              <a class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
+                <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+              </a>
+            </section>
 
-          <section class="lifevault__content">
-            <h1>LifeVault</h1>
-            <figure>
-              <iron-icon icon="netlaw-icons:documents"></iron-icon>
-            </figure>
-            <b>This is where you would keep all your important legal documents.</b>
-            <div class="lifevault__content-wrapper">
-              <p>(you can also download, replace or share these documents with others)</p>
-              <hr>
-            </div>
-            <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
-            <a class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
-              <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
-            </a>
-          </section>
-
-        </template>
-
-        <template is="dom-if" if="[[!yourVault]]">
-
-          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main">
             <netlaw-lifevault-management name="management"
                                          on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
                                          on-share-file="_onShareFileClick"></netlaw-lifevault-management>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
           </iron-pages>
-
-        </template>
 
       </main>
     </template>
@@ -1892,12 +1882,12 @@
                       this.shadowRoot.querySelector('#collapse').hide();
                       this.shadowRoot.querySelector('#collapsetwo0').hide();
 
-                      this.yourVault = true;
+                      //this.yourVault = true;
                   }
 
                   if (this.page !== null) {
 
-                      this.yourVault = false;
+                      //this.yourVault = false;
                   }
               }
 
