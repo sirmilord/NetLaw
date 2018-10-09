@@ -1000,7 +1000,7 @@
                           <iron-dropdown horizontal-align="right">
                             <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                                 slot="dropdown-content">
-                              <li>Download
+                              <li on-click="_onDownloadClick">Download
                                 <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
@@ -1178,6 +1178,10 @@
 
           static get properties() {
               return {
+                  folderId:{
+                      type:String,
+                      observer: 'refresh',
+                  },
                   view: {
                       type: Boolean,
                       value: true
@@ -1337,8 +1341,8 @@
 
                           {
                               id: "609871d7-0f06-4ee5-9258-f5a26f6705db",
-                              icon: "netlaw-icons:page",
-                              link: "lifevault/doc",
+                              icon: "netlaw-icons:page", //hard code
+                              //link: "lifevault/doc",
                               smartguide: false,
                               status: "Updated 1d ago",
                               mstatus: "1d ago",
@@ -1464,6 +1468,15 @@
               // this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
           }
 
+
+          refresh(){
+              api.vault.searchFolder(this.folderId, "type:file")
+                  .success(r => this.files = r);
+          }
+
+          _onDownloadClick(e){
+              api.vault.downloadFile(e.model.file.id);
+          }
       }
 
       window.customElements.define(NetlawLifevaultManagement.is, NetlawLifevaultManagement);

@@ -720,7 +720,7 @@
 
           static get properties() {
               return {
-                  loggedIn: {type: Boolean, value: () => location.pathname !== "/"},
+                  loggedIn: {type: Boolean, value: false },//() => location.pathname !== "/"
                   drawerOpened: {
                       type: Boolean,
                       value: true,

@@ -666,14 +666,22 @@
 
                       if (!r.length) {
                           this.selected = "create-profile";
-                      } else if (r.length == 1) {
+                      } else { //if (r.length == 1) {
                           this._setProfile(r[0]);
-                          this.selected = "signin";
 
-                          this.dispatchEvent(new CustomEvent('logged-in'));
-                      } else {
-                          this.selected = "choose-profile";
+                          return api.customers.getDetails(r[0].customer_id)
+                              .success(r => {
+                                  api.vault.cell = r.cell_id;
+
+                                  this.selected = "signin";
+                                  this.dispatchEvent(new CustomEvent('logged-in'));
+                              });
+
                       }
+                      // else {
+                      //     return api.customers.getDetails(r[0].id);
+                      //     //this.selected = "choose-profile";
+                      // }
                   });
           }
 
@@ -697,8 +705,8 @@
               this.info = 'Logging you in...';
               api.accounts.checkSession()
                   .success(r => {
-                      this.selected = "signin";
-                      this.dispatchEvent(new CustomEvent("logged-in"));
+                      // this.selected = "signin";
+                      // this.dispatchEvent(new CustomEvent("logged-in"));
                       this._setSession(r);
                       return this._fetchProfiles();
                   })

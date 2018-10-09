@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="netlaw-lifevault-doc.html">
 <link rel="import" href="netlaw-lifevault-management.html">
+<link rel="import" href="netlaw-lifevault-folder.html">
 
 <dom-module id="netlaw-lifevault">
   <template>
@@ -1194,7 +1195,7 @@
         </ul>
       </paper-menu-button>
     </template>
-    <template is="dom-if" if="[[mobile]]">
+    <template is="dom-if" if="[[mobile]]" restamp>
       <main class="lifevault-mobile">
 
         <app-drawer-layout>
@@ -1354,11 +1355,11 @@
     </template>
 
     <!--Desktop layout-->
-    <template is="dom-if" if="[[!mobile]]">
+    <template is="dom-if" if="[[!mobile]]" restamp>
       <main class="lifevault">
         <section class="lifevault__drawer">
           <ul class="lifevault__list">
-            <li class="lifevault__list-item lifevault__list-item--top-border">
+            <li class="lifevault__list-item lifevault__list-item--top-border" on-open-folder="_onOpenFolder">
               <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
                 <iron-icon icon="[[toggleIcon]]"></iron-icon>
                 <span class="lifevault__list-text">My Files</span>
@@ -1387,6 +1388,8 @@
                 <ul class="lifevault__list-lvl2">
 
                   <template is="dom-repeat" items="{{folders}}">
+                    <li><netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]"></netlaw-lifevault-folder></li>
+
 
                     <li class="lifevault__list-item-lvl2">
                       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
@@ -1525,7 +1528,8 @@
               </a>
             </section>
 
-            <netlaw-lifevault-management name="management"
+            <netlaw-lifevault-management name="myfiles"
+                                         folder-id="[[folderId]]"
                                          on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
                                          on-share-file="_onShareFileClick"></netlaw-lifevault-management>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
@@ -1821,6 +1825,8 @@
               ironCollapse.toggle();
               ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
+
+              this.folderId = null;
           }
 
           _onToggleCollapseLvl2(e) {
@@ -1839,6 +1845,15 @@
                   ironDropdown.toggle();
                   e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
               }
+          }
+
+          _onOpenFolder(e){
+            //let folderId = e.detail.id;
+            this.folderId = e.detail.id;
+            navigate (`lifevault/myfiles/${e.detail.path}`)
+
+            // api.vault.searchFolder(folderId, "type:file")
+            //     .success(r => console.log(r));
           }
 
           ready(e) {
@@ -1864,6 +1879,10 @@
 
               let pages = this.shadowRoot.querySelector("#pages2");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
+
+
+              api.vault.searchFolder(null, "type:folder")
+                  .success(r => this.folders = r);
           }
 
           _pageChanged(page) {
@@ -1882,13 +1901,8 @@
                       this.shadowRoot.querySelector('#collapse').hide();
                       this.shadowRoot.querySelector('#collapsetwo0').hide();
 
-                      //this.yourVault = true;
                   }
 
-                  if (this.page !== null) {
-
-                      //this.yourVault = false;
-                  }
               }
 
           }

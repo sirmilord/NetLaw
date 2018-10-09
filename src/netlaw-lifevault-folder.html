@@ -1,0 +1,104 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="netlaw-lifevault-folder">
+  <template>
+    <a on-click="open">
+      <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+      [[name]]
+      <div>
+        <iron-icon icon="icons:more-vert"></iron-icon>
+        <iron-dropdown horizontal-align="right">
+          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+              slot="dropdown-content">
+
+            <li on-click="_onAddFolderClick">Add Sub-Folder
+              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+            </li>
+            <li>Download
+              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+            </li>
+            <li>Print
+              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+            </li>
+            <li>Rename
+              <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+            </li>
+            <li on-click="_onShareFileClick">Share
+              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+            </li>
+            <li on-click="_onDeleteFileFolderClick">Delete
+              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+            </li>
+
+          </ul>
+        </iron-dropdown>
+      </div>
+    </a>
+
+    <ul>
+      <template is="dom-repeat" items="{{folders}}">
+        <li>
+          <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]"
+                                   on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
+        </li>
+      </template>
+    </ul>
+  </template>
+
+  <script>
+      class NetlawLifevaultFolder extends Polymer.Element {
+          static get is() {
+              return 'netlaw-lifevault-folder';
+          }
+
+          static get properties() {
+              return {
+                  folderId: String,
+                  name: String,
+                  folders: Object,
+              };
+          }
+
+          ready() {
+              super.ready();
+          }
+
+          _onOpenFolder(e) {
+              e.stopPropagation();
+              this.dispatchEvent(new CustomEvent("open-folder", {
+                  detail: {
+                      id: e.detail.id,
+                      path: `${this.folderId}/${e.detail.path}`,
+                  }, bubbles: true, composed: true,
+              }));
+          }
+
+          open() {
+              this.refresh();
+              //show folders...
+
+              this.dispatchEvent(new CustomEvent("open-folder", {
+                  detail: {
+                      id: this.folderId,
+                      path: this.folderId,
+                  }, bubbles: true, composed: true,
+              }));
+          }
+
+          show() {
+              //show folders list
+          }
+
+          toggle() {
+              //show-hide
+          }
+
+          refresh() {
+              api.vault.searchFolder(this.folderId, "type:folder")
+                  .success(r => this.folders = r);
+          }
+      }
+
+      window.customElements.define(NetlawLifevaultFolder.is, NetlawLifevaultFolder);
+  </script>
+</dom-module>
