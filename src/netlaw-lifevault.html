@@ -1373,18 +1373,20 @@
                 <ul class="lifevault__list-lvl2">
 
                   <template is="dom-repeat" items="{{folders}}">
-                    <li><netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]"></netlaw-lifevault-folder></li>
-
-
                     <li class="lifevault__list-item-lvl2">
+                      <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" index="[[index]]" hasFolders="[[item.has_folders]]" on-add-folder="_onAddFolderClick" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-folder>
+                    </li>
+
+
+                    <!--<li class="lifevault__list-item-lvl2">
                       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
                         <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                         [[item.name]]
                       </a>
-                      <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+                      <a class="lifevault__btn lifevault__btn&#45;&#45;lvl2" href="javascript:;" on-click="_onToggleDropdown">
                         <iron-icon icon="icons:more-vert"></iron-icon>
                         <iron-dropdown>
-                          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
                               slot="dropdown-content">
                             <li on-click="_onAddFolderClick">Add Sub-Folder
                               <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
@@ -1422,11 +1424,11 @@
                                      class="lifevault__list-link-lvl3">
                                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                                     [[item2.name]]</a>
-                                  <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
+                                  <a class="lifevault__btn lifevault__btn&#45;&#45;lvl3" href="javascript:;"
                                      on-click="_onToggleDropdown">
                                     <iron-icon icon="icons:more-vert"></iron-icon>
                                     <iron-dropdown>
-                                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+                                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
                                           slot="dropdown-content">
                                         <li>Download
                                           <iron-icon
@@ -1460,7 +1462,7 @@
                         </iron-collapse>
 
                       </template>
-                    </li>
+                    </li>-->
 
                   </template>
 
@@ -1883,8 +1885,8 @@
                   if (page == null) {
                       this.toggleIcon = 'netlaw-icons:plus-icon';
                       this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
-                      this.shadowRoot.querySelector('#collapse').hide();
-                      this.shadowRoot.querySelector('#collapsetwo0').hide();
+                      /*this.shadowRoot.querySelector('#collapse').hide();
+                      this.shadowRoot.querySelector('#collapsetwo0').hide();*/
 
                   }
 

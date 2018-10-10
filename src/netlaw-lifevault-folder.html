@@ -2,13 +2,223 @@
 
 <dom-module id="netlaw-lifevault-folder">
   <template>
-    <a on-click="open">
+
+    <style include="shared-styles">
+
+      .lifevault__btn {
+        position: absolute;
+        color: #414142;
+        width: 24px;
+        height: 24px;
+        right: 0;
+        top: 21px;
+      }
+
+      .lifevault__list-link-lvl2 {
+        font-size: 14px;
+        color: #e5e5e5;
+        text-decoration: none;
+        display: inline-block;
+        vertical-align: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      .lifevault__btn--lvl2 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        top: 15px;
+        color: #e5e5e5;
+      }
+
+      .lifevault__addfolder-dropdown {
+        /*min-height: 154px;*/
+        width: 137px;
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        background-color: #FFFFFF;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .lifevault__addfolder-dropdown li {
+        color: #4A4A4A;
+        font-size: 14px;
+        display: flex;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      .lifevault__addfolder-dropdown iron-icon {
+        margin-left: auto;
+        margin-top: 3px;
+      }
+
+      .lifevault__addfolder-dropdown--sub {
+        width: 162px;
+      }
+
+      a.lifevault__list-link-lvl2 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.lifevault__btn.lifevault__btn--lvl2 > iron-icon {
+        margin-bottom: 5px;
+      }
+
+      .lifevault__list-link-lvl2:hover,
+      .lifevault__list-link-lvl2--active,
+      .lifevault__list-link-lvl2:focus {
+        color: #4a4a4a;
+        text-decoration: none;
+      }
+    </style>
+
+
+    <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
+      <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+      [[item.name]]
+    </a>
+    <a class="lifevault__btn lifevault__btn&#45;&#45;lvl2" href="javascript:;" on-click="_onToggleDropdown">
+      <iron-icon icon="icons:more-vert"></iron-icon>
+      <iron-dropdown>
+        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
+            slot="dropdown-content">
+          <li on-click="_onAddFolderClick">Add Sub-Folder
+            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+          </li>
+          <li>Download
+            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+          </li>
+          <li>Print
+            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+          </li>
+          <li>Rename
+            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+          </li>
+          <li on-click="_onShareFileClick">Share
+            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
+          <li on-click="_onDeleteFileFolderClick">Delete
+            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+          </li>
+        </ul>
+      </iron-dropdown>
+    </a>
+
+    <template is="dom-if" if=[[item.folders2]]>
+
+      <iron-collapse id="collapsetwo{{index}}">
+        <ul class="lifevault__list-lvl3">
+          <iron-selector selected="[[page]]" attr-for-selected="name"
+                         role="navigation">
+
+            <template is="dom-repeat" items="{{item.folders2}}" as="item2">
+
+              <li class="lifevault__list-item-lvl3">
+                <a name="management" href="{{item2.link}}"
+                   class="lifevault__list-link-lvl3">
+                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+                  [[item2.name]]</a>
+                <a class="lifevault__btn lifevault__btn&#45;&#45;lvl3" href="javascript:;"
+                   on-click="_onToggleDropdown">
+                  <iron-icon icon="icons:more-vert"></iron-icon>
+                  <iron-dropdown>
+                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
+                        slot="dropdown-content">
+                      <li>Download
+                        <iron-icon
+                            icon="netlaw-icons:download-icon"></iron-icon>
+                      </li>
+                      <li>Print
+                        <iron-icon
+                            icon="netlaw-icons:print-icon"></iron-icon>
+                      </li>
+                      <li>Rename
+                        <iron-icon
+                            icon="netlaw-icons:rename-icon"></iron-icon>
+                      </li>
+                      <li on-click="_onShareFileClick">Share
+                        <iron-icon
+                            icon="netlaw-icons:share-icon"></iron-icon>
+                      </li>
+                      <li on-click="_onDeleteFileFolderClick">Delete
+                        <iron-icon
+                            icon="netlaw-icons:delete-icon"></iron-icon>
+                      </li>
+                    </ul>
+                  </iron-dropdown>
+                </a>
+              </li>
+
+            </template>
+
+          </iron-selector>
+        </ul>
+      </iron-collapse>
+
+    </template>-->
+    <!--<template is="dom-if" if="[[folders.has_folders]]">-->
+    <!--todo: Ask Zlatko how to hide [expand icon] for empty folders -->
+      <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+        <iron-icon icon="[[toggleIcon]]"></iron-icon>
+      </a>
+    <!--</template>-->
+    <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="open">
+      <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
+      [[name]]
+    </a>
+    <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
+      <iron-icon icon="icons:more-vert"></iron-icon>
+      <iron-dropdown>
+        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+            slot="dropdown-content">
+          <li on-click="_onAddFolderClick">Add Sub-Folder
+            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
+          </li>
+          <li>Download
+            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
+          </li>
+          <li>Print
+            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
+          </li>
+          <li>Rename
+            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
+          </li>
+          <li on-click="_onShareFileClick">Share
+            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
+          </li>
+          <li on-click="_onDeleteFileFolderClick">Delete
+            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
+          </li>
+        </ul>
+      </iron-dropdown>
+    </a>
+    <iron-collapse id="collapse{{index}}">
+      <ul>
+        <template is="dom-repeat" items="{{folders}}">
+          <li>
+            <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]"
+                                     on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
+          </li>
+        </template>
+      </ul>
+    </iron-collapse>
+
+
+    <!--<a on-click="open">
       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
       [[name]]
       <div>
         <iron-icon icon="icons:more-vert"></iron-icon>
         <iron-dropdown horizontal-align="right">
-          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
+          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
               slot="dropdown-content">
 
             <li on-click="_onAddFolderClick">Add Sub-Folder
@@ -42,7 +252,7 @@
                                    on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
         </li>
       </template>
-    </ul>
+    </ul>-->
   </template>
 
   <script>
@@ -55,8 +265,18 @@
               return {
                   folderId: String,
                   name: String,
+                  index: Number,
+                  hasFolders: Boolean,
                   folders: Object,
+                  toggleIcon: {
+                      type: String,
+                      value: 'netlaw-icons:plus-icon'
+                  },
               };
+          }
+
+          constructor() {
+              super();
           }
 
           ready() {
@@ -74,7 +294,7 @@
           }
 
           open() {
-              this.refresh();
+              //this.refresh();
               //show folders...
 
               this.dispatchEvent(new CustomEvent("open-folder", {
@@ -93,9 +313,55 @@
               //show-hide
           }
 
+          //show childs
           refresh() {
               api.vault.searchFolder(this.folderId, "type:folder")
                   .success(r => this.folders = r);
+          }
+
+          _onToggleCollapse(e) {
+              e.preventDefault();
+              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
+              ironCollapse.toggle();
+              ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
+              ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
+
+              this.refresh();
+              console.log(this.folders);
+          }
+
+          _onToggleDropdown(e) {
+              e.preventDefault();
+              let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
+              if (ironDropdown) {
+                  ironDropdown.toggle();
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              }
+          }
+
+          _onAddFolderClick(e) {
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('add-folder', {
+                  bubbles: true,
+                  composed: true
+              }));
+          }
+
+          _onDeleteFileFolderClick(e) {
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('delete-file', {
+                  bubbles: true,
+                  composed: true
+              }));
+
+          }
+
+          _onShareFileClick(e) {
+              e.preventDefault();
+              this.dispatchEvent(new CustomEvent('share-file', {
+                  bubbles: true,
+                  composed: true
+              }));
           }
       }
 
