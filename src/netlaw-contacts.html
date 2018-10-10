@@ -25,8 +25,8 @@
       }
 
       .contacts__content {
-        flex: 1 1 70%;
-        max-width: 70%;
+        flex: 1 1 100%;
+        max-width: 100%;
         background-color: #f9f9f9;
         display: flex;
         align-items: center;
@@ -947,7 +947,7 @@
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
 
     <!--Mobile layout-->
-    <template slot="placeholder" id="menu">
+    <template slot="placeholder" id="menu" restamp>
       <h3>Key People</h3>
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
@@ -969,7 +969,7 @@
       </paper-menu-button>
     </template>
 
-    <template is="dom-if" if="[[mobile]]">
+    <template is="dom-if" if="[[mobile]]" restamp>
       <main class="contacts-mobile">
         <app-drawer-layout>
           <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty2">
@@ -1081,7 +1081,7 @@
     </template>
 
     <!--Desktop layout-->
-    <template id="desktop" is="dom-if" if="[[!mobile]]">
+    <template id="desktop" is="dom-if" if="[[!mobile]]" restamp>
 
       <main class="contacts">
 
@@ -1130,8 +1130,7 @@
 
                           <template is="dom-repeat" items="{{item.folders2}}" as="item2">
                             <li class="contacts__list-item-lvl3">
-                              <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3"
-                                 on-click="_onLinkClick">
+                              <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3">
                                 <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                                 [[item2.name]]</a>
                               <a class="contacts__btn contacts__btn--lvl3" href="javascript:;"
@@ -1174,39 +1173,31 @@
 
         </template>
 
-        <template is="dom-if" if="[[createContact]]">
+          <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}" fallback-selection="empty">
+            <section name="empty" class="contacts__content">
+              <h1>Contacts</h1>
+              <figure>
+                <iron-icon icon="netlaw-icons:organizer"></iron-icon>
+              </figure>
+              <b>Add beneficaries, exectors of an estate and more</b>
+              <div class="contacts__content-wrapper">
+                <p>(you also search for attorneys and add them to you list)</p>
+                <hr>
+              </div>
+              <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
+            </section>
 
-          <section class="contacts__content">
-            <h1>Contacts</h1>
-            <figure>
-              <iron-icon icon="netlaw-icons:organizer"></iron-icon>
-            </figure>
-            <b>Add beneficaries, exectors of an estate and more</b>
-            <div class="contacts__content-wrapper">
-              <p>(you also search for attorneys and add them to you list)</p>
-              <hr>
-            </div>
-            <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
-          </section>
-
-        </template>
-
-        <template is="dom-if" if="[[!createContact]]">
-
-          <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}">
             <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick"
                                     on-delete-contact="_onDeleteContactClick"
                                     on-to-details="_onToDetails"></netlaw-contacts-family>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
 
-        </template>
-
       </main>
 
     </template>
 
-    <template is="dom-if" if="[[addFolder]]">
+    <template is="dom-if" if="[[addFolder]]" restamp>
       <div class="overlay"></div>
       <div class="file-folder  file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
@@ -1232,7 +1223,7 @@
       </a>
     </template>
 
-    <template is="dom-if" if="[[deleteContact]]">
+    <template is="dom-if" if="[[deleteContact]]" restamp>
       <div class="overlay"></div>
       <div class="file-folder file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
@@ -1275,7 +1266,7 @@
       </a>
     </template>
 
-    <template is="dom-if" if="[[addContact]]">
+    <template is="dom-if" if="[[addContact]]" restamp>
       <div class="overlay"></div>
 
       <template is="dom-if" if="[[mobile]]">
@@ -1505,10 +1496,6 @@
                       type: Boolean,
                       value: false
                   },
-                  createContact: {
-                      type: Boolean,
-                      value: false
-                  },
                   folders: {
                       type: Object, value: () => [
                           {
@@ -1609,13 +1596,8 @@
 
                   if (page == null) {
                       // this.shadowRoot.querySelector('#collapsetwo0').hide();
-                      this.createContact = true;
                       this.details = false;
                       this.flex = '';
-                  }
-
-                  if (page != null) {
-                      this.createContact = false;
                   }
 
                   if (this.page === 'contact-details') {
@@ -1705,10 +1687,6 @@
           _computeMenu(opened) {
               // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
-          }
-
-          _onLinkClick(e) {
-              this.createContact = false;
           }
 
           _onToDetails(e) {

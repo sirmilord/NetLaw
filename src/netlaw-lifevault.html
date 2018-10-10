@@ -1107,11 +1107,6 @@
           max-width: 30%;
         }
 
-        .lifevault__content {
-          flex: 1 1 70%;
-          max-width: 70%;
-        }
-
       }
 
       @media (min-width: 1200px) {
@@ -1128,11 +1123,6 @@
           max-width: 28%;
         }
 
-        .lifevault__content {
-          flex: 1 1 72%;
-          max-width: 72%;
-        }
-
       }
 
       @media (min-width: 1400px) {
@@ -1140,11 +1130,6 @@
         .lifevault__drawer {
           flex: 1 1 25%;
           max-width: 25%;
-        }
-
-        .lifevault__content {
-          flex: 1 1 75%;
-          max-width: 75%;
         }
 
       }
@@ -1540,7 +1525,7 @@
     </template>
 
     <!--Action overlays-->
-    <template is="dom-if" if="[[addFolder]]">
+    <template is="dom-if" if="[[addFolder]]" restamp>
       <div class="overlay"></div>
       <div class="file-folder file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--folder" icon="netlaw-icons:add-folder-o"></iron-icon>
@@ -1566,7 +1551,7 @@
       </a>
     </template>
 
-    <template is="dom-if" if="[[deleteFileFolder]]">
+    <template is="dom-if" if="[[deleteFileFolder]]" restamp>
       <div class="overlay"></div>
       <div class="file-folder file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
@@ -1596,7 +1581,7 @@
       </a>
     </template>
 
-    <template is="dom-if" if="[[addFile]]">
+    <template is="dom-if" if="[[addFile]]" restamp>
       <div class="overlay"></div>
       <div class="drag-drop">
         <iron-icon icon="netlaw-icons:drag-and-drop"></iron-icon>
@@ -1622,7 +1607,7 @@
       </div>
     </template>
 
-    <template is="dom-if" if="[[shareFile]]">
+    <template is="dom-if" if="[[shareFile]]" restamp>
       <div class="overlay"></div>
       <div class="file-folder">
         <iron-icon class="file-folder__icon file-folder__icon--share" icon="netlaw-icons:share"></iron-icon>
