@@ -81,7 +81,7 @@
     </style>
 
 
-    <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
+    <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
       [[item.name]]
     </a>
@@ -164,8 +164,9 @@
       </iron-collapse>
 
     </template>-->
-    <!--<template is="dom-if" if="[[folders.has_folders]]">-->
+    <!--<template is="dom-if" if="[[hasFolders]]">-->
     <!--todo: Ask Zlatko how to hide [expand icon] for empty folders -->
+    <div>[[hasFolders]]</div>
       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
         <iron-icon icon="[[toggleIcon]]"></iron-icon>
       </a>
@@ -204,7 +205,7 @@
       <ul>
         <template is="dom-repeat" items="{{folders}}">
           <li>
-            <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]"
+            <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" hasFolder=[[item.has_folders]]"
                                      on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
           </li>
         </template>
@@ -265,7 +266,6 @@
               return {
                   folderId: String,
                   name: String,
-                  index: Number,
                   hasFolders: Boolean,
                   folders: Object,
                   toggleIcon: {
@@ -277,6 +277,7 @@
 
           constructor() {
               super();
+              hasFolders = this.folders.has_folders;
           }
 
           ready() {
@@ -294,7 +295,7 @@
           }
 
           open() {
-              //this.refresh();
+              // this.refresh();
               //show folders...
 
               this.dispatchEvent(new CustomEvent("open-folder", {
@@ -307,10 +308,6 @@
 
           show() {
               //show folders list
-          }
-
-          toggle() {
-              //show-hide
           }
 
           //show childs
@@ -327,7 +324,7 @@
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
               this.refresh();
-              console.log(this.folders);
+
           }
 
           _onToggleDropdown(e) {

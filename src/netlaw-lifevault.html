@@ -1748,6 +1748,9 @@
                       value: true
                   },
                   folders: {
+                      type: Object
+                  },
+                 /* folders: {
                       type: Object, value: () => [
                           {
                               id: "a79c41ab-c486-46fe-9b2a-8a2268e98b0d",
@@ -1791,7 +1794,7 @@
                               name: "Asset/Financial"
                           },
                       ]
-                  },
+                  },*/
                   mobile: {
                       type: Boolean, observer(value) {
                           // this.open();
@@ -1836,11 +1839,12 @@
 
           _onOpenFolder(e){
             //let folderId = e.detail.id;
+            //   console.log(e);
             this.folderId = e.detail.id;
-            navigate (`lifevault/myfiles/${e.detail.path}`)
+            navigate (`lifevault/myfiles/${e.detail.path}`);
 
-            // api.vault.searchFolder(folderId, "type:file")
-            //     .success(r => console.log(r));
+            api.vault.searchFolder(null, "type:folder")
+                .success(r => console.log(r));
           }
 
           ready(e) {
@@ -1870,6 +1874,8 @@
 
               api.vault.searchFolder(null, "type:folder")
                   .success(r => this.folders = r);
+
+              console.log(this.folders);
           }
 
           _pageChanged(page) {
@@ -1978,6 +1984,7 @@
               }));
           }
 
+          //for mobile
           _computeMenu(opened) {
               // console.log(this.opened);
               return opened ? 'netlaw-icons:more-vert-active' : 'netlaw-icons:menu-circle';
