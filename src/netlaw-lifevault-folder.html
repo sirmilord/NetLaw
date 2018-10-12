@@ -78,6 +78,86 @@
         color: #4a4a4a;
         text-decoration: none;
       }
+
+      .lifevault__list-lvl3 {
+        margin-left: 15px;
+        margin-bottom: 20px;
+      }
+
+      .lifevault__list-item-lvl3 {
+        position: relative;
+      }
+      .lifevault__list-link-lvl3 {
+        font-size: 14px;
+        color: #b7b7b7;
+        text-decoration: none;
+        display: inline-block;
+        vertical-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+
+      .lifevault__list-link-lvl3:hover,
+      .lifevault__list-link-lvl3:focus {
+        text-decoration: none;
+      }
+
+      a.lifevault__list-link-lvl3 > iron-icon {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      a.lifevault__btn.lifevault__btn--lvl3 > iron-icon {
+        margin-bottom: 5px;
+      }
+
+      .lifevault__list-item-lvl2--top-border:before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 70%;
+        height: 1px;
+        border-bottom: 1px dashed #979797;
+        opacity: .5;
+        left: 50%;
+        top: -7px;
+        transform: translateX(-50%);
+        color: #4a4a4a;
+      }
+
+      .lifevault__btn--lvl3 {
+        --iron-icon-width: 24px;
+        --iron-icon-height: 24px;
+        top: 9px;
+        color: #e5e5e5;
+      }
+
+      .lifevault__list-link-lvl3:hover,
+      .lifevault__list-link-lvl3:focus,
+      .lifevault__list-link-lvl3--active {
+        color: #01AA50;
+      }
+
+      .lifevault__list-link-lvl3:hover:before,
+      .lifevault__list-link-lvl3:focus:before,
+      .lifevault__list-link-lvl3--active:before {
+        content: '';
+        position: absolute;
+        height: 50%;
+        right: -15px;
+        top: 50%;
+        width: 4px;
+        background-color: #01AA50;
+        transform: translateY(-50%);
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
     </style>
 
 
@@ -166,15 +246,14 @@
     </template>-->
     <!--<template is="dom-if" if="[[hasFolders]]">-->
     <!--todo: Ask Zlatko how to hide [expand icon] for empty folders -->
-    <div>[[hasFolders]]</div>
+    <div>[[hasFolders]] {{hasFolders}} {{folder-id}} {{name}}</div>
       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
         <iron-icon icon="[[toggleIcon]]"></iron-icon>
       </a>
     <!--</template>-->
-    <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="open">-->
-    <a class="lifevault__list-link-lvl2" href="javascript:;">
+    <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="open">
       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-      [[name]][[folder-id]]
+      [[name]]
     </a>
     <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
       <iron-icon icon="icons:more-vert"></iron-icon>
@@ -204,10 +283,45 @@
     </a>
     <iron-collapse id="collapse{{index}}">
       <ul>
-        <template is="dom-repeat" items="{{folders}}">
-          <li>
+        <template is="dom-repeat" items="{{folders}}" >
+          <li class="lifevault__list-item-lvl3">
             <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" hasFolder=[[item.has_folders]]"
                                      on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
+            <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">-->
+              <!--<iron-icon icon="[[toggleIcon]]"></iron-icon>-->
+            <!--</a>-->
+            <!--<a href="javascript:;" class="lifevault__list-link-lvl3" on-click="open">-->
+              <!--<iron-icon icon="netlaw-icons:folder-icon"></iron-icon>-->
+              <!--[[childFolders.name]]</a>-->
+            <!--<a class="lifevault__btn lifevault__btn&&#45;&#45;lvl3" href="javascript:;"-->
+               <!--on-click="_onToggleDropdown">-->
+              <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
+              <!--<iron-dropdown>-->
+                <!--<ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"-->
+                    <!--slot="dropdown-content">-->
+                  <!--<li>Download-->
+                    <!--<iron-icon-->
+                        <!--icon="netlaw-icons:download-icon"></iron-icon>-->
+                  <!--</li>-->
+                  <!--<li>Print-->
+                    <!--<iron-icon-->
+                        <!--icon="netlaw-icons:print-icon"></iron-icon>-->
+                  <!--</li>-->
+                  <!--<li>Rename-->
+                    <!--<iron-icon-->
+                        <!--icon="netlaw-icons:rename-icon"></iron-icon>-->
+                  <!--</li>-->
+                  <!--<li on-click="_onShareFileClick">Share-->
+                    <!--<iron-icon-->
+                        <!--icon="netlaw-icons:share-icon"></iron-icon>-->
+                  <!--</li>-->
+                  <!--<li on-click="_onDeleteFileFolderClick">Delete-->
+                    <!--<iron-icon-->
+                        <!--icon="netlaw-icons:delete-icon"></iron-icon>-->
+                  <!--</li>-->
+                <!--</ul>-->
+              <!--</iron-dropdown>-->
+            <!--</a>-->
           </li>
         </template>
       </ul>
@@ -278,7 +392,6 @@
 
           constructor() {
               super();
-              hasFolders = this.folders.has_folders;
           }
 
           ready() {
@@ -296,7 +409,7 @@
           }
 
           open() {
-              // this.refresh();
+              this.refresh();
               //show folders...
 
               this.dispatchEvent(new CustomEvent("open-folder", {
