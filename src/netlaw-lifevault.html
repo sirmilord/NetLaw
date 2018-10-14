@@ -1347,6 +1347,8 @@
             <li class="lifevault__list-item lifevault__list-item--top-border" on-open-folder="_onOpenFolder">
               <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
                 <iron-icon icon="[[toggleIcon]]"></iron-icon>
+              </a>
+              <a href="javascript:;" class="lifevault__list-link" on-click="_onOpenFolder">
                 <span class="lifevault__list-text">My Files</span>
               </a>
               <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger"
@@ -1834,13 +1836,16 @@
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
               if (ironDropdown) {
                   ironDropdown.toggle();
-                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {
+                      bubbles: true,
+                      composed: true
+                  }));
               }
           }
 
           _onOpenFolder(e){
             //let folderId = e.detail.id;
-            //   console.log(e);
+            console.log(e.detail.id);
             this.folderId = e.detail.id;
             navigate (`lifevault/myfiles/${e.detail.path}`);
 

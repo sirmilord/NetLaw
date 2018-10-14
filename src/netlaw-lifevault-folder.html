@@ -246,7 +246,7 @@
     </template>-->
     <!--<template is="dom-if" if="[[hasFolders]]">-->
     <!--todo: Ask Zlatko how to hide [expand icon] for empty folders -->
-    <div>[[hasFolders]] {{hasFolders}} {{folder-id}} {{name}}</div>
+    <!--<div>[[hasFolders]] {{hasFolders}} {{folder-id}} {{name}}</div>-->
       <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
         <iron-icon icon="[[toggleIcon]]"></iron-icon>
       </a>
@@ -404,7 +404,9 @@
                   detail: {
                       id: e.detail.id,
                       path: `${this.folderId}/${e.detail.path}`,
-                  }, bubbles: true, composed: true,
+                  },
+                  bubbles: true,
+                  composed: true,
               }));
           }
 
