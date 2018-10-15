@@ -390,7 +390,7 @@
               <div class="form__row">
                 <div class="form__group form__group--half">
                   <label class="label" for="firstname">FIRST NAME</label>
-                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce">
+                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce" value="{{accountName}}" on-change="_onUpdateProfile">
                 </div>
                 <div class="form__group form__group--half">
                   <label class="label" for="lastname">LAST NAME</label>
@@ -424,6 +424,8 @@
                 </div>
               </div>
               <div class="form__line"></div>
+              <div>[[info]]</div>
+              <div>[[error]]</div>
               <div class="form__group form__group--center">
                 <a href="javascript:;" class="btn btn--primary">Update Details</a>
                 <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered">Cancel</a>
@@ -446,12 +448,20 @@
                  uploadImage: {
                      type: String,
                      value: './images/profile-default.png'
-                 }
+                 },
+                  accountName: {type: String},
+                  error: {type: String},
+                  info: {type: String},
               };
           }
 
           constructor() {
               super();
+          }
+
+          ready () {
+              super.ready();
+              api.customers.listAccounts().success(r => this.accountName = r[0].name);
           }
 
           //for mobile
@@ -467,6 +477,14 @@
                   composed: true,
                   detail: {opened: false}
               }));
+          }
+
+          _onUpdateProfile(e) {
+              api.customers.updateProfile("416e7ec0-c97e-4be1-bd49-0910c513fe42", { name: 'New Customer' })
+                  .success(r => this.info = "Profile updated successfully")
+                  .error(r => {
+                          this.error = r.message;
+                      })
           }
 
       }
