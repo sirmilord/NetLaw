@@ -418,7 +418,9 @@
                   detail: {
                       id: this.folderId,
                       path: this.folderId,
-                  }, bubbles: true, composed: true,
+                  },
+                  bubbles: true,
+                  composed: true,
               }));
           }
 
@@ -448,7 +450,10 @@
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
               if (ironDropdown) {
                   ironDropdown.toggle();
-                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+                  e.srcElement.dispatchEvent(new CustomEvent('iron-select', {
+                      bubbles: true,
+                      composed: true
+                  }));
               }
           }
 

@@ -1348,7 +1348,7 @@
               <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
                 <iron-icon icon="[[toggleIcon]]"></iron-icon>
               </a>
-              <a href="javascript:;" class="lifevault__list-link" on-click="_onOpenFolder">
+              <a href="javascript:;" class="lifevault__list-link">
                 <span class="lifevault__list-text">My Files</span>
               </a>
               <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger"
@@ -1845,12 +1845,17 @@
 
           _onOpenFolder(e){
             //let folderId = e.detail.id;
-            console.log(e.detail.id);
+            //console.log("detail id is:"+e.detail.id);
+              debugger;
             this.folderId = e.detail.id;
-            navigate (`lifevault/myfiles/${e.detail.path}`);
+            if (e.detail.path != "") navigate (`lifevault/myfiles/${e.detail.path}`);
+            else navigate (`lifevault/myfiles/`);
 
             api.vault.searchFolder(null, "type:folder")
-                .success(r => console.log(r));
+                //.success(r => console.log(r));
+                .success(r => {
+                    //console.log(r);
+                });
           }
 
           ready(e) {
@@ -1882,7 +1887,7 @@
                   .success(r => this.folders = r);
 
 
-              console.log(this.folders);
+              //console.log(this.folders);
           }
 
           _pageChanged(page) {
