@@ -868,13 +868,13 @@
               this.addEventListener('overlay-display', this._onOverlayChanged);
               this.addEventListener('drawer-changed', this._onDrawerChanged);
               this.addEventListener('mobile-notification', this._onNavigateNotification);
+              this.addEventListener('profile-name-changed', this.onProfileNameChange);
 
               this.contentReady = true;
               Polymer.RenderStatus.afterNextRender(this, () => this._pageChanged(this.page));
           }
 
           _onMenuChanged(e) {
-
               let issimple = e.detail instanceof Element;
               this._applyMenu(e.path[0], issimple ? e.detail : e.detail.menu, issimple ? false : e.detail.full);
           }
@@ -883,6 +883,12 @@
               //debugger;
               console.log("opened:",e.detail.opened);
               Polymer.RenderStatus.afterNextRender(this, () => this.drawerOpened = e.detail.opened);
+          }
+
+          onProfileNameChange(e) {
+             console.log(e.detail.profileName);
+             let profileName = this.shadowRoot.querySelector("netlaw-user-menu");
+             if (profileName) profileName.profileName = e.detail.profileName;
           }
       }
 

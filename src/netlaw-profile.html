@@ -269,6 +269,24 @@
         cursor: pointer;
       }
 
+      .profile__error {
+        text-align: center;
+        color: #ff0000;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: block;
+        transition: all 0.3s;
+      }
+
+      .profile__info {
+        text-align: center;
+        color: #4A90E2;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: block;
+        transition: all 0.3s;
+      }
+
       @media (min-width: 1200px) {
         .profile__left paper-icon-button {
           width: 160px;
@@ -384,13 +402,13 @@
           </div>
         </div>
         <div class="profile__right">
-          <form class="form" action="#" method="post">
+          <form class="form">
             <fieldset>
               <legend>Personal Information</legend>
               <div class="form__row">
                 <div class="form__group form__group--half">
                   <label class="label" for="firstname">FIRST NAME</label>
-                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce" value="{{accountName}}" on-change="_onUpdateProfile">
+                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce" value="{{profileName::input}}" required on-change="showChange">
                 </div>
                 <div class="form__group form__group--half">
                   <label class="label" for="lastname">LAST NAME</label>
@@ -424,10 +442,10 @@
                 </div>
               </div>
               <div class="form__line"></div>
-              <div>[[info]]</div>
-              <div>[[error]]</div>
+              <span class="profile__error" hidden$="[[!error]]">[[error]]</span>
+              <span class="profile__info" hidden$="[[!info]]">[[info]]</span>
               <div class="form__group form__group--center">
-                <a href="javascript:;" class="btn btn--primary">Update Details</a>
+                <button class="btn btn--primary" on-click="_onUpdateProfile">Update Details</button>
                 <a href="[[rootPath]]initial-screen" class="btn btn--cancel-bordered">Cancel</a>
               </div>
             </fieldset>
@@ -449,7 +467,8 @@
                      type: String,
                      value: './images/profile-default.png'
                  },
-                  accountName: {type: String},
+                  profileName: {type: String},
+                  accountId: {type: String},
                   error: {type: String},
                   info: {type: String},
               };
@@ -461,7 +480,10 @@
 
           ready () {
               super.ready();
-              api.customers.listAccounts().success(r => this.accountName = r[0].name);
+              api.customers.listAccounts().success(r => {
+                  this.profileName = r[0].name;
+                  this.accountId = r[0].customer_id;
+              });
           }
 
           //for mobile
@@ -480,12 +502,31 @@
           }
 
           _onUpdateProfile(e) {
-              api.customers.updateProfile("416e7ec0-c97e-4be1-bd49-0910c513fe42", { name: 'New Customer' })
-                  .success(r => this.info = "Profile updated successfully")
+              e.preventDefault();
+              this.error = "";
+              this.info = "";
+              if (this.profileName.length < 2) {
+                  this.error = "Name is too short";
+                  return;
+              }
+              api.customers.updateProfile(this.accountId, { name: this.profileName })
+                  .success(r => {
+                      this.info = "Profile updated successfully";
+                      this.dispatchEvent(new CustomEvent('profile-name-changed', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {profileName: this.profileName}
+                      }));
+                  })
                   .error(r => {
                           this.error = r.message;
                       })
           }
+
+          showChange(e){
+              console.log(this.profileName);
+          }
+
 
       }
 
