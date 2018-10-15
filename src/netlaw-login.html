@@ -627,6 +627,11 @@
                                   this.session_id = r.session_id;
                                   this.account_id = r.account_id;
                                   this.dispatchEvent(new CustomEvent("logged-in"));
+                                  this.dispatchEvent(new CustomEvent('profile-name-changed', {
+                                      bubbles: true,
+                                      composed: true,
+                                      detail: {profileName: this.profileName}
+                                  }));
                               });
                       })
                       .error(ex => {
@@ -675,6 +680,12 @@
 
                                   this.selected = "signin";
                                   this.dispatchEvent(new CustomEvent('logged-in'));
+                                  setTimeout(()=>
+                                  this.dispatchEvent(new CustomEvent('profile-name-changed', {
+                                      bubbles: true,
+                                      composed: true,
+                                      detail: {profileName: r.name}
+                                  })));
                               });
 
                       }
