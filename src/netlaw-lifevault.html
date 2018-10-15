@@ -1348,7 +1348,7 @@
               <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
                 <iron-icon icon="[[toggleIcon]]"></iron-icon>
               </a>
-              <a href="javascript:;" class="lifevault__list-link">
+              <a href="javascript:;" class="lifevault__list-link" on-click="_onOpenMyFiles">
                 <span class="lifevault__list-text">My Files</span>
               </a>
               <a class="lifevault__btn lifevault__btn--lvl1" href="javascript:;" slot="dropdown-trigger"
@@ -1819,7 +1819,7 @@
               ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
-              this.folderId = null;
+              /*this.folderId = null;*/
           }
 
           _onToggleCollapseLvl2(e) {
@@ -1844,19 +1844,19 @@
           }
 
           _onOpenFolder(e){
-            //let folderId = e.detail.id;
-            //console.log("detail id is:"+e.detail.id);
-              debugger;
             this.folderId = e.detail.id;
-            if (e.detail.path != "") navigate (`lifevault/myfiles/${e.detail.path}`);
-            else navigate (`lifevault/myfiles/`);
+            avigate (`lifevault/myfiles/${e.detail.path}`);
 
-            api.vault.searchFolder(null, "type:folder")
-                //.success(r => console.log(r));
-                .success(r => {
-                    //console.log(r);
-                });
+            // api.vault.searchFolder(null, "type:folder")
+            //     .success(r => {
+            //         this.folders = r;
+            //     });
           }
+
+          _onOpenMyFiles(e) {
+              navigate (`lifevault/myfiles/`);
+              this.folderId = null;
+      }
 
           ready(e) {
               super.ready();
