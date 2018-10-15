@@ -86,7 +86,7 @@
 
 
     <span class="message">
-      Welcome Back, <a href="javascript:;" on-click="_toggle">John Doe <iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
+      Welcome Back, <a href="javascript:;" on-click="_toggle">[[accountName]]<iron-icon icon="[[toggleIcon]]"></iron-icon> </a>
     </span>
 
     <iron-dropdown id="user_dropdown" vertical-offset="47" horizontal-align="right" opened="{{userMenuOpened}}" opened$="[[userMenuOpened]]">
@@ -119,11 +119,19 @@
                       type: Boolean,
                       value: false
                   },
+                  accountName: {type: String}
               };
           }
 
           constructor() {
               super();
+          }
+
+          ready() {
+              super.ready();
+              api.customers.listAccounts().success(r => this.accountName = r[0].name);
+              // api.customers.listAccounts().success(r => console.log(r));
+              //console.log(this.accounts);
           }
 
           _toggle(e) {
