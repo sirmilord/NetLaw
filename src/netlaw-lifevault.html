@@ -1376,7 +1376,7 @@
 
                   <template is="dom-repeat" items="{{folders}}">
                     <li class="lifevault__list-item-lvl2">
-                      <netlaw-lifevault-folder folder-id="{{item.id}}" name="[[item.name]]" index="[[index]]" has-folders="{{item.has_folders}}" on-add-folder="_onAddFolderClick" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-folder>
+                      <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" index="[[index]]" has-folders="[[item.has_folders]]" on-add-folder="_onAddFolderClick" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-folder>
                     </li>
 
 
@@ -1519,9 +1519,11 @@
 
             <netlaw-lifevault-management name="myfiles"
                                          folder-id="[[folderId]]"
-                                         on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
+                                         on-delete-file="_onDeleteFileFolderClick"
+                                         on-add-file="_onAddFileClick"
                                          on-share-file="_onShareFileClick"></netlaw-lifevault-management>
-            <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
+            <netlaw-lifevault-doc name="doc"
+                                  on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
           </iron-pages>
 
@@ -1752,52 +1754,6 @@
                   folders: {
                       type: Object
                   },
-
-                  // folders: {
-                  //     type: Object, value: () => [
-                  //         {
-                  //             id: "a79c41ab-c486-46fe-9b2a-8a2268e98b0d",
-                  //             name: "Estate Planning",
-                  //             folders2: [
-                  //                 {
-                  //                     id: "ac4048b8-28e5-404c-9e61-a7d908a475d1",
-                  //                     name: "Home Managment",
-                  //                     link: "lifevault/management"
-                  //                 },
-                  //                 {
-                  //                     id: "284065ea-23ee-490b-bd25-49019f436099",
-                  //                     name: "Documents of Estate",
-                  //                     link: "lifevault/doc"
-                  //                 },
-                  //                 {
-                  //                     id: "284065ea-23ee-491b-bd25-49019f436099",
-                  //                     name: "Documents of Estate 2",
-                  //                     link: "lifevault/doc"
-                  //                 },
-                  //             ]
-                  //         },
-                  //         {
-                  //             id: "a48b0e44-6705-4662-bb8e-690225785e23",
-                  //             name: "Misc. Docs"
-                  //         },
-                  //         {
-                  //             id: "3c37fa5e-bdb3-43bf-be3a-bb50325501de",
-                  //             name: "Insurance Policies"
-                  //         },
-                  //         {
-                  //             id: "625ea46b-9407-4d2f-9cde-150dc77ba47d",
-                  //             name: "Deeds"
-                  //         },
-                  //         {
-                  //             id: "8b859027-f9e9-4cc5-aba1-9c4efeb7f9f9",
-                  //             name: "Tax Returns"
-                  //         },
-                  //         {
-                  //             id: "59405904-f7f2-44a4-8186-93e842fcc915",
-                  //             name: "Asset/Financial"
-                  //         },
-                  //     ]
-                  // },
                   mobile: {
                       type: Boolean, observer(value) {
                           // this.open();
@@ -1845,7 +1801,7 @@
 
           _onOpenFolder(e){
             this.folderId = e.detail.id;
-            avigate (`lifevault/myfiles/${e.detail.path}`);
+            navigate (`lifevault/myfiles/${e.detail.path}`);
 
             // api.vault.searchFolder(null, "type:folder")
             //     .success(r => {

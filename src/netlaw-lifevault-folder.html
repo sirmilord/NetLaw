@@ -16,12 +16,11 @@
 
       .lifevault__list-link-lvl2 {
         font-size: 14px;
-        color: #e5e5e5;
+        color: var(--lifevault-folder-link-color, #e5e5e5);
         text-decoration: none;
         display: inline-block;
-        vertical-align: center;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: var(--lifevault-folder-link-pt,15px);
+        padding-bottom: var(--lifevault-folder-link-pb,15px);
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
       }
@@ -29,7 +28,7 @@
       .lifevault__btn--lvl2 {
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
-        top: 15px;
+        top: var(--lifevault-folder-btn-top, 15px);
         color: #e5e5e5;
       }
 
@@ -63,20 +62,34 @@
         width: 162px;
       }
 
-      a.lifevault__list-link-lvl2 > iron-icon {
+      .lifevault__list-link-lvl2 iron-icon {
         margin-bottom: 3px;
         margin-right: 10px;
       }
 
-      a.lifevault__btn.lifevault__btn--lvl2 > iron-icon {
+      .lifevault__btn.lifevault__btn--lvl2 iron-icon {
         margin-bottom: 5px;
       }
 
       .lifevault__list-link-lvl2:hover,
       .lifevault__list-link-lvl2--active,
       .lifevault__list-link-lvl2:focus {
-        color: #4a4a4a;
+        color: var(--lifevault-folder-link-hover, #4a4a4a);
         text-decoration: none;
+      }
+
+
+      .lifevault__list-link-lvl2:hover:before,
+      .lifevault__list-link-lvl2:focus:before,
+      .lifevault__list-link-lvl2--active:before {
+        content: '';
+        position: absolute;
+        height: 20px;
+        right: -15px;
+        top: 11px;
+        width: 4px;
+        background-color: #01AA50;
+        display: var(--lifevault-folder-hover-before, none);
       }
 
       .lifevault__list-lvl3 {
@@ -86,31 +99,13 @@
 
       .lifevault__list-item-lvl3 {
         position: relative;
-      }
-      .lifevault__list-link-lvl3 {
-        font-size: 14px;
-        color: #b7b7b7;
-        text-decoration: none;
-        display: inline-block;
-        vertical-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-      }
-
-      .lifevault__list-link-lvl3:hover,
-      .lifevault__list-link-lvl3:focus {
-        text-decoration: none;
-      }
-
-      a.lifevault__list-link-lvl3 > iron-icon {
-        margin-bottom: 3px;
-        margin-right: 10px;
-      }
-
-      a.lifevault__btn.lifevault__btn--lvl3 > iron-icon {
-        margin-bottom: 5px;
+        --lifevault-folder-link-color: #b7b7b7;
+        --lifevault-folder-link-pt: 10px;
+        --lifevault-folder-link-pb: 10px;
+        --lifevault-folder-btn-top: 9px;
+        --lifevault-folder-link-hover: #01AA50;
+        --lifevault-folder-toggle-top: 8px;
+        --lifevault-folder-hover-before: block;
       }
 
       .lifevault__list-item-lvl2--top-border:before {
@@ -127,127 +122,29 @@
         color: #4a4a4a;
       }
 
-      .lifevault__btn--lvl3 {
-        --iron-icon-width: 24px;
-        --iron-icon-height: 24px;
-        top: 9px;
-        color: #e5e5e5;
-      }
-
-      .lifevault__list-link-lvl3:hover,
-      .lifevault__list-link-lvl3:focus,
-      .lifevault__list-link-lvl3--active {
-        color: #01AA50;
-      }
-
-      .lifevault__list-link-lvl3:hover:before,
-      .lifevault__list-link-lvl3:focus:before,
-      .lifevault__list-link-lvl3--active:before {
-        content: '';
-        position: absolute;
-        height: 50%;
-        right: -15px;
-        top: 50%;
-        width: 4px;
-        background-color: #01AA50;
-        transform: translateY(-50%);
-      }
-
       ul {
         list-style: none;
         margin: 0;
         padding: 0;
       }
+
+      .lifevault__list-link-toggle {
+        position: absolute;
+        left: -25px;
+        top: var(--lifevault-folder-toggle-top, 15px);
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+        --iron-icon-fill-color: #414142;
+      }
+
+      .lifevault__list-link-toggle[aria-expanded=true] iron-icon {
+        fill: #01AA50;
+      }
+
     </style>
 
-
-    <!--<a class="lifevault__list-link-lvl2" href="javascript:;" on-click="toggleLvl2">
-      <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-      [[item.name]]
-    </a>
-    <a class="lifevault__btn lifevault__btn&#45;&#45;lvl2" href="javascript:;" on-click="_onToggleDropdown">
-      <iron-icon icon="icons:more-vert"></iron-icon>
-      <iron-dropdown>
-        <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
-            slot="dropdown-content">
-          <li on-click="_onAddFolderClick">Add Sub-Folder
-            <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-          </li>
-          <li>Download
-            <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-          </li>
-          <li>Print
-            <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-          </li>
-          <li>Rename
-            <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-          </li>
-          <li on-click="_onShareFileClick">Share
-            <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-          </li>
-          <li on-click="_onDeleteFileFolderClick">Delete
-            <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-          </li>
-        </ul>
-      </iron-dropdown>
-    </a>
-
-    <template is="dom-if" if=[[item.folders2]]>
-
-      <iron-collapse id="collapsetwo{{index}}">
-        <ul class="lifevault__list-lvl3">
-          <iron-selector selected="[[page]]" attr-for-selected="name"
-                         role="navigation">
-
-            <template is="dom-repeat" items="{{item.folders2}}" as="item2">
-
-              <li class="lifevault__list-item-lvl3">
-                <a name="management" href="{{item2.link}}"
-                   class="lifevault__list-link-lvl3">
-                  <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                  [[item2.name]]</a>
-                <a class="lifevault__btn lifevault__btn&#45;&#45;lvl3" href="javascript:;"
-                   on-click="_onToggleDropdown">
-                  <iron-icon icon="icons:more-vert"></iron-icon>
-                  <iron-dropdown>
-                    <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
-                        slot="dropdown-content">
-                      <li>Download
-                        <iron-icon
-                            icon="netlaw-icons:download-icon"></iron-icon>
-                      </li>
-                      <li>Print
-                        <iron-icon
-                            icon="netlaw-icons:print-icon"></iron-icon>
-                      </li>
-                      <li>Rename
-                        <iron-icon
-                            icon="netlaw-icons:rename-icon"></iron-icon>
-                      </li>
-                      <li on-click="_onShareFileClick">Share
-                        <iron-icon
-                            icon="netlaw-icons:share-icon"></iron-icon>
-                      </li>
-                      <li on-click="_onDeleteFileFolderClick">Delete
-                        <iron-icon
-                            icon="netlaw-icons:delete-icon"></iron-icon>
-                      </li>
-                    </ul>
-                  </iron-dropdown>
-                </a>
-              </li>
-
-            </template>
-
-          </iron-selector>
-        </ul>
-      </iron-collapse>
-
-    </template>-->
     <template is="dom-if" if="[[hasFolders]]">
-    <!--todo: Ask Zlatko how to hide [expand icon] for empty folders -->
-    <!--<div>[[hasFolders]] {{hasFolders}} {{folder-id}} {{name}}</div>-->
-      <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse">
         <iron-icon icon="[[toggleIcon]]"></iron-icon>
       </a>
     </template>
@@ -283,45 +180,10 @@
     </a>
     <iron-collapse id="collapse{{index}}">
       <ul class="lifevault__list-lvl3">
-        <template is="dom-repeat" items="{{folders}}" >
+        <template is="dom-repeat" items="{{folders}}">
           <li class="lifevault__list-item-lvl3">
-            <!--todo: Ask Zlatko how to add CSS class depending on nesting level (to build a tree of directories) -->
-            <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" has-folder="[[item.has_folders]]"
+            <netlaw-lifevault-folder index="[[index]]" folder-id="[[item.id]]" name="[[item.name]]" has-folders="[[item.has_folders]]"
                                      on-open-folder="_onOpenFolder"></netlaw-lifevault-folder>
-
-            <!--<a name="management" href="javascript:;"-->
-               <!--class="lifevault__list-link-lvl3" on-click="open">-->
-              <!--<iron-icon icon="netlaw-icons:folder-icon"></iron-icon>-->
-              <!--[[item2.name]]</a>-->
-            <!--<a class="lifevault__btn lifevault__btn&#45;&#45;lvl3" href="javascript:;"-->
-               <!--on-click="_onToggleDropdown">-->
-              <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
-              <!--<iron-dropdown>-->
-                <!--<ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"-->
-                    <!--slot="dropdown-content">-->
-                  <!--<li>Download-->
-                    <!--<iron-icon-->
-                        <!--icon="netlaw-icons:download-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Print-->
-                    <!--<iron-icon-->
-                        <!--icon="netlaw-icons:print-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li>Rename-->
-                    <!--<iron-icon-->
-                        <!--icon="netlaw-icons:rename-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li on-click="_onShareFileClick">Share-->
-                    <!--<iron-icon-->
-                        <!--icon="netlaw-icons:share-icon"></iron-icon>-->
-                  <!--</li>-->
-                  <!--<li on-click="_onDeleteFileFolderClick">Delete-->
-                    <!--<iron-icon-->
-                        <!--icon="netlaw-icons:delete-icon"></iron-icon>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</iron-dropdown>-->
-            <!--</a>-->
           </li>
         </template>
       </ul>
