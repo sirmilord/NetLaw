@@ -408,7 +408,7 @@
               <div class="form__row">
                 <div class="form__group form__group--half">
                   <label class="label" for="firstname">FIRST NAME</label>
-                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce" value="{{profileName::input}}" required on-change="showChange">
+                  <input type="text" id="firstname" class="input-text" placeholder="i.e. Bruce" value="{{profileName::input}}" required>
                 </div>
                 <div class="form__group form__group--half">
                   <label class="label" for="lastname">LAST NAME</label>
@@ -522,11 +522,6 @@
                           this.error = r.message;
                       })
           }
-
-          showChange(e){
-              console.log(this.profileName);
-          }
-
 
       }
 
