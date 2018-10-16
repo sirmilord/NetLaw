@@ -104,6 +104,24 @@
         color: #01AA50;
       }
 
+      .lifevault__list-link--active {
+        color: #01AA50;
+      }
+
+      /*.lifevault__list-link:focus:before,*/
+      .lifevault__list-link--active:before
+      /*.lifevault__list-link:hover:before*/
+      {
+        content: '';
+        position: absolute;
+        height: 30px;
+        right: -15px;
+        top: 18px;
+        width: 4px;
+        background-color: #01AA50;
+        display:  block;
+      }
+
       .lifevault__list-link iron-icon {
         margin-right: 10px;
         --iron-icon-width: 15px;
@@ -1800,6 +1818,11 @@
           _onOpenFolder(e){
             this.folderId = e.detail.id;
             navigate (`lifevault/myfiles/${e.detail.path}`);
+
+            let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
+            /*console.log(myFilesActive);*/
+            console.log(this);
+            if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
 
             // api.vault.searchFolder(null, "type:folder")
             //     .success(r => {

@@ -25,6 +25,10 @@
         --iron-icon-height: 15px;
       }
 
+      .lifevault__list-link-lvl2--collapsed {
+        color: #4A4A4A;
+      }
+
       .lifevault__btn--lvl2 {
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
@@ -74,7 +78,7 @@
       .lifevault__list-link-lvl2:hover,
       .lifevault__list-link-lvl2--active,
       .lifevault__list-link-lvl2:focus {
-        color: var(--lifevault-folder-link-hover, #4a4a4a);
+        color: var(--lifevault-folder-link-hover, #01AA50);
         text-decoration: none;
       }
 
@@ -86,10 +90,10 @@
         position: absolute;
         height: 20px;
         right: -15px;
-        top: 11px;
+        top: var(--lifevault-folder-hover-before-top, 17px);
         width: 4px;
         background-color: #01AA50;
-        display: var(--lifevault-folder-hover-before, none);
+        display:  block;
       }
 
       .lifevault__list-lvl3 {
@@ -99,13 +103,13 @@
 
       .lifevault__list-item-lvl3 {
         position: relative;
-        --lifevault-folder-link-color: #b7b7b7;
+        --lifevault-folder-link-color: #e5e5e5;
         --lifevault-folder-link-pt: 10px;
         --lifevault-folder-link-pb: 10px;
         --lifevault-folder-btn-top: 9px;
         --lifevault-folder-link-hover: #01AA50;
         --lifevault-folder-toggle-top: 8px;
-        --lifevault-folder-hover-before: block;
+        --lifevault-folder-hover-before-top: 11px;
       }
 
       .lifevault__list-item-lvl2--top-border:before {
@@ -317,6 +321,11 @@
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
               this.refresh();
+
+              let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
+              if(link) {
+                  ironCollapse.opened ? link.classList.add('lifevault__list-link-lvl2--collapsed') : link.classList.remove('lifevault__list-link-lvl2--collapsed');
+              }
 
           }
 
