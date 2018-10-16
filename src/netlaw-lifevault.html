@@ -45,10 +45,10 @@
         margin-bottom: 20px;
       }
 
-      .lifevault__list-lvl3 {
+      /*.lifevault__list-lvl3 {
         margin-left: 15px;
         margin-bottom: 20px;
-      }
+      }*/
 
       .lifevault__list-item {
         position: relative;
@@ -84,9 +84,9 @@
         position: relative;
       }
 
-      .lifevault__list-item-lvl3 {
+      /*.lifevault__list-item-lvl3 {
         position: relative;
-      }
+      }*/
 
       .lifevault__list-link {
         font-size: 16px;
@@ -101,6 +101,7 @@
       .lifevault__list-link:hover,
       .lifevault__list-link:focus {
         text-decoration: none;
+        color: #01AA50;
       }
 
       .lifevault__list-link iron-icon {
@@ -110,7 +111,7 @@
         margin-bottom: 3px;
       }
 
-      .lifevault__list-link-lvl2 {
+      /*.lifevault__list-link-lvl2 {
         font-size: 14px;
         color: #e5e5e5;
         text-decoration: none;
@@ -169,7 +170,7 @@
         top: -7px;
         transform: translateX(-50%);
         color: #4a4a4a;
-      }
+      }*/
 
       .lifevault__btn {
         position: absolute;
@@ -186,7 +187,7 @@
         --iron-icon-height: 24px;
       }
 
-      .lifevault__btn--lvl2 {
+      /*.lifevault__btn--lvl2 {
         --iron-icon-width: 24px;
         --iron-icon-height: 24px;
         top: 15px;
@@ -202,13 +203,13 @@
         --iron-icon-height: 24px;
         top: 9px;
         color: #e5e5e5;
-      }
+      }*/
 
       .lifevault__list-link[aria-expanded=true] iron-icon {
         fill: #01AA50;
       }
 
-      .lifevault__list-link-lvl2:hover,
+      /*.lifevault__list-link-lvl2:hover,
       .lifevault__list-link-lvl2--active,
       .lifevault__list-link-lvl2:focus {
         color: #4a4a4a;
@@ -232,7 +233,7 @@
         width: 4px;
         background-color: #01AA50;
         transform: translateY(-50%);
-      }
+      }*/
 
       b {
         display: block;
@@ -964,7 +965,7 @@
           text-align: left;
         }
 
-        .lifevault__list-lvl2 {
+        /*.lifevault__list-lvl2 {
           padding-top: 15px;
         }
 
@@ -973,13 +974,13 @@
           padding-bottom: 12px;
           --iron-icon-width: 18px;
           --iron-icon-height: 18px;
-        }
+        }*/
 
-        .lifevault__list-item-lvl2--top-border:before {
+        /*.lifevault__list-item-lvl2--top-border:before {
           border-bottom: 1px solid #979797;
           left: 0;
           transform: none;
-        }
+        }*/
 
         .btn--full {
           width: 100%;
@@ -1039,9 +1040,6 @@
           margin-right: auto;
         }
 
-        /*.login__divider-small::after {*/
-        /*border-top: 1px solid #e5e5e5;*/
-        /*}*/
         .iron-collapse-opened:before {
           left: 0;
           transform: none;
@@ -1812,6 +1810,7 @@
           _onOpenMyFiles(e) {
               navigate (`lifevault/myfiles/`);
               this.folderId = null;
+              e.currentTarget.classList.toggle('lifevault__list-link--active');
       }
 
           ready(e) {
