@@ -1455,7 +1455,10 @@
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('delete-file', {bubbles: true, composed: true}));
-
+              // pass this to lifevault
+              //e.model.file.id
+              //refreesh
+              //close overlay
           }
 
           _onShareFileClick(e) {

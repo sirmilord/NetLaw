@@ -1168,7 +1168,7 @@
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
-
+    <input id="inputFileUploader" type="file" multiple style="display: none !important;" on-change="onUploadFileSelected">
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <!--<template is="dom-if" if="[[displayLogo]]">-->
@@ -1394,94 +1394,6 @@
                     <li class="lifevault__list-item-lvl2">
                       <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" index="[[index]]" has-folders="[[item.has_folders]]" on-add-folder="_onAddFolderClick" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-folder>
                     </li>
-
-
-                    <!--<li class="lifevault__list-item-lvl2">
-                      <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
-                        <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                        [[item.name]]
-                      </a>
-                      <a class="lifevault__btn lifevault__btn&#45;&#45;lvl2" href="javascript:;" on-click="_onToggleDropdown">
-                        <iron-icon icon="icons:more-vert"></iron-icon>
-                        <iron-dropdown>
-                          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
-                              slot="dropdown-content">
-                            <li on-click="_onAddFolderClick">Add Sub-Folder
-                              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                            </li>
-                            <li>Download
-                              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                            </li>
-                            <li>Print
-                              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                            </li>
-                            <li>Rename
-                              <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                            </li>
-                            <li on-click="_onShareFileClick">Share
-                              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                            </li>
-                            <li on-click="_onDeleteFileFolderClick">Delete
-                              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                            </li>
-                          </ul>
-                        </iron-dropdown>
-                      </a>
-
-                      <template is="dom-if" if=[[item.folders2]]>
-
-                        <iron-collapse id="collapsetwo{{index}}">
-                          <ul class="lifevault__list-lvl3">
-                            <iron-selector selected="[[page]]" attr-for-selected="name"
-                                           role="navigation">
-
-                              <template is="dom-repeat" items="{{item.folders2}}" as="item2">
-
-                                <li class="lifevault__list-item-lvl3">
-                                  <a name="management" href="{{item2.link}}"
-                                     class="lifevault__list-link-lvl3">
-                                    <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                                    [[item2.name]]</a>
-                                  <a class="lifevault__btn lifevault__btn&#45;&#45;lvl3" href="javascript:;"
-                                     on-click="_onToggleDropdown">
-                                    <iron-icon icon="icons:more-vert"></iron-icon>
-                                    <iron-dropdown>
-                                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown&#45;&#45;sub"
-                                          slot="dropdown-content">
-                                        <li>Download
-                                          <iron-icon
-                                              icon="netlaw-icons:download-icon"></iron-icon>
-                                        </li>
-                                        <li>Print
-                                          <iron-icon
-                                              icon="netlaw-icons:print-icon"></iron-icon>
-                                        </li>
-                                        <li>Rename
-                                          <iron-icon
-                                              icon="netlaw-icons:rename-icon"></iron-icon>
-                                        </li>
-                                        <li on-click="_onShareFileClick">Share
-                                          <iron-icon
-                                              icon="netlaw-icons:share-icon"></iron-icon>
-                                        </li>
-                                        <li on-click="_onDeleteFileFolderClick">Delete
-                                          <iron-icon
-                                              icon="netlaw-icons:delete-icon"></iron-icon>
-                                        </li>
-                                      </ul>
-                                    </iron-dropdown>
-                                  </a>
-                                </li>
-
-                              </template>
-
-                            </iron-selector>
-                          </ul>
-                        </iron-collapse>
-
-                      </template>
-                    </li>-->
-
                   </template>
 
                 </ul>
@@ -1936,7 +1848,9 @@
           }
 
           onUploadClick(e) {
-
+              //clear prev file
+              this.$.inputFileUploader.value = null;
+            this.$.inputFileUploader.click()
           }
 
           _onDeleteFileFolderClick(e) {
@@ -1988,6 +1902,26 @@
               // e.detail.value ? this.displayLogo = false : this.displayLogo = true;
           }
 
+          onUploadFileSelected(e) {
+
+              api.vault.uploadFolder(this.folderId, e.target.files)
+                  .success(r => {
+                      let pages = this.shadowRoot.querySelector("#pages2");
+                      if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
+                  })
+                  .error(() => {
+                      // todo span for error
+                      //server error
+                      // fab.error(true, true);
+                  })
+                  .catch(() => {
+                      // client error
+                      // fab.error(true, true);
+                  })
+                  .finally(() => {
+
+              });
+          }
       }
 
       window.customElements.define(NetlawLifevault.is, NetlawLifevault);
