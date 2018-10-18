@@ -1615,7 +1615,7 @@
           <b class="files__title">USE TEMPLATE</b>
           <p class="files__desc">form SmartGuide selection</p>
         </div>
-        <div class="files__item files__item--extra">
+        <div class="files__item files__item--extra" on-click="onUploadClick">
           <iron-icon class="files__icon" icon="netlaw-icons:file-upload"></iron-icon>
           <b class="files__title">UPLOAD FILES</b>
           <p class="files__desc">png, jpg, doc or PDF</p>
@@ -1933,6 +1933,10 @@
                       display: true
                   }
               }));
+          }
+
+          onUploadClick(e) {
+
           }
 
           _onDeleteFileFolderClick(e) {
