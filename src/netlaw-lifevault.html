@@ -1513,12 +1513,12 @@
             <figure class="file-folder__img">
               <iron-icon icon="netlaw-icons:page"></iron-icon>
             </figure>
-            <div class="file-folder__name">Estimate for Home Management .PDF</div>
-            <div class="file-folder__version">1.1</div>
+            <div class="file-folder__name">[[fileName]]</div>
+            <!--<div class="file-folder__version">1.1</div>-->
           </div>
           <hr class="login__divider-small">
           <div class="login__margin">
-            <button class="btn btn--warning">Confirm Deletion</button>
+            <button class="btn btn--warning" on-click="_onDeleteConfirmClick">Confirm Deletion</button>
           </div>
           <div class="login__margin">
             <button class="btn btn-cancel" on-click="_onCancelOverlayClick">Cancel</button>
@@ -1706,6 +1706,12 @@
                           // this.open();
                       }
                   },
+                  fileName: {
+                      type:String,
+                  },
+                  fileId: {
+                      type:String,
+                  }
               };
           }
 
@@ -1874,6 +1880,8 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
+              this.fileName = e.detail.fileName;
+              this.fileId = e.detail.fileId;
               this.deleteFileFolder = true;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
@@ -1882,6 +1890,23 @@
                       display: true
                   }
               }));
+          }
+
+          _onDeleteConfirmClick(e) {
+              api.vault.deleteFile(this.fileId).success(() => {
+                  this.deleteFileFolder = false;
+                  let pages = this.shadowRoot.querySelector("#pages2");
+                  if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
+                  console.log("File deleted successfully");
+                  // this.info = "File deleted successfully";
+                  this.dispatchEvent(new CustomEvent('overlay-display', {
+                      bubbles: true,
+                      composed: true,
+                      detail: {
+                          display: false
+                      }
+                  }));
+              });
           }
 
           _onShareFileClick(e) {

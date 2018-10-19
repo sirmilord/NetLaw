@@ -1034,8 +1034,10 @@
                         <a class="lifevault__footer-link" href="{{file.link}}">
                           <span class="lifevault__name">[[file.name]]</span>
                         </a>
-                        <span class="lifevault__module-update">[[file.status]]</span>
-                        <button class="lifevault__details" on-click="_onToggleDropdown">v1.1
+                        <span class="lifevault__module-update">[[formatDate(file.modified_on)]]</span>
+                        <!--TODO ASK Zlatko how to formats dates-->
+                        <button class="lifevault__details" on-click="_onToggleDropdown">
+                          <iron-icon icon="icons:history"></iron-icon>
                           <iron-icon icon="icons:expand-more"></iron-icon>
                           <iron-dropdown horizontal-align="right">
                             <ul class="lifevault__version-dropdown"
@@ -1189,194 +1191,6 @@
                   checkboxes: {
                       type: Array,
                   },
-                  /*files: {
-                      type: Object, value: () => [
-                          {
-                              id: "4975f0a0-5b41-4773-9446-54a2921ee764",
-                              icon: "netlaw-icons:page",
-                              link: "lifevault/doc",
-                              smartguide: true,
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              name: "Estimate for Home Management.PDF",
-                              versions: [
-                                  {
-                                      version: "Jan 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Feb 20/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Mar 11/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Jun 15/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Aug 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                              ]
-                          },
-
-                          {
-                              id: "c0cd1612-21e7-40b3-8a02-527e08fedbb9",
-                              icon: "netlaw-icons:page",
-                              link: "lifevault/doc",
-                              smartguide: true,
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              name: "Estimate for Home Management.PDF",
-                              versions: [
-                                  {
-                                      version: "Jan 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Feb 20/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Mar 11/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Jun 15/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Aug 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                              ]
-                          },
-
-                          {
-                              id: "d40b2f61-9a89-47c6-8bdb-9a0229ac55f6",
-                              icon: "netlaw-icons:page",
-                              link: "lifevault/doc",
-                              smartguide: false,
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              name: "Estimate for Home Management.PDF",
-                              versions: [
-                                  {
-                                      version: "Jan 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Feb 20/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Mar 11/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Jun 15/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Aug 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                              ]
-                          },
-
-                          {
-                              id: "f164d232-dd89-4354-be99-1367de325ce6",
-                              icon: "netlaw-icons:page",
-                              link: "lifevault/doc",
-                              smartguide: false,
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              name: "Estimate for Home Management.PDF",
-                              versions: [
-                                  {
-                                      version: "Jan 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Feb 20/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Mar 11/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Jun 15/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Aug 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                              ]
-                          },
-
-                          {
-                              id: "609871d7-0f06-4ee5-9258-f5a26f6705db",
-                              icon: "netlaw-icons:page", //hard code
-                              //link: "lifevault/doc",
-                              smartguide: false,
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              name: "Estimate for Home Management.PDF",
-                              versions: [
-                                  {
-                                      version: "Jan 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Feb 20/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Mar 11/18",
-                                      link: "lifevault/doc",
-                                      smartguide: true
-                                  },
-                                  {
-                                      version: "Jun 15/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                                  {
-                                      version: "Aug 18/18",
-                                      link: "lifevault/doc",
-                                      smartguide: false
-                                  },
-                              ]
-                          }
-                      ]
-                  },*/
                   files: {type: Object}
               };
           }
@@ -1454,10 +1268,17 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-              this.dispatchEvent(new CustomEvent('delete-file', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('delete-file', {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                      fileId: e.model.file.id,
+                      fileName: e.model.file.name,
+                  },
+              }));
               // pass this to lifevault
               //e.model.file.id
-              //refreesh
+              // this.refresh();
               //close overlay
           }
 
@@ -1481,6 +1302,11 @@
           _onDownloadClick(e){
               api.vault.downloadFile(e.model.file.id);
           }
+
+          formatDate(date) {
+              return new Date(date).toString(new Date(date) < new Date().setHours(0, 0, 0, 0) ? "MMM dd, yyyy" : "h:mm TT");
+          }
+
       }
 
       window.customElements.define(NetlawLifevaultManagement.is, NetlawLifevaultManagement);
