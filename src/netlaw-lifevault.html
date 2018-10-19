@@ -592,6 +592,16 @@
         color: #4a4a4a;
       }
 
+      .drag-drop__error {
+        color: #ff0000;
+        transition: all 0.3s;
+      }
+
+      .drag-drop__info {
+        color: #4A90E2;
+        transition: all 0.3s;
+      }
+
       .files {
         position: fixed;
         bottom: 5%;
@@ -608,6 +618,7 @@
         min-height: 215px;
         padding-left: 30px;
         padding-right: 30px;
+        cursor: pointer;
       }
 
       .files__title {
@@ -1173,6 +1184,7 @@
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
     <input id="inputFileUploader" type="file" multiple style="display: none !important;" on-change="onUploadFileSelected">
+
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <!--<template is="dom-if" if="[[displayLogo]]">-->
@@ -1524,6 +1536,8 @@
       <div class="drag-drop">
         <iron-icon icon="netlaw-icons:drag-and-drop"></iron-icon>
         <p>or drag and drop your screens anywhere</p>
+        <div class="drag-drop__error" hidden$="[[!error]]">[[error]]</div>
+        <div class="drag-drop__info" hidden$="[[!info]]">[[info]]</div>
       </div>
       <div class="files">
         <div class="files__item files__item--extra files__item--border-hide">
@@ -1535,6 +1549,7 @@
           <iron-icon class="files__icon" icon="netlaw-icons:file-upload"></iron-icon>
           <b class="files__title">UPLOAD FILES</b>
           <p class="files__desc">png, jpg, doc or PDF</p>
+
         </div>
         <!--<a href="[[routePath]]lifevault" class="files__item">-->
         <div class="files__item">
@@ -1912,15 +1927,16 @@
                   .success(r => {
                       let pages = this.shadowRoot.querySelector("#pages2");
                       if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
+                      this.info = "File uploaded successfully";
                   })
-                  .error(() => {
+                  .error((r) => {
                       // todo span for error
                       //server error
-                      // fab.error(true, true);
+                      this.error =`Server error: ${r}`;
                   })
-                  .catch(() => {
+                  .catch((r) => {
                       // client error
-                      // fab.error(true, true);
+                      this.error =`Error: ${r}`;
                   })
                   .finally(() => {
 
