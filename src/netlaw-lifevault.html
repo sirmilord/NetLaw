@@ -1733,6 +1733,8 @@
 
           _onAddFileClick(e) {
               e.preventDefault();
+              this.error = "";
+              this.info = "";
               this.addFile = true;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,

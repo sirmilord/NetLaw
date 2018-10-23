@@ -1036,7 +1036,7 @@
                           <span class="lifevault__name">[[file.name]]</span>
                         </a>
                         <span class="lifevault__module-update">[[formatDate(file.modified_on)]]</span>
-                        <!--TODO ASK Zlatko how to formats dates-->
+                        <template is="dom-if" if="[[file.has_history]]">
                         <button class="lifevault__details" on-click="_onToggleDropdown">
                           <iron-icon icon="icons:history"></iron-icon>
                           <iron-icon icon="icons:expand-more"></iron-icon>
@@ -1063,6 +1063,7 @@
                             </ul>
                           </iron-dropdown>
                         </button>
+                        </template>
                       </div>
                     </div>
                   </div>
@@ -1192,7 +1193,7 @@
                   checkboxes: {
                       type: Array,
                   },
-                  files: {type: Object}
+                  files: {type: Object},
               };
           }
 
