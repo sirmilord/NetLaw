@@ -1,4 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-progress/paper-progress.html">
+
 <link rel="import" href="netlaw-lifevault-doc.html">
 <link rel="import" href="netlaw-lifevault-management.html">
 <link rel="import" href="netlaw-lifevault-folder.html">
@@ -104,91 +106,12 @@
         color: #01AA50;
       }
 
-      .lifevault__list-link--active {
-        color: #01AA50;
-      }
-
-      /*.lifevault__list-link:focus:before,*/
-      .lifevault__list-link--active:before
-      /*.lifevault__list-link:hover:before*/
-      {
-        content: '';
-        position: absolute;
-        height: 30px;
-        right: -15px;
-        top: 18px;
-        width: 4px;
-        background-color: #01AA50;
-        display:  block;
-      }
-
       .lifevault__list-link iron-icon {
         margin-right: 10px;
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
         margin-bottom: 3px;
       }
-
-      /*.lifevault__list-link-lvl2 {
-        font-size: 14px;
-        color: #e5e5e5;
-        text-decoration: none;
-        display: inline-block;
-        vertical-align: center;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-      }
-
-      a.lifevault__list-link-lvl2 > iron-icon {
-        margin-bottom: 3px;
-        margin-right: 10px;
-      }
-
-      a.lifevault__btn.lifevault__btn--lvl2 > iron-icon {
-        margin-bottom: 5px;
-      }
-
-      .lifevault__list-link-lvl3 {
-        font-size: 14px;
-        color: #b7b7b7;
-        text-decoration: none;
-        display: inline-block;
-        vertical-align: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-      }
-
-      .lifevault__list-link-lvl3:hover,
-      .lifevault__list-link-lvl3:focus {
-        text-decoration: none;
-      }
-
-      a.lifevault__list-link-lvl3 > iron-icon {
-        margin-bottom: 3px;
-        margin-right: 10px;
-      }
-
-      a.lifevault__btn.lifevault__btn--lvl3 > iron-icon {
-        margin-bottom: 5px;
-      }
-
-      .lifevault__list-item-lvl2--top-border:before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 70%;
-        height: 1px;
-        border-bottom: 1px dashed #979797;
-        opacity: .5;
-        left: 50%;
-        top: -7px;
-        transform: translateX(-50%);
-        color: #4a4a4a;
-      }*/
 
       .lifevault__btn {
         position: absolute;
@@ -205,53 +128,9 @@
         --iron-icon-height: 24px;
       }
 
-      /*.lifevault__btn--lvl2 {
-        --iron-icon-width: 24px;
-        --iron-icon-height: 24px;
-        top: 15px;
-        color: #e5e5e5;
-      }
-
-      .lifevault__btn--lvl2-first {
-        top: 27px;
-      }
-
-      .lifevault__btn--lvl3 {
-        --iron-icon-width: 24px;
-        --iron-icon-height: 24px;
-        top: 9px;
-        color: #e5e5e5;
-      }*/
-
       .lifevault__list-link[aria-expanded=true] iron-icon {
         fill: #01AA50;
       }
-
-      /*.lifevault__list-link-lvl2:hover,
-      .lifevault__list-link-lvl2--active,
-      .lifevault__list-link-lvl2:focus {
-        color: #4a4a4a;
-        text-decoration: none;
-      }
-
-      .lifevault__list-link-lvl3:hover,
-      .lifevault__list-link-lvl3:focus,
-      .lifevault__list-link-lvl3--active {
-        color: #01AA50;
-      }
-
-      .lifevault__list-link-lvl3:hover:before,
-      .lifevault__list-link-lvl3:focus:before,
-      .lifevault__list-link-lvl3--active:before {
-        content: '';
-        position: absolute;
-        height: 50%;
-        right: -15px;
-        top: 50%;
-        width: 4px;
-        background-color: #01AA50;
-        transform: translateY(-50%);
-      }*/
 
       b {
         display: block;
@@ -327,14 +206,6 @@
       iron-pages {
         flex: 1 1 60%;
       }
-
-      /*.lifevault[hidden] {*/
-        /*display: none;*/
-      /*}*/
-
-      /*.lifevault-mobile[hidden] {*/
-        /*display: none;*/
-      /*}*/
 
       .lifevault-mobile {
         background-color: #fff;
@@ -584,6 +455,10 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding: 50px;
+      }
+      .drag-drop--active {
+        border: 1px dashed #979797;
       }
 
       .drag-drop p {
@@ -593,11 +468,13 @@
       }
 
       .drag-drop__error {
+        margin-top: 15px;
         color: #ff0000;
         transition: all 0.3s;
       }
 
       .drag-drop__info {
+        margin-top: 15px;
         color: #4A90E2;
         transition: all 0.3s;
       }
@@ -978,6 +855,16 @@
         --iron-icon-height: 154px;
       }
 
+      paper-progress {
+        width: 285px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      paper-progress[disabled] {
+        --paper-progress-container-color: transparent;
+      }
+
       @media (max-width: 767px) {
 
         iron-pages {
@@ -993,23 +880,6 @@
           margin-top: 50px;
           text-align: left;
         }
-
-        /*.lifevault__list-lvl2 {
-          padding-top: 15px;
-        }
-
-        .lifevault__list-link-lvl2 {
-          padding-top: 12px;
-          padding-bottom: 12px;
-          --iron-icon-width: 18px;
-          --iron-icon-height: 18px;
-        }*/
-
-        /*.lifevault__list-item-lvl2--top-border:before {
-          border-bottom: 1px solid #979797;
-          left: 0;
-          transform: none;
-        }*/
 
         .btn--full {
           width: 100%;
@@ -1536,6 +1406,7 @@
       <div class="drag-drop" id="dropzone" on-dragenter="_dragEnterFile" on-dragover="_dragOverFile" on-drop="_dropFile">
         <iron-icon icon="netlaw-icons:drag-and-drop"></iron-icon>
         <p>or drag and drop your screens anywhere</p>
+        <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
         <div class="drag-drop__error" hidden$="[[!error]]">[[error]]</div>
         <div class="drag-drop__info" hidden$="[[!info]]">[[info]]</div>
       </div>
@@ -1712,9 +1583,10 @@
                   fileId: {
                       type:String,
                   },
-                  dropzone: {
-                      type:String,
-                  }
+                  loading: {
+                      type: Boolean,
+                      value: false
+                  },
               };
           }
 
@@ -1874,27 +1746,38 @@
           onUploadClick(e) {
               //clear prev file
               this.$.inputFileUploader.value = null;
-            this.$.inputFileUploader.click()
+              this.error = "";
+              this.info = "";
+              this.$.inputFileUploader.click()
           }
 
           _dragEnterFile(e) {
               e.stopPropagation();
               e.preventDefault();
+
+              this.error = "";
+              this.info = "";
+console.log(e.currentTarget);
+              e.currentTarget.classList.add("drag-drop--active");
           }
 
           _dragOverFile(e) {
               e.stopPropagation();
-              e.preventDefault();
+              e.preventDefault()
+
           }
 
           _dropFile(e) {
               e.stopPropagation();
               e.preventDefault();
 
+
               let dt = e.dataTransfer;
               let files = dt.files;
 
               this._uploadFiles(this.folderId, files);
+
+              e.currentTarget.classList.remove("drag-drop--active");
           }
 
           _onDeleteFileFolderClick(e) {
@@ -1971,6 +1854,8 @@
 
           _uploadFiles(folderId, files) {
 
+              this.loading = true;
+
               api.vault.uploadFolder(folderId, files)
                   .success(r => {
                       let pages = this.shadowRoot.querySelector("#pages2");
@@ -1987,7 +1872,7 @@
                       this.error =`Error: ${r}`;
                   })
                   .finally(() => {
-
+                      this.loading = false;
                   });
           }
       }
