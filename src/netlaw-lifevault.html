@@ -1183,7 +1183,7 @@
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
-    <input id="inputFileUploader" type="file" multiple style="display: none !important;" on-change="onUploadFileSelected">
+    <input id="inputFileUploader" type="file" multiple style="display: none !important;" on-change="_onUploadFileSelected">
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
@@ -1533,7 +1533,7 @@
 
     <template is="dom-if" if="[[addFile]]" restamp>
       <div class="overlay"></div>
-      <div class="drag-drop">
+      <div class="drag-drop" id="dropzone" on-dragenter="_dragEnterFile" on-dragover="_dragOverFile" on-drop="_dropFile">
         <iron-icon icon="netlaw-icons:drag-and-drop"></iron-icon>
         <p>or drag and drop your screens anywhere</p>
         <div class="drag-drop__error" hidden$="[[!error]]">[[error]]</div>
@@ -1711,6 +1711,9 @@
                   },
                   fileId: {
                       type:String,
+                  },
+                  dropzone: {
+                      type:String,
                   }
               };
           }
@@ -1728,7 +1731,6 @@
               ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
-              /*this.folderId = null;*/
           }
 
           _onToggleCollapseLvl2(e) {
@@ -1800,9 +1802,6 @@
 
               api.vault.searchFolder(null, "type:folder")
                   .success(r => this.folders = r);
-
-
-              //console.log(this.folders);
           }
 
           _pageChanged(page) {
@@ -1878,6 +1877,26 @@
             this.$.inputFileUploader.click()
           }
 
+          _dragEnterFile(e) {
+              e.stopPropagation();
+              e.preventDefault();
+          }
+
+          _dragOverFile(e) {
+              e.stopPropagation();
+              e.preventDefault();
+          }
+
+          _dropFile(e) {
+              e.stopPropagation();
+              e.preventDefault();
+
+              let dt = e.dataTransfer;
+              let files = dt.files;
+
+              this._uploadFiles(this.folderId, files);
+          }
+
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
               this.fileName = e.detail.fileName;
@@ -1946,9 +1965,13 @@
               // e.detail.value ? this.displayLogo = false : this.displayLogo = true;
           }
 
-          onUploadFileSelected(e) {
+          _onUploadFileSelected(e) {
+              this._uploadFiles(this.folderId, e.target.files);
+          }
 
-              api.vault.uploadFolder(this.folderId, e.target.files)
+          _uploadFiles(folderId, files) {
+
+              api.vault.uploadFolder(folderId, files)
                   .success(r => {
                       let pages = this.shadowRoot.querySelector("#pages2");
                       if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
@@ -1965,7 +1988,7 @@
                   })
                   .finally(() => {
 
-              });
+                  });
           }
       }
 
