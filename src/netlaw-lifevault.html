@@ -1759,7 +1759,7 @@
 
               this.error = "";
               this.info = "";
-console.log(e.currentTarget);
+
               e.currentTarget.classList.add("drag-drop--active");
           }
 
@@ -1784,9 +1784,12 @@ console.log(e.currentTarget);
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
+
               this.fileName = e.detail.fileName;
               this.fileId = e.detail.fileId;
+
               this.deleteFileFolder = true;
+
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
                   composed: true,
