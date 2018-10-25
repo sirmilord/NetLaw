@@ -1282,6 +1282,7 @@
                           folder-id="[[item.id]]"
                           name="[[item.name]]"
                           index="[[index]]"
+                          modified-on="[[item.modified_on]]"
                           has-folders="[[item.has_folders]]"
                           on-add-folder="_onAddFolderClick"
                           on-delete-file="_onDeleteFileFolderClick"
@@ -1342,6 +1343,7 @@
             <netlaw-lifevault-files name="myfiles"
                                          folder-id="[[folderId]]"
                                          folder-name="[[folderName]]"
+                                         modified-on="[[modifiedOn]]"
                                          on-delete-file="_onDeleteFileFolderClick"
                                          on-add-file="_onAddFileClick"
                                          on-share-file="_onShareFileClick"></netlaw-lifevault-files>
@@ -1595,6 +1597,9 @@
                   fileId: {
                       type:String,
                   },
+                  modifiedOn: {
+                      type:String,
+                  },
                   loading: {
                       type: Boolean,
                       value: false
@@ -1642,6 +1647,7 @@
             this.folderId = e.detail.id;
             navigate (`lifevault/myfiles/${e.detail.path}`);
             this.folderName = e.detail.name;
+            this.modifiedOn = this.formatAgo(e.detail.modifiedOn);
 
             let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
             if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
@@ -1888,6 +1894,10 @@
                   .finally(() => {
                       this.loading = false;
                   });
+          }
+
+          formatAgo(date) {
+              return Date.formatTimeSpan(new Date() - new Date(date));
           }
       }
 

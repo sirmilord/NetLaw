@@ -974,7 +974,8 @@
       <section class="lifevault__content">
         <netlaw-topbar>
           <h2 slot="title">[[if(folderId, folderName, 'My Files')]]</h2>
-          <div slot="update">Updated 1d ago</div>
+          <!--TODO ASK ZLATKO How make this beatiful-->
+          <div slot="update">[[if(folderId, 'Updated ', '')]][[if(folderId, modifiedOn, '')]]</div>
         </netlaw-topbar>
         <netlaw-dashboard>
           <netlaw-dashboard-form slot="dashboard-content" on-select-all-false="selectAllFalse"
@@ -1309,6 +1310,7 @@
               return new Date(date).toString(new Date(date) < new Date().setHours(0, 0, 0, 0) ? "MMM dd, yyyy" : "h:mm TT");
           }
 
+          formatAgo(date) { return Date.formatTimeSpan(new Date() - new Date(date)); }
       }
 
       window.customElements.define(NetlawLifevaultFiles.is, NetlawLifevaultFiles);
