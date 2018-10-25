@@ -1688,7 +1688,11 @@
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
 
               //get a list of folders
-              api.vault.searchFolder(null, "type:folder")
+              this.refresh();
+          }
+
+          refresh() {
+              api.vault.searchFolder(this.folderId, "type:folder")
                   .success(r => this.folders = r);
           }
 
