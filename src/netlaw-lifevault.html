@@ -1621,7 +1621,7 @@
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
           }
-
+          //todo is this need?
           _onToggleCollapseLvl2(e) {
               e.preventDefault();
               let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
@@ -1642,7 +1642,7 @@
                   }));
               }
           }
-
+          //catch event from lifevault-folder when is clicked to a folder name
           _onOpenFolder(e){
             this.folderId = e.detail.id;
             navigate (`lifevault/myfiles/${e.detail.path}`);
