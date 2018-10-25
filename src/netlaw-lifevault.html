@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/paper-progress/paper-progress.html">
 
 <link rel="import" href="netlaw-lifevault-doc.html">
-<link rel="import" href="netlaw-lifevault-management.html">
+<link rel="import" href="netlaw-lifevault-files.html">
 <link rel="import" href="netlaw-lifevault-folder.html">
 
 <dom-module id="netlaw-lifevault">
@@ -1142,7 +1142,7 @@
                               <template is="dom-repeat" items="{{item.folders2}}" as="item2">
 
                                 <li class="lifevault__list-item-lvl3" on-click="_childPage">
-                                  <a name="management" href="{{item2.link}}"
+                                  <a name="files" href="{{item2.link}}"
                                      class="lifevault__list-link-lvl3">
                                     <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
                                     [[item2.name]]</a>
@@ -1231,9 +1231,9 @@
                 <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
               </a>
             </section>
-            <netlaw-lifevault-management name="management"
+            <netlaw-lifevault-files name="files"
                                          on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
-                                         on-share-file="_onShareFileClick"></netlaw-lifevault-management>
+                                         on-share-file="_onShareFileClick"></netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
           </iron-pages>
@@ -1278,7 +1278,15 @@
 
                   <template is="dom-repeat" items="{{folders}}">
                     <li class="lifevault__list-item-lvl2">
-                      <netlaw-lifevault-folder folder-id="[[item.id]]" name="[[item.name]]" index="[[index]]" has-folders="[[item.has_folders]]" on-add-folder="_onAddFolderClick" on-delete-file="_onDeleteFileFolderClick" on-share-file="_onShareFileClick"></netlaw-lifevault-folder>
+                      <netlaw-lifevault-folder
+                          folder-id="[[item.id]]"
+                          name="[[item.name]]"
+                          index="[[index]]"
+                          has-folders="[[item.has_folders]]"
+                          on-add-folder="_onAddFolderClick"
+                          on-delete-file="_onDeleteFileFolderClick"
+                          on-share-file="_onShareFileClick">
+                      </netlaw-lifevault-folder>
                     </li>
                   </template>
 
@@ -1331,11 +1339,12 @@
               </a>
             </section>
 
-            <netlaw-lifevault-management name="myfiles"
+            <netlaw-lifevault-files name="myfiles"
                                          folder-id="[[folderId]]"
+                                         folder-name="[[folderName]]"
                                          on-delete-file="_onDeleteFileFolderClick"
                                          on-add-file="_onAddFileClick"
-                                         on-share-file="_onShareFileClick"></netlaw-lifevault-management>
+                                         on-share-file="_onShareFileClick"></netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc"
                                   on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
@@ -1580,6 +1589,9 @@
                   fileName: {
                       type:String,
                   },
+                  folderName: {
+                      type:String,
+                  },
                   fileId: {
                       type:String,
                   },
@@ -1629,10 +1641,9 @@
           _onOpenFolder(e){
             this.folderId = e.detail.id;
             navigate (`lifevault/myfiles/${e.detail.path}`);
+            this.folderName = e.detail.name;
 
             let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
-            /*console.log(myFilesActive);*/
-            console.log(this);
             if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
 
             // api.vault.searchFolder(null, "type:folder")
@@ -1655,7 +1666,6 @@
           }
 
           open() {
-              // console.log("open, lifevault");
               this.dispatchEvent(new CustomEvent('menu-changed', {
                   bubbles: true,
                   composed: true,
@@ -1671,7 +1681,7 @@
               let pages = this.shadowRoot.querySelector("#pages2");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
 
-
+              //get a list of folders
               api.vault.searchFolder(null, "type:folder")
                   .success(r => this.folders = r);
           }
@@ -1868,7 +1878,6 @@
                       this.info = "File uploaded successfully";
                   })
                   .error((r) => {
-                      // todo span for error
                       //server error
                       this.error =`Server error: ${r}`;
                   })

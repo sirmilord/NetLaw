@@ -4,7 +4,7 @@
 <link rel="import" href="netlaw-dashboard-mobile.html">
 <link rel="import" href="netlaw-search-mobile.html">
 
-<dom-module id="netlaw-lifevault-management">
+<dom-module id="netlaw-lifevault-files">
   <template>
 
     <style include="shared-styles">
@@ -973,7 +973,7 @@
     <template is="dom-if" if="[[!mobile]]">
       <section class="lifevault__content">
         <netlaw-topbar>
-          <h2 slot="title">Home Management</h2>
+          <h2 slot="title">[[if(folderId, folderName, 'My Files')]]</h2>
           <div slot="update">Updated 1d ago</div>
         </netlaw-topbar>
         <netlaw-dashboard>
@@ -1174,10 +1174,10 @@
   </template>
 
   <script>
-      class NetlawLifevaultManagement extends Polymer.Element {
+      class NetlawLifevaultFiles extends Polymer.Element {
 
           static get is() {
-              return 'netlaw-lifevault-management';
+              return 'netlaw-lifevault-files';
           }
 
           static get properties() {
@@ -1311,7 +1311,7 @@
 
       }
 
-      window.customElements.define(NetlawLifevaultManagement.is, NetlawLifevaultManagement);
+      window.customElements.define(NetlawLifevaultFiles.is, NetlawLifevaultFiles);
   </script>
 </dom-module>
 
