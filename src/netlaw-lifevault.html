@@ -1092,7 +1092,8 @@
 
         <app-drawer-layout>
           <app-drawer id="lifevaultdrawer" class="lifevault-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
-                      align="right" on-opened-changed="_ifDrawerClosed">
+                      align="right" on-opened-changed="_ifDrawerClosed"
+                      >
             <div class="lifevault-mobile__arrow">
               <iron-icon icon="icons:icons:chevron-left"></iron-icon>
             </div>
@@ -1166,7 +1167,9 @@
                                     modified-on="[[modifiedOn]]"
                                     on-delete-file="_onDeleteFileFolderClick"
                                     on-add-file="_onAddFileClick"
-                                    on-share-file="_onShareFileClick">
+                                    on-share-file="_onShareFileClick"
+                                    on-close-lifevault-files="open">
+              <!--todo folder list is disapear on navigate(lifevault) from lifevault-files-->
             </netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
@@ -1280,7 +1283,8 @@
                                          modified-on="[[modifiedOn]]"
                                          on-delete-file="_onDeleteFileFolderClick"
                                          on-add-file="_onAddFileClick"
-                                         on-share-file="_onShareFileClick"></netlaw-lifevault-files>
+                                         on-share-file="_onShareFileClick">
+            </netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc"
                                   on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
@@ -1556,14 +1560,14 @@
 
           }
           //todo is this need?
-          _onToggleCollapseLvl2(e) {
-              e.preventDefault();
-              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              if (ironCollapse) {
-                  ironCollapse.toggle();
-                  ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
-              }
-          }
+          // _onToggleCollapseLvl2(e) {
+          //     e.preventDefault();
+          //     let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
+          //     if (ironCollapse) {
+          //         ironCollapse.toggle();
+          //         ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
+          //     }
+          // }
 
           _onToggleDropdown(e) {
               e.preventDefault();
@@ -1585,6 +1589,11 @@
 
             let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
             if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
+
+            //close drawer and close collapse
+              if (this.mobile) {
+                  this._toChildPage();
+              }
 
             // api.vault.searchFolder(null, "type:folder")
             //     .success(r => {
@@ -1666,10 +1675,10 @@
                   drawer.close();
               }
 
-              let ironCollapse = e.currentTarget.closest('iron-collapse');
-              if (ironCollapse) {
-                  ironCollapse.toggle();
-              }
+              // let ironCollapse = e.currentTarget.closest('iron-collapse');
+              // if (ironCollapse) {
+              //     ironCollapse.toggle();
+              // }
           }
 
           _onAddFolderClick(e) {

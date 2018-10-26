@@ -780,7 +780,7 @@
       <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
       <h3 class="lifevault__header">[[if(folderId, folderName, 'My Files')]]</h3>
       <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
-                         on-click="_onClose"></paper-icon-button>
+                         on-click="_onCloseFiles"></paper-icon-button>
     </template>
 
     <template is="dom-if" if="[[mobile]]">
@@ -1291,9 +1291,9 @@
           }
 
           //for mobile
-          _onClose(e) {
+          _onCloseFiles(e) {
               navigate("/lifevault");
-              // this.dispatchEvent(new CustomEvent('close-lifevault-child', {bubbles: true, composed: true}));
+              this.dispatchEvent(new CustomEvent('close-lifevault-files', {bubbles: true, composed: true}));
           }
 
 
