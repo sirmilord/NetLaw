@@ -904,6 +904,11 @@
           right: 10px;
         }
 
+        .lifevault__list-lvl2 {
+          margin-left: 40px;
+          margin-right: 10px;
+        }
+
         .lifevault__add-folder {
           position: fixed;
           bottom: 20%;
@@ -1096,97 +1101,21 @@
             </div>
             <div class="lifevault-mobile__drawer-wrap">
               <section id="navmobile" class="lifevault__nav-mobile">
-                <ul class="lifevault__list-lvl2">
+                <ul class="lifevault__list-lvl2" on-open-folder="_onOpenFolder">
 
                   <template is="dom-repeat" items="{{folders}}">
-
                     <li class="lifevault__list-item-lvl2">
-                      <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapseLvl2">
-                        <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                        [[item.name]]
-                      </a>
-                      <a class="lifevault__btn lifevault__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
-                        <iron-icon icon="icons:more-vert"></iron-icon>
-                        <iron-dropdown horizontal-align="right">
-                          <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                              slot="dropdown-content">
-                            <li on-click="_onAddFolderClick">Add Sub-Folder
-                              <iron-icon icon="netlaw-icons:add-icon"></iron-icon>
-                            </li>
-                            <li>Download
-                              <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                            </li>
-                            <li>Print
-                              <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                            </li>
-                            <li>Rename
-                              <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                            </li>
-                            <li on-click="_onShareFileClick">Share
-                              <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                            </li>
-                            <li on-click="_onDeleteFileFolderClick">Delete
-                              <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                            </li>
-                          </ul>
-                        </iron-dropdown>
-                      </a>
-
-                      <template is="dom-if" if=[[item.folders2]]>
-
-                        <iron-collapse id="collapsetwo{{index}}">
-                          <ul class="lifevault__list-lvl3">
-                            <iron-selector selected="[[page]]" attr-for-selected="name"
-                                           role="navigation">
-
-                              <template is="dom-repeat" items="{{item.folders2}}" as="item2">
-
-                                <li class="lifevault__list-item-lvl3" on-click="_childPage">
-                                  <a name="files" href="{{item2.link}}"
-                                     class="lifevault__list-link-lvl3">
-                                    <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
-                                    [[item2.name]]</a>
-                                  <a class="lifevault__btn lifevault__btn--lvl3" href="javascript:;"
-                                     on-click="_onToggleDropdown">
-                                    <iron-icon icon="icons:more-vert"></iron-icon>
-                                    <iron-dropdown>
-                                      <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
-                                          slot="dropdown-content">
-                                        <li>Download
-                                          <iron-icon
-                                              icon="netlaw-icons:download-icon"></iron-icon>
-                                        </li>
-                                        <li>Print
-                                          <iron-icon
-                                              icon="netlaw-icons:print-icon"></iron-icon>
-                                        </li>
-                                        <li>Rename
-                                          <iron-icon
-                                              icon="netlaw-icons:rename-icon"></iron-icon>
-                                        </li>
-                                        <li>Share
-                                          <iron-icon
-                                              icon="netlaw-icons:share-icon"></iron-icon>
-                                        </li>
-                                        <li on-click="_onDeleteFileFolderClick">Delete
-                                          <iron-icon
-                                              icon="netlaw-icons:delete-icon"></iron-icon>
-                                        </li>
-                                      </ul>
-                                    </iron-dropdown>
-                                  </a>
-                                </li>
-
-                              </template>
-
-                            </iron-selector>
-                          </ul>
-                        </iron-collapse>
-
-                      </template>
-
+                      <netlaw-lifevault-folder
+                          folder-id="[[item.id]]"
+                          name="[[item.name]]"
+                          index="[[index]]"
+                          modified-on="[[item.modified_on]]"
+                          has-folders="[[item.has_folders]]"
+                          on-add-folder="_onAddFolderClick"
+                          on-delete-file="_onDeleteFileFolderClick"
+                          on-share-file="_onShareFileClick">
+                      </netlaw-lifevault-folder>
                     </li>
-
                   </template>
 
                 </ul>
