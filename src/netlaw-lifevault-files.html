@@ -778,7 +778,7 @@
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <netlaw-search-mobile class="mobile-search"></netlaw-search-mobile>
-      <h3 class="lifevault__header">Home Management</h3>
+      <h3 class="lifevault__header">[[if(folderId, folderName, 'My Files')]]</h3>
       <paper-icon-button class="lifevault__paper-button" icon="netlaw-icons:close"
                          on-click="_onClose"></paper-icon-button>
     </template>

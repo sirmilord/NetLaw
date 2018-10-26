@@ -1160,9 +1160,14 @@
                 <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
               </a>
             </section>
-            <netlaw-lifevault-files name="files"
-                                         on-delete-file="_onDeleteFileFolderClick" on-add-file="_onAddFileClick"
-                                         on-share-file="_onShareFileClick"></netlaw-lifevault-files>
+            <netlaw-lifevault-files name="myfiles"
+                                    folder-id="[[folderId]]"
+                                    folder-name="[[folderName]]"
+                                    modified-on="[[modifiedOn]]"
+                                    on-delete-file="_onDeleteFileFolderClick"
+                                    on-add-file="_onAddFileClick"
+                                    on-share-file="_onShareFileClick">
+            </netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
                                   on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
           </iron-pages>
@@ -1655,11 +1660,12 @@
           }
 
           //for mobile
-          _childPage(e) {
+          _toChildPage(e) {
               let drawer = this.shadowRoot.querySelector('#lifevaultdrawer');
               if (drawer) {
                   drawer.close();
               }
+
               let ironCollapse = e.currentTarget.closest('iron-collapse');
               if (ironCollapse) {
                   ironCollapse.toggle();
