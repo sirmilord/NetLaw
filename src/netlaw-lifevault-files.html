@@ -808,7 +808,7 @@
                           <iron-dropdown horizontal-align="right">
                             <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                                 slot="dropdown-content">
-                              <li>Download
+                              <li on-click="_onDownloadClick">Download
                                 <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                               </li>
                               <li>Print
@@ -945,7 +945,7 @@
                       <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
-                          <li>Download
+                          <li on-click="_onDownloadClick">Download
                             <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                           </li>
                           <li>Print
@@ -982,7 +982,7 @@
       <section class="lifevault__content">
         <netlaw-topbar>
           <h2 slot="title">[[if(folderId, folderName, 'My Files')]]</h2>
-          <!--TODO ASK ZLATKO How make this beatiful-->
+          <!--TODO ASK ZLATKO How make this beautiful-->
           <div slot="update">[[if(folderId, 'Updated ', '')]][[if(folderId, modifiedOn, '')]]</div>
         </netlaw-topbar>
         <netlaw-dashboard>
