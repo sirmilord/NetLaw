@@ -252,6 +252,9 @@
 
       .lifevault-mobile__list-item {
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .lifevault-mobile__list-item--top-border:before {
@@ -1142,8 +1145,10 @@
                 <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
                   <li class="lifevault-mobile__list-item lifevault-mobile__list-item--top-border lifevault-mobile__list-item--bottom-border">
                     <a name="" href="javascript:;" class="lifevault-mobile__list-link"
-                       on-click="_onOpenDrawer">
+                       on-click="_onOpenMyFiles">
                       <span class="lifevault-mobile__list-text">My Files</span>
+                    </a>
+                    <a href="javascript:;" class="lifevault-mobile__list-link" on-click="_onOpenDrawer">
                       <iron-icon icon="icons:icons:chevron-right"></iron-icon>
                     </a>
                   </li>
