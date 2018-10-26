@@ -289,6 +289,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex: 1 1 50%;
+      }
+
+      .lifevault-mobile__list-link--arrow {
+        justify-content: flex-end;
       }
 
       .lifevault-mobile__list-link:hover,
@@ -460,6 +465,7 @@
         flex-direction: column;
         padding: 50px;
       }
+
       .drag-drop--active {
         border: 1px dashed #979797;
       }
@@ -1061,15 +1067,16 @@
 
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
     <iron-media-query query="max-width: 767px" query-matches="{{mobile}}"></iron-media-query>
-    <input id="inputFileUploader" type="file" multiple style="display: none !important;" on-change="_onUploadFileSelected">
+    <input id="inputFileUploader" type="file" multiple style="display: none !important;"
+           on-change="_onUploadFileSelected">
 
     <!--Mobile layout-->
     <template slot="placeholder" id="menu">
       <!--<template is="dom-if" if="[[displayLogo]]">-->
-        <netlaw-logo class="mobile"></netlaw-logo>
+      <netlaw-logo class="mobile"></netlaw-logo>
       <!--</template>-->
       <!--<template is="dom-if" if="[[!displayLogo]]">-->
-        <!--<h3 class="lifevault__header">MyFiles</h3>-->
+      <!--<h3 class="lifevault__header">MyFiles</h3>-->
       <!--</template>-->
       <paper-menu-button class="lifevault__menu" horizontal-align="right" vertical-align="top" vertical-offset="45"
                          opened="{{menuOpened}}" opened$="[[menuOpened]]">
@@ -1096,7 +1103,7 @@
         <app-drawer-layout>
           <app-drawer id="lifevaultdrawer" class="lifevault-mobile__drawer" slot="drawer" swipe-open="[[narrow]]"
                       align="right" on-opened-changed="_ifDrawerClosed"
-                      >
+          >
             <div class="lifevault-mobile__arrow">
               <iron-icon icon="icons:icons:chevron-left"></iron-icon>
             </div>
@@ -1148,7 +1155,8 @@
                        on-click="_onOpenMyFiles">
                       <span class="lifevault-mobile__list-text">My Files</span>
                     </a>
-                    <a href="javascript:;" class="lifevault-mobile__list-link" on-click="_onOpenDrawer">
+                    <a href="javascript:;" class="lifevault-mobile__list-link lifevault-mobile__list-link--arrow"
+                       on-click="_onOpenDrawer">
                       <iron-icon icon="icons:icons:chevron-right"></iron-icon>
                     </a>
                   </li>
@@ -1173,7 +1181,7 @@
                                     on-delete-file="_onDeleteFileFolderClick"
                                     on-add-file="_onAddFileClick"
                                     on-share-file="_onShareFileClick"
-                                    on-close-lifevault-files="open">
+                                    on-close-lifevault-files="_closeMobileFiles">
               <!--todo folder list is disapear on navigate(lifevault) from lifevault-files-->
             </netlaw-lifevault-files>
             <netlaw-lifevault-doc name="doc" on-delete-file="_onDeleteFileFolderClick"
@@ -1264,36 +1272,36 @@
           </ul>
         </section>
 
-          <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty">
+        <iron-pages id="pages2" selected="[[page]]" attr-for-selected="name" role="main" fallback-selection="empty">
 
-            <section name="empty" class="lifevault__content">
-              <h1>LifeVault</h1>
-              <figure>
-                <iron-icon icon="netlaw-icons:documents"></iron-icon>
-              </figure>
-              <b>This is where you would keep all your important legal documents.</b>
-              <div class="lifevault__content-wrapper">
-                <p>(you can also download, replace or share these documents with others)</p>
-                <hr>
-              </div>
-              <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
-              <a class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
-                <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
-              </a>
-            </section>
+          <section name="empty" class="lifevault__content">
+            <h1>LifeVault</h1>
+            <figure>
+              <iron-icon icon="netlaw-icons:documents"></iron-icon>
+            </figure>
+            <b>This is where you would keep all your important legal documents.</b>
+            <div class="lifevault__content-wrapper">
+              <p>(you can also download, replace or share these documents with others)</p>
+              <hr>
+            </div>
+            <a href="[[routePath]]smartguide/setup" class="btn btn--primary">Use SmartGuide</a>
+            <a class="lifevault__add-folder" href="javascript:;" on-click="_onAddFolderClick">
+              <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
+            </a>
+          </section>
 
-            <netlaw-lifevault-files name="myfiles"
-                                         folder-id="[[folderId]]"
-                                         folder-name="[[folderName]]"
-                                         modified-on="[[modifiedOn]]"
-                                         on-delete-file="_onDeleteFileFolderClick"
-                                         on-add-file="_onAddFileClick"
-                                         on-share-file="_onShareFileClick">
-            </netlaw-lifevault-files>
-            <netlaw-lifevault-doc name="doc"
+          <netlaw-lifevault-files name="myfiles"
+                                  folder-id="[[folderId]]"
+                                  folder-name="[[folderName]]"
+                                  modified-on="[[modifiedOn]]"
                                   on-delete-file="_onDeleteFileFolderClick"
-                                  on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
-          </iron-pages>
+                                  on-add-file="_onAddFileClick"
+                                  on-share-file="_onShareFileClick">
+          </netlaw-lifevault-files>
+          <netlaw-lifevault-doc name="doc"
+                                on-delete-file="_onDeleteFileFolderClick"
+                                on-share-file="_onShareFileClick"></netlaw-lifevault-doc>
+        </iron-pages>
 
       </main>
     </template>
@@ -1357,7 +1365,8 @@
 
     <template is="dom-if" if="[[addFile]]" restamp>
       <div class="overlay"></div>
-      <div class="drag-drop" id="dropzone" on-dragenter="_dragEnterFile" on-dragover="_dragOverFile" on-drop="_dropFile">
+      <div class="drag-drop" id="dropzone" on-dragenter="_dragEnterFile" on-dragover="_dragOverFile"
+           on-drop="_dropFile">
         <iron-icon icon="netlaw-icons:drag-and-drop"></iron-icon>
         <p>or drag and drop your screens anywhere</p>
         <paper-progress indeterminate disabled="[[!loading]]"></paper-progress>
@@ -1532,16 +1541,16 @@
                       }
                   },
                   fileName: {
-                      type:String,
+                      type: String,
                   },
                   folderName: {
-                      type:String,
+                      type: String,
                   },
                   fileId: {
-                      type:String,
+                      type: String,
                   },
                   modifiedOn: {
-                      type:String,
+                      type: String,
                   },
                   loading: {
                       type: Boolean,
@@ -1564,15 +1573,6 @@
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
           }
-          //todo is this need?
-          // _onToggleCollapseLvl2(e) {
-          //     e.preventDefault();
-          //     let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-          //     if (ironCollapse) {
-          //         ironCollapse.toggle();
-          //         ironCollapse.opened ? e.currentTarget.classList.add('lifevault__list-link-lvl2--active') : e.currentTarget.classList.remove('lifevault__list-link-lvl2--active');
-          //     }
-          // }
 
           _onToggleDropdown(e) {
               e.preventDefault();
@@ -1585,32 +1585,38 @@
                   }));
               }
           }
+
           //catch event from lifevault-folder when is clicked to a folder name
-          _onOpenFolder(e){
-            this.folderId = e.detail.id;
-            navigate (`lifevault/myfiles/${e.detail.path}`);
-            this.folderName = e.detail.name;
-            this.modifiedOn = this.formatAgo(e.detail.modifiedOn);
+          _onOpenFolder(e) {
+              this.folderId = e.detail.id;
+              navigate(`lifevault/myfiles/${e.detail.path}`);
+              this.folderName = e.detail.name;
+              this.modifiedOn = this.formatAgo(e.detail.modifiedOn);
 
-            let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
-            if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
+              let myFilesActive = e.currentTarget.querySelector('.lifevault__list-link--active');
+              if (myFilesActive) myFilesActive.classList.remove('lifevault__list-link--active');
 
-            //close drawer and close collapse
+              //close drawer and close collapse
               if (this.mobile) {
                   this._toChildPage();
               }
 
-            // api.vault.searchFolder(null, "type:folder")
-            //     .success(r => {
-            //         this.folders = r;
-            //     });
+              // api.vault.searchFolder(null, "type:folder")
+              //     .success(r => {
+              //         this.folders = r;
+              //     });
           }
 
           _onOpenMyFiles(e) {
-              navigate (`lifevault/myfiles/`);
+              navigate(`lifevault/myfiles/`);
               this.folderId = null;
               e.currentTarget.classList.toggle('lifevault__list-link--active');
-      }
+          }
+
+          _closeMobileFiles(e) {
+              this.folderId = null;
+              this.refresh();
+          }
 
           ready(e) {
               super.ready();
@@ -1646,7 +1652,7 @@
 
           _pageChanged(page) {
 
-              if (!this.contentReady || this.route.prefix !== '/lifevault' ) return;
+              if (!this.contentReady || this.route.prefix !== '/lifevault') return;
 
               let pages = this.shadowRoot.querySelector("#pages2");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
@@ -1838,11 +1844,11 @@
                   })
                   .error((r) => {
                       //server error
-                      this.error =`Server error: ${r}`;
+                      this.error = `Server error: ${r}`;
                   })
                   .catch((r) => {
                       // client error
-                      this.error =`Error: ${r}`;
+                      this.error = `Error: ${r}`;
                   })
                   .finally(() => {
                       this.loading = false;
