@@ -839,34 +839,38 @@
                         <a class="lifevault__footer-link" href="{{file.link}}">
                           <span class="lifevault__name">[[file.name]]</span>
                         </a>
-                        <span class="lifevault__module-update">[[file.mstatus]]</span>
+                        <span class="lifevault__module-update">[[formatDate(file.modified_on)]]</span>
                         <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                           <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                         </a>
-                        <button class="lifevault__details" on-click="_onToggleDropdown">v1.1
-                          <iron-icon icon="icons:expand-more"></iron-icon>
-                          <iron-dropdown horizontal-align="right">
-                            <ul class="lifevault__version-dropdown"
-                                slot="dropdown-content">
+                        <template is="dom-if" if="[[file.has_history]]">
+                          <button class="lifevault__details" on-click="_onToggleDropdown">
+                            <iron-icon icon="icons:history"></iron-icon>
+                            <iron-icon icon="icons:expand-more"></iron-icon>
+                            <iron-dropdown horizontal-align="right">
+                              <ul class="lifevault__version-dropdown"
+                                  slot="dropdown-content">
 
-                              <template is="dom-repeat" items="{{file.versions}}" as="version">
+                                <template is="dom-repeat" items="{{file.versions}}" as="version">
 
-                                <li>
-                                  <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
-                                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                                  </a>
-                                  <a href="{{version.link}}">
-                                    <span class="lifevault__version">v1.1</span>
-                                  </a>
-                                  <span class="lifevault__date">[[version.version]]</span>
-                                  <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
-                                </li>
+                                  <li>
+                                    <a href="javascript:;"
+                                       class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
+                                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                                    </a>
+                                    <a href="{{version.link}}">
+                                      <span class="lifevault__version">v1.1</span>
+                                    </a>
+                                    <span class="lifevault__date">[[version.version]]</span>
+                                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
+                                  </li>
 
-                              </template>
+                                </template>
 
-                            </ul>
-                          </iron-dropdown>
-                        </button>
+                              </ul>
+                            </iron-dropdown>
+                          </button>
+                        </template>
                       </div>
                     </div>
                   </div>
@@ -906,30 +910,34 @@
                     <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
-                    <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">v1.1
-                      <iron-icon icon="icons:expand-more"></iron-icon>
-                      <iron-dropdown horizontal-align="right">
-                        <ul class="lifevault__version-dropdown"
-                            slot="dropdown-content">
+                    <template is="dom-if" if="[[file.has_history]]">
+                      <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">
+                        <iron-icon icon="icons:history"></iron-icon>
+                        <iron-icon icon="icons:expand-more"></iron-icon>
+                        <iron-dropdown horizontal-align="right">
+                          <ul class="lifevault__version-dropdown"
+                              slot="dropdown-content">
 
-                          <template is="dom-repeat" items="{{file.versions}}" as="version">
+                            <template is="dom-repeat" items="{{file.versions}}" as="version">
 
-                            <li>
-                              <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
-                                <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                              </a>
-                              <a href="[[rootPath]]lifevault/doc">
-                                <span class="lifevault__version">v1.1</span>
-                              </a>
-                              <span class="lifevault__date">Jan 18/18</span>
-                              <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
-                            </li>
+                              <li>
+                                <a href="javascript:;"
+                                   class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
+                                  <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                                </a>
+                                <a href="[[rootPath]]lifevault/doc">
+                                  <span class="lifevault__version">v1.1</span>
+                                </a>
+                                <span class="lifevault__date">Jan 18/18</span>
+                                <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
+                              </li>
 
-                          </template>
+                            </template>
 
-                        </ul>
-                      </iron-dropdown>
-                    </button>
+                          </ul>
+                        </iron-dropdown>
+                      </button>
+                    </template>
                   </div>
                   <div class="lifevault__list-right">
                     <a class="lifevault__menu" href="javascript:;" on-click="_onToggleDropdown">
@@ -1038,32 +1046,33 @@
                         </a>
                         <span class="lifevault__module-update">[[formatDate(file.modified_on)]]</span>
                         <template is="dom-if" if="[[file.has_history]]">
-                        <button class="lifevault__details" on-click="_onToggleDropdown">
-                          <iron-icon icon="icons:history"></iron-icon>
-                          <iron-icon icon="icons:expand-more"></iron-icon>
-                          <iron-dropdown horizontal-align="right">
-                            <ul class="lifevault__version-dropdown"
-                                slot="dropdown-content">
+                          <button class="lifevault__details" on-click="_onToggleDropdown">
+                            <iron-icon icon="icons:history"></iron-icon>
+                            <iron-icon icon="icons:expand-more"></iron-icon>
+                            <iron-dropdown horizontal-align="right">
+                              <ul class="lifevault__version-dropdown"
+                                  slot="dropdown-content">
 
-                              <template is="dom-repeat" items="{{file.versions}}" as="version">
+                                <template is="dom-repeat" items="{{file.versions}}" as="version">
 
-                                <li>
-                                  <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
-                                    <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                                  </a>
-                                  <a href="{{version.link}}">
-                                    <span class="lifevault__version">v1.1</span>
-                                  </a>
-                                  <span class="lifevault__date">[[version.version]]</span>
-                                  <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
-                                </li>
+                                  <li>
+                                    <a href="javascript:;"
+                                       class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
+                                      <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                                    </a>
+                                    <a href="{{version.link}}">
+                                      <span class="lifevault__version">v1.1</span>
+                                    </a>
+                                    <span class="lifevault__date">[[version.version]]</span>
+                                    <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
+                                  </li>
 
-                              </template>
+                                </template>
 
 
-                            </ul>
-                          </iron-dropdown>
-                        </button>
+                              </ul>
+                            </iron-dropdown>
+                          </button>
                         </template>
                       </div>
                     </div>
@@ -1102,30 +1111,34 @@
                     <a href="{{file.link}}">
                       <span class="lifevault__name-desc">[[file.name]]</span>
                     </a>
-                    <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">v1.1
-                      <iron-icon icon="icons:expand-more"></iron-icon>
-                      <iron-dropdown horizontal-align="right">
-                        <ul class="lifevault__version-dropdown"
-                            slot="dropdown-content">
+                    <template is="dom-if" if="[[file.has_history]]">
+                      <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">
+                        <iron-icon icon="icons:history"></iron-icon>
+                        <iron-icon icon="icons:expand-more"></iron-icon>
+                        <iron-dropdown horizontal-align="right">
+                          <ul class="lifevault__version-dropdown"
+                              slot="dropdown-content">
 
-                          <template is="dom-repeat" items="{{file.versions}}" as="version">
+                            <template is="dom-repeat" items="{{file.versions}}" as="version">
 
-                            <li>
-                              <a href="javascript:;" class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
-                                <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
-                              </a>
-                              <a href="{{version.link}}">
-                                <span class="lifevault__version">v1.1</span>
-                              </a>
-                              <span class="lifevault__date">[[version.version]]</span>
-                              <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
-                            </li>
+                              <li>
+                                <a href="javascript:;"
+                                   class$="lifevault__charm [[if(version.smartguide, '', 'lifevault__charm--hide')]]">
+                                  <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
+                                </a>
+                                <a href="{{version.link}}">
+                                  <span class="lifevault__version">v1.1</span>
+                                </a>
+                                <span class="lifevault__date">[[version.version]]</span>
+                                <iron-icon icon="icons:expand-less" class="lifevault__expand-less"></iron-icon>
+                              </li>
 
-                          </template>
+                            </template>
 
-                        </ul>
-                      </iron-dropdown>
-                    </button>
+                          </ul>
+                        </iron-dropdown>
+                      </button>
+                    </template>
                     <span class="lifevault__list-update">[[file.status]]</span>
                   </div>
                   <div class="lifevault__list-right">
@@ -1183,8 +1196,8 @@
 
           static get properties() {
               return {
-                  folderId:{
-                      type:String,
+                  folderId: {
+                      type: String,
                       observer: 'refresh',
                   },
                   view: {
@@ -1297,12 +1310,12 @@
           }
 
 
-          refresh(){
+          refresh() {
               api.vault.searchFolder(this.folderId, "type:file")
                   .success(r => this.files = r);
           }
 
-          _onDownloadClick(e){
+          _onDownloadClick(e) {
               api.vault.downloadFile(e.model.file.id);
           }
 
@@ -1310,7 +1323,9 @@
               return new Date(date).toString(new Date(date) < new Date().setHours(0, 0, 0, 0) ? "MMM dd, yyyy" : "h:mm TT");
           }
 
-          formatAgo(date) { return Date.formatTimeSpan(new Date() - new Date(date)); }
+          formatAgo(date) {
+              return Date.formatTimeSpan(new Date() - new Date(date));
+          }
       }
 
       window.customElements.define(NetlawLifevaultFiles.is, NetlawLifevaultFiles);
