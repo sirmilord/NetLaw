@@ -1098,7 +1098,7 @@
                     </label>
                     <div class="lifevault__list-body">
                       <figure class="lifevault__document lifevault__document--list">
-                        <a href="{{file.link}}">
+                        <a href="[[rootPath]]lifevault/doc">
                           <iron-icon icon="netlaw-icons:page"></iron-icon>
                         </a>
                       </figure>
@@ -1111,6 +1111,7 @@
                     <a href="{{file.link}}">
                       <span class="lifevault__name-desc">[[file.name]]</span>
                     </a>
+                    <span class="lifevault__list-update">[[formatDate(file.modified_on)]]</span>
                     <template is="dom-if" if="[[file.has_history]]">
                       <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">
                         <iron-icon icon="icons:history"></iron-icon>
@@ -1147,7 +1148,7 @@
                       <iron-dropdown horizontal-align="right">
                         <ul class="lifevault__addfolder-dropdown lifevault__addfolder-dropdown--sub"
                             slot="dropdown-content">
-                          <li>Download
+                          <li on-click="_onDownloadClick">Download
                             <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
                           </li>
                           <li>Print
