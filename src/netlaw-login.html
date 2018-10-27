@@ -715,6 +715,7 @@
 
               this.loading = true;
               this.info = 'Logging you in...';
+              // todo: Ask Zlatko, why api.accounts is undefined on mobile (when refreshing page)
               api.accounts.checkSession()
                   .success(r => {
                       // this.selected = "signin";

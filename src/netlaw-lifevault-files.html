@@ -611,6 +611,11 @@
           padding-bottom: 8px;
         }
 
+        .lifevault__list-update {
+          flex: 1 1 50%;
+          max-width: 50%;
+        }
+
         .addfolder-dropdown iron-icon {
           margin-left: auto;
           --iron-icon-fill-color: #C2C2C2;
@@ -746,8 +751,8 @@
         }
 
         .lifevault__details iron-icon {
-          --iron-icon-height: 17px;
-          --iron-icon-width: 17px;
+          --iron-icon-height: 16px;
+          --iron-icon-width: 16px;
         }
 
         .lifevault__module-footer .btn--charm {
@@ -906,7 +911,7 @@
                     <a href="{{file.link}}">
                       <span class="lifevault__name-desc">[[file.name]]</span>
                     </a>
-                    <span class="lifevault__list-update">[[file.status]]</span>
+                    <span class="lifevault__list-update">[[formatDate(file.modified_on)]]</span>
                     <a href="javascript:;" class$="btn btn--charm [[if(file.smartguide, '', 'btn--hide')]]">
                       <iron-icon icon="netlaw-icons:wand-small-icon"></iron-icon>
                     </a>
@@ -1111,7 +1116,6 @@
                     <a href="{{file.link}}">
                       <span class="lifevault__name-desc">[[file.name]]</span>
                     </a>
-                    <span class="lifevault__list-update">[[formatDate(file.modified_on)]]</span>
                     <template is="dom-if" if="[[file.has_history]]">
                       <button class="lifevault__details lifevault__details--list" on-click="_onToggleDropdown">
                         <iron-icon icon="icons:history"></iron-icon>
@@ -1140,6 +1144,7 @@
                         </iron-dropdown>
                       </button>
                     </template>
+                    <span class="lifevault__list-update">[[formatDate(file.modified_on)]]</span>
                     <span class="lifevault__list-update">[[file.status]]</span>
                   </div>
                   <div class="lifevault__list-right">
