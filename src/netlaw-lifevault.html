@@ -1234,7 +1234,7 @@
                           modified-on="[[item.modified_on]]"
                           has-folders="[[item.has_folders]]"
                           on-add-folder="_onAddFolderClick"
-                          on-delete-file="_onDeleteFileFolderClick"
+                          on-delete-folder="_onDeleteFileFolderClick"
                           on-share-file="_onShareFileClick">
                       </netlaw-lifevault-folder>
                     </li>
@@ -1337,14 +1337,14 @@
       <div class="file-folder file-folder--fixed">
         <iron-icon class="file-folder__icon file-folder__icon--recyclebin" icon="netlaw-icons:delete-o"></iron-icon>
         <b class="file-folder__title">Just Confirming </b>
-        <p class="file-folder__desc">Cetain you want to <span>permanently delete</span> these files?</p>
+        <p class="file-folder__desc">Certain you want to <span>permanently delete</span> these [[if(item, 'folders', 'files')]]?</p>
         <form action="javascript:;" method="post"
               class="login-form login__align-center  file-folder__form file-folder__form--w100">
           <div class="login__margin file-folder__wrap">
             <figure class="file-folder__img">
               <iron-icon icon="netlaw-icons:page"></iron-icon>
             </figure>
-            <div class="file-folder__name">[[fileName]]</div>
+            <div class="file-folder__name">[[if(item, folderName, fileName)]]</div>
             <!--<div class="file-folder__version">1.1</div>-->
           </div>
           <hr class="login__divider-small">
@@ -1555,6 +1555,9 @@
                       type: Boolean,
                       value: false
                   },
+                  item: {
+                      type: Boolean,
+                  }
               };
           }
 
@@ -1759,8 +1762,17 @@
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
 
-              this.fileName = e.detail.fileName;
-              this.fileId = e.detail.fileId;
+              if (e.type === "delete-folder") {
+                  this.item = true;
+                  this.folderName = e.detail.folderName;
+                  this.folderId = e.detail.folderId;
+              }
+
+              if (e.type === "delete-file") {
+                  this.item = false;
+                  this.fileName = e.detail.fileName;
+                  this.fileId = e.detail.fileId;
+              }
 
               this.deleteFileFolder = true;
 
@@ -1774,20 +1786,45 @@
           }
 
           _onDeleteConfirmClick(e) {
-              api.vault.deleteFile(this.fileId).success(() => {
-                  this.deleteFileFolder = false;
-                  let pages = this.shadowRoot.querySelector("#pages2");
-                  if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
-                  console.log("File deleted successfully");
-                  // this.info = "File deleted successfully";
-                  this.dispatchEvent(new CustomEvent('overlay-display', {
-                      bubbles: true,
-                      composed: true,
-                      detail: {
-                          display: false
-                      }
-                  }));
-              });
+
+              //todo: Ask Zlatko: Error on delete folder
+              if(this.item) {
+                  console.log(this.folderName, this.folderId)
+                  api.vault.deleteFolder(this.folderId)
+                      .success(() => {
+                          this.deleteFileFolder = false;
+                          this.refresh();
+                          console.log("Folder deleted successfully");
+                          // this.info = "File deleted successfully";
+                          this.dispatchEvent(new CustomEvent('overlay-display', {
+                              bubbles: true,
+                              composed: true,
+                              detail: {
+                                  display: false
+                              }
+                          }));
+                      })
+                      .error(r => console.log(r))
+
+
+              }
+              else {
+                  api.vault.deleteFile(this.fileId)
+                      .success(() => {
+                          this.deleteFileFolder = false;
+                          let pages = this.shadowRoot.querySelector("#pages2");
+                          if (pages && pages.selectedItem && pages.selectedItem.refresh) pages.selectedItem.refresh();
+                          console.log("File deleted successfully");
+                          // this.info = "File deleted successfully";
+                          this.dispatchEvent(new CustomEvent('overlay-display', {
+                              bubbles: true,
+                              composed: true,
+                              detail: {
+                                  display: false
+                              }
+                          }));
+                      });
+              }
           }
 
           _onShareFileClick(e) {
@@ -1857,6 +1894,11 @@
           formatAgo(date) {
               return Date.formatTimeSpan(new Date() - new Date(date));
           }
+
+          if(condition, ifTrue, ifFalse) {
+              return condition ? ifTrue || null : ifFalse || null;
+          }
+
       }
 
       window.customElements.define(NetlawLifevault.is, NetlawLifevault);

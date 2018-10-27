@@ -303,9 +303,13 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-              this.dispatchEvent(new CustomEvent('delete-file', {
+              this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
-                  composed: true
+                  composed: true,
+                  detail: {
+                      folderId: this.folderId,
+                      folderName: this.name,
+                  },
               }));
 
           }
