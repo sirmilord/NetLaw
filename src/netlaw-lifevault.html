@@ -1719,8 +1719,8 @@
           _onAddFolderConfirmClick(e) {
               let id = /^[0-9a-f]{8}-?([0-9a-f]{4}-?){3}[0-9a-f]{12}$/i.test(this.folderId) ? this.folderId : null;
 
-              //console.log('ID: ' + id);
-              //console.log('Folder Name: ' + this.newFolderName);
+              console.log('ID: ' + id);
+              console.log('Folder Name: ' + this.newFolderName);
 
               api.vault.createFolder(id, this.newFolderName)
                   .success(() => {
@@ -1736,6 +1736,10 @@
                               display: false
                           }
                       }));
+                  })
+                  .notFound(ex => {
+                      console.log('Not Found');
+                      console.log(ex);
                   })
                   .error(r => console.log(r));
 
@@ -1837,7 +1841,22 @@
                               }
                           }));
                       })
-                      .error(r => console.log(r))
+                      .badRequest(ex => {
+                          console.log('Bad Request');
+                          console.log(ex);
+                      })
+                      .notFound(ex => {
+                          console.log('Not Found');
+                          console.log(ex);
+                      })
+                      .serverError(ex => {
+                          console.log('Server Error');
+                          console.log(ex);
+                      })
+                      .error(ex => {
+                          console.log('Error');
+                          console.log(ex);
+                      })
 
 
               }
