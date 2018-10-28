@@ -1314,12 +1314,12 @@
         <form action="javascript:;" method="post" class="login-form login__align-center">
           <div class="login__margin file-folder__text-align">
             <label for="folderinput">FOLDER TITLE</label>
-            <input type="text" class="login__input" id="folderinput" name="folder"
+            <input type="text" class="login__input" id="folderinput" name="folder" value="{{newFolderName::input}}"
                    placeholder="Enter in your new folder title…">
           </div>
           <hr class="login__divider-small">
           <div class="login__margin">
-            <button class="btn btn-primary">Create Folder</button>
+            <button class="btn btn-primary" on-click="_onAddFolderConfirmClick">Create Folder</button>
           </div>
           <div class="login__margin">
             <button class="btn btn-cancel" on-click="_onCancelOverlayClick">Cancel</button>
@@ -1545,6 +1545,9 @@
                   folderName: {
                       type: String,
                   },
+                  newFolderName: {
+                      type: String,
+                  },
                   fileId: {
                       type: String,
                   },
@@ -1697,6 +1700,7 @@
           _onAddFolderClick(e) {
               e.preventDefault();
               this.addFolder = true;
+              this.newFolderName = null;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
                   composed: true,
@@ -1704,8 +1708,37 @@
                       display: true
                   }
               }));
-              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {bubbles: true, composed: true}));
+              e.srcElement.dispatchEvent(new CustomEvent('iron-select', {
+                  bubbles: true,
+                  composed: true
+              }));
               //app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").close();
+          }
+
+          //todo: Ask Zlatko: Strange refresh behaviour after creating 2-nd folder
+          _onAddFolderConfirmClick(e) {
+              let id = /^[0-9a-f]{8}-?([0-9a-f]{4}-?){3}[0-9a-f]{12}$/i.test(this.folderId) ? this.folderId : null;
+
+              //console.log('ID: ' + id);
+              //console.log('Folder Name: ' + this.newFolderName);
+
+              api.vault.createFolder(id, this.newFolderName)
+                  .success(() => {
+                      this.addFolder = false;
+                      this.refresh();
+                      //console.log("Folder created successfully");
+                      this.refresh();
+
+                      this.dispatchEvent(new CustomEvent('overlay-display', {
+                          bubbles: true,
+                          composed: true,
+                          detail: {
+                              display: false
+                          }
+                      }));
+                  })
+                  .error(r => console.log(r));
+
           }
 
           _onAddFileClick(e) {
