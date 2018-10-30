@@ -240,7 +240,7 @@
 
           //it calls when a main lifevault is opened
           open() {
-              this.refresh();
+              this.refresh(this.folderId);
 
               this.openFolderEvent(this.folderId, this.folderId, this.name, this.modifiedOn);
           }
@@ -260,8 +260,9 @@
           }
 
           //get a list of folders
-          refresh() {
-              api.vault.searchFolder(this.folderId, "type:folder")
+          refresh(folderId=this.folderId) {
+              console.log("folder", folderId);
+              api.vault.searchFolder(folderId, "type:folder")
                   .success(r => this.folders = r);
           }
 
@@ -272,7 +273,7 @@
               ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
 
-              this.refresh();
+              this.refresh(this.folderId);
 
               let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
               if(link) {
