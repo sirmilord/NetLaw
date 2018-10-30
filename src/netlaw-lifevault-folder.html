@@ -182,6 +182,7 @@
         </ul>
       </iron-dropdown>
     </a>
+    <!--todo: ASK ZLATkO: Creating folders - on 3rd level and deeper tree don't refresh-->
     <iron-collapse id="collapse{{index}}">
       <ul class="lifevault__list-lvl3">
         <template is="dom-repeat" items="{{folders}}">
@@ -261,7 +262,7 @@
 
           //get a list of folders
           refresh(folderId=this.folderId) {
-              console.log("folder", folderId);
+              console.log("folder", folderId, this.folderName);
               api.vault.searchFolder(folderId, "type:folder")
                   .success(r => this.folders = r);
           }
