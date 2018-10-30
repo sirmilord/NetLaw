@@ -1228,6 +1228,7 @@
                   <template is="dom-repeat" items="{{folders}}">
                     <li class="lifevault__list-item-lvl2">
                       <netlaw-lifevault-folder
+                          id="folder"
                           folder-id="[[item.id]]"
                           name="[[item.name]]"
                           index="[[index]]"
@@ -1620,7 +1621,7 @@
 
           _closeMobileFiles(e) {
               this.folderId = null;
-              this.refresh();
+              this.refresh(this.folderId);
           }
 
           ready(e) {
@@ -1647,11 +1648,11 @@
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
 
               //get a list of folders
-              this.refresh();
+              this.refresh(this.folderId);
           }
 
-          refresh() {
-              api.vault.searchFolder(this.folderId, "type:folder")
+          refresh(folderId) {
+              api.vault.searchFolder(folderId, "type:folder")
                   .success(r => this.folders = r);
           }
 
@@ -1701,6 +1702,7 @@
               e.preventDefault();
               this.addFolder = true;
               this.newFolderName = null;
+              this.folderId = e.detail.folderId;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
                   composed: true,
@@ -1715,19 +1717,15 @@
               //app.shadowRoot.querySelector("#placeholder").querySelector("paper-menu-button").close();
           }
 
-          //todo: Ask Zlatko: Strange refresh behaviour after creating 2-nd folder
           _onAddFolderConfirmClick(e) {
-              let id = /^[0-9a-f]{8}-?([0-9a-f]{4}-?){3}[0-9a-f]{12}$/i.test(this.folderId) ? this.folderId : null;
-
-              console.log('ID: ' + id);
-              console.log('Folder Name: ' + this.newFolderName);
-
-              api.vault.createFolder(id, this.newFolderName)
+              api.vault.createFolder(this.folderId, this.newFolderName)
                   .success(() => {
                       this.addFolder = false;
-                      this.refresh();
-                      //console.log("Folder created successfully");
-                      this.refresh();
+
+                      this.refresh(null);
+                      let folder = this.shadowRoot.querySelector("#folder");
+                      if (folder) folder.refresh();
+
 
                       this.dispatchEvent(new CustomEvent('overlay-display', {
                           bubbles: true,
@@ -1830,7 +1828,7 @@
                   api.vault.deleteFolder(this.folderId)
                       .success(() => {
                           this.deleteFileFolder = false;
-                          this.refresh();
+                          this.refresh(this.folderId);
                           console.log("Folder deleted successfully");
                           // this.info = "File deleted successfully";
                           this.dispatchEvent(new CustomEvent('overlay-display', {
@@ -1856,6 +1854,7 @@
                       .error(ex => {
                           console.log('Error');
                           console.log(ex);
+                          this.refresh(this.folderId);
                       })
 
 

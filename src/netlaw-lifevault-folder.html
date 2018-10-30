@@ -297,9 +297,14 @@
               e.preventDefault();
               this.dispatchEvent(new CustomEvent('add-folder', {
                   bubbles: true,
-                  composed: true
+                  composed: true,
+                  detail: {
+                      folderId: this.folderId,
+                  }
               }));
           }
+
+
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
