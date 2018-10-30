@@ -262,7 +262,7 @@
 
           //get a list of folders
           refresh(folderId=this.folderId) {
-              console.log("folder", folderId, this.folderName);
+              console.log("folder", folderId);
               api.vault.searchFolder(folderId, "type:folder")
                   .success(r => this.folders = r);
           }
@@ -273,7 +273,6 @@
               ironCollapse.toggle();
               ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
               ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-
               this.refresh(this.folderId);
 
               let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
@@ -310,7 +309,6 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-              console.log(e);
               this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
                   composed: true,

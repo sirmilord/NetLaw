@@ -1701,8 +1701,9 @@
 
           _onAddFolderClick(e) {
               e.preventDefault();
+              console.log("e lifevault", e.detail.folderId);
               this.addFolder = true;
-              this.newFolderName = null;
+              this.newFolderName = "";
               this.folderId = e.detail.folderId;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
@@ -1720,13 +1721,12 @@
 
           _onAddFolderConfirmClick(e) {
               api.vault.createFolder(this.folderId, this.newFolderName)
-                  .success(() => {
+                  .success((re) => {
                       this.addFolder = false;
-
+                      console.log("lifevault", this.folderId, re);
                       this.refresh(null);
                       let folder = this.shadowRoot.querySelector("#folder");
                       if (folder) folder.refresh();
-
 
                       this.dispatchEvent(new CustomEvent('overlay-display', {
                           bubbles: true,
