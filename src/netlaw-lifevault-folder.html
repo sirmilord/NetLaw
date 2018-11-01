@@ -233,6 +233,7 @@
           //on-click to child folder in netlaw-lifevault-folder(recursive call)
           _onOpenChildFolder(e) {
               e.stopPropagation();
+              debugger;
 
               this.openFolderEvent(e.detail.id, `${this.folderId}/${e.detail.path}`, e.detail.name, e.detail.modifiedOn);
 
@@ -241,6 +242,7 @@
 
           //it calls when a main lifevault is opened
           open() {
+              debugger;
               this.refresh(this.folderId);
 
               this.openFolderEvent(this.folderId, this.folderId, this.name, this.modifiedOn);
@@ -260,8 +262,9 @@
               }));
           }
 
-          //get a list of folders
+          //get a list of child folders
           refresh(folderId=this.folderId) {
+              debugger;
               console.log("folder", folderId);
               api.vault.searchFolder(folderId, "type:folder")
                   .success(r => this.folders = r);

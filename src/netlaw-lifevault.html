@@ -1319,6 +1319,8 @@
             <input type="text" class="login__input" id="folderinput" name="folder" value="{{newFolderName::input}}"
                    placeholder="Enter in your new folder title…">
           </div>
+          <div class="drag-drop__error" hidden$="[[!error]]">[[error]]</div>
+          <div class="drag-drop__info" hidden$="[[!info]]">[[info]]</div>
           <hr class="login__divider-small">
           <div class="login__margin">
             <button class="btn btn-primary" on-click="_onAddFolderConfirmClick">Create Folder</button>
@@ -1704,6 +1706,7 @@
               console.log("e lifevault", e.detail.folderId);
               this.addFolder = true;
               this.newFolderName = "";
+              this.info = "";
               this.folderId = e.detail.folderId;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
@@ -1720,6 +1723,12 @@
           }
 
           _onAddFolderConfirmClick(e) {
+
+              if (!this.newFolderName) {
+                  this.info = "input folder name";
+                  return;
+              }
+
               api.vault.createFolder(this.folderId, this.newFolderName)
                   .success((re) => {
                       this.addFolder = false;
