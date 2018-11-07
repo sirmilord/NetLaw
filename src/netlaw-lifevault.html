@@ -1114,7 +1114,7 @@
               <section id="navmobile" class="lifevault__nav-mobile">
                 <ul class="lifevault__list-lvl2" on-open-folder="_onOpenFolder">
 
-                  <template is="dom-repeat" items="{{folders}}">
+                  <template is="dom-repeat" items="[[folders]]">
                     <li class="lifevault__list-item-lvl2">
                       <netlaw-lifevault-folder
                           id="folder"
@@ -1226,7 +1226,7 @@
               <iron-collapse id="collapse">
                 <ul class="lifevault__list-lvl2">
 
-                  <template is="dom-repeat" items="{{folders}}">
+                  <template is="dom-repeat" items="[[folders]]">
                     <li class="lifevault__list-item-lvl2">
                       <netlaw-lifevault-folder
                           id="folder"
@@ -1536,7 +1536,7 @@
                       value: true
                   },
                   folders: {
-                      type: Object
+                      type: Object,
                   },
                   mobile: {
                       type: Boolean, observer(value) {
@@ -1624,7 +1624,7 @@
 
           _closeMobileFiles(e) {
               this.folderId = null;
-              this.refresh(this.folderId);
+              this.refresh();
           }
 
           ready(e) {
@@ -1651,11 +1651,11 @@
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
 
               //get a list of folders
-              this.refresh(this.folderId);
+              this.refresh();
           }
 
-          refresh(folderId) {
-              api.vault.searchFolder(folderId, "type:folder")
+          refresh() {
+              api.vault.searchFolder(null, "type:folder")
                   .success(r => this.folders = r);
           }
 
@@ -1708,6 +1708,7 @@
               this.newFolderName = "";
               this.info = "";
               this.folderId = e.detail.folderId;
+              this.onAddFolderSuccess = e.detail.success;
               this.dispatchEvent(new CustomEvent('overlay-display', {
                   bubbles: true,
                   composed: true,
@@ -1731,11 +1732,13 @@
 
               api.vault.createFolder(this.folderId, this.newFolderName)
                   .success((re) => {
+                      if (this.onAddFolderSuccess) this.onAddFolderSuccess();
+                      else this.refresh();
                       this.addFolder = false;
                       console.log("lifevault", this.folderId, re);
-                      this.refresh(null);
-                      let folder = this.shadowRoot.querySelector("#folder");
-                      if (folder) folder.refresh();
+                      //this.refresh(null);
+                      //let folder = this.shadowRoot.querySelector("#folder");
+                      //if (folder) folder.refresh();
 
                       this.dispatchEvent(new CustomEvent('overlay-display', {
                           bubbles: true,

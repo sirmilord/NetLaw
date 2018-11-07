@@ -148,11 +148,11 @@
     </style>
 
     <template is="dom-if" if="[[hasFolders]]">
-      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse">
-        <iron-icon icon="[[toggleIcon]]"></iron-icon>
+      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse" aria-expanded$="[[opened]]">
+        <iron-icon icon="[[if(opened, 'netlaw-icons:minus-icon', 'netlaw-icons:plus-icon')]]"></iron-icon>
       </a>
     </template>
-    <a class="lifevault__list-link-lvl2" href="javascript:;" on-click="open">
+    <a class$="lifevault__list-link-lvl2 [[if(opened, 'lifevault__list-link-lvl2--collapsed')]]" href="javascript:;" on-click="open">
       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
       [[name]]
     </a>
@@ -183,9 +183,9 @@
       </iron-dropdown>
     </a>
     <!--todo: ASK ZLATkO: Creating folders - on 3rd level and deeper tree don't refresh-->
-    <iron-collapse id="collapse{{index}}">
+    <iron-collapse id="collapse{{index}}" opened="{{opened}}">
       <ul class="lifevault__list-lvl3">
-        <template is="dom-repeat" items="{{folders}}">
+        <template is="dom-repeat" items="[[folders]]">
           <li class="lifevault__list-item-lvl3">
             <netlaw-lifevault-folder
                 index="[[index]]"
@@ -210,7 +210,10 @@
 
           static get properties() {
               return {
-                  folderId: String,
+                  folderId: { type: String, observer(value) {
+                          this.refresh();
+                          this.opened = false;
+                      }},
                   modifiedOn: String,
                   name: String,
                   hasFolders: Boolean,
@@ -219,8 +222,11 @@
                       type: String,
                       value: 'netlaw-icons:plus-icon'
                   },
+                  opened: { type: Boolean, value: false },
               };
           }
+
+          if(condition, trueValue, falseValue) { return condition ? trueValue : falseValue || null; }
 
           constructor() {
               super();
@@ -233,7 +239,6 @@
           //on-click to child folder in netlaw-lifevault-folder(recursive call)
           _onOpenChildFolder(e) {
               e.stopPropagation();
-              debugger;
 
               this.openFolderEvent(e.detail.id, `${this.folderId}/${e.detail.path}`, e.detail.name, e.detail.modifiedOn);
 
@@ -242,10 +247,10 @@
 
           //it calls when a main lifevault is opened
           open() {
-              debugger;
               // this.refresh(this.folderId);
 
               this.openFolderEvent(this.folderId, this.folderId, this.name, this.modifiedOn);
+              this.opened = this.hasFolders;
           }
 
           //dispath open-folder event to a main lifevault
@@ -263,25 +268,28 @@
           }
 
           //get a list of child folders
-          refresh(folderId=this.folderId) {
-              debugger;
-              console.log("folder", folderId);
-              api.vault.searchFolder(folderId, "type:folder")
-                  .success(r => this.folders = r);
+          refresh() {
+              console.log("folder", this.folderId);
+              api.vault.searchFolder(this.folderId, "type:folder")
+                  .success(r => {
+                      this.folders = r;
+                      this.hasFolders = !!r.length;
+                  });
           }
 
           _onToggleCollapse(e) {
               e.preventDefault();
-              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              ironCollapse.toggle();
-              ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
-              ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-              this.refresh(this.folderId);
+              this.opened = !this.opened;
+              //let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
+              //ironCollapse.toggle();
+              //ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
+              //ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
+              this.refresh();
 
-              let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
+              /*let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
               if(link) {
                   ironCollapse.opened ? link.classList.add('lifevault__list-link-lvl2--collapsed') : link.classList.remove('lifevault__list-link-lvl2--collapsed');
-              }
+              }*/
 
           }
 
@@ -304,6 +312,7 @@
                   composed: true,
                   detail: {
                       folderId: this.folderId,
+                      success: this.refresh.bind(this),
                   }
               }));
           }
