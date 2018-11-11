@@ -1736,10 +1736,6 @@
                       else this.refresh();
                       this.addFolder = false;
                       console.log("lifevault", this.folderId, re);
-                      //this.refresh(null);
-                      //let folder = this.shadowRoot.querySelector("#folder");
-                      //if (folder) folder.refresh();
-
                       this.dispatchEvent(new CustomEvent('overlay-display', {
                           bubbles: true,
                           composed: true,
@@ -1747,10 +1743,6 @@
                               display: false
                           }
                       }));
-                  })
-                  .notFound(ex => {
-                      console.log('Not Found');
-                      console.log(ex);
                   })
                   .error(r => console.log(r));
 
@@ -1834,8 +1826,6 @@
           }
 
           _onDeleteConfirmClick(e) {
-
-              //todo: Ask Zlatko: Error on delete folder
               if(this.item) {
                   console.log(this.folderName, this.folderId)
                   api.vault.deleteFolder(this.folderId)
@@ -1851,18 +1841,6 @@
                                   display: false
                               }
                           }));
-                      })
-                      .badRequest(ex => {
-                          console.log('Bad Request');
-                          console.log(ex);
-                      })
-                      .notFound(ex => {
-                          console.log('Not Found');
-                          console.log(ex);
-                      })
-                      .serverError(ex => {
-                          console.log('Server Error');
-                          console.log(ex);
                       })
                       .error(ex => {
                           console.log('Error');

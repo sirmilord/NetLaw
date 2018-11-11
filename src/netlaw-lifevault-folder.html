@@ -148,7 +148,7 @@
     </style>
 
     <template is="dom-if" if="[[hasFolders]]">
-      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse" aria-expanded$="[[opened]]">
+      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse" aria-expanded$="[[if(opened, 'true', 'false')]]">
         <iron-icon icon="[[if(opened, 'netlaw-icons:minus-icon', 'netlaw-icons:plus-icon')]]"></iron-icon>
       </a>
     </template>
@@ -182,7 +182,7 @@
         </ul>
       </iron-dropdown>
     </a>
-    <!--todo: ASK ZLATkO: Creating folders - on 3rd level and deeper tree don't refresh-->
+
     <iron-collapse id="collapse{{index}}" opened="{{opened}}">
       <ul class="lifevault__list-lvl3">
         <template is="dom-repeat" items="[[folders]]">
@@ -269,7 +269,7 @@
 
           //get a list of child folders
           refresh() {
-              console.log("folder", this.folderId);
+              // console.log("folder", this.folderId);
               api.vault.searchFolder(this.folderId, "type:folder")
                   .success(r => {
                       this.folders = r;
