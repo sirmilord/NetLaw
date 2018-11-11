@@ -1223,7 +1223,7 @@
                   </ul>
                 </iron-dropdown>
               </a>
-              <iron-collapse id="collapse" opened="{{opened}}">
+              <iron-collapse id="collapse" opened="[[opened]]">
                 <ul class="lifevault__list-lvl2">
 
                   <template is="dom-repeat" items="[[folders]]">
@@ -1716,7 +1716,10 @@
                       if (this.onAddFolderSuccess) this.onAddFolderSuccess();
                       else this.refresh();
                       if (this.onAddFolderCollapse) this.onAddFolderCollapse();
-                      else this._onToggleCollapse();
+                      else {
+                          this._onToggleCollapse();
+                      if(this.mobile) this._onOpenDrawer();
+                      }
                       this.addFolder = false;
                       //console.log("lifevault", this.folderId, re);
                       this.dispatchEvent(new CustomEvent('overlay-display', {
