@@ -163,9 +163,13 @@
       }
 
       .contacts__list-link-lvl2:hover,
-      .contacts__list-link-lvl2--active,
       .contacts__list-link-lvl2:focus {
-        color: #4a4a4a;
+        /*color: #4a4a4a;*/
+        text-decoration: none;
+      }
+
+      .contacts__list-link-lvl2--active {
+        color: #01AA50;
         text-decoration: none;
       }
 
@@ -1093,9 +1097,10 @@
 
                 <template is="dom-repeat" items="{{folders}}">
                   <li class="contacts__list-item-lvl2">
-                    <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onToggleCollapse">
+                    <a class="contacts__list-link-lvl2"  href="javascript:;" on-click="_onToggleCollapse">
                       <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                      [[item.name]]</a>
+                      [[item.name]]
+                    </a>
                     <a class="contacts__btn contacts__btn--lvl2" href="javascript:;" on-click="_onToggleDropdown">
                       <iron-icon icon="icons:more-vert"></iron-icon>
                       <iron-dropdown>
@@ -1125,7 +1130,7 @@
 
                     <template is="dom-if" if=[[item.folders2]]>
 
-                      <iron-collapse id="collapsetwo{{index}}">
+                      <iron-collapse id="collapsetwo{{index}}" opened="[[opened]]">
                         <ul class="contacts__list-lvl3">
 
                           <template is="dom-repeat" items="{{item.folders2}}" as="item2">
@@ -1548,7 +1553,9 @@
                   uploadImage: {
                       type: String,
                       value: './images/profile-default.png'
-                  }
+                  },
+                  opened: { type: Boolean, value: false },
+                  clicked: { type: Boolean, value: false },
               };
           }
 
@@ -1557,14 +1564,10 @@
               this.toggleIcon = 'netlaw-icons:plus-icon';
               this.view = 'Module';
           }
-
+        
           _onToggleCollapse(e) {
-              e.preventDefault();
-              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              if (ironCollapse) {
-                  ironCollapse.toggle();
-                  ironCollapse.opened ? e.currentTarget.classList.add('contacts__list-link-lvl2--active') : e.currentTarget.classList.remove('contacts__list-link-lvl2--active');
-              }
+              this.opened = !this.opened;
+              this.opened ? e.currentTarget.classList.add("contacts__list-link-lvl2--active") : e.currentTarget.classList.remove("contacts__list-link-lvl2--active");
           }
 
           ready(e) {
@@ -1707,6 +1710,10 @@
                   detail: {opened: true}
               }));
               this.flex = '';
+          }
+
+          if(condition, ifTrue, ifFalse) {
+              return condition ? ifTrue || null : ifFalse || null;
           }
       }
 
