@@ -148,7 +148,7 @@
     </style>
 
     <template is="dom-if" if="[[hasFolders]]">
-      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="_onToggleCollapse" aria-expanded$="[[if(opened, 'true', 'false')]]">
+      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="onToggleCollapse" aria-expanded$="[[if(opened, 'true', 'false')]]">
         <iron-icon icon="[[if(opened, 'netlaw-icons:minus-icon', 'netlaw-icons:plus-icon')]]"></iron-icon>
       </a>
     </template>
@@ -277,8 +277,7 @@
                   });
           }
 
-          _onToggleCollapse(e) {
-              e.preventDefault();
+          onToggleCollapse() {
               this.opened = !this.opened;
               this.refresh();
           }
@@ -303,6 +302,7 @@
                   detail: {
                       folderId: this.folderId,
                       success: this.refresh.bind(this),
+                      collapseFolder: this.onToggleCollapse.bind(this),
                   }
               }));
           }
