@@ -280,17 +280,7 @@
           _onToggleCollapse(e) {
               e.preventDefault();
               this.opened = !this.opened;
-              //let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              //ironCollapse.toggle();
-              //ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
-              //ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
               this.refresh();
-
-              /*let link = e.currentTarget.parentNode.querySelector('.lifevault__list-link-lvl2');
-              if(link) {
-                  ironCollapse.opened ? link.classList.add('lifevault__list-link-lvl2--collapsed') : link.classList.remove('lifevault__list-link-lvl2--collapsed');
-              }*/
-
           }
 
           _onToggleDropdown(e) {

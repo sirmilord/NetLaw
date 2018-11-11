@@ -1197,8 +1197,8 @@
         <section class="lifevault__drawer">
           <ul class="lifevault__list">
             <li class="lifevault__list-item lifevault__list-item--top-border" on-open-folder="_onOpenFolder">
-              <a href="javascript:;" id="button1" class="lifevault__list-link" on-click="_onToggleCollapse">
-                <iron-icon icon="[[toggleIcon]]"></iron-icon>
+              <a class="lifevault__list-link" href="javascript:;" on-click="_onToggleCollapse" aria-expanded$="[[if(opened, 'true', 'false')]]">
+                <iron-icon icon="[[if(opened, 'netlaw-icons:minus-icon', 'netlaw-icons:plus-icon')]]"></iron-icon>
               </a>
               <a href="javascript:;" class="lifevault__list-link" on-click="_onOpenMyFiles">
                 <span class="lifevault__list-text">My Files</span>
@@ -1223,7 +1223,7 @@
                   </ul>
                 </iron-dropdown>
               </a>
-              <iron-collapse id="collapse">
+              <iron-collapse id="collapse" opened="{{opened}}">
                 <ul class="lifevault__list-lvl2">
 
                   <template is="dom-repeat" items="[[folders]]">
@@ -1492,10 +1492,6 @@
                       }
                   },
                   subroute: Object,
-                  toggleIcon: {
-                      type: String,
-                      value: 'netlaw-icons:plus-icon'
-                  },
                   toggleMenu: {
                       type: String,
                       computed: '_computeMenu(menuOpened)',
@@ -1564,7 +1560,8 @@
                   },
                   item: {
                       type: Boolean,
-                  }
+                  },
+                  opened: { type: Boolean, value: false },
               };
           }
 
@@ -1576,11 +1573,7 @@
 
           _onToggleCollapse(e) {
               e.preventDefault();
-              let ironCollapse = e.currentTarget.parentNode.querySelector('iron-collapse');
-              ironCollapse.toggle();
-              ironCollapse.opened ? e.currentTarget.setAttribute('aria-expanded', true) : e.currentTarget.setAttribute('aria-expanded', false);
-              ironCollapse.opened ? this.toggleIcon = 'netlaw-icons:minus-icon' : this.toggleIcon = 'netlaw-icons:plus-icon';
-
+              this.opened = !this.opened;
           }
 
           _onToggleDropdown(e) {
@@ -1666,18 +1659,6 @@
               let pages = this.shadowRoot.querySelector("#pages2");
               if (pages && pages.selectedItem && pages.selectedItem.open) pages.selectedItem.open();
               else this.open();
-
-              if (!this.mobile) {
-
-                  if (page == null) {
-                      this.toggleIcon = 'netlaw-icons:plus-icon';
-                      this.shadowRoot.querySelector('#button1').setAttribute('aria-expanded', false);
-                      /*this.shadowRoot.querySelector('#collapse').hide();
-                      this.shadowRoot.querySelector('#collapsetwo0').hide();*/
-
-                  }
-
-              }
 
           }
 
