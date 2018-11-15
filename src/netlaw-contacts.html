@@ -1537,6 +1537,20 @@
                           {id: "cc39ed49-b299-431e-a927-7b92f9326ff3", name: " Other"},
                       ]
                   },
+                  filters: {
+                      type: Array, value: () => [
+                          { name: "Family", filter(item){ return item.relationship === 'child'; } }, /// dom-repeatid.filter = item.filter;
+                          { name: "Other", filter: "isOther"},
+                          { name: "Attorenys", filter: "isAttoreny"},
+                      ],
+                  },
+                  contacts: {
+                      type: Array, value: () => [
+                          {id: "d02dbc28-0791-445d-bf23-65cb9c2e97d0", name: "Spouse Name Soemthing", relationship: "spouse"},
+                          {id: "", name: "My Full Child Name", relationship: "child"},
+                          {id: "", name: "My Advisor Name", relationship: "other"},
+                      ],
+                  },
                   mobile: {
                       type: Boolean, observer(value) {
                           // this.open();
@@ -1564,6 +1578,8 @@
               this.toggleIcon = 'netlaw-icons:plus-icon';
               this.view = 'Module';
           }
+
+          //isFamioly...
         
           _onToggleCollapse(e) {
               this.opened = !this.opened;
