@@ -282,6 +282,11 @@
               this.refresh();
           }
 
+          onOpenCollapse() {
+              this.opened = true;
+              this.refresh();
+          }
+
           _onToggleDropdown(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
@@ -302,7 +307,7 @@
                   detail: {
                       folderId: this.folderId,
                       success: this.refresh.bind(this),
-                      collapseFolder: this.onToggleCollapse.bind(this),
+                      collapseFolder: this.onOpenCollapse.bind(this),
                   }
               }));
           }
@@ -315,6 +320,8 @@
                   detail: {
                       folderId: this.folderId,
                       folderName: this.name,
+                      success: this.refresh.bind(this),
+                      collapseFolder: this.onToggleCollapse.bind(this),
                   },
               }));
 
