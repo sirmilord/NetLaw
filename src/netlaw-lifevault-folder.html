@@ -314,6 +314,8 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
+              console.log('parent',this.parentNode);
+              console.log('this', this);
               this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
                   composed: true,
@@ -321,7 +323,6 @@
                       folderId: this.folderId,
                       folderName: this.name,
                       success: this.refresh.bind(this),
-                      collapseFolder: this.onToggleCollapse.bind(this),
                   },
               }));
 

@@ -1575,6 +1575,10 @@
               this.opened = !this.opened;
           }
 
+          _onOpenCollapse() {
+              this.opened = true;
+          }
+
           _onToggleDropdown(e) {
               e.preventDefault();
               let ironDropdown = e.currentTarget.querySelector('iron-dropdown');
@@ -1717,7 +1721,7 @@
                       else this.refresh();
                       if (this.onAddFolderCollapse) this.onAddFolderCollapse();
                       else {
-                          this._onToggleCollapse();
+                          this._onOpenCollapse();
                       if(this.mobile) this._onOpenDrawer();
                       }
                       this.addFolder = false;
@@ -1792,7 +1796,6 @@
                   this.folderName = e.detail.folderName;
                   this.folderId = e.detail.folderId;
                   this.onDeleteFolderSuccess = e.detail.success;
-                  this.onDeleteFolderCollapse = e.detail.collapseFolder;
               }
 
               if (e.type === "delete-file") {
@@ -1815,18 +1818,15 @@
           //todo: improve refresh after deleting folders
           _onDeleteConfirmClick(e) {
               if(this.item) {
-                  console.log(this.folderName, this.folderId);
+                  console.log(this.folderName, this.folderId); return;
 
                   api.vault.deleteFolder(this.folderId)
                       .success(() => {
                           this.deleteFileFolder = false;
-                          // this.refresh();
-                          console.log(this);
-                          if (this.onDeleteFolderSuccess) this.onDeleteFolderSuccess();
-                          else this.refresh();
-                          // if (this.onAddFolderCollapse) this.onAddFolderCollapse();
-                          // else {
-                          //     this._onToggleCollapse();
+                          this.refresh(this.folderId);
+                          console.log('delete this', this);
+                          // if (this.onDeleteFolderSuccess) this.onDeleteFolderSuccess();
+                          // else this.refresh();
                           console.log("Folder deleted successfully");
                           this.dispatchEvent(new CustomEvent('overlay-display', {
                               bubbles: true,
