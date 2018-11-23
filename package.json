@@ -15,6 +15,7 @@
   "dependencies": {
     "@polymer/paper-button": "^3.0.0-pre.21",
     "bower-existed-scanner": "0.0.1",
+    "firebase": "^5.5.9",
     "firebase-tools": "^4.2.0",
     "paper-button": "0.0.0",
     "paper-tabs": "0.0.0",

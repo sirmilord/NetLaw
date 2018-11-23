@@ -1776,7 +1776,6 @@
               e.stopPropagation();
               e.preventDefault();
 
-
               let dt = e.dataTransfer;
               let files = dt.files;
 
@@ -1811,6 +1810,7 @@
               }));
           }
 
+          //todo: improve refresh after deleting folders
           _onDeleteConfirmClick(e) {
               if(this.item) {
                   console.log(this.folderName, this.folderId)
@@ -1819,7 +1819,6 @@
                           this.deleteFileFolder = false;
                           this.refresh(this.folderId);
                           console.log("Folder deleted successfully");
-                          // this.info = "File deleted successfully";
                           this.dispatchEvent(new CustomEvent('overlay-display', {
                               bubbles: true,
                               composed: true,
