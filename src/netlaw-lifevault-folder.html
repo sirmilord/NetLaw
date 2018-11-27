@@ -193,6 +193,7 @@
                 name="[[item.name]]"
                 modified-on="[[item.modified_on]]"
                 has-folders="[[item.has_folders]]"
+                parent-id="[[item.parent_id]]"
                 on-open-folder="_onOpenChildFolder">
             </netlaw-lifevault-folder>
           </li>
@@ -217,6 +218,7 @@
                   modifiedOn: String,
                   name: String,
                   hasFolders: Boolean,
+                  parentId: String,
                   folders: Object,
                   toggleIcon: {
                       type: String,
@@ -240,7 +242,7 @@
           _onOpenChildFolder(e) {
               e.stopPropagation();
 
-              this.openFolderEvent(e.detail.id, `${this.folderId}/${e.detail.path}`, e.detail.name, e.detail.modifiedOn);
+              this.openFolderEvent(e.detail.id, `${this.folderId}/${e.detail.path}`, e.detail.name, e.detail.modifiedOn, e.detail.parentId);
 
 
           }
@@ -249,18 +251,19 @@
           open() {
               // this.refresh(this.folderId);
 
-              this.openFolderEvent(this.folderId, this.folderId, this.name, this.modifiedOn);
+              this.openFolderEvent(this.folderId, this.folderId, this.name, this.modifiedOn, this.parentId);
               this.opened = this.hasFolders;
           }
 
           //dispath open-folder event to a main lifevault
-          openFolderEvent(id, path, name, modifiedOn) {
+          openFolderEvent(id, path, name, modifiedOn, parentId) {
               this.dispatchEvent(new CustomEvent("open-folder", {
                   detail: {
                       id: id,
                       path: path,
                       name: name,
                       modifiedOn: modifiedOn,
+                      parentId: parentId,
                   },
                   bubbles: true,
                   composed: true,
@@ -269,11 +272,22 @@
 
           //get a list of child folders
           refresh() {
-              // console.log("folder", this.folderId);
+              //console.log("folder", this.folderId);
               api.vault.searchFolder(this.folderId, "type:folder")
                   .success(r => {
                       this.folders = r;
                       this.hasFolders = !!r.length;
+                  });
+          }
+
+          refreshParent() {
+              console.log("folder", this.folderId);
+              console.log("folder parent ID", this.parentId);
+              api.vault.searchFolder(this.parentId, "type:folder")
+                  .success(r => {
+                      this.folders = r;
+                      this.hasFolders = !!r.length;
+                      console.log(r)
                   });
           }
 
@@ -314,15 +328,17 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-              console.log('parent',this.parentNode);
-              console.log('this', this);
+            console.log('this', this);
+            console.log('parenId', this.parentId);
               this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
                   composed: true,
                   detail: {
                       folderId: this.folderId,
                       folderName: this.name,
-                      success: this.refresh.bind(this),
+                      // parentId: this.parentId,
+                      success: this.refreshParent.bind(this),
+
                   },
               }));
 

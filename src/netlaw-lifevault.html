@@ -1235,6 +1235,7 @@
                           index="[[index]]"
                           modified-on="[[item.modified_on]]"
                           has-folders="[[item.has_folders]]"
+                          parent-id="[[item.parent_id]]"
                           on-add-folder="_onAddFolderClick"
                           on-delete-folder="_onDeleteFileFolderClick"
                           on-share-file="_onShareFileClick">
@@ -1554,6 +1555,9 @@
                   modifiedOn: {
                       type: String,
                   },
+                  parentId: {
+                      type: String,
+                  },
                   loading: {
                       type: Boolean,
                       value: false
@@ -1818,15 +1822,12 @@
           //todo: improve refresh after deleting folders
           _onDeleteConfirmClick(e) {
               if(this.item) {
-                  console.log(this.folderName, this.folderId); return;
 
                   api.vault.deleteFolder(this.folderId)
                       .success(() => {
                           this.deleteFileFolder = false;
-                          this.refresh(this.folderId);
-                          console.log('delete this', this);
-                          // if (this.onDeleteFolderSuccess) this.onDeleteFolderSuccess();
-                          // else this.refresh();
+                          if (this.onDeleteFolderSuccess) this.onDeleteFolderSuccess();
+                          else this.refresh();
                           console.log("Folder deleted successfully");
                           this.dispatchEvent(new CustomEvent('overlay-display', {
                               bubbles: true,
