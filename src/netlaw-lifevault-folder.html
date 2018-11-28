@@ -281,6 +281,7 @@
           }
 
           refreshParent() {
+              console.log("this", this);
               console.log("folder", this.folderId);
               console.log("folder parent ID", this.parentId);
               api.vault.searchFolder(this.parentId, "type:folder")
@@ -328,8 +329,8 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-            console.log('this', this);
-            console.log('parenId', this.parentId);
+            console.log('this df', this);
+            console.log('parenId df', this.parentId);
               this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
                   composed: true,
