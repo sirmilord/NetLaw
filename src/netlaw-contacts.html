@@ -166,14 +166,14 @@
 
       .contacts__list-link-lvl2:hover,
       .contacts__list-link-lvl2:focus {
-        /*color: #4a4a4a;*/
-        text-decoration: none;
-      }
-
-      .contacts__list-link-lvl2--active {
         color: #01AA50;
         text-decoration: none;
       }
+
+      /*.contacts__list-link-lvl2--active {*/
+      /*color: #01AA50;*/
+      /*text-decoration: none;*/
+      /*}*/
 
       .contacts__list-link-lvl3:hover,
       .contacts__list-link-lvl3:focus {
@@ -1078,8 +1078,8 @@
               </a>
             </section>
             <netlaw-contacts-view name="family" on-add-contact="_onAddContactClick"
-                                    on-delete-contact="_onDeleteContactClick"
-                                    on-to-details="_onToDetails"></netlaw-contacts-view>
+                                  on-delete-contact="_onDeleteContactClick"
+                                  on-to-details="_onToDetails"></netlaw-contacts-view>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
         </app-drawer-layout>
@@ -1097,9 +1097,9 @@
             <div class="contacts__list">
               <ul class="contacts__list-lvl2 contacts__list-item-lvl2--top-border contacts__list-item-lvl2--bottom-border">
 
-                <template is="dom-repeat" items="{{folders}}">
+                <template is="dom-repeat" items="{{filters}}">
                   <li class="contacts__list-item-lvl2">
-                    <a class="contacts__list-link-lvl2"  href="javascript:;" on-click="_onToggleCollapse">
+                    <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onOpenView">
                       <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
                       [[item.name]]
                     </a>
@@ -1130,46 +1130,46 @@
                       </iron-dropdown>
                     </a>
 
-                    <template is="dom-if" if=[[item.folders2]]>
+                    <!--<template is="dom-if" if=[[item.folders2]]>-->
 
-                      <iron-collapse id="collapsetwo{{index}}" opened="[[opened]]">
-                        <ul class="contacts__list-lvl3">
+                    <!--<iron-collapse id="collapsetwo{{index}}" opened="[[opened]]">-->
+                    <!--<ul class="contacts__list-lvl3">-->
 
-                          <template is="dom-repeat" items="{{item.folders2}}" as="item2">
-                            <li class="contacts__list-item-lvl3">
-                              <a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3">
-                                <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
-                                [[item2.name]]</a>
-                              <a class="contacts__btn contacts__btn--lvl3" href="javascript:;"
-                                 on-click="_onToggleDropdown">
-                                <iron-icon icon="icons:more-vert"></iron-icon>
-                                <iron-dropdown>
-                                  <ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown--sub"
-                                      slot="dropdown-content">
-                                    <li>Download
-                                      <iron-icon icon="netlaw-icons:download-icon"></iron-icon>
-                                    </li>
-                                    <li>Print
-                                      <iron-icon icon="netlaw-icons:print-icon"></iron-icon>
-                                    </li>
-                                    <li>Rename
-                                      <iron-icon icon="netlaw-icons:rename-icon"></iron-icon>
-                                    </li>
-                                    <li>Share
-                                      <iron-icon icon="netlaw-icons:share-icon"></iron-icon>
-                                    </li>
-                                    <li on-click="_onDeleteContactClick">Delete
-                                      <iron-icon icon="netlaw-icons:delete-icon"></iron-icon>
-                                    </li>
-                                  </ul>
-                                </iron-dropdown>
-                              </a>
-                            </li>
-                          </template>
+                    <!--<template is="dom-repeat" items="{{item.folders2}}" as="item2">-->
+                    <!--<li class="contacts__list-item-lvl3">-->
+                    <!--<a name="family" href="{{item2.link}}" class="contacts__list-link-lvl3">-->
+                    <!--<iron-icon icon="netlaw-icons:contact-icon"></iron-icon>-->
+                    <!--[[item2.name]]</a>-->
+                    <!--<a class="contacts__btn contacts__btn&#45;&#45;lvl3" href="javascript:;"-->
+                    <!--on-click="_onToggleDropdown">-->
+                    <!--<iron-icon icon="icons:more-vert"></iron-icon>-->
+                    <!--<iron-dropdown>-->
+                    <!--<ul class="contacts__addfolder-dropdown contacts__addfolder-dropdown&#45;&#45;sub"-->
+                    <!--slot="dropdown-content">-->
+                    <!--<li>Download-->
+                    <!--<iron-icon icon="netlaw-icons:download-icon"></iron-icon>-->
+                    <!--</li>-->
+                    <!--<li>Print-->
+                    <!--<iron-icon icon="netlaw-icons:print-icon"></iron-icon>-->
+                    <!--</li>-->
+                    <!--<li>Rename-->
+                    <!--<iron-icon icon="netlaw-icons:rename-icon"></iron-icon>-->
+                    <!--</li>-->
+                    <!--<li>Share-->
+                    <!--<iron-icon icon="netlaw-icons:share-icon"></iron-icon>-->
+                    <!--</li>-->
+                    <!--<li on-click="_onDeleteContactClick">Delete-->
+                    <!--<iron-icon icon="netlaw-icons:delete-icon"></iron-icon>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</iron-dropdown>-->
+                    <!--</a>-->
+                    <!--</li>-->
+                    <!--</template>-->
 
-                        </ul>
-                      </iron-collapse>
-                    </template>
+                    <!--</ul>-->
+                    <!--</iron-collapse>-->
+                    <!--</template>-->
 
                   </li>
                 </template>
@@ -1180,25 +1180,28 @@
 
         </template>
 
-          <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}" fallback-selection="empty">
-            <section name="empty" class="contacts__content">
-              <h1>Contacts</h1>
-              <figure>
-                <iron-icon icon="netlaw-icons:organizer"></iron-icon>
-              </figure>
-              <b>Add beneficaries, exectors of an estate and more</b>
-              <div class="contacts__content-wrapper">
-                <p>(you also search for attorneys and add them to you list)</p>
-                <hr>
-              </div>
-              <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
-            </section>
+        <iron-pages id="pages3" selected="[[page]]" attr-for-selected="name" role="main" style$="{{flex}}"
+                    fallback-selection="empty">
+          <section name="empty" class="contacts__content">
+            <h1>Contacts</h1>
+            <figure>
+              <iron-icon icon="netlaw-icons:organizer"></iron-icon>
+            </figure>
+            <b>Add beneficaries, exectors of an estate and more</b>
+            <div class="contacts__content-wrapper">
+              <p>(you also search for attorneys and add them to you list)</p>
+              <hr>
+            </div>
+            <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
+          </section>
 
-            <netlaw-contacts-view name="family" on-add-contact="_onAddContactClick"
-                                    on-delete-contact="_onDeleteContactClick"
-                                    on-to-details="_onToDetails"></netlaw-contacts-view>
-            <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
-          </iron-pages>
+          <netlaw-contacts-view name="view"
+                                on-add-contact="_onAddContactClick"
+                                on-delete-contact="_onDeleteContactClick"
+                                on-to-details="_onToDetails">
+          </netlaw-contacts-view>
+          <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
+        </iron-pages>
 
       </main>
 
@@ -1332,14 +1335,14 @@
                   <input type="number" id="mobilenumber" class="input-text" placeholder="i.e. 5089685522">
                 </div>
               </div>
-                <div class="form__group">
-                  <label class="label" for="emailaddress">EMAIL ADDRESS</label>
-                  <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
-                </div>
-                <div class="form__group">
-                  <label class="label" for="website">WEBSITE</label>
-                  <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
-                </div>
+              <div class="form__group">
+                <label class="label" for="emailaddress">EMAIL ADDRESS</label>
+                <input type="email" id="emailaddress" class="input-text" placeholder="i.e. name@domain.com">
+              </div>
+              <div class="form__group">
+                <label class="label" for="website">WEBSITE</label>
+                <input type="text" id="website" class="input-text" placeholder="i.e. www.website.com">
+              </div>
               <div class="form__group">
                 <label for="comments" class="label">COMMENTS</label>
                 <textarea rows="3" id="comments" class="input-text input-text--area"
@@ -1506,33 +1509,34 @@
                   folders: {
                       type: Object, value: () => [
                           {
-                              id: "0bbed731-6c58-4a39-891b-9a3a9930ec98", name: "Family", folders2: [
-                                  {
-                                      id: "6426746b-c581-4d74-8b96-9674ebd9b3c0",
-                                      name: "Immediate Family",
-                                      link: "contacts/family"
-                                  },
-                                  {
-                                      id: "62179869-2daf-418a-9ad5-6d2f29323017",
-                                      name: "Extended Family",
-                                      link: "contacts/family"
-                                  },
-                                  {
-                                      id: "8cf7041f-98b1-45dc-b6ee-7ce01cd66a0e",
-                                      name: "In-Law",
-                                      link: "contacts/family"
-                                  },
-                                  {
-                                      id: "1706415a-077c-431e-8b0a-a05f86f117e1",
-                                      name: "Distant Relatives",
-                                      link: "contacts/family"
-                                  },
-                                  {
-                                      id: "a8c19c56-ecd3-4313-8ea1-ce719251f5c6",
-                                      name: "Other",
-                                      link: "contacts/family"
-                                  },
-                              ]
+                              id: "0bbed731-6c58-4a39-891b-9a3a9930ec98", name: "Family",
+                              // folders2: [
+                              //     {
+                              //         id: "6426746b-c581-4d74-8b96-9674ebd9b3c0",
+                              //         name: "Immediate Family",
+                              //         link: "contacts/family"
+                              //     },
+                              //     {
+                              //         id: "62179869-2daf-418a-9ad5-6d2f29323017",
+                              //         name: "Extended Family",
+                              //         link: "contacts/family"
+                              //     },
+                              //     {
+                              //         id: "8cf7041f-98b1-45dc-b6ee-7ce01cd66a0e",
+                              //         name: "In-Law",
+                              //         link: "contacts/family"
+                              //     },
+                              //     {
+                              //         id: "1706415a-077c-431e-8b0a-a05f86f117e1",
+                              //         name: "Distant Relatives",
+                              //         link: "contacts/family"
+                              //     },
+                              //     {
+                              //         id: "a8c19c56-ecd3-4313-8ea1-ce719251f5c6",
+                              //         name: "Other",
+                              //         link: "contacts/family"
+                              //     },
+                              // ]
                           },
                           {id: "e261b242-ffbc-47e7-a8ae-dff4d7e6b1e8", name: "Attorneys"},
                           {id: "cc39ed49-b299-431e-a927-7b92f9326ff3", name: " Other"},
@@ -1540,16 +1544,41 @@
                   },
                   filters: {
                       type: Array, value: () => [
-                          { name: "Family", filter(item){ return item.relationship === 'child'; } }, /// dom-repeatid.filter = item.filter;
-                          { name: "Other", filter: "isOther"},
-                          { name: "Attorenys", filter: "isAttoreny"},
+                          {
+                              name: "Family", filter(item) {
+                                  return item.relationship === 'child';
+                              }
+                          }, /// dom-repeatid.filter = item.filter;
+                          {
+                              name: "Family", filter(item) {
+                                  return item.relationship === 'brother';
+                              }
+                          },
+                          {
+                              name: "Family", filter(item) {
+                                  return item.relationship === 'sister';
+                              }
+                          },
+                          {name: "Other", filter: "isOther"},
+                          {name: "Attorneys", filter: "isAttorney"},
                       ],
                   },
                   contacts: {
                       type: Array, value: () => [
-                          {id: "d02dbc28-0791-445d-bf23-65cb9c2e97d0", name: "Spouse Name Soemthing", relationship: "spouse"},
-                          {id: "", name: "My Full Child Name", relationship: "child"},
-                          {id: "", name: "My Advisor Name", relationship: "other"},
+                          {
+                              id: "ad162063-fd40-4bec-b83a-d60b3b5717f7",
+                              name: "Spouse Name Soemthing",
+                              relationship: "spouse"
+                          },
+                          {id: "ff26853a-aebd-46c8-bfc4-c4a42a353a66", name: "My Full Child Name", relationship: "child"},
+                          {id: "b2b4cdc0-d624-4a44-b6c8-fae30f837e92", name: "My Advisor Name2", relationship: "brother"},
+                          {id: "60f4bf30-62bd-4b42-a5de-49c573d33113", name: "My Advisor Name3", relationship: "sister"},
+                          {id: "1b52ce1b-8380-410c-a015-d2bd47db2018", name: "My Advisor Name4", relationship: "mother"},
+                          {id: "8fcae251-8172-4316-b566-0a851bbff3e3", name: "My Advisor Name5", relationship: "father"},
+                          {id: "08a2cfa6-33f1-489b-b16a-59643f0396e3", name: "My Advisor Name6", relationship: "attorney"},
+                          {id: "53058b49-ec2f-4d36-b047-ea6b935c46ee", name: "My Advisor Name7", relationship: "other"},
+                          {id: "9d8c4479-98f8-4926-b7e2-34557ea199e9", name: "My Advisor Name8", relationship: "uncle"},
+                          {id: "8b79c6b1-33e3-41c1-aef2-988051aba921", name: "My Advisor Name9", relationship: "other"},
                       ],
                   },
                   mobile: {
@@ -1569,8 +1598,8 @@
                       type: String,
                       value: './images/profile-default.png'
                   },
-                  opened: { type: Boolean, value: false },
-                  clicked: { type: Boolean, value: false },
+                  opened: {type: Boolean, value: false},
+                  clicked: {type: Boolean, value: false},
               };
           }
 
@@ -1581,10 +1610,16 @@
           }
 
           //isFamioly...
-        
-          _onToggleCollapse(e) {
-              this.opened = !this.opened;
-              this.opened ? e.currentTarget.classList.add("contacts__list-link-lvl2--active") : e.currentTarget.classList.remove("contacts__list-link-lvl2--active");
+
+          // _onToggleCollapse(e) {
+          //     this.opened = !this.opened;
+          //     this.opened ? e.currentTarget.classList.add("contacts__list-link-lvl2--active") : e.currentTarget.classList.remove("contacts__list-link-lvl2--active");
+          // }
+
+          _onOpenView(e) {
+              console.log(e);
+              navigate(`contacts/view/`);
+
           }
 
           ready(e) {
