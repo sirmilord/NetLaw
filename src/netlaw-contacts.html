@@ -1,5 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="netlaw-contacts-family.html">
+<link rel="import" href="netlaw-contacts-view.html">
+<link rel="import" href="netlaw-contact-details.html">
+
 
 <dom-module id="netlaw-contacts">
   <!-- Defines the element's style and local DOM -->
@@ -1075,9 +1077,9 @@
                 <iron-icon icon="netlaw-icons:add-folder"></iron-icon>
               </a>
             </section>
-            <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick"
+            <netlaw-contacts-view name="family" on-add-contact="_onAddContactClick"
                                     on-delete-contact="_onDeleteContactClick"
-                                    on-to-details="_onToDetails"></netlaw-contacts-family>
+                                    on-to-details="_onToDetails"></netlaw-contacts-view>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
         </app-drawer-layout>
@@ -1192,9 +1194,9 @@
               <button class="btn btn--primary" on-click="_onAddContactClick">Create Contact</button>
             </section>
 
-            <netlaw-contacts-family name="family" on-add-contact="_onAddContactClick"
+            <netlaw-contacts-view name="family" on-add-contact="_onAddContactClick"
                                     on-delete-contact="_onDeleteContactClick"
-                                    on-to-details="_onToDetails"></netlaw-contacts-family>
+                                    on-to-details="_onToDetails"></netlaw-contacts-view>
             <netlaw-contact-details name="contact-details" on-back-contacts="_backFromDetails"></netlaw-contact-details>
           </iron-pages>
 
@@ -1532,7 +1534,6 @@
                                   },
                               ]
                           },
-                          {id: "d02dbc28-0791-445d-bf23-65cb9c2e97d0", name: "Friends"},
                           {id: "e261b242-ffbc-47e7-a8ae-dff4d7e6b1e8", name: "Attorneys"},
                           {id: "cc39ed49-b299-431e-a927-7b92f9326ff3", name: " Other"},
                       ]

@@ -3,7 +3,7 @@
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="netlaw-contacts-family">
+<dom-module id="netlaw-contacts-view">
   <!-- Defines the element's style and local DOM -->
   <template>
     <style is="custom-style" include="iron-flex iron-flex-factors"></style>
@@ -1442,9 +1442,9 @@
   </template>
   <script>
       // Your new element extends the Polymer.Element base class
-      class NetlawContactsFamily extends Polymer.Element {
+      class NetlawContactsView extends Polymer.Element {
           static get is() {
-              return 'netlaw-contacts-family';
+              return 'netlaw-contacts-view';
           }
 
           static get properties() {
@@ -1599,6 +1599,6 @@
       }
 
       //Now, register your new custom element so the browser can use it
-      customElements.define(NetlawContactsFamily.is, NetlawContactsFamily);
+      customElements.define(NetlawContactsView.is, NetlawContactsView);
   </script>
 </dom-module>
