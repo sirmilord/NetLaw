@@ -1311,7 +1311,7 @@
     <template is="dom-if" if="[[!mobile]]">
       <section class="contacts__content" hidden$={{mobile}}>
         <netlaw-topbar>
-          <h2 slot="title">View</h2>
+          <h2 slot="title">[[filterName]]</h2>
           <!--<div slot="update">Updated 1d ago</div>-->
         </netlaw-topbar>
         <netlaw-dashboard>
@@ -1324,7 +1324,7 @@
             <div class="contacts__module">
               <div class="contacts__row layout horizontal">
 
-                <template is="dom-repeat" items="{{contacts}}" as="contact">
+                <template is="dom-repeat" items="{{contacts}}" as="contact" filter={{filterFunc}}>
 
                   <div class="contacts__col-module">
                     <div class="contacts__module-item">
@@ -1459,47 +1459,47 @@
                   toggleIcon: {
                       type: String
                   },
-                  contacts: {
-                      type: Object, value: () => [
-                          {
-                              id: "7a42af6e-2d58-4fe5-8d99-b5f92db4a804",
-                              name: "Mabelle Doe",
-                              relationship: "Spouse",
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              photo: "../images/contact-1.jpg",
-                              detailsUrl: "/contacts/contact-details",
-                          },
-                          {
-                              id: "21caa9f8-32f4-47b5-a279-b11e301c41df",
-                              name: "Joshua Doe",
-                              relationship: "Eldest Son",
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              photo: "../images/contact-2.jpg",
-                              detailsUrl: "/contacts/contact-details"
-                          },
-                          {
-                              id: "71881d24-0a74-4593-86dc-6cf53ebe9156",
-                              name: "Hannah Doe",
-                              relationship: "Eldest Daughter",
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              photo: "../images/contact-3.jpg",
-                              detailsUrl: "/contacts/contact-details"
-                          },
-
-                          {
-                              id: "c6c5b605-3046-4b8f-9c3c-fc4c6377f82b",
-                              name: "Jennifer Doe",
-                              relationship: "Youngest Daughter",
-                              status: "Updated 1d ago",
-                              mstatus: "1d ago",
-                              photo: "../images/contact-4.jpg",
-                              detailsUrl: "/contacts/contact-details"
-                          }
-                      ]
-                  },
+                  // contacts: {
+                  //     type: Object, value: () => [
+                  //         {
+                  //             id: "7a42af6e-2d58-4fe5-8d99-b5f92db4a804",
+                  //             name: "Mabelle Doe",
+                  //             relationship: "Spouse",
+                  //             status: "Updated 1d ago",
+                  //             mstatus: "1d ago",
+                  //             photo: "../images/contact-1.jpg",
+                  //             detailsUrl: "/contacts/contact-details",
+                  //         },
+                  //         {
+                  //             id: "21caa9f8-32f4-47b5-a279-b11e301c41df",
+                  //             name: "Joshua Doe",
+                  //             relationship: "Eldest Son",
+                  //             status: "Updated 1d ago",
+                  //             mstatus: "1d ago",
+                  //             photo: "../images/contact-2.jpg",
+                  //             detailsUrl: "/contacts/contact-details"
+                  //         },
+                  //         {
+                  //             id: "71881d24-0a74-4593-86dc-6cf53ebe9156",
+                  //             name: "Hannah Doe",
+                  //             relationship: "Eldest Daughter",
+                  //             status: "Updated 1d ago",
+                  //             mstatus: "1d ago",
+                  //             photo: "../images/contact-3.jpg",
+                  //             detailsUrl: "/contacts/contact-details"
+                  //         },
+                  //
+                  //         {
+                  //             id: "c6c5b605-3046-4b8f-9c3c-fc4c6377f82b",
+                  //             name: "Jennifer Doe",
+                  //             relationship: "Youngest Daughter",
+                  //             status: "Updated 1d ago",
+                  //             mstatus: "1d ago",
+                  //             photo: "../images/contact-4.jpg",
+                  //             detailsUrl: "/contacts/contact-details"
+                  //         }
+                  //     ]
+                  // },
               };
           }
 

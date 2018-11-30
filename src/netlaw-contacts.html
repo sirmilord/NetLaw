@@ -1097,7 +1097,7 @@
             <div class="contacts__list">
               <ul class="contacts__list-lvl2 contacts__list-item-lvl2--top-border contacts__list-item-lvl2--bottom-border">
 
-                <template is="dom-repeat" items="{{filters}}">
+                <template is="dom-repeat" items="{{folders}}">
                   <li class="contacts__list-item-lvl2">
                     <a class="contacts__list-link-lvl2" href="javascript:;" on-click="_onOpenView">
                       <iron-icon icon="netlaw-icons:contact-icon"></iron-icon>
@@ -1196,6 +1196,9 @@
           </section>
 
           <netlaw-contacts-view name="view"
+                                contacts="[[contacts]]"
+                                filter-func="[[filterFunc]]"
+                                filter-name="[[filterName]]"
                                 on-add-contact="_onAddContactClick"
                                 on-delete-contact="_onDeleteContactClick"
                                 on-to-details="_onToDetails">
@@ -1538,29 +1541,32 @@
                               //     },
                               // ]
                           },
-                          {id: "e261b242-ffbc-47e7-a8ae-dff4d7e6b1e8", name: "Attorneys"},
-                          {id: "cc39ed49-b299-431e-a927-7b92f9326ff3", name: " Other"},
+                          {id: "e261b242-ffbc-47e7-a8ae-dff4d7e6b1e8",
+                              name: "Attorneys"},
+                          {id: "cc39ed49-b299-431e-a927-7b92f9326ff3",
+                              name: "Other"},
                       ]
                   },
                   filters: {
                       type: Array, value: () => [
                           {
-                              name: "Family", filter(item) {
-                                  return item.relationship === 'child';
+                              name: "Family",
+                              filter(item) {
+                                  return item.relationship === 'child' || item.relationship === 'mother' || item.relationship === 'sister' || item.relationship === 'spouse'  || item.relationship === 'brother' || item.relationship === 'father' ;
                               }
-                          }, /// dom-repeatid.filter = item.filter;
+                          }, // dom-repeatid.filter = item.filter;
                           {
-                              name: "Family", filter(item) {
-                                  return item.relationship === 'brother';
+                              name: "Attorneys",
+                              filter(item) {
+                                  return item.relationship === 'attorney';
                               }
                           },
                           {
-                              name: "Family", filter(item) {
-                                  return item.relationship === 'sister';
+                              name: "Other",
+                              filter(item) {
+                                  return item.relationship === 'other';
                               }
                           },
-                          {name: "Other", filter: "isOther"},
-                          {name: "Attorneys", filter: "isAttorney"},
                       ],
                   },
                   contacts: {
@@ -1568,17 +1574,94 @@
                           {
                               id: "ad162063-fd40-4bec-b83a-d60b3b5717f7",
                               name: "Spouse Name Soemthing",
-                              relationship: "spouse"
+                              relationship: "spouse",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-1.jpg",
+                              detailsUrl: "/contacts/contact-details",
+
                           },
-                          {id: "ff26853a-aebd-46c8-bfc4-c4a42a353a66", name: "My Full Child Name", relationship: "child"},
-                          {id: "b2b4cdc0-d624-4a44-b6c8-fae30f837e92", name: "My Advisor Name2", relationship: "brother"},
-                          {id: "60f4bf30-62bd-4b42-a5de-49c573d33113", name: "My Advisor Name3", relationship: "sister"},
-                          {id: "1b52ce1b-8380-410c-a015-d2bd47db2018", name: "My Advisor Name4", relationship: "mother"},
-                          {id: "8fcae251-8172-4316-b566-0a851bbff3e3", name: "My Advisor Name5", relationship: "father"},
-                          {id: "08a2cfa6-33f1-489b-b16a-59643f0396e3", name: "My Advisor Name6", relationship: "attorney"},
-                          {id: "53058b49-ec2f-4d36-b047-ea6b935c46ee", name: "My Advisor Name7", relationship: "other"},
-                          {id: "9d8c4479-98f8-4926-b7e2-34557ea199e9", name: "My Advisor Name8", relationship: "uncle"},
-                          {id: "8b79c6b1-33e3-41c1-aef2-988051aba921", name: "My Advisor Name9", relationship: "other"},
+                          {
+                              id: "ff26853a-aebd-46c8-bfc4-c4a42a353a66",
+                              name: "My Full Child Name",
+                              relationship: "child",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-2.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "b2b4cdc0-d624-4a44-b6c8-fae30f837e92",
+                              name: "My Advisor Name2",
+                              relationship: "brother",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-3.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "60f4bf30-62bd-4b42-a5de-49c573d33113",
+                              name: "My Advisor Name3",
+                              relationship: "sister",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-4.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "1b52ce1b-8380-410c-a015-d2bd47db2018",
+                              name: "My Advisor Name4",
+                              relationship: "mother",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-1.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "8fcae251-8172-4316-b566-0a851bbff3e3",
+                              name: "My Advisor Name5",
+                              relationship: "father",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-2.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "08a2cfa6-33f1-489b-b16a-59643f0396e3",
+                              name: "My Advisor Name6",
+                              relationship: "attorney",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-3.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "53058b49-ec2f-4d36-b047-ea6b935c46ee",
+                              name: "My Advisor Name7",
+                              relationship: "other",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-4.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "9d8c4479-98f8-4926-b7e2-34557ea199e9",
+                              name: "My Advisor Name8",
+                              relationship: "spouse",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-1.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
+                          {
+                              id: "8b79c6b1-33e3-41c1-aef2-988051aba921",
+                              name: "My Advisor Name9",
+                              relationship: "other",
+                              status: "Updated 1d ago",
+                              mstatus: "1d ago",
+                              photo: "../images/contact-2.jpg",
+                              detailsUrl: "/contacts/contact-details",
+                          },
                       ],
                   },
                   mobile: {
@@ -1598,8 +1681,21 @@
                       type: String,
                       value: './images/profile-default.png'
                   },
-                  opened: {type: Boolean, value: false},
-                  clicked: {type: Boolean, value: false},
+                  opened: {
+                      type: Boolean,
+                      value: false
+                  },
+                  clicked: {
+                      type: Boolean,
+                      value: false
+                  },
+                  filterFunc: {
+                      type:String,
+                  },
+                  filterName: {
+                      type:String,
+                      value: ""
+                  }
               };
           }
 
@@ -1607,6 +1703,7 @@
               super();
               this.toggleIcon = 'netlaw-icons:plus-icon';
               this.view = 'Module';
+              window.contacts = this;
           }
 
           //isFamioly...
@@ -1617,7 +1714,16 @@
           // }
 
           _onOpenView(e) {
-              console.log(e);
+              let filter = this.filters.filter((item) => {
+
+                  if(item.name === e.model.__data.item.name) {
+                      return item
+                  }
+              });
+              // console.log(filterFunc[0].filter);
+              this.filterFunc = filter[0].filter;
+              this.filterName = filter[0].name;
+
               navigate(`contacts/view/`);
 
           }
