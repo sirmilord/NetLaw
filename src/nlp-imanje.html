@@ -1,871 +1,139 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/nlp-imanje/nlp-imanje.html">
 
-<script>
-    window.NlpImanjeViews = {
-        [ImanjePage.id]: 'nlp-draft-imanje-page',
-        [ImanjeSection.id]: 'nlp-draft-imanje-section',
-        [ImanjeText.id]: 'nlp-draft-imanje-text',
-        [ImanjeTextQuestion.id]: 'nlp-draft-imanje-textquestion',
-        [ImanjeChoiceQuestion.id]: 'nlp-draft-imanje-choicequestion',
-        [ImanjeArrayQuestion.id]: 'nlp-draft-imanje-arrayquestion',
-    };
-</script>
-
 <dom-module id="imanje-styles">
   <template>
     <style>
-      :host {
-
-        /*
-            TODO
-                paper-textarea bi trebao:
-                    kad je [focused] odmah floatati label
-                    kad je label floatan transform koji je inace na inputu bi se trebao applyati na iron-autogrow-textarea (ono sto smo slozili za ostale inpute prekjucer)
-
-                graphene-dropdown-menu bi trebao imati graphene-input-container u sebi da pokupi novi behavoiur labela koji smo slozili neki dan
-
-                autocomplete nije paper element, a bilo bi zgodno da tu nesto napravimo jer nema focus i label kao ostali elementi
-        */
-
-        /* VARS */
-        --input-padding-h:16px;
-        --input-padding-v:10px;
-        --input-bg-unfocused:#eee;
-        --input-highlight-color:var(--app-primary-color);
-        --input-input-font-size:16px;
-        --input-input-line-height:24px;
-        --input-input-color:#333;
-        --paper-input-container-focus-color:#333;
-        --input-addon-color:#333;
-        --input-addon-font-size:13px;
-
-
-        /* MIXINS */
-        --imanje-component-outer-style: {
-          background-color:var(--input-bg-unfocused);
-          border:1px solid var(--input-bg-unfocused);
-          padding:0;
-          border-radius:4px 4px 0 0;
-          box-sizing:border-box;
-          width:100%;
-          font-size:var(--input-input-font-size);
-          /*color:var(--input-input-color);*/
-        };
-
-        --imanje-label-default: {
-          padding:0 var(--input-padding-h);
-          top:12px;
-        };
-        --imanje-input-default: {
-          padding:var(--input-padding-v) var(--input-padding-h);
-          transform:translateY(1px); /**/
-          transition:transform 300ms ease;
-          box-sizing:border-box;
-          background:transparent;
-          border:0 none;
-          width:100%;
-        };
-
-        --imanje-label-floating: {
-          transform:translateX(calc(var(--input-padding-h) / 2)) translateY(-6px) scale(0.75);
-          color:var(--input-highlight-color);
-          width:auto;
-          padding-right:calc(var(--input-padding-h) / 2);
-          padding-left:calc(var(--input-padding-h) / 2);
-        };
-        --imanje-input-floating: {
-          transform:translateY(8px);
-        };
-
-        --imanje-label-focus: {
-          color:var(--input-highlight-color);
-        };
-        --imanje-input-focus: {
-
-        };
-
-        --imanje-underline-wrapper: {
-          background:var(--input-bg-unfocused);
-        };
-
-        --imanje-underline-default: {
-          border-bottom:1px solid var(--input-bg-unfocused);
-          @apply --imanje-textarea-underline-fix;
-        };
-        --imanje-underline-focus: {
-          border-bottom:1px solid var(--input-highlight-color);
-          @apply --imanje-textarea-underline-fix;
-        };
-
-        --imanje-hide-paper-font-caption: {
-          /* remove height from floated-label-placeholder while unfocused */
-          height:0;
-        };
-
-
-
-
-        --imanje-textarea-underline-fix: {
-          left:0;
-          right:0;
-          top:1px;
-        };
-
-
-
-
-
-        /* TODO: CHECK CSS FROM HERE */
-
-        --imanje-textarea-style: {
-
-        };
+      input {
+        border: 1px solid red;
       }
 
-
-      /* TODO: CHECK CSS FROM HERE */
-
-      imanje-masked-input-text {
-        --input-style: {
-          @apply --paper-input-container-shared-input-style;
-        }
-      }
-
-      .hint {
-        font-size: 13px;
-      }
     </style>
   </template>
 </dom-module>
 
-<dom-module id="nlp-draft-imanje-page-navigator">
+<dom-module id="netlaw-imanje-form">
   <template>
-    <style include="shared-styles imanje-styles">
-      :host {
-        --button-horizontal-spacing:2px;
-        --button-clickable-width:16px;
-        --button-clickable-height:16px;
-        --button-default-diameter:8px;
-        --button-active-diameter:8px;
-        --connecting-line-height:4px;
-        --connecting-line-width:calc( var(--button-horizontal-spacing) + var(--button-clickable-width) );
-        /*--connecting-line-width:24px;*/
-        --active-dot-background:#489a25;
-        --inactive-dot-background:#c4deb9;
-        --finished-dot-background:#489a25;
-        --connecting-line-background:#ddefd5;
-        /*--connecting-line-background:var(--inactive-dot-background);*/
-        --connecting-line-background:transparent;
-        --dot-border-color:#fff;
-        --dot-border-radius:0px;
-
-        display:block;
-        text-align:center;
-      }
-      button {
-        outline:0 none;
-        border:0 none;
-        width:var(--button-clickable-width);
-        height:var(--button-clickable-height);
-        background:transparent;
-        cursor:pointer;
-        display:inline-block;
-        position:relative;
-        margin-left:calc( var(--button-horizontal-spacing) - 4px );
-        vertical-align:middle;
-      }
-      button:focus {
-        outline:0 none;
-      }
-      button:after {
-        /* dot */
-        content:"";
-        display:block;
-        background:var(--inactive-dot-background);
-        border-radius:50%;
-        position:absolute;
-        width:var(--button-default-diameter);
-        height:var(--button-default-diameter);
-        top:50%;
-        left:50%;
-        margin-top:calc( 0px - var(--button-default-diameter)/2 - var(--dot-border-radius) );
-        margin-left:calc( 0px - var(--button-default-diameter)/2 - var(--dot-border-radius) );
-        z-index:3;
-        border:var(--dot-border-radius) solid var(--dot-border-color);
-        transition:background 200ms ease;
-      }
-
-      .first {
-      }
-      /*
-      .first ~ .first {
-          margin-left:20px;
-      }*/
-
-      button:not(.first):before {
-        /* connecting line */
-        z-index:2;
-        content:"";
-        display:inline-block;
-        position:absolute;
-        top:50%;
-        right:calc(100% - 4px - ( var(--connecting-line-width) - var(--button-horizontal-spacing) ) / 2 ); /* */
-        margin-right:4px; /* removes inline-block space gap */
-        height:var(--connecting-line-height);
-        width:calc( var(--connecting-line-width) );
-        margin-top:calc( 0px - var(--connecting-line-height)/2 );
-        pointer-events:none;
-        background:var(--connecting-line-background);
-      }
-
-      button[disabled]:after {
-        /* active dot */
-        /* note to self: this is actually current state :-/ */
-        width:var(--button-active-diameter);
-        height:var(--button-active-diameter);
-        margin-top:calc( 0px - var(--button-active-diameter)/2 - var(--dot-border-radius) );
-        margin-left:calc( 0px - var(--button-active-diameter)/2 - var(--dot-border-radius) );
-        background:var(--active-dot-background);
-      }
-
-
-      /* color finished lines */
-      button:before {
-        background:var(--inactive-dot-background) !important;
-        background:var(--active-dot-background) !important;
-      }
-      button:after {
-        /* color 'finished' steps */
-        background:var(--finished-dot-background) !important;
-      }
-
-      button[disabled] ~ button:before,
-      button[disabled] ~ button:after {
-        background:var(--inactive-dot-background) !important;
-      }
-
-    </style>
-
-    <h2 class="margin-bottom-0">[[pageCaption]]</h2>
-    <template is="dom-repeat" items="[[navigation]]">
-      <button on-click="navigate" class$="[[if(item.first, 'first')]] [[if(item.minor, 'minor')]]" disabled$="[[is(current, item.id)]]" page-id$="[[item.id]]"></button>
-    </template>
-    <!--paper-tabs class="ap-paper-tabs" selected="[[current]]" attr-for-selected="name" scrollable fit-container>
-        <template is="dom-repeat" items="[[navigation]]">
-            <paper-tab name="[[item.id]]" on-click="navigate" class$="[[if(item.first, 'first')]] [[if(item.minor, 'minor')]]" disabled$="[[is(current, item.id)]]">[[item.caption]]</paper-tab>
-        </template>
-    </paper-tabs-->
+    <style include="imanje-styles"></style>
   </template>
   <script>
-      customElements.define("nlp-draft-imanje-page-navigator", class extends customElements.get("nlp-imanje-page-navigator") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-page-navigator", 'template'); }
+      customElements.define("netlaw-imanje-form", class extends customElements.get("nlp-imanje-form") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-form", 'template')} ${super.template}`; }
+
+          static get properties() {
+              return {
+                  views: {
+                      readOnly: true, value: {
+                          [ImanjePage.id]: 'netlaw-imanje-page',
+                          [ImanjeSection.id]: 'netlaw-imanje-section',
+                          [ImanjeText.id]: 'netlaw-imanje-text',
+                          [ImanjeTextQuestion.id]: 'netlaw-imanje-textquestion',
+                          [ImanjeChoiceQuestion.id]: 'netlaw-imanje-choicequestion',
+                          [ImanjeArrayQuestion.id]: 'netlaw-imanje-arrayquestion',
+                      }
+                  },
+              };
+          }
       });
   </script>
 </dom-module>
 
-<dom-module id="nlp-draft-imanje-page">
-  <template>
-    <style include="shared-styles imanje-styles">
-      :host {
-        display: block;
-        background: #fff;
-      }
-
-      div.card > *:first-child {
-        margin-top: 0;
-      }
-    </style>
-    <div>
-      <!--<h2>[[caption]]</h2>-->
-      <div>
-        <p inner-h-t-m-l="[[html(description)]]"></p>
-        <div class="error">[[error]]</div>
-        <slot></slot>
-      </div>
-    </div>
-  </template>
-  <script>
-      customElements.define("nlp-draft-imanje-page", class extends customElements.get("nlp-imanje-page") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-page", 'template'); }
-      });
-  </script>
-</dom-module>
-
-<dom-module id="nlp-draft-imanje-section">
-  <template>
-    <style include="shared-styles imanje-styles">
-      :host {
-        display: block;
-      }
-
-      :host h3 {
-        margin-bottom: 12px;
-      }
-
-      :host h3 + .card {
-        margin-top: 0;
-      }
-
-      .card {
-        margin-right: 0;
-        margin-left: 0;
-      }
-    </style>
-    <h3>[[caption]]</h3>
-    <div>
-      <p inner-h-t-m-l="[[html(description)]]"></p>
-      <div class="error">[[error]]</div>
-      <slot></slot>
-    </div>
-  </template>
-  <script>
-      customElements.define("nlp-draft-imanje-section", class extends customElements.get("nlp-imanje-section") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-section", 'template'); }
-      });
-  </script>
-</dom-module>
-
-<dom-module id="nlp-draft-imanje-text">
+<dom-module id="netlaw-imanje-page-navigator">
   <template>
     <style include="imanje-styles">
     </style>
-    <p inner-h-t-m-l="[[html(text)]]"></p>
   </template>
   <script>
-      customElements.define("nlp-draft-imanje-text", class extends customElements.get("nlp-imanje-text") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-text", 'template'); }
+      customElements.define("netlaw-imanje-page-navigator", class extends customElements.get("nlp-imanje-page-navigator") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-page-navigator", 'template')} ${super.template}`; }
       });
   </script>
 </dom-module>
 
-<dom-module id="nlp-draft-imanje-textquestion">
+<dom-module id="netlaw-imanje-page-help">
   <template>
-    <!--style include="imanje-styles"-->
-    <style include="shared-styles imanje-styles">
-      :host {
-        display: block;
-        margin-top: 24px;
-        margin-bottom: 32px;
-      }
-
-      graphene-input-container input {
-        /* MUST BE HERE!1 */
-        @apply --paper-input-container-shared-input-style;
-      }
-
-      graphene-input-container,
-      paper-input {
-        --paper-input-container-wrapper: {
-          @apply --imanje-component-outer-style;
-        };
-        --paper-input-container-input: {
-          @apply --imanje-input-default;
-        };
-        --paper-input-container-input-focus: {
-          @apply --imanje-input-focus;
-        };
-        --paper-input-container-label-focus: {
-          @apply --imanje-label-focus;
-        };
-        --paper-input-container-input-floating: {
-          @apply --imanje-input-floating;
-        };
-        --paper-input-container-underline-wrapper: {
-          @apply --imanje-underline-wrapper;
-        };
-        --paper-input-container-underline: {
-          @apply --imanje-underline-default;
-        };
-        --paper-input-container-underline-focus: {
-          @apply --imanje-underline-focus;
-        };
-        --paper-input-container-label: {
-          @apply --imanje-label-default;
-        };
-        --paper-input-container-label-floating: {
-          @apply --imanje-label-floating;
-        };
-
-        --paper-font-caption: {
-          @apply --imanje-hide-paper-font-caption;
-        }
-      }
-
-
-      iron-autogrow-textarea {
-        width:100%;
-        margin:0;
-        padding:0;
-        border:0 none;
-        display:block;
-        --iron-autogrow-textarea: {
-          padding:0;
-        };
-      }
-
-      paper-textarea {
-        --layout-fit_-_top:var(--input-padding-v);
-        --layout-fit_-_right:calc(var(--input-padding-h) - 2px);
-        --layout-fit_-_bottom:var(--input-padding-v);
-        --layout-fit_-_left:calc(var(--input-padding-h) - 2px);
-
-        --iron-autogrow-textarea: {
-          box-sizing:border-box;
-        };
-      }
-      paper-textarea[focused] {
-        --iron-autogrow-textarea: {
-          box-sizing:border-box;
-        };
-      }
-    </style>
-
-    <template is="dom-if" if="[[is(mode, 'TEXT', null)]]">
-      <graphene-input-container invalid$="[[error]]" placeholder="[[placeholder]]">
-        <label slot="label">[[text]]</label>
-        <iron-input slot="input" bind-value="{{value}}">
-          <input type="text" autocomplete="off">
-        </iron-input>
-        <paper-input-error slot="add-on">[[error]]</paper-input-error>
-      </graphene-input-container>
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'TEXT_BLOCK')]]">
-      <graphene-input-container invalid$="[[error]]" placeholder="[[placeholder]]">
-        <label slot="label">[[text]]</label>
-        <iron-input slot="input" bind-value="{{value}}">
-          <iron-autogrow-textarea max-rows="8"></iron-autogrow-textarea>
-        </iron-input>
-        <paper-input-error slot="add-on">[[error]]</paper-input-error>
-      </graphene-input-container>
-      <!--<paper-textarea rows="4" label="[[text]]" placeholder="[[placeholder]]" invalid$="[[error]]" error-message="[[error]]" value="{{value}}"></paper-textarea>-->
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'EMAIL')]]">
-      <graphene-input-container invalid$="[[error]]" placeholder="[[placeholder]]">
-        <label slot="label">[[text]]</label>
-        <iron-input slot="input" bind-value="{{value}}">
-          <input type="text" autocomplete="off">
-        </iron-input>
-        <paper-input-error slot="add-on">[[error]]</paper-input-error>
-      </graphene-input-container>
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'PASSWORD')]]">
-      <graphene-input-container invalid$="[[error]]" placeholder="[[placeholder]]">
-        <label slot="label">[[text]]</label>
-        <iron-input slot="input" bind-value="{{value}}">
-          <input type="password" autocomplete="off">
-        </iron-input>
-        <paper-input-error slot="add-on">[[error]]</paper-input-error>
-      </graphene-input-container>
-      <!--<paper-input type="password" autocomplete="off" label="[[text]]" placeholder="[[placeholder]]" invalid$="[[error]]" error-message="[[error]]" value="{{value}}"></paper-input>-->
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'DATE', 'NUMBER', 'TELEPHONE_US', 'ZIP_US', 'CURRENCY', 'CURRENCY_USD')]]">
-      <graphene-input-container invalid$="[[error]]" placeholder="[[placeholder]]">
-        <label slot="label">[[text]]</label>
-        <iron-input slot="input">
-          <imanje-masked-input mask="[[mask]]" value="{{value}}"></imanje-masked-input>
-        </iron-input>
-        <paper-input-error slot="add-on">[[error]]</paper-input-error>
-      </graphene-input-container>
-    </template>
-
-    <div class="hint" inner-h-t-m-l="[[html(help)]]"></div>
+    <style include="imanje-styles"></style>
   </template>
   <script>
-      customElements.define("nlp-draft-imanje-textquestion", class extends customElements.get("nlp-imanje-textquestion") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-textquestion", 'template'); }
+      customElements.define("netlaw-imanje-page-help", class extends customElements.get("nlp-imanje-page-help") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-page-help", 'template')} ${super.template}`; }
       });
   </script>
 </dom-module>
 
-<dom-module id="nlp-draft-imanje-choicequestion">
+<dom-module id="netlaw-imanje-page">
   <template>
-    <!--style include="imanje-styles"-->
-    <style include="shared-styles imanje-styles">
-      :host {
-        margin-top: 24px;
-        margin-bottom: 32px;
-        display: block;
-        /*
-        --input-padding-h: 16px;
-        --input-bg-unfocused: #ddd;
-        --input-highlight-color: var(--app-primary-color);
-        */
-        /*@apply --imanje-component-outer-style;*/
+    <style include="imanje-styles">
+      :host{
+        border: 1px solid green;
       }
-
-      div.dropdown:not([open]) > ul {
-        display: none;
-      }
-
-      paper-radio-button {
-        --paper-radio-button-checked-color: var(--app-primary-color);
-      }
-
-      graphene-input-container input {
-        /* MUST BE HERE!1 */
-        @apply --paper-input-container-shared-input-style;
-      }
-
-      graphene-input-container {
-        width: 100%;
-        --paper-input-container: {
-          @apply --imanje-component-outer-style;
-        };
-        --paper-input-container-input: {
-          @apply --imanje-input-default;
-        };
-        --paper-input-container-input-focus: {
-          @apply --imanje-input-focus;
-        };
-        --paper-input-container-label-focus: {
-          @apply --imanje-label-focus;
-        }
-        --paper-input-container-input-floating: {
-          @apply --imanje-input-floating;
-        }
-        --paper-input-container-underline: {
-          @apply --imanje-underline-default;
-        }
-        --paper-input-container-underline-focus: {
-          @apply --imanje-underline-focus;
-        }
-        --paper-input-container-label: {
-          @apply --imanje-label-default;
-        };
-        --paper-input-container-label-floating: {
-          @apply --imanje-label-floating;
-        };
-
-        --paper-font-caption: {
-          @apply --imanje-hide-paper-font-caption;
-        }
-      }
-
-      .single-autocomplete {
-        position: relative;
-        margin-top:8px;
-        margin-bottom:8px;
-      }
-
-      .single-autocomplete > input[type="text"] {
-        @apply --imanje-component-outer-style;
-        line-height: 24px;
-        /* this padding + 1px is added because this element doesent have focus underline  */
-        padding: calc(var(--input-padding-v) + 1px) var(--input-padding-h);
-      }
-
-      .single-autocomplete > input[type="text"]:focus {
-        outline: 0;
-      }
-
-      ul.autocomplete {
-        max-height: 144px;
-        overflow-y: scroll;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        background: #fff;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-        border-radius: 4px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        z-index: 100;
-      }
-
-      ul.autocomplete li {
-        line-height: 48px;
-        padding: 0 12px;
-      }
-
-      ul.autocomplete li,
-      ul.autocomplete li label {
-        cursor: pointer;
-      }
-
-      paper-radio-group paper-radio-button {
-        padding: 4px 12px;
-      }
-
-      /*
-
-      paper-input,
-      paper-textarea,
-      paper-input-container {
-          .input-content.label-is-floating {
-              outline:1px solid red;
-          }
-      }
-      */
-      /*
-      paper-input-container {
-          @apply --paper-input-container-shared-input-style;
-      }*/
-
-
     </style>
-
-    <template is="dom-if" if="[[is(mode, 'MULTI_DROPDOWN')]]">
-      <graphene-dropdown-menu label="[[text]]" invalid="[[error]]" error-message="[[error]]" help-message-html="[[html(help)]]" placeholder="[[placeholder]]" value="[[selected]]" dont-close-on-activate>
-        <paper-listbox slot="dropdown-content">
-          <template is="dom-repeat" items="{{choices}}">
-            <paper-item role="menuitemcheckbox">
-              <paper-checkbox value="[[item.value]]" checked="{{item.checked}}">[[item.text]]</paper-checkbox>
-            </paper-item>
-          </template>
-        </paper-listbox>
-      </graphene-dropdown-menu>
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'MULTI_CHOICE')]]">
-      <label>[[text]]</label>
-      <template is="dom-repeat" items="{{choices}}">
-        <paper-checkbox value="[[item.value]]" checked="{{item.checked}}">[[item.text]]</paper-checkbox>
-      </template>
-      <div class="hint" inner-h-t-m-l="[[html(help)]]"></div>
-      <div class="error">[[error]]</div>
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'SINGLE_AUTOCOMPLETE')]]">
-      <!--<label>[[text]]</label>
-<div class="dropdown single-autocomplete" open$="[[isOpen]]" on-click="toggle">
-  <input type="text" placeholder="" autocomplete="off" value="[[selected]]" on-input="filter" />
-  <ul class="autocomplete">
-      <template is="dom-repeat" items="[[choices]]" filter="[[criteriaFilter(criteria)]]">
-          <li tabindex="0" selected$="[[item.checked]]" on-click="select">
-              <label>[[item.text]]</label>
-          </li>
-      </template>
-  </ul>
-</div>-->
-
-      <div class="dropdown single-autocomplete" open$="[[isOpen]]" on-click="toggle">
-        <graphene-input-container invalid="[[error]]" placeholder="[[placeholder]]">
-          <label slot="label">[[text]]</label>
-          <iron-input slot="input" bind-value="{{value}}">
-            <input type="text" autocomplete="off" on-input="filter">
-          </iron-input>
-          <iron-icon icon="draft:arrow-drop-down" suffix slot="suffix"></iron-icon>
-          <paper-input-error slot="add-on">[[error]]</paper-input-error>
-        </graphene-input-container>
-        <ul class="autocomplete">
-          <template is="dom-repeat" items="[[choices]]" filter="[[criteriaFilter(criteria)]]">
-            <li tabindex="0" selected$="[[item.checked]]" on-click="select">
-              <label>[[item.text]]</label>
-            </li>
-          </template>
-        </ul>
-      </div>
-      <div class="hint" inner-h-t-m-l="[[html(help)]]"></div>
-      <div class="error">[[error]]</div>
-      <!--<graphene-dropdown-menu vertical-align="top" horizontal-align="left">
-  <graphene-input-container slot="dropdown-trigger" invalid$="[[error]]" placeholder="[[placeholder]]">
-      <label slot="label">[[text]]</label>
-      <iron-input slot="input" bind-value="{{value}}">
-          <input type="text" autocomplete="off" value="[[selected]]" on-input="filter">
-      </iron-input>
-      <iron-icon icon="draft:arrow-drop-down" suffix slot="suffix"></iron-icon>
-      <paper-input-error slot="add-on">[[error]]</paper-input-error>
-  </graphene-input-container>
-
-  <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="{{value}}">
-      <template is="dom-repeat" items="[[choices]]" filter="[[criteriaFilter(criteria)]]">
-          <paper-item role="menuitemradio" name="[[item.value]]">[[item.text]]</paper-item>
-      </template>
-  </paper-listbox>
-</graphene-dropdown-menu>-->
-
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'SINGLE_DROPDOWN')]]">
-      <graphene-dropdown-menu label="[[text]]" invalid="[[error]]" error-message="[[error]]" help-message-html="[[html(help)]]" placeholder="[[placeholder]]" value="[[selected]]">
-        <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{value}}">
-          <template is="dom-repeat" items="{{choices}}">
-            <paper-item role="menuitemradio" value="[[item.value]]">[[item.text]]</paper-item>
-          </template>
-        </paper-listbox>
-      </graphene-dropdown-menu>
-    </template>
-
-    <template is="dom-if" if="[[is(mode, 'SINGLE_CHOICE')]]">
-      <label>[[text]]</label>
-      <paper-radio-group>
-        <template is="dom-repeat" items="{{choices}}">
-          <paper-radio-button name="[[item.value]]" value="[[item.value]]" checked="{{item.checked}}">[[item.text]]</paper-radio-button>
-        </template>
-      </paper-radio-group>
-      <div class="hint" inner-h-t-m-l="[[html(help)]]"></div>
-      <div class="error">[[error]]</div>
-    </template>
-
   </template>
   <script>
-      customElements.define("nlp-draft-imanje-choicequestion", class extends customElements.get("nlp-imanje-choicequestion") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-choicequestion", 'template'); }
+      customElements.define("netlaw-imanje-page", class extends customElements.get("nlp-imanje-page") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-page", 'template')} ${super.template}`; }
+
       });
   </script>
 </dom-module>
 
-<dom-module id="nlp-draft-imanje-arrayquestion">
+<dom-module id="netlaw-imanje-section">
   <template>
-    <style include="shared-styles imanje-styles">
-      :host {
-        display:block;
-        margin-bottom:32px;
-      }
-      paper-icon-item,
-      .wrapper {
-        /*
-        border-right:1px solid #ddd;
-        border-left:1px solid #ddd;*/
-        box-sizing: border-box; /* prevent input bleeding outside of element */
-      }
-      .wrapper:focus {
-        outline:0 none;
-      }
-
-      paper-icon-item:first-of-type {
-        /*
-    border-top:1px solid #ddd; */
-      }
-
-      paper-icon-item:last-of-type {
-        /*
-    border-bottom:1px solid #ddd;*/
-      }
-
-      paper-icon-item[opened]:not(:first-of-type) {
-        border-top: 1px solid #ddd;
-      }
-
-      paper-icon-item[opened] {
-        border-bottom: 0 none;
-      }
-
-      paper-icon-item[opened]:not(:last-of-type) + .wrapper {
-        border-bottom: 1px solid #ddd;
-      }
-
-      paper-listbox {
-        padding: 0;
-      }
-
-      ul.items {
-        list-style:none;
-        margin-top:0;
-        margin-bottom:0;
-        padding-left:0;
-      }
-      ul.items li {
-        border-top: 1px solid #ddd;
-        padding:6px 0;
-      }
-      ul.items li:last-of-type {
-        border-bottom: 1px solid #ddd;
-      }
-
-      header {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        align-items: center;
-        /* width: 100%; */
-      }
-      .drag-me {
-        margin-right:16px;
-      }
-      .toggle {
-        margin-left: auto;
-      }
-
-      .wrapper {
-        display: block;
-        padding: 0 16px 0 40px;
-        overflow: hidden; /* clearfix */
-      }
-      li:not([open]) .wrapper {
-        display:none;
-      }
-      .item-footer {
-        text-align:right;
-      }
-
-      /*
-      paper-icon-item[opened] + .wrapper {
-          padding-bottom: 16px;
-      }
-
-      paper-icon-item:not([opened]) + .wrapper {
-          display: none;
-      }
-      */
-    </style>
-    <label>[[text]]</label>
-    <p inner-h-t-m-l="[[html(help)]]"></p>
-
-
-    <ul class="items">
-      <template is="dom-repeat" items="[[items]]">
-
-        <li open$="[[is(selected, item)]]">
-          <header xon-click="toggle">
-            <iron-icon icon="draft:drag-handle-dots" slot="item-icon" class="drag-me"></iron-icon>
-            <span inner-h-t-m-l="[[htmlsummary(item, items)]]"></span>
-            <paper-icon-button class="toggle" on-click="toggle" icon="[[ifAreEqual(selected, item, 'imanje:keyboard-arrow-up', 'imanje:keyboard-arrow-down')]]"></paper-icon-button>
-            <!--div class="buttons">
-                <button class="transparent" disabled$="[[isFirst(items, index)]]" on-click="up"><iron-icon icon="imanje:arrow-upward"></iron-icon></button>
-                <button class="transparent" disabled$="[[isLast(items, index)]]" on-click="down"><iron-icon icon="imanje:arrow-downward"></iron-icon></button>
-                <button class="transparent danger" on-click="remove"><iron-icon icon="imanje:delete"></iron-icon></button>
-            </div-->
-          </header>
-          <div class="wrapper" tabindex="-1">
-            <slot></slot>
-            <footer class="item-footer">
-              <paper-button on-click="remove" class="danger"><iron-icon icon="imanje:delete"></iron-icon> Remove</paper-button>
-            </footer>
-          </div>
-        </li>
-      </template>
-    </ul>
-    <!--div>
-        <paper-listbox class="ap-list">
-            <template is="dom-repeat" items="[[items]]">
-                <paper-icon-item opened$="[[is(selected, item)]]" tabindex="-1">
-                    <iron-icon icon="draft:drag-handle-dots" slot="item-icon"></iron-icon>
-                    <paper-item-body two-line>
-                        <div>[[htmlsummary(item, items)]]</div>
-                        <div></div>
-                    </paper-item-body>
-                    <paper-icon-button on-click="toggle" icon="[[ifAreEqual(selected, item, 'imanje:keyboard-arrow-up', 'imanje:keyboard-arrow-down')]]"></paper-icon-button>
-                </paper-icon-item>
-                <div class="wrapper" tabindex="-1">
-                    <slot></slot>
-                    <paper-button on-click="remove" class="danger"><iron-icon icon="imanje:delete"></iron-icon> Remove</paper-icon-button>
-                </div>
-            </template>
-        </paper-listbox>
-    </div-->
-
-    <div class="buttons margin-top-16px">
-      <paper-button class="importance-high" disabled$="[[isFirst(items, index)]]" on-click="add"><iron-icon icon="imanje:add"></iron-icon>Add</paper-button>
-      <paper-button class="danger" on-click="clear"><iron-icon icon="imanje:delete-sweep"></iron-icon>Remove all</paper-button>
-      <!--
-      <button class="light" on-click="add">Add <iron-icon icon="imanje:add"></iron-icon></button>
-      <button class="danger" on-click="clear"><iron-icon icon="imanje:delete-sweep"></iron-icon></button>
-      -->
-    </div>
-    <div class="error">[[error]]</div>
+    <style include="imanje-styles"></style>
   </template>
   <script>
-      customElements.define("nlp-draft-imanje-arrayquestion", class extends customElements.get("nlp-imanje-arrayquestion") {
-          static get template() { return Polymer.DomModule.import("nlp-draft-imanje-arrayquestion", 'template'); }
+      customElements.define("netlaw-imanje-section", class extends customElements.get("nlp-imanje-section") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-section", 'template')} ${super.template}`; }
+
+      });
+  </script>
+</dom-module>
+
+<dom-module id="netlaw-imanje-text">
+  <template>
+    <style include="imanje-styles"></style>
+  </template>
+  <script>
+      customElements.define("netlaw-imanje-text", class extends customElements.get("nlp-imanje-text") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-text", 'template')} ${super.template}`; }
+      });
+  </script>
+</dom-module>
+
+<dom-module id="netlaw-imanje-textquestion">
+  <template>
+    <style include="imanje-styles">
+
+    </style>
+  </template>
+  <script>
+      customElements.define("netlaw-imanje-textquestion", class extends customElements.get("nlp-imanje-textquestion") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-textquestion", 'template')} ${super.template}`; }
+
+      });
+  </script>
+</dom-module>
+
+<dom-module id="netlaw-imanje-choicequestion">
+  <template>
+    <style include="imanje-styles"></style>
+  </template>
+  <script>
+      customElements.define("netlaw-imanje-choicequestion", class extends customElements.get("nlp-imanje-choicequestion") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-choicequestion", 'template')} ${super.template}`; }
+
+      });
+  </script>
+</dom-module>
+
+<dom-module id="netlaw-imanje-arrayquestion">
+  <template>
+    <style include="imanje-styles"></style>
+  </template>
+  <script>
+      customElements.define("netlaw-imanje-arrayquestion", class extends customElements.get("nlp-imanje-arrayquestion") {
+          static get template() { return Polymer.html`${Polymer.DomModule.import("netlaw-imanje-arrayquestion", 'template')} ${super.template}`; }
+
       });
   </script>
 </dom-module>

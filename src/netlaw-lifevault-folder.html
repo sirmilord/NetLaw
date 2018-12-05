@@ -19,8 +19,8 @@
         color: var(--lifevault-folder-link-color, #e5e5e5);
         text-decoration: none;
         display: inline-block;
-        padding-top: var(--lifevault-folder-link-pt,15px);
-        padding-bottom: var(--lifevault-folder-link-pb,15px);
+        padding-top: var(--lifevault-folder-link-pt, 15px);
+        padding-bottom: var(--lifevault-folder-link-pb, 15px);
         --iron-icon-width: 15px;
         --iron-icon-height: 15px;
       }
@@ -82,7 +82,6 @@
         text-decoration: none;
       }
 
-
       .lifevault__list-link-lvl2:hover:before,
       .lifevault__list-link-lvl2:focus:before,
       .lifevault__list-link-lvl2--active:before {
@@ -93,7 +92,7 @@
         top: var(--lifevault-folder-hover-before-top, 17px);
         width: 4px;
         background-color: #01AA50;
-        display:  block;
+        display: block;
       }
 
       .lifevault__list-lvl3 {
@@ -148,11 +147,13 @@
     </style>
 
     <template is="dom-if" if="[[hasFolders]]">
-      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="onToggleCollapse" aria-expanded$="[[if(opened, 'true', 'false')]]">
+      <a class="lifevault__list-link-toggle" href="javascript:;" on-click="onToggleCollapse"
+         aria-expanded$="[[if(opened, 'true', 'false')]]">
         <iron-icon icon="[[if(opened, 'netlaw-icons:minus-icon', 'netlaw-icons:plus-icon')]]"></iron-icon>
       </a>
     </template>
-    <a class$="lifevault__list-link-lvl2 [[if(opened, 'lifevault__list-link-lvl2--collapsed')]]" href="javascript:;" on-click="open">
+    <a class$="lifevault__list-link-lvl2 [[if(opened, 'lifevault__list-link-lvl2--collapsed')]]" href="javascript:;"
+       on-click="open">
       <iron-icon icon="netlaw-icons:folder-icon"></iron-icon>
       [[name]]
     </a>
@@ -211,10 +212,12 @@
 
           static get properties() {
               return {
-                  folderId: { type: String, observer(value) {
+                  folderId: {
+                      type: String, observer(value) {
                           this.refresh();
                           this.opened = false;
-                      }},
+                      }
+                  },
                   modifiedOn: String,
                   name: String,
                   hasFolders: Boolean,
@@ -224,14 +227,21 @@
                       type: String,
                       value: 'netlaw-icons:plus-icon'
                   },
-                  opened: { type: Boolean, value: false },
+                  opened: {type: Boolean, value: false},
               };
           }
 
-          if(condition, trueValue, falseValue) { return condition ? trueValue : falseValue || null; }
+          if(condition, trueValue, falseValue) {
+              return condition ? trueValue : falseValue || null;
+          }
 
           constructor() {
               super();
+              this.addEventListener('refresh-parent', e => {
+                  if (e.path[0] === this) return;
+                  e.stopPropagation();
+                  this.refresh();
+              });
           }
 
           ready() {
@@ -280,18 +290,6 @@
                   });
           }
 
-          refreshParent() {
-              console.log("this", this);
-              console.log("folder", this.folderId);
-              console.log("folder parent ID", this.parentId);
-              api.vault.searchFolder(this.parentId, "type:folder")
-                  .success(r => {
-                      this.folders = r;
-                      this.hasFolders = !!r.length;
-                      console.log(r)
-                  });
-          }
-
           onToggleCollapse() {
               this.opened = !this.opened;
               this.refresh();
@@ -329,8 +327,8 @@
 
           _onDeleteFileFolderClick(e) {
               e.preventDefault();
-            console.log('this df', this);
-            console.log('parenId df', this.parentId);
+              console.log('this df', this);
+              console.log('parenId df', this.parentId);
               this.dispatchEvent(new CustomEvent('delete-folder', {
                   bubbles: true,
                   composed: true,
@@ -338,10 +336,11 @@
                       folderId: this.folderId,
                       folderName: this.name,
                       // parentId: this.parentId,
-                      success: this.refreshParent.bind(this),
+                      success: () => this.dispatchEvent(new CustomEvent('refresh-parent', {bubbles: true, composed: true})),
 
                   },
               }));
+
 
           }
 

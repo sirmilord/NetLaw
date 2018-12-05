@@ -1552,6 +1552,8 @@
                           {
                               name: "Family",
                               filter(item) {
+                                  //return ['child', 'mother', 'brother', 'sister'].contains(item.relationship);
+
                                   return item.relationship === 'child' || item.relationship === 'mother' || item.relationship === 'sister' || item.relationship === 'spouse'  || item.relationship === 'brother' || item.relationship === 'father' ;
                               }
                           }, // dom-repeatid.filter = item.filter;
@@ -1564,6 +1566,8 @@
                           {
                               name: "Other",
                               filter(item) {
+                                  //return !['child', 'mother', 'brother', 'sister', ..., 'attorney'].contains(item.relationship);
+
                                   return item.relationship === 'other';
                               }
                           },
@@ -1714,15 +1718,24 @@
           // }
 
           _onOpenView(e) {
-              let filter = this.filters.filter((item) => {
+              //item => item.name === e.model.__data.item.name ? item : null;
+              let filter = this.filters.find(item => item.name === e.model.item.name);
+              if (filter) {
+                  this.filterFunc = filter.filter;
+                  this.filterName = filter.name;
+              }
 
-                  if(item.name === e.model.__data.item.name) {
-                      return item
-                  }
-              });
-              // console.log(filterFunc[0].filter);
-              this.filterFunc = filter[0].filter;
-              this.filterName = filter[0].name;
+
+
+              // let filter = this.filters.filter((item) => {
+              //
+              //     if(item.name === e.model.item.name) {
+              //         return item
+              //     }
+              // });
+              // // console.log(filterFunc[0].filter);
+              // this.filterFunc = filter[0].filter;
+              // this.filterName = filter[0].name;navigate
 
               navigate(`contacts/view/`);
 

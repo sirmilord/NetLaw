@@ -202,6 +202,18 @@
     </template>
 
     <section class="smartguide__content">
+
+      <netlaw-imanje-form id="form">
+        <netlaw-imanje-page-navigator show-minor></netlaw-imanje-page-navigator>
+        <netlaw-imanje-page></netlaw-imanje-page>
+        <netlaw-imanje-page-help></netlaw-imanje-page-help>
+        <footer>
+          <button on-click="next">Next</button>
+          <button class="transparent separator" on-click="save">I wat to finish later</button>
+        </footer>
+      </netlaw-imanje-form>
+
+
       <h1>SmartGuide Setup</h1>
       <figure>
         <iron-icon icon="netlaw-icons:pencil-pen"></iron-icon>
@@ -214,6 +226,8 @@
       <a href="[[rootPath]]smartguide/setup-step1" class="btn btn--primary">Let's begin</a>
       <a href="[[rootPath]]smartguide" class="btn btn--cancel" on-click="closeDrawer">Cancel</a>
     </section>
+
+
 
   </template>
 
@@ -240,6 +254,791 @@
                   detail: {opened: true}
               }));
           }
+
+
+          ready() {
+              super.ready();
+              let t1 = new ImanjeTemplate({
+                  name: "My Profile Editor",
+                  caption: "My Profile",
+                  pages: [
+                      {
+                          $type: "PAGE",
+                          caption: "You",
+                          description: "You are {FirstName} //page// content...",
+                          content: [
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "variable": "FirstName",
+                                  "text": "First Name",
+                                  "help": "Enter **your** __first__ name '{FirstName}' here.",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  }
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "SINGLE_DROPDOWN",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "variable": "LastName",
+                                  "text": "Last Name",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  }
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "MULTI_DROPDOWN",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "EMAIL",
+                                  "variable": "Email",
+                                  "text": "Your email",
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "DATE",
+                                  "variable": "DOB",
+                                  "text": "Birthdate",
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "MULTI_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "CURRENCY_USD",
+                                  "variable": "Number",
+                                  "text": "Number",
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "SINGLE_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "mode": "TEXT_BLOCK",
+                                  "variable": "About",
+                                  "text": "About",
+                              },
+                          ],
+                      },
+                      {
+                          $type: "PAGE",
+                          caption: "You",
+                          content: [
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "SINGLE_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                          ],
+                      },
+                      {
+                          $type: "PAGE",
+                          caption: "You Second {FirstName} {LastName}",
+                          content: [
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "variable": "FirstName",
+                                  "text": "First Name",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  }
+                              },
+                          ],
+                      },
+                  ],
+              });
+              let t2 = new ImanjeTemplate({
+                  "id": "2360f2d9-c3b0-4161-b9a1-c7cc7e7bb67f",
+                  "name": "Test POA",
+                  "caption": "Main SmartGuide Caption",
+                  "pages": [
+                      {
+                          "$type": "PAGE",
+                          "id": "cde0a775-8c78-46c0-a0a1-1e6fd2d3fefb",
+                          "caption": "Current Page Caption {ClientFN}",
+                          "description": "Page *descrption* paragraph.",
+                          "validator": { $type: "SIMPLEVALIDATOR", variable: "ClientFN", test: "BLANK" },
+                          "content": [
+                              {
+                                  "$type": "SECTION",
+                                  "id": "e42bc43b-d052-4613-924f-1eb76c866eef",
+                                  "caption": "Section",
+                                  "description": "Section _description_ paragraph.",
+                                  "content": [
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "9a9db245-41b7-4749-a698-20b93e9b9f7c",
+                                          "variable": "ClientFN",
+                                          "text": "Text Question Label",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "e263a27b-08a0-4375-9494-c4dcdac495ef",
+                                          "variable": "ClientLN",
+                                          "text": "Last Name",
+                                          "placeholder": "{ClientFN}'s Last Name",
+                                          "help": "Text question dynamic help: {ClientFN}'s last name.",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "variable": "Password",
+                                          "text": "Password",
+                                          "mode": "PASSWORD",
+                                      },
+                                      {
+                                          "$type": "TEXTBLOCK",
+                                          "id": "e213a27b-08a0-4375-9494-c4dcdac495ef",
+                                          "text": "Some random paragraph of <em>text</em>."
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "754e1a57-5e41-402b-bdfa-8921834a145f",
+                                          "variable": "ClientFullLegalName",
+                                          "text": "Full Legal Name",
+                                          "help": "This is how your name will appear in the document. <span style=\"font-style: italic;\"><span style=\"font-weight: bold;\">If you have a middle initial, be sure to include a period after it.</span></span>",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "13f76c39-1bc6-4193-a8cb-ee043d01433d",
+                                          "variable": "Notes",
+                                          "text": "Enter Your Notes",
+                                          "mode": "TEXT_BLOCK",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                  ]
+                              },
+                              {
+                                  "$type": "SECTION",
+                                  "id": "2a8b520e-900c-489a-a50e-9b5ed5af7f4d",
+                                  "caption": "Second Section Same Page",
+                                  "content": [
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "9a9db245-41b7-4749-a698-20b93e9b9f7c",
+                                          "variable": "ClientFN",
+                                          "text": "First Name Again",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "id": "f4040f99-a797-44e2-ad2c-bd838f22e54b",
+                                          "variable": "ClientGender",
+                                          "text": "Gender",
+                                          "help": "Select your gender",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          },
+                                          "mode": "SINGLE_CHOICE",
+                                          "data_sources": [
+                                              {
+                                                  "$type": "VALUEDATASOURCE",
+                                                  "value": "male"
+                                              },
+                                              {
+                                                  "$type": "VALUEDATASOURCE",
+                                                  "value": "female"
+                                              }
+                                          ]
+                                      },
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "id": "f4040f99-a797-44e2-ad2c-bd838f22254b",
+                                          "variable": "ClientGender",
+                                          "text": "Gender",
+                                          "help": "Geneder from dropdown menu.",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          },
+                                          "mode": "SINGLE_DROPDOWN",
+                                          "data_sources": [
+                                              {
+                                                  "$type": "VALUEDATASOURCE",
+                                                  "value": "male"
+                                              },
+                                              {
+                                                  "$type": "VALUEDATASOURCE",
+                                                  "value": "female"
+                                              }
+                                          ]
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "id": "a8477a1a-2870-41d9-bad7-ad5323b9c8ce",
+                                  "variable": "ClientState",
+                                  "text": "State",
+                                  "help": "This autocomplete is not in any of the sections.",
+                                  "mode": "SINGLE_AUTOCOMPLETE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "JAVASCRIPTDATASOURCE",
+                                          "code": "return ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];"
+                                      }
+                                  ]
+                              },
+                          ],
+                          "help": ["9c9584b7-9fb8-46d2-bd89-0639f4afa48f"],
+                      },
+                      {
+                          "$type": "PAGE",
+                          "id": "cde0a775-8c78-46c0-a0a1-1e6f22d4fefb",
+                          "caption": "Array Example",
+                          "content": [
+                              {
+                                  "$type": "ARRAYQUESTION",
+                                  "id": "9a92b245-41b7-4749-a638-20b93e9b9f7c",
+                                  "variable": "SpecificBequests",
+                                  "text": "Specific Bequests",
+                                  "help": "Use the Add button below to add your specific bequests.",
+                                  //"columns": [{ caption: "Name", value: "FullName" }],
+                                  "summary": "{ BequestType !== 'Dollar Amount' ? BequestItem : DollarAmount } ({ Type == 'Charity' ? CharityName : Type == 'Individual' ? PersonName : '...' })",
+                                  "template": [
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "variable": "Type",
+                                          "text": "Select one:",
+                                          "mode": "SINGLE_CHOICE",
+                                          "data_sources": [
+                                              { "$type": "VALUEDATASOURCE", "value": "Charity" },
+                                              { "$type": "VALUEDATASOURCE", "value": "Individual" }
+                                          ]
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "variable": "CharityName",
+                                          "text": "Charity Name",
+                                          "visibility": { "$type": "SIMPLECONDITION", "variable": "Type", "operation": "EQUAL", "values": ["Charity"] },
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "variable": "PersonName",
+                                          "text": "Person Name",
+                                          "visibility": { "$type": "SIMPLECONDITION", "variable": "Type", "operation": "EQUAL", "values": ["Individual"] },
+                                      },
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "variable": "BequestType",
+                                          "text": "Select one:",
+                                          "mode": "SINGLE_CHOICE",
+                                          "data_sources": [
+                                              { "$type": "VALUEDATASOURCE", "value": "Dollar Amount" },
+                                              { "$type": "VALUEDATASOURCE", "value": "Item" }
+                                          ]
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "variable": "BequestItem",
+                                          "text": "Item Description",
+                                          "help": "Describe the item, but don't include the word 'my' in the description.",
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "variable": "DollarAmount",
+                                          "text": "Dollar Amount",
+                                          "help": "Enter a whole number with no periods or commas.",
+                                          "mode": "CURRENCY_USD"
+                                      },
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "variable": "WhenEffective",
+                                          "text": "When should the bequest happen?",
+                                          "mode": "SINGLE_CHOICE",
+                                          "data_sources": [
+                                              { "$type": "VALUEDATASOURCE", "value": "At my death, regardless of whether my spouse is living" },
+                                              { "$type": "VALUEDATASOURCE", "value": "At my death only if my spouse has predeceased me" }
+                                          ]
+                                      },
+                                  ],
+                              }
+                          ],
+                      },
+                      {
+                          "id": "44a8cdb9-5534-4a20-b39f-183c10229271",
+                          "caption": "You",
+                          "content": [
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "id": "f4020f99-a797-44e2-ad2c-bd838f22e54b",
+                                  "variable": "SpouseGender",
+                                  "text": "Spouse Gender",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "variable": "SpouseGender",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "SINGLE_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "male",
+                                          "text": "(M)ale"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "female",
+                                          "text": "F"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "id": "f4040f92-a797-44e2-ad2c-bd838f22254b",
+                                  "variable": "ClientGender",
+                                  "text": "Gender",
+                                  "help": "multiple choice with dropdown.",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "MULTI_DROPDOWN",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "id": "f4040f93-a797-44e2-ad2c-bd838f22254b",
+                                  "variable": "ClientGender",
+                                  "text": "Gender",
+                                  "help": "multiple choice.",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "MULTI_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "SECTION",
+                                  "id": "a8513991-6044-488a-a06d-4a148a64a535",
+                                  "caption": "Address",
+                                  "content": [
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "344d07d5-ba04-43df-91e7-8ed8ab19cd0d",
+                                          "variable": "ClientStAdd",
+                                          "text": "Street Address",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "43fddd36-aca1-4558-87f5-9723f6dd59e9",
+                                          "variable": "ClientCounty",
+                                          "text": "County, Borough or Parish",
+                                          "help": "Type only the county, borough or parish name; do not include the word \"County\", \"Borough\" or \"Parish\".",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "67af8d32-031b-457b-9ce1-33cdeefc7138",
+                                          "variable": "ClientCity",
+                                          "text": "City",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      },
+                                      {
+                                          "$type": "CHOICEQUESTION",
+                                          "id": "533c86c6-1d76-4879-8e88-8c9bfa0a90da",
+                                          "variable": "ClientState",
+                                          "text": "State of Residence",
+                                          "help": "Start typing full name of the state and then select that entry from the list.",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          },
+                                          "data_sources": [
+                                              {
+                                                  "$type": "LOOKUPDATASOURCE"
+                                              }
+                                          ],
+                                          "options": "AUTOCOMPLETE",
+                                          "matching": "STARTS_WITH"
+                                      },
+                                      {
+                                          "$type": "TEXTQUESTION",
+                                          "id": "bff802a4-ab36-425b-8b18-34cd2bed96c7",
+                                          "variable": "ClientZip",
+                                          "text": "Zip Code",
+                                          "validator": {
+                                              "$type": "SIMPLEVALIDATOR",
+                                              "test": "BLANK"
+                                          }
+                                      }
+                                  ]
+                              }
+                          ],
+                          "help": ["9c9584b7-9fb8-46d2-bd89-0639f4afa48f", "9c9584b7-9fb8-46d2-bd89-0639f4afa48f", "e7c8b5f6-bf00-4848-a3d5-39c30179ea6a"],
+                      },
+                      {
+                          "id": "4418cdb9-5534-4a20-b39f-183c10229271",
+                          "caption": "You",
+                          "description": "## i am h2\n#and h1 also",
+                          "content": [],
+                      },
+                      {
+                          $type: "PAGE",
+                          caption: "You",
+                          description: "You are {FirstName} //page// content...",
+                          content: [
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "variable": "FirstName",
+                                  "text": "First Name",
+                                  "help": "Enter **your** __first__ name '{FirstName}' here.",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  }
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "SINGLE_DROPDOWN",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "variable": "LastName",
+                                  "text": "Last Name",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  }
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "MULTI_DROPDOWN",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "EMAIL",
+                                  "variable": "Email",
+                                  "text": "Your email",
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "DATE",
+                                  "placeholder": "{ClientFN}'s DOB",
+                                  "variable": "DOB",
+                                  "text": "Birthdate",
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "mode": "MULTI_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  mode: "CURRENCY_USD",
+                                  "variable": "Number",
+                                  "text": "Some ammout of dollars",
+                              },
+                              {
+                                  "$type": "CHOICEQUESTION",
+                                  "variable": "Gender",
+                                  "text": "Gender",
+                                  "validator": {
+                                      "$type": "SIMPLEVALIDATOR",
+                                      "test": "BLANK"
+                                  },
+                                  "mode": "SINGLE_CHOICE",
+                                  "data_sources": [
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "m",
+                                          "value": "male"
+                                      },
+                                      {
+                                          "$type": "VALUEDATASOURCE",
+                                          "text": "f",
+                                          "value": "female"
+                                      }
+                                  ]
+                              },
+                              {
+                                  "$type": "TEXTQUESTION",
+                                  "mode": "TEXT_BLOCK",
+                                  "variable": "About",
+                                  "text": "About",
+                              },
+                          ],
+                      },
+                  ],
+                  "help": {
+                      "9c9584b7-9fb8-46d2-bd89-0639f4afa48f": {
+                          caption: "Why do you need to know my birth date?",
+                          text: "Like all of the information we ask for, this will allow us to customize your experience."
+                      },
+                      "e7c8b5f6-bf00-4848-a3d5-39c30179ea6a": "//fast.wistia.net/embed/iframe/35eq89xv7l",
+                  }
+              });
+              this.$.form.template = t2;
+              this.$.form.data = new ImanjeData({
+                  FirstName: "string",
+                  LastName: "string",
+                  Email: "string",
+                  DOB: "string",
+                  Number: "string",
+                  Gender: "string",
+                  About: "string",
+                  Password: "string",
+                  SpecificBequests: {
+                      $id: { type: 'GUID', key: true },
+                      Type: ["Charity", "Individual"],
+                      CharityName: String,
+                      PersonName: String,
+                      BequestType: ["Dollar Amount", "Item"],
+                      BequestItem: String,
+                      DollarAmount: Number,
+                      WhenEffective: String,
+                  },
+                  $people: {
+                      $id: { type: 'GUID', key: true },
+                      $type: ["MYSELF", "SPOUSE", "CHILD", "PARENT", "OTHER"],
+                      FullName: String,
+                      City: String,
+                      State: String,
+                      StreetAddress: String,
+                      Relationship: { type: String, scope: '$client' }, //$me
+                      Gender: String,
+                      DOB: Date,
+                  },
+                  ClientFN: "STRING",
+                  ClientLN: String,
+                  ClientFullLegalName: String,
+                  ClientGender: { type: String, enum: ["male", "female"], },
+                  ClientDOB: String,
+                  Phone: String,
+                  ClientStAdd: String,
+                  ClientCounty: String,
+                  ClientCity: String,
+                  ClientState: String,
+                  ClientZip: String,
+                  MaritalStatus: Boolean,
+                  SpouseFN: String,
+                  SpouseLN: String,
+                  IndividualSpouseFLN: String,
+                  SpouseGender: ["male", "female"],
+                  SpouseDOB: String,
+                  SpouseAddressSame: Boolean,
+                  Children: Boolean,
+                  AdultChildren: 'return $people.filter(p => p.DOB.addYears(18) < new Date.now());',
+                  FullNameTest: 'return this.ClientFN + " " + ClientLN + " " + $data.ClientDOB + " ";',
+                  AdultPeopleOmitClientChoices: 'return $people.map(p => ({ value: p.$id, text: p.FullName }));',
+                  IsAdult: 'return ClientDOB.addYears(18) < new Date.now();',
+                  NumberSBPRRecipients: {
+                      $order: Number,
+                      SBPRCharity: Boolean,
+                      SBPRCharityCity: String,
+                      Test: {
+                          Test: Number,
+                      },
+                      Test2: {
+                          type: Object,
+                          template: {
+                              Test2: String,
+                          },
+                      },
+                  },
+                  ClientAddress: {
+                      type: Object,
+                      template: {
+                          Street: String,
+                          City: String,
+                          State: String,
+                      }
+                  },
+                  Notes: String,
+                  DPOA: { type: String, },
+              });
+              this.$.form.data.import({
+                  FirstName: "Kyle",
+              });
+          }
+          defaultIfFalse(value, defaultValue) { return value || (defaultValue !== undefined ? defaultValue : null); }
+          previous(e) { this.$.form.previous(); }
+          next(e) { this.$.form.next(); }
+          onSaveClick(e) {
+              api.draft.updateProfile('', data)
+                  .success(data => {
+                      navigate(`${this.rootPath}`);
+                  });
+          }
+          onCloseClick(e) {
+              navigate();
+          }
+
+
+
+
       }
 
 
